@@ -25,7 +25,7 @@
       data.set('page', location.pathname);
       if (button) button.disabled = true;
 
-      fetch('/api/form', { method: 'POST', body: data })
+      fetch('https://forms.eltelar.es/api/form', { method: 'POST', body: data })
         .then(function (res) {
           return res.json().catch(function () { return {}; }).then(function (body) {
             if (!res.ok || !body.ok) {
