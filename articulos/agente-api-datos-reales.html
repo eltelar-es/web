@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Agente de IA con acceso a datos reales y gratis | El Telar</title>
+<meta name="description" content="Tutorial práctico con código funcional: conecta un modelo de IA a una API pública real y gratuita, con una demo en vivo que puedes probar ahora mismo.">
+<link rel="canonical" href="https://eltelar.es/articulos/agente-api-datos-reales.html"><link rel="icon" type="image/svg+xml" href="../img/favicon.svg?v=4"><link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32.png?v=4"><link rel="apple-touch-icon" href="../img/apple-touch-icon.png?v=4"><meta name="theme-color" content="#072417"><link rel="manifest" href="../manifest.json"><link rel="alternate" type="application/rss+xml" title="El Telar" href="../feed.xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cómo darle a un agente de IA acceso a datos reales y gratis | El Telar">
+<meta property="og:description" content="Tutorial práctico con código funcional: conecta un modelo de IA a una API pública real y gratuita, con una demo en vivo que puedes probar ahora mismo.">
+<meta property="og:url" content="https://eltelar.es/articulos/agente-api-datos-reales.html">
+<meta property="og:site_name" content="El Telar">
+<meta property="og:locale" content="es_ES"><meta property="og:image" content="https://eltelar.es/img/og/guia-agente-api-datos-reales.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Cómo darle a un agente de IA acceso a datos reales y gratis | El Telar">
+<meta name="twitter:description" content="Tutorial práctico con código funcional: conecta un modelo de IA a una API pública real y gratuita, con una demo en vivo que puedes probar ahora mismo."><meta name="twitter:image" content="https://eltelar.es/img/og/guia-agente-api-datos-reales.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Cómo darle a un agente de IA acceso a datos reales y gratis",
+  "description": "Tutorial práctico con código funcional: conecta un modelo de IA a una API pública real y gratuita, con una demo en vivo que puedes probar ahora mismo.",
+  "image": "https://eltelar.es/img/og-image.jpg",
+  "author": { "@type": "Organization", "name": "El Telar", "url": "https://eltelar.es/sobre-nosotros.html" },
+  "publisher": { "@type": "Organization", "name": "El Telar" },
+  "datePublished": "2026-09-07",
+  "dateModified": "2026-09-07",
+  "mainEntityOfPage": "https://eltelar.es/articulos/agente-api-datos-reales.html",
+  "inLanguage": "es"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Por qué un chatbot normal no puede decirme el tiempo que hace ahora mismo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Porque un modelo de lenguaje solo sabe lo que había en sus datos de entrenamiento hasta una fecha de corte, y el tiempo de ahora mismo no existía todavía cuando se entrenó. Sin acceso a una herramienta externa, lo único que puede hacer es inventar una respuesta plausible o decirte honestamente que no lo sabe."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Necesito una clave de API para hacer esto?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Para el ejemplo de esta guía (Open-Meteo), no: es una de las pocas APIs públicas serias que no exige registro ni clave para uso no comercial. Para conectar el modelo de IA sí necesitas una clave del proveedor (Anthropic, OpenAI o Google), pero eso es aparte de la API de datos en sí."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Esto es lo mismo que MCP?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Son primos cercanos. El \"tool use\" que ves en esta guía es el mecanismo básico: tú defines una función y se la ofreces al modelo en la misma llamada. MCP es una capa encima de ese mismo mecanismo que estandariza cómo se empaquetan y comparten esas herramientas entre aplicaciones distintas, para no tener que redefinir la misma función cada vez que cambias de proyecto."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo usar esto mismo con ChatGPT o Gemini en vez de Claude?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí, el concepto es idéntico en los tres: defines un esquema de función con nombre, descripción y parámetros, el modelo decide cuándo llamarla y tú ejecutas el código real y le devuelves el resultado. Solo cambia el nombre exacto de los campos en el JSON de la petición, no la lógica de fondo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué pasa si la API externa está caída cuando el agente la llama?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tu código debe capturar ese error y devolvérselo al modelo como parte del resultado de la herramienta, en vez de dejar que el programa entero falle. Un buen agente maneja bien recibir \"esta herramienta ha fallado\" y puede decidir reintentarlo, probar otra vía o informarte del problema en vez de inventarse un dato para rellenar el hueco."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuánto cuesta ejecutar algo así en producción?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "La llamada a Open-Meteo es gratis. Lo que sí cuesta es la llamada al modelo de IA (normalmente dos llamadas por cada consulta: una para que decida usar la herramienta y otra para que redacte la respuesta final con el resultado), facturada por tokens según el proveedor que elijas. Para un volumen bajo o medio, el coste suele ser de céntimos al mes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo conectar una API que sí necesita clave, como una de noticias o criptomonedas?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí, el patrón de código es exactamente el mismo; la única diferencia es que dentro de tu función guardas la clave en una variable de entorno en tu propio servidor, nunca en el código que compartes ni en el navegador del usuario, y la añades a la petición HTTP hacia esa API en vez de hacia Open-Meteo."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://eltelar.es/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Guías",
+      "item": "https://eltelar.es/index.html#guias"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Cómo darle a un agente de IA acceso a datos reales y gratis",
+      "item": "https://eltelar.es/articulos/agente-api-datos-reales.html"
+    }
+  ]
+}
+</script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet"/></noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet"/></noscript>
+<style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><link rel="stylesheet" href="../css/tailwind.css"><link rel="stylesheet" href="../css/entrance.css?v=2"><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}(function(){var c=null;try{c=localStorage.getItem('eltelar-cookie-consent')}catch(e){}var g=c==='accepted'?'granted':'denied';gtag('consent','default',{ad_storage:g,ad_user_data:g,ad_personalization:g,analytics_storage:g,wait_for_update:500});window.adsbygoogle=window.adsbygoogle||[];if(g!=='granted'){window.adsbygoogle.requestNonPersonalizedAds=1;}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-4DPTKEG79N"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4DPTKEG79N');</script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8239907995939753" crossorigin="anonymous"></script></head><body class="bg-background font-body-md text-on-surface antialiased">
+<header class="w-full bg-surface-container-lowest border-b border-outline-variant"><div class="border-b border-outline-variant py-space-xxs px-space-md hidden md:block"><div class="max-w-site-max-width mx-auto flex items-center justify-between font-kicker text-kicker text-on-surface-variant uppercase tracking-wider"><span>EDICIÓN DIGITAL // ACTUALIZADO 2026 // EL TELAR &amp; AGENTES</span><span>MADRID · REMOTO</span><span>SIN HUMO · 100% PRODUCCIÓN</span></div></div><div class="max-w-site-max-width mx-auto px-space-md py-space-md sm:py-space-xl text-center"><p class="hidden sm:block font-kicker text-kicker uppercase tracking-widest text-on-surface-variant mb-space-xs">Publicación Independiente de Tecnología &amp; Agentes</p><a class="inline-block" href="../index.html"><div class="font-display text-display max-sm:text-[40px] max-sm:leading-none text-primary tracking-tight">El Telar</div></a><p class="hidden sm:block font-caption text-caption uppercase tracking-widest text-on-surface-variant mt-space-xs">EL BOLETÍN Y ARCHIVO PRÁCTICO DE INTELIGENCIA ARTIFICIAL Y AGENTES AUTÓNOMOS</p></div><div class="border-t border-b border-outline-variant"><div class="max-w-site-max-width mx-auto px-space-md flex items-center justify-between gap-space-sm h-14"><nav class="flex items-center gap-space-md sm:gap-space-lg h-full min-w-0 overflow-x-auto [scrollbar-width:none] whitespace-nowrap"><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../index.html#guias">GUÍAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../empieza-aqui.html">EMPIEZA AQUÍ</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../sobre-nosotros.html">SOBRE NOSOTROS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../noticias/index.html">NOTICIAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../herramientas/index.html">HERRAMIENTAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../prompts/index.html">PROMPTS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../contacto.html">CONTACTO</a></nav><div class="flex items-center gap-space-md"><button id="search-trigger" type="button" aria-label="Buscar en las guías" class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[20px]">search</span></button><a class="hidden sm:inline-block bg-primary-container text-surface px-space-md py-space-xs font-label-md text-label-md uppercase tracking-wider hover:bg-primary transition-colors" href="../index.html#despacho">SUSCRÍBETE GRATIS</a></div></div></div><div class="hidden md:block bg-surface-container-low border-b border-outline-variant py-space-xs px-space-md"><div class="max-w-site-max-width mx-auto text-center"><p class="font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">47 GUÍAS COMPLETAS EN EXPANSIÓN · ACTUALIZADO A MODELOS 2026 · PROBADO EN TERMINAL Y FLUJOS REALES · CERO HUMO NI TEORÍA VACÍA</p></div></div></header>
+<main class="w-full max-w-site-max-width mx-auto px-space-md py-space-xl"><div class="flex flex-col w-full">
+<nav class="w-full mb-space-lg">
+<ol class="flex flex-wrap items-center gap-space-xs font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">
+<li><a class="hover:text-primary transition-colors" href="../index.html">Inicio</a></li>
+<li class="text-on-surface-variant">/</li>
+<li><a class="hover:text-primary transition-colors" href="../index.html#guias">Guías</a></li>
+<li class="text-on-surface-variant">/</li>
+<li class="text-primary font-bold">Agente con datos reales</li>
+</ol>
+</nav>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-col-gap">
+<article class="lg:col-span-8 flex flex-col space-y-space-xl">
+<figure data-hero class="space-y-space-xs"><img class="w-full border border-outline-variant" src="../img/guias/hero-agente-api-datos-reales.jpg" alt="Web de Open-Meteo, la API meteorológica gratuita que usa el agente de esta guía" width="1280" height="720" fetchpriority="high" decoding="async"/><figcaption class="font-caption text-caption text-on-surface-variant">Captura de pantalla: <a class="underline" href="https://open-meteo.com/" rel="nofollow noopener" target="_blank">open-meteo.com</a>.</figcaption></figure>
+<header class="space-y-space-md border-b border-outline-variant pb-space-xl">
+<span class="bg-surface-container-high text-secondary border border-outline-variant px-space-xs py-space-xxs font-kicker text-kicker uppercase tracking-widest inline-block">TUTORIAL // CÓDIGO FUNCIONAL</span>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight leading-tight">Cómo darle a un agente de IA acceso a datos reales y gratis</h1>
+<p class="font-lead-paragraph text-lead-paragraph text-on-surface-variant leading-relaxed">Un chatbot normal no sabe qué tiempo hace ahora mismo en tu ciudad. Esta guía te enseña, con una demo que puedes probar en esta misma página y código real debajo, exactamente cómo se le da a un modelo acceso a un dato que cambia cada minuto.</p>
+<div class="pt-space-sm border-t border-outline-variant flex flex-wrap items-center justify-between gap-space-sm font-label-md text-label-md text-on-surface-variant">
+<span class="font-semibold text-on-surface">Por la Redacción de El Telar</span>
+<button class="inline-flex items-center gap-1 mt-2 px-3 py-1.5 bg-surface-container text-primary font-label-md text-[12px] font-semibold uppercase tracking-wider hover:bg-surface-container-high transition-colors" id="copy-guide-btn" type="button"><span class="material-symbols-outlined text-[16px]">content_copy</span> Copiar guía para tu IA</button><span class="inline-flex items-center gap-1 ml-1"><button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" id="save-guide-btn" title="Guardar guía" type="button"><span class="material-symbols-outlined text-[16px]">bookmark_border</span></button><button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" id="copy-link-btn" title="Copiar enlace permanente" type="button"><span class="material-symbols-outlined text-[16px]">share</span></button></span>
+<span class="flex items-center gap-1 text-caption font-caption">
+<span class="material-symbols-outlined text-[15px] text-on-surface-variant">schedule</span>
+              14 min de lectura
+            </span>
+</div>
+</header>
+<section class="prose max-w-editorial-max-width space-y-space-md">
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed">
+<span class="float-left text-primary font-display text-[68px] leading-[0.8] pr-3 pt-1 font-normal select-none">P</span>regúntale a cualquier chatbot qué tiempo hace ahora mismo en tu calle y pasará una de dos cosas: te dirá honestamente que no tiene acceso a datos en tiempo real, o —peor— se inventará una respuesta con total seguridad. Ninguna de las dos es lo que quieres cuando estás construyendo algo de verdad. La solución no es un modelo "más inteligente": es darle acceso a una fuente de datos real, con reglas claras sobre cuándo y cómo puede usarla.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Esto es lo que separa un chatbot de un agente de verdad, y es exactamente el mecanismo detrás de <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="mcp-explicado.html">MCP</a>, de los plugins de ChatGPT y de cualquier "agente" comercial que consulta precios, el clima o tu calendario. Se llama <em>tool use</em> (uso de herramientas) o <em>function calling</em> (llamada a funciones), y en el fondo es más simple de lo que suena.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Esta guía usa un ejemplo concreto y gratuito de principio a fin: una API pública del tiempo (Open-Meteo) que no exige clave ni registro. Al final de la sección 2 tienes una demo real e interactiva, funcionando en esta misma página, seguida del código exacto que la conecta a un modelo de IA. Cópialo, cámbialo de API y tendrás tu primer agente con datos reales en un rato.
+        </p>
+</section>
+<figure class="my-space-lg">
+<img class="w-full border border-outline-variant" src="../img/guias/open-meteo-api.jpg" alt="Página oficial de Open-Meteo, la API pública del tiempo usada en esta guía, mostrando su portada con el mensaje de que no requiere clave de API." loading="lazy" width="1280" height="800"/>
+<figcaption class="font-caption text-caption text-on-surface-variant mt-space-xs"><a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="https://open-meteo.com" target="_blank" rel="noopener">open-meteo.com</a>: la API que usa esta guía, gratuita y sin necesidad de registro para uso no comercial.</figcaption>
+</figure>
+<section id="sec-1" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Por qué un modelo no puede simplemente "saberlo"</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Un modelo de lenguaje se entrena una vez, sobre un corpus de texto con una fecha de corte, y luego queda congelado: no aprende nada nuevo entre esa fecha y el momento en que tú le escribes. Eso significa que no puede saber el precio del bitcoin ahora mismo, ni si va a llover esta tarde en tu ciudad, ni el resultado de un partido que se jugó ayer, por la razón simple de que esa información no existía todavía cuando se generaron sus parámetros.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Lo inquietante no es esa limitación en sí —es lógica y esperable—, sino que un modelo mal instruido puede rellenar ese hueco con una respuesta que suena perfectamente segura de sí misma, sin ninguna señal visible de que se lo ha inventado. Nuestra guía sobre <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="alucinaciones-ia.html">alucinaciones de la IA</a> cubre ese problema en detalle; esta guía cubre la solución técnica: dejar de pedirle al modelo que "sepa" cosas y, en su lugar, darle una forma de <strong class="text-on-surface">consultarlas</strong> en el momento.
+        </p>
+<div class="bg-surface-container-lowest p-space-md">
+<h3 class="font-label-md text-label-md text-primary font-bold uppercase tracking-wider mb-space-xs">La diferencia en una frase:</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Un chatbot responde con lo que memorizó. Un agente con herramientas responde con lo que acaba de comprobar.</p>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Hay un matiz que conviene aclarar porque genera confusión: algunos modelos comerciales sí tienen acceso a una herramienta de búsqueda web integrada de fábrica, y eso les permite responder preguntas sobre hechos recientes sin que tú programes nada. Pero esa búsqueda integrada es exactamente el mismo mecanismo que esta guía te enseña a montar por tu cuenta — una herramienta más, con su propio nombre y su propia función detrás —, solo que ya viene configurada por el proveedor. En el momento en que necesitas un dato de <em>tu</em> sistema (tu inventario, tu base de clientes, tu API interna), esa búsqueda web genérica ya no sirve, y ahí es donde entra construir tu propia herramienta.
+        </p>
+</section>
+<section id="sec-2" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Cómo funciona el mecanismo, paso a paso</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          El proceso tiene siempre la misma forma, sea Claude, ChatGPT o Gemini el modelo que uses: tú le describes una "herramienta" disponible (un nombre, qué hace, qué datos necesita para funcionar) en la misma llamada donde envías tu pregunta. El modelo no ejecuta nada por sí mismo — decide si necesita esa herramienta y, si es así, te devuelve una petición estructurada pidiéndote que la ejecutes tú. Tu código la ejecuta de verdad, y le devuelve el resultado real en un segundo mensaje. Solo entonces el modelo redacta la respuesta final, ya con el dato correcto en la mano.
+        </p>
+<div class="bg-[#0b0d12] text-surface p-space-md my-space-md overflow-x-auto">
+<pre class="font-mono text-body-sm leading-relaxed"><span class="text-inverse-primary">1. Tú:</span> "¿Qué tiempo hace en Valencia?"
+<span class="text-inverse-primary">2. Modelo:</span> "Necesito usar la herramienta obtener_tiempo(ciudad='Valencia')"
+<span class="text-secondary-container">3. Tu código:</span> ejecuta la llamada real a la API del tiempo
+<span class="text-secondary-container">4. Tu código:</span> devuelve el resultado al modelo: "22°C, viento 12 km/h"
+<span class="text-inverse-primary">5. Modelo:</span> "Ahora mismo en Valencia hace 22°C con viento suave."</pre>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Fíjate en el detalle clave: el modelo nunca toca internet directamente. No tiene ni puede tener acceso a la red por su cuenta — todo pasa por tu código, en el paso 3. Eso es una ventaja de seguridad, no una limitación: tú decides exactamente qué puede consultar el modelo y qué no, revisando cada petición antes de ejecutarla si hace falta.
+        </p>
+</section>
+<section id="demo" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Pruébalo tú mismo, ahora mismo</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Esta caja hace de verdad los cuatro pasos de arriba, en vivo, con datos reales del servicio gratuito <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="https://open-meteo.com" target="_blank" rel="noopener">Open-Meteo</a> — sin clave, sin registro, sin coste. Escribe una ciudad y pulsa el botón: verás primero la "decisión" simulada del modelo, después la respuesta cruda de la API real, y por último cómo quedaría la respuesta ya redactada para un humano.
+        </p>
+<div class="bg-surface-container-high p-space-lg border border-outline-variant">
+<div class="flex flex-col sm:flex-row gap-space-sm mb-space-md">
+<input id="demo-city" type="text" placeholder="Escribe una ciudad, ej. Sevilla, Ciudad de México, Bogotá" class="flex-1 px-space-md py-space-sm border border-outline-variant bg-surface-container-lowest font-body-md text-body-md text-on-surface focus:outline-none focus:border-primary" />
+<button id="demo-btn" type="button" class="px-space-lg py-space-sm bg-primary text-on-primary font-label-md text-label-md uppercase tracking-wider hover:bg-primary-container transition-colors">Preguntar al agente</button>
+</div>
+<div id="demo-output" class="space-y-space-sm font-mono text-body-sm"></div>
+<p id="demo-hint" class="font-caption text-caption text-on-surface-variant mt-space-sm">Escribe cualquier ciudad del mundo y pulsa "Preguntar al agente". La llamada va directa desde tu navegador a la API pública de Open-Meteo, real, en este instante.</p>
+</div>
+<script>
+(function(){
+  var btn = document.getElementById('demo-btn');
+  var input = document.getElementById('demo-city');
+  var out = document.getElementById('demo-output');
+  var hint = document.getElementById('demo-hint');
+  var codes = {0:'cielo despejado',1:'mayormente despejado',2:'parcialmente nublado',3:'nublado',45:'niebla',51:'llovizna ligera',61:'lluvia ligera',63:'lluvia moderada',65:'lluvia fuerte',71:'nieve ligera',80:'chubascos',95:'tormenta'};
+  function line(label, text, color){
+    var d = document.createElement('div');
+    d.className = 'p-space-sm bg-surface-container-lowest border-l-2';
+    d.style.borderColor = color;
+    d.innerHTML = '<span class="text-caption font-caption uppercase tracking-wider" style="color:'+color+'">'+label+'</span><div class="text-on-surface mt-1">'+text+'</div>';
+    out.appendChild(d);
+  }
+  async function run(){
+    var city = input.value.trim();
+    if(!city){ hint.textContent = 'Escribe primero el nombre de una ciudad.'; return; }
+    out.innerHTML = '';
+    hint.textContent = 'Consultando...';
+    btn.disabled = true;
+    line('1. El modelo decide', 'usar_herramienta: obtener_tiempo(ciudad = "'+city+'")', '#9b4500');
+    try {
+      var geoRes = await fetch('https://geocoding-api.open-meteo.com/v1/search?name=' + encodeURIComponent(city) + '&count=1&language=es&format=json');
+      var geo = await geoRes.json();
+      if(!geo.results || !geo.results.length){
+        line('Error', 'No se ha encontrado esa ciudad. Prueba con otro nombre.', '#ba1a1a');
+        hint.textContent = 'Prueba con otra ciudad.';
+        btn.disabled = false;
+        return;
+      }
+      var place = geo.results[0];
+      var wRes = await fetch('https://api.open-meteo.com/v1/forecast?latitude='+place.latitude+'&longitude='+place.longitude+'&current=temperature_2m,wind_speed_10m,weather_code&timezone=auto');
+      var w = await wRes.json();
+      var desc = codes[w.current.weather_code] || 'condiciones variables';
+      line('2. Tu código ejecuta la API real', JSON.stringify({temperatura: w.current.temperature_2m+'°C', viento: w.current.wind_speed_10m+' km/h', condicion: desc, fuente: 'api.open-meteo.com'}, null, 2).replace(/\\n/g,'<br>'), '#072417');
+      line('3. Respuesta final del agente', 'Ahora mismo en '+place.name+' ('+ (place.country || '') +') hace '+w.current.temperature_2m+'°C, '+desc+', con viento de '+w.current.wind_speed_10m+' km/h.', '#072417');
+      hint.textContent = 'Dato real, obtenido en el instante en que has pulsado el botón — no está memorizado en ningún modelo.';
+    } catch(e){
+      line('Error', 'No se ha podido contactar con la API en este momento. Inténtalo de nuevo en unos segundos.', '#ba1a1a');
+      hint.textContent = 'Fallo de red temporal, no de tu código.';
+    }
+    btn.disabled = false;
+  }
+  btn.addEventListener('click', run);
+  input.addEventListener('keydown', function(e){ if(e.key === 'Enter') run(); });
+})();
+</script>
+</section>
+<section id="sec-3" class="space-y-space-md">
+<figure data-inline-photo class="space-y-space-xs my-space-xl"><img class="w-full border border-outline-variant" src="../img/guias/foto-agente-api-datos-reales.jpg" alt="Documentación oficial de Anthropic sobre el uso de herramientas (tool use) con Claude" width="1280" height="720" loading="lazy" decoding="async"/><figcaption class="font-caption text-caption text-on-surface-variant">Captura de pantalla: <a class="underline" href="https://docs.anthropic.com/en/docs/agents-and-tools/tool-use/overview" rel="nofollow noopener" target="_blank">docs.anthropic.com</a>.</figcaption></figure>
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">El código real que hace esto con Claude</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Lo que acabas de ver simula el proceso en JavaScript directamente en el navegador para que puedas probarlo sin instalar nada. En una aplicación real, el modelo de IA es quien decide si hace falta llamar a la herramienta, no una regla fija en el código. Así se ve con la API de Claude en Python:
+        </p>
+<div class="bg-[#0b0d12] text-surface p-space-md my-space-md overflow-x-auto">
+<pre class="font-mono text-body-sm leading-relaxed">import anthropic, requests
+
+client = anthropic.Anthropic()  # lee ANTHROPIC_API_KEY del entorno
+
+herramientas = [{
+    "name": "obtener_tiempo",
+    "description": "Da la temperatura y condición actual de una ciudad",
+    "input_schema": {
+        "type": "object",
+        "properties": {"ciudad": {"type": "string"}},
+        "required": ["ciudad"]
+    }
+}]
+
+def obtener_tiempo(ciudad):
+    geo = requests.get("https://geocoding-api.open-meteo.com/v1/search",
+                        params={"name": ciudad, "count": 1}).json()
+    lat, lon = geo["results"][0]["latitude"], geo["results"][0]["longitude"]
+    clima = requests.get("https://api.open-meteo.com/v1/forecast",
+                          params={"latitude": lat, "longitude": lon,
+                                  "current": "temperature_2m,weather_code"}).json()
+    return clima["current"]
+
+mensajes = [{"role": "user", "content": "¿Qué tiempo hace en Lima?"}]
+respuesta = client.messages.create(
+    model="claude-sonnet-5", max_tokens=1024,
+    tools=herramientas, messages=mensajes
+)
+
+if respuesta.stop_reason == "tool_use":
+    llamada = next(b for b in respuesta.content if b.type == "tool_use")
+    resultado = obtener_tiempo(llamada.input["ciudad"])
+
+    mensajes.append({"role": "assistant", "content": respuesta.content})
+    mensajes.append({"role": "user", "content": [{
+        "type": "tool_result",
+        "tool_use_id": llamada.id,
+        "content": str(resultado)
+    }]})
+
+    final = client.messages.create(
+        model="claude-sonnet-5", max_tokens=1024,
+        tools=herramientas, messages=mensajes
+    )
+    print(final.content[0].text)</pre>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Nota las dos llamadas al modelo: la primera para que decida si necesita la herramienta, la segunda para que redacte la respuesta ya con el dato real en la mano. Eso es exactamente lo que separaba las cajas "1" y "3" de la demo de arriba — aquí es el propio modelo, no una función de JavaScript escrita a mano, quien decide llamar a <code class="font-mono text-body-sm bg-surface-container-low px-1">obtener_tiempo</code>.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          El mismo patrón funciona con ChatGPT (el campo se llama <code class="font-mono text-body-sm bg-surface-container-low px-1">tools</code> también, con <code class="font-mono text-body-sm bg-surface-container-low px-1">function</code> anidado) y con Gemini (<code class="font-mono text-body-sm bg-surface-container-low px-1">function_declarations</code>). Cambia el nombre exacto de un par de campos en el JSON; la idea de fondo —describir la herramienta, dejar que decida, ejecutar tú, devolver el resultado— es idéntica en los tres.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Un detalle que sorprende la primera vez: el <code class="font-mono text-body-sm bg-surface-container-low px-1">input_schema</code> de la herramienta no es solo documentación decorativa para el modelo, es una restricción real. Si defines <code class="font-mono text-body-sm bg-surface-container-low px-1">ciudad</code> como <code class="font-mono text-body-sm bg-surface-container-low px-1">string</code> obligatorio, el modelo no puede llamar a la función sin ese dato — como mucho, si el usuario no lo mencionó, el modelo te pedirá que lo aclares antes de intentar la llamada. Cuanto más preciso sea ese esquema (tipos correctos, campos obligatorios bien marcados, una descripción que deje claro qué formato espera cada parámetro), menos errores de "argumento inválido" tendrás que manejar en tu propio código más adelante.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Antes de dar por buena cualquier herramienta nueva, merece la pena probarla con al menos tres tipos de entrada distintos: una consulta directa y bien formada ("el tiempo en Bogotá"), una ambigua (una ciudad que existe en varios países, como "Córdoba" o "Guadalajara") y una que debería fallar limpiamente (una ciudad inventada). Ver cómo se comporta el modelo en los tres casos —sobre todo el tercero— dice mucho más sobre si tu agente está listo para usuarios reales que verlo funcionar una sola vez con el ejemplo perfecto que escribiste tú mismo para probarlo.
+        </p>
+</section>
+<section id="sec-3b" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Más allá del tiempo: qué otras APIs puedes conectar</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          El clima es solo el ejemplo más fácil de probar sin fricción. El mismo patrón de código sirve para cualquier fuente de datos con una API HTTP normal — que hoy son literalmente miles, catalogadas en listas colaborativas como <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="https://github.com/public-apis/public-apis" target="_blank" rel="noopener">public-apis</a>, con casi 500.000 estrellas en GitHub y categorías que van desde finanzas y criptomonedas hasta datos abiertos de gobiernos, transporte público o noticias.
+        </p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<div class="flex items-center gap-space-xs mb-space-xs text-primary">
+<span class="material-symbols-outlined text-[20px]">currency_bitcoin</span>
+<span class="font-label-md text-label-md font-bold uppercase">Finanzas y criptomonedas</span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant leading-relaxed">Precios en vivo, tipos de cambio, capitalización de mercado. Casi siempre gratis con límites generosos.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<div class="flex items-center gap-space-xs mb-space-xs text-primary">
+<span class="material-symbols-outlined text-[20px]">account_balance</span>
+<span class="font-label-md text-label-md font-bold uppercase">Datos abiertos de gobiernos</span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant leading-relaxed">Estadísticas oficiales, presupuestos, indicadores públicos verificables, ideales para agentes de verificación de datos.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<div class="flex items-center gap-space-xs mb-space-xs text-primary">
+<span class="material-symbols-outlined text-[20px]">newspaper</span>
+<span class="font-label-md text-label-md font-bold uppercase">Noticias</span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant leading-relaxed">Titulares recientes por tema o palabra clave, útil para resúmenes que citan la fuente real en vez de memoria del modelo.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<div class="flex items-center gap-space-xs mb-space-xs text-primary">
+<span class="material-symbols-outlined text-[20px]">directions_bus</span>
+<span class="font-label-md text-label-md font-bold uppercase">Transporte y geolocalización</span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant leading-relaxed">Horarios reales, distancias, códigos postales — perfecto para agentes de atención al cliente logística.</p>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          El criterio para elegir una API con la que empezar no es "la más potente", sino la que resuelve un problema real que ya tienes. Si gestionas pedidos, empieza por una API de seguimiento de envíos; si sigues mercados, por una de precios; el patrón de código de la sección anterior es el mismo en todos los casos, solo cambia qué función ejecutas dentro de <code class="font-mono text-body-sm bg-surface-container-low px-1">obtener_tiempo</code>.
+        </p>
+</section>
+<section id="sec-4" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Errores y riesgos que no puedes ignorar</h2>
+<div class="space-y-space-sm">
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h3 class="font-headline-sm text-headline-sm text-primary mb-1">Guardar la clave de una API en el código del navegador</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">La demo de esta guía funciona en el navegador porque Open-Meteo no necesita clave. En cuanto una API sí la exige, esa llamada debe hacerse desde tu propio servidor, nunca desde JavaScript que corre en el navegador del visitante — cualquiera puede abrir las herramientas de desarrollador y leer una clave escrita ahí. Ampliamos esto en nuestra guía sobre <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="proteger-datos-ia.html">proteger tus datos al conectar la IA a tus herramientas</a>.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h3 class="font-headline-sm text-headline-sm text-primary mb-1">No manejar el caso de que la API falle</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Toda API externa puede estar caída, dar un límite de peticiones superado, o tardar más de lo esperado. Si tu código no captura ese error explícitamente, el fallo se propaga de forma confusa hasta el usuario final, o peor, el modelo recibe una respuesta vacía y decide "rellenar" el hueco por su cuenta.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h3 class="font-headline-sm text-headline-sm text-primary mb-1">Confiar ciegamente en el dato que devuelve la herramienta</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Conectar una API real reduce las alucinaciones del modelo, pero no las de la fuente: si la API en sí tiene un dato erróneo o desactualizado, el agente lo repetirá con la misma confianza. Para decisiones importantes, cruza el dato con una segunda fuente antes de actuar sobre él.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h3 class="font-headline-sm text-headline-sm text-primary mb-1">Darle al modelo una herramienta con permisos más amplios de los necesarios</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Si la tarea es solo consultar el tiempo, la herramienta debe poder solo eso — no un acceso genérico "ejecutar cualquier petición HTTP" que técnicamente también serviría. Cuanto más concreta y limitada sea cada herramienta, menos margen hay para que se use mal, por error del modelo o por una instrucción maliciosa oculta en un dato que procesa.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h3 class="font-headline-sm text-headline-sm text-primary mb-1">Tratar el resultado de la herramienta como si fuera una instrucción</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Si en el futuro conectas una herramienta que lee contenido de terceros (una página web, un correo, un documento subido por un usuario), ese contenido puede incluir texto que parezca una instrucción dirigida al modelo ("ignora lo anterior y haz X"). Un agente bien diseñado trata siempre el resultado de una herramienta como datos a evaluar, nunca como una orden a obedecer — es el mismo principio de fondo detrás de por qué esta guía trata cualquier dato externo con cautela, no solo el clima.</p>
+</div>
+</div>
+</section>
+<section id="sec-5" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">De aquí a un agente completo</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Una sola herramienta ya es útil, pero el patrón se acumula: un agente real normalmente tiene entre tres y diez herramientas disponibles a la vez (consultar el tiempo, buscar un pedido, leer un archivo, enviar un correo), y decide por sí mismo cuál o cuáles necesita para cada petición concreta, encadenando varias si hace falta. Es el mismo bucle que viste arriba, repetido tantas veces como el modelo lo pida, hasta que ya no necesita ninguna herramienta más y da la respuesta final.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Todo esto da por hecho que existe una API que te entrega el dato. Cuando no existe y el dato solo está dentro de una página web, el planteamiento cambia bastante — y con él las reglas legales y el coste en tokens: eso es <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="agente-extraer-datos-web.html">cómo montar un agente que extrae datos de páginas web</a>.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Cuando ese catálogo de herramientas crece, escribir y mantener cada definición a mano dentro de tu propio código deja de escalar bien — ahí es exactamente donde entra <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="mcp-explicado.html">MCP</a>, que empaqueta grupos de herramientas relacionadas en un "servidor" reutilizable entre proyectos distintos, en vez de redefinir <code class="font-mono text-body-sm bg-surface-container-low px-1">obtener_tiempo</code> desde cero cada vez que empiezas algo nuevo. Y si lo que quieres es que ese agente corra solo, en un horario, sin que tú lo dispares cada vez, ese es el terreno de <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="automatizar-n8n-ia.html">n8n</a>, que tiene un nodo de "AI Agent" con este mismo mecanismo de herramientas integrado visualmente.
+        </p>
+</section>
+</article>
+<aside class="lg:col-span-4 space-y-space-xl">
+<div class="bg-surface-container-lowest p-space-md border border-outline-variant text-center">
+<div class="w-16 h-16 mx-auto mb-space-sm flex items-center justify-center rounded-full border border-secondary text-secondary">
+<span class="material-symbols-outlined text-[32px]">cloud_sync</span>
+</div>
+<span class="font-kicker text-kicker uppercase tracking-widest text-primary block mb-space-xxs">FICHA TÉCNICA</span>
+<dl class="space-y-space-xs font-body-sm text-body-sm text-left pt-space-sm border-t border-outline-variant">
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">API de ejemplo:</dt><dd class="font-semibold text-primary">Open-Meteo (gratis)</dd></div>
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Clave necesaria:</dt><dd class="font-semibold text-primary">No</dd></div>
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Nivel técnico:</dt><dd class="font-semibold text-secondary">Intermedio</dd></div>
+</dl>
+</div>
+<div class="bg-surface-container-low p-space-lg sticky top-space-md">
+<div class="flex items-center gap-2 font-kicker text-kicker uppercase tracking-widest text-on-surface-variant mb-space-md">
+<span class="material-symbols-outlined text-[16px]">format_list_bulleted</span>
+ÍNDICE DE LA GUÍA
+</div>
+<nav class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant">
+<a class="block hover:text-primary transition-colors" href="#sec-1">Por qué un modelo no "lo sabe"</a>
+<a class="block hover:text-primary transition-colors" href="#sec-2">Cómo funciona el mecanismo</a>
+<a class="block hover:text-primary transition-colors" href="#demo">Pruébalo tú mismo</a>
+<a class="block hover:text-primary transition-colors" href="#sec-3">El código real con Claude</a>
+<a class="block hover:text-primary transition-colors" href="#sec-3b">Otras APIs que puedes usar</a>
+<a class="block hover:text-primary transition-colors" href="#sec-4">Errores y riesgos</a>
+<a class="block hover:text-primary transition-colors" href="#sec-5">De aquí a un agente completo</a>
+</nav>
+</div>
+
+</aside>
+</div>
+<section class="mb-space-2xl">
+<h2 class="font-headline-md text-headline-md text-primary mb-space-md">Preguntas frecuentes</h2>
+<div class="space-y-space-md">
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Por qué un chatbot normal no puede decirme el tiempo que hace ahora mismo?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Porque un modelo de lenguaje solo sabe lo que había en sus datos de entrenamiento hasta una fecha de corte, y el tiempo de ahora mismo no existía todavía cuando se entrenó. Sin acceso a una herramienta externa, lo único que puede hacer es inventar una respuesta plausible o decirte honestamente que no lo sabe.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Necesito una clave de API para hacer esto?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Para el ejemplo de esta guía (Open-Meteo), no: es una de las pocas APIs públicas serias que no exige registro ni clave para uso no comercial. Para conectar el modelo de IA sí necesitas una clave del proveedor (Anthropic, OpenAI o Google), pero eso es aparte de la API de datos en sí.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Esto es lo mismo que MCP?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Son primos cercanos. El "tool use" que ves en esta guía es el mecanismo básico: tú defines una función y se la ofreces al modelo en la misma llamada. MCP es una capa encima de ese mismo mecanismo que estandariza cómo se empaquetan y comparten esas herramientas entre aplicaciones distintas, para no tener que redefinir la misma función cada vez que cambias de proyecto.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Puedo usar esto mismo con ChatGPT o Gemini en vez de Claude?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Sí, el concepto es idéntico en los tres: defines un esquema de función con nombre, descripción y parámetros, el modelo decide cuándo llamarla y tú ejecutas el código real y le devuelves el resultado. Solo cambia el nombre exacto de los campos en el JSON de la petición, no la lógica de fondo.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Qué pasa si la API externa está caída cuando el agente la llama?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Tu código debe capturar ese error y devolvérselo al modelo como parte del resultado de la herramienta, en vez de dejar que el programa entero falle. Un buen agente maneja bien recibir "esta herramienta ha fallado" y puede decidir reintentarlo, probar otra vía o informarte del problema en vez de inventarse un dato para rellenar el hueco.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Cuánto cuesta ejecutar algo así en producción?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+La llamada a Open-Meteo es gratis. Lo que sí cuesta es la llamada al modelo de IA (normalmente dos llamadas por cada consulta: una para que decida usar la herramienta y otra para que redacte la respuesta final con el resultado), facturada por tokens según el proveedor que elijas. Para un volumen bajo o medio, el coste suele ser de céntimos al mes.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Puedo conectar una API que sí necesita clave, como una de noticias o criptomonedas?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Sí, el patrón de código es exactamente el mismo; la única diferencia es que dentro de tu función guardas la clave en una variable de entorno en tu propio servidor, nunca en el código que compartes ni en el navegador del usuario, y la añades a la petición HTTP hacia esa API en vez de hacia Open-Meteo.
+</div>
+</div>
+</div>
+</section>
+<div class="bg-surface-container-low p-space-lg mb-space-2xl flex flex-col sm:flex-row items-start sm:items-center gap-space-md shadow-sm">
+<div class="w-16 h-16 bg-primary text-on-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[32px]">shield_person</span>
+</div>
+<div class="space-y-1">
+<div class="font-headline-sm text-headline-sm text-primary">Redacción El Telar</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Open-Meteo no ha pagado por aparecer en esta guía. La elegimos porque es gratis, no exige clave y así puedes probarla tú mismo mientras lees.
+          </p>
+</div>
+</div>
+<section class="mt-space-4xl pt-space-xl border-t-2 border-primary space-y-space-lg">
+<h3 class="font-headline-md text-headline-md text-primary tracking-tight">Continúa explorando el archivo</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-col-gap"><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="bot-trading-ia.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-bot-trading-ia.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="bot-trading-ia.html">Cómo se construye un bot de trading con IA (sin ser programador)</a></h4></div></article><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="que-es-un-agente-ia.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-que-es-un-agente-ia.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="que-es-un-agente-ia.html">Qué es un agente de IA y en qué se diferencia de un chatbot</a></h4></div></article><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="ia-datos-abiertos-gobierno.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-ia-datos-abiertos-gobierno.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="ia-datos-abiertos-gobierno.html">IA y datos abiertos: un asistente que consulta fuentes oficiales</a></h4></div></article></div>
+</section>
+</div></main>
+<footer class="w-full bg-surface-container-low border-t border-outline-variant mt-space-4xl"><div class="max-w-site-max-width mx-auto px-space-md py-space-3xl"><div class="grid grid-cols-1 md:grid-cols-3 gap-col-gap"><div class="space-y-space-sm"><span class="font-headline-md text-headline-md text-primary">El Telar</span><p class="font-body-sm text-body-sm text-on-surface-variant">Publicación independiente de tecnología y automatización con agentes. Contenidos verificados en producción, sin patrocinios opacos ni promesas vacías.</p></div><div><h3 class="font-kicker text-kicker uppercase tracking-wider text-on-surface mb-space-md">SECCIONES</h3><ul class="space-y-space-xs font-body-sm text-body-sm"><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html#guias">Archivo de Guías</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../empieza-aqui.html">Guía para Principiantes</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../sobre-nosotros.html">Manifiesto Editorial</a></li><li class="pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html#despacho">Boletín Semanal</a></li></ul></div><div><h3 class="font-kicker text-kicker uppercase tracking-wider text-on-surface mb-space-md">CONTACTO &amp; PRENSA</h3><div class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant"><p class="font-semibold text-on-surface">contacto@eltelar.es</p><p>Síguenos: <a class="hover:text-primary underline" href="https://www.instagram.com/eltelar_es/" rel="me noopener" target="_blank">Instagram</a> · <a class="hover:text-primary underline" href="https://www.threads.com/@eltelar_es" rel="me noopener" target="_blank">Threads</a> · <a class="hover:text-primary underline" href="https://x.com/eltelar_es" rel="me noopener" target="_blank">X</a></p></div></div></div></div><div class="border-t border-outline-variant py-space-md bg-surface-container-lowest"><div class="max-w-site-max-width mx-auto px-space-md flex flex-col md:flex-row items-center justify-between gap-space-sm text-caption font-caption text-on-surface-variant"><div>© 2026 El Telar. Todos los derechos reservados. Independencia editorial garantizada.</div><div class="flex items-center gap-space-md"><a class="hover:text-on-surface transition-colors" href="../privacidad.html">Privacidad</a><a class="hover:text-on-surface transition-colors" href="../terminos.html">Términos</a><a class="hover:text-on-surface transition-colors" href="../sobre-nosotros.html">Sobre nosotros</a><a class="hover:text-on-surface transition-colors" href="../contacto.html">Contacto</a></div></div></div></footer><script defer src="../js/copy-guide.js"></script><script defer src="../js/guide-interactions.js"></script><script defer src="../js/reading-progress.js"></script><script defer src="../js/search.js?v=7"></script><script defer src="../js/entrance.js"></script><script defer src="../js/cookie-consent.js?v=4"></script></body></html>

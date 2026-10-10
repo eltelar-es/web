@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>El agente que vigila cripto y resume noticias | El Telar</title>
+<meta name="description" content="Cómo montar un agente que cruza precios de criptomonedas en vivo con noticias recientes y solo te avisa cuando importa. Con demo de precios en directo.">
+<link rel="canonical" href="https://eltelar.es/articulos/agente-cripto-noticias.html"><link rel="icon" type="image/svg+xml" href="../img/favicon.svg?v=4"><link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32.png?v=4"><link rel="apple-touch-icon" href="../img/apple-touch-icon.png?v=4"><meta name="theme-color" content="#072417"><link rel="manifest" href="../manifest.json"><link rel="alternate" type="application/rss+xml" title="El Telar" href="../feed.xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="El agente que vigila cripto y te resume las noticias | El Telar">
+<meta property="og:description" content="Cómo montar un agente que consulta precios de criptomonedas en vivo y noticias recientes, los cruza y te avisa solo cuando de verdad importa, con una demo de precios en directo.">
+<meta property="og:url" content="https://eltelar.es/articulos/agente-cripto-noticias.html">
+<meta property="og:site_name" content="El Telar">
+<meta property="og:locale" content="es_ES"><meta property="og:image" content="https://eltelar.es/img/og/guia-agente-cripto-noticias.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="El agente que vigila cripto y te resume las noticias | El Telar">
+<meta name="twitter:description" content="Cómo montar un agente que consulta precios de criptomonedas en vivo y noticias recientes, los cruza y te avisa solo cuando de verdad importa, con una demo de precios en directo."><meta name="twitter:image" content="https://eltelar.es/img/og/guia-agente-cripto-noticias.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "El agente que vigila cripto y te resume las noticias",
+  "description": "Cómo montar un agente que consulta precios de criptomonedas en vivo y noticias recientes, los cruza y te avisa solo cuando de verdad importa, con una demo de precios en directo.",
+  "image": "https://eltelar.es/img/og-image.jpg",
+  "author": { "@type": "Organization", "name": "El Telar", "url": "https://eltelar.es/sobre-nosotros.html" },
+  "publisher": { "@type": "Organization", "name": "El Telar" },
+  "datePublished": "2026-09-07",
+  "dateModified": "2026-09-07",
+  "mainEntityOfPage": "https://eltelar.es/articulos/agente-cripto-noticias.html",
+  "inLanguage": "es"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Este agente me dice si debo comprar o vender?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No, y desconfía de cualquier herramienta que lo prometa. Este agente resume información pública (precio, variación, noticias recientes) para que decidas tú con más contexto, no sustituye criterio financiero ni es una recomendación de inversión."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿CoinGecko es de fiar para datos de precios en producción?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Es una de las fuentes agregadas más usadas del sector, con una capa gratuita sin clave para consultas básicas. Para volumen alto o para un producto comercial serio conviene revisar su plan de pago con garantías de disponibilidad, pero para aprender o para un uso personal la capa gratuita es más que suficiente."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Por qué combinar precio y noticias en vez de solo mostrar el precio?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Un número aislado no explica nada por sí mismo: una caída del 8% significa algo muy distinto si coincide con una noticia regulatoria relevante que si es ruido normal del mercado. Cruzar ambas fuentes es lo que convierte un dato en información útil para decidir si merece la pena prestarle atención."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo montar esto sin saber programar, solo con n8n?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí, todo el flujo de esta guía se puede construir con nodos HTTP Request y un nodo de IA dentro de n8n, sin escribir código Python. El patrón de decisión (consultar, comparar contra un umbral, avisar solo si se supera) se configura visualmente con un nodo condicional en vez de un `if` en un script."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cada cuánto debería consultar los precios este agente?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Depende del uso: para una alerta personal, cada 15-30 minutos es más que suficiente y evita gastar cuota de API sin necesidad. Consultar cada pocos segundos solo tiene sentido para trading automatizado de alta frecuencia, un terreno con riesgos y exigencias regulatorias muy distintos a los de esta guía."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://eltelar.es/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Guías",
+      "item": "https://eltelar.es/index.html#guias"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "El agente que vigila cripto y te resume las noticias",
+      "item": "https://eltelar.es/articulos/agente-cripto-noticias.html"
+    }
+  ]
+}
+</script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet"/></noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet"/></noscript>
+<style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><link rel="stylesheet" href="../css/tailwind.css"><link rel="stylesheet" href="../css/entrance.css?v=2"><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}(function(){var c=null;try{c=localStorage.getItem('eltelar-cookie-consent')}catch(e){}var g=c==='accepted'?'granted':'denied';gtag('consent','default',{ad_storage:g,ad_user_data:g,ad_personalization:g,analytics_storage:g,wait_for_update:500});window.adsbygoogle=window.adsbygoogle||[];if(g!=='granted'){window.adsbygoogle.requestNonPersonalizedAds=1;}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-4DPTKEG79N"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4DPTKEG79N');</script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8239907995939753" crossorigin="anonymous"></script></head><body class="bg-background font-body-md text-on-surface antialiased">
+<header class="w-full bg-surface-container-lowest border-b border-outline-variant"><div class="border-b border-outline-variant py-space-xxs px-space-md hidden md:block"><div class="max-w-site-max-width mx-auto flex items-center justify-between font-kicker text-kicker text-on-surface-variant uppercase tracking-wider"><span>EDICIÓN DIGITAL // ACTUALIZADO 2026 // EL TELAR &amp; AGENTES</span><span>MADRID · REMOTO</span><span>SIN HUMO · 100% PRODUCCIÓN</span></div></div><div class="max-w-site-max-width mx-auto px-space-md py-space-md sm:py-space-xl text-center"><p class="hidden sm:block font-kicker text-kicker uppercase tracking-widest text-on-surface-variant mb-space-xs">Publicación Independiente de Tecnología &amp; Agentes</p><a class="inline-block" href="../index.html"><div class="font-display text-display max-sm:text-[40px] max-sm:leading-none text-primary tracking-tight">El Telar</div></a><p class="hidden sm:block font-caption text-caption uppercase tracking-widest text-on-surface-variant mt-space-xs">EL BOLETÍN Y ARCHIVO PRÁCTICO DE INTELIGENCIA ARTIFICIAL Y AGENTES AUTÓNOMOS</p></div><div class="border-t border-b border-outline-variant"><div class="max-w-site-max-width mx-auto px-space-md flex items-center justify-between gap-space-sm h-14"><nav class="flex items-center gap-space-md sm:gap-space-lg h-full min-w-0 overflow-x-auto [scrollbar-width:none] whitespace-nowrap"><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../index.html#guias">GUÍAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../empieza-aqui.html">EMPIEZA AQUÍ</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../sobre-nosotros.html">SOBRE NOSOTROS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../noticias/index.html">NOTICIAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../herramientas/index.html">HERRAMIENTAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../prompts/index.html">PROMPTS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../contacto.html">CONTACTO</a></nav><div class="flex items-center gap-space-md"><button id="search-trigger" type="button" aria-label="Buscar en las guías" class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[20px]">search</span></button><a class="hidden sm:inline-block bg-primary-container text-surface px-space-md py-space-xs font-label-md text-label-md uppercase tracking-wider hover:bg-primary transition-colors" href="../index.html#despacho">SUSCRÍBETE GRATIS</a></div></div></div><div class="hidden md:block bg-surface-container-low border-b border-outline-variant py-space-xs px-space-md"><div class="max-w-site-max-width mx-auto text-center"><p class="font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">47 GUÍAS COMPLETAS EN EXPANSIÓN · ACTUALIZADO A MODELOS 2026 · PROBADO EN TERMINAL Y FLUJOS REALES · CERO HUMO NI TEORÍA VACÍA</p></div></div></header>
+<main class="w-full max-w-site-max-width mx-auto px-space-md py-space-xl"><div class="flex flex-col w-full">
+<nav class="w-full mb-space-lg">
+<ol class="flex flex-wrap items-center gap-space-xs font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">
+<li><a class="hover:text-primary transition-colors" href="../index.html">Inicio</a></li>
+<li class="text-on-surface-variant">/</li>
+<li><a class="hover:text-primary transition-colors" href="../index.html#guias">Guías</a></li>
+<li class="text-on-surface-variant">/</li>
+<li class="text-primary font-bold">Agente de cripto y noticias</li>
+</ol>
+</nav>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-col-gap">
+<article class="lg:col-span-8 flex flex-col space-y-space-xl">
+<figure data-hero class="space-y-space-xs"><img class="w-full border border-outline-variant" src="../img/guias/hero-agente-cripto-noticias.jpg" alt="Portada de CoinGecko con los precios de las criptomonedas en directo" width="1280" height="720" fetchpriority="high" decoding="async"/><figcaption class="font-caption text-caption text-on-surface-variant">Captura de pantalla: <a class="underline" href="https://www.coingecko.com/es" rel="nofollow noopener" target="_blank">coingecko.com/es</a>.</figcaption></figure>
+<header class="space-y-space-md border-b border-outline-variant pb-space-xl">
+<span class="bg-surface-container-high text-secondary border border-outline-variant px-space-xs py-space-xxs font-kicker text-kicker uppercase tracking-widest inline-block">TUTORIAL // AUTOMATIZACIÓN</span>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight leading-tight">El agente que vigila cripto y te resume las noticias</h1>
+<p class="font-lead-paragraph text-lead-paragraph text-on-surface-variant leading-relaxed">Un precio suelto no dice nada. Esta guía monta un agente que cruza el precio en vivo de una criptomoneda con las noticias recientes que podrían explicarlo, y solo te avisa cuando ambas cosas coinciden en algo relevante.</p>
+<div class="pt-space-sm border-t border-outline-variant flex flex-wrap items-center justify-between gap-space-sm font-label-md text-label-md text-on-surface-variant">
+<span class="font-semibold text-on-surface">Por la Redacción de El Telar</span>
+<button class="inline-flex items-center gap-1 mt-2 px-3 py-1.5 bg-surface-container text-primary font-label-md text-[12px] font-semibold uppercase tracking-wider hover:bg-surface-container-high transition-colors" id="copy-guide-btn" type="button"><span class="material-symbols-outlined text-[16px]">content_copy</span> Copiar guía para tu IA</button><span class="inline-flex items-center gap-1 ml-1"><button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" id="save-guide-btn" title="Guardar guía" type="button"><span class="material-symbols-outlined text-[16px]">bookmark_border</span></button><button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" id="copy-link-btn" title="Copiar enlace permanente" type="button"><span class="material-symbols-outlined text-[16px]">share</span></button></span>
+<span class="flex items-center gap-1 text-caption font-caption">
+<span class="material-symbols-outlined text-[15px] text-on-surface-variant">schedule</span>
+              12 min de lectura
+            </span>
+</div>
+</header>
+<div class="bg-surface-container-high p-space-md border-l-4 border-secondary">
+<p class="font-body-sm text-body-sm text-on-surface-variant"><strong class="text-primary">Aviso importante:</strong> esta guía es un tutorial técnico de automatización, no asesoramiento financiero. Nada de lo que sigue es una recomendación de inversión, y el mercado de criptomonedas es de alta volatilidad y riesgo. El objetivo es aprender a construir agentes que cruzan fuentes de datos, usando cripto como ejemplo por lo fácil que es acceder a sus datos en vivo.</p>
+</div>
+<section class="prose max-w-editorial-max-width space-y-space-md">
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed">
+<span class="float-left text-primary font-display text-[68px] leading-[0.8] pr-3 pt-1 font-normal select-none">R</span>evisar el precio de una criptomoneda cada pocos minutos, todo el día, es agotador y en la práctica imposible de mantener. Un agente puede hacer esa vigilancia por ti — pero un agente que solo mira el precio y te avisa de cada movimiento pequeño es tan inútil como no tener ninguno: generaría tantas alertas que dejarías de leerlas en la primera semana.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          El diseño que de verdad funciona combina dos fuentes: el precio en vivo (con su variación en 24 horas) y las noticias recientes sobre ese activo. Solo cuando ambas coinciden —una variación de precio inusual junto con una noticia relevante que podría explicarla— el agente genera una alerta con las dos piezas de contexto juntas, en vez de un número aislado sin explicación.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Esta guía usa Bitcoin y Ethereum en los ejemplos porque son los activos con más liquidez y con las APIs de datos más maduras y fiables del sector, no porque sean necesariamente los más interesantes de vigilar. El mismo patrón de código funciona igual de bien con cualquier otro activo que CoinGecko cubra —y cubre varios miles—, cambiando únicamente el identificador de la moneda en la petición.
+        </p>
+</section>
+<section id="demo" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Precios en vivo, ahora mismo</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Esta caja consulta en directo la API gratuita de <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="https://www.coingecko.com" target="_blank" rel="noopener">CoinGecko</a>, sin clave. Pulsa para ver el precio real de este instante.
+        </p>
+<div class="bg-surface-container-high p-space-lg border border-outline-variant">
+<button id="crypto-btn" type="button" class="px-space-lg py-space-sm bg-primary text-on-primary font-label-md text-label-md uppercase tracking-wider hover:bg-primary-container transition-colors mb-space-md">Actualizar precios</button>
+<div id="crypto-output" class="grid grid-cols-1 sm:grid-cols-2 gap-space-sm"></div>
+<p id="crypto-hint" class="font-caption text-caption text-on-surface-variant mt-space-sm">Pulsa el botón para consultar api.coingecko.com en directo.</p>
+</div>
+<script>
+(function(){
+  var btn = document.getElementById('crypto-btn');
+  var out = document.getElementById('crypto-output');
+  var hint = document.getElementById('crypto-hint');
+  var coins = {bitcoin: 'Bitcoin (BTC)', ethereum: 'Ethereum (ETH)'};
+  async function run(){
+    out.innerHTML = '';
+    hint.textContent = 'Consultando api.coingecko.com...';
+    btn.disabled = true;
+    try {
+      var res = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd,eur&include_24hr_change=true');
+      var data = await res.json();
+      Object.keys(coins).forEach(function(id){
+        var d = data[id];
+        var change = d.usd_24h_change;
+        var color = change >= 0 ? '#072417' : '#ba1a1a';
+        var arrow = change >= 0 ? '▲' : '▼';
+        var div = document.createElement('div');
+        div.className = 'p-space-md bg-surface-container-lowest border-l-2';
+        div.style.borderColor = color;
+        div.innerHTML = '<div class="font-label-md text-label-md font-bold text-primary">'+coins[id]+'</div>'+
+          '<div class="font-mono text-body-lg text-on-surface mt-1">$'+d.usd.toLocaleString('es-ES',{maximumFractionDigits:0})+'</div>'+
+          '<div class="font-mono text-body-sm mt-1" style="color:'+color+'">'+arrow+' '+change.toFixed(2)+'% (24h)</div>';
+        out.appendChild(div);
+      });
+      hint.textContent = 'Datos reales obtenidos en este instante desde CoinGecko. No es asesoramiento financiero.';
+    } catch(e){
+      out.innerHTML = '<div class="p-space-sm bg-surface-container-lowest border-l-2" style="border-color:#ba1a1a">No se ha podido contactar con la API en este momento.</div>';
+      hint.textContent = 'Fallo de red temporal.';
+    }
+    btn.disabled = false;
+  }
+  btn.addEventListener('click', run);
+  run();
+})();
+</script>
+</section>
+<figure class="my-space-lg">
+<img class="w-full border border-outline-variant" src="../img/guias/coingecko-precios.jpg" alt="Página de CoinGecko mostrando precios de criptomonedas en tiempo real, capitalización de mercado global y monedas en tendencia." loading="lazy" width="1280" height="800"/>
+<figcaption class="font-caption text-caption text-on-surface-variant mt-space-xs"><a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="https://www.coingecko.com" target="_blank" rel="noopener">CoinGecko</a>: la fuente de precios en vivo que consulta el agente de esta guía.</figcaption>
+</figure>
+<section id="sec-1" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">El diseño: dos fuentes, una sola alerta con sentido</h2>
+<div class="bg-[#0b0d12] text-surface p-space-md my-space-md overflow-x-auto">
+<pre class="font-mono text-body-sm leading-relaxed"><span class="text-inverse-primary">Cada 30 min:</span> consultar precio y variación 24h en CoinGecko
+      ↓
+<span class="text-secondary-container">¿Variación &gt; umbral definido (ej. ±5%)?</span>
+      ↓ Sí                                    ↓ No
+consultar noticias recientes             no hacer nada, esperar al siguiente ciclo
+      ↓
+IA redacta una alerta con precio + variación + resumen de noticias
+      ↓
+enviar a Telegram / correo / Slack</pre>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          El umbral (±5% en el ejemplo) es la pieza que separa un agente útil de uno molesto. Fijarlo demasiado bajo genera alertas constantes por movimientos normales del mercado; fijarlo demasiado alto hace que te enteres tarde de algo relevante. El número correcto depende de la volatilidad histórica del activo concreto que vigiles — conviene revisar unas semanas de datos pasados antes de fijar un umbral definitivo, en vez de adivinarlo a ojo.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Un ejemplo concreto de por qué esto importa: Bitcoin puede moverse con normalidad entre un 2% y un 4% en un día cualquiera, sin que eso signifique nada en particular. Un umbral del 3% en ese activo generaría alertas casi a diario, la mayoría sin ninguna noticia real detrás — exactamente el ruido que este diseño intenta evitar. Un umbral del 6-8%, en cambio, filtra el ruido normal y solo dispara la alerta en movimientos que de verdad se salen de lo habitual para ese activo concreto. Cada criptomoneda tiene su propio rango de volatilidad "normal", así que el mismo umbral no sirve igual de bien para todas.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Antes de dejar el agente corriendo sin supervisión, es buena práctica probarlo primero en modo "solo registro": que anote cada vez que se dispararía la alerta sin enviarla de verdad, durante una o dos semanas. Revisar ese registro te dice si el umbral elegido genera un volumen de alertas razonable (unas pocas a la semana, no varias al día) antes de confiar en que el agente te avise solo de lo que de verdad importa.
+        </p>
+</section>
+<section id="sec-1b" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Un caso real: de mirar el móvil cada hora a una alerta con sentido</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Antes de automatizar nada, es habitual caer en el hábito de abrir la aplicación del exchange varias veces al día "por si acaso", sin ningún criterio objetivo detrás de cuándo mirar — puro reflejo ansioso, no una decisión informada. Ese patrón no solo consume tiempo y atención de forma difusa a lo largo del día, sino que expone a reaccionar de forma impulsiva ante cualquier movimiento, grande o pequeño, simplemente por haberlo visto en el peor momento.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          El cambio real que trae este agente no es "ahorrar tiempo" en abstracto, es sustituir esa revisión constante y sin criterio por un puñado de alertas a la semana, cada una con contexto real detrás (precio, variación, noticia relacionada si existe). La diferencia psicológica es notable: se pasa de vigilar de forma pasiva y ansiosa a recibir información solo cuando de verdad hay algo que merece diez segundos de atención, y el resto del tiempo el móvil se queda callado.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Merece la pena remarcar otra vez la diferencia con un bot de trading automatizado, cubierto en nuestra guía sobre <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="bot-trading-ia.html">cómo se construye un bot de trading con IA</a>: aquel ejecuta operaciones reales de compra y venta por sí solo, con dinero real en juego y una capa de riesgo y regulación mucho mayor. El agente de esta guía no toca tu dinero en ningún momento — solo lee información pública y te la resume. Esa diferencia no es un matiz menor: es la que determina si estás construyendo una herramienta de información personal o un sistema financiero con obligaciones regulatorias que varían según el país donde operes.
+        </p>
+</section>
+<section id="sec-2" class="space-y-space-md">
+<figure data-inline-photo class="space-y-space-xs my-space-xl"><img class="w-full border border-outline-variant" src="../img/guias/foto-agente-cripto-noticias.jpg" alt="Página de la integración de CoinGecko en n8n" width="1280" height="720" loading="lazy" decoding="async"/><figcaption class="font-caption text-caption text-on-surface-variant">Captura de pantalla: <a class="underline" href="https://n8n.io/integrations/coingecko/" rel="nofollow noopener" target="_blank">n8n.io/integrations/coingecko</a>.</figcaption></figure>
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Montado con n8n, sin escribir código</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Siguiendo el patrón de nuestra guía de <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="automatizar-n8n-ia.html">n8n y IA</a>, este flujo completo se monta con cuatro nodos visuales: un disparador programado (cada 30 minutos), un nodo HTTP Request apuntando a la API de CoinGecko, un nodo condicional (IF) que compara la variación contra tu umbral, y —solo si se cumple la condición— un nodo HTTP Request adicional a una API de noticias seguido de un nodo de IA que redacta la alerta final combinando ambas respuestas.
+        </p>
+<div class="bg-surface-container-lowest p-space-md">
+<h3 class="font-label-md text-label-md text-primary font-bold uppercase tracking-wider mb-space-xs">Por qué n8n encaja mejor aquí que un agente de chat:</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Este flujo debe ejecutarse solo, cada 30 minutos, sin que nadie lo dispare — exactamente el caso donde n8n gana a pedírselo a un chatbot cada vez, como explicamos en la comparativa de esa misma guía.</p>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          El nodo de IA dentro de n8n recibe ambos resultados (el JSON del precio y el JSON de noticias) como variables del flujo, y tu instrucción es tan simple como: "Redacta una alerta breve en español explicando la variación de precio de {{criptomoneda}} usando estas noticias recientes como posible contexto: {{noticias}}. Si ninguna noticia parece relacionada, dilo explícitamente en vez de forzar una conexión." Esa última frase importa tanto como el resto: evita que el modelo invente una causa solo porque tú le pediste una explicación.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Montado paso a paso, el flujo completo en n8n queda así: primero el nodo "Schedule Trigger" configurado a cada 30 minutos; después un nodo "HTTP Request" con la URL de CoinGecko y los parámetros de la moneda que quieras vigilar; a continuación un nodo "IF" que compara el campo <code class="font-mono text-body-sm bg-surface-container-low px-1">usd_24h_change</code> de la respuesta contra tu umbral en valor absoluto; en la rama "verdadero" de ese IF, un segundo "HTTP Request" hacia tu API de noticias elegida; y por último el nodo de IA que redacta el mensaje, conectado a un nodo final de Telegram, Slack o correo para el envío. Seis nodos en total, ninguno de ellos con una sola línea de código.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          La ventaja de construirlo así, frente al script de Python de la siguiente sección, es que cambiar el umbral, la moneda vigilada o el canal de aviso es editar un campo en un nodo visual, sin tocar código ni redesplegar nada — justo el tipo de ajuste que conviene poder hacer sin fricción cuando todavía estás calibrando qué umbral funciona bien para ti.
+        </p>
+</section>
+<section id="sec-3" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">La misma lógica en código, si lo prefieres</h2>
+<div class="bg-[#0b0d12] text-surface p-space-md my-space-md overflow-x-auto">
+<pre class="font-mono text-body-sm leading-relaxed">import requests
+
+UMBRAL = 5.0  # porcentaje
+
+def revisar_cripto(moneda="bitcoin"):
+    precio = requests.get(
+        "https://api.coingecko.com/api/v3/simple/price",
+        params={"ids": moneda, "vs_currencies": "usd", "include_24hr_change": "true"}
+    ).json()[moneda]
+
+    if abs(precio["usd_24h_change"]) < UMBRAL:
+        return None  # movimiento normal, no hace falta alertar
+
+    noticias = requests.get(
+        "https://hn.algolia.com/api/v1/search",
+        params={"query": moneda, "tags": "story", "hitsPerPage": 3}
+    ).json()["hits"]
+
+    return {"precio": precio, "noticias": [n["title"] for n in noticias]}</pre>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Este ejemplo usa la API de búsqueda de Hacker News (gratuita, sin clave) como fuente de noticias por simplicidad; en un caso real probablemente preferirías una API de noticias generalista como la mencionada en nuestra guía de <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="apis-gratuitas-agentes-ia.html">APIs gratuitas para agentes</a>, que cubre medios más amplios que solo tecnología. El resultado de esta función es exactamente el input que le pasarías al modelo de IA para redactar la alerta final, sea en un script Python o dentro de un nodo de n8n.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Para que este script corra solo, sin que tengas que ejecutarlo a mano cada vez, necesitas programarlo con una tarea periódica del propio sistema operativo (<code class="font-mono text-body-sm bg-surface-container-low px-1">cron</code> en Mac o Linux, el Programador de tareas en Windows) o desplegarlo en un servidor con su propio planificador. Es exactamente el mismo problema que resuelve n8n de forma más visual con su nodo "Schedule Trigger" — la diferencia entre las dos vías no es de capacidad, sino de cuánta infraestructura estás dispuesto a mantener tú mismo a cambio de más control sobre el código.
+        </p>
+</section>
+<section id="sec-4" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Riesgos que no puedes ignorar en este caso concreto</h2>
+<div class="space-y-space-sm">
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h3 class="font-headline-sm text-headline-sm text-primary mb-1">Olvidar los límites de peticiones al vigilar varios activos a la vez</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">La capa gratuita de CoinGecko tiene un límite de peticiones por minuto. Si el agente vigila muchas criptomonedas distintas en el mismo ciclo, conviene agrupar la consulta en una sola llamada con varios identificadores (como en el ejemplo de la demo de esta guía) en vez de una petición separada por cada activo, que agota la cuota mucho antes.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h3 class="font-headline-sm text-headline-sm text-primary mb-1">Confundir un resumen con un consejo de inversión</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">El agente describe lo que pasó, no predice lo que pasará ni recomienda ninguna acción. Diseña el prompt del modelo para que nunca sugiera "comprar" o "vender", solo para que describa el hecho y el posible contexto.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h3 class="font-headline-sm text-headline-sm text-primary mb-1">Que el modelo invente una relación causal falsa</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Si ninguna noticia real explica el movimiento de precio, un modelo mal instruido puede forzar una conexión con la noticia menos mala de las que encontró. La instrucción explícita de "di que no hay relación clara si no la hay" reduce mucho este riesgo, pero conviene revisar alertas reales de vez en cuando para confirmarlo.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h3 class="font-headline-sm text-headline-sm text-primary mb-1">Depender de una sola fuente de noticias sesgada o incompleta</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Ninguna fuente única cubre todo el panorama informativo. Un agente que solo mira una fuente de noticias puede perderse la noticia relevante que sí explica el movimiento, simplemente porque no la publicó ese medio concreto.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h3 class="font-headline-sm text-headline-sm text-primary mb-1">No distinguir entre variación real y un error puntual de la API</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Una API puede devolver un dato anómalo por un fallo temporal propio, no porque el mercado se haya movido de verdad. Antes de disparar una alerta basada en una única lectura, es más robusto confirmar el movimiento con una segunda consulta pasados unos segundos, para descartar que sea un error transitorio de la fuente.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h3 class="font-headline-sm text-headline-sm text-primary mb-1">Enviar la alerta por un canal que nadie revisa</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">De poco sirve un agente perfectamente calibrado si la alerta llega a un correo que revisas una vez a la semana. Elige el canal (Telegram, una notificación push, Slack) según con qué frecuencia realmente lo consultas, no según cuál sea más fácil de configurar técnicamente.</p>
+</div>
+</div>
+</section>
+</article>
+<aside class="lg:col-span-4 space-y-space-xl">
+<div class="bg-surface-container-lowest p-space-md border border-outline-variant text-center">
+<div class="w-16 h-16 mx-auto mb-space-sm flex items-center justify-center rounded-full border border-secondary text-secondary">
+<span class="material-symbols-outlined text-[32px]">currency_bitcoin</span>
+</div>
+<span class="font-kicker text-kicker uppercase tracking-widest text-primary block mb-space-xxs">FICHA TÉCNICA</span>
+<dl class="space-y-space-xs font-body-sm text-body-sm text-left pt-space-sm border-t border-outline-variant">
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">API de precios:</dt><dd class="font-semibold text-primary">CoinGecko (gratis)</dd></div>
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Clave necesaria:</dt><dd class="font-semibold text-primary">No</dd></div>
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Nivel técnico:</dt><dd class="font-semibold text-secondary">Principiante / Intermedio</dd></div>
+</dl>
+</div>
+<div class="bg-surface-container-low p-space-lg sticky top-space-md">
+<div class="flex items-center gap-2 font-kicker text-kicker uppercase tracking-widest text-on-surface-variant mb-space-md">
+<span class="material-symbols-outlined text-[16px]">format_list_bulleted</span>
+ÍNDICE DE LA GUÍA
+</div>
+<nav class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant">
+<a class="block hover:text-primary transition-colors" href="#demo">Precios en vivo</a>
+<a class="block hover:text-primary transition-colors" href="#sec-1">El diseño de la alerta</a>
+<a class="block hover:text-primary transition-colors" href="#sec-1b">Caso real</a>
+<a class="block hover:text-primary transition-colors" href="#sec-2">Montado con n8n</a>
+<a class="block hover:text-primary transition-colors" href="#sec-3">La lógica en código</a>
+<a class="block hover:text-primary transition-colors" href="#sec-4">Riesgos a evitar</a>
+</nav>
+</div>
+
+</aside>
+</div>
+<section class="mb-space-2xl">
+<h2 class="font-headline-md text-headline-md text-primary mb-space-md">Preguntas frecuentes</h2>
+<div class="space-y-space-md">
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Este agente me dice si debo comprar o vender?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+No, y desconfía de cualquier herramienta que lo prometa. Este agente resume información pública (precio, variación, noticias recientes) para que decidas tú con más contexto, no sustituye criterio financiero ni es una recomendación de inversión.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿CoinGecko es de fiar para datos de precios en producción?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Es una de las fuentes agregadas más usadas del sector, con una capa gratuita sin clave para consultas básicas. Para volumen alto o para un producto comercial serio conviene revisar su plan de pago con garantías de disponibilidad, pero para aprender o para un uso personal la capa gratuita es más que suficiente.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Por qué combinar precio y noticias en vez de solo mostrar el precio?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Un número aislado no explica nada por sí mismo: una caída del 8% significa algo muy distinto si coincide con una noticia regulatoria relevante que si es ruido normal del mercado. Cruzar ambas fuentes es lo que convierte un dato en información útil para decidir si merece la pena prestarle atención.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Puedo montar esto sin saber programar, solo con n8n?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Sí, todo el flujo de esta guía se puede construir con nodos HTTP Request y un nodo de IA dentro de n8n, sin escribir código Python. El patrón de decisión (consultar, comparar contra un umbral, avisar solo si se supera) se configura visualmente con un nodo condicional en vez de un `if` en un script.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Cada cuánto debería consultar los precios este agente?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Depende del uso: para una alerta personal, cada 15-30 minutos es más que suficiente y evita gastar cuota de API sin necesidad. Consultar cada pocos segundos solo tiene sentido para trading automatizado de alta frecuencia, un terreno con riesgos y exigencias regulatorias muy distintos a los de esta guía.
+</div>
+</div>
+</div>
+</section>
+<div class="bg-surface-container-low p-space-lg mb-space-2xl flex flex-col sm:flex-row items-start sm:items-center gap-space-md shadow-sm">
+<div class="w-16 h-16 bg-primary text-on-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[32px]">shield_person</span>
+</div>
+<div class="space-y-1">
+<div class="font-headline-sm text-headline-sm text-primary">Redacción El Telar</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            No aceptamos patrocinios de exchanges ni de proyectos cripto. Esta guía es un ejercicio de automatización, no una recomendación de inversión.
+          </p>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-space-2xl">
+          El mismo esqueleto —consultar una métrica en vivo, compararla contra un umbral que tú defines, cruzarla con una segunda fuente antes de decidir que merece atención— sirve para vigilar cualquier otra cosa que cambie con el tiempo: el precio de un producto de la competencia, la disponibilidad de una entrada agotada, o el estado de un servicio que dependes. Cripto es solo el ejemplo con las APIs más fáciles de conseguir gratis para practicarlo hoy mismo.
+        </p>
+<section class="mt-space-4xl pt-space-xl border-t-2 border-primary space-y-space-lg">
+<h3 class="font-headline-md text-headline-md text-primary tracking-tight">Continúa explorando el archivo</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-col-gap"><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="automatizar-n8n-ia.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-automatizar-n8n-ia.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="automatizar-n8n-ia.html">n8n y IA: automatización visual sin código paso a paso</a></h4></div></article><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="bot-trading-ia.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-bot-trading-ia.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="bot-trading-ia.html">Cómo se construye un bot de trading con IA (sin ser programador)</a></h4></div></article><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="apis-gratuitas-agentes-ia.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-apis-gratuitas-agentes-ia.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="apis-gratuitas-agentes-ia.html">APIs gratuitas para darle superpoderes a tu agente de IA</a></h4></div></article></div>
+</section>
+</div></main>
+<footer class="w-full bg-surface-container-low border-t border-outline-variant mt-space-4xl"><div class="max-w-site-max-width mx-auto px-space-md py-space-3xl"><div class="grid grid-cols-1 md:grid-cols-3 gap-col-gap"><div class="space-y-space-sm"><span class="font-headline-md text-headline-md text-primary">El Telar</span><p class="font-body-sm text-body-sm text-on-surface-variant">Publicación independiente de tecnología y automatización con agentes. Contenidos verificados en producción, sin patrocinios opacos ni promesas vacías.</p></div><div><h3 class="font-kicker text-kicker uppercase tracking-wider text-on-surface mb-space-md">SECCIONES</h3><ul class="space-y-space-xs font-body-sm text-body-sm"><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html#guias">Archivo de Guías</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../empieza-aqui.html">Guía para Principiantes</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../sobre-nosotros.html">Manifiesto Editorial</a></li><li class="pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html#despacho">Boletín Semanal</a></li></ul></div><div><h3 class="font-kicker text-kicker uppercase tracking-wider text-on-surface mb-space-md">CONTACTO &amp; PRENSA</h3><div class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant"><p class="font-semibold text-on-surface">contacto@eltelar.es</p><p>Síguenos: <a class="hover:text-primary underline" href="https://www.instagram.com/eltelar_es/" rel="me noopener" target="_blank">Instagram</a> · <a class="hover:text-primary underline" href="https://www.threads.com/@eltelar_es" rel="me noopener" target="_blank">Threads</a> · <a class="hover:text-primary underline" href="https://x.com/eltelar_es" rel="me noopener" target="_blank">X</a></p></div></div></div></div><div class="border-t border-outline-variant py-space-md bg-surface-container-lowest"><div class="max-w-site-max-width mx-auto px-space-md flex flex-col md:flex-row items-center justify-between gap-space-sm text-caption font-caption text-on-surface-variant"><div>© 2026 El Telar. Todos los derechos reservados. Independencia editorial garantizada.</div><div class="flex items-center gap-space-md"><a class="hover:text-on-surface transition-colors" href="../privacidad.html">Privacidad</a><a class="hover:text-on-surface transition-colors" href="../terminos.html">Términos</a><a class="hover:text-on-surface transition-colors" href="../sobre-nosotros.html">Sobre nosotros</a><a class="hover:text-on-surface transition-colors" href="../contacto.html">Contacto</a></div></div></div></footer><script defer src="../js/copy-guide.js"></script><script defer src="../js/guide-interactions.js"></script><script defer src="../js/reading-progress.js"></script><script defer src="../js/search.js?v=7"></script><script defer src="../js/entrance.js"></script><script defer src="../js/cookie-consent.js?v=4"></script></body></html>

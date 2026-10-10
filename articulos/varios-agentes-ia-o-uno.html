@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Varios agentes de IA o uno solo: cuándo dividir | El Telar</title>
+<meta name="description" content="Repartir una tarea entre varios agentes dispara el coste y casi nunca compensa. Qué midieron Anthropic, Cognition y Berkeley, y cuándo sí sale a cuenta.">
+<link rel="canonical" href="https://eltelar.es/articulos/varios-agentes-ia-o-uno.html"><link rel="icon" type="image/svg+xml" href="../img/favicon.svg?v=4"><link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32.png?v=4"><link rel="apple-touch-icon" href="../img/apple-touch-icon.png?v=4"><meta name="theme-color" content="#072417"><link rel="manifest" href="../manifest.json"><link rel="alternate" type="application/rss+xml" title="El Telar" href="../feed.xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cuándo usar varios agentes de IA en vez de uno | El Telar">
+<meta property="og:description" content="Repartir una tarea entre varios agentes multiplica el coste por quince y casi nunca compensa. Qué midieron Anthropic, Cognition y Berkeley, y cuándo dividir sí sale a cuenta.">
+<meta property="og:url" content="https://eltelar.es/articulos/varios-agentes-ia-o-uno.html">
+<meta property="og:site_name" content="El Telar">
+<meta property="og:locale" content="es_ES"><meta property="og:image" content="https://eltelar.es/img/og/guia-varios-agentes-ia-o-uno.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Cuándo usar varios agentes de IA en vez de uno | El Telar">
+<meta name="twitter:description" content="Dividir el trabajo entre agentes multiplica el coste por quince. Cuándo compensa y cuándo un solo agente gana."><meta name="twitter:image" content="https://eltelar.es/img/og/guia-varios-agentes-ia-o-uno.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Cuándo usar varios agentes de IA en vez de uno",
+  "description": "Repartir una tarea entre varios agentes multiplica el coste por quince y casi nunca compensa. Qué midieron Anthropic, Cognition y Berkeley, y cuándo dividir sí sale a cuenta.",
+  "image": "https://eltelar.es/img/og-image.jpg",
+  "author": { "@type": "Organization", "name": "El Telar", "url": "https://eltelar.es/sobre-nosotros.html" },
+  "publisher": {
+    "@type": "Organization",
+    "name": "El Telar"
+  },
+  "datePublished": "2026-09-27",
+  "dateModified": "2026-09-27",
+  "mainEntityOfPage": "https://eltelar.es/articulos/varios-agentes-ia-o-uno.html",
+  "inLanguage": "es"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Si Anthropic mejor\u00f3 un 90,2% dividiendo, \u00bfpor qu\u00e9 lo normal es no dividir?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Porque esa cifra es de su evaluaci\u00f3n interna de investigaci\u00f3n, que es justo el tipo de tarea donde dividir funciona: muchas b\u00fasquedas independientes, sin escritura compartida. En el mismo documento dicen que su arquitectura no encaja en la mayor\u00eda de tareas de programaci\u00f3n ni donde los agentes necesitan compartir contexto. Y midieron que consume unas 15 veces m\u00e1s tokens que una conversaci\u00f3n, con el consumo explicando por s\u00ed solo el 80% de la varianza de rendimiento en BrowseComp. La mejora es real, pero es real para su caso y comprada en buena parte con presupuesto."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "\u00bfUn agente con muchas herramientas ya cuenta como sistema multiagente?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No, y la distinci\u00f3n importa porque evita montar complejidad que no necesitas. Un agente con diez herramientas sigue teniendo un \u00fanico hilo de decisi\u00f3n: ve todo lo que ha pasado y decide el siguiente paso con esa informaci\u00f3n completa. Un sistema multiagente tiene varios hilos que deciden por separado y luego hay que casar lo que hicieron. Los fallos de los que habla esta gu\u00eda aparecen solo en el segundo caso."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "\u00bfPor qu\u00e9 no puedo pasarle a cada subagente un resumen de lo que hacen los dem\u00e1s?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Porque un resumen pierde justo lo que hac\u00eda falta. El primero de los dos principios de Cognition es compartir la traza completa, no mensajes sueltos: las decisiones que causan el conflicto suelen ser impl\u00edcitas \u2014un estilo, un criterio de nombrado, una interpretaci\u00f3n de la instrucci\u00f3n\u2014 y no aparecen en ning\u00fan resumen porque nadie las formul\u00f3 como decisiones. Y si acabas pasando la traza entera a todos, ya no est\u00e1s ahorrando contexto: est\u00e1s pagando cinco veces por el mismo contexto."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "\u00bfCu\u00e1ntos subagentes son demasiados?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "El sistema de Anthropic lanza entre dos y cinco seg\u00fan la complejidad de la tarea, y ese rango es una referencia razonable para empezar. Pero la pregunta \u00fatil no es cu\u00e1ntos caben, sino cu\u00e1ntas partes verdaderamente independientes tiene tu tarea. Si solo hay tres bloques que no dependen entre s\u00ed, lanzar ocho subagentes no reparte mejor: solapa el trabajo, multiplica la factura y aumenta las posibilidades de que dos devuelvan cosas incompatibles."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "\u00bfLos marcos de trabajo tipo CrewAI o AutoGen resuelven estos problemas?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Facilitan montar el sistema, que no es lo mismo que evitar que falle. El estudio de Berkeley analiz\u00f3 precisamente siete marcos populares y encontr\u00f3 tasas de fallo del 41% al 86,7%, con la conclusi\u00f3n de que el origen est\u00e1 en el dise\u00f1o del sistema y en c\u00f3mo interact\u00faan los agentes, no en el modelo. Un marco te ahorra c\u00f3digo, pero las decisiones que deciden si el sistema aguanta \u2014qui\u00e9n escribe, qu\u00e9 sabe cada uno, qui\u00e9n verifica\u2014 las sigues tomando t\u00fa."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "\u00bfC\u00f3mo s\u00e9 si mi problema es de contexto lleno o de otra cosa?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Mira en qu\u00e9 momento empeora. Si las primeras respuestas son buenas y la calidad cae seg\u00fan se alarga la sesi\u00f3n o seg\u00fan acumula resultados de herramientas, es contexto, y repartir lecturas entre subagentes con ventanas limpias ayuda. Si se equivoca desde el primer intento, con la ventana casi vac\u00eda, el problema es el encargo, las herramientas o el modelo \u2014 y dividir solo replicar\u00e1 ese mismo error en paralelo."
+      }
+    }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://eltelar.es/" },
+    { "@type": "ListItem", "position": 2, "name": "Gu\u00edas", "item": "https://eltelar.es/index.html#guias" },
+    { "@type": "ListItem", "position": 3, "name": "Cu\u00e1ndo usar varios agentes de IA en vez de uno", "item": "https://eltelar.es/articulos/varios-agentes-ia-o-uno.html" }
+  ]
+}
+</script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet"/></noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet"/></noscript>
+<style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><link rel="stylesheet" href="../css/tailwind.css"><link rel="stylesheet" href="../css/entrance.css?v=2"><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}(function(){var c=null;try{c=localStorage.getItem('eltelar-cookie-consent')}catch(e){}var g=c==='accepted'?'granted':'denied';gtag('consent','default',{ad_storage:g,ad_user_data:g,ad_personalization:g,analytics_storage:g,wait_for_update:500});window.adsbygoogle=window.adsbygoogle||[];if(g!=='granted'){window.adsbygoogle.requestNonPersonalizedAds=1;}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-4DPTKEG79N"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4DPTKEG79N');</script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8239907995939753" crossorigin="anonymous"></script></head><body class="bg-background font-body-md text-on-surface antialiased">
+<header class="w-full bg-surface-container-lowest border-b border-outline-variant"><div class="border-b border-outline-variant py-space-xxs px-space-md hidden md:block"><div class="max-w-site-max-width mx-auto flex items-center justify-between font-kicker text-kicker text-on-surface-variant uppercase tracking-wider"><span>EDICIÓN DIGITAL // ACTUALIZADO 2026 // EL TELAR &amp; AGENTES</span><span>MADRID · REMOTO</span><span>SIN HUMO · 100% PRODUCCIÓN</span></div></div><div class="max-w-site-max-width mx-auto px-space-md py-space-md sm:py-space-xl text-center"><p class="hidden sm:block font-kicker text-kicker uppercase tracking-widest text-on-surface-variant mb-space-xs">Publicación Independiente de Tecnología &amp; Agentes</p><a class="inline-block" href="../index.html"><div class="font-display text-display max-sm:text-[40px] max-sm:leading-none text-primary tracking-tight">El Telar</div></a><p class="hidden sm:block font-caption text-caption uppercase tracking-widest text-on-surface-variant mt-space-xs">EL BOLETÍN Y ARCHIVO PRÁCTICO DE INTELIGENCIA ARTIFICIAL Y AGENTES AUTÓNOMOS</p></div><div class="border-t border-b border-outline-variant"><div class="max-w-site-max-width mx-auto px-space-md flex items-center justify-between gap-space-sm h-14"><nav class="flex items-center gap-space-md sm:gap-space-lg h-full min-w-0 overflow-x-auto [scrollbar-width:none] whitespace-nowrap"><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../index.html#guias">GUÍAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../empieza-aqui.html">EMPIEZA AQUÍ</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../sobre-nosotros.html">SOBRE NOSOTROS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../noticias/index.html">NOTICIAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../herramientas/index.html">HERRAMIENTAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../prompts/index.html">PROMPTS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../contacto.html">CONTACTO</a></nav><div class="flex items-center gap-space-md"><button id="search-trigger" type="button" aria-label="Buscar en las guías" class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[20px]">search</span></button><a class="hidden sm:inline-block bg-primary-container text-surface px-space-md py-space-xs font-label-md text-label-md uppercase tracking-wider hover:bg-primary transition-colors" href="../index.html#despacho">SUSCRÍBETE GRATIS</a></div></div></div><div class="hidden md:block bg-surface-container-low border-b border-outline-variant py-space-xs px-space-md"><div class="max-w-site-max-width mx-auto text-center"><p class="font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">47 GUÍAS COMPLETAS EN EXPANSIÓN · ACTUALIZADO A MODELOS 2026 · PROBADO EN TERMINAL Y FLUJOS REALES · CERO HUMO NI TEORÍA VACÍA</p></div></div></header>
+<main class="w-full max-w-site-max-width mx-auto px-space-md py-space-xl"><div class="flex flex-col w-full">
+<nav class="w-full mb-space-lg">
+<ol class="flex flex-wrap items-center gap-space-xs font-kicker text-kicker text-on-surface-variant uppercase tracking-wider">
+<li><a class="hover:text-primary transition-colors" href="../index.html">Inicio</a></li>
+<li class="text-on-surface-variant">/</li>
+<li><a class="hover:text-primary transition-colors" href="../index.html#guias">Guías</a></li>
+<li class="text-on-surface-variant">/</li>
+<li class="text-primary font-bold truncate max-w-[280px] sm:max-w-md">Varios agentes o uno</li>
+</ol>
+</nav>
+<header class="w-full pb-space-xl mb-space-2xl">
+<div class="flex flex-wrap items-center gap-space-xs mb-space-md">
+<span class="bg-surface-container-high text-secondary px-space-sm py-1 font-kicker text-kicker uppercase tracking-widest">CONCEPTOS // AGENTES</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight max-w-editorial-max mb-space-md">
+          Cuándo usar varios agentes de IA en vez de uno
+        </h1>
+<p class="font-lead-paragraph text-lead-paragraph text-on-surface-variant max-w-editorial-max leading-relaxed mb-space-lg">
+          Repartir el trabajo entre varios agentes suena a sentido común: si un equipo humano se organiza así, ¿por qué no ellos? Pero los datos publicados por quienes lo han montado en producción apuntan a algo más incómodo: dividir multiplica el coste por quince, y la mayoría de las veces no compra nada a cambio.
+        </p>
+<div class="bg-surface-container-lowest p-space-md flex flex-wrap items-center justify-between gap-y-3 shadow-sm">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 bg-primary text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">account_tree</span>
+</div>
+<div>
+<div class="font-label-md text-label-md text-on-surface font-semibold">Por la Redacción de El Telar</div><div class="font-caption text-caption text-on-surface-variant">Guías prácticas de IA y agentes, probadas en flujos de trabajo reales antes de publicarlas.</div>
+<button class="inline-flex items-center gap-1 mt-2 px-3 py-1.5 bg-surface-container text-primary font-label-md text-[12px] font-semibold uppercase tracking-wider hover:bg-surface-container-high transition-colors" id="copy-guide-btn" type="button"><span class="material-symbols-outlined text-[16px]">content_copy</span> Copiar guía para tu IA</button><span class="inline-flex items-center gap-1 ml-1"><button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" id="save-guide-btn" title="Guardar guía" type="button"><span class="material-symbols-outlined text-[16px]">bookmark_border</span></button><button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" id="copy-link-btn" title="Copiar enlace permanente" type="button"><span class="material-symbols-outlined text-[16px]">share</span></button></span>
+</div>
+</div>
+<div class="flex items-center gap-space-lg text-on-surface-variant font-caption text-caption uppercase tracking-wider">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">schedule</span> 15 min de lectura</span>
+</div>
+</div>
+</header>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-col-gap">
+<article class="lg:col-span-8 flex flex-col space-y-space-xl">
+<figure data-hero class="space-y-space-xs"><img class="w-full border border-outline-variant" src="../img/guias/hero-varios-agentes-ia-o-uno.jpg" alt="Artículo de Anthropic sobre su sistema de investigación con varios agentes" width="1280" height="720" fetchpriority="high" decoding="async"/><figcaption class="font-caption text-caption text-on-surface-variant">Captura de pantalla: <a class="underline" href="https://www.anthropic.com/engineering/multi-agent-research-system" rel="nofollow noopener" target="_blank">anthropic.com</a>.</figcaption></figure>
+<div class="relative bg-surface-container-lowest p-space-lg shadow-sm">
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed text-justify">
+<span class="float-left font-display text-primary text-6xl leading-none pr-3 pt-1 font-normal">L</span>
+          a intuición es tan razonable que casi nadie la cuestiona: si una tarea es grande, repártela. Un agente que investiga, otro que redacta, otro que revisa. Es como montamos los equipos de personas y funciona bien, así que parece obvio que un sistema de agentes debería organizarse igual. La industria le ha puesto nombre —orquestación multiagente— y hay un ecosistema entero de herramientas para montarla.
+        </p>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          El problema es que la analogía con un equipo humano se rompe justo en el sitio que importa. Dos personas que trabajan en lo mismo se cruzan en el pasillo, se preguntan cosas y corrigen sobre la marcha. Dos agentes, no. Cada uno arranca con lo que le diste al principio y no se entera de nada de lo que decide el otro mientras trabaja. Esa diferencia, que parece un detalle de implementación, es la causa de la mayoría de los desastres.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Lo interesante es que aquí no hace falta especular: tres de los equipos que más lejos han llegado montando esto han publicado lo que midieron, y dos de ellos llegan a conclusiones opuestas. Esta guía va de qué dicen exactamente esos datos, por qué no se contradicen tanto como parece, y cuál es la regla práctica que sale de juntarlos. Si todavía no tienes claro qué separa un agente de un chatbot, empieza por <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="que-es-un-agente-ia.html">qué es un agente de IA</a>; el resto de esta guía lo da por sabido.
+        </p>
+<section id="sec-1" class="space-y-space-lg">
+<h2 class="font-headline-lg text-headline-lg text-primary">Qué significa «varios agentes», exactamente</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          Conviene separar tres cosas que se llaman igual en las conversaciones y no lo son, porque el consejo cambia por completo según cuál tengas delante.
+        </p>
+<div class="bg-surface-container-high p-space-lg shadow-sm space-y-space-sm">
+<span class="font-kicker text-kicker uppercase tracking-widest text-primary font-bold">TRES COSAS DISTINTAS</span>
+<p class="font-body-sm text-body-sm text-on-surface"><strong>Un agente con muchas herramientas.</strong> Un solo bucle que puede buscar, leer archivos y llamar a APIs. Mucha gente lo llama «multiagente» porque hace muchas cosas, pero no lo es: hay un único hilo de decisión. Esto es lo que usas cuando trabajas con <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="mcp-explicado.html">herramientas conectadas por MCP</a>.</p>
+<p class="font-body-sm text-body-sm text-on-surface"><strong>Un flujo con pasos fijos.</strong> Primero extraer, luego clasificar, luego escribir. Cada paso es una llamada distinta al modelo, pero el orden lo decidiste tú de antemano. Es una tubería, no una orquesta: no hay ningún agente decidiendo quién hace qué.</p>
+<p class="font-body-sm text-body-sm text-on-surface"><strong>Orquestación de verdad.</strong> Un agente principal que, en tiempo de ejecución, decide cuántos subagentes lanzar, qué le encarga a cada uno y cómo juntar lo que devuelvan. Aquí sí hay reparto dinámico, y aquí es donde aparecen los problemas de los que va esta guía.</p>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          La mayoría de la gente que cree necesitar lo tercero necesita en realidad lo primero o lo segundo. Merece la pena pararse en ese punto antes de seguir, porque las dos primeras opciones son muchísimo más baratas de montar y de mantener, y no arrastran ninguno de los fallos que vienen a continuación.
+        </p>
+</section>
+<section id="sec-2" class="space-y-space-lg">
+<h2 class="font-headline-lg text-headline-lg text-primary">El caso a favor: lo que midió Anthropic</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          El argumento más sólido a favor de dividir viene de Anthropic, que publicó cómo construyó el sistema de investigación que hay detrás de la función de <em>Research</em> de Claude. Es un diseño de <strong>orquestador y trabajadores</strong>: un agente principal planifica, lanza entre dos y cinco subagentes que trabajan en paralelo sobre partes distintas del problema, y luego sintetiza lo que devuelven.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          El número que se cita en todas partes es real y viene de su propia evaluación interna de investigación: el sistema multiagente —con Claude Opus 4 de agente principal y Claude Sonnet 4 de subagentes— superó al Opus 4 en solitario <strong>en un 90,2%</strong>. Es una mejora enorme, y explica buena parte del entusiasmo del sector.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Pero el mismo documento trae el dato que casi nunca se cita al lado, y que cambia la lectura. Anthropic midió también el consumo: un agente gasta <strong>unas 4 veces más tokens</strong> que una conversación normal, y un sistema multiagente <strong>unas 15 veces más</strong>. Y fueron un paso más allá: en la evaluación BrowseComp, el consumo de tokens por sí solo explicaba el <strong>80% de la varianza</strong> de rendimiento, y tres factores juntos —tokens, número de llamadas a herramientas y elección de modelo— explicaban el 95%.
+        </p>
+<div class="bg-surface-container-high p-space-lg shadow-sm space-y-space-sm">
+<span class="font-kicker text-kicker uppercase tracking-widest text-primary font-bold">LO QUE ESO SIGNIFICA DE VERDAD</span>
+<p class="font-body-sm text-body-sm text-on-surface">Si el 80% de la mejora se explica por gastar más tokens, entonces buena parte de ese 90,2% no lo compra la arquitectura: lo compra el presupuesto. Varios agentes en paralelo son, entre otras cosas, una forma de gastar mucho más en un problema. A veces eso es exactamente lo que quieres. Pero deja de ser magia arquitectónica y pasa a ser una decisión de coste.</p>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Hay una segunda ventaja, esta sí estructural y no comprable con dinero: <strong>cada subagente tiene su propia ventana de contexto</strong>. Si una investigación exige leer cuarenta documentos, un solo agente los va metiendo todos en la misma ventana y llega al final arrastrando un montón de ruido; cinco subagentes leen ocho cada uno y devuelven solo la conclusión. Esto conecta directamente con lo que explicamos en <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="ventana-contexto-memoria-ia.html">la guía de ventana de contexto</a>: el problema no es solo que quepa, es que la precisión se degrada mucho antes de llegar al límite. Repartir lecturas entre ventanas limpias es una forma legítima de esquivar esa degradación.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Y ahora el matiz que el propio documento de Anthropic se encarga de dejar por escrito, y que conviene leer despacio antes de copiar su arquitectura: dicen explícitamente que este diseño <strong>no encaja</strong> en la mayoría de tareas de programación, porque tienen pocas partes de verdad paralelizables, ni en dominios donde todos los agentes necesitan compartir el mismo contexto o donde hay muchas dependencias entre ellos. Añaden que los agentes todavía no se coordinan ni se delegan trabajo bien entre sí en tiempo real. O sea: el equipo que publica el 90,2% está diciendo, en la misma página, que su arquitectura sirve para un tipo de tarea muy concreto.
+        </p>
+</section>
+<section id="sec-3" class="space-y-space-lg">
+<h2 class="font-headline-lg text-headline-lg text-primary">El caso en contra: por qué se rompen</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          El argumento contrario lo firmó Cognition, la empresa detrás de Devin, en un artículo con un título que no deja lugar a dudas: <em>Don't Build Multi-Agents</em>. Su tesis es que el problema no es de madurez de los modelos sino de diseño, y la resumen en dos principios.
+        </p>
+<div class="bg-surface-container-high p-space-lg shadow-sm space-y-space-sm">
+<span class="font-kicker text-kicker uppercase tracking-widest text-primary font-bold">LOS DOS PRINCIPIOS DE COGNITION</span>
+<p class="font-body-sm text-body-sm text-on-surface"><strong>1. Comparte el contexto, y comparte la traza completa, no mensajes sueltos.</strong> No basta con darle a cada subagente la misma instrucción inicial. Necesita ver también las llamadas a herramientas y los razonamientos intermedios del resto. Un resumen no vale: al resumir se pierde justo lo que hacía falta.</p>
+<p class="font-body-sm text-body-sm text-on-surface"><strong>2. Las acciones llevan decisiones implícitas dentro, y las decisiones en conflicto dan malos resultados.</strong> Un agente que elige un color de botón o una forma de nombrar las cosas está decidiendo, aunque nadie le haya pedido que decida. Si otro agente decide distinto a la vez, nadie arbitra.
+</p>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          El ejemplo con el que lo ilustran se ha hecho famoso porque cualquiera lo entiende a la primera. Un agente recibe el encargo de clonar el <em>Flappy Bird</em> y lo parte en dos: un subagente hace el fondo con las tuberías, otro hace el pájaro. El primero entrega un fondo estilo Super Mario Bros.; el segundo, un pájaro realista. Ninguno de los dos ha hecho nada mal según sus instrucciones. Simplemente cada uno tomó una decisión de estilo que nadie le pidió y que el otro no llegó a ver nunca. Al juntarlo, no pega ni con cola.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Fíjate en lo incómodo del fallo: no hay ningún error que puedas encontrar leyendo el registro de ninguno de los dos subagentes. El fallo solo existe en la unión. Por eso este tipo de sistemas son tan difíciles de depurar y por eso, cuando fallan, tienden a fallar en silencio en vez de dar un error. Es un pariente cercano de los problemas que recogemos en <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="errores-automatizar-ia.html">errores comunes al automatizar con IA</a>: lo que se rompe casi nunca es la pieza, es la costura.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Merece la pena decir que el autor, Walden Yan, ha matizado su postura después: en un artículo posterior reconoce que sí han encontrado configuraciones que funcionan. Pero no son las que promete el <em>marketing</em> del sector, y comparten todas la misma propiedad, que vale la pena retener porque es la conclusión práctica de toda esta guía: <strong>un bucle principal que lleva el estado, subagentes sin estado propio y con un encargo estrecho, y la escritura en un único hilo</strong>. En cuanto intentas que dos agentes sean iguales y compartan memoria, la coherencia se cae.
+        </p>
+</section>
+<section id="sec-4" class="space-y-space-lg">
+<figure data-inline-photo class="space-y-space-xs my-space-xl"><img class="w-full border border-outline-variant" src="../img/guias/foto-varios-agentes-ia-o-uno.jpg" alt="Web de CrewAI, framework para coordinar varios agentes" width="1280" height="720" loading="lazy" decoding="async"/><figcaption class="font-caption text-caption text-on-surface-variant">Captura de pantalla: <a class="underline" href="https://www.crewai.com/" rel="nofollow noopener" target="_blank">crewai.com</a>.</figcaption></figure>
+<h2 class="font-headline-lg text-headline-lg text-primary">Lo que dicen los números de fallos</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          Entre la anécdota de un equipo y la promesa de otro, hay un trabajo académico que intentó medir esto en frío. Un grupo de la Universidad de California en Berkeley —Mert Cemri y otros, con Matei Zaharia, Joseph Gonzalez e Ion Stoica entre los firmantes— publicó <em>Why Do Multi-Agent LLM Systems Fail?</em>, que analiza ejecuciones reales de siete marcos de trabajo multiagente populares. Sea cual sea el reparto que elijas, la forma de comprobarlo es la misma y conviene montarla antes: medir cada agente por separado, porque un porcentaje global no te dice cuál de ellos rompió la cadena — <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="evaluar-agente-ia.html">cómo evaluar un agente, paso a paso</a>.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          De ahí sale MAST, una taxonomía de <strong>14 modos de fallo</strong> agrupados en tres familias: problemas de diseño del sistema, desalineación entre agentes, y fallos de verificación de la tarea. La construyeron anotando trazas a mano con acuerdo alto entre anotadores (kappa de 0,88) y la ampliaron después a un conjunto de más de 1.600 trazas anotadas.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          El dato que conviene tener en la cabeza antes de montar nada: en esos siete marcos, las <strong>tasas de fallo van del 41% al 86,7%</strong>. Y la conclusión de los autores es la misma que la de Cognition, dicha con otras palabras: los fallos vienen del diseño del sistema y de cómo interactúan los agentes, no de las limitaciones del modelo — así que no se arreglan cambiando a un modelo mejor ni retocando el prompt. Piden rediseños estructurales.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Hay una cuarta cosa que casi nunca entra en estas discusiones y que conviene no olvidar: cada subagente que añades es otra superficie por la que te pueden colar instrucciones. Si uno de ellos lee una página web o un correo, lo que venga ahí dentro puede acabar dirigiendo al orquestador. Lo explicamos entero en <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="prompt-injection-agentes-ia.html">la guía de inyección de prompts</a>, pero el resumen aplicado aquí es corto: multiplicar agentes multiplica puertas de entrada, y el que las cruza suele ser el que más permisos tiene.
+        </p>
+</section>
+<section id="sec-5" class="space-y-space-lg">
+<h2 class="font-headline-lg text-headline-lg text-primary">La regla práctica: cuándo sí y cuándo no</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          Juntando las tres fuentes, la contradicción se deshace sola. Anthropic tiene razón sobre un tipo de tarea muy concreto y Cognition tiene razón sobre casi todas las demás. Lo que separa un caso del otro se puede reducir a tres preguntas.
+        </p>
+<div class="bg-surface-container-high p-space-lg shadow-sm space-y-space-sm">
+<span class="font-kicker text-kicker uppercase tracking-widest text-primary font-bold">TRES PREGUNTAS ANTES DE DIVIDIR</span>
+<p class="font-body-sm text-body-sm text-on-surface"><strong>¿Las partes son independientes de verdad?</strong> Independientes significa que el subagente 2 puede terminar su trabajo sin saber nada de lo que decidió el subagente 1. Si la respuesta es «bueno, más o menos», es que no. Investigar diez empresas por separado: sí. Escribir diez secciones de un mismo informe que tienen que sonar igual: no.</p>
+<p class="font-body-sm text-body-sm text-on-surface"><strong>¿El trabajo es de lectura o de escritura?</strong> Buscar, leer y resumir se paraleliza bien porque nadie pisa a nadie. Escribir código, editar un documento o modificar una base de datos, no: ahí cada acción condiciona la siguiente y necesitas un único responsable.</p>
+<p class="font-body-sm text-body-sm text-on-surface"><strong>¿El resultado vale quince veces el coste?</strong> Es la pregunta literal que se desprende del dato de Anthropic. Para una diligencia debida, una revisión de literatura o un análisis de competencia que ocuparía días a una persona, la cuenta sale. Para resumir tus correos del día, no se acerca.</p>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Si las tres respuestas son que sí, divide. Si alguna es que no, un solo agente con buenas herramientas te va a dar un resultado más coherente, más barato y muchísimo más fácil de arreglar cuando se tuerza. Y conviene decirlo sin rodeos porque va contra la corriente del sector: <strong>el valor por defecto correcto es un solo agente</strong>. Dividir es la excepción que hay que justificar, no el punto de partida.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Un atajo que funciona bastante bien en la práctica: si te cuesta explicarle a un compañero, en dos frases y sin dibujar nada, qué hace cada agente y qué no puede saber ninguno de los otros, el sistema todavía no está lo bastante claro como para construirlo.
+        </p>
+</section>
+<section id="sec-6" class="space-y-space-lg">
+<h2 class="font-headline-lg text-headline-lg text-primary">Cómo montarlo sin que se rompa</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          Si has pasado el filtro anterior y de verdad te toca dividir, hay cuatro decisiones que separan un sistema que aguanta de uno que da resultados raros una vez de cada tres.
+        </p>
+<div class="bg-surface-container-high p-space-lg shadow-sm space-y-space-sm">
+<span class="font-kicker text-kicker uppercase tracking-widest text-primary font-bold">CUATRO REGLAS QUE SE REPITEN</span>
+<p class="font-body-sm text-body-sm text-on-surface"><strong>Un solo escritor.</strong> Los subagentes leen, investigan y proponen; el agente principal es el único que escribe el resultado final. Es la propiedad que comparten, según Cognition, todas las configuraciones que sí les funcionan.</p>
+<p class="font-body-sm text-body-sm text-on-surface"><strong>Subagentes sin memoria propia.</strong> Cada uno recibe su encargo, lo hace y devuelve el resultado. No guardan estado entre llamadas ni hablan entre ellos. El estado vive en el bucle principal, en un solo sitio.</p>
+<p class="font-body-sm text-body-sm text-on-surface"><strong>Encargos absurdamente explícitos.</strong> «Investiga la empresa X» es una invitación a que se invente el criterio. Dile qué buscar, en qué formato devolverlo y qué no es asunto suyo. La mitad de los fallos de desalineación de MAST nacen de encargos vagos.</p>
+<p class="font-body-sm text-body-sm text-on-surface"><strong>Alguien verifica al final.</strong> La tercera familia de fallos de MAST es exactamente esta: nadie comprueba el resultado. Un paso de verificación separado, con el encargo explícito de buscar contradicciones entre lo que devolvieron los subagentes, pilla justo los fallos de costura.</p>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Una nota sobre el coste que conviene tener clara antes de la primera factura: con el reparto en paralelo, el gasto no crece con el tiempo que tarda, crece con el número de subagentes por lo que lee cada uno. Cinco subagentes que leen veinte páginas cada uno son cien páginas de entrada aunque todo termine en dos minutos. Si quieres hacer el cálculo con tus propios números antes de montarlo, tienes la <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="../herramientas/calculadora-coste-api.html">calculadora de coste de API</a>.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Y el consejo más útil de todos es el más aburrido: empieza por un agente. Móntalo, úsalo de verdad una temporada y apunta dónde se atasca. Si lo que te frena resulta ser la ventana de contexto llena de cosas que ya no hacen falta, o el reloj porque hay que leer muchas fuentes independientes, entonces dividir te va a servir. Si lo que te frena es que se equivoca o que no entiende bien lo que quieres, añadir agentes solo te dará el mismo error repartido entre cinco sitios y más caro. Para ese camino de entrada, <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="automatizar-tareas-agentes-ia.html">automatizar tareas repetitivas con agentes</a> es el punto de partida razonable.
+        </p>
+</section>
+<section class="space-y-space-md">
+<h2 class="font-headline-lg text-headline-lg text-primary">
+          Preguntas frecuentes
+        </h2>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">Si Anthropic mejoró un 90,2% dividiendo, ¿por qué dices que lo normal es no dividir?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Porque esa cifra es de su evaluación interna de investigación, que es justo el tipo de tarea donde dividir funciona: muchas búsquedas independientes, sin escritura compartida. En el mismo documento dicen que su arquitectura no encaja en la mayoría de tareas de programación ni donde los agentes necesitan compartir contexto. Y midieron que consume unas 15 veces más tokens que una conversación, con el consumo explicando por sí solo el 80% de la varianza de rendimiento en BrowseComp. La mejora es real, pero es real para su caso y comprada en buena parte con presupuesto.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Un agente con muchas herramientas ya cuenta como sistema multiagente?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+No, y la distinción importa porque evita montar complejidad que no necesitas. Un agente con diez herramientas sigue teniendo un único hilo de decisión: ve todo lo que ha pasado y decide el siguiente paso con esa información completa. Un sistema multiagente tiene varios hilos que deciden por separado y luego hay que casar lo que hicieron. Los fallos de los que habla esta guía aparecen solo en el segundo caso.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Por qué no puedo simplemente pasarle a cada subagente un resumen de lo que hacen los demás?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Porque un resumen pierde justo lo que hacía falta. El primero de los dos principios de Cognition es compartir la traza completa, no mensajes sueltos: las decisiones que causan el conflicto suelen ser implícitas —un estilo, un criterio de nombrado, una interpretación de la instrucción— y no aparecen en ningún resumen porque nadie las formuló como decisiones. Y si acabas pasando la traza entera a todos, ya no estás ahorrando contexto: estás pagando cinco veces por el mismo contexto.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Cuántos subagentes son demasiados?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+El sistema de Anthropic lanza entre dos y cinco según la complejidad de la tarea, y ese rango es una referencia razonable para empezar. Pero la pregunta útil no es cuántos caben, sino cuántas partes verdaderamente independientes tiene tu tarea. Si solo hay tres bloques que no dependen entre sí, lanzar ocho subagentes no reparte mejor: solapa el trabajo, multiplica la factura y aumenta las posibilidades de que dos devuelvan cosas incompatibles.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Los marcos de trabajo tipo CrewAI o AutoGen resuelven estos problemas?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Facilitan montar el sistema, que no es lo mismo que evitar que falle. El estudio de Berkeley analizó precisamente siete marcos populares y encontró tasas de fallo del 41% al 86,7%, con la conclusión de que el origen está en el diseño del sistema y en cómo interactúan los agentes, no en el modelo. Un marco te ahorra código, pero las decisiones que deciden si el sistema aguanta —quién escribe, qué sabe cada uno, quién verifica— las sigues tomando tú.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Cómo sé si mi problema es de contexto lleno o de otra cosa?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Mira en qué momento empeora. Si las primeras respuestas son buenas y la calidad cae según se alarga la sesión o según acumula resultados de herramientas, es contexto, y repartir lecturas entre subagentes con ventanas limpias ayuda. Si se equivoca desde el primer intento, con la ventana casi vacía, el problema es el encargo, las herramientas o el modelo — y dividir solo replicará ese mismo error en paralelo.
+</div>
+</div>
+</section>
+</article>
+<aside class="lg:col-span-4 flex flex-col space-y-space-xl">
+<div class="bg-surface-container-lowest p-space-lg shadow-sm sticky top-space-md">
+<div class="flex items-center justify-between mb-space-sm pb-space-xs">
+<span class="font-kicker text-kicker uppercase tracking-widest text-primary font-bold">ÍNDICE DE LA GUÍA</span>
+<span class="material-symbols-outlined text-on-surface-variant text-base">format_list_bulleted</span>
+</div>
+<nav class="space-y-space-xs font-body-sm text-body-sm">
+<a class="block text-primary hover:text-secondary font-medium transition-colors" href="#sec-1">Qué significa «varios agentes»</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-2">El caso a favor</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-3">Por qué se rompen</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-4">Los números de fallos</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-5">Cuándo sí y cuándo no</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-6">Cómo montarlo</a>
+</nav>
+</div>
+
+<div class="bg-surface-container-high p-space-md space-y-space-sm shadow-sm">
+<span class="font-kicker text-kicker uppercase tracking-widest text-primary font-bold">FICHA TÉCNICA</span>
+<dl class="space-y-space-xs font-caption text-caption">
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Categoría:</dt><dd class="font-semibold text-primary">Conceptos</dd></div>
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Nivel técnico:</dt><dd class="font-semibold text-primary">Intermedio</dd></div>
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Fuentes citadas:</dt><dd class="font-semibold text-primary">Anthropic, Cognition, UC Berkeley</dd></div>
+</dl>
+</div>
+</aside>
+</div>
+<section class="w-full mt-space-4xl pt-space-2xl bg-surface-container-lowest p-space-lg shadow-sm">
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-space-xl gap-space-xs">
+<h3 class="font-headline-md text-headline-md text-primary">Continúa explorando el archivo</h3>
+<a class="font-label-md text-label-md text-primary hover:text-secondary uppercase tracking-wider transition-colors flex items-center gap-1" href="../index.html#guias">Ver todas las guías <span class="material-symbols-outlined text-[16px]">arrow_forward</span></a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-col-gap"><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="que-es-un-agente-ia.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-que-es-un-agente-ia.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="que-es-un-agente-ia.html">Qué es un agente de IA frente a un chatbot</a></h4></div></article><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="ventana-contexto-memoria-ia.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-ventana-contexto-memoria-ia.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="ventana-contexto-memoria-ia.html">Ventana de contexto: por qué la IA olvida</a></h4></div></article><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="prompt-injection-agentes-ia.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-prompt-injection-agentes-ia.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="prompt-injection-agentes-ia.html">Prompt injection: cómo protegerte</a></h4></div></article></div>
+</section>
+</div></main><footer class="w-full bg-surface-container-low border-t border-outline-variant mt-space-4xl"><div class="max-w-site-max-width mx-auto px-space-md py-space-3xl"><div class="grid grid-cols-1 md:grid-cols-3 gap-col-gap"><div class="space-y-space-sm"><span class="font-headline-md text-headline-md text-primary">El Telar</span><p class="font-body-sm text-body-sm text-on-surface-variant">Publicación independiente de tecnología y automatización con agentes. Contenidos verificados en producción, sin patrocinios opacos ni promesas vacías.</p></div><div><h3 class="font-kicker text-kicker uppercase tracking-wider text-on-surface mb-space-md">SECCIONES</h3><ul class="space-y-space-xs font-body-sm text-body-sm"><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html#guias">Archivo de Guías</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../empieza-aqui.html">Guía para Principiantes</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../sobre-nosotros.html">Manifiesto Editorial</a></li><li class="pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html#despacho">Boletín Semanal</a></li></ul></div><div><h3 class="font-kicker text-kicker uppercase tracking-wider text-on-surface mb-space-md">CONTACTO &amp; PRENSA</h3><div class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant"><p class="font-semibold text-on-surface">contacto@eltelar.es</p><p>Síguenos: <a class="hover:text-primary underline" href="https://www.instagram.com/eltelar_es/" rel="me noopener" target="_blank">Instagram</a> · <a class="hover:text-primary underline" href="https://www.threads.com/@eltelar_es" rel="me noopener" target="_blank">Threads</a> · <a class="hover:text-primary underline" href="https://x.com/eltelar_es" rel="me noopener" target="_blank">X</a></p></div></div></div></div><div class="border-t border-outline-variant py-space-md bg-surface-container-lowest"><div class="max-w-site-max-width mx-auto px-space-md flex flex-col md:flex-row items-center justify-between gap-space-sm text-caption font-caption text-on-surface-variant"><div>© 2026 El Telar. Todos los derechos reservados. Independencia editorial garantizada.</div><div class="flex items-center gap-space-md"><a class="hover:text-on-surface transition-colors" href="../privacidad.html">Privacidad</a><a class="hover:text-on-surface transition-colors" href="../terminos.html">Términos</a><a class="hover:text-on-surface transition-colors" href="../sobre-nosotros.html">Sobre nosotros</a><a class="hover:text-on-surface transition-colors" href="../contacto.html">Contacto</a></div></div></div></footer><script defer src="../js/copy-guide.js"></script><script defer src="../js/guide-interactions.js"></script><script defer src="../js/reading-progress.js"></script><script defer src="../js/search.js?v=7"></script><script defer src="../js/entrance.js"></script><script defer src="../js/cookie-consent.js?v=4"></script></body></html>

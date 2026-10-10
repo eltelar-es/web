@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Alucinaciones de la IA: cómo detectarlas | El Telar</title>
+<meta name="description" content="Por qué los modelos inventan URLs, citas y librerías inexistentes con total convicción, dónde ocurre más y cómo forzar la honestidad epistémica.">
+<link rel="canonical" href="https://eltelar.es/articulos/alucinaciones-ia.html"><link rel="icon" type="image/svg+xml" href="../img/favicon.svg?v=4"><link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32.png?v=4"><link rel="apple-touch-icon" href="../img/apple-touch-icon.png?v=4"><meta name="theme-color" content="#072417"><link rel="manifest" href="../manifest.json"><link rel="alternate" type="application/rss+xml" title="El Telar" href="../feed.xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Alucinaciones de la IA: cómo detectar cuando se inventa algo | El Telar">
+<meta property="og:description" content="Por qué los modelos inventan URLs, citas y librerías inexistentes con total convicción, dónde ocurre más y cómo forzar la honestidad epistémica.">
+<meta property="og:url" content="https://eltelar.es/articulos/alucinaciones-ia.html">
+<meta property="og:site_name" content="El Telar">
+<meta property="og:locale" content="es_ES"><meta property="og:image" content="https://eltelar.es/img/og/guia-alucinaciones-ia.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Alucinaciones de la IA: cómo detectar cuando se inventa algo | El Telar">
+<meta name="twitter:description" content="Por qué los modelos inventan URLs, citas y librerías inexistentes con total convicción, dónde ocurre más y cómo forzar la honestidad epistémica."><meta name="twitter:image" content="https://eltelar.es/img/og/guia-alucinaciones-ia.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Alucinaciones de la IA: cómo detectar cuando se inventa algo",
+  "description": "Por qué los modelos inventan URLs, citas y librerías inexistentes con total convicción, dónde ocurre más y cómo forzar la honestidad epistémica.",
+  "image": "https://eltelar.es/img/og-image.jpg",
+  "author": { "@type": "Organization", "name": "El Telar", "url": "https://eltelar.es/sobre-nosotros.html" },
+  "publisher": { "@type": "Organization", "name": "El Telar" },
+  "datePublished": "2026-01-01",
+  "dateModified": "2026-09-06",
+  "mainEntityOfPage": "https://eltelar.es/articulos/alucinaciones-ia.html",
+  "inLanguage": "es"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Las alucinaciones van a desaparecer con la siguiente generación de modelos?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Es poco probable que desaparezcan del todo, porque son consecuencia directa de cómo funciona un modelo de lenguaje (predicción estadística de texto plausible), no un simple defecto de entrenamiento que se corrige con más datos. Lo que sí ha mejorado de forma medible es la tasa en tareas ancladas a un texto concreto, según el propio leaderboard público de Vectara citado antes en esta guía. Para hechos sin ancla externa (fechas exactas, cifras específicas, nombres poco comunes), el riesgo se mantiene."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Aumentar la \"temperatura\" o cambiar la configuración del modelo reduce las alucinaciones?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Una temperatura más baja hace que el modelo elija de forma más conservadora entre las opciones más probables, lo que en la práctica reduce ligeramente la varianza de la respuesta, pero no resuelve el problema de fondo: si el dato más \"probable\" según el entrenamiento es incorrecto, una temperatura baja hará que el modelo lo repita con más consistencia, no que dé con el dato correcto."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Hay alguna señal en el propio texto que delate cuándo el modelo está alucinando?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No de forma fiable. Es tentador pensar que un tono más vago o dubitativo indica menor certeza real, pero en la práctica los modelos pueden expresar la misma confianza aparente tanto si el dato es correcto como si es inventado, precisamente porque no tienen una medida interna de certeza que se traduzca directamente en el estilo de la respuesta. La única señal fiable sigue siendo externa: verificar el dato contra una fuente independiente, no interpretar el tono del texto generado."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Es lo mismo una alucinación que un modelo \"desactualizado\" que no conoce un hecho reciente?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No exactamente, aunque a menudo se confunden. Un modelo sin acceso a información reciente que dice honestamente \"mi conocimiento tiene una fecha de corte y no puedo confirmar eventos posteriores\" no está alucinando, está siendo transparente sobre su límite. La alucinación ocurre cuando, en vez de admitir ese límite, el modelo rellena el hueco con una respuesta inventada que suena igual de segura que una respuesta bien fundamentada. La diferencia práctica es justo la que se pide en el primer protocolo de esta guía: darle al modelo permiso explícito para decir \"no lo sé\" en vez de premiar implícitamente cualquier respuesta con apariencia completa."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Todos los modelos y todas las tareas necesitan el mismo nivel de precaución?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. La precaución debe escalar con dos factores: cuánto se aleja la tarea de un texto de referencia concreto (más lejos, más riesgo) y cuánto cuesta que el dato final esté mal (más caro, más verificación). Una consulta rápida sobre un tema general con bajo coste de error no necesita el mismo protocolo que redactar una cláusula contractual o calcular una cifra que va a un informe financiero. Aplicar el mismo nivel máximo de escepticismo a todo lo que genera un modelo no es más seguro, solo más lento — la habilidad real está en calibrar cuánto verificar según lo que de verdad está en juego en cada caso concreto."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://eltelar.es/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Guías",
+      "item": "https://eltelar.es/index.html#guias"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Alucinaciones de la IA: cómo detectar cuando se inventa algo",
+      "item": "https://eltelar.es/articulos/alucinaciones-ia.html"
+    }
+  ]
+}
+</script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet"/></noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet"/></noscript>
+<style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><link rel="stylesheet" href="../css/tailwind.css"><link rel="stylesheet" href="../css/entrance.css?v=2"><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}(function(){var c=null;try{c=localStorage.getItem('eltelar-cookie-consent')}catch(e){}var g=c==='accepted'?'granted':'denied';gtag('consent','default',{ad_storage:g,ad_user_data:g,ad_personalization:g,analytics_storage:g,wait_for_update:500});window.adsbygoogle=window.adsbygoogle||[];if(g!=='granted'){window.adsbygoogle.requestNonPersonalizedAds=1;}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-4DPTKEG79N"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4DPTKEG79N');</script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8239907995939753" crossorigin="anonymous"></script></head><body class="bg-background font-body-md text-on-surface antialiased">
+<header class="w-full bg-surface-container-lowest border-b border-outline-variant"><div class="border-b border-outline-variant py-space-xxs px-space-md hidden md:block"><div class="max-w-site-max-width mx-auto flex items-center justify-between font-kicker text-kicker text-on-surface-variant uppercase tracking-wider"><span>EDICIÓN DIGITAL // ACTUALIZADO 2026 // EL TELAR &amp; AGENTES</span><span>MADRID · REMOTO</span><span>SIN HUMO · 100% PRODUCCIÓN</span></div></div><div class="max-w-site-max-width mx-auto px-space-md py-space-md sm:py-space-xl text-center"><p class="hidden sm:block font-kicker text-kicker uppercase tracking-widest text-on-surface-variant mb-space-xs">Publicación Independiente de Tecnología &amp; Agentes</p><a class="inline-block" href="../index.html"><div class="font-display text-display max-sm:text-[40px] max-sm:leading-none text-primary tracking-tight">El Telar</div></a><p class="hidden sm:block font-caption text-caption uppercase tracking-widest text-on-surface-variant mt-space-xs">EL BOLETÍN Y ARCHIVO PRÁCTICO DE INTELIGENCIA ARTIFICIAL Y AGENTES AUTÓNOMOS</p></div><div class="border-t border-b border-outline-variant"><div class="max-w-site-max-width mx-auto px-space-md flex items-center justify-between gap-space-sm h-14"><nav class="flex items-center gap-space-md sm:gap-space-lg h-full min-w-0 overflow-x-auto [scrollbar-width:none] whitespace-nowrap"><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../index.html#guias">GUÍAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../empieza-aqui.html">EMPIEZA AQUÍ</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../sobre-nosotros.html">SOBRE NOSOTROS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../noticias/index.html">NOTICIAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../herramientas/index.html">HERRAMIENTAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../prompts/index.html">PROMPTS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../contacto.html">CONTACTO</a></nav><div class="flex items-center gap-space-md"><button id="search-trigger" type="button" aria-label="Buscar en las guías" class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[20px]">search</span></button><a class="hidden sm:inline-block bg-primary-container text-surface px-space-md py-space-xs font-label-md text-label-md uppercase tracking-wider hover:bg-primary transition-colors" href="../index.html#despacho">SUSCRÍBETE GRATIS</a></div></div></div><div class="hidden md:block bg-surface-container-low border-b border-outline-variant py-space-xs px-space-md"><div class="max-w-site-max-width mx-auto text-center"><p class="font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">47 GUÍAS COMPLETAS EN EXPANSIÓN · ACTUALIZADO A MODELOS 2026 · PROBADO EN TERMINAL Y FLUJOS REALES · CERO HUMO NI TEORÍA VACÍA</p></div></div></header>
+<main class="w-full max-w-site-max-width mx-auto px-space-md py-space-xl"><div class="flex flex-col w-full">
+<div class="border-b border-outline-variant pb-space-xs mb-space-lg">
+<nav class="flex items-center flex-wrap gap-space-xs font-caption text-caption text-on-surface-variant">
+<a class="hover:text-primary transition-colors" href="../index.html">Inicio</a>
+<span class="text-outline-variant">/</span>
+<a class="hover:text-primary transition-colors" href="../index.html#guias">Guías</a>
+<span class="text-outline-variant">/</span>
+<span class="text-secondary uppercase font-semibold">Seguridad</span>
+</nav>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-col-gap">
+<article class="lg:col-span-8 flex flex-col space-y-space-xl">
+<figure data-hero class="space-y-space-xs"><img class="w-full border border-outline-variant" src="../img/guias/hero-alucinaciones-ia.jpg" alt="Clasificación de Vectara que mide cuánto alucina cada modelo de IA" width="1280" height="720" fetchpriority="high" decoding="async"/><figcaption class="font-caption text-caption text-on-surface-variant">Captura de pantalla: <a class="underline" href="https://github.com/vectara/hallucination-leaderboard" rel="nofollow noopener" target="_blank">github.com/vectara/hallucination-leaderboard</a>.</figcaption></figure>
+<header class="space-y-space-md border-b border-outline-variant pb-space-xl">
+<span class="bg-surface-container-high text-secondary border border-outline-variant px-space-xs py-space-xxs font-kicker text-kicker uppercase tracking-widest inline-block">
+          SEGURIDAD // FIABILIDAD
+        </span>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight leading-tight">
+          Alucinaciones de la IA: cómo detectar cuando se está inventando algo
+        </h1>
+<p class="font-lead-paragraph text-lead-paragraph text-on-surface-variant leading-relaxed">
+          Por qué los modelos inventan URLs, citas y librerías inexistentes con absoluta convicción, en qué tareas ocurre más y técnicas prácticas para forzar la honestidad epistémica.
+        </p>
+<div class="pt-space-sm border-t border-outline-variant flex flex-wrap items-center justify-between gap-space-sm font-label-md text-label-md text-on-surface-variant">
+<span class="font-semibold text-on-surface">Por la Redacción de El Telar</span>
+<button class="inline-flex items-center gap-1 mt-2 px-3 py-1.5 bg-surface-container text-primary font-label-md text-[12px] font-semibold uppercase tracking-wider hover:bg-surface-container-high transition-colors" id="copy-guide-btn" type="button"><span class="material-symbols-outlined text-[16px]">content_copy</span> Copiar guía para tu IA</button><span class="inline-flex items-center gap-1 ml-1"><button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" id="save-guide-btn" title="Guardar guía" type="button"><span class="material-symbols-outlined text-[16px]">bookmark_border</span></button><button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" id="copy-link-btn" title="Copiar enlace permanente" type="button"><span class="material-symbols-outlined text-[16px]">share</span></button></span>
+<span class="flex items-center gap-1 text-caption font-caption">
+<span class="material-symbols-outlined text-[15px] text-on-surface-variant">schedule</span>
+              15 min de lectura
+            </span>
+</div>
+</header>
+<section class="prose max-w-editorial-max-width">
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed text-justify">
+<span class="float-left text-primary font-display text-[68px] leading-[0.8] pr-3 pt-1 font-normal select-none">L</span>os modelos de lenguaje no consultan una enciclopedia verificada al generar una respuesta: calculan la probabilidad estadística de la siguiente palabra según patrones aprendidos en el entrenamiento. Cuando un modelo redacta un informe con un tono impecable y categórico, esa seguridad superficial no mide rigor fáctico, sino plausibilidad. La elocuencia no es correlato de la verdad.
+        </p>
+</section>
+<div class="bg-surface-container-low border border-outline-variant p-space-lg space-y-space-md shadow-sm">
+<div class="flex items-center gap-space-xs border-b border-outline-variant pb-space-xs">
+<span class="material-symbols-outlined text-secondary text-[20px]">warning</span>
+<h3 class="font-kicker text-kicker uppercase tracking-widest text-primary">MAPA RÁPIDO DE RIESGO</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md pt-space-xxs">
+<div class="bg-surface-container-lowest border-l-4 border-error p-space-sm space-y-space-xs">
+<span class="font-kicker text-kicker uppercase text-error tracking-wider">RIESGO ALTO</span>
+<p class="font-label-md text-label-md font-semibold text-on-surface">Referencias exactas inventadas</p>
+<ul class="font-caption text-caption text-on-surface-variant space-y-1 list-disc list-inside">
+<li>Citas bibliográficas y DOI.</li>
+<li>Nombres de funciones de librerías poco comunes.</li>
+<li>Estadísticas y porcentajes aislados.</li>
+</ul>
+</div>
+<div class="bg-surface-container-lowest border-l-4 border-secondary p-space-sm space-y-space-xs">
+<span class="font-kicker text-kicker uppercase text-secondary tracking-wider">RIESGO MEDIO</span>
+<p class="font-label-md text-label-md font-semibold text-on-surface">Deriva en contexto largo</p>
+<ul class="font-caption text-caption text-on-surface-variant space-y-1 list-disc list-inside">
+<li>Resúmenes de textos muy extensos.</li>
+<li>Líneas de tiempo con muchos matices.</li>
+</ul>
+</div>
+<div class="bg-surface-container-lowest border-l-4 border-primary-container p-space-sm space-y-space-xs">
+<span class="font-kicker text-kicker uppercase text-primary tracking-wider">RIESGO BAJO</span>
+<p class="font-label-md text-label-md font-semibold text-on-surface">Tareas ancladas al texto dado</p>
+<ul class="font-caption text-caption text-on-surface-variant space-y-1 list-disc list-inside">
+<li>Reescritura de estilo y tono.</li>
+<li>Traducción directa de un texto concreto.</li>
+</ul>
+</div>
+</div>
+<p class="font-caption text-caption text-on-surface-variant mt-space-sm">Esto no es intuición: el <a href="https://github.com/vectara/hallucination-leaderboard" target="_blank" rel="noopener">leaderboard público de Vectara</a> mide esto midiendo miles de resúmenes reales y encuentra justo este patrón — las tareas cortas y ancladas a un texto concreto han mejorado mucho, mientras que las conversaciones largas de varios turnos siguen siendo, con diferencia, donde más se inventa.</p>
+</div>
+<section class="space-y-space-md">
+<h2 id="sec-1" class="font-headline-md text-headline-md text-primary tracking-tight">
+          Los cuatro tipos más peligrosos en el trabajo profesional
+        </h2>
+<div class="space-y-space-md">
+<div class="border border-outline-variant bg-surface-container-lowest p-space-md">
+<h4 class="font-headline-sm text-headline-sm text-primary">Librería fantasma</h4>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                El modelo sugiere instalar un paquete que no existe en los registros oficiales. El riesgo real: alguien puede publicar después un paquete malicioso con ese mismo nombre, esperando a que otro lo instale sin comprobarlo.
+              </p>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest p-space-md">
+<h4 class="font-headline-sm text-headline-sm text-primary">Citas y autoría falsas</h4>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                Al pedir referencias, el modelo puede combinar nombres reales de investigadores con títulos de artículos que no existen, con apariencia perfectamente creíble.
+              </p>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest p-space-md">
+<h4 class="font-headline-sm text-headline-sm text-primary">Cálculo aritmético intermedio</h4>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                Un modelo de lenguaje no tiene una calculadora interna. En promedios ponderados o cálculos con varios pasos, puede simular una operación con apariencia ordenada pero cifras incorrectas.
+              </p>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest p-space-md">
+<h4 class="font-headline-sm text-headline-sm text-primary">Restricciones ignoradas en silencio</h4>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                Si le pides "solo empresas de la Unión Europea" y encuentra una fuera de ese criterio que le parece relevante, puede incluirla sin avisar de la excepción.
+              </p>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed mt-space-md">
+          Estos cuatro tipos comparten un rasgo común: en ningún caso el modelo "sabe" que se está equivocando. No hay una señal interna de duda que puedas detectar en el tono de la respuesta — la confianza expresada es la misma tanto si el dato es correcto como si es inventado. Es exactamente esta ausencia de señal de alarma la que hace que verificar lo verificable, en vez de confiar en la seguridad aparente del texto, sea la única defensa fiable. Lo mismo vale cuando el dato no viene de la memoria del modelo sino de un archivo que le has pasado: una cifra mal leída en un PDF escaneado llega con el mismo aplomo que una bien leída, y por eso conviene saber <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="analizar-imagenes-pdf-ia.html">cómo procesa la IA las imágenes y los PDFs</a> antes de fiarte de lo que extrae de ellos.
+        </p>
+</section>
+<section class="space-y-space-md">
+<h2 id="sec-2" class="font-headline-md text-headline-md text-primary tracking-tight">
+          Dos problemas distintos: inventar de más y omitir de menos
+        </h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          Cuando se habla de "alucinaciones" se suele pensar solo en el caso de invención activa: el modelo afirma algo falso con seguridad. Pero hay un segundo tipo de error, menos discutido y casi igual de peligroso en contextos profesionales: la omisión silenciosa. Ocurre cuando el modelo tiene la información correcta disponible (en el documento que le has pasado, o en el propio hilo de conversación) pero, al resumir o sintetizar, deja fuera un matiz importante sin señalarlo — no porque lo desconozca, sino porque el proceso de compresión de un texto largo en uno más corto tiende a descartar los detalles que el modelo juzga "menos centrales", aunque para ti sean el detalle que cambia la decisión.</p>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          La distinción importa porque las estrategias de mitigación son distintas para cada caso. Contra la invención activa, la defensa es pedir fuentes y verificar lo verificable, como se explica más abajo. Contra la omisión silenciosa, la defensa es distinta: pedir explícitamente que el resumen incluya cualquier excepción, condición o matiz presente en el original, en vez de asumir que "resumir bien" significa automáticamente "no perder nada importante". Un resumen que omite una cláusula de cancelación de un contrato no es técnicamente una invención, pero el daño práctico es el mismo o peor que si el modelo hubiera inventado un dato falso.</p>
+</section>
+<section class="space-y-space-md">
+<h2 id="sec-3" class="font-headline-md text-headline-md text-primary tracking-tight">
+          Por qué unos modelos alucinan más que otros en la misma tarea
+        </h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          No todos los modelos tienen la misma tendencia a inventar, y la diferencia no siempre va en la dirección que se esperaría. Modelos más nuevos y con más capacidad de "razonamiento" en ocasiones muestran tasas de alucinación más altas en preguntas muy específicas sobre hechos concretos (nombres, fechas exactas), precisamente porque generan respuestas más elaboradas y con más pasos intermedios donde puede colarse un dato inventado, comparado con un modelo más simple que se limita a responder de forma más directa.</p>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          Esto tiene una implicación práctica: no asumas que el modelo "más potente" o más reciente alucina automáticamente menos en cualquier tarea. Para preguntas de hechos muy específicos y verificables, conviene comprobar el dato independientemente del modelo usado, en vez de confiar en que la sofisticación general del modelo se traduce en menos errores fácticos concretos.
+        </p>
+</section>
+
+<blockquote class="border-l-4 border-secondary bg-surface-container-low p-space-lg my-space-lg">
+<p class="font-headline-sm text-headline-sm italic text-primary leading-snug">
+          «Un modelo de lenguaje no miente porque no tiene concepto de verdad: simplemente une palabras que suenan convincentes.»
+        </p>
+<footer class="mt-space-sm font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">
+          — REDACCIÓN EL TELAR
+        </footer>
+</blockquote>
+<section class="space-y-space-md">
+<figure data-inline-photo class="space-y-space-xs my-space-xl"><img class="w-full border border-outline-variant" src="../img/guias/foto-alucinaciones-ia.jpg" alt="Base de datos de casos judiciales con citas inventadas por IA" width="1280" height="720" loading="lazy" decoding="async"/><figcaption class="font-caption text-caption text-on-surface-variant">Captura de pantalla: <a class="underline" href="https://www.damiencharlotin.com/hallucinations/" rel="nofollow noopener" target="_blank">damiencharlotin.com/hallucinations</a>.</figcaption></figure>
+<h2 id="sec-4" class="font-headline-md text-headline-md text-primary tracking-tight">
+          En qué sectores el coste de una alucinación es más alto
+        </h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          El riesgo real de una alucinación no depende solo de la probabilidad de que ocurra, sino de lo caro que sale no detectarla a tiempo. En sectores legales, un modelo que cita jurisprudencia inexistente ha provocado ya sanciones documentadas a abogados que presentaron escritos sin verificar las citas generadas por IA — el tribunal no distingue entre "el abogado mintió" y "el abogado confió en una herramienta sin comprobarla", el resultado disciplinario es el mismo. En el ámbito médico y de salud, una recomendación de dosis o interacción de medicamentos inventada tiene un coste potencial que no admite el margen de error que sí es tolerable en, por ejemplo, redactar un borrador de correo interno.</p>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          En el extremo opuesto están las tareas de bajo riesgo: generar ideas para un titular, hacer una primera versión de un texto creativo, o resumir el ambiente general de una conversación larga sin que ningún dato puntual vaya a usarse para tomar una decisión. Ahí una alucinación ocasional apenas tiene coste, porque el resultado se revisa y se edita de todas formas antes de usarse. La regla práctica que se deriva de esto: el nivel de verificación que aplicas a una respuesta debe ser proporcional al coste real de que ese dato concreto esté mal, no un nivel fijo de desconfianza aplicado por igual a todo lo que genera un modelo.</p>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          Un ejercicio útil para calibrar esto en tu propio trabajo es clasificar de antemano, antes de escribir el prompt, en qué categoría cae la tarea que vas a pedirle al modelo: ¿el resultado se va a usar directamente sin revisión humana adicional, o va a pasar por alguien más antes de tener efecto en el mundo real? Esa sola pregunta, respondida con honestidad antes de empezar, suele bastar para decidir si conviene pedir fuentes explícitas desde el primer prompt o si basta con la revisión habitual que ya se le da a cualquier borrador.</p>
+</section>
+<section class="space-y-space-md">
+<h2 id="sec-5" class="font-headline-md text-headline-md text-primary tracking-tight">
+          Protocolos prácticos de detección y mitigación
+        </h2>
+<figure class="my-space-lg">
+<div class="p-space-md bg-surface-container-lowest">
+<div class="font-kicker text-kicker uppercase text-on-surface-variant tracking-wider mb-space-sm text-center">DIAGRAMA // EL FILTRO DE UNA AFIRMACIÓN CONCRETA</div>
+<svg aria-label="Diagrama de decisión: si una afirmación de la IA se puede verificar en una fuente independiente, confía más; si no, es una señal de alarma" class="w-full h-auto" fill="none" role="img" viewBox="0 0 680 150" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#ebeef8" height="80" width="160" x="10" y="35"></rect>
+<text fill="#072417" font-family="Inter" font-size="9.5" font-weight="700" text-anchor="middle" x="90" y="65">Afirmación</text>
+<text fill="#424843" font-family="Inter" font-size="8" text-anchor="middle" x="90" y="80">concreta de la IA</text>
+<text fill="#424843" font-family="Inter" font-size="8" text-anchor="middle" x="90" y="95">(cifra, cita, URL...)</text>
+<path d="M172 75 H198" stroke="#727973" stroke-width="1.5"></path><polygon fill="#727973" points="198,72 205,75 198,78"></polygon>
+<rect fill="#072417" height="80" width="170" x="208" y="35"></rect>
+<text fill="#f9f9ff" font-family="Inter" font-size="9" font-weight="700" text-anchor="middle" x="293" y="60">¿Se puede verificar</text>
+<text fill="#f9f9ff" font-family="Inter" font-size="9" font-weight="700" text-anchor="middle" x="293" y="75">en una fuente</text>
+<text fill="#f9f9ff" font-family="Inter" font-size="9" font-weight="700" text-anchor="middle" x="293" y="90">independiente?</text>
+<path d="M378 55 L404 20" stroke="#727973" stroke-width="1.5"></path><polygon fill="#727973" points="399,22 407,19 404,27"></polygon>
+<path d="M378 95 L404 130" stroke="#727973" stroke-width="1.5"></path><polygon fill="#727973" points="399,128 407,131 404,123"></polygon>
+<rect fill="#caead4" height="50" width="230" x="414" y="10"></rect>
+<text fill="#042013" font-family="Inter" font-size="9.5" font-weight="700" text-anchor="middle" x="529" y="30">SÍ → confía más</text>
+<text fill="#042013" font-family="Inter" font-size="8" text-anchor="middle" x="529" y="45">cita la fuente en tu entregable</text>
+<rect fill="#ffdad6" height="50" width="230" x="414" y="105"></rect>
+<text fill="#93000a" font-family="Inter" font-size="9.5" font-weight="700" text-anchor="middle" x="529" y="125">NO → señal de alarma</text>
+<text fill="#93000a" font-family="Inter" font-size="8" text-anchor="middle" x="529" y="140">verifica tú mismo antes de usarla</text>
+</svg>
+</div>
+<figcaption class="font-caption text-caption text-on-surface-variant mt-space-xs">El filtro de una sola pregunta que aplican los protocolos de esta sección.</figcaption>
+</figure>
+<div class="border-t border-b border-outline-variant py-space-md space-y-space-xs">
+<h4 class="font-headline-sm text-headline-sm text-primary flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[20px]">door_open</span>
+            1. Dale una salida honorable
+          </h4>
+<p class="font-body-md text-body-md text-on-surface-variant">
+            Por defecto, un modelo evita la respuesta vacía. Dale permiso explícito para no saber algo:
+          </p>
+<div class="bg-primary text-surface-bright p-space-md font-mono text-body-sm leading-relaxed border-l-2 border-secondary">
+<code>"Responde solo con la información del &lt;contexto&gt;. Si no se deduce de forma clara, responde exactamente: 'DATOS INSUFICIENTES EN FUENTE'. No infieras ni extrapoles."</code>
+</div>
+</div>
+<div class="border-b border-outline-variant py-space-md space-y-space-xs">
+<h4 class="font-headline-sm text-headline-sm text-primary flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[20px]">sync_alt</span>
+            2. Ancla la respuesta a un documento real (RAG)
+          </h4>
+<p class="font-body-md text-body-md text-on-surface-variant">
+            No preguntes por hechos recientes o privados a la memoria del modelo. Dale el documento original con citas de fragmentos literales; si no puede asociar una afirmación a un párrafo concreto, descarta esa afirmación.
+          </p>
+</div>
+<div class="border-b border-outline-variant py-space-md space-y-space-xs">
+<h4 class="font-headline-sm text-headline-sm text-primary flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[20px]">terminal</span>
+            3. Deja que el cálculo lo haga código, no el modelo
+          </h4>
+<p class="font-body-md text-body-md text-on-surface-variant">
+            Para cualquier tarea cuantitativa, pide que el modelo escriba y ejecute un script en vez de calcular "de memoria". El resultado debe venir de la ejecución, no de la predicción de texto.
+          </p>
+</div>
+<div class="border-b border-outline-variant py-space-md space-y-space-xs">
+<h4 class="font-headline-sm text-headline-sm text-primary flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[20px]">travel_explore</span>
+            4. Usa búsqueda web activada para hechos recientes
+          </h4>
+<p class="font-body-md text-body-md text-on-surface-variant">
+            Para preguntas sobre eventos recientes o información que cambia con frecuencia, usa un asistente con capacidad de búsqueda web activada en vez de fiarte de su conocimiento interno, que tiene una fecha de corte y no se actualiza solo. La combinación de búsqueda real más generación de texto reduce mucho el margen para inventar, porque el modelo tiene datos frescos delante en vez de tener que extrapolar de memoria.
+          </p>
+</div>
+<div class="border-b border-outline-variant py-space-md space-y-space-xs">
+<h4 class="font-headline-sm text-headline-sm text-primary flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[20px]">compare_arrows</span>
+            5. Pide una segunda opinión con otro modelo para datos críticos
+          </h4>
+<p class="font-body-md text-body-md text-on-surface-variant">
+            Para un dato de verdad importante, verificarlo con un segundo modelo distinto (o una segunda pregunta formulada de otra forma al mismo modelo) es una comprobación barata: si ambos coinciden en el mismo dato específico y verificable, la probabilidad de que ambos hayan inventado exactamente lo mismo es baja. Si difieren, es una señal clara de que hace falta verificación externa antes de dar el dato por bueno.
+          </p>
+</div>
+<div class="border-b border-outline-variant py-space-md space-y-space-xs">
+<h4 class="font-headline-sm text-headline-sm text-primary flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[20px]">psychology_alt</span>
+            6. No confundas que el modelo "se disculpe" con que haya corregido el dato
+          </h4>
+<p class="font-body-md text-body-md text-on-surface-variant">
+            Cuando señalas un error, el modelo casi siempre responde con una disculpa y una versión corregida — pero eso no garantiza que la nueva versión sea correcta, solo que suena más segura de sí misma. Es tan capaz de generar una segunda cifra igualmente inventada como de dar con el dato real, sobre todo si tu corrección fue una pregunta genérica ("¿seguro que es así?") en vez de aportar tú mismo el dato correcto o pedirle explícitamente que busque la fuente antes de corregir.
+          </p>
+</div>
+<div class="py-space-md space-y-space-xs">
+<h4 class="font-headline-sm text-headline-sm text-primary flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[20px]">rule</span>
+            7. Divide tareas largas en pasos verificables por separado
+          </h4>
+<p class="font-body-md text-body-md text-on-surface-variant">
+            Pedir un informe completo de una tirada (introducción, datos, análisis y conclusiones en un solo turno) da más superficie para que se cuele un dato inventado en algún punto intermedio sin que lo notes al leer el conjunto. Pedir cada bloque por separado y revisar cada uno antes de pasar al siguiente hace que cualquier error quede aislado y sea más fácil de detectar, en vez de diluido entre varios párrafos que parecen coherentes entre sí.
+          </p>
+</div>
+</section>
+<section class="space-y-space-md">
+<h2 id="sec-6" class="font-headline-md text-headline-md text-primary tracking-tight">
+          Checklist antes de publicar o enviar un entregable
+        </h2>
+<div class="border border-outline-variant bg-surface-container-lowest p-space-md space-y-space-sm">
+<label class="flex items-start gap-space-sm cursor-pointer select-none">
+<input class="mt-1 w-4 h-4 accent-primary rounded-none border border-outline" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface">
+<strong>Enlaces:</strong> comprueba uno a uno que las URLs generadas funcionan de verdad.
+            </span>
+</label>
+<div class="border-t border-outline-variant"></div>
+<label class="flex items-start gap-space-sm cursor-pointer select-none">
+<input class="mt-1 w-4 h-4 accent-primary rounded-none border border-outline" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface">
+<strong>Paquetes y dependencias:</strong> verifica en el registro oficial que existen y tienen historial real.
+            </span>
+</label>
+<div class="border-t border-outline-variant"></div>
+<label class="flex items-start gap-space-sm cursor-pointer select-none">
+<input class="mt-1 w-4 h-4 accent-primary rounded-none border border-outline" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface">
+<strong>Totales numéricos:</strong> recalcula en una hoja de cálculo cualquier porcentaje o ratio importante.
+            </span>
+</label>
+<div class="border-t border-outline-variant"></div>
+<label class="flex items-start gap-space-sm cursor-pointer select-none">
+<input class="mt-1 w-4 h-4 accent-primary rounded-none border border-outline" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface">
+<strong>Citas textuales:</strong> busca entre comillas las declaraciones atribuidas a alguien.
+            </span>
+</label>
+<div class="border-t border-outline-variant"></div>
+<label class="flex items-start gap-space-sm cursor-pointer select-none">
+<input class="mt-1 w-4 h-4 accent-primary rounded-none border border-outline" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface">
+<strong>Matices y excepciones:</strong> si el entregable es un resumen, confirma que ninguna condición o excepción del original se quedó fuera sin mencionar.
+            </span>
+</label>
+</div>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed mt-space-md">
+          Esta lista funciona mejor como hábito de equipo que como responsabilidad individual dispersa. Si varias personas usan IA generativa para producir entregables similares, merece la pena convertir esta checklist en un paso explícito del proceso de revisión — por ejemplo, como último punto antes de aprobar cualquier documento que haya pasado por un asistente de IA — en vez de confiar en que cada persona la recuerde por su cuenta. La experiencia de los equipos que ya lo hacen así es consistente: la mayoría de los fallos no ocurre por desconocer el riesgo, sino porque nadie tenía asignado explícitamente el paso de comprobarlo antes de enviar.</p>
+</section>
+<section class="space-y-space-md">
+<h2 id="sec-7" class="font-headline-md text-headline-md text-primary tracking-tight">
+          Un caso real de cómo se detecta una alucinación
+        </h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          Imagina que le pides a un asistente de IA un resumen de la normativa de una subvención pública, incluyendo el plazo de solicitud. El modelo responde con seguridad: "el plazo de presentación finaliza el 15 de marzo". La respuesta suena precisa y específica — precisamente el tipo de dato que más invita a darlo por bueno sin comprobar, porque "inventar una fecha exacta" no encaja con la intuición de cómo se comporta normalmente alguien que miente.</p>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          El proceso de verificación no requiere desconfiar sistemáticamente de todo lo que dice el modelo, solo aplicar la regla de esta guía: cuanto más específico y verificable es un dato, más vale la pena comprobarlo antes de actuar sobre él. En este caso, bastaría con pedirle al modelo la fuente concreta de esa fecha (¿qué documento oficial la menciona?) y, si no puede citar una fuente verificable, o si la cita de repente cuando se le pregunta, tratar el dato como no confirmado hasta comprobarlo directamente en la web oficial correspondiente. Este pequeño hábito — pedir la fuente antes de actuar sobre un dato importante — detecta la gran mayoría de alucinaciones fácticas antes de que causen un problema real.</p>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          Un segundo caso, esta vez de "librería fantasma": al pedir ayuda para procesar un archivo Excel en Python, el modelo sugiere <code>import pandas_excel_tools</code> y da por hecho que ese paquete existe con una función concreta para el caso. El código tiene buen aspecto y hasta viene con comentarios explicativos razonables, pero el paquete no existe en el índice oficial de PyPI. Ejecutarlo directamente daría un error de importación evidente — pero el riesgo real no es ese error visible, sino lo que pasaría si alguien, sabiendo que los modelos cometen este error con cierta frecuencia, publicase un paquete malicioso con exactamente ese nombre a la espera de que otro desarrollador lo instale sin comprobarlo primero, confiando en que "si el asistente lo sugirió, debe de existir".</p>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          La verificación aquí es mecánica y rápida: antes de instalar cualquier paquete sugerido por un asistente, una búsqueda de 10 segundos en el índice oficial correspondiente (PyPI para Python, npm para JavaScript, crates.io para Rust) confirma si existe de verdad, cuántas descargas tiene y desde cuándo se mantiene. Un paquete con cero historial, publicado hace pocos días y con un nombre que coincide sospechosamente con lo que un asistente de IA "inventaría" es motivo suficiente para no instalarlo sin revisar antes el código fuente.</p>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          Ambos casos comparten una misma lección de fondo: la alucinación no siempre parece un error evidente, a menudo tiene la forma exacta de algo correcto. Esa es la razón por la que "parece razonable" nunca debería ser el criterio final para dar por buena una información importante — el criterio final es siempre si se puede verificar de forma independiente, no si suena convincente.</p>
+</section>
+<section class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">
+          Preguntas frecuentes
+        </h2>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Las alucinaciones van a desaparecer con la siguiente generación de modelos?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Es poco probable que desaparezcan del todo, porque son consecuencia directa de cómo funciona un modelo de lenguaje (predicción estadística de texto plausible), no un simple defecto de entrenamiento que se corrige con más datos. Lo que sí ha mejorado de forma medible es la tasa en tareas ancladas a un texto concreto, según el propio leaderboard público de Vectara citado antes en esta guía. Para hechos sin ancla externa (fechas exactas, cifras específicas, nombres poco comunes), el riesgo se mantiene.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Aumentar la "temperatura" o cambiar la configuración del modelo reduce las alucinaciones?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Una temperatura más baja hace que el modelo elija de forma más conservadora entre las opciones más probables, lo que en la práctica reduce ligeramente la varianza de la respuesta, pero no resuelve el problema de fondo: si el dato más "probable" según el entrenamiento es incorrecto, una temperatura baja hará que el modelo lo repita con más consistencia, no que dé con el dato correcto.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Hay alguna señal en el propio texto que delate cuándo el modelo está alucinando?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+No de forma fiable. Es tentador pensar que un tono más vago o dubitativo indica menor certeza real, pero en la práctica los modelos pueden expresar la misma confianza aparente tanto si el dato es correcto como si es inventado, precisamente porque no tienen una medida interna de certeza que se traduzca directamente en el estilo de la respuesta. La única señal fiable sigue siendo externa: verificar el dato contra una fuente independiente, no interpretar el tono del texto generado.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Es lo mismo una alucinación que un modelo "desactualizado" que no conoce un hecho reciente?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+No exactamente, aunque a menudo se confunden. Un modelo sin acceso a información reciente que dice honestamente "mi conocimiento tiene una fecha de corte y no puedo confirmar eventos posteriores" no está alucinando, está siendo transparente sobre su límite. La alucinación ocurre cuando, en vez de admitir ese límite, el modelo rellena el hueco con una respuesta inventada que suena igual de segura que una respuesta bien fundamentada. La diferencia práctica es justo la que se pide en el primer protocolo de esta guía: darle al modelo permiso explícito para decir "no lo sé" en vez de premiar implícitamente cualquier respuesta con apariencia completa.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Todos los modelos y todas las tareas necesitan el mismo nivel de precaución?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+No. La precaución debe escalar con dos factores: cuánto se aleja la tarea de un texto de referencia concreto (más lejos, más riesgo) y cuánto cuesta que el dato final esté mal (más caro, más verificación). Una consulta rápida sobre un tema general con bajo coste de error no necesita el mismo protocolo que redactar una cláusula contractual o calcular una cifra que va a un informe financiero. Aplicar el mismo nivel máximo de escepticismo a todo lo que genera un modelo no es más seguro, solo más lento — la habilidad real está en calibrar cuánto verificar según lo que de verdad está en juego en cada caso concreto.
+</div>
+</div>
+</section>
+<div class="border-t-2 border-primary pt-space-md mt-space-2xl bg-surface-container-low p-space-lg border border-outline-variant">
+<div class="flex flex-col sm:flex-row items-start sm:items-center gap-space-md">
+<div class="w-16 h-16 rounded-full bg-primary flex items-center justify-center text-on-primary font-headline-md text-headline-md">ET</div>
+<div class="space-y-space-xxs">
+<h4 class="font-headline-sm text-headline-sm text-primary">Redacción El Telar</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Mesa técnica centrada en auditoría de sistemas generativos y mitigación de riesgos operativos.
+            </p>
+</div>
+</div>
+</div>
+</article>
+<aside class="lg:col-span-4 flex flex-col space-y-space-xl">
+<div class="bg-surface-container-lowest border border-outline-variant p-space-md space-y-space-md sticky top-space-md">
+<h3 class="font-kicker text-kicker uppercase tracking-widest text-primary border-b border-outline-variant pb-space-xs">SUMARIO</h3>
+<nav class="space-y-space-sm font-label-md text-label-md text-on-surface-variant">
+<a class="block hover:text-primary transition-colors" href="#sec-1">Los cuatro tipos más peligrosos en el trabajo</a>
+<a class="block hover:text-primary transition-colors" href="#sec-2">Inventar de más y omitir de menos</a>
+<a class="block hover:text-primary transition-colors" href="#sec-3">Por qué unos modelos alucinan más</a>
+<a class="block hover:text-primary transition-colors" href="#sec-4">Dónde el coste es más alto</a>
+<a class="block hover:text-primary transition-colors" href="#sec-5">Protocolos de detección y mitigación</a>
+<a class="block hover:text-primary transition-colors" href="#sec-6">Checklist antes de publicar</a>
+<a class="block hover:text-primary transition-colors" href="#sec-7">Caso real de detección</a>
+</nav>
+
+</div>
+</aside>
+</div>
+<section class="mt-space-4xl pt-space-xl border-t-2 border-primary space-y-space-lg">
+<h3 class="font-headline-md text-headline-md text-primary tracking-tight">Continúa explorando el archivo</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-col-gap"><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="como-escribir-prompts.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-como-escribir-prompts.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="como-escribir-prompts.html">Qué es un prompt y cómo escribir instrucciones que la IA entienda</a></h4></div></article><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="estafas-con-ia.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-estafas-con-ia.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="estafas-con-ia.html">Estafas con IA en 2026: cómo reconocerlas y proteger a tu familia</a></h4></div></article><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="grounding-evitar-alucinaciones.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-grounding-evitar-alucinaciones.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="grounding-evitar-alucinaciones.html">Grounding: cómo evitar que tu IA invente datos conectándola a la realidad</a></h4></div></article></div>
+</section>
+</div></main><footer class="w-full bg-surface-container-low border-t border-outline-variant mt-space-4xl"><div class="max-w-site-max-width mx-auto px-space-md py-space-3xl"><div class="grid grid-cols-1 md:grid-cols-3 gap-col-gap"><div class="space-y-space-sm"><span class="font-headline-md text-headline-md text-primary">El Telar</span><p class="font-body-sm text-body-sm text-on-surface-variant">Publicación independiente de tecnología y automatización con agentes. Contenidos verificados en producción, sin patrocinios opacos ni promesas vacías.</p></div><div><h3 class="font-kicker text-kicker uppercase tracking-wider text-on-surface mb-space-md">SECCIONES</h3><ul class="space-y-space-xs font-body-sm text-body-sm"><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html#guias">Archivo de Guías</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../empieza-aqui.html">Guía para Principiantes</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../sobre-nosotros.html">Manifiesto Editorial</a></li><li class="pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html#despacho">Boletín Semanal</a></li></ul></div><div><h3 class="font-kicker text-kicker uppercase tracking-wider text-on-surface mb-space-md">CONTACTO &amp; PRENSA</h3><div class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant"><p class="font-semibold text-on-surface">contacto@eltelar.es</p><p>Síguenos: <a class="hover:text-primary underline" href="https://www.instagram.com/eltelar_es/" rel="me noopener" target="_blank">Instagram</a> · <a class="hover:text-primary underline" href="https://www.threads.com/@eltelar_es" rel="me noopener" target="_blank">Threads</a> · <a class="hover:text-primary underline" href="https://x.com/eltelar_es" rel="me noopener" target="_blank">X</a></p></div></div></div></div><div class="border-t border-outline-variant py-space-md bg-surface-container-lowest"><div class="max-w-site-max-width mx-auto px-space-md flex flex-col md:flex-row items-center justify-between gap-space-sm text-caption font-caption text-on-surface-variant"><div>© 2026 El Telar. Todos los derechos reservados. Independencia editorial garantizada.</div><div class="flex items-center gap-space-md"><a class="hover:text-on-surface transition-colors" href="../privacidad.html">Privacidad</a><a class="hover:text-on-surface transition-colors" href="../terminos.html">Términos</a><a class="hover:text-on-surface transition-colors" href="../sobre-nosotros.html">Sobre nosotros</a><a class="hover:text-on-surface transition-colors" href="../contacto.html">Contacto</a></div></div></div></footer><script defer src="../js/copy-guide.js"></script><script defer src="../js/guide-interactions.js"></script><script defer src="../js/reading-progress.js"></script><script defer src="../js/search.js?v=7"></script><script defer src="../js/entrance.js"></script><script defer src="../js/cookie-consent.js?v=4"></script></body></html>

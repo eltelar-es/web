@@ -1,0 +1,12 @@
+.git
+.github
+node_modules
+src
+package.json
+package-lock.json
+tailwind.config.js
+wrangler.jsonc
+.assetsignore
+.wrangler
+worker
+tools

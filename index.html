@@ -1,0 +1,1519 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta name="google-site-verification" content="FaliqF1Bu92N5bnNmfTxiEFt6RTyKW8fth7l1TfuQA8" />
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>El Telar — El boletín y archivo práctico de IA y agentes</title>
+<meta name="description" content="Guías prácticas de inteligencia artificial y agentes en español, biblioteca de prompts, herramientas gratis y noticias de IA. Sin humo ni relleno.">
+<link rel="canonical" href="https://eltelar.es/"><link rel="icon" type="image/svg+xml" href="img/favicon.svg?v=4"><link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png?v=4"><link rel="apple-touch-icon" href="img/apple-touch-icon.png?v=4"><meta name="theme-color" content="#072417"><link rel="manifest" href="manifest.json"><link rel="alternate" type="application/rss+xml" title="El Telar" href="feed.xml">
+<meta property="og:type" content="website">
+<meta property="og:title" content="El Telar — El boletín y archivo práctico de IA y agentes">
+<meta property="og:description" content="Guías prácticas de inteligencia artificial y agentes autónomos, sin humo ni relleno.">
+<meta property="og:url" content="https://eltelar.es/">
+<meta property="og:site_name" content="El Telar">
+<meta property="og:locale" content="es_ES"><meta property="og:image" content="https://eltelar.es/img/og-image.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="El Telar — El boletín y archivo práctico de IA y agentes">
+<meta name="twitter:description" content="Guías prácticas de inteligencia artificial y agentes autónomos, sin humo ni relleno."><meta name="twitter:image" content="https://eltelar.es/img/og-image.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "El Telar",
+  "url": "https://eltelar.es/",
+  "logo": "https://eltelar.es/img/icon-512.png",
+  "description": "Publicación independiente de tecnología y automatización con agentes de IA.",
+  "sameAs": ["https://x.com/eltelar_es", "https://www.instagram.com/eltelar_es/", "https://www.threads.com/@eltelar_es", "https://www.reddit.com/user/eltelar_es/"]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "El Telar",
+  "url": "https://eltelar.es/",
+  "inLanguage": "es",
+  "description": "Guías prácticas de inteligencia artificial y agentes autónomos, sin humo ni relleno."
+}
+</script>
+
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet"/></noscript>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500;1,6..72,600&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500;1,6..72,600&amp;display=swap" rel="stylesheet"/></noscript>
+<link rel="stylesheet" href="css/tailwind.css">
+<link rel="stylesheet" href="css/entrance.css?v=2"><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}(function(){var c=null;try{c=localStorage.getItem('eltelar-cookie-consent')}catch(e){}var g=c==='accepted'?'granted':'denied';gtag('consent','default',{ad_storage:g,ad_user_data:g,ad_personalization:g,analytics_storage:g,wait_for_update:500});window.adsbygoogle=window.adsbygoogle||[];if(g!=='granted'){window.adsbygoogle.requestNonPersonalizedAds=1;}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-4DPTKEG79N"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4DPTKEG79N');</script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8239907995939753" crossorigin="anonymous"></script><style id="telar-polish">
+.guide-card{position:relative;background:#fff;border:1px solid rgba(7,36,23,.10);padding:0 1.5rem 1.5rem;overflow:hidden;transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s,border-color .25s}.guide-card .guide-thumb{margin:0 -1.5rem 1.5rem}.guide-card .guide-thumb img{height:7rem}main .guide-card:hover{border-color:rgba(7,36,23,.18);box-shadow:0 1px 2px rgba(7,36,23,.05),0 18px 36px -20px rgba(7,36,23,.35)}.guide-card::before{z-index:1}#guide-grid{column-gap:1.5rem;row-gap:1.5rem}
+.guide-card::before{content:"";position:absolute;left:0;top:-1px;height:3px;width:44px;background:var(--topic);transition:width .35s cubic-bezier(.2,.7,.2,1)}
+.guide-card:hover::before{width:100%}
+.guide-card:hover{transform:translateY(-3px)}
+.guide-topic{color:color-mix(in srgb,var(--topic) 62%,#181c23);border-bottom:1px solid color-mix(in srgb,var(--topic) 40%,transparent)}
+#prompts-teaser a.group{transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s,border-color .2s}
+#prompts-teaser a.group:hover{transform:translateY(-3px);box-shadow:0 14px 28px -20px rgba(7,36,23,.55)}
+.pd-ring{position:absolute;right:-90px;top:-90px;width:300px;height:300px;border:1px solid rgba(174,206,185,.25);border-radius:50%;box-shadow:0 0 0 40px rgba(174,206,185,.05)}
+.pd-dot{width:8px;height:8px;border-radius:50%;background:#fd8a42;box-shadow:0 0 0 0 rgba(253,138,66,.6);animation:pd-pulse 2.4s infinite}
+@keyframes pd-pulse{0%{box-shadow:0 0 0 0 rgba(253,138,66,.55)}70%{box-shadow:0 0 0 9px rgba(253,138,66,0)}100%{box-shadow:0 0 0 0 rgba(253,138,66,0)}}
+mark.pd-ph{background:#ffddbb;color:#682c00;padding:0 .2em;border-radius:2px;font-weight:600}
+.pd-fade{-webkit-mask-image:linear-gradient(#000 78%,transparent);mask-image:linear-gradient(#000 78%,transparent)}
+@media (prefers-reduced-motion:reduce){.guide-card,.guide-card::before,#prompts-teaser a.group{transition:none}.guide-card:hover,#prompts-teaser a.group:hover{transform:none}.pd-dot{animation:none}}
+</style></head>
+<body class="bg-[#f9f9ff] font-sans antialiased text-charcoal-body selection:bg-emerald-racing selection:text-parchment min-h-screen flex flex-col justify-between">
+<!-- TOP ISSUE & DATE TELEMETRY HEADER -->
+<header class="w-full border-b border-border-rule">
+<div class="max-w-[1240px] mx-auto px-4 sm:px-8 py-2 flex flex-col sm:flex-row items-center justify-between text-[11px] tracking-widest text-charcoal-muted uppercase font-medium gap-1 sm:gap-4">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-racing"></span>
+<span>Edición Digital // Actualizado 2026 // El Telar &amp; Agentes</span>
+</div>
+<div class="hidden sm:flex items-center gap-4 text-[11px] tracking-widest">
+<span>Madrid · Remoto</span>
+<span class="text-border-rule">|</span>
+<span class="text-emerald-racing font-semibold">Sin Humo · 100% Producción</span>
+</div>
+</div>
+<!-- GRAND MASTHEAD -->
+<div class="max-w-[1240px] mx-auto px-4 sm:px-8 pt-8 pb-7 text-center">
+<div class="flex items-center justify-center gap-3 mb-2">
+<span class="h-px bg-border-rule flex-1 max-w-[140px] hidden sm:block"></span>
+<p class="font-serif italic text-base sm:text-lg text-emerald-racing tracking-tight">Publicación Independiente de Tecnología &amp; Agentes</p>
+<span class="h-px bg-border-rule flex-1 max-w-[140px] hidden sm:block"></span>
+</div>
+<a class="inline-block" href="index.html">
+<h1 class="font-serif text-5xl sm:text-7xl lg:text-8xl tracking-tight text-charcoal-main font-medium hover:text-emerald-racing transition-colors">
+          El Telar
+        </h1>
+</a>
+<p class="mt-2.5 text-xs sm:text-sm text-charcoal-muted tracking-[0.16em] uppercase font-sans font-medium">
+        El boletín y archivo práctico de inteligencia artificial y agentes autónomos
+      </p>
+</div>
+</header>
+<!-- EDITORIAL NAVIGATION BAR (sibling of header, not nested inside it, so its containing block spans the full page and the sticky "you are here" indicator stays visible while scrolling) -->
+<div class="sticky top-0 z-40 border-t border-b border-border-rule bg-parchment-soft/95 backdrop-blur-sm">
+<div class="max-w-[1240px] mx-auto px-4 sm:px-8 flex flex-nowrap items-center justify-between gap-x-4 h-12">
+<nav id="masthead-nav" class="min-w-0 flex-1 lg:flex-none flex flex-nowrap items-center overflow-x-auto [scrollbar-width:none] gap-x-5 xl:gap-x-8 text-[12px] sm:text-[13px] tracking-widest font-medium uppercase text-charcoal-main">
+<a class="nav-spy-link hover:text-emerald-racing transition-colors whitespace-nowrap pb-0.5 border-b-2 border-transparent" data-nav-target="guias" href="#guias">Guías</a>
+<a class="hover:text-emerald-racing transition-colors whitespace-nowrap" href="empieza-aqui.html">Empieza aquí</a>
+<a class="nav-spy-link hover:text-emerald-racing transition-colors whitespace-nowrap pb-0.5 border-b-2 border-transparent" data-nav-target="sobre-nosotros" href="#sobre-nosotros">Sobre nosotros</a>
+<a class="hover:text-emerald-racing transition-colors whitespace-nowrap" href="noticias/index.html">Noticias</a>
+<a class="hover:text-emerald-racing transition-colors whitespace-nowrap" href="herramientas/index.html">Herramientas</a>
+<a class="hover:text-emerald-racing transition-colors whitespace-nowrap" href="prompts/index.html">Prompts</a>
+<a class="hover:text-emerald-racing transition-colors whitespace-nowrap" href="contacto.html">Contacto</a>
+</nav>
+<div class="flex items-center gap-4 lg:pl-4 lg:border-l border-border-rule">
+<button id="search-trigger" type="button" aria-label="Buscar en las guías" class="p-1.5 text-charcoal-muted hover:text-emerald-racing transition-colors"><span class="material-symbols-outlined text-[20px]">search</span></button>
+<a class="hidden sm:inline-flex items-center justify-center px-4 py-1.5 text-xs font-semibold uppercase tracking-wider bg-gold-accent text-emerald-racing hover:bg-amber-editorial hover:text-[#f9f9ff] transition-colors" href="#despacho">
+            Suscríbete Gratis
+          </a>
+</div>
+</div>
+</div>
+<main class="w-full flex-1">
+<!-- STATS / TICKER DATELINE -->
+<section class="border-b border-border-rule bg-[#f1f3fe] py-2.5">
+<div class="max-w-[1240px] mx-auto px-4 sm:px-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-1 text-xs tracking-wider text-charcoal-muted font-sans uppercase">
+<span class="flex items-center gap-1.5 text-charcoal-main font-medium">
+<span class="font-serif text-sm italic font-semibold text-emerald-racing">47</span> guías completas en expansión
+        </span>
+<span class="text-border-rule hidden sm:inline">·</span>
+<span class="hidden sm:flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-racing"></span>
+          Actualizado a modelos 2026
+        </span>
+<span class="text-border-rule hidden sm:inline">·</span>
+<span class="hidden sm:flex items-center gap-1.5">
+          Probado en terminal y flujos reales
+        </span>
+<span class="text-border-rule hidden sm:inline">·</span>
+<span class="text-amber-editorial font-semibold">Cero humo ni teoría vacía</span>
+</div>
+</section>
+<!-- HERO SECTION / EDITORIAL COVER STORY -->
+<section class="max-w-[1240px] mx-auto px-4 sm:px-8 pt-12 pb-14 sm:pt-16 sm:pb-16 border-b border-border-rule">
+<div class="max-w-4xl mx-auto text-center">
+<!-- Eyebrow -->
+<div class="appear appear--pop inline-flex items-center gap-2 mb-6" style="--d:0.05s">
+<span class="h-px w-6 bg-emerald-racing"></span>
+<span class="text-[11px] font-bold tracking-[0.22em] text-emerald-racing uppercase">
+            Guías de Inteligencia Artificial // Sin Humo
+          </span>
+<span class="h-px w-6 bg-emerald-racing"></span>
+</div>
+<!-- Grand Editorial Headline -->
+<h2 class="appear appear--soft font-serif text-4xl sm:text-6xl lg:text-[68px] leading-[1.12] text-charcoal-main font-normal tracking-tight mb-7" style="--d:0.22s">
+          Aprende a usar <span class="hero-em-reveal italic font-medium text-emerald-racing">agentes de IA</span> sin perder semanas probando.
+        </h2>
+<!-- Subheading -->
+<p class="appear appear--soft font-serif text-lg sm:text-2xl text-charcoal-body/90 leading-relaxed max-w-2xl mx-auto mb-9 italic" style="--d:0.5s">
+          Guías prácticas, directas y sin relleno para dominar la inteligencia artificial de verdad en flujos reales de producción.
+        </p>
+<!-- Understated Editorial Text-Link CTAs -->
+<div class="flex flex-col sm:flex-row items-center justify-center gap-5 sm:gap-8 font-sans text-xs tracking-widest uppercase font-semibold">
+<a class="appear appear--soft inline-flex items-center gap-2 text-emerald-racing border-b-2 border-emerald-racing pb-1 hover:text-charcoal-main hover:border-charcoal-main transition-colors" href="#guias" style="--d:0.7s">
+<span>Ver todas las guías del archivo</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+<a class="appear appear--soft inline-flex items-center gap-2 text-charcoal-muted border-b border-border-rule pb-1 hover:text-charcoal-main hover:border-charcoal-main transition-colors" href="empieza-aqui.html" style="--d:0.8s">
+<span>Empieza por lo esencial</span>
+</a>
+</div>
+</div>
+</section>
+<!-- RADAR SECTION: LIVE-STYLE MODEL COMPARISON PANEL, UNIQUE TO THIS ARCHIVE -->
+<!-- PROMPTS TEASER SECTION -->
+<section class="bg-[#f1f3fe] border-b border-border-rule" id="prompts-teaser"><div class="max-w-[1240px] mx-auto px-4 sm:px-8 py-14"><div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-6 border-b-2 border-charcoal-main mb-8"><div><div class="text-[11px] font-bold tracking-[0.2em] text-amber-editorial uppercase mb-2">01 // Prompts para el día a día</div><h3 class="font-serif text-3xl sm:text-4xl text-charcoal-main font-medium tracking-tight">Copia, pega y resuelve</h3></div><p class="text-xs sm:text-sm text-charcoal-muted max-w-md font-serif italic sm:text-right">Un prompt para cada cosa que tienes que hacer: contratos, reclamaciones, emails, currículum, menús. Cambia lo que va entre [corchetes] y listo.</p></div><div id="prompt-del-dia" class="pd-card relative overflow-hidden bg-emerald-racing text-[#f9f9ff] mb-8"><div aria-hidden="true" class="pd-ring"></div><div class="relative grid grid-cols-1 lg:grid-cols-5"><div class="lg:col-span-2 p-6 sm:p-8 flex flex-col justify-between gap-6"><div><div class="flex items-center gap-2 text-[11px] font-bold tracking-[0.22em] uppercase text-gold-accent mb-3"><span class="pd-dot"></span><span>Prompt del día</span><span class="text-[#aeceb9]" id="pd-date"></span></div><h4 class="font-serif text-3xl sm:text-[34px] leading-tight font-medium mb-3"><a id="pd-link" class="hover:underline decoration-gold-accent underline-offset-4" href="prompts/dinero-consumo.html#entender-contrato"><span id="pd-title">Entender un contrato antes de firmarlo</span></a></h4><p id="pd-when" class="font-sans text-sm leading-relaxed text-[#caead4]">Te pasan un contrato de alquiler, trabajo, gimnasio o cualquier servicio y no quieres firmar a ciegas.</p></div><div class="flex flex-wrap items-center gap-3"><button type="button" id="pd-copy" class="inline-flex items-center gap-1.5 px-4 py-2 bg-gold-accent text-emerald-racing text-xs font-bold uppercase tracking-widest hover:bg-[#ffddbb] transition-colors"><span class="material-symbols-outlined text-[16px]">content_copy</span><span>Copiar prompt</span></button><a id="pd-more" class="text-xs font-semibold uppercase tracking-widest text-[#aeceb9] hover:text-[#f9f9ff]" href="prompts/dinero-consumo.html#entender-contrato">Ver cómo usarlo →</a></div></div><div class="lg:col-span-3 bg-[#f9f9ff] text-charcoal-main p-6 sm:p-8 border-l-4 border-gold-accent"><div class="text-[11px] font-bold tracking-[0.2em] uppercase text-amber-editorial mb-3"><span id="pd-cat">Dinero y trámites</span> · rellena lo resaltado</div><pre id="pd-prompt" class="font-sans text-[14px] leading-relaxed whitespace-pre-wrap max-h-[260px] overflow-hidden pd-fade">Te voy a pegar un contrato de <mark class="pd-ph">[tipo: alquiler / trabajo / servicio / otro]</mark>. Yo soy <mark class="pd-ph">[la parte que firma: inquilino / trabajador / cliente]</mark>.
+
+1. Resúmelo en lenguaje sencillo: qué me obligo a hacer, qué recibo, cuánto dura, cuánto cuesta en total y cómo se cancela.
+2. Señala las cláusulas que me pueden perjudicar (penalizaciones, renovación automática, permanencia, subidas de precio, responsabilidades) y cita el texto exacto de cada una.
+3. Dime qué suele incluir un contrato así que este no tiene.
+4. Termina con 3 preguntas concretas que debería hacer antes de firmar.
+
+No me des asesoramiento legal definitivo; si algo depende de la ley, dímelo para consultarlo.
+
+Contrato:
+<mark class="pd-ph">[pega aquí el texto]</mark></pre></div></div></div><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"><a class="group flex items-start gap-3 bg-parchment border border-border-rule p-5 hover:border-emerald-racing transition-colors" href="prompts/dinero-consumo.html#entender-contrato"><span class="material-symbols-outlined text-amber-editorial text-[22px]">savings</span><span><span class="block font-serif text-xl leading-snug text-charcoal-main group-hover:text-emerald-racing">Entender un contrato antes de firmarlo</span><span class="block font-sans text-sm text-charcoal-muted mt-1">Te pasan un contrato de alquiler, trabajo, gimnasio o cualquier servicio y no quieres firmar a ciegas.</span></span></a><a class="group flex items-start gap-3 bg-parchment border border-border-rule p-5 hover:border-emerald-racing transition-colors" href="prompts/dinero-consumo.html#reclamar"><span class="material-symbols-outlined text-amber-editorial text-[22px]">savings</span><span><span class="block font-serif text-xl leading-snug text-charcoal-main group-hover:text-emerald-racing">Reclamar a una empresa y que te hagan caso</span><span class="block font-sans text-sm text-charcoal-muted mt-1">Te han cobrado de más, no te devuelven el dinero, el producto llegó roto o el servicio no funciona.</span></span></a><a class="group flex items-start gap-3 bg-parchment border border-border-rule p-5 hover:border-emerald-racing transition-colors" href="prompts/trabajo-empleo.html#email-dificil"><span class="material-symbols-outlined text-amber-editorial text-[22px]">work</span><span><span class="block font-serif text-xl leading-snug text-charcoal-main group-hover:text-emerald-racing">Escribir ese email difícil que llevas días evitando</span><span class="block font-sans text-sm text-charcoal-muted mt-1">Tienes que decir que no, reclamar algo, dar una mala noticia o contestar a alguien enfadado.</span></span></a><a class="group flex items-start gap-3 bg-parchment border border-border-rule p-5 hover:border-emerald-racing transition-colors" href="prompts/trabajo-empleo.html#adaptar-cv"><span class="material-symbols-outlined text-amber-editorial text-[22px]">work</span><span><span class="block font-serif text-xl leading-snug text-charcoal-main group-hover:text-emerald-racing">Adaptar tu currículum a una oferta concreta</span><span class="block font-sans text-sm text-charcoal-muted mt-1">Mandas el mismo CV a todas las ofertas y no te llaman.</span></span></a><a class="group flex items-start gap-3 bg-parchment border border-border-rule p-5 hover:border-emerald-racing transition-colors" href="prompts/casa-salud-familia.html#menu-semanal"><span class="material-symbols-outlined text-amber-editorial text-[22px]">home</span><span><span class="block font-serif text-xl leading-snug text-charcoal-main group-hover:text-emerald-racing">Hacer el menú de la semana y la lista de la compra</span><span class="block font-sans text-sm text-charcoal-muted mt-1">No sabes qué cocinar cada día y acabas improvisando o pidiendo comida.</span></span></a><a class="group flex items-start gap-3 bg-parchment border border-border-rule p-5 hover:border-emerald-racing transition-colors" href="prompts/seguridad-privacidad.html#es-estafa"><span class="material-symbols-outlined text-amber-editorial text-[22px]">shield</span><span><span class="block font-serif text-xl leading-snug text-charcoal-main group-hover:text-emerald-racing">Saber si un mensaje, un email o una llamada es una estafa</span><span class="block font-sans text-sm text-charcoal-muted mt-1">Te ha llegado un SMS, un WhatsApp, un email o una llamada que te da mala espina.</span></span></a></div><div class="text-center mt-8"><a class="inline-flex items-center gap-2 px-6 py-3 bg-emerald-racing text-[#f9f9ff] text-xs tracking-widest uppercase font-semibold hover:bg-emerald-accent transition-colors" href="prompts/index.html"><span>Ver los 125 prompts</span><span class="material-symbols-outlined text-[16px]">arrow_forward</span></a></div></div></section>
+<section class="max-w-[1240px] mx-auto px-4 sm:px-8 py-14 border-b border-border-rule" id="radar">
+<div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-6 border-b-2 border-charcoal-main mb-8">
+<div>
+<div class="flex items-center gap-2 text-[11px] font-bold tracking-[0.2em] text-amber-editorial uppercase mb-2">
+<span>02 // El Radar del Ecosistema</span>
+</div>
+<h3 class="font-serif text-3xl sm:text-4xl text-charcoal-main font-medium tracking-tight">
+          Quién manda ahora mismo en IA
+        </h3>
+</div>
+<p class="text-xs sm:text-sm text-charcoal-muted max-w-md font-serif italic sm:text-right">
+        Sin rankings inventados: la comparativa que mantenemos al día, con enlace directo al análisis completo de cada modelo.
+      </p>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-px bg-border-rule border border-border-rule mb-6">
+<a class="group bg-parchment p-6 hover:bg-parchment-soft transition-colors" href="articulos/chatgpt-claude-gemini.html#sec-1">
+<div class="flex items-center justify-between mb-4">
+<span class="text-[11px] font-bold tracking-[0.18em] uppercase text-emerald-racing">Claude</span>
+<span class="material-symbols-outlined text-[18px] text-charcoal-muted group-hover:text-emerald-racing group-hover:translate-x-0.5 transition-all">arrow_forward</span>
+</div>
+<p class="font-serif text-lg text-charcoal-main mb-4 leading-snug">Código y agentes de terminal</p>
+<dl class="space-y-1.5 text-xs font-sans">
+<div class="flex justify-between gap-3"><dt class="text-charcoal-muted">Contexto</dt><dd class="text-charcoal-main font-medium text-right">Cientos de miles de tokens</dd></div>
+<div class="flex justify-between gap-3"><dt class="text-charcoal-muted">Mejor para</dt><dd class="text-charcoal-main font-medium text-right">Terminal, MCP, agentes</dd></div>
+</dl>
+</a>
+<a class="group bg-parchment p-6 hover:bg-parchment-soft transition-colors" href="articulos/chatgpt-claude-gemini.html#sec-2">
+<div class="flex items-center justify-between mb-4">
+<span class="text-[11px] font-bold tracking-[0.18em] uppercase text-emerald-racing">ChatGPT</span>
+<span class="material-symbols-outlined text-[18px] text-charcoal-muted group-hover:text-emerald-racing group-hover:translate-x-0.5 transition-all">arrow_forward</span>
+</div>
+<p class="font-serif text-lg text-charcoal-main mb-4 leading-snug">Razonamiento y ecosistema</p>
+<dl class="space-y-1.5 text-xs font-sans">
+<div class="flex justify-between gap-3"><dt class="text-charcoal-muted">Contexto</dt><dd class="text-charcoal-main font-medium text-right">Cientos de miles de tokens</dd></div>
+<div class="flex justify-between gap-3"><dt class="text-charcoal-muted">Mejor para</dt><dd class="text-charcoal-main font-medium text-right">Voz en directo, apps</dd></div>
+</dl>
+</a>
+<a class="group bg-parchment p-6 hover:bg-parchment-soft transition-colors" href="articulos/chatgpt-claude-gemini.html#sec-3">
+<div class="flex items-center justify-between mb-4">
+<span class="text-[11px] font-bold tracking-[0.18em] uppercase text-emerald-racing">Gemini</span>
+<span class="material-symbols-outlined text-[18px] text-charcoal-muted group-hover:text-emerald-racing group-hover:translate-x-0.5 transition-all">arrow_forward</span>
+</div>
+<p class="font-serif text-lg text-charcoal-main mb-4 leading-snug">Ventana de contexto</p>
+<dl class="space-y-1.5 text-xs font-sans">
+<div class="flex justify-between gap-3"><dt class="text-charcoal-muted">Contexto</dt><dd class="text-charcoal-main font-medium text-right">Millones de tokens</dd></div>
+<div class="flex justify-between gap-3"><dt class="text-charcoal-muted">Mejor para</dt><dd class="text-charcoal-main font-medium text-right">Documentos larguísimos</dd></div>
+</dl>
+</a>
+</div>
+<a class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 px-5 py-3.5 bg-emerald-racing text-parchment hover:bg-emerald-accent transition-colors" href="articulos/chatgpt-claude-gemini.html#sec-4c">
+<span class="inline-flex items-center gap-1.5 text-[10px] font-bold tracking-[0.18em] uppercase text-gold-accent shrink-0">
+<span class="w-1.5 h-1.5 rounded-full bg-gold-accent animate-pulse"></span>
+          Última hora
+        </span>
+<span class="font-serif italic text-sm sm:text-base flex-1">GPT-6 Astra vs. Claude Fable 5.1: qué dicen los benchmarks y qué se dejan fuera del titular.</span>
+<span class="material-symbols-outlined text-[18px] shrink-0">arrow_forward</span>
+</a>
+</section>
+<!-- ARCHIVE SECTION: GUIDES IN A 3-COLUMN NEWSPAPER BROADSHEET FORMAT -->
+<section class="max-w-[1240px] mx-auto px-4 sm:px-8 py-16 scroll-mt-[120px] sm:scroll-mt-16" id="guias">
+<!-- Section Header with Classic Rule Lines -->
+<div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-6 border-b-2 border-charcoal-main mb-10">
+<div>
+<div class="flex items-center gap-2 text-[11px] font-bold tracking-[0.2em] text-amber-editorial uppercase mb-2">
+<span>03 // Archivo Editorial Clasificado</span>
+</div>
+<h3 class="font-serif text-3xl sm:text-4xl text-charcoal-main font-medium tracking-tight">
+            Todo lo que hemos escrito hasta ahora
+          </h3>
+</div>
+<p class="text-xs sm:text-sm text-charcoal-muted max-w-md font-serif italic sm:text-right">
+          Explicaciones claras, código riguroso cuando hace falta y cero tecnicismos artificiales. Diseñadas para aplicar en minutos.
+        </p>
+</div>
+<div id="guide-filters" class="flex flex-wrap gap-2 mb-2" role="group" aria-label="Filtrar guías por tema"><button type="button" data-filter="" aria-pressed="true" class="guide-chip px-3 py-1.5 border text-[11px] font-semibold uppercase tracking-widest transition-colors">Todas (44)</button><button type="button" data-filter="Para empezar" aria-pressed="false" class="guide-chip px-3 py-1.5 border text-[11px] font-semibold uppercase tracking-widest transition-colors">Para empezar (11)</button><button type="button" data-filter="Agentes y automatización" aria-pressed="false" class="guide-chip px-3 py-1.5 border text-[11px] font-semibold uppercase tracking-widest transition-colors">Agentes y automatización (11)</button><button type="button" data-filter="Elegir herramienta" aria-pressed="false" class="guide-chip px-3 py-1.5 border text-[11px] font-semibold uppercase tracking-widest transition-colors">Elegir herramienta (5)</button><button type="button" data-filter="Seguridad y privacidad" aria-pressed="false" class="guide-chip px-3 py-1.5 border text-[11px] font-semibold uppercase tracking-widest transition-colors">Seguridad y privacidad (6)</button><button type="button" data-filter="Crear contenido" aria-pressed="false" class="guide-chip px-3 py-1.5 border text-[11px] font-semibold uppercase tracking-widest transition-colors">Crear contenido (5)</button><button type="button" data-filter="Trabajo, estudio y dinero" aria-pressed="false" class="guide-chip px-3 py-1.5 border text-[11px] font-semibold uppercase tracking-widest transition-colors">Trabajo, estudio y dinero (6)</button></div>
+<div id="guide-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10">
+<article data-cat="Seguridad y privacidad" class="guide-card flex flex-col justify-between group border-t border-border-rule pt-8 pb-10" style="--topic:#ba1a1a" data-icon="shield"><a class="guide-thumb block mb-5 overflow-hidden" href="articulos/estafas-con-ia.html" tabindex="-1" aria-hidden="true"><img src="img/portadas/estafas-con-ia.svg" alt="" width="1600" height="520" loading="lazy" decoding="async" class="w-full h-24 object-cover object-right transition-transform duration-500 group-hover:scale-105"/></a>
+<div>
+<div class="flex items-center justify-between text-[11px] font-sans uppercase tracking-widest mb-3 text-charcoal-muted">
+<span class="guide-topic font-semibold pb-0.5 inline-flex items-center gap-1"><span class="material-symbols-outlined text-[15px]" aria-hidden="true">shield</span>Seguridad</span>
+<span class="font-serif italic text-xs">15 min de lectura</span>
+</div>
+<a class="block group-hover:text-emerald-racing transition-colors" href="articulos/estafas-con-ia.html">
+<h4 class="font-serif text-2xl sm:text-[23px] leading-snug font-medium text-charcoal-main mb-3 group-hover:text-emerald-racing">
+                Estafas con IA en 2026: cómo reconocerlas y proteger a tu familia
+              </h4>
+</a>
+<p class="font-sans text-sm text-charcoal-muted leading-relaxed mb-6 font-normal">
+              La IA ha abaratado el engaño, no lo ha hecho imposible de detectar. Las seis estafas que más circulan, las cuatro señales que siguen delatándolas y el protocolo para tu familia.
+            </p>
+</div>
+<div class="pt-3 border-t border-border-subtle flex items-center justify-between text-xs font-semibold tracking-wider uppercase">
+<a class="inline-flex items-center gap-1.5 text-emerald-racing hover:text-charcoal-main transition-colors" href="articulos/estafas-con-ia.html">
+<span>Leer artículo</span>
+<span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+</a>
+<span class="text-charcoal-muted font-serif italic text-xs">Ref. #43</span>
+</div>
+</article>
+<article data-cat="Agentes y automatización" class="guide-card flex flex-col justify-between group border-t border-border-rule pt-8 pb-10" style="--topic:#9b4500" data-icon="smart_toy"><a class="guide-thumb block mb-5 overflow-hidden" href="articulos/asistente-personal-ia-memoria-notas.html" tabindex="-1" aria-hidden="true"><img src="img/portadas/asistente-personal-ia-memoria-notas.svg" alt="" width="1600" height="520" loading="lazy" decoding="async" class="w-full h-24 object-cover object-right transition-transform duration-500 group-hover:scale-105"/></a>
+<div>
+<div class="flex items-center justify-between text-[11px] font-sans uppercase tracking-widest mb-3 text-charcoal-muted">
+<span class="guide-topic font-semibold pb-0.5 inline-flex items-center gap-1"><span class="material-symbols-outlined text-[15px]" aria-hidden="true">smart_toy</span>Automatización</span>
+<span class="font-serif italic text-xs">16 min de lectura</span>
+</div>
+<a class="block group-hover:text-emerald-racing transition-colors" href="articulos/asistente-personal-ia-memoria-notas.html">
+<h4 class="font-serif text-2xl sm:text-[23px] leading-snug font-medium text-charcoal-main mb-3 group-hover:text-emerald-racing">
+                Construir tu propio asistente personal con IA: memoria, notas y tareas conectadas
+              </h4>
+</a>
+<p class="font-sans text-sm text-charcoal-muted leading-relaxed mb-6 font-normal">
+              Qué recuerdan de verdad ChatGPT y Claude, por qué su memoria es un resumen y no un archivo, y en qué orden conectar tus notas y tareas sin regalar el control de tus datos.
+            </p>
+</div>
+<div class="pt-3 border-t border-border-subtle flex items-center justify-between text-xs font-semibold tracking-wider uppercase">
+<a class="inline-flex items-center gap-1.5 text-emerald-racing hover:text-charcoal-main transition-colors" href="articulos/asistente-personal-ia-memoria-notas.html">
+<span>Leer artículo</span>
+<span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+</a>
+<span class="text-charcoal-muted font-serif italic text-xs">Ref. #44</span>
+</div>
+</article>
+<article data-cat="Agentes y automatización" class="guide-card flex flex-col justify-between group border-t border-border-rule pt-8 pb-10" style="--topic:#9b4500" data-icon="smart_toy"><a class="guide-thumb block mb-5 overflow-hidden" href="articulos/agente-extraer-datos-web.html" tabindex="-1" aria-hidden="true"><img src="img/portadas/agente-extraer-datos-web.svg" alt="" width="1600" height="520" loading="lazy" decoding="async" class="w-full h-24 object-cover object-right transition-transform duration-500 group-hover:scale-105"/></a>
+<div>
+<div class="flex items-center justify-between text-[11px] font-sans uppercase tracking-widest mb-3 text-charcoal-muted">
+<span class="guide-topic font-semibold pb-0.5 inline-flex items-center gap-1"><span class="material-symbols-outlined text-[15px]" aria-hidden="true">smart_toy</span>Automatización</span>
+<span class="font-serif italic text-xs">20 min de lectura</span>
+</div>
+<a class="block group-hover:text-emerald-racing transition-colors" href="articulos/agente-extraer-datos-web.html">
+<h4 class="font-serif text-2xl sm:text-[23px] leading-snug font-medium text-charcoal-main mb-3 group-hover:text-emerald-racing">
+                Cómo montar un agente que extrae datos de páginas web
+              </h4>
+</a>
+<p class="font-sans text-sm text-charcoal-muted leading-relaxed mb-6 font-normal">
+              El scraping es el último recurso de una lista de cuatro, y el modelo la última pieza del extractor. Dónde está la línea legal de verdad y cómo no pagar tokens por HTML.
+            </p>
+</div>
+<div class="pt-3 border-t border-border-subtle flex items-center justify-between text-xs font-semibold tracking-wider uppercase">
+<a class="inline-flex items-center gap-1.5 text-emerald-racing hover:text-charcoal-main transition-colors" href="articulos/agente-extraer-datos-web.html">
+<span>Leer artículo</span>
+<span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+</a>
+<span class="text-charcoal-muted font-serif italic text-xs">Ref. #42</span>
+</div>
+</article>
+<article data-cat="Para empezar" class="guide-card flex flex-col justify-between group border-t border-border-rule pt-8 pb-10" style="--topic:#072417" data-icon="school"><a class="guide-thumb block mb-5 overflow-hidden" href="articulos/fine-tuning-prompting-rag.html" tabindex="-1" aria-hidden="true"><img src="img/portadas/fine-tuning-prompting-rag.svg" alt="" width="1600" height="520" loading="lazy" decoding="async" class="w-full h-24 object-cover object-right transition-transform duration-500 group-hover:scale-105"/></a>
+<div>
+<div class="flex items-center justify-between text-[11px] font-sans uppercase tracking-widest mb-3 text-charcoal-muted">
+<span class="guide-topic font-semibold pb-0.5 inline-flex items-center gap-1"><span class="material-symbols-outlined text-[15px]" aria-hidden="true">school</span>Conceptos</span>
+<span class="font-serif italic text-xs">14 min de lectura</span>
+</div>
+<a class="block group-hover:text-emerald-racing transition-colors" href="articulos/fine-tuning-prompting-rag.html">
+<h4 class="font-serif text-2xl sm:text-[23px] leading-snug font-medium text-charcoal-main mb-3 group-hover:text-emerald-racing">
+                Fine-tuning, prompting o RAG: cuál usar y cuándo
+              </h4>
+</a>
+<p class="font-sans text-sm text-charcoal-muted leading-relaxed mb-6 font-normal">
+              Las tres no compiten: tocan piezas distintas y se eligen en un orden concreto. Qué arregla cada una, qué no, y por qué OpenAI ha cerrado el suyo.
+            </p>
+</div>
+<div class="pt-3 border-t border-border-subtle flex items-center justify-between text-xs font-semibold tracking-wider uppercase">
+<a class="inline-flex items-center gap-1.5 text-emerald-racing hover:text-charcoal-main transition-colors" href="articulos/fine-tuning-prompting-rag.html">
+<span>Leer artículo</span>
+<span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+</a>
+<span class="text-charcoal-muted font-serif italic text-xs">Ref. #41</span>
+</div>
+</article>
+<article data-cat="Crear contenido" class="guide-card flex flex-col justify-between group border-t border-border-rule pt-8 pb-10" style="--topic:#fd8a42" data-icon="auto_awesome"><a class="guide-thumb block mb-5 overflow-hidden" href="articulos/clonar-voz-transcribir-audio-ia.html" tabindex="-1" aria-hidden="true"><img src="img/portadas/clonar-voz-transcribir-audio-ia.svg" alt="" width="1600" height="520" loading="lazy" decoding="async" class="w-full h-24 object-cover object-right transition-transform duration-500 group-hover:scale-105"/></a>
+<div>
+<div class="flex items-center justify-between text-[11px] font-sans uppercase tracking-widest mb-3 text-charcoal-muted">
+<span class="guide-topic font-semibold pb-0.5 inline-flex items-center gap-1"><span class="material-symbols-outlined text-[15px]" aria-hidden="true">auto_awesome</span>Audio</span>
+<span class="font-serif italic text-xs">17 min de lectura</span>
+</div>
+<a class="block group-hover:text-emerald-racing transition-colors" href="articulos/clonar-voz-transcribir-audio-ia.html">
+<h4 class="font-serif text-2xl sm:text-[23px] leading-snug font-medium text-charcoal-main mb-3 group-hover:text-emerald-racing">
+                Clonar voz, transcribir y generar audio con IA
+              </h4>
+</a>
+<p class="font-sans text-sm text-charcoal-muted leading-relaxed mb-6 font-normal">
+              Qué puedes hacer legalmente con la voz de alguien, por qué las transcripciones se inventan frases enteras, y qué hay que etiquetar desde agosto de 2026.
+            </p>
+</div>
+<div class="pt-3 border-t border-border-subtle flex items-center justify-between text-xs font-semibold tracking-wider uppercase">
+<a class="inline-flex items-center gap-1.5 text-emerald-racing hover:text-charcoal-main transition-colors" href="articulos/clonar-voz-transcribir-audio-ia.html">
+<span>Leer artículo</span>
+<span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+</a>
+<span class="text-charcoal-muted font-serif italic text-xs">Ref. #40</span>
+</div>
+</article>
+<article data-cat="Para empezar" class="guide-card flex flex-col justify-between group border-t border-border-rule pt-8 pb-10" style="--topic:#072417" data-icon="school"><a class="guide-thumb block mb-5 overflow-hidden" href="articulos/varios-agentes-ia-o-uno.html" tabindex="-1" aria-hidden="true"><img src="img/portadas/varios-agentes-ia-o-uno.svg" alt="" width="1600" height="520" loading="lazy" decoding="async" class="w-full h-24 object-cover object-right transition-transform duration-500 group-hover:scale-105"/></a>
+<div>
+<div class="flex items-center justify-between text-[11px] font-sans uppercase tracking-widest mb-3 text-charcoal-muted">
+<span class="guide-topic font-semibold pb-0.5 inline-flex items-center gap-1"><span class="material-symbols-outlined text-[15px]" aria-hidden="true">school</span>Conceptos</span>
+<span class="font-serif italic text-xs">15 min de lectura</span>
+</div>
+<a class="block group-hover:text-emerald-racing transition-colors" href="articulos/varios-agentes-ia-o-uno.html">
+<h4 class="font-serif text-2xl sm:text-[23px] leading-snug font-medium text-charcoal-main mb-3 group-hover:text-emerald-racing">
+                Cuándo usar varios agentes de IA en vez de uno
+              </h4>
+</a>
+<p class="font-sans text-sm text-charcoal-muted leading-relaxed mb-6 font-normal">
+              Dividir el trabajo entre agentes multiplica el coste por quince y casi nunca compensa. Qué midieron Anthropic, Cognition y Berkeley, y cuándo sí sale a cuenta.
+            </p>
+</div>
+<div class="pt-3 border-t border-border-subtle flex items-center justify-between text-xs font-semibold tracking-wider uppercase">
+<a class="inline-flex items-center gap-1.5 text-emerald-racing hover:text-charcoal-main transition-colors" href="articulos/varios-agentes-ia-o-uno.html">
+<span>Leer artículo</span>
+<span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+</a>
+<span class="text-charcoal-muted font-serif italic text-xs">Ref. #39</span>
+</div>
+</article>
+<article data-cat="Para empezar" class="guide-card flex flex-col justify-between group border-t border-border-rule pt-8 pb-10" style="--topic:#072417" data-icon="school"><a class="guide-thumb block mb-5 overflow-hidden" href="articulos/ventana-contexto-memoria-ia.html" tabindex="-1" aria-hidden="true"><img src="img/portadas/ventana-contexto-memoria-ia.svg" alt="" width="1600" height="520" loading="lazy" decoding="async" class="w-full h-24 object-cover object-right transition-transform duration-500 group-hover:scale-105"/></a>
+<div>
+<div class="flex items-center justify-between text-[11px] font-sans uppercase tracking-widest mb-3 text-charcoal-muted">
+<span class="guide-topic font-semibold pb-0.5 inline-flex items-center gap-1"><span class="material-symbols-outlined text-[15px]" aria-hidden="true">school</span>Conceptos</span>
+<span class="font-serif italic text-xs">15 min de lectura</span>
+</div>
+<a class="block group-hover:text-emerald-racing transition-colors" href="articulos/ventana-contexto-memoria-ia.html">
+<h4 class="font-serif text-2xl sm:text-[23px] leading-snug font-medium text-charcoal-main mb-3 group-hover:text-emerald-racing">
+                Ventana de contexto y memoria: por qué tu IA "olvida"
+              </h4>
+</a>
+<p class="font-sans text-sm text-charcoal-muted leading-relaxed mb-6 font-normal">
+              El modelo no recuerda nada entre turnos: le reenvían la conversación entera cada vez. Qué mide de verdad ese millón de tokens y dónde colocar lo importante.
+            </p>
+</div>
+<div class="pt-3 border-t border-border-subtle flex items-center justify-between text-xs font-semibold tracking-wider uppercase">
+<a class="inline-flex items-center gap-1.5 text-emerald-racing hover:text-charcoal-main transition-colors" href="articulos/ventana-contexto-memoria-ia.html">
+<span>Leer artículo</span>
+<span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+</a>
+<span class="text-charcoal-muted font-serif italic text-xs">Ref. #38</span>
+</div>
+</article>
+<article data-cat="Seguridad y privacidad" class="guide-card flex flex-col justify-between group border-t border-border-rule pt-8 pb-10" style="--topic:#ba1a1a" data-icon="shield"><a class="guide-thumb block mb-5 overflow-hidden" href="articulos/prompt-injection-agentes-ia.html" tabindex="-1" aria-hidden="true"><img src="img/portadas/prompt-injection-agentes-ia.svg" alt="" width="1600" height="520" loading="lazy" decoding="async" class="w-full h-24 object-cover object-right transition-transform duration-500 group-hover:scale-105"/></a>
+<div>
+<div class="flex items-center justify-between text-[11px] font-sans uppercase tracking-widest mb-3 text-charcoal-muted">
+<span class="guide-topic font-semibold pb-0.5 inline-flex items-center gap-1"><span class="material-symbols-outlined text-[15px]" aria-hidden="true">shield</span>Seguridad</span>
+<span class="font-serif italic text-xs">15 min de lectura</span>
+</div>
+<a class="block group-hover:text-emerald-racing transition-colors" href="articulos/prompt-injection-agentes-ia.html">
+<h4 class="font-serif text-2xl sm:text-[23px] leading-snug font-medium text-charcoal-main mb-3 group-hover:text-emerald-racing">
+                Prompt injection: cómo pueden manipular a tu agente de IA
+              </h4>
+</a>
+<p class="font-sans text-sm text-charcoal-muted leading-relaxed mb-6 font-normal">
+              Casos reales en Microsoft, GitHub y Google, por qué las propias empresas admiten que no tiene arreglo definitivo y qué capas reducen el daño.
+            </p>
+</div>
+<div class="pt-3 border-t border-border-subtle flex items-center justify-between text-xs font-semibold tracking-wider uppercase">
+<a class="inline-flex items-center gap-1.5 text-emerald-racing hover:text-charcoal-main transition-colors" href="articulos/prompt-injection-agentes-ia.html">
+<span>Leer artículo</span>
+<span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+</a>
+<span class="text-charcoal-muted font-serif italic text-xs">Ref. #37</span>
+</div>
+</article>
+<article data-cat="Crear contenido" class="guide-card flex flex-col justify-between group border-t border-border-rule pt-8 pb-10" style="--topic:#fd8a42" data-icon="auto_awesome"><a class="guide-thumb block mb-5 overflow-hidden" href="articulos/analizar-imagenes-pdf-ia.html" tabindex="-1" aria-hidden="true"><img src="img/portadas/analizar-imagenes-pdf-ia.svg" alt="" width="1600" height="520" loading="lazy" decoding="async" class="w-full h-24 object-cover object-right transition-transform duration-500 group-hover:scale-105"/></a>
+<div>
+<div class="flex items-center justify-between text-[11px] font-sans uppercase tracking-widest mb-3 text-charcoal-muted">
+<span class="guide-topic font-semibold pb-0.5 inline-flex items-center gap-1"><span class="material-symbols-outlined text-[15px]" aria-hidden="true">auto_awesome</span>Documentos</span>
+<span class="font-serif italic text-xs">15 min de lectura</span>
+</div>
+<a class="block group-hover:text-emerald-racing transition-colors" href="articulos/analizar-imagenes-pdf-ia.html">
+<h4 class="font-serif text-2xl sm:text-[23px] leading-snug font-medium text-charcoal-main mb-3 group-hover:text-emerald-racing">
+                Cómo analizar imágenes y PDFs con IA: qué funciona y qué no
+              </h4>
+</a>
+<p class="font-sans text-sm text-charcoal-muted leading-relaxed mb-6 font-normal">
+              Cómo procesa la IA un PDF por dentro, qué límites publica cada herramienta, por qué una captura sale cara y dónde se equivoca.
+            </p>
+</div>
+<div class="pt-3 border-t border-border-subtle flex items-center justify-between text-xs font-semibold tracking-wider uppercase">
+<a class="inline-flex items-center gap-1.5 text-emerald-racing hover:text-charcoal-main transition-colors" href="articulos/analizar-imagenes-pdf-ia.html">
+<span>Leer artículo</span>
+<span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+</a>
+<span class="text-charcoal-muted font-serif italic text-xs">Ref. #36</span>
+</div>
+</article>
+<article data-cat="Crear contenido" class="guide-card flex flex-col justify-between group border-t border-border-rule pt-8 pb-10" style="--topic:#fd8a42" data-icon="auto_awesome"><a class="guide-thumb block mb-5 overflow-hidden" href="articulos/traducir-con-ia.html" tabindex="-1" aria-hidden="true"><img src="img/portadas/traducir-con-ia.svg" alt="" width="1600" height="520" loading="lazy" decoding="async" class="w-full h-24 object-cover object-right transition-transform duration-500 group-hover:scale-105"/></a>
+<div>
+<div class="flex items-center justify-between text-[11px] font-sans uppercase tracking-widest mb-3 text-charcoal-muted">
+<span class="guide-topic font-semibold pb-0.5 inline-flex items-center gap-1"><span class="material-symbols-outlined text-[15px]" aria-hidden="true">auto_awesome</span>Idiomas</span>
+<span class="font-serif italic text-xs">11 min de lectura</span>
+</div>
+<a class="block group-hover:text-emerald-racing transition-colors" href="articulos/traducir-con-ia.html">
+<h4 class="font-serif text-2xl sm:text-[23px] leading-snug font-medium text-charcoal-main mb-3 group-hover:text-emerald-racing">
+                Traducir con IA: cuál usar y cuándo no fiarte
+              </h4>
+</a>
+<p class="font-sans text-sm text-charcoal-muted leading-relaxed mb-6 font-normal">
+              DeepL contra el chat de turno, los textos donde te la juegas, y cómo comprobar una traducción sin hablar el idioma.
+            </p>
+</div>
+<div class="pt-3 border-t border-border-subtle flex items-center justify-between text-xs font-semibold tracking-wider uppercase">
+<a class="inline-flex items-center gap-1.5 text-emerald-racing hover:text-charcoal-main transition-colors" href="articulos/traducir-con-ia.html">
+<span>Leer artículo</span>
+<span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+</a>
+<span class="text-charcoal-muted font-serif italic text-xs">Ref. #35</span>
+</div>
+</article>
+<article data-cat="Trabajo, estudio y dinero" class="guide-card flex flex-col justify-between group border-t border-border-rule pt-8 pb-10" style="--topic:#673d00" data-icon="work"><a class="guide-thumb block mb-5 overflow-hidden" href="articulos/ia-para-estudiar.html" tabindex="-1" aria-hidden="true"><img src="img/portadas/ia-para-estudiar.svg" alt="" width="1600" height="520" loading="lazy" decoding="async" class="w-full h-24 object-cover object-right transition-transform duration-500 group-hover:scale-105"/></a>
+<div>
+<div class="flex items-center justify-between text-[11px] font-sans uppercase tracking-widest mb-3 text-charcoal-muted">
+<span class="guide-topic font-semibold pb-0.5 inline-flex items-center gap-1"><span class="material-symbols-outlined text-[15px]" aria-hidden="true">work</span>Educación</span>
+<span class="font-serif italic text-xs">11 min de lectura</span>
+</div>
+<a class="block group-hover:text-emerald-racing transition-colors" href="articulos/ia-para-estudiar.html">
+<h4 class="font-serif text-2xl sm:text-[23px] leading-snug font-medium text-charcoal-main mb-3 group-hover:text-emerald-racing">
+                Cómo usar IA para estudiar y aprender más rápido
+              </h4>
+</a>
+<p class="font-sans text-sm text-charcoal-muted leading-relaxed mb-6 font-normal">
+              Técnica Feynman con un chat, preguntas de repaso desde tus apuntes, y por qué las flashcards siguen ganando.
+            </p>
+</div>
+<div class="pt-3 border-t border-border-subtle flex items-center justify-between text-xs font-semibold tracking-wider uppercase">
+<a class="inline-flex items-center gap-1.5 text-emerald-racing hover:text-charcoal-main transition-colors" href="articulos/ia-para-estudiar.html">
+<span>Leer artículo</span>
+<span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+</a>
+<span class="text-charcoal-muted font-serif italic text-xs">Ref. #34</span>
+</div>
+</article>
+<article data-cat="Trabajo, estudio y dinero" class="guide-card flex flex-col justify-between group border-t border-border-rule pt-8 pb-10" style="--topic:#673d00" data-icon="work"><a class="guide-thumb block mb-5 overflow-hidden" href="articulos/curriculum-entrevistas-ia.html" tabindex="-1" aria-hidden="true"><img src="img/portadas/curriculum-entrevistas-ia.svg" alt="" width="1600" height="520" loading="lazy" decoding="async" class="w-full h-24 object-cover object-right transition-transform duration-500 group-hover:scale-105"/></a>
+<div>
+<div class="flex items-center justify-between text-[11px] font-sans uppercase tracking-widest mb-3 text-charcoal-muted">
+<span class="guide-topic font-semibold pb-0.5 inline-flex items-center gap-1"><span class="material-symbols-outlined text-[15px]" aria-hidden="true">work</span>Carrera profesional</span>
+<span class="font-serif italic text-xs">11 min de lectura</span>
+</div>
+<a class="block group-hover:text-emerald-racing transition-colors" href="articulos/curriculum-entrevistas-ia.html">
+<h4 class="font-serif text-2xl sm:text-[23px] leading-snug font-medium text-charcoal-main mb-3 group-hover:text-emerald-racing">
+                Currículum y entrevistas con IA: úsala sin que se note
+              </h4>
+</a>
+<p class="font-sans text-sm text-charcoal-muted leading-relaxed mb-6 font-normal">
+              Pasar los filtros automáticos, preparar la entrevista, y una carta que no suene a las otras mil.
+            </p>
+</div>
+<div class="pt-3 border-t border-border-subtle flex items-center justify-between text-xs font-semibold tracking-wider uppercase">
+<a class="inline-flex items-center gap-1.5 text-emerald-racing hover:text-charcoal-main transition-colors" href="articulos/curriculum-entrevistas-ia.html">
+<span>Leer artículo</span>
+<span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+</a>
+<span class="text-charcoal-muted font-serif italic text-xs">Ref. #33</span>
+</div>
+</article>
+<article data-cat="Seguridad y privacidad" class="guide-card flex flex-col justify-between group border-t border-border-rule pt-8 pb-10" style="--topic:#ba1a1a" data-icon="shield"><a class="guide-thumb block mb-5 overflow-hidden" href="articulos/ai-act-explicado.html" tabindex="-1" aria-hidden="true"><img src="img/portadas/ai-act-explicado.svg" alt="" width="1600" height="520" loading="lazy" decoding="async" class="w-full h-24 object-cover object-right transition-transform duration-500 group-hover:scale-105"/></a>
+<div>
+<div class="flex items-center justify-between text-[11px] font-sans uppercase tracking-widest mb-3 text-charcoal-muted">
+<span class="guide-topic font-semibold pb-0.5 inline-flex items-center gap-1"><span class="material-symbols-outlined text-[15px]" aria-hidden="true">shield</span>Regulación</span>
+<span class="font-serif italic text-xs">12 min de lectura</span>
+</div>
+<a class="block group-hover:text-emerald-racing transition-colors" href="articulos/ai-act-explicado.html">
+<h4 class="font-serif text-2xl sm:text-[23px] leading-snug font-medium text-charcoal-main mb-3 group-hover:text-emerald-racing">
+                El AI Act explicado: qué obliga la nueva ley europea de IA
+              </h4>
+</a>
+<p class="font-sans text-sm text-charcoal-muted leading-relaxed mb-6 font-normal">
+              Qué prohíbe, qué obliga y a quién afecta de verdad — niveles de riesgo, fechas y multas, sin jerga legal.
+            </p>
+</div>
+<div class="pt-3 border-t border-border-subtle flex items-center justify-between text-xs font-semibold tracking-wider uppercase">
+<a class="inline-flex items-center gap-1.5 text-emerald-racing hover:text-charcoal-main transition-colors" href="articulos/ai-act-explicado.html">
+<span>Leer artículo</span>
+<span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+</a>
+<span class="text-charcoal-muted font-serif italic text-xs">Ref. #32</span>
+</div>
+</article>
+<article data-cat="Seguridad y privacidad" class="guide-card flex flex-col justify-between group border-t border-border-rule pt-8 pb-10" style="--topic:#ba1a1a" data-icon="shield"><a class="guide-thumb block mb-5 overflow-hidden" href="articulos/ia-local-ordenador.html" tabindex="-1" aria-hidden="true"><img src="img/portadas/ia-local-ordenador.svg" alt="" width="1600" height="520" loading="lazy" decoding="async" class="w-full h-24 object-cover object-right transition-transform duration-500 group-hover:scale-105"/></a>
+<div>
+<div class="flex items-center justify-between text-[11px] font-sans uppercase tracking-widest mb-3 text-charcoal-muted">
+<span class="guide-topic font-semibold pb-0.5 inline-flex items-center gap-1"><span class="material-symbols-outlined text-[15px]" aria-hidden="true">shield</span>Privacidad</span>
+<span class="font-serif italic text-xs">11 min de lectura</span>
+</div>
+<a class="block group-hover:text-emerald-racing transition-colors" href="articulos/ia-local-ordenador.html">
+<h4 class="font-serif text-2xl sm:text-[23px] leading-snug font-medium text-charcoal-main mb-3 group-hover:text-emerald-racing">
+                IA local: cómo correr modelos en tu ordenador, sin internet
+              </h4>
+</a>
+<p class="font-sans text-sm text-charcoal-muted leading-relaxed mb-6 font-normal">
+              Ollama y LM Studio paso a paso: qué modelo elegir según tu RAM, y qué pierdes frente a la nube.
+            </p>
+</div>
+<div class="pt-3 border-t border-border-subtle flex items-center justify-between text-xs font-semibold tracking-wider uppercase">
+<a class="inline-flex items-center gap-1.5 text-emerald-racing hover:text-charcoal-main transition-colors" href="articulos/ia-local-ordenador.html">
+<span>Leer artículo</span>
+<span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+</a>
+<span class="text-charcoal-muted font-serif italic text-xs">Ref. #31</span>
+</div>
+</article>
+<article data-cat="Trabajo, estudio y dinero" class="guide-card flex flex-col justify-between group border-t border-border-rule pt-8 pb-10" style="--topic:#673d00" data-icon="work"><a class="guide-thumb block mb-5 overflow-hidden" href="articulos/ia-excel-hojas-calculo.html" tabindex="-1" aria-hidden="true"><img src="img/portadas/ia-excel-hojas-calculo.svg" alt="" width="1600" height="520" loading="lazy" decoding="async" class="w-full h-24 object-cover object-right transition-transform duration-500 group-hover:scale-105"/></a>
+<div>
+<div class="flex items-center justify-between text-[11px] font-sans uppercase tracking-widest mb-3 text-charcoal-muted">
+<span class="guide-topic font-semibold pb-0.5 inline-flex items-center gap-1"><span class="material-symbols-outlined text-[15px]" aria-hidden="true">work</span>Productividad</span>
+<span class="font-serif italic text-xs">9 min de lectura</span>
+</div>
+<a class="block group-hover:text-emerald-racing transition-colors" href="articulos/ia-excel-hojas-calculo.html">
+<h4 class="font-serif text-2xl sm:text-[23px] leading-snug font-medium text-charcoal-main mb-3 group-hover:text-emerald-racing">
+                Cómo usar IA en Excel y Google Sheets para tu trabajo
+              </h4>
+</a>
+<p class="font-sans text-sm text-charcoal-muted leading-relaxed mb-6 font-normal">
+              Copilot, Gemini en Sheets, y la alternativa gratis de pegar tus datos en un chat — con plantilla de prompt.
+            </p>
+</div>
+<div class="pt-3 border-t border-border-subtle flex items-center justify-between text-xs font-semibold tracking-wider uppercase">
+<a class="inline-flex items-center gap-1.5 text-emerald-racing hover:text-charcoal-main transition-colors" href="articulos/ia-excel-hojas-calculo.html">
+<span>Leer artículo</span>
+<span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+</a>
+<span class="text-charcoal-muted font-serif italic text-xs">Ref. #30</span>
+</div>
+</article>
+<article data-cat="Trabajo, estudio y dinero" class="guide-card flex flex-col justify-between group border-t border-border-rule pt-8 pb-10" style="--topic:#673d00" data-icon="work"><a class="guide-thumb block mb-5 overflow-hidden" href="articulos/por-que-ia-pide-frenar.html" tabindex="-1" aria-hidden="true"><img src="img/portadas/por-que-ia-pide-frenar.svg" alt="" width="1600" height="520" loading="lazy" decoding="async" class="w-full h-24 object-cover object-right transition-transform duration-500 group-hover:scale-105"/></a>
+<div>
+<div class="flex items-center justify-between text-[11px] font-sans uppercase tracking-widest mb-3 text-charcoal-muted">
+<span class="guide-topic font-semibold pb-0.5 inline-flex items-center gap-1"><span class="material-symbols-outlined text-[15px]" aria-hidden="true">work</span>Actualidad</span>
+<span class="font-serif italic text-xs">11 min de lectura</span>
+</div>
+<a class="block group-hover:text-emerald-racing transition-colors" href="articulos/por-que-ia-pide-frenar.html">
+<h4 class="font-serif text-2xl sm:text-[23px] leading-snug font-medium text-charcoal-main mb-3 group-hover:text-emerald-racing">
+                Por qué Anthropic y OpenAI piden frenar la IA (explicado sin pánico)
+              </h4>
+</a>
+<p class="font-sans text-sm text-charcoal-muted leading-relaxed mb-6 font-normal">
+              Qué dice exactamente el aviso de seguridad, por qué llega ahora, y qué significa de verdad para quien usa IA a diario.
+            </p>
+</div>
+<div class="pt-3 border-t border-border-subtle flex items-center justify-between text-xs font-semibold tracking-wider uppercase">
+<a class="inline-flex items-center gap-1.5 text-emerald-racing hover:text-charcoal-main transition-colors" href="articulos/por-que-ia-pide-frenar.html">
+<span>Leer artículo</span>
+<span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+</a>
+<span class="text-charcoal-muted font-serif italic text-xs">Ref. #29</span>
+</div>
+</article>
+<article data-cat="Trabajo, estudio y dinero" class="guide-card flex flex-col justify-between group border-t border-border-rule pt-8 pb-10" style="--topic:#673d00" data-icon="work"><a class="guide-thumb block mb-5 overflow-hidden" href="articulos/trabajos-ia-cambiara.html" tabindex="-1" aria-hidden="true"><img src="img/portadas/trabajos-ia-cambiara.svg" alt="" width="1600" height="520" loading="lazy" decoding="async" class="w-full h-24 object-cover object-right transition-transform duration-500 group-hover:scale-105"/></a>
+<div>
+<div class="flex items-center justify-between text-[11px] font-sans uppercase tracking-widest mb-3 text-charcoal-muted">
+<span class="guide-topic font-semibold pb-0.5 inline-flex items-center gap-1"><span class="material-symbols-outlined text-[15px]" aria-hidden="true">work</span>Futuro del trabajo</span>
+<span class="font-serif italic text-xs">11 min de lectura</span>
+</div>
+<a class="block group-hover:text-emerald-racing transition-colors" href="articulos/trabajos-ia-cambiara.html">
+<h4 class="font-serif text-2xl sm:text-[23px] leading-snug font-medium text-charcoal-main mb-3 group-hover:text-emerald-racing">
+                Los trabajos que la IA va a cambiar antes de 2030 (y cómo prepararte)
+              </h4>
+</a>
+<p class="font-sans text-sm text-charcoal-muted leading-relaxed mb-6 font-normal">
+              No es una lista de profesiones que desaparecen: es un mapa de qué tareas concretas automatiza la IA dentro de cada trabajo.
+            </p>
+</div>
+<div class="pt-3 border-t border-border-subtle flex items-center justify-between text-xs font-semibold tracking-wider uppercase">
+<a class="inline-flex items-center gap-1.5 text-emerald-racing hover:text-charcoal-main transition-colors" href="articulos/trabajos-ia-cambiara.html">
+<span>Leer artículo</span>
+<span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+</a>
+<span class="text-charcoal-muted font-serif italic text-xs">Ref. #28</span>
+</div>
+</article>
+<article data-cat="Trabajo, estudio y dinero" class="guide-card flex flex-col justify-between group border-t border-border-rule pt-8 pb-10" style="--topic:#673d00" data-icon="work"><a class="guide-thumb block mb-5 overflow-hidden" href="articulos/ganar-dinero-con-ia.html" tabindex="-1" aria-hidden="true"><img src="img/portadas/ganar-dinero-con-ia.svg" alt="" width="1600" height="520" loading="lazy" decoding="async" class="w-full h-24 object-cover object-right transition-transform duration-500 group-hover:scale-105"/></a>
+<div>
+<div class="flex items-center justify-between text-[11px] font-sans uppercase tracking-widest mb-3 text-charcoal-muted">
+<span class="guide-topic font-semibold pb-0.5 inline-flex items-center gap-1"><span class="material-symbols-outlined text-[15px]" aria-hidden="true">work</span>Dinero</span>
+<span class="font-serif italic text-xs">12 min de lectura</span>
+</div>
+<a class="block group-hover:text-emerald-racing transition-colors" href="articulos/ganar-dinero-con-ia.html">
+<h4 class="font-serif text-2xl sm:text-[23px] leading-snug font-medium text-charcoal-main mb-3 group-hover:text-emerald-racing">
+                Cómo ganar dinero con IA en 2026: métodos reales (y los que son humo)
+              </h4>
+</a>
+<p class="font-sans text-sm text-charcoal-muted leading-relaxed mb-6 font-normal">
+              Cuatro formas que funcionan de verdad, y las señales que delatan un método que solo enriquece a quien te lo vende.
+            </p>
+</div>
+<div class="pt-3 border-t border-border-subtle flex items-center justify-between text-xs font-semibold tracking-wider uppercase">
+<a class="inline-flex items-center gap-1.5 text-emerald-racing hover:text-charcoal-main transition-colors" href="articulos/ganar-dinero-con-ia.html">
+<span>Leer artículo</span>
+<span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+</a>
+<span class="text-charcoal-muted font-serif italic text-xs">Ref. #27</span>
+</div>
+</article>
+<article data-cat="Elegir herramienta" class="guide-card flex flex-col justify-between group border-t border-border-rule pt-8 pb-10" style="--topic:#486554" data-icon="compare_arrows"><a class="guide-thumb block mb-5 overflow-hidden" href="articulos/mejores-claude-skills.html" tabindex="-1" aria-hidden="true"><img src="img/portadas/mejores-claude-skills.svg" alt="" width="1600" height="520" loading="lazy" decoding="async" class="w-full h-24 object-cover object-right transition-transform duration-500 group-hover:scale-105"/></a>
+<div>
+<div class="flex items-center justify-between text-[11px] font-sans uppercase tracking-widest mb-3 text-charcoal-muted">
+<span class="guide-topic font-semibold pb-0.5 inline-flex items-center gap-1"><span class="material-symbols-outlined text-[15px]" aria-hidden="true">compare_arrows</span>Herramientas</span>
+<span class="font-serif italic text-xs">14 min de lectura</span>
+</div>
+<a class="block group-hover:text-emerald-racing transition-colors" href="articulos/mejores-claude-skills.html">
+<h4 class="font-serif text-2xl sm:text-[23px] leading-snug font-medium text-charcoal-main mb-3 group-hover:text-emerald-racing">
+                Las mejores Claude Skills de 2026: la lista que necesitas
+              </h4>
+</a>
+<p class="font-sans text-sm text-charcoal-muted leading-relaxed mb-6 font-normal">
+              175.000 estrellas en el repositorio oficial. Qué son, cómo instalarlas y cuáles merecen de verdad un hueco, filtrables por categoría.
+            </p>
+</div>
+<div class="pt-3 border-t border-border-subtle flex items-center justify-between text-xs font-semibold tracking-wider uppercase">
+<a class="inline-flex items-center gap-1.5 text-emerald-racing hover:text-charcoal-main transition-colors" href="articulos/mejores-claude-skills.html">
+<span>Leer artículo</span>
+<span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+</a>
+<span class="text-charcoal-muted font-serif italic text-xs">Ref. #26</span>
+</div>
+</article>
+<article data-cat="Para empezar" class="guide-card flex flex-col justify-between group border-t border-border-rule pt-8 pb-10" style="--topic:#072417" data-icon="school"><a class="guide-thumb block mb-5 overflow-hidden" href="articulos/grounding-evitar-alucinaciones.html" tabindex="-1" aria-hidden="true"><img src="img/portadas/grounding-evitar-alucinaciones.svg" alt="" width="1600" height="520" loading="lazy" decoding="async" class="w-full h-24 object-cover object-right transition-transform duration-500 group-hover:scale-105"/></a>
+<div>
+<div class="flex items-center justify-between text-[11px] font-sans uppercase tracking-widest mb-3 text-charcoal-muted">
+<span class="guide-topic font-semibold pb-0.5 inline-flex items-center gap-1"><span class="material-symbols-outlined text-[15px]" aria-hidden="true">school</span>Conceptos</span>
+<span class="font-serif italic text-xs">12 min de lectura</span>
+</div>
+<a class="block group-hover:text-emerald-racing transition-colors" href="articulos/grounding-evitar-alucinaciones.html">
+<h4 class="font-serif text-2xl sm:text-[23px] leading-snug font-medium text-charcoal-main mb-3 group-hover:text-emerald-racing">
+                Grounding: cómo evitar que tu IA invente datos conectándola a la realidad
+              </h4>
+</a>
+<p class="font-sans text-sm text-charcoal-muted leading-relaxed mb-6 font-normal">
+              La solución práctica a las alucinaciones, con una demo que compara memoria contra dato verificado en vivo.
+            </p>
+</div>
+<div class="pt-3 border-t border-border-subtle flex items-center justify-between text-xs font-semibold tracking-wider uppercase">
+<a class="inline-flex items-center gap-1.5 text-emerald-racing hover:text-charcoal-main transition-colors" href="articulos/grounding-evitar-alucinaciones.html">
+<span>Leer artículo</span>
+<span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+</a>
+<span class="text-charcoal-muted font-serif italic text-xs">Ref. #25</span>
+</div>
+</article>
+<article data-cat="Agentes y automatización" class="guide-card flex flex-col justify-between group border-t border-border-rule pt-8 pb-10" style="--topic:#9b4500" data-icon="smart_toy"><a class="guide-thumb block mb-5 overflow-hidden" href="articulos/agente-cripto-noticias.html" tabindex="-1" aria-hidden="true"><img src="img/portadas/agente-cripto-noticias.svg" alt="" width="1600" height="520" loading="lazy" decoding="async" class="w-full h-24 object-cover object-right transition-transform duration-500 group-hover:scale-105"/></a>
+<div>
+<div class="flex items-center justify-between text-[11px] font-sans uppercase tracking-widest mb-3 text-charcoal-muted">
+<span class="guide-topic font-semibold pb-0.5 inline-flex items-center gap-1"><span class="material-symbols-outlined text-[15px]" aria-hidden="true">smart_toy</span>Automatización</span>
+<span class="font-serif italic text-xs">12 min de lectura</span>
+</div>
+<a class="block group-hover:text-emerald-racing transition-colors" href="articulos/agente-cripto-noticias.html">
+<h4 class="font-serif text-2xl sm:text-[23px] leading-snug font-medium text-charcoal-main mb-3 group-hover:text-emerald-racing">
+                El agente que vigila cripto y te resume las noticias
+              </h4>
+</a>
+<p class="font-sans text-sm text-charcoal-muted leading-relaxed mb-6 font-normal">
+              Precios en vivo cruzados con noticias, montado con n8n o en código. No es asesoramiento financiero.
+            </p>
+</div>
+<div class="pt-3 border-t border-border-subtle flex items-center justify-between text-xs font-semibold tracking-wider uppercase">
+<a class="inline-flex items-center gap-1.5 text-emerald-racing hover:text-charcoal-main transition-colors" href="articulos/agente-cripto-noticias.html">
+<span>Leer artículo</span>
+<span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+</a>
+<span class="text-charcoal-muted font-serif italic text-xs">Ref. #24</span>
+</div>
+</article>
+<article data-cat="Agentes y automatización" class="guide-card flex flex-col justify-between group border-t border-border-rule pt-8 pb-10" style="--topic:#9b4500" data-icon="smart_toy"><a class="guide-thumb block mb-5 overflow-hidden" href="articulos/ia-datos-abiertos-gobierno.html" tabindex="-1" aria-hidden="true"><img src="img/portadas/ia-datos-abiertos-gobierno.svg" alt="" width="1600" height="520" loading="lazy" decoding="async" class="w-full h-24 object-cover object-right transition-transform duration-500 group-hover:scale-105"/></a>
+<div>
+<div class="flex items-center justify-between text-[11px] font-sans uppercase tracking-widest mb-3 text-charcoal-muted">
+<span class="guide-topic font-semibold pb-0.5 inline-flex items-center gap-1"><span class="material-symbols-outlined text-[15px]" aria-hidden="true">smart_toy</span>Tutorial</span>
+<span class="font-serif italic text-xs">12 min de lectura</span>
+</div>
+<a class="block group-hover:text-emerald-racing transition-colors" href="articulos/ia-datos-abiertos-gobierno.html">
+<h4 class="font-serif text-2xl sm:text-[23px] leading-snug font-medium text-charcoal-main mb-3 group-hover:text-emerald-racing">
+                IA y datos abiertos: un asistente que consulta fuentes oficiales
+              </h4>
+</a>
+<p class="font-sans text-sm text-charcoal-muted leading-relaxed mb-6 font-normal">
+              Demo en vivo con datos reales del Banco Mundial, con fecha y fuente citadas.
+            </p>
+</div>
+<div class="pt-3 border-t border-border-subtle flex items-center justify-between text-xs font-semibold tracking-wider uppercase">
+<a class="inline-flex items-center gap-1.5 text-emerald-racing hover:text-charcoal-main transition-colors" href="articulos/ia-datos-abiertos-gobierno.html">
+<span>Leer artículo</span>
+<span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+</a>
+<span class="text-charcoal-muted font-serif italic text-xs">Ref. #23</span>
+</div>
+</article>
+<article data-cat="Para empezar" class="guide-card flex flex-col justify-between group border-t border-border-rule pt-8 pb-10" style="--topic:#072417" data-icon="school"><a class="guide-thumb block mb-5 overflow-hidden" href="articulos/apis-gratuitas-agentes-ia.html" tabindex="-1" aria-hidden="true"><img src="img/portadas/apis-gratuitas-agentes-ia.svg" alt="" width="1600" height="520" loading="lazy" decoding="async" class="w-full h-24 object-cover object-right transition-transform duration-500 group-hover:scale-105"/></a>
+<div>
+<div class="flex items-center justify-between text-[11px] font-sans uppercase tracking-widest mb-3 text-charcoal-muted">
+<span class="guide-topic font-semibold pb-0.5 inline-flex items-center gap-1"><span class="material-symbols-outlined text-[15px]" aria-hidden="true">school</span>Referencia</span>
+<span class="font-serif italic text-xs">13 min de lectura</span>
+</div>
+<a class="block group-hover:text-emerald-racing transition-colors" href="articulos/apis-gratuitas-agentes-ia.html">
+<h4 class="font-serif text-2xl sm:text-[23px] leading-snug font-medium text-charcoal-main mb-3 group-hover:text-emerald-racing">
+                APIs gratuitas para darle superpoderes a tu agente de IA
+              </h4>
+</a>
+<p class="font-sans text-sm text-charcoal-muted leading-relaxed mb-6 font-normal">
+              Selección filtrable por categoría, con casos de uso reales, no la lista entera de GitHub.
+            </p>
+</div>
+<div class="pt-3 border-t border-border-subtle flex items-center justify-between text-xs font-semibold tracking-wider uppercase">
+<a class="inline-flex items-center gap-1.5 text-emerald-racing hover:text-charcoal-main transition-colors" href="articulos/apis-gratuitas-agentes-ia.html">
+<span>Leer artículo</span>
+<span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+</a>
+<span class="text-charcoal-muted font-serif italic text-xs">Ref. #22</span>
+</div>
+</article>
+<article data-cat="Agentes y automatización" class="guide-card flex flex-col justify-between group border-t border-border-rule pt-8 pb-10" style="--topic:#9b4500" data-icon="smart_toy"><a class="guide-thumb block mb-5 overflow-hidden" href="articulos/agente-api-datos-reales.html" tabindex="-1" aria-hidden="true"><img src="img/portadas/agente-api-datos-reales.svg" alt="" width="1600" height="520" loading="lazy" decoding="async" class="w-full h-24 object-cover object-right transition-transform duration-500 group-hover:scale-105"/></a>
+<div>
+<div class="flex items-center justify-between text-[11px] font-sans uppercase tracking-widest mb-3 text-charcoal-muted">
+<span class="guide-topic font-semibold pb-0.5 inline-flex items-center gap-1"><span class="material-symbols-outlined text-[15px]" aria-hidden="true">smart_toy</span>Tutorial</span>
+<span class="font-serif italic text-xs">14 min de lectura</span>
+</div>
+<a class="block group-hover:text-emerald-racing transition-colors" href="articulos/agente-api-datos-reales.html">
+<h4 class="font-serif text-2xl sm:text-[23px] leading-snug font-medium text-charcoal-main mb-3 group-hover:text-emerald-racing">
+                Cómo darle a un agente de IA acceso a datos reales y gratis
+              </h4>
+</a>
+<p class="font-sans text-sm text-charcoal-muted leading-relaxed mb-6 font-normal">
+              Con demo en vivo funcionando en la propia guía y el código real que la conecta a Claude.
+            </p>
+</div>
+<div class="pt-3 border-t border-border-subtle flex items-center justify-between text-xs font-semibold tracking-wider uppercase">
+<a class="inline-flex items-center gap-1.5 text-emerald-racing hover:text-charcoal-main transition-colors" href="articulos/agente-api-datos-reales.html">
+<span>Leer artículo</span>
+<span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+</a>
+<span class="text-charcoal-muted font-serif italic text-xs">Ref. #21</span>
+</div>
+</article>
+<article data-cat="Elegir herramienta" class="guide-card flex flex-col justify-between group border-t border-border-rule pt-8 pb-10" style="--topic:#486554" data-icon="compare_arrows"><a class="guide-thumb block mb-5 overflow-hidden" href="articulos/perplexity-buscar-ia.html" tabindex="-1" aria-hidden="true"><img src="img/portadas/perplexity-buscar-ia.svg" alt="" width="1600" height="520" loading="lazy" decoding="async" class="w-full h-24 object-cover object-right transition-transform duration-500 group-hover:scale-105"/></a>
+<div>
+<div class="flex items-center justify-between text-[11px] font-sans uppercase tracking-widest mb-3 text-charcoal-muted">
+<span class="guide-topic font-semibold pb-0.5 inline-flex items-center gap-1"><span class="material-symbols-outlined text-[15px]" aria-hidden="true">compare_arrows</span>Investigación</span>
+<span class="font-serif italic text-xs">13 min de lectura</span>
+</div>
+<a class="block group-hover:text-emerald-racing transition-colors" href="articulos/perplexity-buscar-ia.html">
+<h4 class="font-serif text-2xl sm:text-[23px] leading-snug font-medium text-charcoal-main mb-3 group-hover:text-emerald-racing">
+                Perplexity y la búsqueda con IA: cómo investigar más rápido
+              </h4>
+</a>
+<p class="font-sans text-sm text-charcoal-muted leading-relaxed mb-6 font-normal">
+              Cómo funciona la búsqueda con fuentes citadas y cuándo sigue haciendo falta verificar tú mismo.
+            </p>
+</div>
+<div class="pt-3 border-t border-border-subtle flex items-center justify-between text-xs font-semibold tracking-wider uppercase">
+<a class="inline-flex items-center gap-1.5 text-emerald-racing hover:text-charcoal-main transition-colors" href="articulos/perplexity-buscar-ia.html">
+<span>Leer artículo</span>
+<span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+</a>
+<span class="text-charcoal-muted font-serif italic text-xs">Ref. #20</span>
+</div>
+</article>
+<article data-cat="Crear contenido" class="guide-card flex flex-col justify-between group border-t border-border-rule pt-8 pb-10" style="--topic:#fd8a42" data-icon="auto_awesome"><a class="guide-thumb block mb-5 overflow-hidden" href="articulos/video-ia-herramientas.html" tabindex="-1" aria-hidden="true"><img src="img/portadas/video-ia-herramientas.svg" alt="" width="1600" height="520" loading="lazy" decoding="async" class="w-full h-24 object-cover object-right transition-transform duration-500 group-hover:scale-105"/></a>
+<div>
+<div class="flex items-center justify-between text-[11px] font-sans uppercase tracking-widest mb-3 text-charcoal-muted">
+<span class="guide-topic font-semibold pb-0.5 inline-flex items-center gap-1"><span class="material-symbols-outlined text-[15px]" aria-hidden="true">auto_awesome</span>Vídeo</span>
+<span class="font-serif italic text-xs">14 min de lectura</span>
+</div>
+<a class="block group-hover:text-emerald-racing transition-colors" href="articulos/video-ia-herramientas.html">
+<h4 class="font-serif text-2xl sm:text-[23px] leading-snug font-medium text-charcoal-main mb-3 group-hover:text-emerald-racing">
+                Herramientas de vídeo con IA: qué puedes generar y editar hoy
+              </h4>
+</a>
+<p class="font-sans text-sm text-charcoal-muted leading-relaxed mb-6 font-normal">
+              Veo, Runway y Kling comparados sin adjetivos de marketing: duración real, coherencia y coste por clip.
+            </p>
+</div>
+<div class="pt-3 border-t border-border-subtle flex items-center justify-between text-xs font-semibold tracking-wider uppercase">
+<a class="inline-flex items-center gap-1.5 text-emerald-racing hover:text-charcoal-main transition-colors" href="articulos/video-ia-herramientas.html">
+<span>Leer artículo</span>
+<span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+</a>
+<span class="text-charcoal-muted font-serif italic text-xs">Ref. #19</span>
+</div>
+</article>
+<article data-cat="Agentes y automatización" class="guide-card flex flex-col justify-between group border-t border-border-rule pt-8 pb-10" style="--topic:#9b4500" data-icon="smart_toy"><a class="guide-thumb block mb-5 overflow-hidden" href="articulos/automatizar-n8n-ia.html" tabindex="-1" aria-hidden="true"><img src="img/portadas/automatizar-n8n-ia.svg" alt="" width="1600" height="520" loading="lazy" decoding="async" class="w-full h-24 object-cover object-right transition-transform duration-500 group-hover:scale-105"/></a>
+<div>
+<div class="flex items-center justify-between text-[11px] font-sans uppercase tracking-widest mb-3 text-charcoal-muted">
+<span class="guide-topic font-semibold pb-0.5 inline-flex items-center gap-1"><span class="material-symbols-outlined text-[15px]" aria-hidden="true">smart_toy</span>Automatización</span>
+<span class="font-serif italic text-xs">13 min de lectura</span>
+</div>
+<a class="block group-hover:text-emerald-racing transition-colors" href="articulos/automatizar-n8n-ia.html">
+<h4 class="font-serif text-2xl sm:text-[23px] leading-snug font-medium text-charcoal-main mb-3 group-hover:text-emerald-racing">
+                n8n y IA: automatización visual sin código paso a paso
+              </h4>
+</a>
+<p class="font-sans text-sm text-charcoal-muted leading-relaxed mb-6 font-normal">
+              Cómo montar tu primer flujo con IA integrada, y cuándo n8n gana a pedírselo directamente a un agente.
+            </p>
+</div>
+<div class="pt-3 border-t border-border-subtle flex items-center justify-between text-xs font-semibold tracking-wider uppercase">
+<a class="inline-flex items-center gap-1.5 text-emerald-racing hover:text-charcoal-main transition-colors" href="articulos/automatizar-n8n-ia.html">
+<span>Leer artículo</span>
+<span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+</a>
+<span class="text-charcoal-muted font-serif italic text-xs">Ref. #18</span>
+</div>
+</article>
+<article data-cat="Crear contenido" class="guide-card flex flex-col justify-between group border-t border-border-rule pt-8 pb-10" style="--topic:#fd8a42" data-icon="auto_awesome"><a class="guide-thumb block mb-5 overflow-hidden" href="articulos/generar-imagenes-ia.html" tabindex="-1" aria-hidden="true"><img src="img/portadas/generar-imagenes-ia.svg" alt="" width="1600" height="520" loading="lazy" decoding="async" class="w-full h-24 object-cover object-right transition-transform duration-500 group-hover:scale-105"/></a>
+<div>
+<div class="flex items-center justify-between text-[11px] font-sans uppercase tracking-widest mb-3 text-charcoal-muted">
+<span class="guide-topic font-semibold pb-0.5 inline-flex items-center gap-1"><span class="material-symbols-outlined text-[15px]" aria-hidden="true">auto_awesome</span>Creatividad</span>
+<span class="font-serif italic text-xs">13 min de lectura</span>
+</div>
+<a class="block group-hover:text-emerald-racing transition-colors" href="articulos/generar-imagenes-ia.html">
+<h4 class="font-serif text-2xl sm:text-[23px] leading-snug font-medium text-charcoal-main mb-3 group-hover:text-emerald-racing">
+                Cómo generar imágenes con IA: Gemini, Midjourney y ChatGPT comparados
+              </h4>
+</a>
+<p class="font-sans text-sm text-charcoal-muted leading-relaxed mb-6 font-normal">
+              Qué modelo usar según la tarea, cómo escribir un prompt visual y los límites de derechos de autor que nadie te cuenta.
+            </p>
+</div>
+<div class="pt-3 border-t border-border-subtle flex items-center justify-between text-xs font-semibold tracking-wider uppercase">
+<a class="inline-flex items-center gap-1.5 text-emerald-racing hover:text-charcoal-main transition-colors" href="articulos/generar-imagenes-ia.html">
+<span>Leer artículo</span>
+<span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+</a>
+<span class="text-charcoal-muted font-serif italic text-xs">Ref. #17</span>
+</div>
+</article>
+<article data-cat="Para empezar" class="guide-card flex flex-col justify-between group border-t border-border-rule pt-8 pb-10" style="--topic:#072417" data-icon="school"><a class="guide-thumb block mb-5 overflow-hidden" href="articulos/glosario-terminos-ia.html" tabindex="-1" aria-hidden="true"><img src="img/portadas/glosario-terminos-ia.svg" alt="" width="1600" height="520" loading="lazy" decoding="async" class="w-full h-24 object-cover object-right transition-transform duration-500 group-hover:scale-105"/></a>
+<div>
+<div class="flex items-center justify-between text-[11px] font-sans uppercase tracking-widest mb-3 text-charcoal-muted">
+<span class="guide-topic font-semibold pb-0.5 inline-flex items-center gap-1"><span class="material-symbols-outlined text-[15px]" aria-hidden="true">school</span>Conceptos</span>
+<span class="font-serif italic text-xs">14 min de lectura</span>
+</div>
+<a class="block group-hover:text-emerald-racing transition-colors" href="articulos/glosario-terminos-ia.html">
+<h4 class="font-serif text-2xl sm:text-[23px] leading-snug font-medium text-charcoal-main mb-3 group-hover:text-emerald-racing">
+                Glosario de IA: 30 términos que debes conocer
+              </h4>
+</a>
+<p class="font-sans text-sm text-charcoal-muted leading-relaxed mb-6 font-normal">
+              Token, contexto, alucinación, fine-tuning, RAG y más, explicados sin dar nada por hecho.
+            </p>
+</div>
+<div class="pt-3 border-t border-border-subtle flex items-center justify-between text-xs font-semibold tracking-wider uppercase">
+<a class="inline-flex items-center gap-1.5 text-emerald-racing hover:text-charcoal-main transition-colors" href="articulos/glosario-terminos-ia.html">
+<span>Leer artículo</span>
+<span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+</a>
+<span class="text-charcoal-muted font-serif italic text-xs">Ref. #16</span>
+</div>
+</article>
+<article data-cat="Agentes y automatización" class="guide-card flex flex-col justify-between group border-t border-border-rule pt-8 pb-10" style="--topic:#9b4500" data-icon="smart_toy"><a class="guide-thumb block mb-5 overflow-hidden" href="articulos/ia-redes-sociales.html" tabindex="-1" aria-hidden="true"><img src="img/portadas/ia-redes-sociales.svg" alt="" width="1600" height="520" loading="lazy" decoding="async" class="w-full h-24 object-cover object-right transition-transform duration-500 group-hover:scale-105"/></a>
+<div>
+<div class="flex items-center justify-between text-[11px] font-sans uppercase tracking-widest mb-3 text-charcoal-muted">
+<span class="guide-topic font-semibold pb-0.5 inline-flex items-center gap-1"><span class="material-symbols-outlined text-[15px]" aria-hidden="true">smart_toy</span>Automatización</span>
+<span class="font-serif italic text-xs">15 min de lectura</span>
+</div>
+<a class="block group-hover:text-emerald-racing transition-colors" href="articulos/ia-redes-sociales.html">
+<h4 class="font-serif text-2xl sm:text-[23px] leading-snug font-medium text-charcoal-main mb-3 group-hover:text-emerald-racing">
+                Cómo usar IA para redes sociales sin perder autenticidad
+              </h4>
+</a>
+<p class="font-sans text-sm text-charcoal-muted leading-relaxed mb-6 font-normal">
+              Qué delegar en IA y qué conviene conservar tú para que el contenido no suene genérico.
+            </p>
+</div>
+<div class="pt-3 border-t border-border-subtle flex items-center justify-between text-xs font-semibold tracking-wider uppercase">
+<a class="inline-flex items-center gap-1.5 text-emerald-racing hover:text-charcoal-main transition-colors" href="articulos/ia-redes-sociales.html">
+<span>Leer artículo</span>
+<span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+</a>
+<span class="text-charcoal-muted font-serif italic text-xs">Ref. #15</span>
+</div>
+</article>
+<article data-cat="Para empezar" class="guide-card flex flex-col justify-between group border-t border-border-rule pt-8 pb-10" style="--topic:#072417" data-icon="school"><a class="guide-thumb block mb-5 overflow-hidden" href="articulos/rag-explicado.html" tabindex="-1" aria-hidden="true"><img src="img/portadas/rag-explicado.svg" alt="" width="1600" height="520" loading="lazy" decoding="async" class="w-full h-24 object-cover object-right transition-transform duration-500 group-hover:scale-105"/></a>
+<div>
+<div class="flex items-center justify-between text-[11px] font-sans uppercase tracking-widest mb-3 text-charcoal-muted">
+<span class="guide-topic font-semibold pb-0.5 inline-flex items-center gap-1"><span class="material-symbols-outlined text-[15px]" aria-hidden="true">school</span>Conceptos</span>
+<span class="font-serif italic text-xs">15 min de lectura</span>
+</div>
+<a class="block group-hover:text-emerald-racing transition-colors" href="articulos/rag-explicado.html">
+<h4 class="font-serif text-2xl sm:text-[23px] leading-snug font-medium text-charcoal-main mb-3 group-hover:text-emerald-racing">
+                RAG explicado: cómo hacer que la IA responda con tus documentos
+              </h4>
+</a>
+<p class="font-sans text-sm text-charcoal-muted leading-relaxed mb-6 font-normal">
+              La técnica que permite que un asistente consulte tus propios documentos antes de responder.
+            </p>
+</div>
+<div class="pt-3 border-t border-border-subtle flex items-center justify-between text-xs font-semibold tracking-wider uppercase">
+<a class="inline-flex items-center gap-1.5 text-emerald-racing hover:text-charcoal-main transition-colors" href="articulos/rag-explicado.html">
+<span>Leer artículo</span>
+<span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+</a>
+<span class="text-charcoal-muted font-serif italic text-xs">Ref. #14</span>
+</div>
+</article>
+<article data-cat="Elegir herramienta" class="guide-card flex flex-col justify-between group border-t border-border-rule pt-8 pb-10" style="--topic:#486554" data-icon="compare_arrows"><a class="guide-thumb block mb-5 overflow-hidden" href="articulos/elegir-ia-para-programar.html" tabindex="-1" aria-hidden="true"><img src="img/portadas/elegir-ia-para-programar.svg" alt="" width="1600" height="520" loading="lazy" decoding="async" class="w-full h-24 object-cover object-right transition-transform duration-500 group-hover:scale-105"/></a>
+<div>
+<div class="flex items-center justify-between text-[11px] font-sans uppercase tracking-widest mb-3 text-charcoal-muted">
+<span class="guide-topic font-semibold pb-0.5 inline-flex items-center gap-1"><span class="material-symbols-outlined text-[15px]" aria-hidden="true">compare_arrows</span>Comparativa</span>
+<span class="font-serif italic text-xs">14 min de lectura</span>
+</div>
+<a class="block group-hover:text-emerald-racing transition-colors" href="articulos/elegir-ia-para-programar.html">
+<h4 class="font-serif text-2xl sm:text-[23px] leading-snug font-medium text-charcoal-main mb-3 group-hover:text-emerald-racing">
+                Claude Code, Cursor o Copilot: cuál elegir para programar con IA
+              </h4>
+</a>
+<p class="font-sans text-sm text-charcoal-muted leading-relaxed mb-6 font-normal">
+              Tres categorías de herramientas que resuelven problemas distintos, explicadas para elegir sin ruido de marketing.
+            </p>
+</div>
+<div class="pt-3 border-t border-border-subtle flex items-center justify-between text-xs font-semibold tracking-wider uppercase">
+<a class="inline-flex items-center gap-1.5 text-emerald-racing hover:text-charcoal-main transition-colors" href="articulos/elegir-ia-para-programar.html">
+<span>Leer artículo</span>
+<span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+</a>
+<span class="text-charcoal-muted font-serif italic text-xs">Ref. #13</span>
+</div>
+</article>
+<article data-cat="Para empezar" class="guide-card flex flex-col justify-between group border-t border-border-rule pt-8 pb-10" style="--topic:#072417" data-icon="school"><a class="guide-thumb block mb-5 overflow-hidden" href="articulos/que-es-un-agente-ia.html" tabindex="-1" aria-hidden="true"><img src="img/portadas/que-es-un-agente-ia.svg" alt="" width="1600" height="520" loading="lazy" decoding="async" class="w-full h-24 object-cover object-right transition-transform duration-500 group-hover:scale-105"/></a>
+<div>
+<div class="flex items-center justify-between text-[11px] font-sans uppercase tracking-widest mb-3 text-charcoal-muted">
+<span class="guide-topic font-semibold pb-0.5 inline-flex items-center gap-1"><span class="material-symbols-outlined text-[15px]" aria-hidden="true">school</span>Conceptos</span>
+<span class="font-serif italic text-xs">14 min de lectura</span>
+</div>
+<a class="block group-hover:text-emerald-racing transition-colors" href="articulos/que-es-un-agente-ia.html">
+<h4 class="font-serif text-2xl sm:text-[23px] leading-snug font-medium text-charcoal-main mb-3 group-hover:text-emerald-racing">
+                Qué es un agente de IA y en qué se diferencia de un chatbot
+              </h4>
+</a>
+<p class="font-sans text-sm text-charcoal-muted leading-relaxed mb-6 font-normal">
+              La diferencia real entre un chatbot y un agente: quién decide, quién actúa y qué cambia en la práctica.
+            </p>
+</div>
+<div class="pt-3 border-t border-border-subtle flex items-center justify-between text-xs font-semibold tracking-wider uppercase">
+<a class="inline-flex items-center gap-1.5 text-emerald-racing hover:text-charcoal-main transition-colors" href="articulos/que-es-un-agente-ia.html">
+<span>Leer artículo</span>
+<span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+</a>
+<span class="text-charcoal-muted font-serif italic text-xs">Ref. #12</span>
+</div>
+</article>
+<article data-cat="Seguridad y privacidad" class="guide-card flex flex-col justify-between group border-t border-border-rule pt-8 pb-10" style="--topic:#ba1a1a" data-icon="shield"><a class="guide-thumb block mb-5 overflow-hidden" href="articulos/proteger-datos-ia.html" tabindex="-1" aria-hidden="true"><img src="img/portadas/proteger-datos-ia.svg" alt="" width="1600" height="520" loading="lazy" decoding="async" class="w-full h-24 object-cover object-right transition-transform duration-500 group-hover:scale-105"/></a>
+<div>
+<div class="flex items-center justify-between text-[11px] font-sans uppercase tracking-widest mb-3 text-charcoal-muted">
+<span class="guide-topic font-semibold pb-0.5 inline-flex items-center gap-1"><span class="material-symbols-outlined text-[15px]" aria-hidden="true">shield</span>Seguridad</span>
+<span class="font-serif italic text-xs">14 min de lectura</span>
+</div>
+<a class="block group-hover:text-emerald-racing transition-colors" href="articulos/proteger-datos-ia.html">
+<h4 class="font-serif text-2xl sm:text-[23px] leading-snug font-medium text-charcoal-main mb-3 group-hover:text-emerald-racing">
+                Cómo proteger tus datos al conectar la IA a tus herramientas
+              </h4>
+</a>
+<p class="font-sans text-sm text-charcoal-muted leading-relaxed mb-6 font-normal">
+              Qué comprobar antes de dar acceso a tu correo, archivos o cuentas, y cómo limitar el riesgo real.
+            </p>
+</div>
+<div class="pt-3 border-t border-border-subtle flex items-center justify-between text-xs font-semibold tracking-wider uppercase">
+<a class="inline-flex items-center gap-1.5 text-emerald-racing hover:text-charcoal-main transition-colors" href="articulos/proteger-datos-ia.html">
+<span>Leer artículo</span>
+<span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+</a>
+<span class="text-charcoal-muted font-serif italic text-xs">Ref. #11</span>
+</div>
+</article>
+<article data-cat="Agentes y automatización" class="guide-card flex flex-col justify-between group border-t border-border-rule pt-8 pb-10" style="--topic:#9b4500" data-icon="smart_toy"><a class="guide-thumb block mb-5 overflow-hidden" href="articulos/ia-gestionar-correo.html" tabindex="-1" aria-hidden="true"><img src="img/portadas/ia-gestionar-correo.svg" alt="" width="1600" height="520" loading="lazy" decoding="async" class="w-full h-24 object-cover object-right transition-transform duration-500 group-hover:scale-105"/></a>
+<div>
+<div class="flex items-center justify-between text-[11px] font-sans uppercase tracking-widest mb-3 text-charcoal-muted">
+<span class="guide-topic font-semibold pb-0.5 inline-flex items-center gap-1"><span class="material-symbols-outlined text-[15px]" aria-hidden="true">smart_toy</span>Automatización</span>
+<span class="font-serif italic text-xs">14 min de lectura</span>
+</div>
+<a class="block group-hover:text-emerald-racing transition-colors" href="articulos/ia-gestionar-correo.html">
+<h4 class="font-serif text-2xl sm:text-[23px] leading-snug font-medium text-charcoal-main mb-3 group-hover:text-emerald-racing">
+                Cómo usar IA para gestionar el correo y ahorrar horas a la semana
+              </h4>
+</a>
+<p class="font-sans text-sm text-charcoal-muted leading-relaxed mb-6 font-normal">
+              Qué automatizar con confianza (clasificar, resumir, borradores) y qué conviene seguir revisando a mano.
+            </p>
+</div>
+<div class="pt-3 border-t border-border-subtle flex items-center justify-between text-xs font-semibold tracking-wider uppercase">
+<a class="inline-flex items-center gap-1.5 text-emerald-racing hover:text-charcoal-main transition-colors" href="articulos/ia-gestionar-correo.html">
+<span>Leer artículo</span>
+<span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+</a>
+<span class="text-charcoal-muted font-serif italic text-xs">Ref. #10</span>
+</div>
+</article>
+<article data-cat="Seguridad y privacidad" class="guide-card flex flex-col justify-between group border-t border-border-rule pt-8 pb-10" style="--topic:#ba1a1a" data-icon="shield"><a class="guide-thumb block mb-5 overflow-hidden" href="articulos/alucinaciones-ia.html" tabindex="-1" aria-hidden="true"><img src="img/portadas/alucinaciones-ia.svg" alt="" width="1600" height="520" loading="lazy" decoding="async" class="w-full h-24 object-cover object-right transition-transform duration-500 group-hover:scale-105"/></a>
+<div>
+<div class="flex items-center justify-between text-[11px] font-sans uppercase tracking-widest mb-3 text-charcoal-muted">
+<span class="guide-topic font-semibold pb-0.5 inline-flex items-center gap-1"><span class="material-symbols-outlined text-[15px]" aria-hidden="true">shield</span>Seguridad</span>
+<span class="font-serif italic text-xs">15 min de lectura</span>
+</div>
+<a class="block group-hover:text-emerald-racing transition-colors" href="articulos/alucinaciones-ia.html">
+<h4 class="font-serif text-2xl sm:text-[23px] leading-snug font-medium text-charcoal-main mb-3 group-hover:text-emerald-racing">
+                Alucinaciones de la IA: cómo detectar cuando se inventa algo
+              </h4>
+</a>
+<p class="font-sans text-sm text-charcoal-muted leading-relaxed mb-6 font-normal">
+              Técnicas de verificación cruzada, parámetros de temperatura y reglas para confiar únicamente en datos validados.
+            </p>
+</div>
+<div class="pt-3 border-t border-border-subtle flex items-center justify-between text-xs font-semibold tracking-wider uppercase">
+<a class="inline-flex items-center gap-1.5 text-emerald-racing hover:text-charcoal-main transition-colors" href="articulos/alucinaciones-ia.html">
+<span>Leer artículo</span>
+<span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+</a>
+<span class="text-charcoal-muted font-serif italic text-xs">Ref. #09</span>
+</div>
+</article>
+<article data-cat="Agentes y automatización" class="guide-card flex flex-col justify-between group border-t border-border-rule pt-8 pb-10" style="--topic:#9b4500" data-icon="smart_toy"><a class="guide-thumb block mb-5 overflow-hidden" href="articulos/errores-automatizar-ia.html" tabindex="-1" aria-hidden="true"><img src="img/portadas/errores-automatizar-ia.svg" alt="" width="1600" height="520" loading="lazy" decoding="async" class="w-full h-24 object-cover object-right transition-transform duration-500 group-hover:scale-105"/></a>
+<div>
+<div class="flex items-center justify-between text-[11px] font-sans uppercase tracking-widest mb-3 text-charcoal-muted">
+<span class="guide-topic font-semibold pb-0.5 inline-flex items-center gap-1"><span class="material-symbols-outlined text-[15px]" aria-hidden="true">smart_toy</span>Automatización</span>
+<span class="font-serif italic text-xs">14 min de lectura</span>
+</div>
+<a class="block group-hover:text-emerald-racing transition-colors" href="articulos/errores-automatizar-ia.html">
+<h4 class="font-serif text-2xl sm:text-[23px] leading-snug font-medium text-charcoal-main mb-3 group-hover:text-emerald-racing">
+                Los errores más comunes al automatizar tareas con IA
+              </h4>
+</a>
+<p class="font-sans text-sm text-charcoal-muted leading-relaxed mb-6 font-normal">
+              Los nueve fallos que todo el mundo comete al delegar procesos en modelos de lenguaje y cómo blindar tus flujos contra roturas.
+            </p>
+</div>
+<div class="pt-3 border-t border-border-subtle flex items-center justify-between text-xs font-semibold tracking-wider uppercase">
+<a class="inline-flex items-center gap-1.5 text-emerald-racing hover:text-charcoal-main transition-colors" href="articulos/errores-automatizar-ia.html">
+<span>Leer artículo</span>
+<span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+</a>
+<span class="text-charcoal-muted font-serif italic text-xs">Ref. #08</span>
+</div>
+</article>
+<article data-cat="Para empezar" class="guide-card flex flex-col justify-between group border-t border-border-rule pt-8 pb-10" style="--topic:#072417" data-icon="school"><a class="guide-thumb block mb-5 overflow-hidden" href="articulos/como-escribir-prompts.html" tabindex="-1" aria-hidden="true"><img src="img/portadas/como-escribir-prompts.svg" alt="" width="1600" height="520" loading="lazy" decoding="async" class="w-full h-24 object-cover object-right transition-transform duration-500 group-hover:scale-105"/></a>
+<div>
+<div class="flex items-center justify-between text-[11px] font-sans uppercase tracking-widest mb-3 text-charcoal-muted">
+<span class="guide-topic font-semibold pb-0.5 inline-flex items-center gap-1"><span class="material-symbols-outlined text-[15px]" aria-hidden="true">school</span>Conceptos</span>
+<span class="font-serif italic text-xs">14 min de lectura</span>
+</div>
+<a class="block group-hover:text-emerald-racing transition-colors" href="articulos/como-escribir-prompts.html">
+<h4 class="font-serif text-2xl sm:text-[23px] leading-snug font-medium text-charcoal-main mb-3 group-hover:text-emerald-racing">
+                Qué es un prompt y cómo escribir instrucciones que la IA entienda bien
+              </h4>
+</a>
+<p class="font-sans text-sm text-charcoal-muted leading-relaxed mb-6 font-normal">
+              Frameworks prácticos para obtener respuestas consistentes, evitar salidas genéricas y fijar formatos de salida útiles.
+            </p>
+</div>
+<div class="pt-3 border-t border-border-subtle flex items-center justify-between text-xs font-semibold tracking-wider uppercase">
+<a class="inline-flex items-center gap-1.5 text-emerald-racing hover:text-charcoal-main transition-colors" href="articulos/como-escribir-prompts.html">
+<span>Leer artículo</span>
+<span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+</a>
+<span class="text-charcoal-muted font-serif italic text-xs">Ref. #07</span>
+</div>
+</article>
+<article data-cat="Elegir herramienta" class="guide-card flex flex-col justify-between group border-t border-border-rule pt-8 pb-10" style="--topic:#486554" data-icon="compare_arrows"><a class="guide-thumb block mb-5 overflow-hidden" href="articulos/mejores-asistentes-ia-no-programadores.html" tabindex="-1" aria-hidden="true"><img src="img/portadas/mejores-asistentes-ia-no-programadores.svg" alt="" width="1600" height="520" loading="lazy" decoding="async" class="w-full h-24 object-cover object-right transition-transform duration-500 group-hover:scale-105"/></a>
+<div>
+<div class="flex items-center justify-between text-[11px] font-sans uppercase tracking-widest mb-3 text-charcoal-muted">
+<span class="guide-topic font-semibold pb-0.5 inline-flex items-center gap-1"><span class="material-symbols-outlined text-[15px]" aria-hidden="true">compare_arrows</span>Herramientas</span>
+<span class="font-serif italic text-xs">14 min de lectura</span>
+</div>
+<a class="block group-hover:text-emerald-racing transition-colors" href="articulos/mejores-asistentes-ia-no-programadores.html">
+<h4 class="font-serif text-2xl sm:text-[23px] leading-snug font-medium text-charcoal-main mb-3 group-hover:text-emerald-racing">
+                Los mejores asistentes de IA para quien no programa (2026)
+              </h4>
+</a>
+<p class="font-sans text-sm text-charcoal-muted leading-relaxed mb-6 font-normal">
+              Análisis de las mejores herramientas no-code con capacidades agénticas listas para usar en producción y oficina.
+            </p>
+</div>
+<div class="pt-3 border-t border-border-subtle flex items-center justify-between text-xs font-semibold tracking-wider uppercase">
+<a class="inline-flex items-center gap-1.5 text-emerald-racing hover:text-charcoal-main transition-colors" href="articulos/mejores-asistentes-ia-no-programadores.html">
+<span>Leer artículo</span>
+<span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+</a>
+<span class="text-charcoal-muted font-serif italic text-xs">Ref. #06</span>
+</div>
+</article>
+<article data-cat="Agentes y automatización" class="guide-card flex flex-col justify-between group border-t border-border-rule pt-8 pb-10" style="--topic:#9b4500" data-icon="smart_toy"><a class="guide-thumb block mb-5 overflow-hidden" href="articulos/bot-trading-ia.html" tabindex="-1" aria-hidden="true"><img src="img/portadas/bot-trading-ia.svg" alt="" width="1600" height="520" loading="lazy" decoding="async" class="w-full h-24 object-cover object-right transition-transform duration-500 group-hover:scale-105"/></a>
+<div>
+<div class="flex items-center justify-between text-[11px] font-sans uppercase tracking-widest mb-3 text-charcoal-muted">
+<span class="guide-topic font-semibold pb-0.5 inline-flex items-center gap-1"><span class="material-symbols-outlined text-[15px]" aria-hidden="true">smart_toy</span>Caso Real</span>
+<span class="font-serif italic text-xs">14 min de lectura</span>
+</div>
+<a class="block group-hover:text-emerald-racing transition-colors" href="articulos/bot-trading-ia.html">
+<h4 class="font-serif text-2xl sm:text-[23px] leading-snug font-medium text-charcoal-main mb-3 group-hover:text-emerald-racing">
+                Cómo se construye un bot de trading con IA (sin ser programador)
+              </h4>
+</a>
+<p class="font-sans text-sm text-charcoal-muted leading-relaxed mb-6 font-normal">
+              Desglose real de arquitectura, riesgos, límites de la IA y cómo estructurar un script funcional con ayuda de Claude.
+            </p>
+</div>
+<div class="pt-3 border-t border-border-subtle flex items-center justify-between text-xs font-semibold tracking-wider uppercase">
+<a class="inline-flex items-center gap-1.5 text-emerald-racing hover:text-charcoal-main transition-colors" href="articulos/bot-trading-ia.html">
+<span>Leer artículo</span>
+<span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+</a>
+<span class="text-charcoal-muted font-serif italic text-xs">Ref. #05</span>
+</div>
+</article>
+<article data-cat="Elegir herramienta" class="guide-card flex flex-col justify-between group border-t border-border-rule pt-8 pb-10" style="--topic:#486554" data-icon="compare_arrows"><a class="guide-thumb block mb-5 overflow-hidden" href="articulos/chatgpt-claude-gemini.html" tabindex="-1" aria-hidden="true"><img src="img/portadas/chatgpt-claude-gemini.svg" alt="" width="1600" height="520" loading="lazy" decoding="async" class="w-full h-24 object-cover object-right transition-transform duration-500 group-hover:scale-105"/></a>
+<div>
+<div class="flex items-center justify-between text-[11px] font-sans uppercase tracking-widest mb-3 text-charcoal-muted">
+<span class="guide-topic font-semibold pb-0.5 inline-flex items-center gap-1"><span class="material-symbols-outlined text-[15px]" aria-hidden="true">compare_arrows</span>Comparativa</span>
+<span class="font-serif italic text-xs">16 min de lectura</span>
+</div>
+<a class="block group-hover:text-emerald-racing transition-colors" href="articulos/chatgpt-claude-gemini.html">
+<h4 class="font-serif text-2xl sm:text-[23px] leading-snug font-medium text-charcoal-main mb-3 group-hover:text-emerald-racing">
+                ChatGPT, Claude o Gemini: cuál usar según lo que necesites
+              </h4>
+</a>
+<p class="font-sans text-sm text-charcoal-muted leading-relaxed mb-6 font-normal">
+              Comparativa honesta basada en semanas de uso real para redacción, análisis de datos, código y razonamiento complejo.
+            </p>
+</div>
+<div class="pt-3 border-t border-border-subtle flex items-center justify-between text-xs font-semibold tracking-wider uppercase">
+<a class="inline-flex items-center gap-1.5 text-emerald-racing hover:text-charcoal-main transition-colors" href="articulos/chatgpt-claude-gemini.html">
+<span>Leer artículo</span>
+<span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+</a>
+<span class="text-charcoal-muted font-serif italic text-xs">Ref. #04</span>
+</div>
+</article>
+<article data-cat="Para empezar" class="guide-card flex flex-col justify-between group border-t border-border-rule pt-8 pb-10" style="--topic:#072417" data-icon="school"><a class="guide-thumb block mb-5 overflow-hidden" href="articulos/mcp-explicado.html" tabindex="-1" aria-hidden="true"><img src="img/portadas/mcp-explicado.svg" alt="" width="1600" height="520" loading="lazy" decoding="async" class="w-full h-24 object-cover object-right transition-transform duration-500 group-hover:scale-105"/></a>
+<div>
+<div class="flex items-center justify-between text-[11px] font-sans uppercase tracking-widest mb-3 text-charcoal-muted">
+<span class="guide-topic font-semibold pb-0.5 inline-flex items-center gap-1"><span class="material-symbols-outlined text-[15px]" aria-hidden="true">school</span>Conceptos</span>
+<span class="font-serif italic text-xs">14 min de lectura</span>
+</div>
+<a class="block group-hover:text-emerald-racing transition-colors" href="articulos/mcp-explicado.html">
+<h4 class="font-serif text-2xl sm:text-[23px] leading-snug font-medium text-charcoal-main mb-3 group-hover:text-emerald-racing">
+                MCP explicado: cómo conectar la IA con tus propias herramientas
+              </h4>
+</a>
+<p class="font-sans text-sm text-charcoal-muted leading-relaxed mb-6 font-normal">
+              Qué es el Model Context Protocol, por qué revoluciona los agentes y cómo usarlo en tu entorno sin dolor de cabeza.
+            </p>
+</div>
+<div class="pt-3 border-t border-border-subtle flex items-center justify-between text-xs font-semibold tracking-wider uppercase">
+<a class="inline-flex items-center gap-1.5 text-emerald-racing hover:text-charcoal-main transition-colors" href="articulos/mcp-explicado.html">
+<span>Leer artículo</span>
+<span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+</a>
+<span class="text-charcoal-muted font-serif italic text-xs">Ref. #03</span>
+</div>
+</article>
+<article data-cat="Agentes y automatización" class="guide-card flex flex-col justify-between group border-t border-border-rule pt-8 pb-10" style="--topic:#9b4500" data-icon="smart_toy"><a class="guide-thumb block mb-5 overflow-hidden" href="articulos/automatizar-tareas-agentes-ia.html" tabindex="-1" aria-hidden="true"><img src="img/portadas/automatizar-tareas-agentes-ia.svg" alt="" width="1600" height="520" loading="lazy" decoding="async" class="w-full h-24 object-cover object-right transition-transform duration-500 group-hover:scale-105"/></a>
+<div>
+<div class="flex items-center justify-between text-[11px] font-sans uppercase tracking-widest mb-3 text-charcoal-muted">
+<span class="guide-topic font-semibold pb-0.5 inline-flex items-center gap-1"><span class="material-symbols-outlined text-[15px]" aria-hidden="true">smart_toy</span>Automatización</span>
+<span class="font-serif italic text-xs">14 min de lectura</span>
+</div>
+<a class="block group-hover:text-emerald-racing transition-colors" href="articulos/automatizar-tareas-agentes-ia.html">
+<h4 class="font-serif text-2xl sm:text-[23px] leading-snug font-medium text-charcoal-main mb-3 group-hover:text-emerald-racing">
+                Cómo automatizar tareas repetitivas con agentes de IA
+              </h4>
+</a>
+<p class="font-sans text-sm text-charcoal-muted leading-relaxed mb-6 font-normal">
+              Aprende a conectar prompts estructurados con flujos de trabajo cotidianos para ahorrar horas cada semana.
+            </p>
+</div>
+<div class="pt-3 border-t border-border-subtle flex items-center justify-between text-xs font-semibold tracking-wider uppercase">
+<a class="inline-flex items-center gap-1.5 text-emerald-racing hover:text-charcoal-main transition-colors" href="articulos/automatizar-tareas-agentes-ia.html">
+<span>Leer artículo</span>
+<span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+</a>
+<span class="text-charcoal-muted font-serif italic text-xs">Ref. #02</span>
+</div>
+</article>
+<article data-cat="Para empezar" class="guide-card flex flex-col justify-between group border-t border-border-rule pt-8 pb-10" style="--topic:#072417" data-icon="school"><a class="guide-thumb block mb-5 overflow-hidden" href="articulos/que-es-claude-code.html" tabindex="-1" aria-hidden="true"><img src="img/portadas/que-es-claude-code.svg" alt="" width="1600" height="520" loading="lazy" decoding="async" class="w-full h-24 object-cover object-right transition-transform duration-500 group-hover:scale-105"/></a>
+<div>
+<div class="flex items-center justify-between text-[11px] font-sans uppercase tracking-widest mb-3 text-charcoal-muted">
+<span class="guide-topic font-semibold pb-0.5 inline-flex items-center gap-1"><span class="material-symbols-outlined text-[15px]" aria-hidden="true">school</span>Empezar</span>
+<span class="font-serif italic text-xs">14 min de lectura</span>
+</div>
+<a class="block group-hover:text-emerald-racing transition-colors" href="articulos/que-es-claude-code.html">
+<h4 class="font-serif text-2xl sm:text-[23px] leading-snug font-medium text-charcoal-main mb-3 group-hover:text-emerald-racing">
+                Qué es Claude Code y cómo empezar a usarlo sin saber programar
+              </h4>
+</a>
+<p class="font-sans text-sm text-charcoal-muted leading-relaxed mb-6 font-normal">
+              Guía paso a paso para configurar la herramienta de Anthropic en tu terminal y automatizar tareas desde el primer día.
+            </p>
+</div>
+<div class="pt-3 border-t border-border-subtle flex items-center justify-between text-xs font-semibold tracking-wider uppercase">
+<a class="inline-flex items-center gap-1.5 text-emerald-racing hover:text-charcoal-main transition-colors" href="articulos/que-es-claude-code.html">
+<span>Leer artículo</span>
+<span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+</a>
+<span class="text-charcoal-muted font-serif italic text-xs">Ref. #01</span>
+</div>
+</article>
+<article data-cat="Agentes y automatización" class="guide-card flex flex-col justify-between group border-t border-border-rule pt-8 pb-10" style="--topic:#9b4500" data-icon="chat_bubble_outline"><a class="guide-thumb block mb-5 overflow-hidden" href="articulos/bot-atencion-cliente-ia.html" tabindex="-1" aria-hidden="true"><img src="img/portadas/bot-atencion-cliente-ia.svg" alt="" width="1600" height="520" loading="lazy" decoding="async" class="w-full h-24 object-cover object-right transition-transform duration-500 group-hover:scale-105"/></a>
+<div>
+<div class="flex items-center justify-between text-[11px] font-sans uppercase tracking-widest mb-3 text-charcoal-muted">
+<span class="guide-topic font-semibold pb-0.5 inline-flex items-center gap-1"><span class="material-symbols-outlined text-[15px]" aria-hidden="true">chat_bubble_outline</span>Automatización</span>
+<span class="font-serif italic text-xs">15 min de lectura</span>
+</div>
+<a class="block group-hover:text-emerald-racing transition-colors" href="articulos/bot-atencion-cliente-ia.html">
+<h4 class="font-serif text-2xl sm:text-[23px] leading-snug font-medium text-charcoal-main mb-3 group-hover:text-emerald-racing">
+                Cómo montar un bot de atención al cliente con IA que no invente respuestas
+              </h4>
+</a>
+<p class="font-sans text-sm text-charcoal-muted leading-relaxed mb-6 font-normal">
+              Qué hace tu bot cuando no sabe la respuesta decide si sirve o te mete en un problema. Cómo atarlo a tu documentación, obligarle a decir «no lo sé» y escalar a una persona.
+            </p>
+</div>
+<div class="pt-3 border-t border-border-subtle flex items-center justify-between text-xs font-semibold tracking-wider uppercase">
+<a class="inline-flex items-center gap-1.5 text-emerald-racing hover:text-charcoal-main transition-colors" href="articulos/bot-atencion-cliente-ia.html">
+<span>Leer artículo</span>
+<span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+</a>
+<span class="text-charcoal-muted font-serif italic text-xs">Ref. #45</span>
+</div>
+</article>
+<article data-cat="Trabajo, estudio y dinero" class="guide-card flex flex-col justify-between group border-t border-border-rule pt-8 pb-10" style="--topic:#673d00" data-icon="gavel"><a class="guide-thumb block mb-5 overflow-hidden" href="articulos/revisar-contratos-ia.html" tabindex="-1" aria-hidden="true"><img src="img/portadas/revisar-contratos-ia.svg" alt="" width="1600" height="520" loading="lazy" decoding="async" class="w-full h-24 object-cover object-right transition-transform duration-500 group-hover:scale-105"/></a>
+<div>
+<div class="flex items-center justify-between text-[11px] font-sans uppercase tracking-widest mb-3 text-charcoal-muted">
+<span class="guide-topic font-semibold pb-0.5 inline-flex items-center gap-1"><span class="material-symbols-outlined text-[15px]" aria-hidden="true">gavel</span>Documentos</span>
+<span class="font-serif italic text-xs">18 min de lectura</span>
+</div>
+<a class="block group-hover:text-emerald-racing transition-colors" href="articulos/revisar-contratos-ia.html">
+<h4 class="font-serif text-2xl sm:text-[23px] leading-snug font-medium text-charcoal-main mb-3 group-hover:text-emerald-racing">
+                IA para revisar contratos y documentos legales: qué puede y qué no puede hacer todavía
+              </h4>
+</a>
+<p class="font-sans text-sm text-charcoal-muted leading-relaxed mb-6 font-normal">
+              Qué parte de leer un contrato puedes delegar a la IA y qué no. El método de cita literal para que no se invente cláusulas, y qué exige el RGPD antes de subir nada.
+            </p>
+</div>
+<div class="pt-3 border-t border-border-subtle flex items-center justify-between text-xs font-semibold tracking-wider uppercase">
+<a class="inline-flex items-center gap-1.5 text-emerald-racing hover:text-charcoal-main transition-colors" href="articulos/revisar-contratos-ia.html">
+<span>Leer artículo</span>
+<span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+</a>
+<span class="text-charcoal-muted font-serif italic text-xs">Ref. #46</span>
+</div>
+</article>
+<article data-cat="Agentes y automatización" class="guide-card flex flex-col justify-between group border-t border-border-rule pt-8 pb-10" style="--topic:#9b4500" data-icon="smart_toy"><a class="guide-thumb block mb-5 overflow-hidden" href="articulos/evaluar-agente-ia.html" tabindex="-1" aria-hidden="true"><img src="img/portadas/evaluar-agente-ia.svg" alt="" width="1600" height="520" loading="lazy" decoding="async" class="w-full h-24 object-cover object-right transition-transform duration-500 group-hover:scale-105"/></a>
+<div>
+<div class="flex items-center justify-between text-[11px] font-sans uppercase tracking-widest mb-3 text-charcoal-muted">
+<span class="guide-topic font-semibold pb-0.5 inline-flex items-center gap-1"><span class="material-symbols-outlined text-[15px]" aria-hidden="true">smart_toy</span>Automatización</span>
+<span class="font-serif italic text-xs">17 min de lectura</span>
+</div>
+<a class="block group-hover:text-emerald-racing transition-colors" href="articulos/evaluar-agente-ia.html">
+<h4 class="font-serif text-2xl sm:text-[23px] leading-snug font-medium text-charcoal-main mb-3 group-hover:text-emerald-racing">
+                Cómo saber si tu agente de IA funciona de verdad
+              </h4>
+</a>
+<p class="font-sans text-sm text-charcoal-muted leading-relaxed mb-6 font-normal">
+              Montar el examen que tu agente no ha visto, qué medir en cada tipo de sistema y los tres sesgos que inflan los resultados cuando pones a una IA a corregir a otra.
+            </p>
+</div>
+<div class="pt-3 border-t border-border-subtle flex items-center justify-between text-xs font-semibold tracking-wider uppercase">
+<a class="inline-flex items-center gap-1.5 text-emerald-racing hover:text-charcoal-main transition-colors" href="articulos/evaluar-agente-ia.html">
+<span>Leer artículo</span>
+<span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+</a>
+<span class="text-charcoal-muted font-serif italic text-xs">Ref. #47</span>
+</div>
+</article>
+</div>
+<style>.guide-chip{border-color:#c2c8c2;color:#424843;background:transparent}.guide-chip:hover{border-color:#072417;color:#072417}.guide-chip[aria-pressed="true"]{background:#072417;border-color:#072417;color:#f9f9ff}</style>
+<script>(function(){var bar=document.getElementById('guide-filters');if(!bar)return;var cards=[].slice.call(document.querySelectorAll('#guide-grid [data-cat]'));bar.addEventListener('click',function(e){var b=e.target.closest('[data-filter]');if(!b)return;var f=b.getAttribute('data-filter');[].forEach.call(bar.children,function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});cards.forEach(function(c){c.classList.toggle('hidden',!!f&&c.getAttribute('data-cat')!==f);});});})();</script>
+</section>
+<!-- NOTICIAS TEASER SECTION -->
+<section class="max-w-[1240px] mx-auto px-4 sm:px-8 py-16 border-b border-border-rule" id="noticias-teaser"><div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-6 border-b-2 border-charcoal-main mb-10"><div><div class="flex items-center gap-2 text-[11px] font-bold tracking-[0.2em] text-amber-editorial uppercase mb-2"><span>04 // Noticias</span></div><h3 class="font-serif text-3xl sm:text-4xl text-charcoal-main font-medium tracking-tight">Lo que está cambiando en la IA</h3></div><p class="text-xs sm:text-sm text-charcoal-muted max-w-md font-serif italic sm:text-right">Cada mañana a las 8:00, las noticias de IA que importan y qué significan para ti.</p></div><!--NOTICIAS:START--><div class="grid grid-cols-1 md:grid-cols-3 gap-4"><a class="group block bg-[#f1f3fe] border border-border-rule hover:border-emerald-racing transition-colors" href="noticias/2026-10-08-gemini-gratis-solo-flash-lite.html"><img src="img/noticias/2026-10-08-gemini-gratis-solo-flash-lite.svg" alt="" width="1600" height="520" loading="lazy" class="w-full h-32 object-cover object-left"/><span class="block p-6"><span class="text-[11px] font-bold tracking-[0.18em] uppercase text-amber-editorial">Herramientas · 8 de octubre de 2026</span><span class="block font-serif text-xl leading-snug text-charcoal-main mt-2 group-hover:text-emerald-racing">Gemini gratis se queda solo con Flash-Lite a partir del 9 de octubre</span></span></a><a class="group block bg-[#f1f3fe] border border-border-rule hover:border-emerald-racing transition-colors" href="noticias/2026-10-06-mistral-large-4.html"><img src="img/noticias/fotos/2026-10-06-mistral-large-4.jpg" alt="Arthur Mensch, cofundador y director ejecutivo de Mistral AI" width="1600" height="900" loading="lazy" class="w-full h-32 object-cover object-center"/><span class="block p-6"><span class="text-[11px] font-bold tracking-[0.18em] uppercase text-amber-editorial">Modelos · 6 de octubre de 2026</span><span class="block font-serif text-xl leading-snug text-charcoal-main mt-2 group-hover:text-emerald-racing">Mistral presenta Large 4, un modelo europeo de un billón de parámetros</span></span></a><a class="group block bg-[#f1f3fe] border border-border-rule hover:border-emerald-racing transition-colors" href="noticias/2026-10-05-reflection-beam-modelo-abierto.html"><img src="img/noticias/fotos/2026-10-05-reflection-beam-modelo-abierto.jpg" alt="Cableado de un armario de servidores en un centro de datos (imagen de archivo)" width="1600" height="900" loading="lazy" class="w-full h-32 object-cover object-center"/><span class="block p-6"><span class="text-[11px] font-bold tracking-[0.18em] uppercase text-amber-editorial">Modelos · 5 de octubre de 2026</span><span class="block font-serif text-xl leading-snug text-charcoal-main mt-2 group-hover:text-emerald-racing">Reflection presenta Beam, un modelo abierto de 501.000 millones de parámetros</span></span></a></div><!--NOTICIAS:END--><div class="text-center mt-8"><a class="inline-flex items-center gap-2 text-xs tracking-widest uppercase font-semibold text-charcoal-muted border-b border-border-rule pb-1 hover:text-charcoal-main hover:border-charcoal-main transition-colors" href="noticias/index.html"><span>Ver todas las noticias</span><span class="material-symbols-outlined text-[16px]">arrow_forward</span></a></div></section>
+<!-- HERRAMIENTAS TEASER SECTION -->
+<section class="max-w-[1240px] mx-auto px-4 sm:px-8 py-16 border-b border-border-rule" id="herramientas-teaser">
+<div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-6 border-b-2 border-charcoal-main mb-10">
+<div>
+<div class="flex items-center gap-2 text-[11px] font-bold tracking-[0.2em] text-amber-editorial uppercase mb-2">
+<span>05 // Herramientas</span>
+</div>
+<h3 class="font-serif text-3xl sm:text-4xl text-charcoal-main font-medium tracking-tight">
+          Nuevo: calculadoras y tests, sin registro
+        </h3>
+</div>
+<p class="text-xs sm:text-sm text-charcoal-muted max-w-md font-serif italic sm:text-right">
+        Todo corre en tu navegador — nada se envía a ningún sitio.
+      </p>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+<a class="group block bg-[#f1f3fe] border border-border-rule p-8 hover:bg-parchment-soft transition-colors" href="herramientas/que-ia-usar.html">
+<span class="text-[11px] font-bold tracking-[0.18em] uppercase text-amber-editorial mb-3 inline-flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px]">quiz</span> Test de 4 preguntas</span>
+<h4 class="font-serif text-2xl leading-snug font-medium text-charcoal-main mb-3 group-hover:text-emerald-racing transition-colors">
+            ¿Qué IA de pago te conviene?
+          </h4>
+<p class="font-sans text-sm text-charcoal-muted leading-relaxed mb-4">
+            ChatGPT, Claude, Gemini o Perplexity, según cómo usas la IA de verdad.
+          </p>
+<span class="inline-flex items-center gap-1.5 text-xs font-semibold tracking-wider uppercase text-emerald-racing group-hover:text-charcoal-main transition-colors">
+            Hacer el test <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+</span>
+</a>
+<a class="group block bg-[#f1f3fe] border border-border-rule p-8 hover:bg-parchment-soft transition-colors" href="herramientas/calculadora-automatizar.html">
+<span class="text-[11px] font-bold tracking-[0.18em] uppercase text-amber-editorial mb-3 inline-flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px]">calculate</span> Calculadora</span>
+<h4 class="font-serif text-2xl leading-snug font-medium text-charcoal-main mb-3 group-hover:text-emerald-racing transition-colors">
+            ¿Merece la pena automatizar esta tarea?
+          </h4>
+<p class="font-sans text-sm text-charcoal-muted leading-relaxed mb-4">
+            En cuántos meses se paga sola una automatización, con tus propias cifras.
+          </p>
+<span class="inline-flex items-center gap-1.5 text-xs font-semibold tracking-wider uppercase text-emerald-racing group-hover:text-charcoal-main transition-colors">
+            Calcular <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+</span>
+</a>
+</div>
+<div class="text-center mt-8">
+<a class="inline-flex items-center gap-2 text-xs tracking-widest uppercase font-semibold text-charcoal-muted border-b border-border-rule pb-1 hover:text-charcoal-main hover:border-charcoal-main transition-colors" href="herramientas/index.html">
+<span>Ver todas las herramientas</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</section>
+<!-- SECTION "SOBRE NOSOTROS" / EDITORIAL PULL-QUOTE BLOCK -->
+<section class="border-t border-b border-border-rule bg-[#f1f3fe] py-20 scroll-mt-[120px] sm:scroll-mt-16" id="sobre-nosotros">
+<div class="max-w-[1000px] mx-auto px-4 sm:px-8 text-center">
+<div class="inline-flex items-center gap-2 mb-6">
+<span class="text-[11px] font-bold tracking-[0.22em] text-emerald-racing uppercase">
+            Independencia Editorial &amp; Principios
+          </span>
+</div>
+<blockquote class="font-serif text-2xl sm:text-4xl lg:text-[42px] leading-snug text-charcoal-main font-normal italic mb-8 max-w-3xl mx-auto">
+          "Sin cursos inflados ni promesas milagrosas. Solo publicamos lo que funciona en la práctica y cómo resolver lo que falla."
+        </blockquote>
+<div class="h-px w-16 bg-emerald-racing mx-auto mb-8"></div>
+<div class="max-w-2xl mx-auto text-charcoal-body font-sans text-sm sm:text-base leading-relaxed space-y-4 mb-8 text-left sm:text-center">
+<p>
+<strong class="text-charcoal-main font-semibold">El Telar</strong> nació del cansancio ante tutoriales teóricos que prometen levantar imperios automáticos en dos clics.
+          </p>
+<p class="text-charcoal-muted">
+            Aquí probamos las herramientas de verdad: en proyectos reales, con clientes reales y sufriendo los mismos fallos, límites de contexto y fricciones de terminal que tú. No vivimos de empaquetar cursos obsoletos; vivimos de utilizar software cada jornada laboral.
+          </p>
+</div>
+<div class="inline-block border border-border-rule bg-parchment px-6 py-3 text-center">
+<p class="font-serif italic text-sm text-charcoal-main font-medium">
+            Redacción El Telar — Profesionales que operan con terminales y modelos a diario.
+          </p>
+<p class="text-[10px] tracking-widest text-charcoal-muted uppercase font-sans mt-0.5">
+            Garantía de rigor técnico // Año de Edición 2026
+          </p>
+</div>
+</div>
+</section>
+<!-- SECTION: SUBSCRIPTION / "EL DESPACHO SEMANAL" MODULE -->
+<section class="max-w-[1240px] mx-auto px-4 sm:px-8 py-20 scroll-mt-[120px] sm:scroll-mt-16" id="despacho">
+<div class="max-w-3xl mx-auto border-2 border-charcoal-main p-8 sm:p-14 bg-parchment-soft relative">
+<!-- Corner stamp styling -->
+<div class="absolute top-4 right-4 hidden sm:block border border-charcoal-main/40 px-2.5 py-1 text-[10px] tracking-widest font-mono uppercase text-charcoal-muted">
+          Edición Semanal // Gratuito
+        </div>
+<div class="text-center max-w-xl mx-auto">
+<span class="text-[11px] font-bold tracking-[0.2em] text-emerald-racing uppercase block mb-3">
+            Correspondencia Digital
+          </span>
+<h3 class="font-serif text-3xl sm:text-4xl text-charcoal-main font-medium tracking-tight mb-4">
+            El Despacho Semanal de El Telar
+          </h3>
+<p class="font-serif italic text-base sm:text-lg text-charcoal-body mb-8">
+            Un único correo cada vez que completamos una investigación a fondo sobre agentes, herramientas de código y flujos probados. Cero contenido de relleno.
+          </p>
+<!-- Form -->
+<form class="flex flex-col sm:flex-row items-stretch justify-center gap-2 max-w-md mx-auto mb-4" id="newsletter-form" name="newsletter" method="POST" action="/api/form" data-telar-form data-ok="dispatch-ok">
+<input type="hidden" name="form-name" value="newsletter"/>
+<p class="hidden"><label>No rellenar: <input name="bot-field"/></label></p>
+<input class="flex-1 px-4 py-3 bg-[#f9f9ff] border border-border-rule focus:border-emerald-racing focus:ring-0 text-charcoal-main placeholder:text-charcoal-muted text-sm font-sans" name="email" placeholder="tu@correo.com" required="" type="email"/>
+<button class="px-6 py-3 bg-gold-accent text-emerald-racing text-xs font-semibold tracking-widest uppercase hover:bg-amber-editorial hover:text-[#f9f9ff] transition-colors font-sans whitespace-nowrap" type="submit">
+              Unirse a la suscripción
+            </button>
+</form>
+<div class="hidden p-3 border border-emerald-racing bg-emerald-racing/10 text-emerald-racing text-xs font-medium font-sans" id="dispatch-ok">
+            Suscripción confirmada. Recibirás nuestra próxima entrega sin intermediarios.
+          </div>
+<p class="text-[11px] text-charcoal-muted font-sans flex items-center justify-center gap-1.5 mt-4">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+<span>Promesa estricta de privacidad: jamás cederemos ni venderemos tu dirección.</span>
+</p>
+</div>
+</div>
+</section>
+</main>
+<!-- CLASSIC EDITORIAL FOOTER -->
+<footer class="w-full border-t-2 border-charcoal-main bg-[#f1f3fe] mt-12">
+<div class="max-w-[1240px] mx-auto px-4 sm:px-8 py-12">
+<!-- Top Row -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8 pb-10 border-b border-border-rule">
+<div class="md:col-span-6">
+<a class="font-serif text-3xl text-charcoal-main tracking-tight font-medium" href="index.html">
+            El Telar
+          </a>
+<p class="font-serif italic text-sm text-charcoal-muted mt-2 max-w-md">
+            Publicación independiente de tecnología y automatización con agentes. Contenidos verificados en producción, sin patrocinios opacos ni promesas vacías.
+          </p>
+</div>
+<div class="md:col-span-3">
+<h3 class="text-[11px] font-bold tracking-[0.16em] uppercase text-charcoal-main mb-3 font-sans">Secciones</h3>
+<ul class="space-y-2 text-xs font-sans text-charcoal-muted">
+<li><a class="hover:text-emerald-racing transition-colors" href="#guias">Archivo de Guías</a></li>
+<li><a class="hover:text-emerald-racing transition-colors" href="empieza-aqui.html">Guía para Principiantes</a></li>
+<li><a class="hover:text-emerald-racing transition-colors" href="#sobre-nosotros">Manifiesto Editorial</a></li>
+<li><a class="hover:text-emerald-racing transition-colors" href="#despacho">Boletín Semanal</a></li>
+</ul>
+</div>
+<div class="md:col-span-3">
+<h3 class="text-[11px] font-bold tracking-[0.16em] uppercase text-charcoal-main mb-3 font-sans">Contacto &amp; Prensa</h3>
+<p class="text-xs font-sans text-charcoal-muted mb-2">
+            Correspondencia y sugerencias editoriales:
+          </p>
+<a class="text-xs font-medium text-emerald-racing underline decoration-emerald-racing/40 hover:text-charcoal-main" href="mailto:contacto@eltelar.es">
+            contacto@eltelar.es
+          </a>
+<p class="text-[11px] text-charcoal-muted mt-3 font-sans">Síguenos: <a class="hover:text-emerald-racing underline" href="https://www.instagram.com/eltelar_es/" rel="me noopener" target="_blank">Instagram</a> · <a class="hover:text-emerald-racing underline" href="https://www.threads.com/@eltelar_es" rel="me noopener" target="_blank">Threads</a> · <a class="hover:text-emerald-racing underline" href="https://x.com/eltelar_es" rel="me noopener" target="_blank">X</a></p>
+</div>
+</div>
+<!-- Editorial Disclosure & Legal Bottom Bar -->
+<div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-sans text-charcoal-muted">
+<div>
+<span>© 2026 El Telar. Todos los derechos reservados.</span>
+<span class="mx-2 text-border-rule">|</span>
+<span class="font-serif italic">Independencia editorial garantizada. Todo el contenido es probado en entornos reales.</span>
+</div>
+<nav class="flex items-center gap-5 text-xs font-medium">
+<a class="hover:text-charcoal-main transition-colors" href="privacidad.html">Privacidad</a>
+<a class="hover:text-charcoal-main transition-colors" href="terminos.html">Términos</a>
+<a class="hover:text-charcoal-main transition-colors" href="#sobre-nosotros">Sobre nosotros</a>
+<a class="hover:text-charcoal-main transition-colors" href="mailto:contacto@eltelar.es">Contacto</a>
+</nav>
+</div>
+</div>
+</footer>
+<script defer src="js/search.js?v=7"></script><script defer src="js/forms.js"></script><script defer src="js/entrance.js"></script><script defer src="js/nav-spy.js"></script><script defer src="js/cookie-consent.js?v=4"></script><script>
+(function(){var box=document.getElementById('prompt-del-dia');if(!box)return;
+function esc(t){return t.replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+function marks(t){return esc(t).replace(/\[[^\]\n]+\]/g,function(m){return '<mark class="pd-ph">'+m+'</mark>';});}
+var now=new Date();var day=Math.floor((Date.UTC(now.getFullYear(),now.getMonth(),now.getDate())-Date.UTC(2026,0,1))/864e5);
+var d=document.getElementById('pd-date');if(d)d.textContent='· '+now.toLocaleDateString('es-ES',{day:'numeric',month:'long'});
+fetch('js/prompt-del-dia.json').then(function(r){return r.json();}).then(function(pool){
+ var it=pool[((day%pool.length)+pool.length)%pool.length];
+ document.getElementById('pd-title').textContent=it.t;document.getElementById('pd-when').textContent=it.w;
+ document.getElementById('pd-cat').textContent=it.c;document.getElementById('pd-prompt').innerHTML=marks(it.p);
+ document.getElementById('pd-link').href=it.u;document.getElementById('pd-more').href=it.u;
+}).catch(function(){});
+document.getElementById('pd-copy').addEventListener('click',function(){var b=this,l=b.lastChild;
+ navigator.clipboard.writeText(document.getElementById('pd-prompt').innerText).then(function(){l.textContent='¡Copiado!';setTimeout(function(){l.textContent='Copiar prompt';},1600);});});
+})();
+</script></body></html>

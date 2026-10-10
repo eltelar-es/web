@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>IA local: correr modelos en tu ordenador | El Telar</title>
+<meta name="description" content="Ollama y LM Studio paso a paso: qué modelo elegir según tu RAM, por qué es más privado que la nube y qué pierdes a cambio. Con los comandos exactos.">
+<link rel="canonical" href="https://eltelar.es/articulos/ia-local-ordenador.html"><link rel="icon" type="image/svg+xml" href="../img/favicon.svg?v=4"><link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32.png?v=4"><link rel="apple-touch-icon" href="../img/apple-touch-icon.png?v=4"><meta name="theme-color" content="#072417"><link rel="manifest" href="../manifest.json"><link rel="alternate" type="application/rss+xml" title="El Telar" href="../feed.xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IA local: cómo correr modelos en tu ordenador, sin internet | El Telar">
+<meta property="og:description" content="Ollama y LM Studio explicados paso a paso: qué modelo elegir según tu RAM, y qué pierdes a cambio. Con los comandos exactos.">
+<meta property="og:url" content="https://eltelar.es/articulos/ia-local-ordenador.html">
+<meta property="og:site_name" content="El Telar">
+<meta property="og:locale" content="es_ES"><meta property="og:image" content="https://eltelar.es/img/og/guia-ia-local-ordenador.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="IA local sin internet: Ollama y LM Studio | El Telar">
+<meta name="twitter:description" content="Qué modelo elegir según tu RAM, y qué pierdes frente a la nube."><meta name="twitter:image" content="https://eltelar.es/img/og/guia-ia-local-ordenador.jpg">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "IA local: cómo correr modelos de IA en tu propio ordenador, sin internet",
+  "description": "Ollama y LM Studio explicados paso a paso: qué modelo elegir según tu RAM, por qué es más privado que cualquier chat en la nube, y qué pierdes a cambio. Con los comandos exactos.",
+  "image": "https://eltelar.es/img/og-image.jpg",
+  "author": { "@type": "Organization", "name": "El Telar", "url": "https://eltelar.es/sobre-nosotros.html" },
+  "publisher": { "@type": "Organization", "name": "El Telar" },
+  "datePublished": "2026-09-15",
+  "dateModified": "2026-09-28",
+  "mainEntityOfPage": "https://eltelar.es/articulos/ia-local-ordenador.html",
+  "inLanguage": "es"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "¿Cuánta RAM necesito para correr IA local?", "acceptedAnswer": { "@type": "Answer", "text": "Como referencia orientativa: con 8 GB puedes correr modelos pequeños (3.000-4.000 millones de parámetros) de forma aceptable. Con 16 GB tienes margen cómodo para modelos de 7.000-8.000 millones de parámetros, el punto dulce para la mayoría de usos generales. A partir de 32 GB puedes plantearte modelos más grandes, con calidad más cercana a un modelo de pago en la nube." } },
+    { "@type": "Question", "name": "¿Un modelo local es tan bueno como ChatGPT o Claude?", "acceptedAnswer": { "@type": "Answer", "text": "No para tareas de razonamiento complejo o código difícil — los modelos frontera en la nube siguen ganando ahí por un margen real. Para resumir texto, responder preguntas sobre documentos que le pases, o generar borradores sencillos, un buen modelo local de 7-8 mil millones de parámetros es sorprendentemente competente, sobre todo teniendo en cuenta que no cuesta nada por consulta." } },
+    { "@type": "Question", "name": "¿Necesito tarjeta gráfica para esto?", "acceptedAnswer": { "@type": "Answer", "text": "No es obligatorio, pero ayuda mucho a la velocidad. En Mac con chip Apple Silicon, la memoria unificada hace que funcione razonablemente bien incluso sin GPU dedicada. En Windows o Linux, una tarjeta NVIDIA con VRAM suficiente para el modelo elegido acelera las respuestas de forma notable frente a correrlo solo con CPU." } }
+  , {"@type":"Question","name":"¿Por qué mi modelo local va tan lento?","acceptedAnswer":{"@type":"Answer","text":"Casi siempre porque no cabe en la memoria disponible y el sistema recurre al disco. Prueba un modelo con menos parámetros o más cuantizado y cierra otras aplicaciones pesadas."}}, {"@type":"Question","name":"¿Un modelo local es igual de bueno que ChatGPT?","acceptedAnswer":{"@type":"Answer","text":"No. Los modelos que caben en un ordenador personal tienen mucha menos capacidad. Compensan para tareas acotadas sobre textos que tú les das, sobre todo si son confidenciales o si trabajas sin conexión."}}]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://eltelar.es/" },
+    { "@type": "ListItem", "position": 2, "name": "Guías", "item": "https://eltelar.es/index.html#guias" },
+    { "@type": "ListItem", "position": 3, "name": "IA local, sin internet", "item": "https://eltelar.es/articulos/ia-local-ordenador.html" }
+  ]
+}
+</script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet"/></noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet"/></noscript>
+<style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><link rel="stylesheet" href="../css/tailwind.css"><link rel="stylesheet" href="../css/entrance.css?v=2"><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}(function(){var c=null;try{c=localStorage.getItem('eltelar-cookie-consent')}catch(e){}var g=c==='accepted'?'granted':'denied';gtag('consent','default',{ad_storage:g,ad_user_data:g,ad_personalization:g,analytics_storage:g,wait_for_update:500});window.adsbygoogle=window.adsbygoogle||[];if(g!=='granted'){window.adsbygoogle.requestNonPersonalizedAds=1;}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-4DPTKEG79N"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4DPTKEG79N');</script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8239907995939753" crossorigin="anonymous"></script></head><body class="bg-background font-body-md text-on-surface antialiased">
+<header class="w-full bg-surface-container-lowest border-b border-outline-variant"><div class="border-b border-outline-variant py-space-xxs px-space-md hidden md:block"><div class="max-w-site-max-width mx-auto flex items-center justify-between font-kicker text-kicker text-on-surface-variant uppercase tracking-wider"><span>EDICIÓN DIGITAL // ACTUALIZADO 2026 // EL TELAR &amp; AGENTES</span><span>MADRID · REMOTO</span><span>SIN HUMO · 100% PRODUCCIÓN</span></div></div><div class="max-w-site-max-width mx-auto px-space-md py-space-md sm:py-space-xl text-center"><p class="hidden sm:block font-kicker text-kicker uppercase tracking-widest text-on-surface-variant mb-space-xs">Publicación Independiente de Tecnología &amp; Agentes</p><a class="inline-block" href="../index.html"><div class="font-display text-display max-sm:text-[40px] max-sm:leading-none text-primary tracking-tight">El Telar</div></a><p class="hidden sm:block font-caption text-caption uppercase tracking-widest text-on-surface-variant mt-space-xs">EL BOLETÍN Y ARCHIVO PRÁCTICO DE INTELIGENCIA ARTIFICIAL Y AGENTES AUTÓNOMOS</p></div><div class="border-t border-b border-outline-variant"><div class="max-w-site-max-width mx-auto px-space-md flex items-center justify-between gap-space-sm h-14"><nav class="flex items-center gap-space-md sm:gap-space-lg h-full min-w-0 overflow-x-auto [scrollbar-width:none] whitespace-nowrap"><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../index.html#guias">GUÍAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../empieza-aqui.html">EMPIEZA AQUÍ</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../sobre-nosotros.html">SOBRE NOSOTROS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../noticias/index.html">NOTICIAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../herramientas/index.html">HERRAMIENTAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../prompts/index.html">PROMPTS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../contacto.html">CONTACTO</a></nav><div class="flex items-center gap-space-md"><button id="search-trigger" type="button" aria-label="Buscar en las guías" class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[20px]">search</span></button><a class="hidden sm:inline-block bg-primary-container text-surface px-space-md py-space-xs font-label-md text-label-md uppercase tracking-wider hover:bg-primary transition-colors" href="../index.html#despacho">SUSCRÍBETE GRATIS</a></div></div></div><div class="hidden md:block bg-surface-container-low border-b border-outline-variant py-space-xs px-space-md"><div class="max-w-site-max-width mx-auto text-center"><p class="font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">47 GUÍAS COMPLETAS EN EXPANSIÓN · ACTUALIZADO A MODELOS 2026 · PROBADO EN TERMINAL Y FLUJOS REALES · CERO HUMO NI TEORÍA VACÍA</p></div></div></header>
+<main class="w-full max-w-site-max-width mx-auto px-space-md py-space-xl"><div class="flex flex-col w-full">
+<nav class="w-full mb-space-lg">
+<ol class="flex flex-wrap items-center gap-space-xs font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">
+<li><a class="hover:text-primary transition-colors" href="../index.html">Inicio</a></li>
+<li class="text-on-surface-variant">/</li>
+<li><a class="hover:text-primary transition-colors" href="../index.html#guias">Guías</a></li>
+<li class="text-on-surface-variant">/</li>
+<li class="text-primary font-bold truncate max-w-[280px] sm:max-w-md">IA local, sin internet</li>
+</ol>
+</nav>
+<header class="w-full pb-space-xl mb-space-2xl">
+<div class="flex flex-wrap items-center gap-space-xs mb-space-md">
+<span class="bg-surface-container-high text-secondary px-space-sm py-1 font-kicker text-kicker uppercase tracking-widest">
+        TUTORIAL // PRIVACIDAD
+      </span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight max-w-editorial-max-width mb-space-md">
+      IA local: cómo correr modelos en tu propio ordenador, sin internet
+    </h1>
+<p class="font-lead-paragraph text-lead-paragraph text-on-surface-variant max-w-editorial-max-width mb-space-xl">
+      Ollama y LM Studio, los comandos exactos para instalarlo, qué modelo elegir según cuánta RAM tienes, y la diferencia real de calidad frente a pagar un chat en la nube.
+    </p>
+<div class="bg-surface-container-lowest p-space-md flex flex-wrap items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 bg-primary text-on-primary flex items-center justify-center font-headline-sm text-headline-sm">
+          ET
+        </div>
+<div>
+<div class="font-label-md text-label-md text-on-surface font-semibold">Por la Redacción de El Telar</div><div class="font-caption text-caption text-on-surface-variant">Guías prácticas de IA y agentes, probadas en flujos de trabajo reales antes de publicarlas.</div>
+<button class="inline-flex items-center gap-1 mt-2 px-3 py-1.5 bg-surface-container text-primary font-label-md text-[12px] font-semibold uppercase tracking-wider hover:bg-surface-container-high transition-colors" id="copy-guide-btn" type="button"><span class="material-symbols-outlined text-[16px]">content_copy</span> Copiar guía para tu IA</button><span class="inline-flex items-center gap-1 ml-1"><button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" id="save-guide-btn" title="Guardar guía" type="button"><span class="material-symbols-outlined text-[16px]">bookmark_border</span></button><button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" id="copy-link-btn" title="Copiar enlace permanente" type="button"><span class="material-symbols-outlined text-[16px]">share</span></button></span>
+</div>
+</div>
+<div class="flex items-center gap-space-lg text-on-surface-variant font-caption text-caption uppercase tracking-wider">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">schedule</span> 11 min de lectura
+        </span>
+</div>
+</div>
+</header>
+<div class="w-full mb-space-2xl space-y-1">
+<div class="w-full h-0.5 bg-primary"></div>
+<div class="w-full h-px bg-surface-container-highest"></div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-col-gap">
+<article class="lg:col-span-8 flex flex-col space-y-space-xl">
+<figure data-hero class="space-y-space-xs"><img class="w-full border border-outline-variant" src="../img/guias/hero-ia-local-ordenador.jpg" alt="Web de Ollama, la forma más sencilla de ejecutar modelos de IA en tu ordenador" width="1280" height="720" fetchpriority="high" decoding="async"/><figcaption class="font-caption text-caption text-on-surface-variant">Captura de pantalla: <a class="underline" href="https://ollama.com/" rel="nofollow noopener" target="_blank">ollama.com</a>.</figcaption></figure>
+<div class="font-lead-paragraph text-lead-paragraph text-on-surface leading-relaxed">
+<span class="float-left text-display font-display text-primary leading-none pr-space-sm pt-1 uppercase">C</span>
+        ada consulta que escribes en ChatGPT, Claude o Gemini viaja a un servidor de otra empresa. Para la mayoría de usos eso no supone ningún problema — pero si trabajas con documentos sensibles, quieres cero coste por consulta, o simplemente te interesa entender cómo funciona esto por dentro, existe una alternativa real: modelos de código abierto que corren enteramente en tu ordenador, sin conexión a internet necesaria una vez descargados.
+      </div>
+<section class="space-y-space-md">
+<span class="font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">Paso 1</span>
+<h2 id="sec-1" class="font-headline-md text-headline-md text-primary">
+          1. Instala Ollama (la vía más simple)
+        </h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          Ollama es una herramienta gratuita y de código abierto que convierte "instalar un modelo de IA" en un solo comando de terminal, sin configuración manual. Disponible para macOS, Windows y Linux.
+        </p>
+<div class="bg-surface-container-lowest p-space-lg space-y-space-md">
+<div class="font-kicker text-kicker text-secondary uppercase tracking-wider">INSTALACIÓN Y PRIMER MODELO</div>
+<pre class="font-mono text-caption text-on-surface bg-surface-container-low p-space-md overflow-x-auto"># 1. Descarga Ollama desde ollama.com e instálalo (como cualquier programa normal)
+
+# 2. Abre una terminal y descarga tu primer modelo
+ollama pull llama3.2
+
+# 3. Empieza a hablar con él, ya sin conexión a internet
+ollama run llama3.2
+
+# Para salir de la conversación
+/bye</pre>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          A partir de ahí, Ollama también expone una API local en tu propio ordenador (normalmente en <code class="bg-surface-container-low px-1">localhost:11434</code>) que puedes usar desde tus propios scripts o aplicaciones — el mismo patrón de API que usarías con un proveedor en la nube, solo que apuntando a tu máquina en vez de a un servidor externo.
+        </p>
+</section>
+<section class="space-y-space-md">
+<span class="font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">Paso 2</span>
+<h2 id="sec-2" class="font-headline-md text-headline-md text-primary">
+          2. Qué modelo elegir según tu RAM
+        </h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          El factor que más determina qué modelo puedes correr no es tu procesador, es la memoria RAM disponible. Un modelo de código abierto se mide en miles de millones de "parámetros" — cuantos más tiene, más capaz es, pero también más memoria necesita para cargarse.
+        </p>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b-2 border-outline">
+<th class="py-space-sm pr-space-md font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">RAM disponible</th>
+<th class="py-space-sm pr-space-md font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">Tamaño de modelo</th>
+<th class="py-space-sm font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">Ejemplo</th>
+</tr>
+</thead>
+<tbody class="font-body-sm text-body-sm text-on-surface-variant">
+<tr class="border-b border-outline-variant"><td class="py-space-sm pr-space-md font-semibold text-on-surface">8 GB</td><td class="py-space-sm pr-space-md">3.000-4.000 M parámetros</td><td class="py-space-sm">llama3.2 (3B), phi3</td></tr>
+<tr class="border-b border-outline-variant"><td class="py-space-sm pr-space-md font-semibold text-on-surface">16 GB</td><td class="py-space-sm pr-space-md">7.000-8.000 M parámetros</td><td class="py-space-sm">llama3.1 (8B), mistral, gemma2</td></tr>
+<tr><td class="py-space-sm pr-space-md font-semibold text-on-surface">32 GB o más</td><td class="py-space-sm pr-space-md">13.000-30.000 M parámetros</td><td class="py-space-sm">qwen2.5 (14B-32B), mixtral</td></tr>
+</tbody>
+</table>
+</div>
+<p class="font-caption text-caption text-on-surface-variant mt-space-sm">
+          Referencia orientativa, no exacta — el consumo real también depende del nivel de "cuantización" (compresión) del modelo que descargues.
+        </p>
+</section>
+<section class="space-y-space-md">
+<span class="font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">Un concepto clave</span>
+<h2 id="sec-cuantizacion" class="font-headline-md text-headline-md text-primary">
+          3. Qué es la "cuantización" y por qué decide si tu modelo cabe
+        </h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          Cada parámetro de un modelo es, en el fondo, un número. La cuantización reduce la precisión con la que se guarda cada uno de esos números — de 16 bits a 8, a 4, incluso menos — para que el modelo ocupe menos espacio en memoria y cargue más rápido, a cambio de perder algo de calidad en las respuestas. Ollama descarga por defecto una versión ya cuantizada de cada modelo (normalmente en 4 bits), pensada para funcionar bien en hardware de consumo sin que tengas que configurar nada.
+        </p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<div class="bg-surface-container-low p-space-md">
+<div class="font-kicker text-kicker text-secondary uppercase tracking-widest mb-1">MÁS CUANTIZACIÓN</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Ocupa menos RAM, responde más rápido, pero pierde precisión en tareas que exigen matices — puede notarse en textos largos o instrucciones complejas.
+            </p>
+</div>
+<div class="bg-surface-container-low p-space-md">
+<div class="font-kicker text-kicker text-secondary uppercase tracking-widest mb-1">MENOS CUANTIZACIÓN</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Más fiel al modelo original, pero necesita más RAM y responde más despacio — solo compensa si tu hardware tiene margen de sobra.
+            </p>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Para empezar, la versión por defecto que descarga <code class="bg-surface-container-low px-1">ollama pull</code> es la elección correcta en la mayoría de casos — solo merece la pena tocar el nivel de cuantización si notas que la calidad se queda corta para tu uso, o si tienes RAM de sobra y quieres exprimir algo más de precisión.
+        </p>
+</section>
+<section class="space-y-space-md">
+<span class="font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">Qué modelo elegir</span>
+<h2 id="sec-modelos" class="font-headline-md text-headline-md text-primary">
+          4. Los modelos abiertos más usados, uno junto a otro
+        </h2>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b-2 border-outline">
+<th class="py-space-sm pr-space-md font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">Modelo</th>
+<th class="py-space-sm pr-space-md font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">Quién lo hace</th>
+<th class="py-space-sm font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">Se nota bien en</th>
+</tr>
+</thead>
+<tbody class="font-body-sm text-body-sm text-on-surface-variant">
+<tr class="border-b border-outline-variant"><td class="py-space-sm pr-space-md font-semibold text-on-surface">Llama</td><td class="py-space-sm pr-space-md">Meta</td><td class="py-space-sm">Uso general, el más probado por la comunidad</td></tr>
+<tr class="border-b border-outline-variant"><td class="py-space-sm pr-space-md font-semibold text-on-surface">Mistral</td><td class="py-space-sm pr-space-md">Mistral AI (Francia)</td><td class="py-space-sm">Buen equilibrio velocidad/calidad en tamaños pequeños</td></tr>
+<tr class="border-b border-outline-variant"><td class="py-space-sm pr-space-md font-semibold text-on-surface">Gemma</td><td class="py-space-sm pr-space-md">Google</td><td class="py-space-sm">Eficiencia en poca RAM</td></tr>
+<tr class="border-b border-outline-variant"><td class="py-space-sm pr-space-md font-semibold text-on-surface">Qwen</td><td class="py-space-sm pr-space-md">Alibaba</td><td class="py-space-sm">Código y razonamiento, buena relación tamaño/capacidad</td></tr>
+<tr><td class="py-space-sm pr-space-md font-semibold text-on-surface">DeepSeek</td><td class="py-space-sm pr-space-md">DeepSeek</td><td class="py-space-sm">Razonamiento paso a paso en modelos de mayor tamaño</td></tr>
+</tbody>
+</table>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          No hay un "mejor" absoluto — todos mejoran con cada versión nueva, y la diferencia entre dos de tamaño similar suele notarse solo en tareas concretas. Si no sabes por dónde empezar, <code class="bg-surface-container-low px-1">llama3.2</code> es la opción más segura por ser la más documentada y probada por la comunidad.
+        </p>
+</section>
+<figure class="my-space-lg">
+<div class="p-space-md bg-surface-container-lowest">
+<div class="font-kicker text-kicker uppercase text-on-surface-variant tracking-wider mb-space-sm text-center">DIAGRAMA // NUBE VS. LOCAL, EL TRUEQUE REAL</div>
+<svg aria-label="Comparación entre IA en la nube (más capaz, requiere conexión, tus datos salen de tu equipo) e IA local (menos capaz, funciona sin internet, tus datos nunca salen)" class="w-full h-auto" fill="none" role="img" viewBox="0 0 680 170" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#ebeef8" height="130" width="310" x="10" y="15"></rect>
+<text fill="#072417" font-family="Inter" font-size="10.5" font-weight="700" text-anchor="middle" x="165" y="38">IA EN LA NUBE</text>
+<text fill="#424843" font-family="Inter" font-size="8.5" text-anchor="middle" x="165" y="58">+ Más capaz en razonamiento</text>
+<text fill="#424843" font-family="Inter" font-size="8.5" text-anchor="middle" x="165" y="74">y código complejo</text>
+<text fill="#424843" font-family="Inter" font-size="8.5" text-anchor="middle" x="165" y="94">− Necesita conexión</text>
+<text fill="#424843" font-family="Inter" font-size="8.5" text-anchor="middle" x="165" y="110">− Tus datos salen de tu equipo</text>
+<text fill="#424843" font-family="Inter" font-size="8.5" text-anchor="middle" x="165" y="130">− Coste por uso o suscripción</text>
+<rect fill="#caead4" height="130" width="310" x="360" y="15"></rect>
+<text fill="#042013" font-family="Inter" font-size="10.5" font-weight="700" text-anchor="middle" x="515" y="38">IA LOCAL</text>
+<text fill="#042013" font-family="Inter" font-size="8.5" text-anchor="middle" x="515" y="58">+ Funciona sin internet</text>
+<text fill="#042013" font-family="Inter" font-size="8.5" text-anchor="middle" x="515" y="74">+ Tus datos nunca salen del equipo</text>
+<text fill="#042013" font-family="Inter" font-size="8.5" text-anchor="middle" x="515" y="90">+ Coste cero por consulta</text>
+<text fill="#042013" font-family="Inter" font-size="8.5" text-anchor="middle" x="515" y="110">− Menos capaz en tareas difíciles</text>
+<text fill="#042013" font-family="Inter" font-size="8.5" text-anchor="middle" x="515" y="130">− Limitado por tu hardware</text>
+</svg>
+</div>
+<figcaption class="font-caption text-caption text-on-surface-variant mt-space-xs">Ninguna de las dos gana en todo — la pregunta correcta es para qué tarea necesitas cada una.</figcaption>
+</figure>
+<blockquote class="bg-surface-container-lowest p-space-xl my-space-lg shadow-sm">
+<div class="flex items-start gap-space-md">
+<span class="text-secondary font-display text-display leading-none select-none">«</span>
+<div>
+<p class="font-headline-sm text-headline-sm text-primary italic leading-snug mb-space-sm">
+              IA local no es "una versión peor de ChatGPT". Es una herramienta distinta, para cuando lo que más te importa no es la capacidad máxima, sino que el dato no salga nunca de tu equipo.
+            </p>
+<cite class="font-kicker text-kicker text-on-surface-variant uppercase tracking-widest block not-italic">
+              — Redacción El Telar
+            </cite>
+</div>
+</div>
+</blockquote>
+<section class="space-y-space-md">
+<span class="font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">Alternativa</span>
+<h2 id="sec-3" class="font-headline-md text-headline-md text-primary">
+          5. LM Studio: la vía con interfaz gráfica
+        </h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          Si prefieres no tocar la terminal, LM Studio ofrece exactamente lo mismo que Ollama pero con una interfaz de ventanas: un buscador de modelos con indicadores visuales de qué tamaños encajan con tu hardware, un chat integrado, y un servidor local que puedes activar con un botón en vez de un comando. Es la opción más cómoda para quien viene del mundo de aplicaciones de escritorio normales y quiere evitar la línea de comandos por completo.
+        </p>
+</section>
+<section class="space-y-space-md">
+<span class="font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">Casos de uso reales</span>
+<figure data-inline-photo class="space-y-space-xs my-space-xl"><img class="w-full border border-outline-variant" src="../img/guias/foto-ia-local-ordenador.jpg" alt="Web de LM Studio, aplicación con interfaz para ejecutar modelos en local" width="1280" height="720" loading="lazy" decoding="async"/><figcaption class="font-caption text-caption text-on-surface-variant">Captura de pantalla: <a class="underline" href="https://lmstudio.ai/" rel="nofollow noopener" target="_blank">lmstudio.ai</a>.</figcaption></figure>
+<h2 id="sec-4" class="font-headline-md text-headline-md text-primary">
+          6. Para qué merece la pena de verdad
+        </h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<div class="bg-surface-container-low p-space-md">
+<div class="font-kicker text-kicker text-secondary uppercase tracking-widest mb-1">TIENE SENTIDO</div>
+<div class="font-headline-sm text-headline-sm text-primary mb-2">Documentos confidenciales</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Contratos, historiales médicos, código propietario — cualquier cosa que no quieras que salga de tu red, sin depender de la política de privacidad de un tercero.
+            </p>
+</div>
+<div class="bg-surface-container-low p-space-md">
+<div class="font-kicker text-kicker text-secondary uppercase tracking-widest mb-1">TIENE SENTIDO</div>
+<div class="font-headline-sm text-headline-sm text-primary mb-2">Uso muy frecuente y repetitivo</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Si haces miles de consultas sencillas al mes (clasificar texto, resumir emails cortos), el coste cero por consulta compensa rápido frente a una API de pago.
+            </p>
+</div>
+<div class="bg-surface-container-low p-space-md">
+<div class="font-kicker text-kicker text-secondary uppercase tracking-widest mb-1">NO COMPENSA TODAVÍA</div>
+<div class="font-headline-sm text-headline-sm text-primary mb-2">Código complejo o razonamiento largo</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Para depurar un fallo difícil o razonar sobre un problema con muchos pasos, un modelo frontera en la nube sigue rindiendo mejor por un margen real — no te frustres si el local se queda corto ahí.
+            </p>
+</div>
+<div class="bg-surface-container-low p-space-md">
+<div class="font-kicker text-kicker text-secondary uppercase tracking-widest mb-1">NO COMPENSA TODAVÍA</div>
+<div class="font-headline-sm text-headline-sm text-primary mb-2">Necesitas que busque en internet</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Un modelo local no navega la web por defecto — si tu tarea depende de información muy reciente, necesitas conectarlo a herramientas externas, lo que añade complejidad y, de nuevo, conexión a internet.
+            </p>
+</div>
+</div>
+</section>
+<section class="space-y-space-md">
+<span class="font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">Un paso más</span>
+<h2 id="sec-rag" class="font-headline-md text-headline-md text-primary">
+          7. Conectarlo a tus propios documentos, sin que salgan de tu equipo
+        </h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          Una vez tienes un modelo local funcionando, el siguiente paso natural es que responda preguntas sobre tus propios documentos — contratos, apuntes, informes — sin que ese contenido salga nunca de tu ordenador. La técnica se llama RAG (Retrieval-Augmented Generation) y consiste, en esencia, en indexar tus documentos en una base de datos local y hacer que el modelo consulte esa base antes de responder, en vez de depender solo de lo que aprendió durante su entrenamiento. Tanto LM Studio como varias herramientas complementarias de Ollama (AnythingLLM es la más sencilla de instalar) ofrecen esto con una interfaz de "arrastra tu carpeta de documentos" sin necesidad de programar nada. Si quieres entender cómo funciona por dentro antes de montarlo, <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="rag-explicado.html">nuestra guía de RAG explicado</a> cubre el mecanismo completo, aplicable igual en la nube que en local.
+        </p>
+</section>
+<section class="space-y-space-md">
+<span class="font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">Por qué importa de verdad</span>
+<h2 id="sec-privacidad" class="font-headline-md text-headline-md text-primary">
+          8. La diferencia legal, no solo técnica, de que el dato no salga
+        </h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          Cuando envías un documento a un chat en la nube, ese contenido sale de tu equipo y pasa por los servidores de otra empresa, sujeto a su política de retención de datos — aunque no lo use para entrenar modelos, técnicamente ha "salido". Con un modelo local, ese problema desaparece por diseño: no hay ningún servidor externo al que enviar nada, porque todo el procesamiento ocurre en tu propia máquina. Para profesiones sujetas a secreto profesional (abogacía, medicina, asesoría fiscal) o para empresas con clientes que exigen contractualmente que sus datos no salgan de un perímetro concreto, esa diferencia no es un matiz técnico — puede ser la diferencia entre poder usar IA para un caso concreto o no poder usarla en absoluto.
+        </p>
+</section>
+<section class="space-y-space-md">
+<span class="font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">Si algo falla</span>
+<h2 id="sec-problemas" class="font-headline-md text-headline-md text-primary">
+          9. Los problemas habituales y cómo resolverlos
+        </h2>
+<div class="space-y-space-sm">
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h4 class="font-label-md text-label-md text-primary font-bold mb-1">Va muy lento, una palabra cada varios segundos</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              El modelo no cabe en la memoria rápida y el sistema está usando el disco. Prueba una versión más pequeña (menos parámetros) o más cuantizada, y cierra el navegador y otras aplicaciones pesadas mientras lo usas.
+            </p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h4 class="font-label-md text-label-md text-primary font-bold mb-1">El ordenador se calienta y el ventilador no para</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Es normal durante la generación: el procesador o la gráfica trabajan al máximo. En un portátil, úsalo enchufado y sobre una superficie dura.
+            </p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h4 class="font-label-md text-label-md text-primary font-bold mb-1">Responde en inglés aunque le hable en español</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Algunos modelos pequeños se entrenaron sobre todo en inglés. Pide explícitamente "responde siempre en español" o elige un modelo con buen soporte multilingüe.
+            </p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h4 class="font-label-md text-label-md text-primary font-bold mb-1">Se inventa cosas con más facilidad que ChatGPT</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Es esperable: un modelo que cabe en un portátil tiene mucha menos capacidad que los grandes modelos en la nube. Úsalo para tareas acotadas sobre texto que tú le das, no como enciclopedia.
+            </p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h4 class="font-label-md text-label-md text-primary font-bold mb-1">No encuentra el modelo después de instalarlo</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Comprueba el nombre exacto con el comando de listado de Ollama. Un error de una letra en la etiqueta del modelo es la causa más común.
+            </p>
+</div>
+</div>
+</section>
+<section class="space-y-space-md">
+<span class="font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">En la práctica</span>
+<h2 id="sec-privado-ejemplo" class="font-headline-md text-headline-md text-primary">
+          10. Tres usos concretos donde lo local compensa
+        </h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          La pregunta útil no es si un modelo local es tan bueno como ChatGPT, porque no lo es. Es si para <em>esta</em> tarea basta, y si el hecho de que nada salga de tu equipo cambia algo.
+        </p>
+<div class="space-y-space-sm">
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h4 class="font-label-md text-label-md text-primary font-bold mb-1">Resumir documentos confidenciales</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Actas de reuniones, informes internos o documentación de clientes. Un modelo mediano resume bien texto que tú le das, y no tienes que preguntarte qué condiciones de uso tiene un servicio externo.
+            </p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h4 class="font-label-md text-label-md text-primary font-bold mb-1">Clasificar o etiquetar mucho texto</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Cientos de correos, reseñas o tickets. En local no pagas por uso, así que puedes procesar grandes volúmenes sin vigilar la factura de una API.
+            </p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h4 class="font-label-md text-label-md text-primary font-bold mb-1">Trabajar sin conexión</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              En un tren o en un sitio con mala cobertura, un modelo local sigue funcionando. Para redactar, reformular o traducir borradores es suficiente.
+            </p>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-space-lg space-y-space-md" id="prompt-local">
+<div class="flex items-center justify-between flex-wrap gap-space-xs">
+<span class="font-kicker text-kicker text-secondary uppercase tracking-wider flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">prompt_suggestion</span>
+              PLANTILLA QUE PUEDES COPIAR
+            </span>
+<button class="inline-flex items-center gap-1 px-3 py-1.5 bg-surface-container text-primary font-label-md text-[12px] font-semibold uppercase tracking-wider hover:bg-surface-container-high transition-colors" data-copy="prompt-local-texto" type="button"><span class="material-symbols-outlined text-[16px]">content_copy</span> Copiar</button>
+</div>
+<pre class="font-mono text-caption text-on-surface bg-surface-container-low p-space-md overflow-x-auto whitespace-pre-wrap" id="prompt-local-texto">Resume el siguiente documento en:
+1. Cinco puntos clave (máximo una línea cada uno).
+2. Decisiones o acuerdos que aparecen.
+3. Tareas pendientes con su responsable, si se menciona.
+
+Usa solo la información del documento. Si algo no está claro, escribe &quot;no se indica&quot;.
+
+Documento:
+[pega aquí el texto]</pre>
+</div>
+</section>
+<section class="space-y-space-md">
+<span class="font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">Mantenimiento</span>
+<h2 id="sec-actualizar" class="font-headline-md text-headline-md text-primary">
+          11. Actualizar modelos y recuperar espacio en disco
+        </h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          Cada modelo ocupa varios gigas, y es fácil acabar con una docena descargados después de probar. Tanto Ollama como LM Studio permiten ver la lista de modelos instalados y borrar los que no uses; conviene revisarla de vez en cuando. Los modelos abiertos también se actualizan: las nuevas versiones suelen mejorar sin necesitar más memoria, así que merece la pena mirar si hay una revisión reciente del que usas.
+        </p>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          Un consejo práctico: quédate con dos modelos, uno pequeño y rápido para tareas sencillas y otro más grande para cuando necesites más calidad. Tener diez no te aporta nada y te llena el disco.
+        </p>
+</section>
+<section class="space-y-space-md">
+<h2 id="colibri" class="font-headline-lg text-headline-lg text-primary">
+          Colibri: modelos gigantes en un ordenador normal
+        </h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Colibri es un programa de código abierto que mueve modelos de IA enormes, de cientos de miles de millones de parámetros, en un ordenador sin tarjeta gráfica. El truco: estos modelos (llamados de «mezcla de expertos») solo usan una parte pequeña de sí mismos para cada palabra, así que Colibri guarda esa parte en la memoria y lee el resto del disco cuando hace falta.</p>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Hoy funciona con modelos como GLM, Kimi, DeepSeek V4 Flash y Qwen 3.6, y también tiene un motor para generar imágenes.</p>
+<p class="font-body-sm text-body-sm mt-space-sm"><strong class="text-on-surface">Dónde conseguirlo:</strong> <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" href="https://github.com/JustVugg/colibri" target="_blank" rel="noopener">JustVugg/colibri · repositorio oficial ↗</a></p>
+<p class="font-body-sm text-body-sm text-on-surface mt-space-xs"><strong>En Windows:</strong></p><code class="block font-mono text-body-sm bg-primary text-on-primary px-space-sm py-space-xs mt-space-xxs overflow-x-auto">Descarga el ZIP desde «Code → Download ZIP» y abre START-HERE.bat</code>
+<p class="font-body-sm text-body-sm text-on-surface mt-space-xs"><strong>En Mac (con Homebrew):</strong></p><code class="block font-mono text-body-sm bg-primary text-on-primary px-space-sm py-space-xs mt-space-xxs overflow-x-auto">xcode-select --install<br>brew install libomp git python<br>git clone https://github.com/JustVugg/colibri<br>cd colibri &amp;&amp; ./start-here.sh</code>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Es gratis (Apache 2.0). Pide como mínimo 8 GB de RAM (mejor 16) y unos 22 GB libres en el disco para el modelo más pequeño. Ojo con las expectativas: al leer del disco va bastante más lento que Ollama con un modelo que cabe entero en memoria, así que para el día a día sigue siendo mejor la opción de Ollama que explicamos arriba. Colibri tiene sentido cuando quieres probar un modelo grande que no te cabría de ninguna otra forma.</p>
+</section>
+<section class="space-y-space-md">
+<span class="font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">Preguntas frecuentes</span>
+<h2 class="font-headline-md text-headline-md text-primary">
+          Preguntas frecuentes
+        </h2>
+<div class="space-y-space-md">
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Cuánta RAM necesito para correr IA local?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Con 8 GB puedes correr modelos pequeños (3.000-4.000 millones de parámetros) de forma aceptable. Con 16 GB tienes margen cómodo para modelos de 7-8 mil millones, el punto dulce para uso general. A partir de 32 GB puedes plantearte modelos más grandes, con calidad más cercana a un modelo de pago en la nube.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Un modelo local es tan bueno como ChatGPT o Claude?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+No para tareas de razonamiento complejo o código difícil, donde los modelos frontera en la nube ganan por un margen real. Para resumir texto o responder sobre documentos que le pases, un buen modelo local de 7-8 mil millones de parámetros es sorprendentemente competente, y no cuesta nada por consulta.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Necesito tarjeta gráfica para esto?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+No es obligatorio, pero ayuda a la velocidad. En Mac con Apple Silicon, la memoria unificada funciona razonablemente bien sin GPU dedicada. En Windows o Linux, una NVIDIA con VRAM suficiente acelera las respuestas de forma notable frente a correrlo solo con CPU.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Por qué mi modelo local va tan lento?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Casi siempre porque no cabe en la memoria disponible y el sistema recurre al disco. Prueba un modelo con menos parámetros o más cuantizado y cierra otras aplicaciones pesadas.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Un modelo local es igual de bueno que ChatGPT?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+No. Los modelos que caben en un ordenador personal tienen mucha menos capacidad. Compensan para tareas acotadas sobre textos que tú les das, sobre todo si son confidenciales o si trabajas sin conexión.
+</div>
+</div>
+</div>
+</section>
+<footer class="bg-surface-container-lowest p-space-lg shadow-sm mt-space-xl">
+<div class="flex flex-col sm:flex-row items-start sm:items-center gap-space-md">
+<div class="w-16 h-16 bg-primary text-on-primary flex items-center justify-center font-display text-headline-md shrink-0">ET</div>
+<div class="space-y-space-xxs">
+<span class="font-label-md text-label-md text-primary font-bold uppercase tracking-wider">Redacción El Telar</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Probado en hardware de gama media, no en un servidor de laboratorio.
+            </p>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mt-space-md">
+          No sustituye a tu chat en la nube para todo — lo complementa para lo que de verdad debería quedarse en tu equipo.</p>
+</footer>
+</article>
+<aside class="lg:col-span-4 flex flex-col space-y-space-xl">
+<div class="bg-surface-container-lowest p-space-lg shadow-sm">
+<div class="flex items-center justify-between pb-space-xs mb-space-sm">
+<span class="font-kicker text-kicker text-primary uppercase tracking-widest">ÍNDICE DE LA GUÍA</span>
+</div>
+<ol class="space-y-space-xs font-body-sm text-body-sm text-on-surface">
+<li class="flex items-start gap-space-xs py-1"><span class="text-secondary font-mono font-bold">01.</span><a class="hover:text-primary transition-colors" href="#sec-1">Instala Ollama</a></li>
+<li class="flex items-start gap-space-xs py-1"><span class="text-secondary font-mono font-bold">02.</span><a class="hover:text-primary transition-colors" href="#sec-2">Qué modelo según tu RAM</a></li>
+<li class="flex items-start gap-space-xs py-1"><span class="text-secondary font-mono font-bold">03.</span><a class="hover:text-primary transition-colors" href="#sec-cuantizacion">Qué es la cuantización</a></li>
+<li class="flex items-start gap-space-xs py-1"><span class="text-secondary font-mono font-bold">04.</span><a class="hover:text-primary transition-colors" href="#sec-modelos">Modelos abiertos comparados</a></li>
+<li class="flex items-start gap-space-xs py-1"><span class="text-secondary font-mono font-bold">05.</span><a class="hover:text-primary transition-colors" href="#sec-3">LM Studio, con interfaz</a></li>
+<li class="flex items-start gap-space-xs py-1"><span class="text-secondary font-mono font-bold">06.</span><a class="hover:text-primary transition-colors" href="#sec-4">Cuándo merece la pena</a></li>
+<li class="flex items-start gap-space-xs py-1"><span class="text-secondary font-mono font-bold">07.</span><a class="hover:text-primary transition-colors" href="#sec-rag">Conectarlo a tus documentos</a></li>
+<li class="flex items-start gap-space-xs py-1"><span class="text-secondary font-mono font-bold">08.</span><a class="hover:text-primary transition-colors" href="#sec-privacidad">La diferencia legal, no solo técnica</a></li>
+<li class="flex items-start gap-space-xs py-1"><span class="text-secondary font-mono font-bold">09.</span><a class="hover:text-primary transition-colors" href="#sec-problemas">Problemas habituales</a></li>
+<li class="flex items-start gap-space-xs py-1"><span class="text-secondary font-mono font-bold">10.</span><a class="hover:text-primary transition-colors" href="#sec-privado-ejemplo">Tres usos que sí compensan</a></li>
+<li class="flex items-start gap-space-xs py-1"><span class="text-secondary font-mono font-bold">11.</span><a class="hover:text-primary transition-colors" href="#sec-actualizar">Actualizar y liberar espacio</a></li>
+</ol>
+</div>
+<div class="bg-surface-container-low p-space-lg shadow-sm space-y-space-md">
+<span class="font-kicker text-kicker text-secondary uppercase tracking-widest block">
+          FICHA TÉCNICA
+        </span>
+<div class="space-y-space-xs">
+<div class="flex items-center justify-between pb-1">
+<span class="font-caption text-caption text-on-surface-variant">Coste:</span>
+<span class="font-caption text-caption font-mono font-bold text-primary">0 € (software libre)</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-caption text-caption text-on-surface-variant">RAM mínima:</span>
+<span class="font-caption text-caption font-mono font-bold text-secondary">8 GB</span>
+</div>
+</div>
+</div>
+</aside>
+</div>
+<section class="w-full mt-space-4xl pt-space-2xl bg-surface-container-lowest p-space-xl shadow-sm">
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-space-xl gap-space-xs">
+<h3 class="font-headline-md text-headline-md text-primary">
+          Continúa explorando el archivo
+        </h3>
+<a class="font-label-md text-label-md text-primary hover:text-secondary uppercase tracking-wider transition-colors flex items-center gap-1" href="../index.html#guias">
+        Ver todas las guías <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-col-gap"><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="proteger-datos-ia.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-proteger-datos-ia.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="proteger-datos-ia.html">Cómo proteger tus datos al conectar la IA</a></h4></div></article><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="mcp-explicado.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-mcp-explicado.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="mcp-explicado.html">MCP explicado: conecta la IA a tus herramientas</a></h4></div></article><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="que-es-un-agente-ia.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-que-es-un-agente-ia.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="que-es-un-agente-ia.html">Qué es un agente de IA frente a un chatbot</a></h4></div></article></div>
+</section>
+</div>
+</main><footer class="w-full bg-surface-container-low border-t border-outline-variant mt-space-4xl"><div class="max-w-site-max-width mx-auto px-space-md py-space-3xl"><div class="grid grid-cols-1 md:grid-cols-3 gap-col-gap"><div class="space-y-space-sm"><span class="font-headline-md text-headline-md text-primary">El Telar</span><p class="font-body-sm text-body-sm text-on-surface-variant">Publicación independiente de tecnología y automatización con agentes. Contenidos verificados en producción, sin patrocinios opacos ni promesas vacías.</p></div><div><h3 class="font-kicker text-kicker uppercase tracking-wider text-on-surface mb-space-md">SECCIONES</h3><ul class="space-y-space-xs font-body-sm text-body-sm"><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html#guias">Archivo de Guías</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../empieza-aqui.html">Guía para Principiantes</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../sobre-nosotros.html">Manifiesto Editorial</a></li><li class="pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html#despacho">Boletín Semanal</a></li></ul></div><div><h3 class="font-kicker text-kicker uppercase tracking-wider text-on-surface mb-space-md">CONTACTO &amp; PRENSA</h3><div class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant"><p class="font-semibold text-on-surface">contacto@eltelar.es</p><p>Síguenos: <a class="hover:text-primary underline" href="https://www.instagram.com/eltelar_es/" rel="me noopener" target="_blank">Instagram</a> · <a class="hover:text-primary underline" href="https://www.threads.com/@eltelar_es" rel="me noopener" target="_blank">Threads</a> · <a class="hover:text-primary underline" href="https://x.com/eltelar_es" rel="me noopener" target="_blank">X</a></p></div></div></div></div><div class="border-t border-outline-variant py-space-md bg-surface-container-lowest"><div class="max-w-site-max-width mx-auto px-space-md flex flex-col md:flex-row items-center justify-between gap-space-sm text-caption font-caption text-on-surface-variant"><div>© 2026 El Telar. Todos los derechos reservados. Independencia editorial garantizada.</div><div class="flex items-center gap-space-md"><a class="hover:text-on-surface transition-colors" href="../privacidad.html">Privacidad</a><a class="hover:text-on-surface transition-colors" href="../terminos.html">Términos</a><a class="hover:text-on-surface transition-colors" href="../sobre-nosotros.html">Sobre nosotros</a><a class="hover:text-on-surface transition-colors" href="../contacto.html">Contacto</a></div></div></div></footer><script defer src="../js/copy-guide.js"></script><script defer src="../js/guide-interactions.js"></script><script defer src="../js/reading-progress.js"></script><script defer src="../js/search.js?v=7"></script><script defer src="../js/entrance.js"></script><script defer src="../js/cookie-consent.js?v=4"></script><script data-copy-handler>document.addEventListener('click',function(e){var b=e.target.closest('[data-copy]');if(!b)return;var t=document.getElementById(b.getAttribute('data-copy')).innerText;navigator.clipboard.writeText(t).then(function(){var o=b.innerHTML;b.textContent='Copiado';setTimeout(function(){b.innerHTML=o},1500)});});</script></body></html>

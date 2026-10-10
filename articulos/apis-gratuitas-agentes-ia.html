@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>APIs gratuitas para tu agente de IA | El Telar</title>
+<meta name="description" content="Una selección curada y filtrable de APIs públicas gratuitas realmente útiles para construir agentes de IA, organizadas por lo que resuelven, no por orden alfabético.">
+<link rel="canonical" href="https://eltelar.es/articulos/apis-gratuitas-agentes-ia.html"><link rel="icon" type="image/svg+xml" href="../img/favicon.svg?v=4"><link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32.png?v=4"><link rel="apple-touch-icon" href="../img/apple-touch-icon.png?v=4"><meta name="theme-color" content="#072417"><link rel="manifest" href="../manifest.json"><link rel="alternate" type="application/rss+xml" title="El Telar" href="../feed.xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="APIs gratuitas para darle superpoderes a tu agente de IA | El Telar">
+<meta property="og:description" content="Una selección curada y filtrable de APIs públicas gratuitas realmente útiles para construir agentes de IA, organizadas por lo que resuelven, no por orden alfabético.">
+<meta property="og:url" content="https://eltelar.es/articulos/apis-gratuitas-agentes-ia.html">
+<meta property="og:site_name" content="El Telar">
+<meta property="og:locale" content="es_ES"><meta property="og:image" content="https://eltelar.es/img/og/guia-apis-gratuitas-agentes-ia.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="APIs gratuitas para darle superpoderes a tu agente de IA | El Telar">
+<meta name="twitter:description" content="Una selección curada y filtrable de APIs públicas gratuitas realmente útiles para construir agentes de IA, organizadas por lo que resuelven, no por orden alfabético."><meta name="twitter:image" content="https://eltelar.es/img/og/guia-apis-gratuitas-agentes-ia.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "APIs gratuitas para darle superpoderes a tu agente de IA",
+  "description": "Una selección curada y filtrable de APIs públicas gratuitas realmente útiles para construir agentes de IA, organizadas por lo que resuelven, no por orden alfabético.",
+  "image": "https://eltelar.es/img/og-image.jpg",
+  "author": { "@type": "Organization", "name": "El Telar", "url": "https://eltelar.es/sobre-nosotros.html" },
+  "publisher": { "@type": "Organization", "name": "El Telar" },
+  "datePublished": "2026-09-07",
+  "dateModified": "2026-09-07",
+  "mainEntityOfPage": "https://eltelar.es/articulos/apis-gratuitas-agentes-ia.html",
+  "inLanguage": "es"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Estas APIs son de verdad gratis o hay truco?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "La mayoría tiene una capa gratuita real, no una prueba de 7 días: normalmente con un límite de peticiones al mes o al día, suficiente para un proyecto personal o una automatización de bajo volumen. Si necesitas más volumen, casi todas ofrecen un plan de pago progresivo, pero no es obligatorio para empezar ni para aprender."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Necesito tarjeta de crédito para registrarme en estas APIs?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Depende de cada una. Open-Meteo y varias de datos abiertos de gobiernos no piden ni siquiera correo. Otras (sobre todo las de pago con capa gratuita, como algunas de finanzas) piden registro con correo, y una minoría pide tarjeta aunque no cobre nada mientras estés dentro del límite gratuito, como verificación anti-abuso."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cómo sé si una API sigue funcionando y no está abandonada?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Revisa la fecha del último commit o actualización en su documentación o repositorio, si lo tiene público, y prueba una llamada real antes de construir nada sobre ella. Una API sin actividad visible en más de un año, sin panel de estado y sin comunidad activa es una señal de alerta, aunque siga respondiendo hoy."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo usar estas APIs en un producto comercial, no solo para aprender?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Revisa siempre los términos de uso concretos de cada una antes de lanzar algo comercial: varias distinguen explícitamente entre uso personal/no comercial (gratis) y uso comercial (que exige un plan de pago o atribución obligatoria), y usarla fuera de esos términos puede significar que te corten el acceso sin aviso en el peor momento posible."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué diferencia hay entre esta lista y simplemente mirar el repositorio public-apis en GitHub?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "public-apis tiene miles de entradas de todo tipo, sin filtrar por utilidad para un agente de IA concreto. Esta guía selecciona una fracción pequeña, explica para qué sirve cada una específicamente en el contexto de construir un agente, y da un ejemplo de caso de uso real en vez de solo el nombre y el enlace."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://eltelar.es/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Guías",
+      "item": "https://eltelar.es/index.html#guias"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "APIs gratuitas para darle superpoderes a tu agente de IA",
+      "item": "https://eltelar.es/articulos/apis-gratuitas-agentes-ia.html"
+    }
+  ]
+}
+</script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet"/></noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet"/></noscript>
+<style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><link rel="stylesheet" href="../css/tailwind.css"><link rel="stylesheet" href="../css/entrance.css?v=2"><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}(function(){var c=null;try{c=localStorage.getItem('eltelar-cookie-consent')}catch(e){}var g=c==='accepted'?'granted':'denied';gtag('consent','default',{ad_storage:g,ad_user_data:g,ad_personalization:g,analytics_storage:g,wait_for_update:500});window.adsbygoogle=window.adsbygoogle||[];if(g!=='granted'){window.adsbygoogle.requestNonPersonalizedAds=1;}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-4DPTKEG79N"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4DPTKEG79N');</script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8239907995939753" crossorigin="anonymous"></script></head><body class="bg-background font-body-md text-on-surface antialiased">
+<header class="w-full bg-surface-container-lowest border-b border-outline-variant"><div class="border-b border-outline-variant py-space-xxs px-space-md hidden md:block"><div class="max-w-site-max-width mx-auto flex items-center justify-between font-kicker text-kicker text-on-surface-variant uppercase tracking-wider"><span>EDICIÓN DIGITAL // ACTUALIZADO 2026 // EL TELAR &amp; AGENTES</span><span>MADRID · REMOTO</span><span>SIN HUMO · 100% PRODUCCIÓN</span></div></div><div class="max-w-site-max-width mx-auto px-space-md py-space-md sm:py-space-xl text-center"><p class="hidden sm:block font-kicker text-kicker uppercase tracking-widest text-on-surface-variant mb-space-xs">Publicación Independiente de Tecnología &amp; Agentes</p><a class="inline-block" href="../index.html"><div class="font-display text-display max-sm:text-[40px] max-sm:leading-none text-primary tracking-tight">El Telar</div></a><p class="hidden sm:block font-caption text-caption uppercase tracking-widest text-on-surface-variant mt-space-xs">EL BOLETÍN Y ARCHIVO PRÁCTICO DE INTELIGENCIA ARTIFICIAL Y AGENTES AUTÓNOMOS</p></div><div class="border-t border-b border-outline-variant"><div class="max-w-site-max-width mx-auto px-space-md flex items-center justify-between gap-space-sm h-14"><nav class="flex items-center gap-space-md sm:gap-space-lg h-full min-w-0 overflow-x-auto [scrollbar-width:none] whitespace-nowrap"><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../index.html#guias">GUÍAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../empieza-aqui.html">EMPIEZA AQUÍ</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../sobre-nosotros.html">SOBRE NOSOTROS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../noticias/index.html">NOTICIAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../herramientas/index.html">HERRAMIENTAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../prompts/index.html">PROMPTS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../contacto.html">CONTACTO</a></nav><div class="flex items-center gap-space-md"><button id="search-trigger" type="button" aria-label="Buscar en las guías" class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[20px]">search</span></button><a class="hidden sm:inline-block bg-primary-container text-surface px-space-md py-space-xs font-label-md text-label-md uppercase tracking-wider hover:bg-primary transition-colors" href="../index.html#despacho">SUSCRÍBETE GRATIS</a></div></div></div><div class="hidden md:block bg-surface-container-low border-b border-outline-variant py-space-xs px-space-md"><div class="max-w-site-max-width mx-auto text-center"><p class="font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">47 GUÍAS COMPLETAS EN EXPANSIÓN · ACTUALIZADO A MODELOS 2026 · PROBADO EN TERMINAL Y FLUJOS REALES · CERO HUMO NI TEORÍA VACÍA</p></div></div></header>
+<main class="w-full max-w-site-max-width mx-auto px-space-md py-space-xl"><div class="flex flex-col w-full">
+<nav class="w-full mb-space-lg">
+<ol class="flex flex-wrap items-center gap-space-xs font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">
+<li><a class="hover:text-primary transition-colors" href="../index.html">Inicio</a></li>
+<li class="text-on-surface-variant">/</li>
+<li><a class="hover:text-primary transition-colors" href="../index.html#guias">Guías</a></li>
+<li class="text-on-surface-variant">/</li>
+<li class="text-primary font-bold">APIs gratuitas para agentes</li>
+</ol>
+</nav>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-col-gap">
+<article class="lg:col-span-8 flex flex-col space-y-space-xl">
+<figure data-hero class="space-y-space-xs"><img class="w-full border border-outline-variant" src="../img/guias/hero-apis-gratuitas-agentes-ia.jpg" alt="Web de Frankfurter, una API gratuita de tipos de cambio" width="1280" height="720" fetchpriority="high" decoding="async"/><figcaption class="font-caption text-caption text-on-surface-variant">Captura de pantalla: <a class="underline" href="https://frankfurter.dev/" rel="nofollow noopener" target="_blank">frankfurter.dev</a>.</figcaption></figure>
+<header class="space-y-space-md border-b border-outline-variant pb-space-xl">
+<span class="bg-surface-container-high text-secondary border border-outline-variant px-space-xs py-space-xxs font-kicker text-kicker uppercase tracking-widest inline-block">REFERENCIA // HERRAMIENTAS</span>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight leading-tight">APIs gratuitas para darle superpoderes a tu agente de IA</h1>
+<p class="font-lead-paragraph text-lead-paragraph text-on-surface-variant leading-relaxed">No es la lista entera de APIs del mundo, es una selección filtrada por una sola pregunta: ¿esto le sirve de verdad a un agente que necesita hacer algo, no solo hablar de ello? Filtra por categoría y encuentra la tuya.</p>
+<div class="pt-space-sm border-t border-outline-variant flex flex-wrap items-center justify-between gap-space-sm font-label-md text-label-md text-on-surface-variant">
+<span class="font-semibold text-on-surface">Por la Redacción de El Telar</span>
+<button class="inline-flex items-center gap-1 mt-2 px-3 py-1.5 bg-surface-container text-primary font-label-md text-[12px] font-semibold uppercase tracking-wider hover:bg-surface-container-high transition-colors" id="copy-guide-btn" type="button"><span class="material-symbols-outlined text-[16px]">content_copy</span> Copiar guía para tu IA</button><span class="inline-flex items-center gap-1 ml-1"><button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" id="save-guide-btn" title="Guardar guía" type="button"><span class="material-symbols-outlined text-[16px]">bookmark_border</span></button><button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" id="copy-link-btn" title="Copiar enlace permanente" type="button"><span class="material-symbols-outlined text-[16px]">share</span></button></span>
+<span class="flex items-center gap-1 text-caption font-caption">
+<span class="material-symbols-outlined text-[15px] text-on-surface-variant">schedule</span>
+              13 min de lectura
+            </span>
+</div>
+</header>
+<section class="prose max-w-editorial-max-width space-y-space-md">
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed">
+<span class="float-left text-primary font-display text-[68px] leading-[0.8] pr-3 pt-1 font-normal select-none">E</span>n GitHub existe un repositorio llamado <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="https://github.com/public-apis/public-apis" target="_blank" rel="noopener">public-apis</a>, con casi 500.000 estrellas, que cataloga miles de APIs gratuitas por categoría. Es un recurso genuinamente útil, pero también es enorme y genérico: mezcla APIs de anime, de Pokémon y de finanzas corporativas en la misma lista plana, sin distinguir cuáles tienen sentido para alguien que está construyendo un agente de IA con <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="agente-api-datos-reales.html">acceso a herramientas reales</a>.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Esta guía hace ese filtrado por ti: una selección más pequeña, organizada por lo que resuelve cada categoría, con un caso de uso concreto en vez de solo un nombre y un enlace. Todas exigen registro gratuito como mucho — ninguna pide pago para el nivel de uso que necesitas mientras aprendes o pruebas una idea.
+        </p>
+</section>
+<figure class="my-space-lg">
+<img class="w-full border border-outline-variant" src="../img/guias/public-apis-repo.jpg" alt="Página de GitHub del repositorio public-apis, con casi 477.000 estrellas, mostrando su README y estadísticas del proyecto." loading="lazy" width="1200" height="664"/>
+<figcaption class="font-caption text-caption text-on-surface-variant mt-space-xs">El repositorio <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="https://github.com/public-apis/public-apis" target="_blank" rel="noopener">public-apis</a> en GitHub: la fuente original de la que partimos, con casi 500.000 estrellas y miles de entradas sin filtrar.</figcaption>
+</figure>
+<section id="sec-1" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Filtra por lo que necesitas</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Pulsa una categoría para ver solo esas APIs. Cada tarjeta indica si necesita clave, el límite gratuito aproximado y para qué tipo de agente tiene sentido.
+        </p>
+<div id="api-filters" class="flex flex-wrap gap-space-xs mb-space-md">
+<button class="filter-btn px-space-sm py-space-xs font-label-md text-label-md uppercase tracking-wider border border-primary bg-primary text-on-primary" data-cat="todas" type="button">Todas</button>
+<button class="filter-btn px-space-sm py-space-xs font-label-md text-label-md uppercase tracking-wider border border-outline-variant bg-surface-container-lowest text-on-surface hover:border-primary transition-colors" data-cat="finanzas" type="button">Finanzas</button>
+<button class="filter-btn px-space-sm py-space-xs font-label-md text-label-md uppercase tracking-wider border border-outline-variant bg-surface-container-lowest text-on-surface hover:border-primary transition-colors" data-cat="datos" type="button">Datos abiertos</button>
+<button class="filter-btn px-space-sm py-space-xs font-label-md text-label-md uppercase tracking-wider border border-outline-variant bg-surface-container-lowest text-on-surface hover:border-primary transition-colors" data-cat="noticias" type="button">Noticias</button>
+<button class="filter-btn px-space-sm py-space-xs font-label-md text-label-md uppercase tracking-wider border border-outline-variant bg-surface-container-lowest text-on-surface hover:border-primary transition-colors" data-cat="ubicacion" type="button">Ubicación</button>
+<button class="filter-btn px-space-sm py-space-xs font-label-md text-label-md uppercase tracking-wider border border-outline-variant bg-surface-container-lowest text-on-surface hover:border-primary transition-colors" data-cat="dev" type="button">Desarrollo</button>
+</div>
+<div id="api-cards" class="grid grid-cols-1 md:grid-cols-2 gap-space-sm">
+<div class="api-card bg-surface-container-lowest p-space-md shadow-sm" data-cat="finanzas">
+<div class="flex items-center justify-between mb-1"><span class="font-label-md text-label-md font-bold text-primary">CoinGecko</span><span class="font-kicker text-kicker bg-primary-fixed text-primary px-2 py-0.5">SIN CLAVE</span></div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-2">Precios de criptomonedas en vivo, capitalización de mercado, histórico. Límite gratuito generoso.</p>
+<p class="font-caption text-caption text-secondary">Agente de: alertas de precio, resúmenes de mercado.</p>
+</div>
+<div class="api-card bg-surface-container-lowest p-space-md shadow-sm" data-cat="finanzas">
+<div class="flex items-center justify-between mb-1"><span class="font-label-md text-label-md font-bold text-primary">Frankfurter</span><span class="font-kicker text-kicker bg-primary-fixed text-primary px-2 py-0.5">SIN CLAVE</span></div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-2">Tipos de cambio de divisas, datos del Banco Central Europeo, sin límite de peticiones publicado.</p>
+<p class="font-caption text-caption text-secondary">Agente de: conversión de divisas, contabilidad multimoneda.</p>
+</div>
+<div class="api-card bg-surface-container-lowest p-space-md shadow-sm" data-cat="datos" data-cat2="dev">
+<div class="flex items-center justify-between mb-1"><span class="font-label-md text-label-md font-bold text-primary">Open-Meteo</span><span class="font-kicker text-kicker bg-primary-fixed text-primary px-2 py-0.5">SIN CLAVE</span></div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-2">Clima actual e histórico por coordenadas, sin registro. La usamos en nuestra <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="agente-api-datos-reales.html">demo en vivo de agente con datos reales</a>.</p>
+<p class="font-caption text-caption text-secondary">Agente de: logística, agricultura, planificación de eventos.</p>
+</div>
+<div class="api-card bg-surface-container-lowest p-space-md shadow-sm" data-cat="datos">
+<div class="flex items-center justify-between mb-1"><span class="font-label-md text-label-md font-bold text-primary">World Bank Open Data</span><span class="font-kicker text-kicker bg-primary-fixed text-primary px-2 py-0.5">SIN CLAVE</span></div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-2">Indicadores económicos y sociales oficiales de más de 200 países, décadas de histórico.</p>
+<p class="font-caption text-caption text-secondary">Agente de: verificación de datos, periodismo de datos, investigación.</p>
+</div>
+<div class="api-card bg-surface-container-lowest p-space-md shadow-sm" data-cat="noticias">
+<div class="flex items-center justify-between mb-1"><span class="font-label-md text-label-md font-bold text-primary">GNews</span><span class="font-kicker text-kicker bg-surface-container text-on-surface-variant px-2 py-0.5">CLAVE GRATIS</span></div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-2">Titulares recientes por palabra clave o tema, 100 peticiones/día gratis con registro simple.</p>
+<p class="font-caption text-caption text-secondary">Agente de: resúmenes de prensa, monitorización de menciones.</p>
+</div>
+<div class="api-card bg-surface-container-lowest p-space-md shadow-sm" data-cat="noticias">
+<div class="flex items-center justify-between mb-1"><span class="font-label-md text-label-md font-bold text-primary">Hacker News API</span><span class="font-kicker text-kicker bg-primary-fixed text-primary px-2 py-0.5">SIN CLAVE</span></div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-2">Historias, comentarios y rankings de Hacker News en tiempo real, mantenida oficialmente.</p>
+<p class="font-caption text-caption text-secondary">Agente de: vigilancia de tendencias tecnológicas.</p>
+</div>
+<div class="api-card bg-surface-container-lowest p-space-md shadow-sm" data-cat="ubicacion">
+<div class="flex items-center justify-between mb-1"><span class="font-label-md text-label-md font-bold text-primary">Nominatim (OpenStreetMap)</span><span class="font-kicker text-kicker bg-primary-fixed text-primary px-2 py-0.5">SIN CLAVE</span></div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-2">Convierte una dirección en coordenadas y viceversa. Uso justo limitado a 1 petición/segundo.</p>
+<p class="font-caption text-caption text-secondary">Agente de: logística, atención al cliente con dirección de envío.</p>
+</div>
+<div class="api-card bg-surface-container-lowest p-space-md shadow-sm" data-cat="ubicacion">
+<div class="flex items-center justify-between mb-1"><span class="font-label-md text-label-md font-bold text-primary">REST Countries</span><span class="font-kicker text-kicker bg-primary-fixed text-primary px-2 py-0.5">SIN CLAVE</span></div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-2">Datos de cualquier país: capital, moneda, idiomas, zona horaria, banderas. Sin límite estricto.</p>
+<p class="font-caption text-caption text-secondary">Agente de: validación de formularios, contexto internacional.</p>
+</div>
+<div class="api-card bg-surface-container-lowest p-space-md shadow-sm" data-cat="dev">
+<div class="flex items-center justify-between mb-1"><span class="font-label-md text-label-md font-bold text-primary">GitHub REST API</span><span class="font-kicker text-kicker bg-surface-container text-on-surface-variant px-2 py-0.5">CLAVE GRATIS</span></div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-2">Repositorios, issues, pull requests, commits. 5.000 peticiones/hora gratis autenticado.</p>
+<p class="font-caption text-caption text-secondary">Agente de: triaje de issues, resúmenes de actividad de un repo.</p>
+</div>
+<div class="api-card bg-surface-container-lowest p-space-md shadow-sm" data-cat="dev">
+<div class="flex items-center justify-between mb-1"><span class="font-label-md text-label-md font-bold text-primary">JSONPlaceholder</span><span class="font-kicker text-kicker bg-primary-fixed text-primary px-2 py-0.5">SIN CLAVE</span></div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-2">API falsa con datos de ejemplo, pensada para probar tu código de integración sin tocar nada real.</p>
+<p class="font-caption text-caption text-secondary">Agente de: pruebas y desarrollo antes de conectar la API real.</p>
+</div>
+</div>
+<p id="api-empty" class="font-body-sm text-body-sm text-on-surface-variant hidden">No hay tarjetas en esta categoría todavía.</p>
+<script>
+(function(){
+  var buttons = document.querySelectorAll('#api-filters .filter-btn');
+  var cards = document.querySelectorAll('#api-cards .api-card');
+  var empty = document.getElementById('api-empty');
+  buttons.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      buttons.forEach(function(b){ b.classList.remove('bg-primary','text-on-primary','border-primary'); b.classList.add('bg-surface-container-lowest','text-on-surface','border-outline-variant'); });
+      btn.classList.add('bg-primary','text-on-primary','border-primary'); btn.classList.remove('bg-surface-container-lowest','text-on-surface','border-outline-variant');
+      var cat = btn.getAttribute('data-cat');
+      var visible = 0;
+      cards.forEach(function(card){
+        var show = cat === 'todas' || card.getAttribute('data-cat') === cat || card.getAttribute('data-cat2') === cat;
+        card.style.display = show ? '' : 'none';
+        if(show) visible++;
+      });
+      empty.classList.toggle('hidden', visible > 0);
+    });
+  });
+})();
+</script>
+</section>
+<section id="sec-1b" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Qué significa "gratis" exactamente en una API</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          "Gratis" en el mundo de las APIs casi nunca significa "sin límite". Lo habitual es un modelo de cuota: un número fijo de peticiones por minuto, por hora o por mes, después del cual la API responde con un código de error (normalmente <code class="font-mono text-body-sm bg-surface-container-low px-1">429 Too Many Requests</code>) en vez de con datos, hasta que la cuota se renueva. Entender ese número antes de construir nada es la diferencia entre un agente que funciona de forma fiable y uno que falla de forma intermitente y difícil de depurar.
+        </p>
+<div class="overflow-x-auto">
+<table class="w-full text-left font-body-sm text-body-sm border border-outline-variant">
+<thead class="bg-surface-container-low">
+<tr><th class="p-space-sm border-b border-outline-variant">Tipo de límite</th><th class="p-space-sm border-b border-outline-variant">Ejemplo real</th><th class="p-space-sm border-b border-outline-variant">Qué significa para tu agente</th></tr>
+</thead>
+<tbody>
+<tr><td class="p-space-sm border-b border-outline-variant align-top font-semibold text-primary">Por segundo</td><td class="p-space-sm border-b border-outline-variant align-top">Nominatim: 1 petición/segundo</td><td class="p-space-sm border-b border-outline-variant align-top text-on-surface-variant">Vale para uso conversacional puntual, no para procesar una lista grande de golpe.</td></tr>
+<tr><td class="p-space-sm border-b border-outline-variant align-top font-semibold text-primary">Por hora</td><td class="p-space-sm border-b border-outline-variant align-top">GitHub API: 5.000/hora autenticado</td><td class="p-space-sm border-b border-outline-variant align-top text-on-surface-variant">Cómodo incluso para uso intensivo de un equipo pequeño.</td></tr>
+<tr><td class="p-space-sm border-b border-outline-variant align-top font-semibold text-primary">Por día</td><td class="p-space-sm border-b border-outline-variant align-top">GNews: 100/día en capa gratuita</td><td class="p-space-sm border-b border-outline-variant align-top text-on-surface-variant">Suficiente para pruebas y proyectos personales, ajustado para producción con tráfico real.</td></tr>
+<tr><td class="p-space-sm border-b border-outline-variant align-top font-semibold text-primary">Uso justo sin cifra fija</td><td class="p-space-sm border-b border-outline-variant align-top">Open-Meteo, REST Countries</td><td class="p-space-sm border-b border-outline-variant align-top text-on-surface-variant">Cómodo para casi cualquier uso no comercial, pero sin garantía contractual de disponibilidad.</td></tr>
+</tbody>
+</table>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Un error habitual es probar una API con dos o tres llamadas manuales, ver que funciona, y asumir que aguantará el volumen real de producción sin comprobarlo. Antes de lanzar algo, calcula el volumen esperado (cuántos usuarios, cuántas consultas por usuario al día) y compáralo con el límite publicado — si tu estimación se acerca al límite, es mejor saberlo antes de lanzar que descubrirlo cuando empiecen a fallar peticiones a media tarde.
+        </p>
+</section>
+<section id="sec-2" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Cómo evaluar una API antes de construir sobre ella</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Antes de escribir una sola línea de código, cuatro preguntas rápidas ahorran horas de trabajo tirado: ¿tiene documentación clara con ejemplos reales, no solo una lista de campos? ¿el límite gratuito publicado coincide con lo que realmente necesitas, o vas a chocar con él en la primera semana de uso real? ¿hay un panel de estado público donde ver si está caída ahora mismo? ¿el último cambio en su documentación es de hace meses o de hace años?
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Ninguna de las APIs de la sección anterior es perfecta para todos los casos: Nominatim, por ejemplo, tiene un límite estricto de una petición por segundo que la hace inadecuada si tu agente necesita geocodificar miles de direcciones de golpe, aunque sea perfecta para un uso puntual dentro de una conversación. Conocer el límite antes de construir evita el peor escenario: un agente que funciona perfecto en tus pruebas y se rompe en cuanto un usuario real le da más carga de la que probaste.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          La calidad de la documentación es, en la práctica, tan importante como la calidad del dato en sí. Una API con ejemplos de petición y respuesta reales, códigos de error explicados uno por uno y un playground donde probar sin escribir código todavía, ahorra horas frente a una que solo enumera nombres de campos sin contexto. Si la documentación te deja dudas razonables sobre qué pasa en un caso límite (¿qué devuelve si la ciudad no existe? ¿y si mando un parámetro vacío?), pruébalo tú mismo con una llamada real antes de asumir un comportamiento y construir tu código sobre esa suposición — es más barato descubrir la sorpresa en una prueba de treinta segundos que en producción con un usuario real esperando respuesta.
+        </p>
+</section>
+<section id="sec-2b" class="space-y-space-md">
+<figure data-inline-photo class="space-y-space-xs my-space-xl"><img class="w-full border border-outline-variant" src="../img/guias/foto-apis-gratuitas-agentes-ia.jpg" alt="Portal de APIs abiertas de la NASA" width="1280" height="720" loading="lazy" decoding="async"/><figcaption class="font-caption text-caption text-on-surface-variant">Captura de pantalla: <a class="underline" href="https://api.nasa.gov/" rel="nofollow noopener" target="_blank">api.nasa.gov</a>.</figcaption></figure>
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Cuándo NO conviene usar una API pública gratuita</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          No todo lo que se puede resolver con una API gratuita debería resolverse así. Hay tres señales claras de que ha llegado el momento de plantearse un plan de pago o una fuente distinta: el límite gratuito se queda corto de forma estructural y previsible (no un pico puntual), el servicio no publica ningún compromiso de disponibilidad (SLA) y tu negocio depende de que esté siempre arriba, o la documentación lleva mucho tiempo sin actualizarse mientras el resto del ecosistema (versiones de librerías, formatos de datos) sigue avanzando a su alrededor.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Ninguna de estas señales significa que la API sea mala — Open-Meteo, por ejemplo, es excelente para casi cualquier proyecto personal o de aprendizaje, pero una aerolínea que necesita garantías contractuales de disponibilidad para su sistema de vuelos no debería construir sobre una capa gratuita sin compromiso de servicio, por buena que sea la API el 99% del tiempo. La pregunta correcta no es "¿es gratis?" sino "¿qué pasa el día que falla, y puedo permitirme ese día?".
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Hay un caso peor que una API con límites: que no exista ninguna API. Entonces el dato solo está publicado dentro de una página web, y sacarlo de ahí tiene sus propias reglas —técnicas y legales— que conviene conocer antes de empezar: <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="agente-extraer-datos-web.html">cómo montar un agente que extrae datos de páginas web</a>.
+        </p>
+</section>
+<section id="sec-3" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Combinando varias APIs en un mismo agente</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          El valor real casi nunca está en una sola API aislada, sino en combinar dos o tres dentro del mismo agente. Un ejemplo real: un agente de viajes que primero usa REST Countries para confirmar en qué moneda opera el país de destino, luego Frankfurter para convertir un presupuesto a esa moneda, y por último Open-Meteo para avisar si el clima previsto afecta a los planes — tres llamadas encadenadas, tres APIs distintas, cada una resolviendo una pieza pequeña y concreta del problema completo.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Siguiendo el patrón de código de nuestra guía sobre <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="agente-api-datos-reales.html">cómo conectar un agente a datos reales</a>, cada una de estas fuentes se define como una herramienta independiente en la misma lista que le pasas al modelo. El modelo decide por sí solo cuáles de las tres necesita para una petición concreta —a veces solo una, a veces las tres encadenadas— sin que tengas que programar esa lógica de decisión a mano.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Otro ejemplo, esta vez de desarrollo de software: un agente interno que ayuda a un equipo pequeño a triar issues nuevos en GitHub podría combinar la GitHub REST API (para leer el issue recién creado y su historial), Hacker News API (para comprobar si el tema ya se ha discutido públicamente y aportar contexto) y JSONPlaceholder durante la fase de desarrollo, para probar todo el flujo de principio a fin con datos falsos antes de conectarlo a un repositorio real donde un error sí tendría consecuencias.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Ese último detalle —probar con una API falsa antes de tocar la real— es una práctica que se salta con demasiada frecuencia por prisa, y es exactamente la que evita que un fallo de tu código (no de la API) borre o modifique algo real mientras todavía estás depurando la integración.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Un tercer ejemplo, esta vez en el sector agrícola: una pequeña explotación podría montar un agente que consulta Open-Meteo cada mañana temprano, compara la previsión de lluvia y viento con umbrales que el propio agricultor definió como "condiciones de riesgo para la cosecha", y solo cuando se supera ese umbral genera una alerta redactada en lenguaje natural, en vez de un simple número que hay que interpretar. El coste de infraestructura de un agente así es prácticamente cero —una API gratuita, una llamada al modelo una vez al día— frente al valor de anticipar un problema con horas de margen.
+        </p>
+</section>
+<section id="sec-3b" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Cómo guardar una clave sin exponerla</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          De las diez APIs de la sección anterior, cuatro exigen una clave de registro. La regla no negociable es la misma para las cuatro: la clave vive en una variable de entorno de tu servidor, nunca escrita directamente dentro del código fuente ni, mucho menos, dentro de JavaScript que se ejecuta en el navegador del usuario final, donde cualquiera puede leerla abriendo las herramientas de desarrollador.
+        </p>
+<div class="bg-[#0b0d12] text-surface p-space-md my-space-md overflow-x-auto">
+<pre class="font-mono text-body-sm leading-relaxed"># archivo .env, nunca subido a git
+GNEWS_API_KEY=tu_clave_aqui
+
+# en tu código Python
+import os, requests
+clave = os.environ["GNEWS_API_KEY"]
+requests.get("https://gnews.io/api/v4/search", params={"apikey": clave, "q": "IA"})</pre>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Añade siempre el archivo <code class="font-mono text-body-sm bg-surface-container-low px-1">.env</code> a tu <code class="font-mono text-body-sm bg-surface-container-low px-1">.gitignore</code> antes del primer commit, no después: una clave que llega a subirse a un repositorio público, aunque la borres en el siguiente commit, queda visible para siempre en el historial de Git a menos que reescribas ese historial por completo. Nuestra guía sobre <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="proteger-datos-ia.html">proteger tus datos al conectar la IA a tus herramientas</a> cubre este y otros riesgos de seguridad con más detalle.
+        </p>
+</section>
+<section id="sec-4" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Errores comunes al elegir APIs para un agente</h2>
+<div class="space-y-space-sm">
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h3 class="font-headline-sm text-headline-sm text-primary mb-1">Elegir la API más famosa en vez de la más adecuada</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Una API con mucha popularidad no es automáticamente la mejor para tu caso concreto — a veces una alternativa menos conocida tiene un límite gratuito mejor o una respuesta más simple de procesar para lo que necesitas exactamente.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h3 class="font-headline-sm text-headline-sm text-primary mb-1">No leer la política de uso comercial antes de lanzar algo</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Varias APIs de esta lista distinguen explícitamente uso personal de uso comercial en sus términos. Confirmarlo antes de lanzar un producto evita un corte de acceso sorpresa el día que más tráfico tienes.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h3 class="font-headline-sm text-headline-sm text-primary mb-1">Depender de una sola API sin plan de contingencia</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Si tu agente depende por completo de una única fuente externa y esa fuente cae, tu agente cae con ella. Para funciones críticas, vale la pena identificar una alternativa de respaldo antes de necesitarla de verdad.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h3 class="font-headline-sm text-headline-sm text-primary mb-1">No cachear respuestas que casi no cambian</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Datos como la lista de países o el tipo de cambio de una hora concreta no necesitan una llamada nueva cada vez que el agente los pide. Guardar la respuesta un tiempo razonable (minutos u horas, según el dato) reduce el consumo de tu cuota gratuita y hace que tu agente responda más rápido.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h3 class="font-headline-sm text-headline-sm text-primary mb-1">Ignorar la codificación de caracteres o el formato de fecha de una API extranjera</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Una API mantenida por un equipo en otro país puede devolver fechas en un formato distinto al que asumes por defecto, o texto en una codificación que rompe acentos si no la declaras explícitamente. Comprobarlo con un caso de prueba real que incluya caracteres especiales evita errores silenciosos que solo se notan cuando ya hay datos corruptos guardados.</p>
+</div>
+</div>
+</section>
+</article>
+<aside class="lg:col-span-4 space-y-space-xl">
+<div class="bg-surface-container-lowest p-space-md border border-outline-variant text-center">
+<div class="w-16 h-16 mx-auto mb-space-sm flex items-center justify-center rounded-full border border-secondary text-secondary">
+<span class="material-symbols-outlined text-[32px]">api</span>
+</div>
+<span class="font-kicker text-kicker uppercase tracking-widest text-primary block mb-space-xxs">FICHA TÉCNICA</span>
+<dl class="space-y-space-xs font-body-sm text-body-sm text-left pt-space-sm border-t border-outline-variant">
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">APIs incluidas:</dt><dd class="font-semibold text-primary">10 seleccionadas</dd></div>
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Coste:</dt><dd class="font-semibold text-primary">Todas gratis</dd></div>
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Nivel técnico:</dt><dd class="font-semibold text-secondary">Principiante / Intermedio</dd></div>
+</dl>
+</div>
+<div class="bg-surface-container-low p-space-lg sticky top-space-md">
+<div class="flex items-center gap-2 font-kicker text-kicker uppercase tracking-widest text-on-surface-variant mb-space-md">
+<span class="material-symbols-outlined text-[16px]">format_list_bulleted</span>
+ÍNDICE DE LA GUÍA
+</div>
+<nav class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant">
+<a class="block hover:text-primary transition-colors" href="#sec-1">Filtra por lo que necesitas</a>
+<a class="block hover:text-primary transition-colors" href="#sec-1b">Qué significa "gratis"</a>
+<a class="block hover:text-primary transition-colors" href="#sec-2">Cómo evaluar una API</a>
+<a class="block hover:text-primary transition-colors" href="#sec-2b">Cuándo NO usar una gratuita</a>
+<a class="block hover:text-primary transition-colors" href="#sec-3">Combinando varias APIs</a>
+<a class="block hover:text-primary transition-colors" href="#sec-3b">Guardar una clave sin exponerla</a>
+<a class="block hover:text-primary transition-colors" href="#sec-4">Errores comunes</a>
+</nav>
+</div>
+
+</aside>
+</div>
+<section class="mb-space-2xl">
+<h2 class="font-headline-md text-headline-md text-primary mb-space-md">Preguntas frecuentes</h2>
+<div class="space-y-space-md">
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Estas APIs son de verdad gratis o hay truco?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+La mayoría tiene una capa gratuita real, no una prueba de 7 días: normalmente con un límite de peticiones al mes o al día, suficiente para un proyecto personal o una automatización de bajo volumen. Si necesitas más volumen, casi todas ofrecen un plan de pago progresivo, pero no es obligatorio para empezar ni para aprender.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Necesito tarjeta de crédito para registrarme en estas APIs?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Depende de cada una. Open-Meteo y varias de datos abiertos de gobiernos no piden ni siquiera correo. Otras (sobre todo las de pago con capa gratuita, como algunas de finanzas) piden registro con correo, y una minoría pide tarjeta aunque no cobre nada mientras estés dentro del límite gratuito, como verificación anti-abuso.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Cómo sé si una API sigue funcionando y no está abandonada?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Revisa la fecha del último commit o actualización en su documentación o repositorio, si lo tiene público, y prueba una llamada real antes de construir nada sobre ella. Una API sin actividad visible en más de un año, sin panel de estado y sin comunidad activa es una señal de alerta, aunque siga respondiendo hoy.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Puedo usar estas APIs en un producto comercial, no solo para aprender?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Revisa siempre los términos de uso concretos de cada una antes de lanzar algo comercial: varias distinguen explícitamente entre uso personal/no comercial (gratis) y uso comercial (que exige un plan de pago o atribución obligatoria), y usarla fuera de esos términos puede significar que te corten el acceso sin aviso en el peor momento posible.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Qué diferencia hay entre esta lista y simplemente mirar el repositorio public-apis en GitHub?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+public-apis tiene miles de entradas de todo tipo, sin filtrar por utilidad para un agente de IA concreto. Esta guía selecciona una fracción pequeña, explica para qué sirve cada una específicamente en el contexto de construir un agente, y da un ejemplo de caso de uso real en vez de solo el nombre y el enlace.
+</div>
+</div>
+</div>
+</section>
+<div class="bg-surface-container-low p-space-lg mb-space-2xl flex flex-col sm:flex-row items-start sm:items-center gap-space-md shadow-sm">
+<div class="w-16 h-16 bg-primary text-on-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[32px]">shield_person</span>
+</div>
+<div class="space-y-1">
+<div class="font-headline-sm text-headline-sm text-primary">Redacción El Telar</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Ninguna de las APIs de esta guía ha pagado por aparecer. La selección se basa solo en si de verdad sirven para construir un agente.
+          </p>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-space-2xl">
+          Esta lista no pretende ser exhaustiva ni definitiva — las condiciones de cada API (límites, requisitos de clave, términos de uso) cambian con el tiempo, así que confirma siempre las cifras actuales en la documentación oficial antes de depender de ellas para algo importante. Lo que sí se mantiene estable es el criterio para elegir: documentación clara, límite conocido de antemano, y un caso de uso concreto donde el dato que aporta cambia de verdad el resultado de tu agente, no solo lo decora.
+        </p>
+<section class="mt-space-4xl pt-space-xl border-t-2 border-primary space-y-space-lg">
+<h3 class="font-headline-md text-headline-md text-primary tracking-tight">Continúa explorando el archivo</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-col-gap"><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="agente-api-datos-reales.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-agente-api-datos-reales.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="agente-api-datos-reales.html">Cómo darle a un agente de IA acceso a datos reales y gratis</a></h4></div></article><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="bot-trading-ia.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-bot-trading-ia.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="bot-trading-ia.html">Cómo se construye un bot de trading con IA (sin ser programador)</a></h4></div></article><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="ia-datos-abiertos-gobierno.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-ia-datos-abiertos-gobierno.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="ia-datos-abiertos-gobierno.html">IA y datos abiertos: un asistente que consulta fuentes oficiales</a></h4></div></article></div>
+</section>
+</div></main>
+<footer class="w-full bg-surface-container-low border-t border-outline-variant mt-space-4xl"><div class="max-w-site-max-width mx-auto px-space-md py-space-3xl"><div class="grid grid-cols-1 md:grid-cols-3 gap-col-gap"><div class="space-y-space-sm"><span class="font-headline-md text-headline-md text-primary">El Telar</span><p class="font-body-sm text-body-sm text-on-surface-variant">Publicación independiente de tecnología y automatización con agentes. Contenidos verificados en producción, sin patrocinios opacos ni promesas vacías.</p></div><div><h3 class="font-kicker text-kicker uppercase tracking-wider text-on-surface mb-space-md">SECCIONES</h3><ul class="space-y-space-xs font-body-sm text-body-sm"><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html#guias">Archivo de Guías</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../empieza-aqui.html">Guía para Principiantes</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../sobre-nosotros.html">Manifiesto Editorial</a></li><li class="pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html#despacho">Boletín Semanal</a></li></ul></div><div><h3 class="font-kicker text-kicker uppercase tracking-wider text-on-surface mb-space-md">CONTACTO &amp; PRENSA</h3><div class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant"><p class="font-semibold text-on-surface">contacto@eltelar.es</p><p>Síguenos: <a class="hover:text-primary underline" href="https://www.instagram.com/eltelar_es/" rel="me noopener" target="_blank">Instagram</a> · <a class="hover:text-primary underline" href="https://www.threads.com/@eltelar_es" rel="me noopener" target="_blank">Threads</a> · <a class="hover:text-primary underline" href="https://x.com/eltelar_es" rel="me noopener" target="_blank">X</a></p></div></div></div></div><div class="border-t border-outline-variant py-space-md bg-surface-container-lowest"><div class="max-w-site-max-width mx-auto px-space-md flex flex-col md:flex-row items-center justify-between gap-space-sm text-caption font-caption text-on-surface-variant"><div>© 2026 El Telar. Todos los derechos reservados. Independencia editorial garantizada.</div><div class="flex items-center gap-space-md"><a class="hover:text-on-surface transition-colors" href="../privacidad.html">Privacidad</a><a class="hover:text-on-surface transition-colors" href="../terminos.html">Términos</a><a class="hover:text-on-surface transition-colors" href="../sobre-nosotros.html">Sobre nosotros</a><a class="hover:text-on-surface transition-colors" href="../contacto.html">Contacto</a></div></div></div></footer><script defer src="../js/copy-guide.js"></script><script defer src="../js/guide-interactions.js"></script><script defer src="../js/reading-progress.js"></script><script defer src="../js/search.js?v=7"></script><script defer src="../js/entrance.js"></script><script defer src="../js/cookie-consent.js?v=4"></script></body></html>

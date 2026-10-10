@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tu propio asistente personal con IA | El Telar</title>
+<meta name="description" content="Qué recuerdan de verdad ChatGPT y Claude, por qué su memoria no es una base de datos, y cómo conectar tus notas y tareas sin regalar el control de tus datos.">
+<link rel="canonical" href="https://eltelar.es/articulos/asistente-personal-ia-memoria-notas.html"><link rel="icon" type="image/svg+xml" href="../img/favicon.svg?v=4"><link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32.png?v=4"><link rel="apple-touch-icon" href="../img/apple-touch-icon.png?v=4"><meta name="theme-color" content="#072417"><link rel="manifest" href="../manifest.json"><link rel="alternate" type="application/rss+xml" title="El Telar" href="../feed.xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tu propio asistente personal con IA | El Telar">
+<meta property="og:description" content="Qué recuerdan de verdad ChatGPT y Claude, por qué su memoria no es una base de datos, y cómo conectar tus notas y tareas sin regalar el control de tus datos.">
+<meta property="og:url" content="https://eltelar.es/articulos/asistente-personal-ia-memoria-notas.html">
+<meta property="og:site_name" content="El Telar">
+<meta property="og:locale" content="es_ES"><meta property="og:image" content="https://eltelar.es/img/og/guia-asistente-personal-ia-memoria-notas.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Tu propio asistente personal con IA | El Telar">
+<meta name="twitter:description" content="Qué recuerdan de verdad ChatGPT y Claude, por qué su memoria no es una base de datos, y cómo conectar tus notas y tareas sin regalar el control de tus datos."><meta name="twitter:image" content="https://eltelar.es/img/og/guia-asistente-personal-ia-memoria-notas.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Construir tu propio asistente personal con IA: memoria, notas y tareas conectadas",
+  "description": "Qué recuerdan de verdad ChatGPT y Claude, por qué su memoria no es una base de datos, y cómo conectar tus notas y tareas sin regalar el control de tus datos.",
+  "image": "https://eltelar.es/img/og/guia-asistente-personal-ia-memoria-notas.jpg",
+  "author": {
+    "@type": "Organization",
+    "name": "El Telar",
+    "url": "https://eltelar.es/sobre-nosotros.html"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "El Telar"
+  },
+  "datePublished": "2026-10-04",
+  "dateModified": "2026-10-04",
+  "mainEntityOfPage": "https://eltelar.es/articulos/asistente-personal-ia-memoria-notas.html",
+  "inLanguage": "es"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Qué recuerda de verdad un asistente de IA entre conversaciones?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Un resumen, no un archivo. Anthropic lo llama explícitamente «resumen de memoria»: Claude genera resúmenes de tus conversaciones que puedes ver y editar desde los ajustes, y si usas proyectos crea una memoria separada para cada uno. ChatGPT funciona en dos capas: los recuerdos guardados, que son datos concretos que puedes consultar y borrar, y la referencia al historial de chats, que trabaja de fondo y no te deja ninguna lista que puedas auditar. La consecuencia práctica es la misma en los dos casos: la memoria es buena recordando cómo trabajas y mala recordando un dato exacto. Si necesitas que el número de una factura siga siendo ese número dentro de seis meses, no lo dejes en la memoria del modelo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Necesito saber programar para montarme un asistente personal?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Para la versión que resuelve el 80% de los casos, no. Un asistente útil son cuatro piezas: un sitio donde viven tus notas, un sitio donde viven tus tareas, una forma de que el modelo las lea y escriba, y una instrucción fija que le diga cómo comportarse. Las tres primeras se resuelven hoy con conectores que se activan desde los ajustes de la aplicación. Programar hace falta cuando quieres que se ejecute solo sin que tú abras nada, o cuando ninguna de tus herramientas tiene conector y te toca escribirlo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué es MCP y por qué aparece en todas las guías de asistentes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Es el estándar abierto con el que una aplicación de IA se conecta a sistemas externos: archivos locales, bases de datos, buscadores o tus propias herramientas. Su documentación lo compara con un puerto USB-C — una forma única de enchufar en lugar de una integración distinta para cada programa. Importa porque lo soportan a la vez Claude, ChatGPT, Visual Studio Code y Cursor, entre otros: un conector que montes sirve en varios sitios. Lo tenemos explicado aparte en la guía de MCP."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Si uso el modo incógnito, ¿no queda rastro de la conversación?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No queda en la memoria ni en tu historial, que no es lo mismo que no quedar. La documentación de ayuda de Anthropic recoge que esas conversaciones se conservan igualmente un mínimo de 30 días por motivos de seguridad y obligaciones legales, y que en los planes de equipo entran en las exportaciones de datos de la organización. Es una herramienta buena para que algo no contamine lo que el asistente cree saber de ti, no un borrado inmediato. Para lo que de verdad no debe salir de tu ordenador, la decisión no es el modo de chat: es no pegarlo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Es peligroso darle acceso a mis notas y a mi correo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "El riesgo serio no es que el asistente se equivoque por su cuenta, es que obedezca a algo que leyó. En el momento en que procesa texto que no has escrito tú — un correo recibido, una página web, un PDF compartido — ese texto puede contener instrucciones dirigidas al modelo. Si además le has dado permiso de escritura y de red, la combinación es la que importa: alguien que no eres tú puede hacer que lea algo tuyo y lo envíe fuera. La defensa práctica es no acumular los tres permisos (leer datos sensibles, escribir y salir a internet) en la misma sesión, y dejar las acciones irreversibles detrás de una confirmación tuya."
+      }
+    }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://eltelar.es/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Guías",
+      "item": "https://eltelar.es/index.html#guias"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Construir tu propio asistente personal con IA: memoria, notas y tareas conectadas",
+      "item": "https://eltelar.es/articulos/asistente-personal-ia-memoria-notas.html"
+    }
+  ]
+}
+</script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet"/></noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet"/></noscript>
+<style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><link rel="stylesheet" href="../css/tailwind.css"><link rel="stylesheet" href="../css/entrance.css?v=2"><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}(function(){var c=null;try{c=localStorage.getItem('eltelar-cookie-consent')}catch(e){}var g=c==='accepted'?'granted':'denied';gtag('consent','default',{ad_storage:g,ad_user_data:g,ad_personalization:g,analytics_storage:g,wait_for_update:500});window.adsbygoogle=window.adsbygoogle||[];if(g!=='granted'){window.adsbygoogle.requestNonPersonalizedAds=1;}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-4DPTKEG79N"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4DPTKEG79N');</script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8239907995939753" crossorigin="anonymous"></script></head><body class="bg-background font-body-md text-on-surface antialiased">
+<header class="w-full bg-surface-container-lowest border-b border-outline-variant"><div class="border-b border-outline-variant py-space-xxs px-space-md hidden md:block"><div class="max-w-site-max-width mx-auto flex items-center justify-between font-kicker text-kicker text-on-surface-variant uppercase tracking-wider"><span>EDICIÓN DIGITAL // ACTUALIZADO 2026 // EL TELAR &amp; AGENTES</span><span>MADRID · REMOTO</span><span>SIN HUMO · 100% PRODUCCIÓN</span></div></div><div class="max-w-site-max-width mx-auto px-space-md py-space-md sm:py-space-xl text-center"><p class="hidden sm:block font-kicker text-kicker uppercase tracking-widest text-on-surface-variant mb-space-xs">Publicación Independiente de Tecnología &amp; Agentes</p><a class="inline-block" href="../index.html"><div class="font-display text-display max-sm:text-[40px] max-sm:leading-none text-primary tracking-tight">El Telar</div></a><p class="hidden sm:block font-caption text-caption uppercase tracking-widest text-on-surface-variant mt-space-xs">EL BOLETÍN Y ARCHIVO PRÁCTICO DE INTELIGENCIA ARTIFICIAL Y AGENTES AUTÓNOMOS</p></div><div class="border-t border-b border-outline-variant"><div class="max-w-site-max-width mx-auto px-space-md flex items-center justify-between gap-space-sm h-14"><nav class="flex items-center gap-space-md sm:gap-space-lg h-full min-w-0 overflow-x-auto [scrollbar-width:none] whitespace-nowrap"><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../index.html#guias">GUÍAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../empieza-aqui.html">EMPIEZA AQUÍ</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../sobre-nosotros.html">SOBRE NOSOTROS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../noticias/index.html">NOTICIAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../herramientas/index.html">HERRAMIENTAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../prompts/index.html">PROMPTS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../contacto.html">CONTACTO</a></nav><div class="flex items-center gap-space-md"><button id="search-trigger" type="button" aria-label="Buscar en las guías" class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[20px]">search</span></button><a class="hidden sm:inline-block bg-primary-container text-surface px-space-md py-space-xs font-label-md text-label-md uppercase tracking-wider hover:bg-primary transition-colors" href="../index.html#despacho">SUSCRÍBETE GRATIS</a></div></div></div><div class="hidden md:block bg-surface-container-low border-b border-outline-variant py-space-xs px-space-md"><div class="max-w-site-max-width mx-auto text-center"><p class="font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">47 GUÍAS COMPLETAS EN EXPANSIÓN · ACTUALIZADO A MODELOS 2026 · PROBADO EN TERMINAL Y FLUJOS REALES · CERO HUMO NI TEORÍA VACÍA</p></div></div></header>
+<main class="w-full max-w-site-max-width mx-auto px-space-md py-space-xl"><div class="flex flex-col w-full">
+<nav class="w-full mb-space-lg">
+<ol class="flex flex-wrap items-center gap-space-xs font-kicker text-kicker text-on-surface-variant uppercase tracking-wider">
+<li><a class="hover:text-primary transition-colors" href="../index.html">Inicio</a></li>
+<li class="text-on-surface-variant">/</li>
+<li><a class="hover:text-primary transition-colors" href="../index.html#guias">Guías</a></li>
+<li class="text-on-surface-variant">/</li>
+<li class="text-primary font-bold truncate max-w-[280px] sm:max-w-md">Asistente personal con IA</li>
+</ol>
+</nav>
+<header class="w-full pb-space-xl mb-space-2xl">
+<div class="flex flex-wrap items-center gap-space-xs mb-space-md">
+<span class="bg-surface-container-high text-secondary px-space-sm py-1 font-kicker text-kicker uppercase tracking-widest">AGENTES // PRODUCTIVIDAD</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight max-w-editorial-max mb-space-md">
+          Construir tu propio asistente personal con IA: memoria, notas y tareas conectadas
+        </h1>
+<p class="font-lead-paragraph text-lead-paragraph text-on-surface-variant max-w-editorial-max leading-relaxed mb-space-lg">
+          La parte que venden es la memoria. La parte que decide si funciona es dónde guardas tú la información: un asistente que depende del recuerdo del modelo se olvida de lo importante justo cuando lo necesitas.
+        </p>
+<div class="bg-surface-container-lowest p-space-md flex flex-wrap items-center justify-between gap-y-3 shadow-sm">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 bg-primary text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">memory</span>
+</div>
+<div>
+<div class="font-label-md text-label-md text-on-surface font-semibold">Por la Redacción de El Telar</div><div class="font-caption text-caption text-on-surface-variant">Guías prácticas de IA y agentes, probadas en flujos de trabajo reales antes de publicarlas.</div>
+<button class="inline-flex items-center gap-1 mt-2 px-3 py-1.5 bg-surface-container text-primary font-label-md text-[12px] font-semibold uppercase tracking-wider hover:bg-surface-container-high transition-colors" id="copy-guide-btn" type="button"><span class="material-symbols-outlined text-[16px]">content_copy</span> Copiar guía para tu IA</button><span class="inline-flex items-center gap-1 ml-1"><button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" id="save-guide-btn" title="Guardar guía" type="button"><span class="material-symbols-outlined text-[16px]">bookmark_border</span></button><button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" id="copy-link-btn" title="Copiar enlace permanente" type="button"><span class="material-symbols-outlined text-[16px]">share</span></button></span>
+</div>
+</div>
+<div class="flex items-center gap-space-lg text-on-surface-variant font-caption text-caption uppercase tracking-wider">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">schedule</span> 16 min de lectura</span>
+</div>
+</div>
+</header>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-col-gap">
+<article class="lg:col-span-8 flex flex-col space-y-space-xl">
+<figure data-hero class="space-y-space-xs"><img class="w-full border border-outline-variant" src="../img/guias/hero-asistente-personal-ia-memoria-notas.jpg" alt="Web de Obsidian, aplicación de notas en archivos locales" width="1280" height="720" fetchpriority="high" decoding="async"/><figcaption class="font-caption text-caption text-on-surface-variant">Captura de pantalla: <a class="underline" href="https://obsidian.md/" rel="nofollow noopener" target="_blank">obsidian.md</a>.</figcaption></figure>
+<div class="relative bg-surface-container-lowest p-space-lg shadow-sm">
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed text-justify">
+<span class="float-left font-display text-primary text-6xl leading-none pr-3 pt-1 font-normal">C</span>
+          asi todo el mundo intenta montar su asistente personal por el mismo sitio: activando la memoria y contándole cosas. Funciona unas semanas. Luego llega el día en que le preguntas por el presupuesto que cerrasteis en marzo y te contesta algo plausible, redondo y equivocado — y a partir de ahí ya no sabes qué de lo que te dice es recuerdo y qué es relleno.
+        </p>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          El problema no es el modelo: es haber puesto la información importante en el único sitio del sistema que no está diseñado para guardarla. Esta guía va en el orden contrario al de los tutoriales: primero qué recuerdan de verdad estos asistentes, después dónde tienen que vivir tus notas y tus tareas, y solo entonces cómo se conectan las piezas. Da por hecho que ya tienes claro <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="ventana-contexto-memoria-ia.html">por qué una IA «olvida» lo que le dijiste antes</a>; si lo que buscas es decidir qué asistente usar, lo que toca es <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="mejores-asistentes-ia-no-programadores.html">la comparativa de asistentes para no programadores</a>, no esta.
+        </p>
+<section class="space-y-space-md">
+<h2 id="sec-1" class="font-headline-lg text-headline-lg text-primary">
+        Un asistente personal son cuatro piezas, y la IA es solo una
+      </h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          Cuando alguien dice «me he montado un asistente», casi siempre está describiendo la combinación de cuatro cosas distintas. Separarlas sirve para algo muy concreto: cuando el asistente falla, sabes cuál de las cuatro ha fallado.
+        </p>
+<div class="space-y-space-sm">
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h4 class="font-label-md text-label-md text-primary font-bold mb-1">1. Un almacén de notas que es tu fuente de la verdad</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Archivos de texto en una carpeta, Obsidian, Notion, Apple Notes, lo que ya uses. La única condición que importa: que el dato siga ahí y siga siendo exacto aunque desactives la IA mañana.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h4 class="font-label-md text-label-md text-primary font-bold mb-1">2. Un almacén de tareas con estado</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Una tarea tiene algo que una nota no tiene: está hecha o no lo está, y tiene fecha. Eso necesita un sitio que lo sepa — Todoist, Things, un tablero, una columna en una hoja de cálculo. Pedirle a un modelo que lleve la cuenta de tus pendientes «de cabeza» es exactamente el error que esta guía intenta evitar.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h4 class="font-label-md text-label-md text-primary font-bold mb-1">3. Una conexión que permita leer y escribir en los dos</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Un conector, un MCP, una integración, una carpeta compartida. Aquí es donde se decide casi toda la seguridad del montaje, y lo vemos más abajo.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h4 class="font-label-md text-label-md text-primary font-bold mb-1">4. Una instrucción fija que no vuelvas a escribir cada vez</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Las instrucciones de proyecto, el system prompt, el campo de «personalización». Es donde se escribe cómo quieres que trabaje: qué formato, qué tono, qué no debe hacer nunca, y sobre todo dónde tiene que mirar antes de contestar.</p>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          La memoria del modelo, la función que todo el mundo activa primero, no está en esta lista. Está a propósito: no es ninguna de las cuatro piezas, es una capa cómoda que se apoya encima. Y conviene saber qué es antes de confiarle algo.
+        </p>
+</section>
+<section class="space-y-space-md">
+<h2 id="sec-2" class="font-headline-lg text-headline-lg text-primary">
+        La memoria de un asistente es un resumen, no un archivo
+      </h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          Esto no es una interpretación nuestra: es cómo lo describen las propias empresas. Anthropic habla literalmente de un «resumen de memoria» que Claude genera a partir de tus conversaciones y que puedes consultar y modificar desde los ajustes; y si trabajas con proyectos, crea una memoria separada para cada proyecto, de modo que lo que hablas en uno no se filtra al otro. En la actualización que anunció en agosto de 2026 añadió poder ver ese contenido tema por tema y editarlo o borrarlo pieza a pieza.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          ChatGPT lo reparte en dos capas que vale la pena distinguir, porque se comportan distinto. Los <strong>recuerdos guardados</strong> son datos concretos — «soy vegetariano», «trabajo en zona horaria de Madrid» — que puedes abrir, editar y borrar de uno en uno. La <strong>referencia al historial de chats</strong> es otra cosa: no es una lista que puedas abrir, sino una capa que trabaja de fondo leyendo tus conversaciones anteriores, y lo que saca de ahí puede cambiar con el tiempo en lugar de quedarse fijo. La diferencia que importa es de control: los recuerdos guardados se auditan uno a uno; del historial solo puedes activarlo o desactivarlo. De ahí viene la sensación contradictoria de que unas veces se acuerda de un detalle que no le pediste guardar y otras afirma con la misma seguridad algo que nunca dijiste.
+        </p>
+<div class="bg-surface-container-high p-space-md shadow-sm">
+<p class="font-body-md text-body-md text-on-surface leading-relaxed"><strong>La regla práctica:</strong> la memoria es buena recordando <em>cómo</em> trabajas y mala recordando <em>qué</em> pasó. Preferencias, tono, formato, en qué estás metido: perfecto. Cifras, fechas, nombres de cliente, números de factura, decisiones con consecuencias: eso va a un archivo, y el asistente lo lee de ahí cada vez. Si el dato tiene que seguir siendo exacto dentro de seis meses, no vive en la memoria del modelo.</p>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Hay un segundo motivo, menos obvio, para no apoyarse en la memoria: no sabes cuánto de ella entra en cada respuesta. Todo lo que el modelo tiene en cuenta compite por el mismo espacio limitado, y cuando ese espacio se llena lo que se pierde se pierde en silencio — el mecanismo está explicado en <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="ventana-contexto-memoria-ia.html">ventana de contexto y memoria</a>. Un archivo que el asistente consulta cuando toca no tiene ese problema: o lo ha leído, o no lo ha leído, y eso se puede comprobar.
+        </p>
+</section>
+<section class="space-y-space-md">
+<h2 id="sec-3" class="font-headline-lg text-headline-lg text-primary">
+        Las notas y las tareas las pones tú, y en formato que sobreviva
+      </h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          La decisión más importante de todo el montaje se toma antes de tocar nada de IA: en qué formato guardas lo tuyo. El criterio no es cuál es más bonito, es cuál sigue siendo legible si mañana cambias de asistente, de empresa o de opinión.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Texto plano o Markdown en una carpeta que controlas es la opción más aburrida y la que mejor envejece: lo lee cualquier modelo, cualquier editor y cualquier script, y no depende de que una empresa mantenga una función. Las herramientas con base de datos propia — Notion, Todoist, un tablero — aportan estructura y estado real a cambio de depender de su conector; es un intercambio razonable para tareas, donde el estado importa más que la portabilidad. Lo que no recomendamos a nadie es que la única copia de algo viva dentro del historial de un chat.
+        </p>
+<div class="space-y-space-sm">
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h4 class="font-label-md text-label-md text-primary font-bold mb-1">Una nota por tema, con el título diciendo de qué va</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Un asistente que busca entre tus notas se guía por los títulos antes que por el contenido. «Cliente Martínez — condiciones 2026» se encuentra; «notas3» no. Es el cambio de hábito que más mejora los resultados y el que menos cuesta.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h4 class="font-label-md text-label-md text-primary font-bold mb-1">Los datos que no deben inventarse, en una lista y no en prosa</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Precios, plazos, direcciones, condiciones. En una lista o una tabla corta, con una línea por dato. Un modelo parafrasea prosa con mucha facilidad; una lista de pares «campo: valor» la copia tal cual mucho más a menudo.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h4 class="font-label-md text-label-md text-primary font-bold mb-1">Una sola nota de «estado actual»</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Un archivo corto, que actualizas tú o el asistente, con en qué andas ahora y qué está decidido. Es lo que convierte un asistente que responde preguntas en uno que retoma el hilo, y es mucho más fiable que esperar que lo deduzca de la memoria.</p>
+</div>
+</div>
+</section>
+<section class="space-y-space-md">
+<h2 id="sec-4" class="font-headline-lg text-headline-lg text-primary">
+        Cómo se enchufa: conectores y MCP
+      </h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          Para que el asistente lea y escriba en esos almacenes hace falta una conexión. Hoy hay un estándar que se ha impuesto para esto: <strong>MCP</strong> (Model Context Protocol), un protocolo abierto para conectar aplicaciones de IA con sistemas externos — archivos locales, bases de datos, buscadores, tus propias herramientas. Su propia documentación lo compara con un puerto USB-C: una forma única de enchufar, en lugar de una integración distinta para cada programa.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Lo que lo hace relevante para un montaje personal no es la elegancia técnica, es que lo soportan a la vez Claude, ChatGPT, Visual Studio Code y Cursor, entre otros. Traducido: el conector que configures no se queda atado a la aplicación en la que empezaste, que es exactamente el riesgo de montar tu vida encima de la integración propietaria de un producto. Lo tenemos desarrollado en <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="mcp-explicado.html">MCP explicado</a>.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Para la mayoría de la gente esto no implica programar nada: muchas aplicaciones de notas y de tareas ya publican su conector y se activa desde los ajustes. Escribir uno propio solo hace falta cuando tu herramienta no lo tiene, o cuando quieres que algo se ejecute sin que tú abras la aplicación.
+        </p>
+<div class="bg-surface-container-high p-space-md shadow-sm">
+<p class="font-body-md text-body-md text-on-surface leading-relaxed"><strong>El permiso que conviene mirar dos veces:</strong> al conectar algo, fíjate en si estás dando <em>lectura</em> o <em>lectura y escritura</em>, y sobre todo en si el alcance es una carpeta concreta o todo. Empieza por lectura, y por una carpeta. Ampliar después cuesta un clic; descubrir que llevabas un mes con acceso total a todo es otra conversación.</p>
+</div>
+</section>
+<section class="space-y-space-md">
+<figure data-inline-photo class="space-y-space-xs my-space-xl"><img class="w-full border border-outline-variant" src="../img/guias/foto-asistente-personal-ia-memoria-notas.jpg" alt="Repositorio oficial de servidores MCP para conectar la IA a tus notas y herramientas" width="1280" height="720" loading="lazy" decoding="async"/><figcaption class="font-caption text-caption text-on-surface-variant">Captura de pantalla: <a class="underline" href="https://github.com/modelcontextprotocol/servers" rel="nofollow noopener" target="_blank">github.com/modelcontextprotocol/servers</a>.</figcaption></figure>
+<h2 id="sec-5" class="font-headline-lg text-headline-lg text-primary">
+        Móntalo en este orden, no todo a la vez
+      </h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          El montaje que falla es el que empieza conectando seis herramientas el primer día. Cuando algo sale mal no hay forma de saber qué fue, y se abandona. Este orden tarda más en parecer impresionante y bastante menos en ser útil.
+        </p>
+<div class="space-y-space-sm">
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h4 class="font-label-md text-label-md text-primary font-bold mb-1">Fase 1 — Una instrucción fija y nada conectado</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Crea un proyecto o espacio dedicado y escribe ahí cómo quieres que trabaje: qué haces, qué formato quieres, qué no debe hacer nunca, y la frase que más rendimiento da de todas — que cuando no tenga el dato lo diga en lugar de rellenarlo. Pega a mano las dos o tres notas de contexto. Una semana así enseña más sobre qué necesitas que cualquier tutorial.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h4 class="font-label-md text-label-md text-primary font-bold mb-1">Fase 2 — Conecta las notas, solo en lectura</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Una carpeta, no todo el disco. A partir de aquí el asistente deja de depender de lo que recuerde y empieza a depender de lo que lee, que es el cambio que de verdad importa. Comprueba una cosa antes de seguir: pregúntale por un dato que esté solo en una nota concreta, y luego por uno que no esté en ninguna. Tiene que acertar el primero y reconocer que no tiene el segundo.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h4 class="font-label-md text-label-md text-primary font-bold mb-1">Fase 3 — Añade las tareas, ahora sí con escritura</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Es el primer permiso de escritura, y por eso va tercero y no primero. Empieza por un único tipo de acción — crear una tarea — y revisa a mano lo que crea durante unos días. Lo que vas a descubrir no es que se equivoque mucho: es que crea tareas vagas, y que eso se arregla en la instrucción fija, no cambiando de herramienta.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h4 class="font-label-md text-label-md text-primary font-bold mb-1">Fase 4 — Solo entonces, correo o calendario</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Va al final por un motivo que no es la dificultad: es la primera pieza que mete en el sistema texto escrito por desconocidos. Hasta aquí, todo lo que leía el asistente lo habías escrito tú. Para el correo concretamente, el planteamiento que recomendamos está en <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="ia-gestionar-correo.html">cómo usar IA para gestionar el correo</a>: clasificar y resumir antes que redactar y enviar.</p>
+</div>
+</div>
+</section>
+<section class="space-y-space-md">
+<h2 id="sec-6" class="font-headline-lg text-headline-lg text-primary">
+        El riesgo real: tu asistente obedece lo que lee
+      </h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          Aquí está el motivo por el que la fase 4 va al final. Un modelo no distingue de forma fiable entre «esto es contenido que debo analizar» y «esto es una instrucción que debo cumplir». Si un correo, una página web o un PDF compartido contiene un texto dirigido al asistente, hay una probabilidad real de que lo trate como una orden tuya. Eso es <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="prompt-injection-agentes-ia.html">prompt injection</a>, y en un asistente personal tiene una forma muy concreta.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Lo que convierte el problema en algo serio no es ninguno de los permisos por separado, es la suma de tres: acceso a datos sensibles, capacidad de escribir o enviar, y salida a internet. Con los tres juntos en la misma sesión, alguien que no eres tú puede conseguir que el asistente lea algo tuyo y lo saque fuera, sin explotar ningún fallo de software — simplemente escribiendo el texto adecuado donde el asistente lo va a leer.
+        </p>
+<div class="bg-surface-container-high p-space-md shadow-sm">
+<p class="font-body-md text-body-md text-on-surface leading-relaxed"><strong>Cuatro medidas que sí cambian algo:</strong> no juntes los tres permisos en una misma sesión; deja lo irreversible — enviar, borrar, pagar, compartir — detrás de una confirmación tuya explícita; procesa el correo entrante en un espacio que no tenga acceso de escritura a tus notas; y revisa de vez en cuando qué guardó la memoria, porque una instrucción colada también puede acabar ahí y sobrevivir a la conversación.</p>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Que esto no es teórico lo marca la propia industria: el 2 de octubre de 2026 Apple endureció el «acceso total al disco» en macOS señalando directamente el riesgo de los agentes de IA, mientras Google probaba un permiso de acceso total en su aplicación de escritorio — dos respuestas opuestas a la misma pregunta, contadas en <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="../noticias/2026-10-02-apple-macos-acceso-disco-agentes-ia.html">esta noticia</a>. Mientras los fabricantes no se pongan de acuerdo, el que decide cuánto ordenador le das a un asistente eres tú.
+        </p>
+</section>
+<section class="space-y-space-md">
+<h2 id="sec-7" class="font-headline-lg text-headline-lg text-primary">
+        Qué sale de tu ordenador, y el modo incógnito mal entendido
+      </h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          Un asistente personal es, por definición, el sistema donde acumulas lo más tuyo. Merece la pena tener claras dos cosas antes de llenarlo.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          La primera: salvo que uses un modelo en tu propia máquina, todo lo que el asistente lee pasa por un servidor ajeno, conector incluido. «Está en una carpeta local» no significa que se quede local si el que la lee es un modelo en la nube. Qué implica eso en la práctica, y qué conviene no pegar nunca, está en <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="proteger-datos-ia.html">cómo proteger tus datos al conectar la IA</a>; y si el contenido es lo bastante sensible como para que la respuesta sea «esto no sale de aquí», la opción es <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="ia-local-ordenador.html">ejecutar la IA en tu propio ordenador</a>, con la pérdida de capacidad que eso supone.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          La segunda es un malentendido muy repetido. El modo incógnito evita que una conversación entre en la memoria y en el historial, y para eso funciona bien: es la herramienta correcta cuando no quieres que algo contamine lo que el asistente cree saber de ti. Pero la propia documentación de ayuda de Anthropic recoge un detalle que casi nunca se repite: esas conversaciones se conservan igualmente un mínimo de 30 días por motivos de seguridad y obligaciones legales, y en los planes de equipo entran además en las exportaciones de datos de la organización. No es un borrado, es una exclusión de la memoria. Para lo que de verdad no debe existir en un servidor ajeno, la decisión no es qué modo de chat eliges: es no escribirlo ahí.
+        </p>
+</section>
+<section class="space-y-space-md">
+<h2 id="sec-8" class="font-headline-lg text-headline-lg text-primary">
+        Cuándo no merece la pena montártelo
+      </h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          Señales de que la respuesta honesta es «no», o «todavía no»:
+        </p>
+<ul class="space-y-space-xs font-body-md text-body-md text-on-surface-variant list-disc pl-space-lg">
+<li><strong>No tienes el sistema de notas antes de la IA.</strong> Un asistente conectado a notas desordenadas devuelve desorden más rápido. La IA no sustituye al hábito de escribir las cosas; lo amplifica, en el sentido que ya tuviera.</li>
+<li><strong>Lo que quieres es que alguien decida por ti.</strong> Estos sistemas son buenos recuperando, resumiendo y redactando. En el momento en que la tarea es decidir con consecuencias, el asistente es un ayudante con el que piensas, no el que firma.</li>
+<li><strong>Son datos de clientes o de terceros y no has mirado el encaje legal.</strong> Si por tu trabajo manejas datos personales ajenos, conectar eso a un asistente no es una decisión de productividad. Es una decisión con implicaciones de protección de datos que toca revisar antes, no después.</li>
+<li><strong>Esperas que funcione sin mantenimiento.</strong> Los conectores cambian, las funciones se renombran, los permisos se amplían en una actualización. Un asistente personal es algo que se revisa cada pocos meses; si eso no te apetece, usa la versión simple de la fase 1 y quédate ahí — sigue siendo útil.</li>
+</ul>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Y si después de esa lista sigue teniendo sentido, móntalo en el orden de arriba: la instrucción fija primero, los archivos como fuente de la verdad, la memoria como comodidad y no como almacén, y la escritura y el correo al final. Lo que se obtiene no es un mayordomo digital, que es lo que se vende. Es algo más modesto y bastante más útil: un sitio donde tu contexto está escrito una sola vez y no tienes que volver a explicarlo.
+        </p>
+</section>
+<section class="space-y-space-md">
+<h2 class="font-headline-lg text-headline-lg text-primary">
+        Preguntas frecuentes
+      </h2>
+<div class="space-y-space-md">
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Qué recuerda de verdad un asistente de IA entre conversaciones?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Un resumen, no un archivo. Anthropic lo llama explícitamente «resumen de memoria»: Claude genera resúmenes de tus conversaciones que puedes ver y editar desde los ajustes, y si usas proyectos crea una memoria separada para cada uno. ChatGPT funciona en dos capas: los recuerdos guardados, que son datos concretos que puedes consultar y borrar, y la referencia al historial de chats, que trabaja de fondo y no te deja ninguna lista que puedas auditar. La consecuencia práctica es la misma en los dos casos: la memoria es buena recordando cómo trabajas y mala recordando un dato exacto. Si necesitas que el número de una factura siga siendo ese número dentro de seis meses, no lo dejes en la memoria del modelo.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Necesito saber programar para montarme un asistente personal?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Para la versión que resuelve el 80% de los casos, no. Un asistente útil son cuatro piezas: un sitio donde viven tus notas, un sitio donde viven tus tareas, una forma de que el modelo las lea y escriba, y una instrucción fija que le diga cómo comportarse. Las tres primeras se resuelven hoy con conectores que se activan desde los ajustes de la aplicación. Programar hace falta cuando quieres que se ejecute solo sin que tú abras nada, o cuando ninguna de tus herramientas tiene conector y te toca escribirlo.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Qué es MCP y por qué aparece en todas las guías de asistentes?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Es el estándar abierto con el que una aplicación de IA se conecta a sistemas externos: archivos locales, bases de datos, buscadores o tus propias herramientas. Su documentación lo compara con un puerto USB-C — una forma única de enchufar en lugar de una integración distinta para cada programa. Importa porque lo soportan a la vez Claude, ChatGPT, Visual Studio Code y Cursor, entre otros: un conector que montes sirve en varios sitios. Lo tenemos explicado aparte en la guía de MCP.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">Si uso el modo incógnito, ¿no queda rastro de la conversación?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+No queda en la memoria ni en tu historial, que no es lo mismo que no quedar. La documentación de ayuda de Anthropic recoge que esas conversaciones se conservan igualmente un mínimo de 30 días por motivos de seguridad y obligaciones legales, y que en los planes de equipo entran en las exportaciones de datos de la organización. Es una herramienta buena para que algo no contamine lo que el asistente cree saber de ti, no un borrado inmediato. Para lo que de verdad no debe salir de tu ordenador, la decisión no es el modo de chat: es no pegarlo.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Es peligroso darle acceso a mis notas y a mi correo?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+El riesgo serio no es que el asistente se equivoque por su cuenta, es que obedezca a algo que leyó. En el momento en que procesa texto que no has escrito tú — un correo recibido, una página web, un PDF compartido — ese texto puede contener instrucciones dirigidas al modelo. Si además le has dado permiso de escritura y de red, la combinación es la que importa: alguien que no eres tú puede hacer que lea algo tuyo y lo envíe fuera. La defensa práctica es no acumular los tres permisos (leer datos sensibles, escribir y salir a internet) en la misma sesión, y dejar las acciones irreversibles detrás de una confirmación tuya.
+</div>
+</div>
+</div>
+</section>
+</article>
+<aside class="lg:col-span-4 flex flex-col space-y-space-xl">
+<div class="bg-surface-container-lowest p-space-lg shadow-sm sticky top-space-md">
+<div class="flex items-center justify-between mb-space-sm pb-space-xs">
+<span class="font-kicker text-kicker uppercase tracking-widest text-primary font-bold">ÍNDICE DE LA GUÍA</span>
+<span class="material-symbols-outlined text-on-surface-variant text-base">format_list_bulleted</span>
+</div>
+<nav class="space-y-space-xs font-body-sm text-body-sm">
+<a class="block text-primary hover:text-secondary font-medium transition-colors" href="#sec-1">Las cuatro piezas</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-2">La memoria es un resumen</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-3">Notas y tareas</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-4">Conectores y MCP</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-5">Móntalo en este orden</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-6">Obedece lo que lee</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-7">Qué sale de tu ordenador</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-8">Cuándo no merece la pena</a>
+</nav>
+</div>
+<div class="bg-surface-container-high p-space-md space-y-space-sm shadow-sm">
+<span class="font-kicker text-kicker uppercase tracking-widest text-primary font-bold">FICHA TÉCNICA</span>
+<dl class="space-y-space-xs font-caption text-caption">
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Categoría:</dt><dd class="font-semibold text-primary">Agentes</dd></div>
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Nivel técnico:</dt><dd class="font-semibold text-primary">Principiante-Intermedio</dd></div>
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Fuentes citadas:</dt><dd class="font-semibold text-primary">Anthropic, OpenAI, modelcontextprotocol.io</dd></div>
+</dl>
+</div>
+</aside>
+</div>
+<section class="w-full mt-space-4xl pt-space-2xl bg-surface-container-lowest p-space-lg shadow-sm">
+<div class="mb-space-lg">
+<h3 class="font-headline-md text-headline-md text-primary">Continúa explorando el archivo</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-col-gap"><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="ventana-contexto-memoria-ia.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-ventana-contexto-memoria-ia.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="ventana-contexto-memoria-ia.html">Ventana de contexto: por qué la IA olvida</a></h4></div></article><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="mcp-explicado.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-mcp-explicado.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="mcp-explicado.html">MCP explicado: conecta la IA a tus herramientas</a></h4></div></article><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="prompt-injection-agentes-ia.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-prompt-injection-agentes-ia.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="prompt-injection-agentes-ia.html">Prompt injection: cómo protegerte</a></h4></div></article></div>
+</section>
+</div></main><footer class="w-full bg-surface-container-low border-t border-outline-variant mt-space-4xl"><div class="max-w-site-max-width mx-auto px-space-md py-space-3xl"><div class="grid grid-cols-1 md:grid-cols-3 gap-col-gap"><div class="space-y-space-sm"><span class="font-headline-md text-headline-md text-primary">El Telar</span><p class="font-body-sm text-body-sm text-on-surface-variant">Publicación independiente de tecnología y automatización con agentes. Contenidos verificados en producción, sin patrocinios opacos ni promesas vacías.</p></div><div><h3 class="font-kicker text-kicker uppercase tracking-wider text-on-surface mb-space-md">SECCIONES</h3><ul class="space-y-space-xs font-body-sm text-body-sm"><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html#guias">Archivo de Guías</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../empieza-aqui.html">Guía para Principiantes</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../sobre-nosotros.html">Manifiesto Editorial</a></li><li class="pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html#despacho">Boletín Semanal</a></li></ul></div><div><h3 class="font-kicker text-kicker uppercase tracking-wider text-on-surface mb-space-md">CONTACTO &amp; PRENSA</h3><div class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant"><p class="font-semibold text-on-surface">contacto@eltelar.es</p><p>Síguenos: <a class="hover:text-primary underline" href="https://www.instagram.com/eltelar_es/" rel="me noopener" target="_blank">Instagram</a> · <a class="hover:text-primary underline" href="https://www.threads.com/@eltelar_es" rel="me noopener" target="_blank">Threads</a> · <a class="hover:text-primary underline" href="https://x.com/eltelar_es" rel="me noopener" target="_blank">X</a></p></div></div></div></div><div class="border-t border-outline-variant py-space-md bg-surface-container-lowest"><div class="max-w-site-max-width mx-auto px-space-md flex flex-col md:flex-row items-center justify-between gap-space-sm text-caption font-caption text-on-surface-variant"><div>© 2026 El Telar. Todos los derechos reservados. Independencia editorial garantizada.</div><div class="flex items-center gap-space-md"><a class="hover:text-on-surface transition-colors" href="../privacidad.html">Privacidad</a><a class="hover:text-on-surface transition-colors" href="../terminos.html">Términos</a><a class="hover:text-on-surface transition-colors" href="../sobre-nosotros.html">Sobre nosotros</a><a class="hover:text-on-surface transition-colors" href="../contacto.html">Contacto</a></div></div></div></footer><script defer src="../js/copy-guide.js"></script><script defer src="../js/guide-interactions.js"></script><script defer src="../js/reading-progress.js"></script><script defer src="../js/search.js?v=7"></script><script defer src="../js/entrance.js"></script><script defer src="../js/cookie-consent.js?v=4"></script></body></html>

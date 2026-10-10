@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ventana de contexto: por qué la IA olvida | El Telar</title>
+<meta name="description" content="Por qué un modelo con un millón de tokens se olvida de lo que le dijiste hace veinte mensajes, qué mide de verdad ese número y cómo trabajar con el límite.">
+<link rel="canonical" href="https://eltelar.es/articulos/ventana-contexto-memoria-ia.html"><link rel="icon" type="image/svg+xml" href="../img/favicon.svg?v=4"><link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32.png?v=4"><link rel="apple-touch-icon" href="../img/apple-touch-icon.png?v=4"><meta name="theme-color" content="#072417"><link rel="manifest" href="../manifest.json"><link rel="alternate" type="application/rss+xml" title="El Telar" href="../feed.xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ventana de contexto y memoria: por qué tu IA olvida lo que le dijiste | El Telar">
+<meta property="og:description" content="Por qué un modelo con un millón de tokens se olvida de lo que le dijiste hace veinte mensajes, qué mide de verdad ese número y cómo trabajar con el límite.">
+<meta property="og:url" content="https://eltelar.es/articulos/ventana-contexto-memoria-ia.html">
+<meta property="og:site_name" content="El Telar">
+<meta property="og:locale" content="es_ES"><meta property="og:image" content="https://eltelar.es/img/og/guia-ventana-contexto-memoria-ia.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ventana de contexto y memoria: por qué tu IA olvida lo que le dijiste | El Telar">
+<meta name="twitter:description" content="Por qué un modelo con un millón de tokens se olvida de lo que le dijiste hace veinte mensajes y cómo trabajar con ese límite."><meta name="twitter:image" content="https://eltelar.es/img/og/guia-ventana-contexto-memoria-ia.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Ventana de contexto y memoria: por qué tu IA \"olvida\" lo que le dijiste antes",
+  "description": "Por qué un modelo con un millón de tokens se olvida de lo que le dijiste hace veinte mensajes, qué mide de verdad ese número y cómo trabajar con el límite.",
+  "image": "https://eltelar.es/img/og-image.jpg",
+  "author": { "@type": "Organization", "name": "El Telar", "url": "https://eltelar.es/sobre-nosotros.html" },
+  "publisher": {
+    "@type": "Organization",
+    "name": "El Telar"
+  },
+  "datePublished": "2026-09-26",
+  "dateModified": "2026-09-26",
+  "mainEntityOfPage": "https://eltelar.es/articulos/ventana-contexto-memoria-ia.html",
+  "inLanguage": "es"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Si el modelo admite un millón de tokens, ¿por qué se le olvida algo de hace veinte mensajes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Por dos motivos distintos. El primero es que puede que esa parte ya no se le esté enviando: muchas aplicaciones recortan o resumen la conversación antes de llegar al límite, para ahorrar coste y latencia. El segundo es que, aunque se le envíe entera, la precisión no es uniforme dentro de la ventana. El informe Context Rot de Chroma midió 18 modelos punteros y todos empeoraban a medida que crecía la entrada, incluso en tareas triviales de copiar y recuperar. El número del folleto es un techo, no un presupuesto de trabajo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Conviene una conversación larga o varias cortas?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Varias cortas, casi siempre. Una conversación larga acumula ramas abandonadas, correcciones y pruebas fallidas que siguen ocupando sitio y compitiendo por la atención del modelo. Si has terminado una tarea y empiezas otra, abre un chat nuevo y pégale solo las conclusiones que necesites arrastrar. La excepción es cuando el valor está precisamente en el historial acumulado y no sabes de antemano qué parte hará falta."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿La memoria de ChatGPT o de Claude sustituye a la ventana de contexto?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. La memoria guarda notas y síntesis fuera de la conversación y luego inyecta lo que considera relevante dentro de la ventana, así que termina compitiendo por el mismo espacio. Y guarda un resumen, no una transcripción: reescribe y generaliza. Para preferencias y forma de trabajar funciona bien; para cifras exactas, nombres o condiciones contractuales no conviene fiarse — eso se vuelve a pegar."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Gasta más tokens escribir en español que en inglés?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí, algo más. Los tokenizadores de los modelos más usados se entrenaron sobre corpus mayoritariamente en inglés, así que parten el español en más trozos. Las mediciones varían bastante según modelo y tipo de texto, del orden de un 10-25% más de tokens para la misma idea. No es motivo para cambiar de idioma, pero sí para no calcular tu presupuesto de tokens contando palabras."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Es mejor subir el PDF entero o pegar solo el trozo que importa?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Pegar el trozo, si sabes cuál es. Subir el documento completo mete cientos o miles de tokens de relleno entre tu pregunta y la respuesta correcta, y eso es exactamente la condición en la que los modelos pierden precisión. Sube el documento entero solo cuando de verdad no sabes dónde está la respuesta y necesitas que la busque."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Por qué a veces la aplicación resume la conversación sola y pierde matices?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Porque es una de las tres formas de sobrevivir al límite: recortar lo más antiguo, resumir lo acumulado o negarse a seguir. Resumir es la menos brusca, pero un resumen es una pérdida de información con otro nombre: se queda el qué y se van las condiciones y las excepciones. Cuando veas que ha resumido, conviene revisar el resumen y corregirlo antes de seguir."
+      }
+    }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://eltelar.es/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Guías",
+      "item": "https://eltelar.es/index.html#guias"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Ventana de contexto y memoria: por qué tu IA \"olvida\" lo que le dijiste antes",
+      "item": "https://eltelar.es/articulos/ventana-contexto-memoria-ia.html"
+    }
+  ]
+}
+</script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet"/></noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet"/></noscript>
+<style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><link rel="stylesheet" href="../css/tailwind.css"><link rel="stylesheet" href="../css/entrance.css?v=2"><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}(function(){var c=null;try{c=localStorage.getItem('eltelar-cookie-consent')}catch(e){}var g=c==='accepted'?'granted':'denied';gtag('consent','default',{ad_storage:g,ad_user_data:g,ad_personalization:g,analytics_storage:g,wait_for_update:500});window.adsbygoogle=window.adsbygoogle||[];if(g!=='granted'){window.adsbygoogle.requestNonPersonalizedAds=1;}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-4DPTKEG79N"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4DPTKEG79N');</script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8239907995939753" crossorigin="anonymous"></script></head><body class="bg-background font-body-md text-on-surface antialiased">
+<header class="w-full bg-surface-container-lowest border-b border-outline-variant"><div class="border-b border-outline-variant py-space-xxs px-space-md hidden md:block"><div class="max-w-site-max-width mx-auto flex items-center justify-between font-kicker text-kicker text-on-surface-variant uppercase tracking-wider"><span>EDICIÓN DIGITAL // ACTUALIZADO 2026 // EL TELAR &amp; AGENTES</span><span>MADRID · REMOTO</span><span>SIN HUMO · 100% PRODUCCIÓN</span></div></div><div class="max-w-site-max-width mx-auto px-space-md py-space-md sm:py-space-xl text-center"><p class="hidden sm:block font-kicker text-kicker uppercase tracking-widest text-on-surface-variant mb-space-xs">Publicación Independiente de Tecnología &amp; Agentes</p><a class="inline-block" href="../index.html"><div class="font-display text-display max-sm:text-[40px] max-sm:leading-none text-primary tracking-tight">El Telar</div></a><p class="hidden sm:block font-caption text-caption uppercase tracking-widest text-on-surface-variant mt-space-xs">EL BOLETÍN Y ARCHIVO PRÁCTICO DE INTELIGENCIA ARTIFICIAL Y AGENTES AUTÓNOMOS</p></div><div class="border-t border-b border-outline-variant"><div class="max-w-site-max-width mx-auto px-space-md flex items-center justify-between gap-space-sm h-14"><nav class="flex items-center gap-space-md sm:gap-space-lg h-full min-w-0 overflow-x-auto [scrollbar-width:none] whitespace-nowrap"><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../index.html#guias">GUÍAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../empieza-aqui.html">EMPIEZA AQUÍ</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../sobre-nosotros.html">SOBRE NOSOTROS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../noticias/index.html">NOTICIAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../herramientas/index.html">HERRAMIENTAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../prompts/index.html">PROMPTS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../contacto.html">CONTACTO</a></nav><div class="flex items-center gap-space-md"><button id="search-trigger" type="button" aria-label="Buscar en las guías" class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[20px]">search</span></button><a class="hidden sm:inline-block bg-primary-container text-surface px-space-md py-space-xs font-label-md text-label-md uppercase tracking-wider hover:bg-primary transition-colors" href="../index.html#despacho">SUSCRÍBETE GRATIS</a></div></div></div><div class="hidden md:block bg-surface-container-low border-b border-outline-variant py-space-xs px-space-md"><div class="max-w-site-max-width mx-auto text-center"><p class="font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">47 GUÍAS COMPLETAS EN EXPANSIÓN · ACTUALIZADO A MODELOS 2026 · PROBADO EN TERMINAL Y FLUJOS REALES · CERO HUMO NI TEORÍA VACÍA</p></div></div></header>
+<main class="w-full max-w-site-max-width mx-auto px-space-md py-space-xl"><div class="flex flex-col w-full">
+<nav class="w-full mb-space-lg">
+<ol class="flex flex-wrap items-center gap-space-xs font-kicker text-kicker text-on-surface-variant uppercase tracking-wider">
+<li><a class="hover:text-primary transition-colors" href="../index.html">Inicio</a></li>
+<li class="text-on-surface-variant">/</li>
+<li><a class="hover:text-primary transition-colors" href="../index.html#guias">Guías</a></li>
+<li class="text-on-surface-variant">/</li>
+<li class="text-primary font-bold truncate max-w-[280px] sm:max-w-md">Ventana de contexto</li>
+</ol>
+</nav>
+<header class="w-full pb-space-xl mb-space-2xl">
+<div class="flex flex-wrap items-center gap-space-xs mb-space-md">
+<span class="bg-surface-container-high text-secondary px-space-sm py-1 font-kicker text-kicker uppercase tracking-widest">CONCEPTOS // MODELOS</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight max-w-editorial-max mb-space-md">
+          Ventana de contexto y memoria: por qué tu IA "olvida" lo que le dijiste antes
+        </h1>
+<p class="font-lead-paragraph text-lead-paragraph text-on-surface-variant max-w-editorial-max leading-relaxed mb-space-lg">
+          Le explicas las condiciones con detalle, trabajáis media hora, y de pronto contradice algo que quedó claro al principio. No es que el modelo se despiste ni que vaya con prisa: es un límite de diseño con nombre propio, y el número que anuncian los fabricantes no es el que puedes usar de verdad.
+        </p>
+<div class="bg-surface-container-lowest p-space-md flex flex-wrap items-center justify-between gap-y-3 shadow-sm">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 bg-primary text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">memory</span>
+</div>
+<div>
+<div class="font-label-md text-label-md text-on-surface font-semibold">Por la Redacción de El Telar</div><div class="font-caption text-caption text-on-surface-variant">Guías prácticas de IA y agentes, probadas en flujos de trabajo reales antes de publicarlas.</div>
+<button class="inline-flex items-center gap-1 mt-2 px-3 py-1.5 bg-surface-container text-primary font-label-md text-[12px] font-semibold uppercase tracking-wider hover:bg-surface-container-high transition-colors" id="copy-guide-btn" type="button"><span class="material-symbols-outlined text-[16px]">content_copy</span> Copiar guía para tu IA</button><span class="inline-flex items-center gap-1 ml-1"><button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" id="save-guide-btn" title="Guardar guía" type="button"><span class="material-symbols-outlined text-[16px]">bookmark_border</span></button><button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" id="copy-link-btn" title="Copiar enlace permanente" type="button"><span class="material-symbols-outlined text-[16px]">share</span></button></span>
+</div>
+</div>
+<div class="flex items-center gap-space-lg text-on-surface-variant font-caption text-caption uppercase tracking-wider">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">schedule</span> 15 min de lectura</span>
+</div>
+</div>
+</header>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-col-gap">
+<article class="lg:col-span-8 flex flex-col space-y-space-xl">
+<figure data-hero class="space-y-space-xs"><img class="w-full border border-outline-variant" src="../img/guias/hero-ventana-contexto-memoria-ia.jpg" alt="Documentación de Anthropic sobre la ventana de contexto" width="1280" height="720" fetchpriority="high" decoding="async"/><figcaption class="font-caption text-caption text-on-surface-variant">Captura de pantalla: <a class="underline" href="https://docs.anthropic.com/en/docs/build-with-claude/context-windows" rel="nofollow noopener" target="_blank">docs.anthropic.com</a>.</figcaption></figure>
+<div class="relative bg-surface-container-lowest p-space-lg shadow-sm">
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed text-justify">
+<span class="float-left font-display text-primary text-6xl leading-none pr-3 pt-1 font-normal">H</span>
+          ay una cosa que conviene entender antes que ninguna otra, porque explica casi todo lo demás: el modelo no recuerda vuestra conversación. No tiene un cajón donde guarde lo que le has ido contando. Cada vez que escribes un mensaje, la aplicación le vuelve a enviar la conversación entera desde el principio, como si fuera la primera vez, y el modelo la lee de nuevo completa para responder.
+        </p>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Esa ilusión de memoria funciona muy bien hasta que deja de funcionar. Y deja de funcionar por una razón mecánica: lo que se le puede reenviar tiene un tope. Ese tope es la <strong>ventana de contexto</strong>, y cuando la conversación no cabe, alguien tiene que decidir qué se queda fuera. Ese «alguien» no es el modelo: es la aplicación que estás usando. Lo que tú percibes como un olvido es, casi siempre, una decisión de recorte que no has visto.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Esta guía explica qué es exactamente ese límite, por qué el número que anuncian los fabricantes no es el que puedes aprovechar, en qué se diferencia de las funciones de «memoria» que han aparecido en ChatGPT y Claude, y qué hacer para que no te muerda. Si vienes de nuestra guía sobre <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="como-escribir-prompts.html">cómo escribir un buen prompt</a>, esto es la otra mitad del asunto: no solo importa qué le pides, sino cuánto lleva acumulado encima cuando se lo pides.
+        </p>
+<section id="sec-1" class="space-y-space-lg">
+<h2 class="font-headline-lg text-headline-lg text-primary">Qué es la ventana de contexto, sin metáforas</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          La ventana de contexto es la cantidad máxima de <strong>tokens</strong> que el modelo puede tener delante de una sola vez, contando lo que entra y lo que sale. Un token no es una palabra: es un trozo de texto, a veces una palabra corta entera, a veces un fragmento. Los modelos no leen letras ni palabras, leen esos trozos.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          El detalle tiene consecuencias prácticas para quien escribe en español. Los tokenizadores de los modelos más extendidos se construyeron sobre textos mayoritariamente en inglés, así que parten peor otros idiomas: el mismo contenido en español se convierte en más tokens que en inglés. Las mediciones publicadas varían bastante según el modelo y el tipo de texto — del orden de un 10-25% más para expresar lo mismo, y más en casos concretos. No es razón para cambiar de idioma; sí es razón para no calcular tu presupuesto contando palabras y multiplicando a ojo.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Lo que mucha gente no tiene en la cabeza es todo lo que compite por ese espacio. No es solo tu pregunta:
+        </p>
+<div class="bg-surface-container-high p-space-lg shadow-sm space-y-space-sm">
+<span class="font-kicker text-kicker uppercase tracking-widest text-primary font-bold">QUÉ OCUPA LA VENTANA</span>
+<p class="font-body-sm text-body-sm text-on-surface"><strong>Las instrucciones del sistema:</strong> lo que el fabricante o el desarrollador le ha puesto antes de que tú llegues. Tú no lo ves y no siempre es corto.</p>
+<p class="font-body-sm text-body-sm text-on-surface"><strong>Toda la conversación anterior:</strong> tus mensajes y sus respuestas, incluidas las ramas que abandonaste y las correcciones. Nada de eso se borra solo.</p>
+<p class="font-body-sm text-body-sm text-on-surface"><strong>Lo que hayas adjuntado:</strong> un PDF de cuarenta páginas no se «consulta», se mete dentro.</p>
+<p class="font-body-sm text-body-sm text-on-surface"><strong>Los resultados de herramientas:</strong> si busca en la web, lee un archivo o llama a una API, lo que devuelva entra también. En un agente esto se come la ventana a una velocidad que sorprende.</p>
+<p class="font-body-sm text-body-sm text-on-surface"><strong>Su propia respuesta:</strong> lo que va a escribir también cuenta contra el mismo total.</p>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Por eso una conversación que empieza ágil se va volviendo espesa: cada turno arrastra todo lo anterior. Y por eso un agente que encadena diez pasos con herramientas llena la ventana muchísimo antes que un chat de diez mensajes escritos a mano. Si quieres el vocabulario completo, lo tienes ordenado en nuestro <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="glosario-terminos-ia.html">glosario de términos de IA</a>.
+        </p>
+</section>
+<section id="sec-2" class="space-y-space-lg">
+<h2 class="font-headline-lg text-headline-lg text-primary">Qué pasa exactamente cuando se llena</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          Aquí está el punto que casi nadie explica. Cuando la conversación no cabe, la aplicación tiene tres salidas, y cuál elija cambia por completo lo que tú notas.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          <strong>Recortar lo más antiguo.</strong> Se van tirando los mensajes del principio para hacer sitio a los nuevos. Es lo más barato y lo más común. El síntoma es muy característico: lo que se olvida es siempre lo primero que dijiste — precisamente donde solemos poner las condiciones importantes.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          <strong>Resumir lo acumulado.</strong> El sistema comprime la conversación anterior en un resumen y sigue a partir de ahí. Es menos brusco, pero un resumen es una pérdida de información con mejor presentación: suele sobrevivir el qué y desaparecer las condiciones, las excepciones y los matices que costaron veinte mensajes de negociación. El síntoma es distinto: no olvida un tema entero, lo recuerda mal y a grandes rasgos.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          <strong>Negarse.</strong> Te devuelve un error de límite excedido. Es lo más honesto de los tres, porque al menos te enteras.
+        </p>
+<div class="bg-surface-container-high p-space-lg shadow-sm space-y-space-sm">
+<span class="font-kicker text-kicker uppercase tracking-widest text-primary font-bold">CÓMO SABER CUÁL TE ESTÁ PASANDO</span>
+<p class="font-body-sm text-body-sm text-on-surface">Pregúntale directamente por un detalle concreto que diste al principio, uno que no se pueda deducir del resto — un número, un nombre, una condición rara. Si lo reproduce exacto, sigue ahí. Si dice algo aproximado y plausible, estás leyendo un resumen. Si no tiene ni idea de que se habló del tema, te lo han recortado.</p>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Merece la pena insistir en algo: cuando el modelo responde a partir de un resumen empobrecido, no te avisa de que le falta información. Rellena el hueco con lo que parece razonable. Ese mecanismo es uno de los caminos más habituales hacia las <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="alucinaciones-ia.html">alucinaciones</a>: no está inventando por capricho, está completando un contexto que alguien recortó por él.
+        </p>
+</section>
+<section id="sec-3" class="space-y-space-lg">
+<h2 class="font-headline-lg text-headline-lg text-primary">El número del folleto no es el que usas</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          Los modelos punteros han convergido en ventanas del orden del millón de tokens, y algunos anuncian cifras mucho mayores. Suena a problema resuelto. No lo está, y esta es la parte que conviene tener clara antes de diseñar nada encima.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Que quepa no significa que se use bien. Hay dos hallazgos bien documentados que apuntan en la misma dirección, y ninguno viene de un fabricante vendiendo lo contrario.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          El primero es <strong>«lost in the middle»</strong>, de un trabajo de Nelson F. Liu y coautores (Stanford, UC Berkeley y Samaya AI), publicado en la revista <em>TACL</em>. Colocaron la información que contenía la respuesta en distintas posiciones dentro de un contexto largo y midieron el acierto. El resultado: la precisión es mejor cuando lo relevante está al principio o al final, y cae de forma apreciable cuando está en el medio. Y les pasaba también a los modelos vendidos específicamente como de contexto largo. Dicho de otro modo, el interior de la ventana es terreno menos fiable que los extremos.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          El segundo es el informe <strong>Context Rot</strong> de Chroma, que evaluó 18 modelos punteros — entre ellos versiones de GPT, Claude, Gemini y Qwen — con variantes de la prueba de la aguja en el pajar, una tarea conversacional de preguntas y respuestas y otra sintética de repetir palabras. La conclusión es contundente: <strong>todos</strong> empeoraban al crecer la entrada, y no de forma proporcionada ni predecible. Incluso en tareas triviales de copiar y recuperar. La degradación empieza mucho antes de tocar el límite, así que no es el error de «se ha llenado»: es un deterioro progresivo que no da ningún aviso.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          De ese mismo informe sale un detalle que va contra la intuición y que vale la pena guardarse: los modelos rindieron <em>mejor</em> con pajares desordenados que con documentos coherentes y bien hilados. Que el texto de alrededor tenga sentido y hable del mismo asunto no ayuda — despista, porque hay más material que se parece a la respuesta sin serlo.
+        </p>
+<div class="bg-surface-container-high p-space-lg shadow-sm space-y-space-sm">
+<span class="font-kicker text-kicker uppercase tracking-widest text-primary font-bold">POR QUÉ NO VERÁS AQUÍ UNA TABLA DE TAMAÑOS</span>
+<p class="font-body-sm text-body-sm text-on-surface">Podríamos listar cuántos tokens admite hoy cada modelo, pero esas cifras cambian cada pocas semanas, los fabricantes no siempre miden igual y el propio argumento de esta sección es que el número anunciado no predice lo que vas a poder aprovechar. Consulta la documentación oficial del modelo que uses para el dato del día, y trátalo como un techo, no como un presupuesto de trabajo.</p>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          La conclusión práctica es incómoda para quien esperaba que las ventanas gigantes hicieran innecesario pensar: <strong>meter más no es gratis, ni siquiera cuando cabe</strong>. Cada bloque de relleno que añades entre tu pregunta y el dato que importa reduce la probabilidad de que el modelo lo use bien.
+        </p>
+</section>
+<section id="sec-4" class="space-y-space-lg">
+<figure data-inline-photo class="space-y-space-xs my-space-xl"><img class="w-full border border-outline-variant" src="../img/guias/foto-ventana-contexto-memoria-ia.jpg" alt="Prueba de la aguja en el pajar, que mide si un modelo encuentra un dato en un contexto largo" width="1280" height="720" loading="lazy" decoding="async"/><figcaption class="font-caption text-caption text-on-surface-variant">Captura de pantalla: <a class="underline" href="https://github.com/gkamradt/LLMTest_NeedleInAHaystack" rel="nofollow noopener" target="_blank">github.com/gkamradt/LLMTest_NeedleInAHaystack</a>.</figcaption></figure>
+<h2 class="font-headline-lg text-headline-lg text-primary">Memoria y contexto no son lo mismo</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          Las funciones de memoria que han ido apareciendo en los asistentes se confunden mucho con la ventana de contexto, y son cosas distintas. La ventana es lo que el modelo tiene delante ahora. La memoria es un almacén que vive <em>fuera</em> de la conversación y del que se van sacando trozos para meterlos dentro.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Según la documentación de Anthropic, Claude resume las conversaciones y elabora una síntesis de lo relevante que se actualiza de forma periódica —cada 24 horas— y que sirve de contexto en las conversaciones nuevas; dentro de un proyecto, además, cada proyecto tiene su propio espacio de memoria separado, para que no se mezcle el contexto de unos con el de otros. Para quien programa, existe también una herramienta de memoria con la que el modelo guarda notas en archivos y las vuelve a leer en sesiones posteriores. ChatGPT tiene su propio sistema equivalente, que mantiene un perfil que atraviesa todas tus conversaciones.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Los detalles concretos cambian con cada actualización, pero hay dos límites estructurales que no cambian y que importan más que la ficha de funciones:
+        </p>
+<div class="bg-surface-container-high p-space-lg shadow-sm space-y-space-sm">
+<span class="font-kicker text-kicker uppercase tracking-widest text-primary font-bold">LO QUE LA MEMORIA NO ARREGLA</span>
+<p class="font-body-sm text-body-sm text-on-surface"><strong>Guarda una síntesis, no una transcripción.</strong> Reescribe y generaliza: se queda con que prefieres respuestas cortas, no con la cifra exacta que le dictaste hace tres semanas. Para preferencias y forma de trabajar va bien; para datos precisos, no te fíes — eso se vuelve a pegar.</p>
+<p class="font-body-sm text-body-sm text-on-surface"><strong>Termina dentro de la misma ventana.</strong> Lo que la memoria inyecta ocupa espacio y compite con el resto. No amplía el límite: lo consume, a cambio de ahorrarte repetirte.</p>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Y hay dos consecuencias que conviene no pasar por alto. La primera es de privacidad: un sistema que decide solo qué merece la pena recordar de lo que le cuentas acumula un perfil tuyo con el tiempo, así que toca saber qué guarda y cómo se borra — lo tratamos en <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="proteger-datos-ia.html">cómo proteger tus datos al conectar la IA</a>. La segunda es de seguridad: todo lo que la memoria inyecta entra en la ventana con el mismo estatus que tus instrucciones, así que una nota envenenada en su día se puede arrastrar a conversaciones futuras. Es la misma mecánica que explicamos en <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="prompt-injection-agentes-ia.html">la guía de inyección de prompts</a>, con el agravante de que persiste.
+        </p>
+</section>
+<section id="sec-5" class="space-y-space-lg">
+<h2 class="font-headline-lg text-headline-lg text-primary">Qué hacer en la práctica</h2>
+<h3 class="font-headline-sm text-headline-sm text-primary pt-space-xs">Si usas un chat normal</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          <strong>Abre conversaciones nuevas más a menudo de lo que crees.</strong> La intuición dice que un chat largo «sabe más». En realidad acumula callejones sin salida, pruebas descartadas y correcciones que siguen ocupando sitio y compitiendo por su atención. Cuando cambias de tarea, empieza de cero y pégale solo las conclusiones que necesites arrastrar. Y si lo que quieres es que ese contexto no haya que pegarlo cada vez, la pieza que falta no es más memoria: son archivos que el asistente consulte cuando toca — está desarrollado en <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="asistente-personal-ia-memoria-notas.html">construir tu propio asistente personal con IA</a>.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          <strong>Pon lo crítico al final, no solo al principio.</strong> Es la aplicación directa del «lost in the middle». Si hay una restricción que no se puede saltar, repítela en el último mensaje en lugar de dar por hecho que sigue vigente desde hace cuarenta turnos.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          <strong>No adjuntes de más «por si acaso».</strong> Cinco documentos cuando el bueno es uno es exactamente la receta del deterioro: relleno temáticamente parecido alrededor del dato que importa.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          <strong>Haz que te resuma el estado y corrige el resumen.</strong> Antes de una fase larga, pídele que resuma en qué estáis y qué reglas aplican. Si algo falta o está mal, lo corriges — y con eso estás reescribiendo el contexto a mano en lugar de dejar que lo comprima como quiera. Es el truco más rentable de toda esta lista.
+        </p>
+<h3 class="font-headline-sm text-headline-sm text-primary pt-space-sm">Si lo montas tú, con API o con un agente</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          <strong>Mide los tokens, no los estimes.</strong> Los proveedores dan contadores y las respuestas de la API informan del uso real. Con textos en español la estimación a ojo se queda corta con bastante frecuencia. Si además te preocupa lo que cuesta, tenemos una <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="../herramientas/calculadora-coste-api.html">calculadora de coste de API</a> para hacer el cálculo antes de montarlo.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          <strong>Recupera en vez de rellenar.</strong> Ante un corpus grande, la respuesta no es una ventana más grande: es traer solo los fragmentos pertinentes. Eso es exactamente para lo que sirve <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="rag-explicado.html">RAG</a>, y esta es la razón de fondo por la que sigue teniendo sentido aunque las ventanas hayan crecido tanto: no es un truco para ahorrar, es que menos relleno da mejores respuestas.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          <strong>Repite la instrucción al final de una entrada larga.</strong> Si metes un documento de 50.000 tokens, pon la tarea antes y vuelve a enunciarla después. Cuesta unas decenas de tokens y compensa.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          <strong>Comprime a propósito, no por accidente.</strong> Si la sesión va a ser larga, decide tú qué se conserva: un resumen con estructura fija —decisiones tomadas, restricciones activas, estado actual— aguanta mucho mejor que dejar que el sistema recorte por antigüedad.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          <strong>Prueba con longitudes reales.</strong> Esto es lo que más se salta y lo que más caro sale. Como la degradación no es proporcional, que funcione con 2.000 tokens no dice nada de cómo irá con 200.000. Si tu agente va a trabajar con entradas largas, tus pruebas tienen que ser largas. Va en la misma línea que los <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="errores-automatizar-ia.html">errores habituales al automatizar con IA</a>: validar en pequeño y desplegar en grande.
+        </p>
+</section>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Hay una salida más que conviene conocer aunque no siempre compense: repartir las lecturas entre varios subagentes, cada uno con su propia ventana limpia, y quedarse solo con lo que devuelvan. Funciona, pero sale caro y trae sus propios fallos — el cálculo completo está en <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="varios-agentes-ia-o-uno.html">cuándo usar varios agentes de IA en vez de uno</a>.
+        </p>
+<section id="sec-6" class="space-y-space-lg">
+<h2 class="font-headline-lg text-headline-lg text-primary">Compruébalo tú en diez minutos</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          No hace falta fiarse de nadie. Puedes reproducir el efecto a pequeña escala con el asistente que ya usas.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Coge un texto largo y aburrido del que no te importe nada — un reglamento, unas condiciones, cualquier documento denso. Inserta en él una frase concreta e inventada, algo que no se pueda deducir del contexto: <code class="bg-surface-container px-1 font-mono text-[13px]">El código interno del expediente es MALVA-7731.</code> Pega el texto y pregunta al final cuál es el código interno.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Ahora repítelo tres veces cambiando solo una cosa: la frase al principio del texto, la frase justo en la mitad, y la frase al final. Usa una conversación nueva cada vez, porque si no la respuesta anterior ya está en el contexto y contaminas la prueba. Luego alarga el texto al doble y vuelve a hacer las tres.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Lo normal es que con textos cortos acierte siempre y que, al alargar, la posición del medio sea la primera en fallar. Conviene decir qué es y qué no es esto: son cuatro pruebas en una tarde, no un <em>benchmark</em> — para eso están los trabajos citados arriba, con cientos de ejecuciones controladas. Pero sirve para lo que importa: dejar de tratar la ventana de contexto como un cajón donde todo vale igual, y empezar a tratarla como un sitio donde la colocación importa.
+        </p>
+</section>
+<section class="space-y-space-md">
+<h2 class="font-headline-lg text-headline-lg text-primary">
+          Preguntas frecuentes
+        </h2>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">Si el modelo admite un millón de tokens, ¿por qué se le olvida algo de hace veinte mensajes?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Por dos motivos distintos. El primero es que puede que esa parte ya no se le esté enviando: muchas aplicaciones recortan o resumen la conversación antes de llegar al límite, para ahorrar coste y latencia. El segundo es que, aunque se le envíe entera, la precisión no es uniforme dentro de la ventana. El informe Context Rot de Chroma midió 18 modelos punteros y todos empeoraban a medida que crecía la entrada, incluso en tareas triviales de copiar y recuperar. El número del folleto es un techo, no un presupuesto de trabajo.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Conviene una conversación larga o varias cortas?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Varias cortas, casi siempre. Una conversación larga acumula ramas abandonadas, correcciones y pruebas fallidas que siguen ocupando sitio y compitiendo por la atención del modelo. Si has terminado una tarea y empiezas otra, abre un chat nuevo y pégale solo las conclusiones que necesites arrastrar. La excepción es cuando el valor está precisamente en el historial acumulado y no sabes de antemano qué parte hará falta.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿La memoria de ChatGPT o de Claude sustituye a la ventana de contexto?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+No. La memoria guarda notas y síntesis fuera de la conversación y luego inyecta lo que considera relevante dentro de la ventana, así que termina compitiendo por el mismo espacio. Y guarda un resumen, no una transcripción: reescribe y generaliza. Para preferencias y forma de trabajar funciona bien; para cifras exactas, nombres o condiciones contractuales no conviene fiarse — eso se vuelve a pegar.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Gasta más tokens escribir en español que en inglés?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Sí, algo más. Los tokenizadores de los modelos más usados se entrenaron sobre corpus mayoritariamente en inglés, así que parten el español en más trozos. Las mediciones varían bastante según modelo y tipo de texto, del orden de un 10-25% más de tokens para la misma idea. No es motivo para cambiar de idioma, pero sí para no calcular tu presupuesto de tokens contando palabras.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Es mejor subir el PDF entero o pegar solo el trozo que importa?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Pegar el trozo, si sabes cuál es. Subir el documento completo mete cientos o miles de tokens de relleno entre tu pregunta y la respuesta correcta, y eso es exactamente la condición en la que los modelos pierden precisión. Sube el documento entero solo cuando de verdad no sabes dónde está la respuesta y necesitas que la busque.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Por qué a veces la aplicación resume la conversación sola y pierde matices?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Porque es una de las tres formas de sobrevivir al límite: recortar lo más antiguo, resumir lo acumulado o negarse a seguir. Resumir es la menos brusca, pero un resumen es una pérdida de información con otro nombre: se queda el qué y se van las condiciones y las excepciones. Cuando veas que ha resumido, conviene revisar el resumen y corregirlo antes de seguir.
+</div>
+</div>
+</section>
+</article>
+<aside class="lg:col-span-4 flex flex-col space-y-space-xl">
+<div class="bg-surface-container-lowest p-space-lg shadow-sm sticky top-space-md">
+<div class="flex items-center justify-between mb-space-sm pb-space-xs">
+<span class="font-kicker text-kicker uppercase tracking-widest text-primary font-bold">ÍNDICE DE LA GUÍA</span>
+<span class="material-symbols-outlined text-on-surface-variant text-base">format_list_bulleted</span>
+</div>
+<nav class="space-y-space-xs font-body-sm text-body-sm">
+<a class="block text-primary hover:text-secondary font-medium transition-colors" href="#sec-1">Qué es la ventana de contexto</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-2">Qué pasa cuando se llena</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-3">El número del folleto</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-4">Memoria no es contexto</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-5">Qué hacer en la práctica</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-6">Compruébalo tú</a>
+</nav>
+</div>
+
+<div class="bg-surface-container-high p-space-md space-y-space-sm shadow-sm">
+<span class="font-kicker text-kicker uppercase tracking-widest text-primary font-bold">FICHA TÉCNICA</span>
+<dl class="space-y-space-xs font-caption text-caption">
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Categoría:</dt><dd class="font-semibold text-primary">Conceptos</dd></div>
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Nivel técnico:</dt><dd class="font-semibold text-primary">Principiante / Intermedio</dd></div>
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Fuentes citadas:</dt><dd class="font-semibold text-primary">Chroma, TACL, Anthropic</dd></div>
+</dl>
+</div>
+</aside>
+</div>
+<section class="w-full mt-space-4xl pt-space-2xl bg-surface-container-lowest p-space-lg shadow-sm">
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-space-xl gap-space-xs">
+<h3 class="font-headline-md text-headline-md text-primary">Continúa explorando el archivo</h3>
+<a class="font-label-md text-label-md text-primary hover:text-secondary uppercase tracking-wider transition-colors flex items-center gap-1" href="../index.html#guias">Ver todas las guías <span class="material-symbols-outlined text-[16px]">arrow_forward</span></a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-col-gap"><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="rag-explicado.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-rag-explicado.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="rag-explicado.html">RAG explicado: cómo funciona</a></h4></div></article><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="como-escribir-prompts.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-como-escribir-prompts.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="como-escribir-prompts.html">Qué es un prompt y cómo escribir uno bueno</a></h4></div></article><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="alucinaciones-ia.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-alucinaciones-ia.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="alucinaciones-ia.html">Alucinaciones de la IA: cómo detectarlas</a></h4></div></article></div>
+</section>
+</div></main><footer class="w-full bg-surface-container-low border-t border-outline-variant mt-space-4xl"><div class="max-w-site-max-width mx-auto px-space-md py-space-3xl"><div class="grid grid-cols-1 md:grid-cols-3 gap-col-gap"><div class="space-y-space-sm"><span class="font-headline-md text-headline-md text-primary">El Telar</span><p class="font-body-sm text-body-sm text-on-surface-variant">Publicación independiente de tecnología y automatización con agentes. Contenidos verificados en producción, sin patrocinios opacos ni promesas vacías.</p></div><div><h3 class="font-kicker text-kicker uppercase tracking-wider text-on-surface mb-space-md">SECCIONES</h3><ul class="space-y-space-xs font-body-sm text-body-sm"><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html#guias">Archivo de Guías</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../empieza-aqui.html">Guía para Principiantes</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../sobre-nosotros.html">Manifiesto Editorial</a></li><li class="pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html#despacho">Boletín Semanal</a></li></ul></div><div><h3 class="font-kicker text-kicker uppercase tracking-wider text-on-surface mb-space-md">CONTACTO &amp; PRENSA</h3><div class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant"><p class="font-semibold text-on-surface">contacto@eltelar.es</p><p>Síguenos: <a class="hover:text-primary underline" href="https://www.instagram.com/eltelar_es/" rel="me noopener" target="_blank">Instagram</a> · <a class="hover:text-primary underline" href="https://www.threads.com/@eltelar_es" rel="me noopener" target="_blank">Threads</a> · <a class="hover:text-primary underline" href="https://x.com/eltelar_es" rel="me noopener" target="_blank">X</a></p></div></div></div></div><div class="border-t border-outline-variant py-space-md bg-surface-container-lowest"><div class="max-w-site-max-width mx-auto px-space-md flex flex-col md:flex-row items-center justify-between gap-space-sm text-caption font-caption text-on-surface-variant"><div>© 2026 El Telar. Todos los derechos reservados. Independencia editorial garantizada.</div><div class="flex items-center gap-space-md"><a class="hover:text-on-surface transition-colors" href="../privacidad.html">Privacidad</a><a class="hover:text-on-surface transition-colors" href="../terminos.html">Términos</a><a class="hover:text-on-surface transition-colors" href="../sobre-nosotros.html">Sobre nosotros</a><a class="hover:text-on-surface transition-colors" href="../contacto.html">Contacto</a></div></div></div></footer><script defer src="../js/copy-guide.js"></script><script defer src="../js/guide-interactions.js"></script><script defer src="../js/reading-progress.js"></script><script defer src="../js/search.js?v=7"></script><script defer src="../js/entrance.js"></script><script defer src="../js/cookie-consent.js?v=4"></script></body></html>

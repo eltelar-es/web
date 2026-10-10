@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Qué es un agente de IA frente a un chatbot | El Telar</title>
+<meta name="description" content="La diferencia real entre un chatbot y un agente de IA: quién decide, quién actúa y qué cambia en la práctica cuando le das autonomía a un modelo.">
+<link rel="canonical" href="https://eltelar.es/articulos/que-es-un-agente-ia.html"><link rel="icon" type="image/svg+xml" href="../img/favicon.svg?v=4"><link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32.png?v=4"><link rel="apple-touch-icon" href="../img/apple-touch-icon.png?v=4"><meta name="theme-color" content="#072417"><link rel="manifest" href="../manifest.json"><link rel="alternate" type="application/rss+xml" title="El Telar" href="../feed.xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Qué es un agente de IA y en qué se diferencia de un chatbot | El Telar">
+<meta property="og:description" content="La diferencia real entre un chatbot y un agente de IA: quién decide, quién actúa y qué cambia en la práctica cuando le das autonomía a un modelo.">
+<meta property="og:url" content="https://eltelar.es/articulos/que-es-un-agente-ia.html">
+<meta property="og:site_name" content="El Telar">
+<meta property="og:locale" content="es_ES"><meta property="og:image" content="https://eltelar.es/img/og/guia-que-es-un-agente-ia.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Qué es un agente de IA y en qué se diferencia de un chatbot | El Telar">
+<meta name="twitter:description" content="La diferencia real entre un chatbot y un agente de IA: quién decide, quién actúa y qué cambia en la práctica cuando le das autonomía a un modelo."><meta name="twitter:image" content="https://eltelar.es/img/og/guia-que-es-un-agente-ia.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Qué es un agente de IA y en qué se diferencia de un chatbot",
+  "description": "La diferencia real entre un chatbot y un agente de IA: quién decide, quién actúa y qué cambia en la práctica cuando le das autonomía a un modelo.",
+  "image": "https://eltelar.es/img/og-image.jpg",
+  "author": { "@type": "Organization", "name": "El Telar", "url": "https://eltelar.es/sobre-nosotros.html" },
+  "publisher": { "@type": "Organization", "name": "El Telar" },
+  "datePublished": "2026-01-01",
+  "dateModified": "2026-09-06",
+  "mainEntityOfPage": "https://eltelar.es/articulos/que-es-un-agente-ia.html",
+  "inLanguage": "es"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Un agente puede aprender de sus errores con el tiempo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No en el sentido de que el modelo subyacente cambie permanentemente por tu uso particular (eso requeriría reentrenar el modelo, algo que no ocurre en el uso normal). Dentro de una misma tarea larga sí puede usar el resultado de un paso fallido para ajustar el siguiente intento — memoria dentro de la tarea, no aprendizaje permanente entre tareas distintas."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Todos los agentes usan el mismo modelo por dentro?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. El \"agente\" es la combinación del modelo con las herramientas, los permisos y la lógica de decisión que lo rodea; el mismo modelo puede formar parte de agentes muy distintos según cómo se configure esa capa."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Es peligroso darle demasiada autonomía a un agente?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "El riesgo no está en la autonomía en sí, sino en combinarla con supervisión baja y acceso amplio. Un agente muy autónomo pero con acceso limitado a acciones reversibles es más seguro que uno con poca autonomía pero acceso sin restricciones a acciones críticas. La pregunta correcta no es \"cuánta autonomía\", sino \"cuánta autonomía sobre qué tipo de acción concreta\"."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Los agentes reemplazarán a los chatbots?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No necesariamente — son herramientas para necesidades distintas. Para responder preguntas puntuales sin necesidad de que nada cambie en el mundo, un chatbot simple sigue siendo más rápido y barato que montar un agente completo. La autonomía tiene sentido cuando el objetivo es que algo se haga, no solo que se explique."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Necesito programar para usar un agente?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Depende. Herramientas orientadas a público no técnico ya empaquetan la lógica de agente detrás de una interfaz simple. Construir uno propio a medida sí suele requerir algo de familiaridad con código, aunque un asistente de IA puede escribir buena parte de ese código."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cómo elijo cuánta autonomía darle en un caso concreto?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Empieza siempre por el nivel más bajo de autonomía que aún resuelva el problema, y sube solo si demuestra ser fiable en ese nivel durante un tiempo razonable. Es mucho más fácil, en la práctica, aumentar la autonomía de un sistema que ya ha demostrado ser de fiar que reducirla después de que algo haya salido mal por un exceso de confianza inicial — arrancar bajo y subir con evidencia sale más barato que arrancar alto y tener que corregir sobre la marcha."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Necesito saber programar para usar un agente, o hay opciones para quien no sabe programar?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Depende del agente. Algunas herramientas orientadas a público no técnico (asistentes con acceso a archivos o navegador integrados en apps de uso diario) ya empaquetan la lógica de agente detrás de una interfaz simple, sin exigir ningún conocimiento técnico. Construir un agente propio a medida, con herramientas personalizadas, sí suele requerir algo de familiaridad con código, aunque un asistente de IA puede ayudar a escribir buena parte de ese código, reduciendo bastante la barrera de entrada respecto a hace pocos años."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://eltelar.es/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Guías",
+      "item": "https://eltelar.es/index.html#guias"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Qué es un agente de IA y en qué se diferencia de un chatbot",
+      "item": "https://eltelar.es/articulos/que-es-un-agente-ia.html"
+    }
+  ]
+}
+</script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet"/></noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet"/></noscript>
+<style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><link rel="stylesheet" href="../css/tailwind.css"><link rel="stylesheet" href="../css/entrance.css?v=2"><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}(function(){var c=null;try{c=localStorage.getItem('eltelar-cookie-consent')}catch(e){}var g=c==='accepted'?'granted':'denied';gtag('consent','default',{ad_storage:g,ad_user_data:g,ad_personalization:g,analytics_storage:g,wait_for_update:500});window.adsbygoogle=window.adsbygoogle||[];if(g!=='granted'){window.adsbygoogle.requestNonPersonalizedAds=1;}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-4DPTKEG79N"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4DPTKEG79N');</script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8239907995939753" crossorigin="anonymous"></script></head><body class="bg-background font-body-md text-on-surface antialiased">
+<header class="w-full bg-surface-container-lowest border-b border-outline-variant"><div class="border-b border-outline-variant py-space-xxs px-space-md hidden md:block"><div class="max-w-site-max-width mx-auto flex items-center justify-between font-kicker text-kicker text-on-surface-variant uppercase tracking-wider"><span>EDICIÓN DIGITAL // ACTUALIZADO 2026 // EL TELAR &amp; AGENTES</span><span>MADRID · REMOTO</span><span>SIN HUMO · 100% PRODUCCIÓN</span></div></div><div class="max-w-site-max-width mx-auto px-space-md py-space-md sm:py-space-xl text-center"><p class="hidden sm:block font-kicker text-kicker uppercase tracking-widest text-on-surface-variant mb-space-xs">Publicación Independiente de Tecnología &amp; Agentes</p><a class="inline-block" href="../index.html"><div class="font-display text-display max-sm:text-[40px] max-sm:leading-none text-primary tracking-tight">El Telar</div></a><p class="hidden sm:block font-caption text-caption uppercase tracking-widest text-on-surface-variant mt-space-xs">EL BOLETÍN Y ARCHIVO PRÁCTICO DE INTELIGENCIA ARTIFICIAL Y AGENTES AUTÓNOMOS</p></div><div class="border-t border-b border-outline-variant"><div class="max-w-site-max-width mx-auto px-space-md flex items-center justify-between gap-space-sm h-14"><nav class="flex items-center gap-space-md sm:gap-space-lg h-full min-w-0 overflow-x-auto [scrollbar-width:none] whitespace-nowrap"><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../index.html#guias">GUÍAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../empieza-aqui.html">EMPIEZA AQUÍ</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../sobre-nosotros.html">SOBRE NOSOTROS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../noticias/index.html">NOTICIAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../herramientas/index.html">HERRAMIENTAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../prompts/index.html">PROMPTS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../contacto.html">CONTACTO</a></nav><div class="flex items-center gap-space-md"><button id="search-trigger" type="button" aria-label="Buscar en las guías" class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[20px]">search</span></button><a class="hidden sm:inline-block bg-primary-container text-surface px-space-md py-space-xs font-label-md text-label-md uppercase tracking-wider hover:bg-primary transition-colors" href="../index.html#despacho">SUSCRÍBETE GRATIS</a></div></div></div><div class="hidden md:block bg-surface-container-low border-b border-outline-variant py-space-xs px-space-md"><div class="max-w-site-max-width mx-auto text-center"><p class="font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">47 GUÍAS COMPLETAS EN EXPANSIÓN · ACTUALIZADO A MODELOS 2026 · PROBADO EN TERMINAL Y FLUJOS REALES · CERO HUMO NI TEORÍA VACÍA</p></div></div></header>
+<main class="w-full max-w-site-max-width mx-auto px-space-md py-space-xl"><div class="flex flex-col w-full">
+<nav class="w-full mb-space-lg">
+<ol class="flex flex-wrap items-center gap-space-xs font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">
+<li><a class="hover:text-primary transition-colors" href="../index.html">Inicio</a></li>
+<li class="text-on-surface-variant">/</li>
+<li><a class="hover:text-primary transition-colors" href="../index.html#guias">Guías</a></li>
+<li class="text-on-surface-variant">/</li>
+<li class="text-primary font-bold truncate max-w-[280px] sm:max-w-md">Agente de IA vs. chatbot</li>
+</ol>
+</nav>
+<header class="w-full pb-space-xl mb-space-2xl">
+<div class="flex flex-wrap items-center gap-space-xs mb-space-md">
+<span class="bg-surface-container-high text-secondary px-space-sm py-1 font-kicker text-kicker uppercase tracking-widest">
+        CONCEPTOS // GUÍA FUNDAMENTAL
+      </span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight max-w-editorial-max-width mb-space-md">
+      Qué es un agente de IA y en qué se diferencia de un chatbot
+    </h1>
+<p class="font-lead-paragraph text-lead-paragraph text-on-surface-variant max-w-editorial-max-width mb-space-xl">
+      De la conversación reactiva a la ejecución autónoma orientada a objetivos: quién decide, quién actúa y qué cambia realmente en la práctica del día a día.
+    </p>
+<div class="bg-surface-container-lowest p-space-md flex flex-wrap items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 bg-primary text-on-primary flex items-center justify-center font-headline-sm text-headline-sm">
+          ET
+        </div>
+<div>
+<div class="font-label-md text-label-md text-on-surface font-semibold">Por la Redacción de El Telar</div><div class="font-caption text-caption text-on-surface-variant">Guías prácticas de IA y agentes, probadas en flujos de trabajo reales antes de publicarlas.</div>
+<button class="inline-flex items-center gap-1 mt-2 px-3 py-1.5 bg-surface-container text-primary font-label-md text-[12px] font-semibold uppercase tracking-wider hover:bg-surface-container-high transition-colors" id="copy-guide-btn" type="button"><span class="material-symbols-outlined text-[16px]">content_copy</span> Copiar guía para tu IA</button><span class="inline-flex items-center gap-1 ml-1"><button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" id="save-guide-btn" title="Guardar guía" type="button"><span class="material-symbols-outlined text-[16px]">bookmark_border</span></button><button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" id="copy-link-btn" title="Copiar enlace permanente" type="button"><span class="material-symbols-outlined text-[16px]">share</span></button></span>
+</div>
+</div>
+<div class="flex items-center gap-space-lg text-on-surface-variant font-caption text-caption uppercase tracking-wider">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">schedule</span> 14 min de lectura</span>
+</div>
+</div>
+</header>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-col-gap">
+<article class="lg:col-span-8 flex flex-col space-y-space-xl">
+<figure data-hero class="space-y-space-xs"><img class="w-full border border-outline-variant" src="../img/guias/hero-que-es-un-agente-ia.jpg" alt="Artículo de Anthropic sobre cómo construir agentes de IA eficaces" width="1280" height="720" fetchpriority="high" decoding="async"/><figcaption class="font-caption text-caption text-on-surface-variant">Captura de pantalla: <a class="underline" href="https://www.anthropic.com/engineering/building-effective-agents" rel="nofollow noopener" target="_blank">anthropic.com</a>.</figcaption></figure>
+<div class="relative bg-surface-container-lowest p-space-lg shadow-sm">
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed text-justify">
+<span class="float-left font-display text-primary text-6xl leading-none pr-3 pt-1 font-bold">A</span>gente de IA se usa hoy para casi cualquier cosa con un chat delante, lo que hace que el término se haya vaciado de significado. Pero hay una diferencia técnica real entre un chatbot que responde preguntas y un agente que ejecuta tareas por su cuenta, y entenderla te ahorra decepciones al elegir una herramienta.
+        </p>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          El término se popularizó tan rápido que casi cualquier producto con un chat integrado empezó a llamarse "agente" en su página de ventas, independientemente de si de verdad podía actuar de forma autónoma. Esta guía separa el marketing de la arquitectura real: qué hace técnicamente que algo sea un agente, en qué se diferencia de las alternativas y cómo reconocer la diferencia antes de comprometerte con una herramienta concreta, sea cual sea el nombre comercial que use en su página de ventas.
+        </p>
+<section class="space-y-space-lg">
+<h2 id="sec-1" class="font-headline-lg text-headline-lg text-primary">
+          Un chatbot responde; un agente actúa
+        </h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<span class="font-kicker text-kicker uppercase text-secondary mb-1 block">CHATBOT PURO</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Responde preguntas frecuentes sobre horarios o políticas, pero no puede consultar ni modificar un pedido concreto.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<span class="font-kicker text-kicker uppercase text-secondary mb-1 block">HERRAMIENTAS LIMITADAS</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Consulta el clima o hace una búsqueda web, pero no ejecuta acciones que cambien nada de forma permanente.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<span class="font-kicker text-kicker uppercase text-secondary mb-1 block">AGENTE COMPLETO</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Lee tu proyecto entero, modifica archivos, ejecuta comandos y corrige sus propios fallos sin supervisión paso a paso.</p>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          La línea entre la segunda y la tercera categoría es la que más se difumina en el marketing: muchos productos con "herramientas limitadas" se venden como agentes de pleno derecho, cuando en la práctica el nivel real de autonomía que ofrecen es mucho menor del que sugiere el nombre comercial que eligieron para venderlo.
+        </p>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          Un chatbot clásico recibe un mensaje, genera una respuesta de texto y se detiene ahí. Todo lo que "hace" es hablar. Un agente, en cambio, puede tomar una instrucción, decidir qué pasos seguir, ejecutar acciones reales (leer un archivo, llamar a una API, hacer clic en una web) y evaluar el resultado antes de decidir el siguiente paso, sin que el humano tenga que confirmar cada movimiento.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Esta diferencia parece sutil hasta que se ve en la práctica. Un chatbot puede explicarte con mucha precisión los pasos para renovar tu certificado SSL, pero no puede entrar en tu servidor y renovarlo. Un agente con acceso a ese servidor sí puede: interpreta la instrucción, ejecuta el comando de renovación, comprueba que el nuevo certificado se instaló correctamente y te avisa del resultado, sin que tú tengas que copiar comandos de un lado a otro. El chatbot te da conocimiento; el agente produce un cambio real en el mundo.
+        </p>
+<div class="my-space-xl p-space-md bg-surface-container-lowest">
+<div class="font-kicker text-kicker uppercase text-on-surface-variant tracking-wider mb-space-sm text-center">DIAGRAMA // EL CICLO QUE DEFINE A UN AGENTE</div>
+<svg aria-label="Diagrama del ciclo percibe decide actua verifica" class="w-full h-auto" fill="none" role="img" viewBox="0 0 680 150" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#ebeef8" height="90" width="150" x="10" y="20"></rect>
+<text fill="#072417" font-family="Inter" font-size="11" font-weight="700" text-anchor="middle" x="85" y="55">1. PERCIBE</text>
+<text fill="#424843" font-family="Inter" font-size="9.5" text-anchor="middle" x="85" y="75">Lee el estado actual</text>
+<path d="M165 65 H198" stroke="#727973" stroke-width="1.5"></path><polygon fill="#727973" points="198,62 205,65 198,68"></polygon>
+<rect fill="#caead4" height="90" width="150" x="208" y="20"></rect>
+<text fill="#042013" font-family="Inter" font-size="11" font-weight="700" text-anchor="middle" x="283" y="55">2. DECIDE</text>
+<text fill="#042013" font-family="Inter" font-size="9.5" text-anchor="middle" x="283" y="75">Según el objetivo,</text>
+<text fill="#042013" font-family="Inter" font-size="9.5" text-anchor="middle" x="283" y="88">no un guion fijo</text>
+<path d="M363 65 H396" stroke="#727973" stroke-width="1.5"></path><polygon fill="#727973" points="396,62 403,65 396,68"></polygon>
+<rect fill="#fd8a42" height="90" width="150" x="406" y="20"></rect>
+<text fill="#ffffff" font-family="Inter" font-size="11" font-weight="700" text-anchor="middle" x="481" y="55">3. ACTÚA</text>
+<text fill="#ffffff" font-family="Inter" font-size="9.5" text-anchor="middle" x="481" y="75">Con herramientas</text>
+<text fill="#ffffff" font-family="Inter" font-size="9.5" text-anchor="middle" x="481" y="88">reales, no describe</text>
+<path d="M561 65 H594" stroke="#727973" stroke-width="1.5"></path><polygon fill="#727973" points="594,62 601,65 594,68"></polygon>
+<rect fill="#072417" height="90" width="70" x="604" y="20"></rect>
+<text fill="#f9f9ff" font-family="Inter" font-size="10" font-weight="700" text-anchor="middle" x="639" y="55">4.</text>
+<text fill="#f1f3fe" font-family="Inter" font-size="9" text-anchor="middle" x="639" y="72">VERIFI-</text>
+<text fill="#f1f3fe" font-family="Inter" font-size="9" text-anchor="middle" x="639" y="86">CA</text>
+</svg>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Un chatbot normal solo hace el primer paso, y a veces ni eso: simplemente predice texto plausible sin comprobar nada contra la realidad, ni antes de responder ni después de haberlo hecho.
+        </p>
+</section>
+<figure class="my-space-xl p-space-lg bg-surface-container-low pl-space-xl">
+<blockquote class="font-headline-sm italic text-primary leading-snug">
+          «Si una herramienta solo puede hablar de hacer algo pero no puede hacerlo ella misma, no es un agente en sentido estricto: es un chatbot con buena redacción.»
+        </blockquote>
+<figcaption class="mt-space-sm font-kicker text-kicker uppercase tracking-widest text-secondary font-semibold">
+          — REDACCIÓN EL TELAR
+        </figcaption>
+</figure>
+<section class="space-y-space-md">
+<h2 id="sec-2" class="font-headline-lg text-headline-lg text-primary">
+          Dónde se nota la diferencia en la práctica
+        </h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          Pídele a un chatbot que "organice mis fotos de vacaciones por fecha" y te dará instrucciones para que lo hagas tú. Pídeselo a un agente con acceso a tu sistema de archivos y las moverá él mismo, comprobará cuántas se movieron correctamente y te avisará si alguna tenía un formato que no pudo procesar. La utilidad salta de "consejo" a "trabajo hecho", que es exactamente la distinción que esta guía intenta dejar clara desde el principio.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Otro ejemplo habitual: pedir ayuda con un error de programación. Un chatbot analiza el mensaje de error que le pegas y sugiere una posible causa y solución, pero depende de que tú apliques el cambio y le cuentes qué pasó después. Un agente con acceso al proyecto lee el código relevante por su cuenta (no solo el fragmento que le pegaste), aplica el cambio, ejecuta los tests para comprobar que no rompió nada más, y si el primer intento no funciona, lee el nuevo error y prueba otra cosa — todo sin que tú tengas que ser el mensajero entre el error y la solución.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Un modelo de lenguaje, por sí solo, solo sabe generar texto. Lo que convierte ese texto en una acción real es el acceso a herramientas: funciones concretas que el modelo puede invocar para leer un archivo, hacer una petición a una web, escribir en una base de datos o ejecutar un comando. Sin herramientas conectadas, cualquier modelo, por potente que sea, sigue siendo un chatbot — puede razonar sobre qué habría que hacer, pero no puede hacerlo.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Esto explica por qué la misma familia de modelos puede comportarse como un simple chatbot en una aplicación y como un agente completo en otra: la diferencia no está solo en el modelo, sino en qué herramientas le ha dado quien construyó esa aplicación concreta, y con qué permisos. Es la razón por la que, al evaluar si algo es "un agente de verdad", la pregunta correcta no es qué modelo usa por dentro, sino qué puede tocar realmente en tu sistema.
+        </p>
+</section>
+
+<section class="space-y-space-md">
+<figure data-inline-photo class="space-y-space-xs my-space-xl"><img class="w-full border border-outline-variant" src="../img/guias/foto-que-es-un-agente-ia.jpg" alt="Documentación del Agents SDK de OpenAI" width="1280" height="720" loading="lazy" decoding="async"/><figcaption class="font-caption text-caption text-on-surface-variant">Captura de pantalla: <a class="underline" href="https://openai.github.io/openai-agents-python/" rel="nofollow noopener" target="_blank">openai.github.io/openai-agents-python</a>.</figcaption></figure>
+<h2 id="sec-3" class="font-headline-lg text-headline-lg text-primary">
+          Flujo de trabajo vs. agente: la distinción que usa Anthropic
+        </h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          En su propia guía técnica sobre cómo construir agentes, Anthropic traza una línea concreta que ayuda a distinguir un agente de verdad de una automatización con IA de por medio: un <strong>flujo de trabajo</strong> es un sistema donde el modelo y las herramientas se orquestan por rutas de código predefinidas de antemano (primero paso A, luego B, luego C, siempre igual); un <strong>agente</strong> es un sistema donde el propio modelo decide dinámicamente sus pasos y qué herramienta usar en cada uno, manteniendo el control de cómo llega al resultado. La diferencia no está en lo "inteligente" que suene, sino en quién decide el siguiente paso: un guion fijo o el propio modelo.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          No toda tarea se beneficia de la autonomía de un agente completo. Antes de buscar la herramienta más autónoma posible, vale la pena preguntarse tres cosas sobre la tarea en cuestión, como se detalla a continuación.
+        </p>
+<h3 class="font-headline-sm text-headline-sm text-primary">Cómo saber si de verdad necesitas un agente</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md my-space-md">
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<span class="material-symbols-outlined text-secondary text-[20px]">shuffle</span>
+<p class="font-body-sm text-body-sm text-on-surface mt-1"><strong>¿Los pasos dependen de resultados anteriores de forma impredecible?</strong> Si la respuesta es sí (por ejemplo, "busca información y, según lo que encuentres, decide si hace falta un paso adicional"), un agente aporta valor real, porque puede adaptar su plan sobre la marcha.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<span class="material-symbols-outlined text-secondary text-[20px]">sync</span>
+<p class="font-body-sm text-body-sm text-on-surface mt-1"><strong>¿Necesitas actuar sobre datos que cambian constantemente?</strong> Un agente que consulta el estado actual antes de decidir tiene ventaja cuando la información de entrada varía; si trabajas siempre sobre el mismo tipo de dato estructurado y estable, esa ventaja se reduce considerablemente respecto al coste de mantener el agente.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<span class="material-symbols-outlined text-secondary text-[20px]">balance</span>
+<p class="font-body-sm text-body-sm text-on-surface mt-1"><strong>¿Toleras que se equivoque alguna vez a cambio de ahorrar tiempo?</strong> Ningún agente acierta el cien por cien de las veces. Si tu tarea no tolera ningún margen de error, necesitas mantener supervisión humana en el bucle, sea cual sea la herramienta.</p>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Si las tres respuestas apuntan hacia "sí, esto varía y necesito adaptación", un agente aporta valor real. Si la tarea es repetitiva, predecible y con datos estables, es probable que una automatización tradicional (sin modelo de lenguaje decidiendo en cada paso) resuelva lo mismo con menos coste y menos margen de error impredecible.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Entre "solo chatea" y "actúa sin supervisión" hay un espectro completo. La mayoría de herramientas útiles hoy se sitúan en un punto intermedio: el agente propone un plan, pide confirmación antes de acciones irreversibles (borrar, pagar, enviar) y ejecuta sin preguntar las que son de bajo riesgo. Cuanto más crítica es la tarea, más supervisión humana tiene sentido mantener, independientemente de lo "autónoma" que la herramienta diga ser.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          El marketing llama "agente" a productos con niveles de autonomía muy distintos entre sí. Antes de pagar por algo etiquetado como "agente de IA", pregunta en concreto: ¿qué acciones reales puede ejecutar sin que yo intervenga? ¿Qué pasa si se equivoca a mitad de una tarea de varios pasos? Esas dos preguntas separan un agente de verdad de un chatbot con una etiqueta más ambiciosa.
+        </p>
+</section>
+<section class="bg-surface-container-low p-space-lg space-y-space-md">
+<h2 id="sec-4" class="font-headline-lg text-headline-lg text-primary">
+          Tipos de agentes según su ámbito de acción
+        </h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          No todos los agentes operan en el mismo terreno. Distinguir al menos tres ámbitos ayuda, porque cada uno implica un nivel distinto de riesgo si algo sale mal: cuanto más puede tocar un agente, más importa quién puede influir en lo que decide — y ahí entra <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="prompt-injection-agentes-ia.html">la inyección de prompts</a>, el riesgo de que las instrucciones le lleguen escondidas en el contenido que lee.
+        </p>
+<ul class="space-y-space-xs font-body-md text-body-md text-on-surface-variant list-disc pl-space-lg">
+<li><strong class="text-on-surface">Agentes de información:</strong> buscan, leen y resumen datos sin modificar nada — un agente de investigación que rastrea varias fuentes y te entrega un informe. El riesgo de un error aquí es, como mucho, una información incorrecta que tú puedes verificar antes de actuar sobre ella</li>
+<li><strong class="text-on-surface">Agentes de sistema o código:</strong> leen y modifican archivos, ejecutan comandos, corrigen errores de programación — un agente de terminal como los que se usan para programar. El riesgo se limita normalmente a tu propio entorno de trabajo, recuperable con copias de seguridad o control de versiones</li>
+<li><strong class="text-on-surface">Agentes con acceso al mundo exterior:</strong> envían correos, hacen compras, publican contenido, interactúan con servicios de terceros en tu nombre. Aquí el riesgo de una acción no deseada ya no es reversible con un simple "deshacer" — un correo enviado no se puede desenviar</li>
+</ul>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          Esta distinción debería ser la primera pregunta al evaluar cualquier producto que se anuncie como "agente": ¿en cuál de estos tres ámbitos actúa, y qué tan reversible es un error en ese ámbito concreto?
+        </p>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          Un mismo proyecto puede combinar agentes de los tres ámbitos a la vez, cada uno con su propio nivel de supervisión: un agente de información que investiga sin restricciones porque el peor caso es un dato mal citado que tú revisas; un agente de código que trabaja con más libertad en una rama de pruebas aislada; y un agente con acceso al mundo exterior que siempre pide confirmación explícita antes de cualquier acción, precisamente porque ahí el margen de error tolerable es más bajo. Diseñar el nivel de supervisión según el ámbito, en vez de aplicar la misma regla a los tres, es lo que permite avanzar rápido donde el riesgo es bajo sin bajar la guardia donde no lo es.
+        </p>
+</section>
+<section class="space-y-space-md">
+<h2 id="sec-5" class="font-headline-lg text-headline-lg text-primary">
+          Memoria, multiagentes y cómo se depura un fallo
+        </h2>
+<h3 class="font-headline-sm text-headline-sm text-primary">Qué recuerda un agente y qué no</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Por defecto, un agente no recuerda nada de una conversación o tarea a la siguiente, salvo que se le dé explícitamente algún mecanismo de memoria persistente (guardar notas en un archivo, una base de datos, o un resumen de sesiones anteriores). Cada vez que empiezas una tarea nueva, el agente parte de cero salvo por lo que le des como contexto en ese momento.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Esto tiene una consecuencia práctica importante: si necesitas que un agente "aprenda" tus preferencias con el tiempo (el formato que prefieres para un informe, las convenciones de tu código), esa información tiene que guardarse en algún sitio persistente al que el agente tenga acceso, no simplemente esperar que lo recuerde de una sesión a otra por sí mismo. Vale la pena distinguir también entre memoria de corto plazo (dentro de una misma tarea larga, mientras dura la ejecución) y memoria de largo plazo (entre sesiones distintas, días o semanas después). La primera es prácticamente universal en cualquier agente moderno; la segunda hay que configurarla de forma explícita, y no todas las herramientas la ofrecen igual.
+        </p>
+<h3 class="font-headline-sm text-headline-sm text-primary">Cuando varios agentes trabajan juntos</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Una variante cada vez más común no es un único agente haciendo todo, sino varios agentes especializados colaborando en una tarea compleja: uno investiga un tema, otro redacta un borrador con esa investigación, un tercero revisa el resultado contra unos criterios de calidad antes de entregarlo. Esta división del trabajo se parece a cómo funcionaría un equipo humano con roles distintos, y tiene una ventaja práctica: cada agente especializado en una sola tarea suele hacerla mejor que un único agente generalista intentando hacerlo todo a la vez, de la misma forma que un especialista suele superar a un generalista en su campo concreto.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          La contrapartida es la complejidad añadida: coordinar varios agentes entre sí (qué pasa si uno falla, cómo se pasan información unos a otros) es más difícil de diseñar y depurar que un único agente con un solo hilo de ejecución. Para la mayoría de tareas cotidianas, un solo agente bien instruido es suficiente; los sistemas multiagente tienen sentido cuando la tarea es lo bastante compleja y de varias etapas como para justificar esa complejidad adicional. Dónde está exactamente esa frontera lo desglosamos, con los datos que han publicado los equipos que lo han montado en producción, en <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="varios-agentes-ia-o-uno.html">cuándo usar varios agentes de IA en vez de uno</a>.
+        </p>
+<h3 class="font-headline-sm text-headline-sm text-primary">Cómo se depura un agente cuando algo sale mal</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          A diferencia de un script tradicional, donde un fallo suele producir un mensaje de error concreto en una línea concreta, un agente que se equivoca puede simplemente entregar un resultado incorrecto sin ningún aviso visible de que algo falló. Depurar esto exige un enfoque distinto: revisar el registro completo de lo que el agente observó, decidió y ejecutó en cada paso (no solo el resultado final), para localizar en qué punto exacto de la cadena de decisiones se torció el razonamiento.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Por esta razón, cualquier agente pensado para un uso serio debería registrar sus pasos intermedios de forma legible, no solo el resultado. Sin ese registro, un fallo intermitente (que ocurre una vez cada cierto número de ejecuciones) es casi imposible de diagnosticar, porque no hay forma de reconstruir qué fue distinto en el caso que falló respecto a los que funcionaron bien.
+        </p>
+</section>
+<section class="space-y-space-md">
+<h2 class="font-headline-lg text-headline-lg text-primary">
+          Preguntas frecuentes
+        </h2>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Un agente puede aprender de sus errores con el tiempo?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+No en el sentido de que el modelo subyacente cambie permanentemente por tu uso particular (eso requeriría reentrenar el modelo, algo que no ocurre en el uso normal). Dentro de una misma tarea larga sí puede usar el resultado de un paso fallido para ajustar el siguiente intento — memoria dentro de la tarea, no aprendizaje permanente entre tareas distintas.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Todos los agentes usan el mismo modelo por dentro?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+No. El "agente" es la combinación del modelo con las herramientas, los permisos y la lógica de decisión que lo rodea; el mismo modelo puede formar parte de agentes muy distintos según cómo se configure esa capa.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Es peligroso darle demasiada autonomía a un agente?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+El riesgo no está en la autonomía en sí, sino en combinarla con supervisión baja y acceso amplio. Un agente muy autónomo pero con acceso limitado a acciones reversibles es más seguro que uno con poca autonomía pero acceso sin restricciones a acciones críticas. La pregunta correcta no es "cuánta autonomía", sino "cuánta autonomía sobre qué tipo de acción concreta".
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Los agentes reemplazarán a los chatbots?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+No necesariamente — son herramientas para necesidades distintas. Para responder preguntas puntuales sin necesidad de que nada cambie en el mundo, un chatbot simple sigue siendo más rápido y barato que montar un agente completo. La autonomía tiene sentido cuando el objetivo es que algo se haga, no solo que se explique.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Necesito programar para usar un agente?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Depende. Herramientas orientadas a público no técnico ya empaquetan la lógica de agente detrás de una interfaz simple. Construir uno propio a medida sí suele requerir algo de familiaridad con código, aunque un asistente de IA puede escribir buena parte de ese código.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Cómo elijo cuánta autonomía darle en un caso concreto?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Empieza siempre por el nivel más bajo de autonomía que aún resuelva el problema, y sube solo si demuestra ser fiable en ese nivel durante un tiempo razonable. Es mucho más fácil, en la práctica, aumentar la autonomía de un sistema que ya ha demostrado ser de fiar que reducirla después de que algo haya salido mal por un exceso de confianza inicial — arrancar bajo y subir con evidencia sale más barato que arrancar alto y tener que corregir sobre la marcha.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Necesito saber programar para usar un agente, o hay opciones para quien no sabe programar?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Depende del agente. Algunas herramientas orientadas a público no técnico (asistentes con acceso a archivos o navegador integrados en apps de uso diario) ya empaquetan la lógica de agente detrás de una interfaz simple, sin exigir ningún conocimiento técnico. Construir un agente propio a medida, con herramientas personalizadas, sí suele requerir algo de familiaridad con código, aunque un asistente de IA puede ayudar a escribir buena parte de ese código, reduciendo bastante la barrera de entrada respecto a hace pocos años.
+</div>
+</div>
+</section>
+<div class="bg-surface-container-low p-space-lg flex flex-col sm:flex-row items-start sm:items-center gap-space-md">
+<div class="w-16 h-16 bg-primary text-on-primary flex items-center justify-center font-display text-headline-md shrink-0">ET</div>
+<div class="space-y-space-xxs">
+<span class="font-label-md text-label-md text-primary font-bold uppercase tracking-wider">Redacción El Telar</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">No aceptamos patrocinios de laboratorios ni de fabricantes de agentes, para mantener esta comparación neutral.</p>
+</div>
+</div>
+</article>
+<aside class="lg:col-span-4 flex flex-col space-y-space-xl">
+<div class="bg-surface-container-lowest p-space-lg shadow-sm sticky top-space-md">
+<div class="flex items-center justify-between mb-space-sm pb-space-xs">
+<span class="font-kicker text-kicker uppercase tracking-widest text-primary font-bold">ÍNDICE DE LA GUÍA</span>
+<span class="material-symbols-outlined text-on-surface-variant text-base">format_list_bulleted</span>
+</div>
+<nav class="space-y-space-xs font-body-sm text-body-sm">
+<a class="block text-primary hover:text-secondary font-medium transition-colors" href="#sec-1">Chatbot frente a agente</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-2">Dónde se nota la diferencia</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-3">Flujo de trabajo vs. agente</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-4">Tipos de agentes</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-5">Memoria y multiagentes</a>
+</nav>
+</div>
+
+<div class="bg-surface-container-high p-space-md space-y-space-sm shadow-sm">
+<span class="font-kicker text-kicker uppercase tracking-widest text-primary font-bold">FICHA TÉCNICA</span>
+<dl class="space-y-space-xs font-caption text-caption">
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Categoría:</dt><dd class="font-semibold text-primary">Conceptos</dd></div>
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Nivel técnico:</dt><dd class="font-semibold text-primary">Principiante / Intermedio</dd></div>
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Fuente citada:</dt><dd class="font-semibold text-primary">Anthropic</dd></div>
+</dl>
+</div>
+</aside>
+</div>
+<section class="w-full mt-space-4xl pt-space-2xl bg-surface-container-lowest p-space-lg shadow-sm">
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-space-xl gap-space-xs">
+<h3 class="font-headline-md text-headline-md text-primary">Continúa explorando el archivo</h3>
+<a class="font-label-md text-label-md text-primary hover:text-secondary uppercase tracking-wider transition-colors flex items-center gap-1" href="../index.html#guias">Ver todas las guías <span class="material-symbols-outlined text-[16px]">arrow_forward</span></a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-col-gap"><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="que-es-claude-code.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-que-es-claude-code.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="que-es-claude-code.html">Qué es Claude Code y cómo empezar a usarlo sin saber programar</a></h4></div></article><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="automatizar-tareas-agentes-ia.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-automatizar-tareas-agentes-ia.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="automatizar-tareas-agentes-ia.html">Cómo automatizar tareas repetitivas con agentes de IA</a></h4></div></article><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="glosario-terminos-ia.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-glosario-terminos-ia.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="glosario-terminos-ia.html">Glosario de IA: 30 términos que debes conocer</a></h4></div></article></div>
+</section>
+</div></main><footer class="w-full bg-surface-container-low border-t border-outline-variant mt-space-4xl"><div class="max-w-site-max-width mx-auto px-space-md py-space-3xl"><div class="grid grid-cols-1 md:grid-cols-3 gap-col-gap"><div class="space-y-space-sm"><span class="font-headline-md text-headline-md text-primary">El Telar</span><p class="font-body-sm text-body-sm text-on-surface-variant">Publicación independiente de tecnología y automatización con agentes. Contenidos verificados en producción, sin patrocinios opacos ni promesas vacías.</p></div><div><h3 class="font-kicker text-kicker uppercase tracking-wider text-on-surface mb-space-md">SECCIONES</h3><ul class="space-y-space-xs font-body-sm text-body-sm"><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html#guias">Archivo de Guías</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../empieza-aqui.html">Guía para Principiantes</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../sobre-nosotros.html">Manifiesto Editorial</a></li><li class="pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html#despacho">Boletín Semanal</a></li></ul></div><div><h3 class="font-kicker text-kicker uppercase tracking-wider text-on-surface mb-space-md">CONTACTO &amp; PRENSA</h3><div class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant"><p class="font-semibold text-on-surface">contacto@eltelar.es</p><p>Síguenos: <a class="hover:text-primary underline" href="https://www.instagram.com/eltelar_es/" rel="me noopener" target="_blank">Instagram</a> · <a class="hover:text-primary underline" href="https://www.threads.com/@eltelar_es" rel="me noopener" target="_blank">Threads</a> · <a class="hover:text-primary underline" href="https://x.com/eltelar_es" rel="me noopener" target="_blank">X</a></p></div></div></div></div><div class="border-t border-outline-variant py-space-md bg-surface-container-lowest"><div class="max-w-site-max-width mx-auto px-space-md flex flex-col md:flex-row items-center justify-between gap-space-sm text-caption font-caption text-on-surface-variant"><div>© 2026 El Telar. Todos los derechos reservados. Independencia editorial garantizada.</div><div class="flex items-center gap-space-md"><a class="hover:text-on-surface transition-colors" href="../privacidad.html">Privacidad</a><a class="hover:text-on-surface transition-colors" href="../terminos.html">Términos</a><a class="hover:text-on-surface transition-colors" href="../sobre-nosotros.html">Sobre nosotros</a><a class="hover:text-on-surface transition-colors" href="../contacto.html">Contacto</a></div></div></div></footer><script defer src="../js/copy-guide.js"></script><script defer src="../js/guide-interactions.js"></script><script defer src="../js/reading-progress.js"></script><script defer src="../js/search.js?v=7"></script><script defer src="../js/entrance.js"></script><script defer src="../js/cookie-consent.js?v=4"></script></body></html>

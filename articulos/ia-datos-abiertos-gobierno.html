@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>IA y datos abiertos: fuentes oficiales | El Telar</title>
+<meta name="description" content="Cómo construir un asistente de IA que responde con estadísticas oficiales verificables en vez de memoria, con una demo en vivo con datos del Banco Mundial.">
+<link rel="canonical" href="https://eltelar.es/articulos/ia-datos-abiertos-gobierno.html"><link rel="icon" type="image/svg+xml" href="../img/favicon.svg?v=4"><link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32.png?v=4"><link rel="apple-touch-icon" href="../img/apple-touch-icon.png?v=4"><meta name="theme-color" content="#072417"><link rel="manifest" href="../manifest.json"><link rel="alternate" type="application/rss+xml" title="El Telar" href="../feed.xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IA y datos abiertos: un asistente que consulta fuentes oficiales | El Telar">
+<meta property="og:description" content="Cómo construir un asistente de IA que responde con estadísticas oficiales verificables en vez de memoria del modelo, con una demo en vivo usando datos reales del Banco Mundial.">
+<meta property="og:url" content="https://eltelar.es/articulos/ia-datos-abiertos-gobierno.html">
+<meta property="og:site_name" content="El Telar">
+<meta property="og:locale" content="es_ES"><meta property="og:image" content="https://eltelar.es/img/og/guia-ia-datos-abiertos-gobierno.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="IA y datos abiertos: un asistente que consulta fuentes oficiales | El Telar">
+<meta name="twitter:description" content="Cómo construir un asistente de IA que responde con estadísticas oficiales verificables en vez de memoria del modelo, con una demo en vivo usando datos reales del Banco Mundial."><meta name="twitter:image" content="https://eltelar.es/img/og/guia-ia-datos-abiertos-gobierno.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "IA y datos abiertos: un asistente que consulta fuentes oficiales",
+  "description": "Cómo construir un asistente de IA que responde con estadísticas oficiales verificables en vez de memoria del modelo, con una demo en vivo usando datos reales del Banco Mundial.",
+  "image": "https://eltelar.es/img/og-image.jpg",
+  "author": { "@type": "Organization", "name": "El Telar", "url": "https://eltelar.es/sobre-nosotros.html" },
+  "publisher": { "@type": "Organization", "name": "El Telar" },
+  "datePublished": "2026-09-07",
+  "dateModified": "2026-09-07",
+  "mainEntityOfPage": "https://eltelar.es/articulos/ia-datos-abiertos-gobierno.html",
+  "inLanguage": "es"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Qué es exactamente un dato abierto de gobierno?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Es información recopilada o producida por un organismo público (un ministerio, un banco central, una organización intergubernamental como el Banco Mundial o la ONU) y publicada en un formato reutilizable, normalmente con una API o descarga estructurada, en vez de solo en un PDF o una tabla en una página web."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Por qué es mejor esto que preguntarle directamente al modelo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Porque el modelo puede citar de memoria una cifra desactualizada o directamente inventada con total seguridad, mientras que una consulta a la fuente oficial en el momento de preguntar te da el dato con su fecha exacta y la posibilidad de verificarlo tú mismo en el organismo que lo publicó."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Los datos abiertos de gobierno tienen algún coste?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "La inmensa mayoría son gratuitos y sin clave de acceso, precisamente porque su razón de ser es la transparencia pública. Organismos como el Banco Mundial, Eurostat o el INE en España publican sus datos abiertos sin coste ni registro para uso general."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo confiar ciegamente en un dato solo porque venga de una fuente oficial?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Con más confianza que en la memoria de un modelo, pero no de forma absoluta: los organismos también revisan y corrigen cifras retroactivamente, y hay diferencias de metodología entre países que pueden hacer que la misma métrica no sea directamente comparable. Revisa siempre la fecha de la última actualización y la metodología cuando el dato sea importante para una decisión."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Esto sirve para periodismo de datos o solo para desarrolladores?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sirve especialmente bien para periodismo de datos y para cualquier trabajo de investigación: un agente que cita la fuente exacta y la fecha de cada cifra, en vez de una afirmación genérica sin respaldo, encaja directamente en un flujo editorial donde la verificabilidad importa tanto como el dato en sí."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://eltelar.es/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Guías",
+      "item": "https://eltelar.es/index.html#guias"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "IA y datos abiertos: un asistente que consulta fuentes oficiales",
+      "item": "https://eltelar.es/articulos/ia-datos-abiertos-gobierno.html"
+    }
+  ]
+}
+</script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet"/></noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet"/></noscript>
+<style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><link rel="stylesheet" href="../css/tailwind.css"><link rel="stylesheet" href="../css/entrance.css?v=2"><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}(function(){var c=null;try{c=localStorage.getItem('eltelar-cookie-consent')}catch(e){}var g=c==='accepted'?'granted':'denied';gtag('consent','default',{ad_storage:g,ad_user_data:g,ad_personalization:g,analytics_storage:g,wait_for_update:500});window.adsbygoogle=window.adsbygoogle||[];if(g!=='granted'){window.adsbygoogle.requestNonPersonalizedAds=1;}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-4DPTKEG79N"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4DPTKEG79N');</script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8239907995939753" crossorigin="anonymous"></script></head><body class="bg-background font-body-md text-on-surface antialiased">
+<header class="w-full bg-surface-container-lowest border-b border-outline-variant"><div class="border-b border-outline-variant py-space-xxs px-space-md hidden md:block"><div class="max-w-site-max-width mx-auto flex items-center justify-between font-kicker text-kicker text-on-surface-variant uppercase tracking-wider"><span>EDICIÓN DIGITAL // ACTUALIZADO 2026 // EL TELAR &amp; AGENTES</span><span>MADRID · REMOTO</span><span>SIN HUMO · 100% PRODUCCIÓN</span></div></div><div class="max-w-site-max-width mx-auto px-space-md py-space-md sm:py-space-xl text-center"><p class="hidden sm:block font-kicker text-kicker uppercase tracking-widest text-on-surface-variant mb-space-xs">Publicación Independiente de Tecnología &amp; Agentes</p><a class="inline-block" href="../index.html"><div class="font-display text-display max-sm:text-[40px] max-sm:leading-none text-primary tracking-tight">El Telar</div></a><p class="hidden sm:block font-caption text-caption uppercase tracking-widest text-on-surface-variant mt-space-xs">EL BOLETÍN Y ARCHIVO PRÁCTICO DE INTELIGENCIA ARTIFICIAL Y AGENTES AUTÓNOMOS</p></div><div class="border-t border-b border-outline-variant"><div class="max-w-site-max-width mx-auto px-space-md flex items-center justify-between gap-space-sm h-14"><nav class="flex items-center gap-space-md sm:gap-space-lg h-full min-w-0 overflow-x-auto [scrollbar-width:none] whitespace-nowrap"><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../index.html#guias">GUÍAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../empieza-aqui.html">EMPIEZA AQUÍ</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../sobre-nosotros.html">SOBRE NOSOTROS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../noticias/index.html">NOTICIAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../herramientas/index.html">HERRAMIENTAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../prompts/index.html">PROMPTS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../contacto.html">CONTACTO</a></nav><div class="flex items-center gap-space-md"><button id="search-trigger" type="button" aria-label="Buscar en las guías" class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[20px]">search</span></button><a class="hidden sm:inline-block bg-primary-container text-surface px-space-md py-space-xs font-label-md text-label-md uppercase tracking-wider hover:bg-primary transition-colors" href="../index.html#despacho">SUSCRÍBETE GRATIS</a></div></div></div><div class="hidden md:block bg-surface-container-low border-b border-outline-variant py-space-xs px-space-md"><div class="max-w-site-max-width mx-auto text-center"><p class="font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">47 GUÍAS COMPLETAS EN EXPANSIÓN · ACTUALIZADO A MODELOS 2026 · PROBADO EN TERMINAL Y FLUJOS REALES · CERO HUMO NI TEORÍA VACÍA</p></div></div></header>
+<main class="w-full max-w-site-max-width mx-auto px-space-md py-space-xl"><div class="flex flex-col w-full">
+<nav class="w-full mb-space-lg">
+<ol class="flex flex-wrap items-center gap-space-xs font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">
+<li><a class="hover:text-primary transition-colors" href="../index.html">Inicio</a></li>
+<li class="text-on-surface-variant">/</li>
+<li><a class="hover:text-primary transition-colors" href="../index.html#guias">Guías</a></li>
+<li class="text-on-surface-variant">/</li>
+<li class="text-primary font-bold">Datos abiertos y agentes</li>
+</ol>
+</nav>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-col-gap">
+<article class="lg:col-span-8 flex flex-col space-y-space-xl">
+<figure data-hero class="space-y-space-xs"><img class="w-full border border-outline-variant" src="../img/guias/hero-ia-datos-abiertos-gobierno.jpg" alt="Portada del Instituto Nacional de Estadística (INE)" width="1280" height="720" fetchpriority="high" decoding="async"/><figcaption class="font-caption text-caption text-on-surface-variant">Captura de pantalla: <a class="underline" href="https://www.ine.es/" rel="nofollow noopener" target="_blank">ine.es</a>.</figcaption></figure>
+<header class="space-y-space-md border-b border-outline-variant pb-space-xl">
+<span class="bg-surface-container-high text-secondary border border-outline-variant px-space-xs py-space-xxs font-kicker text-kicker uppercase tracking-widest inline-block">TUTORIAL // TRANSPARENCIA</span>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight leading-tight">IA y datos abiertos: un asistente que consulta fuentes oficiales</h1>
+<p class="font-lead-paragraph text-lead-paragraph text-on-surface-variant leading-relaxed">Un ángulo casi inexplorado en el contenido en español sobre IA: usar estadísticas oficiales verificables, con fecha y fuente, en vez de dejar que el modelo recite una cifra de memoria. Demo en vivo con datos reales del Banco Mundial.</p>
+<div class="pt-space-sm border-t border-outline-variant flex flex-wrap items-center justify-between gap-space-sm font-label-md text-label-md text-on-surface-variant">
+<span class="font-semibold text-on-surface">Por la Redacción de El Telar</span>
+<button class="inline-flex items-center gap-1 mt-2 px-3 py-1.5 bg-surface-container text-primary font-label-md text-[12px] font-semibold uppercase tracking-wider hover:bg-surface-container-high transition-colors" id="copy-guide-btn" type="button"><span class="material-symbols-outlined text-[16px]">content_copy</span> Copiar guía para tu IA</button><span class="inline-flex items-center gap-1 ml-1"><button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" id="save-guide-btn" title="Guardar guía" type="button"><span class="material-symbols-outlined text-[16px]">bookmark_border</span></button><button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" id="copy-link-btn" title="Copiar enlace permanente" type="button"><span class="material-symbols-outlined text-[16px]">share</span></button></span>
+<span class="flex items-center gap-1 text-caption font-caption">
+<span class="material-symbols-outlined text-[15px] text-on-surface-variant">schedule</span>
+              12 min de lectura
+            </span>
+</div>
+</header>
+<section class="prose max-w-editorial-max-width space-y-space-md">
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed">
+<span class="float-left text-primary font-display text-[68px] leading-[0.8] pr-3 pt-1 font-normal select-none">C</span>asi todo el contenido sobre IA en español se centra en productividad personal: escribir mejor, automatizar correo, generar imágenes. Hay un uso mucho menos cubierto y con un valor distinto: construir asistentes que responden con datos oficiales verificables — estadísticas de organismos públicos, con fecha exacta y fuente citada — en vez de con lo que el modelo recuerde vagamente de su entrenamiento.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Esto no es solo una curiosidad técnica. Es la diferencia entre un asistente que dice "el PIB de España ronda los 1,4 billones" (una cifra que suena razonable y puede estar desactualizada o mal recordada) y uno que dice "según el Banco Mundial, el PIB de España en 2023 fue de 1.619.481 millones de dólares, actualizado el 13 de julio de 2026" — con un número exacto, una fuente y una fecha que tú mismo puedes verificar en el organismo oficial.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          El mecanismo técnico es el mismo <em>tool use</em> de nuestra guía sobre <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="agente-api-datos-reales.html">agentes con datos reales</a>, aplicado esta vez a una fuente con un valor distinto: no la actualidad del dato, sino su autoridad y verificabilidad.
+        </p>
+</section>
+<section id="demo" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Consulta un dato oficial ahora mismo</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Esta caja llama en directo a la API pública y gratuita del <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="https://data.worldbank.org" target="_blank" rel="noopener">Banco Mundial</a>, sin clave ni registro. Elige un país y un indicador, y verás el dato real más reciente disponible, con su fecha exacta.
+        </p>
+<div class="bg-surface-container-high p-space-lg border border-outline-variant">
+<div class="flex flex-col sm:flex-row gap-space-sm mb-space-md">
+<select id="wb-country" class="flex-1 px-space-md py-space-sm border border-outline-variant bg-surface-container-lowest font-body-md text-body-md text-on-surface">
+<option value="ES">España</option>
+<option value="MX">México</option>
+<option value="AR">Argentina</option>
+<option value="CO">Colombia</option>
+<option value="CL">Chile</option>
+<option value="PE">Perú</option>
+<option value="BR">Brasil</option>
+<option value="US">Estados Unidos</option>
+<option value="FR">Francia</option>
+<option value="JP">Japón</option>
+</select>
+<select id="wb-indicator" class="flex-1 px-space-md py-space-sm border border-outline-variant bg-surface-container-lowest font-body-md text-body-md text-on-surface">
+<option value="NY.GDP.MKTP.CD">PIB (dólares actuales)</option>
+<option value="SP.POP.TOTL">Población total</option>
+<option value="SP.DYN.LE00.IN">Esperanza de vida (años)</option>
+</select>
+<button id="wb-btn" type="button" class="px-space-lg py-space-sm bg-primary text-on-primary font-label-md text-label-md uppercase tracking-wider hover:bg-primary-container transition-colors">Consultar</button>
+</div>
+<div id="wb-output" class="space-y-space-sm font-mono text-body-sm"></div>
+<p id="wb-hint" class="font-caption text-caption text-on-surface-variant mt-space-sm">Pulsa "Consultar" para ver el dato real, obtenido en directo desde api.worldbank.org.</p>
+</div>
+<script>
+(function(){
+  var btn = document.getElementById('wb-btn');
+  var country = document.getElementById('wb-country');
+  var indicator = document.getElementById('wb-indicator');
+  var out = document.getElementById('wb-output');
+  var hint = document.getElementById('wb-hint');
+  function fmt(n){
+    if(n === null || n === undefined) return 'sin dato';
+    if(n > 1e9) return (n/1e9).toFixed(2) + ' mil millones';
+    if(n > 1e6) return (n/1e6).toFixed(2) + ' millones';
+    return Number(n).toFixed(1);
+  }
+  async function run(){
+    out.innerHTML = '';
+    hint.textContent = 'Consultando api.worldbank.org...';
+    btn.disabled = true;
+    try {
+      var url = 'https://api.worldbank.org/v2/country/'+country.value+'/indicator/'+indicator.value+'?format=json&per_page=5';
+      var res = await fetch(url);
+      var data = await res.json();
+      var rows = (data[1] || []).filter(function(r){ return r.value !== null; });
+      if(!rows.length){
+        out.innerHTML = '<div class="p-space-sm bg-surface-container-lowest border-l-2" style="border-color:#ba1a1a">Sin datos disponibles para esta combinación.</div>';
+        hint.textContent = 'Prueba con otro país o indicador.';
+        btn.disabled = false;
+        return;
+      }
+      var latest = rows[0];
+      var label = indicator.options[indicator.selectedIndex].text;
+      var d1 = document.createElement('div');
+      d1.className = 'p-space-sm bg-surface-container-lowest border-l-2';
+      d1.style.borderColor = '#072417';
+      d1.innerHTML = '<span class="text-caption font-caption uppercase tracking-wider" style="color:#072417">Fuente: Banco Mundial (api.worldbank.org)</span><div class="text-on-surface mt-1">'+latest.country.value+' — '+label+' ('+latest.date+'): <strong>'+fmt(latest.value)+'</strong></div>';
+      out.appendChild(d1);
+      hint.textContent = 'Última actualización de esta serie según el propio Banco Mundial: '+data[0].lastupdated+'. Dato obtenido en este instante, no memorizado.';
+    } catch(e){
+      out.innerHTML = '<div class="p-space-sm bg-surface-container-lowest border-l-2" style="border-color:#ba1a1a">No se ha podido contactar con la API en este momento.</div>';
+      hint.textContent = 'Fallo de red temporal.';
+    }
+    btn.disabled = false;
+  }
+  btn.addEventListener('click', run);
+})();
+</script>
+</section>
+<figure class="my-space-lg">
+<img class="w-full border border-outline-variant" src="../img/guias/datos-gob-es-portal.jpg" alt="Portal oficial datos.gob.es del Gobierno de España, iniciativa de datos abiertos de la administración pública." loading="lazy" width="1280" height="588"/>
+<figcaption class="font-caption text-caption text-on-surface-variant mt-space-xs"><a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="https://datos.gob.es" target="_blank" rel="noopener">datos.gob.es</a>: el portal de datos abiertos del Gobierno de España, un ejemplo de fuente oficial reutilizable.</figcaption>
+</figure>
+<section id="sec-1" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Qué organismos publican datos abiertos reutilizables</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          El Banco Mundial de la demo es solo uno de una familia amplia de fuentes con API pública y gratuita. A nivel internacional, Naciones Unidas y la OCDE publican indicadores comparables entre países; a nivel regional, Eurostat cubre toda la Unión Europea con series históricas largas; a nivel nacional, muchos países tienen su propio instituto de estadística con datos abiertos — el INE en España, el INEGI en México, el INDEC en Argentina, el DANE en Colombia — aunque el formato y la facilidad de acceso vía API varía bastante de uno a otro.
+        </p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<div class="flex items-center gap-space-xs mb-space-xs text-primary">
+<span class="material-symbols-outlined text-[20px]">public</span>
+<span class="font-label-md text-label-md font-bold uppercase">Internacional</span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant leading-relaxed">Banco Mundial, ONU Data, OCDE — comparables entre países, ideales para contexto global.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<div class="flex items-center gap-space-xs mb-space-xs text-primary">
+<span class="material-symbols-outlined text-[20px]">flag</span>
+<span class="font-label-md text-label-md font-bold uppercase">Nacional</span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant leading-relaxed">INE, INEGI, INDEC, DANE — más detalle local, formato y facilidad de acceso variables.</p>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          El criterio para preferir una fuente internacional sobre una nacional (o al revés) depende de lo que necesites: si comparas varios países entre sí, una fuente internacional con metodología unificada como el Banco Mundial evita el problema de comparar cifras calculadas con criterios distintos en cada país. Si necesitas el máximo nivel de detalle sobre un solo país (por provincia, por sector económico concreto), la fuente nacional suele ofrecer una granularidad que la internacional no tiene.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Vale la pena mencionar también Eurostat aparte, porque su API es de las más completas de esta categoría: cubre a los 27 países de la Unión Europea con series homogéneas sobre economía, demografía, medio ambiente y mercado laboral, actualizadas con una cadencia predecible y documentadas con el mismo nivel de detalle metodológico que el Banco Mundial. Para cualquier proyecto centrado en Europa, suele ser el primer sitio donde mirar antes de buscar una fuente nacional caso por caso.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Un matiz práctico que ahorra frustración: no todos estos organismos ofrecen una API HTTP moderna con JSON. Algunos siguen publicando en formatos más antiguos (SDMX, CSV masivo para descargar) que exigen un paso extra de conversión antes de poder usarlos como herramienta de un agente en tiempo real. Antes de comprometerte con una fuente nacional concreta, comprueba si de verdad tiene una API consultable en directo o si su "dato abierto" es en realidad un archivo para descargar y procesar aparte — ambos son legítimos, pero solo el primero encaja con el patrón de esta guía sin trabajo adicional de preparación.
+        </p>
+</section>
+<section id="sec-1b" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Por qué la fecha y la metodología importan tanto como el número</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Un ejemplo concreto de por qué esto no es un detalle burocrático: si preguntas por la "tasa de desempleo" de dos países distintos, uno puede calcularla como porcentaje de la población activa que busca trabajo activamente, y otro incluir criterios distintos sobre qué cuenta como "buscar activamente" o qué edad mínima se considera población activa. Las dos cifras son igual de "oficiales", pero compararlas directamente sin ese matiz metodológico lleva a una conclusión errónea sin que nada en el número en sí lo delate.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Por eso la herramienta de la sección 3 de esta guía siempre devuelve la fuente y la fecha junto al valor: no es solo trazabilidad por trazabilidad, es la información mínima que necesita cualquiera que use ese dato para decidir si es comparable con otro que ya tenía, o si hace falta revisar la metodología de origen antes de ponerlos uno al lado del otro en una misma frase o gráfico.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          El Banco Mundial, en concreto, publica junto a cada serie una nota metodológica explicando cómo se calcula y qué fuentes nacionales agrega para construirla — un nivel de transparencia sobre el propio dato que rara vez ofrece un modelo de lenguaje cuando cita una cifra de memoria, por la razón simple de que el modelo no "recuerda" una metodología, solo un número suelto sin ese contexto.
+        </p>
+</section>
+<section id="sec-2" class="space-y-space-md">
+<figure data-inline-photo class="space-y-space-xs my-space-xl"><img class="w-full border border-outline-variant" src="../img/guias/foto-ia-datos-abiertos-gobierno.jpg" alt="Portal de datos abiertos del Banco Mundial" width="1280" height="720" loading="lazy" decoding="async"/><figcaption class="font-caption text-caption text-on-surface-variant">Captura de pantalla: <a class="underline" href="https://datos.bancomundial.org/" rel="nofollow noopener" target="_blank">datos.bancomundial.org</a>.</figcaption></figure>
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Un caso real: verificación de datos en periodismo</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Un equipo de periodismo de datos recibe a diario afirmaciones de fuentes políticas o corporativas con cifras concretas ("el desempleo bajó un 2%", "la inversión extranjera se duplicó"). Verificar cada afirmación a mano contra la fuente oficial consume tiempo que casi nunca sobra en una redacción con plazos de cierre ajustados.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Un asistente con acceso a estas APIs de datos abiertos puede hacer una primera pasada automática: recibe la afirmación, identifica qué indicador y qué periodo describe, consulta la fuente oficial correspondiente, y devuelve tanto el dato real como la diferencia con lo afirmado — sin decidir por sí mismo si la afirmación es "verdad" o "mentira" (eso sigue siendo criterio editorial humano), pero ahorrando el trabajo mecánico de buscar la cifra exacta en la fuente correcta.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          El resultado no reemplaza al periodista de datos, lo libera de la parte más mecánica del trabajo para dedicar el tiempo humano a lo que sí requiere criterio: decidir qué comparación es relevante, qué contexto falta, y cómo contar la historia detrás del número.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Un segundo caso, esta vez de sociedad civil: organizaciones de transparencia presupuestaria en varios países de habla hispana llevan años publicando análisis de gasto público comparando lo presupuestado con lo ejecutado. Un agente que combina un indicador oficial de gasto público (cuando el organismo lo ofrece por API, no todos lo hacen) con las cifras que la propia organización recopila manualmente de fuentes menos accesibles, puede señalar automáticamente las mayores desviaciones cada trimestre, dejando el análisis cualitativo de por qué ocurrió esa desviación al equipo humano.
+        </p>
+</section>
+<section id="sec-3" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">El código: una herramienta de "verificar cifra oficial"</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Siguiendo el mismo patrón de nuestra guía de agentes con datos reales, así se define esta herramienta para que un modelo de Claude pueda usarla:
+        </p>
+<div class="bg-[#0b0d12] text-surface p-space-md my-space-md overflow-x-auto">
+<pre class="font-mono text-body-sm leading-relaxed">herramientas = [{
+    "name": "consultar_indicador_oficial",
+    "description": "Consulta un indicador económico o social oficial del Banco Mundial para un país",
+    "input_schema": {
+        "type": "object",
+        "properties": {
+            "codigo_pais": {"type": "string", "description": "Código ISO2, ej. ES, MX, AR"},
+            "codigo_indicador": {"type": "string", "description": "Ej. NY.GDP.MKTP.CD para PIB"}
+        },
+        "required": ["codigo_pais", "codigo_indicador"]
+    }
+}]
+
+def consultar_indicador_oficial(codigo_pais, codigo_indicador):
+    url = f"https://api.worldbank.org/v2/country/{codigo_pais}/indicator/{codigo_indicador}"
+    datos = requests.get(url, params={"format": "json", "per_page": 5}).json()
+    reciente = next(r for r in datos[1] if r["value"] is not None)
+    return {
+        "pais": reciente["country"]["value"],
+        "año": reciente["date"],
+        "valor": reciente["value"],
+        "fuente": "Banco Mundial",
+        "actualizado": datos[0]["lastupdated"]
+    }</pre>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Fíjate en un detalle importante del diseño: la función devuelve siempre la fuente y la fecha de actualización junto al valor, no solo el número pelado. Eso obliga a que la respuesta final del modelo pueda —y deba— citar de dónde sale el dato, en vez de presentarlo como un hecho genérico sin origen verificable.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Cuando este tipo de herramienta se vuelve algo que reutilizas en varios proyectos —un chatbot de atención ciudadana, un panel interno, un asistente de investigación—, tiene sentido empaquetarla como un servidor <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="mcp-explicado.html">MCP</a> independiente en vez de copiar y pegar la misma función Python en cada proyecto nuevo. Así cualquier aplicación que hable el protocolo MCP puede conectarse a tu catálogo de indicadores oficiales sin reescribir nada, y si el Banco Mundial cambia algo en su API, lo arreglas en un solo sitio en vez de en media docena de copias dispersas.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Si mantienes varios indicadores como herramientas separadas (PIB, población, esperanza de vida, y los que añadas de otros organismos), dale a cada una un nombre y una descripción lo bastante específicos para que el modelo no confunda dos herramientas parecidas entre sí. Una descripción vaga como "obtiene datos económicos" invita al modelo a usar la herramienta equivocada cuando tienes tres candidatas igual de genéricas; una descripción concreta como "obtiene el PIB en dólares corrientes de un país desde el Banco Mundial" deja mucho menos margen de confusión, sobre todo a medida que el catálogo de herramientas de tu agente crece.
+        </p>
+</section>
+<section id="sec-4" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Límites que conviene conocer</h2>
+<div class="space-y-space-sm">
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h3 class="font-headline-sm text-headline-sm text-primary mb-1">Los datos oficiales también se revisan</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Una cifra preliminar publicada este trimestre puede corregirse meses después cuando el organismo tiene información más completa. "Oficial" no significa "definitivo e inmutable para siempre".</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h3 class="font-headline-sm text-headline-sm text-primary mb-1">La metodología varía entre países</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Dos países pueden calcular "desempleo" o "inflación" con definiciones ligeramente distintas. Comparar cifras nacionales directamente sin verificar que usan la misma metodología es un error común incluso entre analistas experimentados.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h3 class="font-headline-sm text-headline-sm text-primary mb-1">El retraso de publicación no es instantáneo</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Muchos indicadores económicos se publican con meses o incluso un año de retraso respecto al periodo que describen. "El dato más reciente disponible" no siempre significa "el dato de este mismo mes".</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h3 class="font-headline-sm text-headline-sm text-primary mb-1">No todos los países publican con el mismo nivel de detalle</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Algunos organismos nacionales tienen APIs maduras y bien documentadas; otros solo publican PDF o tablas sin estructurar. Un agente construido asumiendo la misma facilidad de acceso en todos los países fallará silenciosamente en los que no cumplen ese estándar — conviene probar explícitamente con los países que de verdad vas a cubrir, no solo con el más cómodo.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h3 class="font-headline-sm text-headline-sm text-primary mb-1">Presentar una correlación como si fuera una causa</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Tener acceso fácil a muchos indicadores a la vez tienta a cruzar dos series y sugerir que una explica la otra. Un agente responsable en este terreno describe lo que los datos muestran (una correlación, una tendencia paralela) sin afirmar una relación causal que los datos por sí solos no pueden demostrar — esa interpretación sigue siendo trabajo humano.</p>
+</div>
+</div>
+</section>
+<section id="sec-5" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Cómo probarlo tú mismo en diez minutos</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Antes de escribir ninguna herramienta ni conectar ningún modelo, vale la pena familiarizarte con la API a mano, directamente desde el navegador o la terminal, para entender qué forma tiene la respuesta real:
+        </p>
+<ol class="space-y-space-sm font-body-md text-body-md text-on-surface-variant list-decimal pl-space-lg">
+<li><strong class="text-on-surface">Abre en el navegador</strong> una URL como <code class="font-mono text-body-sm bg-surface-container-low px-1">api.worldbank.org/v2/country/ES/indicator/SP.POP.TOTL?format=json</code> y mira la estructura del JSON que devuelve: un array de metadatos y otro de resultados por año.</li>
+<li><strong class="text-on-surface">Identifica el campo de fecha</strong> y comprueba cuántos años de retraso tiene el dato más reciente disponible respecto al año actual — varía según el indicador.</li>
+<li><strong class="text-on-surface">Prueba con un código de país que no exista</strong> (por ejemplo "ZZ") y observa qué devuelve la API en ese caso de error, para saber qué debe manejar tu código cuando construyas la herramienta de verdad.</li>
+<li><strong class="text-on-surface">Repite el mismo indicador con dos países distintos</strong> y confirma que las unidades y el periodo son directamente comparables antes de asumirlo en tu código.</li>
+</ol>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Este ejercicio de diez minutos, hecho antes de escribir la función Python de la sección 3, evita sorpresas del tipo "el campo que esperaba se llama distinto" o "esta combinación de país e indicador no tiene dato" una vez que ya has conectado la herramienta a un modelo y estás depurando dos capas de complejidad a la vez en vez de una.
+        </p>
+</section>
+</article>
+<aside class="lg:col-span-4 space-y-space-xl">
+<div class="bg-surface-container-lowest p-space-md border border-outline-variant text-center">
+<div class="w-16 h-16 mx-auto mb-space-sm flex items-center justify-center rounded-full border border-secondary text-secondary">
+<span class="material-symbols-outlined text-[32px]">account_balance</span>
+</div>
+<span class="font-kicker text-kicker uppercase tracking-widest text-primary block mb-space-xxs">FICHA TÉCNICA</span>
+<dl class="space-y-space-xs font-body-sm text-body-sm text-left pt-space-sm border-t border-outline-variant">
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Fuente de ejemplo:</dt><dd class="font-semibold text-primary">Banco Mundial</dd></div>
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Clave necesaria:</dt><dd class="font-semibold text-primary">No</dd></div>
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Nivel técnico:</dt><dd class="font-semibold text-secondary">Intermedio</dd></div>
+</dl>
+</div>
+<div class="bg-surface-container-low p-space-lg sticky top-space-md">
+<div class="flex items-center gap-2 font-kicker text-kicker uppercase tracking-widest text-on-surface-variant mb-space-md">
+<span class="material-symbols-outlined text-[16px]">format_list_bulleted</span>
+ÍNDICE DE LA GUÍA
+</div>
+<nav class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant">
+<a class="block hover:text-primary transition-colors" href="#demo">Consulta un dato oficial</a>
+<a class="block hover:text-primary transition-colors" href="#sec-1">Qué organismos publican datos</a>
+<a class="block hover:text-primary transition-colors" href="#sec-1b">Por qué importa la metodología</a>
+<a class="block hover:text-primary transition-colors" href="#sec-2">Caso real: periodismo de datos</a>
+<a class="block hover:text-primary transition-colors" href="#sec-3">El código: verificar una cifra</a>
+<a class="block hover:text-primary transition-colors" href="#sec-4">Límites que conviene conocer</a>
+<a class="block hover:text-primary transition-colors" href="#sec-5">Pruébalo tú en 10 minutos</a>
+</nav>
+</div>
+
+</aside>
+</div>
+<section class="space-y-space-md">
+<h2 id="gods-eye-view" class="font-headline-lg text-headline-lg text-primary">
+          God's Eye View: un «satélite espía» hecho solo con datos públicos
+        </h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">God's Eye View es un proyecto de código abierto que lleva la idea de esta guía al extremo: junta en un globo terráqueo en 3D muchas fuentes de datos públicos: aviones y barcos en directo (por las señales que emiten), satélites, terremotos, incendios, el tiempo y cámaras públicas. Puedes seguir un avión y meterte en su cabina, ponerle filtros de visión térmica o nocturna y preguntarle cosas con la voz.</p>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Es un buen ejemplo de lo que decíamos arriba: nada de esto es secreto; cada fuente es pública por separado. Lo que impresiona es verlas todas juntas.</p>
+<p class="font-body-sm text-body-sm mt-space-sm"><strong class="text-on-surface">Dónde conseguirlo:</strong> <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" href="https://github.com/bilawalsidhu/gods-eye-view" target="_blank" rel="noopener">bilawalsidhu/gods-eye-view · repositorio oficial ↗</a></p>
+<p class="font-body-sm text-body-sm text-on-surface mt-space-xs"><strong>Sin terminal:</strong> instala <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" href="https://desktop.pinokio.co/" target="_blank" rel="noopener">Pinokio</a> (8.2 o superior), busca God's Eye View y pulsa «Install» y luego «Start».</p>
+<p class="font-body-sm text-body-sm text-on-surface mt-space-xs"><strong>Desde la terminal (Node.js 24 o 26):</strong></p><code class="block font-mono text-body-sm bg-primary text-on-primary px-space-sm py-space-xs mt-space-xxs overflow-x-auto">git clone https://github.com/bilawalsidhu/gods-eye-view.git<br>cd gods-eye-view<br>npm ci &amp;&amp; npm run dev</code>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Es gratis (licencia MIT) y arranca sin cuentas ni claves: abre http://localhost:4173 en el navegador. Para el relieve fotorrealista en 3D hace falta una clave de Cesium (gratis para uso personal) o de Google Maps (de pago por uso). Algunos datos se actualizan cada cierto tiempo y no al segundo, y el tráfico de las carreteras es simulado, así que no lo uses para nada en lo que necesites precisión.</p>
+</section>
+<section class="mb-space-2xl">
+<h2 class="font-headline-md text-headline-md text-primary mb-space-md">Preguntas frecuentes</h2>
+<div class="space-y-space-md">
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Qué es exactamente un dato abierto de gobierno?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Es información recopilada o producida por un organismo público (un ministerio, un banco central, una organización intergubernamental como el Banco Mundial o la ONU) y publicada en un formato reutilizable, normalmente con una API o descarga estructurada, en vez de solo en un PDF o una tabla en una página web.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Por qué es mejor esto que preguntarle directamente al modelo?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Porque el modelo puede citar de memoria una cifra desactualizada o directamente inventada con total seguridad, mientras que una consulta a la fuente oficial en el momento de preguntar te da el dato con su fecha exacta y la posibilidad de verificarlo tú mismo en el organismo que lo publicó.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Los datos abiertos de gobierno tienen algún coste?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+La inmensa mayoría son gratuitos y sin clave de acceso, precisamente porque su razón de ser es la transparencia pública. Organismos como el Banco Mundial, Eurostat o el INE en España publican sus datos abiertos sin coste ni registro para uso general.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Puedo confiar ciegamente en un dato solo porque venga de una fuente oficial?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Con más confianza que en la memoria de un modelo, pero no de forma absoluta: los organismos también revisan y corrigen cifras retroactivamente, y hay diferencias de metodología entre países que pueden hacer que la misma métrica no sea directamente comparable. Revisa siempre la fecha de la última actualización y la metodología cuando el dato sea importante para una decisión.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Esto sirve para periodismo de datos o solo para desarrolladores?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Sirve especialmente bien para periodismo de datos y para cualquier trabajo de investigación: un agente que cita la fuente exacta y la fecha de cada cifra, en vez de una afirmación genérica sin respaldo, encaja directamente en un flujo editorial donde la verificabilidad importa tanto como el dato en sí.
+</div>
+</div>
+</div>
+</section>
+<div class="bg-surface-container-low p-space-lg mb-space-2xl flex flex-col sm:flex-row items-start sm:items-center gap-space-md shadow-sm">
+<div class="w-16 h-16 bg-primary text-on-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[32px]">shield_person</span>
+</div>
+<div class="space-y-1">
+<div class="font-headline-sm text-headline-sm text-primary">Redacción El Telar</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            El Banco Mundial no ha pagado por aparecer en esta guía. Lo elegimos por ser gratuito, oficial y no exigir clave de acceso.
+          </p>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-space-2xl">
+          Si esta guía te ha servido para probar la demo con tu propio país, el siguiente paso natural es adaptar el código de la sección 3 a la fuente nacional que más te interese, en vez de quedarte solo con el Banco Mundial. El patrón —consultar en directo, devolver fuente y fecha junto al valor, dejar que el modelo cite ambas cosas en su respuesta— se sostiene igual sea cual sea el organismo concreto que consultes.
+        </p>
+<section class="mt-space-4xl pt-space-xl border-t-2 border-primary space-y-space-lg">
+<h3 class="font-headline-md text-headline-md text-primary tracking-tight">Continúa explorando el archivo</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-col-gap"><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="agente-api-datos-reales.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-agente-api-datos-reales.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="agente-api-datos-reales.html">Cómo darle a un agente de IA acceso a datos reales y gratis</a></h4></div></article><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="alucinaciones-ia.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-alucinaciones-ia.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="alucinaciones-ia.html">Alucinaciones de la IA: cómo detectar cuando se inventa algo</a></h4></div></article><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="apis-gratuitas-agentes-ia.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-apis-gratuitas-agentes-ia.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="apis-gratuitas-agentes-ia.html">APIs gratuitas para darle superpoderes a tu agente de IA</a></h4></div></article></div>
+</section>
+</div></main>
+<footer class="w-full bg-surface-container-low border-t border-outline-variant mt-space-4xl"><div class="max-w-site-max-width mx-auto px-space-md py-space-3xl"><div class="grid grid-cols-1 md:grid-cols-3 gap-col-gap"><div class="space-y-space-sm"><span class="font-headline-md text-headline-md text-primary">El Telar</span><p class="font-body-sm text-body-sm text-on-surface-variant">Publicación independiente de tecnología y automatización con agentes. Contenidos verificados en producción, sin patrocinios opacos ni promesas vacías.</p></div><div><h3 class="font-kicker text-kicker uppercase tracking-wider text-on-surface mb-space-md">SECCIONES</h3><ul class="space-y-space-xs font-body-sm text-body-sm"><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html#guias">Archivo de Guías</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../empieza-aqui.html">Guía para Principiantes</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../sobre-nosotros.html">Manifiesto Editorial</a></li><li class="pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html#despacho">Boletín Semanal</a></li></ul></div><div><h3 class="font-kicker text-kicker uppercase tracking-wider text-on-surface mb-space-md">CONTACTO &amp; PRENSA</h3><div class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant"><p class="font-semibold text-on-surface">contacto@eltelar.es</p><p>Síguenos: <a class="hover:text-primary underline" href="https://www.instagram.com/eltelar_es/" rel="me noopener" target="_blank">Instagram</a> · <a class="hover:text-primary underline" href="https://www.threads.com/@eltelar_es" rel="me noopener" target="_blank">Threads</a> · <a class="hover:text-primary underline" href="https://x.com/eltelar_es" rel="me noopener" target="_blank">X</a></p></div></div></div></div><div class="border-t border-outline-variant py-space-md bg-surface-container-lowest"><div class="max-w-site-max-width mx-auto px-space-md flex flex-col md:flex-row items-center justify-between gap-space-sm text-caption font-caption text-on-surface-variant"><div>© 2026 El Telar. Todos los derechos reservados. Independencia editorial garantizada.</div><div class="flex items-center gap-space-md"><a class="hover:text-on-surface transition-colors" href="../privacidad.html">Privacidad</a><a class="hover:text-on-surface transition-colors" href="../terminos.html">Términos</a><a class="hover:text-on-surface transition-colors" href="../sobre-nosotros.html">Sobre nosotros</a><a class="hover:text-on-surface transition-colors" href="../contacto.html">Contacto</a></div></div></div></footer><script defer src="../js/copy-guide.js"></script><script defer src="../js/guide-interactions.js"></script><script defer src="../js/reading-progress.js"></script><script defer src="../js/search.js?v=7"></script><script defer src="../js/entrance.js"></script><script defer src="../js/cookie-consent.js?v=4"></script></body></html>

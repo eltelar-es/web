@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Grounding: evita que tu IA invente datos | El Telar</title>
+<meta name="description" content="La solución a las alucinaciones no es un modelo mejor, es darle fuentes verificables. Cómo funciona el grounding, con una demo comparativa en vivo.">
+<link rel="canonical" href="https://eltelar.es/articulos/grounding-evitar-alucinaciones.html"><link rel="icon" type="image/svg+xml" href="../img/favicon.svg?v=4"><link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32.png?v=4"><link rel="apple-touch-icon" href="../img/apple-touch-icon.png?v=4"><meta name="theme-color" content="#072417"><link rel="manifest" href="../manifest.json"><link rel="alternate" type="application/rss+xml" title="El Telar" href="../feed.xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Grounding: cómo evitar que tu IA invente datos conectándola a la realidad | El Telar">
+<meta property="og:description" content="La solución práctica a las alucinaciones no es un modelo mejor, es darle acceso a fuentes verificables. Cómo funciona el grounding, con una demo que compara ambos enfoques en vivo.">
+<meta property="og:url" content="https://eltelar.es/articulos/grounding-evitar-alucinaciones.html">
+<meta property="og:site_name" content="El Telar">
+<meta property="og:locale" content="es_ES"><meta property="og:image" content="https://eltelar.es/img/og/guia-grounding-evitar-alucinaciones.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Grounding: cómo evitar que tu IA invente datos conectándola a la realidad | El Telar">
+<meta name="twitter:description" content="La solución práctica a las alucinaciones no es un modelo mejor, es darle acceso a fuentes verificables. Cómo funciona el grounding, con una demo que compara ambos enfoques en vivo."><meta name="twitter:image" content="https://eltelar.es/img/og/guia-grounding-evitar-alucinaciones.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Grounding: cómo evitar que tu IA invente datos conectándola a la realidad",
+  "description": "La solución práctica a las alucinaciones no es un modelo mejor, es darle acceso a fuentes verificables. Cómo funciona el grounding, con una demo que compara ambos enfoques en vivo.",
+  "image": "https://eltelar.es/img/og-image.jpg",
+  "author": { "@type": "Organization", "name": "El Telar", "url": "https://eltelar.es/sobre-nosotros.html" },
+  "publisher": { "@type": "Organization", "name": "El Telar" },
+  "datePublished": "2026-09-07",
+  "dateModified": "2026-10-05",
+  "mainEntityOfPage": "https://eltelar.es/articulos/grounding-evitar-alucinaciones.html",
+  "inLanguage": "es"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Grounding y RAG son lo mismo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "RAG es una técnica concreta de grounding, la más habitual para documentos: trocear texto, buscar los fragmentos relevantes y dárselos al modelo. Grounding es el concepto más amplio que incluye RAG, pero también tool use contra una API en vivo, una búsqueda web integrada o una consulta SQL directa. Todo grounding ancla la respuesta en algo externo; no todo grounding usa la arquitectura específica de RAG."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿El grounding elimina las alucinaciones al cien por cien?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No, las reduce drásticamente pero no las elimina. El modelo puede seguir interpretando mal un dato correcto que sí recuperó, o mezclar información de dos fuentes distintas de forma incorrecta. El grounding cambia el problema de raíz de \"inventar de la nada\" a \"malinterpretar algo real\", que es un fallo mucho más fácil de detectar y corregir."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cómo sé si una respuesta de mi agente está bien fundamentada (grounded) o no?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "La señal más clara es si la respuesta cita explícitamente de dónde sale cada afirmación concreta (una fuente, un fragmento de documento, un resultado de API), en vez de dar una cifra o un hecho sin ningún respaldo verificable en el propio texto de la respuesta."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Necesito una base de datos vectorial para hacer grounding?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Solo si tu grounding es sobre documentos propios extensos (la variante RAG). Si tu fuente de verdad es una API en vivo, como en la demo de esta guía, no necesitas ninguna base de datos vectorial — el mecanismo es tool use puro, más simple de montar que un pipeline RAG completo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Esto sustituye a revisar las respuestas del modelo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. El grounding reduce el riesgo de forma importante, pero para decisiones de peso sigue mereciendo la pena una revisión humana, sobre todo verificando que el modelo interpretó correctamente la fuente que consultó y no solo que consultó una fuente real."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://eltelar.es/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Guías",
+      "item": "https://eltelar.es/index.html#guias"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Grounding: cómo evitar que tu IA invente datos conectándola a la realidad",
+      "item": "https://eltelar.es/articulos/grounding-evitar-alucinaciones.html"
+    }
+  ]
+}
+</script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet"/></noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet"/></noscript>
+<style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><link rel="stylesheet" href="../css/tailwind.css"><link rel="stylesheet" href="../css/entrance.css?v=2"><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}(function(){var c=null;try{c=localStorage.getItem('eltelar-cookie-consent')}catch(e){}var g=c==='accepted'?'granted':'denied';gtag('consent','default',{ad_storage:g,ad_user_data:g,ad_personalization:g,analytics_storage:g,wait_for_update:500});window.adsbygoogle=window.adsbygoogle||[];if(g!=='granted'){window.adsbygoogle.requestNonPersonalizedAds=1;}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-4DPTKEG79N"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4DPTKEG79N');</script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8239907995939753" crossorigin="anonymous"></script></head><body class="bg-background font-body-md text-on-surface antialiased">
+<header class="w-full bg-surface-container-lowest border-b border-outline-variant"><div class="border-b border-outline-variant py-space-xxs px-space-md hidden md:block"><div class="max-w-site-max-width mx-auto flex items-center justify-between font-kicker text-kicker text-on-surface-variant uppercase tracking-wider"><span>EDICIÓN DIGITAL // ACTUALIZADO 2026 // EL TELAR &amp; AGENTES</span><span>MADRID · REMOTO</span><span>SIN HUMO · 100% PRODUCCIÓN</span></div></div><div class="max-w-site-max-width mx-auto px-space-md py-space-md sm:py-space-xl text-center"><p class="hidden sm:block font-kicker text-kicker uppercase tracking-widest text-on-surface-variant mb-space-xs">Publicación Independiente de Tecnología &amp; Agentes</p><a class="inline-block" href="../index.html"><div class="font-display text-display max-sm:text-[40px] max-sm:leading-none text-primary tracking-tight">El Telar</div></a><p class="hidden sm:block font-caption text-caption uppercase tracking-widest text-on-surface-variant mt-space-xs">EL BOLETÍN Y ARCHIVO PRÁCTICO DE INTELIGENCIA ARTIFICIAL Y AGENTES AUTÓNOMOS</p></div><div class="border-t border-b border-outline-variant"><div class="max-w-site-max-width mx-auto px-space-md flex items-center justify-between gap-space-sm h-14"><nav class="flex items-center gap-space-md sm:gap-space-lg h-full min-w-0 overflow-x-auto [scrollbar-width:none] whitespace-nowrap"><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../index.html#guias">GUÍAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../empieza-aqui.html">EMPIEZA AQUÍ</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../sobre-nosotros.html">SOBRE NOSOTROS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../noticias/index.html">NOTICIAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../herramientas/index.html">HERRAMIENTAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../prompts/index.html">PROMPTS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../contacto.html">CONTACTO</a></nav><div class="flex items-center gap-space-md"><button id="search-trigger" type="button" aria-label="Buscar en las guías" class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[20px]">search</span></button><a class="hidden sm:inline-block bg-primary-container text-surface px-space-md py-space-xs font-label-md text-label-md uppercase tracking-wider hover:bg-primary transition-colors" href="../index.html#despacho">SUSCRÍBETE GRATIS</a></div></div></div><div class="hidden md:block bg-surface-container-low border-b border-outline-variant py-space-xs px-space-md"><div class="max-w-site-max-width mx-auto text-center"><p class="font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">47 GUÍAS COMPLETAS EN EXPANSIÓN · ACTUALIZADO A MODELOS 2026 · PROBADO EN TERMINAL Y FLUJOS REALES · CERO HUMO NI TEORÍA VACÍA</p></div></div></header>
+<main class="w-full max-w-site-max-width mx-auto px-space-md py-space-xl"><div class="flex flex-col w-full">
+<nav class="w-full mb-space-lg">
+<ol class="flex flex-wrap items-center gap-space-xs font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">
+<li><a class="hover:text-primary transition-colors" href="../index.html">Inicio</a></li>
+<li class="text-on-surface-variant">/</li>
+<li><a class="hover:text-primary transition-colors" href="../index.html#guias">Guías</a></li>
+<li class="text-on-surface-variant">/</li>
+<li class="text-primary font-bold">Grounding contra alucinaciones</li>
+</ol>
+</nav>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-col-gap">
+<article class="lg:col-span-8 flex flex-col space-y-space-xl">
+<figure data-hero class="space-y-space-xs"><img class="w-full border border-outline-variant" src="../img/guias/hero-grounding-evitar-alucinaciones.jpg" alt="Documentación de Google sobre el grounding de Gemini con la Búsqueda de Google" width="1280" height="720" fetchpriority="high" decoding="async"/><figcaption class="font-caption text-caption text-on-surface-variant">Captura de pantalla: <a class="underline" href="https://ai.google.dev/gemini-api/docs/google-search" rel="nofollow noopener" target="_blank">ai.google.dev/gemini-api/docs/google-search</a>.</figcaption></figure>
+<header class="space-y-space-md border-b border-outline-variant pb-space-xl">
+<span class="bg-surface-container-high text-secondary border border-outline-variant px-space-xs py-space-xxs font-kicker text-kicker uppercase tracking-widest inline-block">TUTORIAL // FIABILIDAD</span>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight leading-tight">Grounding: cómo evitar que tu IA invente datos conectándola a la realidad</h1>
+<p class="font-lead-paragraph text-lead-paragraph text-on-surface-variant leading-relaxed">Nuestra guía de alucinaciones te enseñó a detectarlas. Esta te enseña a evitarlas desde el diseño: la técnica se llama grounding, y no es un modelo más listo, es darle al modelo algo real donde apoyarse antes de responder.</p>
+<div class="pt-space-sm border-t border-outline-variant flex flex-wrap items-center justify-between gap-space-sm font-label-md text-label-md text-on-surface-variant">
+<span class="font-semibold text-on-surface">Por la Redacción de El Telar</span>
+<button class="inline-flex items-center gap-1 mt-2 px-3 py-1.5 bg-surface-container text-primary font-label-md text-[12px] font-semibold uppercase tracking-wider hover:bg-surface-container-high transition-colors" id="copy-guide-btn" type="button"><span class="material-symbols-outlined text-[16px]">content_copy</span> Copiar guía para tu IA</button><span class="inline-flex items-center gap-1 ml-1"><button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" id="save-guide-btn" title="Guardar guía" type="button"><span class="material-symbols-outlined text-[16px]">bookmark_border</span></button><button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" id="copy-link-btn" title="Copiar enlace permanente" type="button"><span class="material-symbols-outlined text-[16px]">share</span></button></span>
+<span class="flex items-center gap-1 text-caption font-caption">
+<span class="material-symbols-outlined text-[15px] text-on-surface-variant">schedule</span>
+              12 min de lectura
+            </span>
+</div>
+</header>
+<section class="prose max-w-editorial-max-width space-y-space-md">
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed">
+<span class="float-left text-primary font-display text-[68px] leading-[0.8] pr-3 pt-1 font-normal select-none">N</span>uestra guía sobre <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="alucinaciones-ia.html">alucinaciones de la IA</a> se centra en cómo detectar cuando un modelo se inventa algo con total seguridad. Esta guía va un paso antes: cómo diseñar tu agente para que la alucinación sea mucho menos probable desde el principio, en vez de solo aprender a pillarla después de que ya haya pasado.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          La técnica se llama <em>grounding</em> ("anclaje" o "fundamentación") y la idea de fondo es simple: en vez de dejar que el modelo responda solo con lo que recuerda de su entrenamiento, le das acceso a una fuente externa verificable en el momento de responder, y le pides explícitamente que base su respuesta en esa fuente, citándola. Es el mismo principio detrás de RAG, del <em>tool use</em> de nuestra guía de <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="agente-api-datos-reales.html">agentes con datos reales</a>, y de cualquier motor de búsqueda con IA como <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="perplexity-buscar-ia.html">Perplexity</a>.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          El nombre viene de la idea de "anclar" (ground, en inglés) una respuesta a algo sólido y verificable, en vez de dejarla flotando solo sobre los pesos internos del modelo. Es la misma intuición que separa una afirmación con fuente citada de un rumor sin origen — el contenido puede sonar idéntico, pero solo uno de los dos se puede verificar de forma independiente sin tener que confiar ciegamente en quien lo dice.
+        </p>
+</section>
+<section id="demo" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Compara los dos enfoques, en vivo</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Esta demo no llama a ningún modelo de IA — compara, con datos reales obtenidos en directo, cómo se ve una respuesta "de memoria" (sin verificar) frente a una respuesta "con grounding" (anclada a una fuente consultada ahora mismo), usando el mismo dato de tipo de cambio de divisas.
+        </p>
+<div class="bg-surface-container-high p-space-lg border border-outline-variant">
+<div class="flex flex-col sm:flex-row gap-space-sm mb-space-md">
+<select id="fx-pair" class="flex-1 px-space-md py-space-sm border border-outline-variant bg-surface-container-lowest font-body-md text-body-md text-on-surface">
+<option value="USD">Dólar estadounidense (USD)</option>
+<option value="GBP">Libra esterlina (GBP)</option>
+<option value="MXN">Peso mexicano (MXN)</option>
+<option value="JPY">Yen japonés (JPY)</option>
+</select>
+<button id="fx-btn" type="button" class="px-space-lg py-space-sm bg-primary text-on-primary font-label-md text-label-md uppercase tracking-wider hover:bg-primary-container transition-colors">Comparar</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<div class="p-space-md bg-surface-container-lowest border-l-4" style="border-color:#ba1a1a">
+<span class="font-kicker text-kicker uppercase tracking-widest" style="color:#ba1a1a">SIN GROUNDING (memoria)</span>
+<p id="fx-memoria" class="font-mono text-body-sm text-on-surface-variant mt-2">Pulsa "Comparar" para ver el ejemplo.</p>
+</div>
+<div class="p-space-md bg-surface-container-lowest border-l-4" style="border-color:#072417">
+<span class="font-kicker text-kicker uppercase tracking-widest" style="color:#072417">CON GROUNDING (verificado ahora)</span>
+<p id="fx-grounded" class="font-mono text-body-sm text-on-surface-variant mt-2">Pulsa "Comparar" para ver el dato real.</p>
+</div>
+</div>
+<p id="fx-hint" class="font-caption text-caption text-on-surface-variant mt-space-md">La caja de la izquierda simula lo que pasa cuando un modelo "recuerda" un tipo de cambio de su entrenamiento, que puede tener meses de antigüedad. La de la derecha usa <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="https://frankfurter.dev" target="_blank" rel="noopener">Frankfurter</a>, una API gratuita del Banco Central Europeo, consultada en este instante.</p>
+</div>
+<script>
+(function(){
+  var btn = document.getElementById('fx-btn');
+  var pair = document.getElementById('fx-pair');
+  var memoria = document.getElementById('fx-memoria');
+  var grounded = document.getElementById('fx-grounded');
+  var hint = document.getElementById('fx-hint');
+  var fakeMemoryRates = {USD: 1.08, GBP: 0.85, MXN: 18.7, JPY: 162.3};
+  async function run(){
+    var code = pair.value;
+    memoria.textContent = '1 EUR ≈ '+fakeMemoryRates[code]+' '+code+' (dato de entrenamiento, sin fecha verificable)';
+    grounded.textContent = 'Consultando frankfurter.dev...';
+    btn.disabled = true;
+    try {
+      var res = await fetch('https://api.frankfurter.dev/v1/latest?base=EUR&symbols='+code);
+      var data = await res.json();
+      var rate = data.rates[code];
+      grounded.textContent = '1 EUR = '+rate+' '+code+' — fuente: Banco Central Europeo, fecha: '+data.date;
+      var diff = Math.abs(rate - fakeMemoryRates[code]);
+      var pct = (diff / rate * 100).toFixed(1);
+      hint.innerHTML = 'Diferencia entre el ejemplo "de memoria" y el dato real de hoy: <strong>'+pct+'%</strong>. Así de rápido se desactualiza un dato que cambia constantemente si no se verifica en el momento — '+
+        '<a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="https://frankfurter.dev" target="_blank" rel="noopener">Frankfurter</a> es una API gratuita del Banco Central Europeo, consultada ahora mismo.';
+    } catch(e){
+      grounded.textContent = 'No se ha podido contactar con la API en este momento.';
+    }
+    btn.disabled = false;
+  }
+  btn.addEventListener('click', run);
+})();
+</script>
+</section>
+<figure class="my-space-lg">
+<img class="w-full border border-outline-variant" src="../img/guias/perplexity-grounding-precios.jpg" alt="Captura real de Perplexity respondiendo con datos en vivo y citando explícitamente cinco fuentes distintas (Bit2Me, CoinGecko, Binance, Investing.com, eToro), ejemplo de respuesta con grounding real." loading="lazy" width="1280" height="544"/>
+<figcaption class="font-caption text-caption text-on-surface-variant mt-space-xs">Ejemplo real de <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="https://www.perplexity.ai" target="_blank" rel="noopener">Perplexity</a>: cada afirmación queda anclada a una fuente citada y verificable, la esencia del grounding.</figcaption>
+</figure>
+<section id="sec-1" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Las tres formas de hacer grounding</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<div class="flex items-center gap-space-xs mb-space-xs text-primary">
+<span class="material-symbols-outlined text-[20px]">description</span>
+<span class="font-label-md text-label-md font-bold uppercase">RAG</span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant leading-relaxed">Busca fragmentos relevantes en tus propios documentos y se los pasa al modelo antes de responder. Ideal para bases de conocimiento internas, manuales, políticas de empresa.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<div class="flex items-center gap-space-xs mb-space-xs text-primary">
+<span class="material-symbols-outlined text-[20px]">cloud_sync</span>
+<span class="font-label-md text-label-md font-bold uppercase">Tool use / APIs</span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant leading-relaxed">Consulta una fuente en vivo (precio, clima, estadística oficial) en el momento de responder. Ideal para datos que cambian constantemente.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<div class="flex items-center gap-space-xs mb-space-xs text-primary">
+<span class="material-symbols-outlined text-[20px]">search</span>
+<span class="font-label-md text-label-md font-bold uppercase">Búsqueda web</span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant leading-relaxed">El modelo busca en la web abierta y cita las páginas que encontró, como hace Perplexity. Ideal para preguntas generales sobre actualidad.</p>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Nuestra guía sobre <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="rag-explicado.html">RAG explicado</a> cubre la primera variante en profundidad, y la de <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="agente-api-datos-reales.html">agentes con datos reales</a> cubre la segunda con código funcional. Las tres comparten el mismo principio de fondo pese a la implementación distinta: nunca dejar que el modelo responda solo de memoria cuando existe una fuente verificable más fiable a mano.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          La complejidad de montar cada una es muy distinta, y conviene elegir la más simple que resuelva tu problema, no la más sofisticada. Tool use contra una API, como en la demo de esta guía, se monta en una tarde: una función, un esquema, listo. RAG exige trocear documentos, generar embeddings, montar una búsqueda por similitud y mantener ese índice actualizado cuando los documentos cambian — días de trabajo, no horas. La búsqueda web integrada es la más rápida de activar (a veces un solo parámetro en la llamada a la API del modelo), pero la que menos control te da sobre qué fuentes exactamente consulta.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Un error común es empezar por RAG "porque es lo que todo el mundo usa" cuando el problema real es mucho más simple: si lo que necesitas es un dato concreto que cambia (un precio, una fecha, un estado), tool use resuelve el problema con una fracción del esfuerzo de montar un pipeline RAG completo. Guarda RAG para cuando la fuente de verdad es información no estructurada y extensa —documentos, manuales, políticas— que no encaja en una llamada de API simple.
+        </p>
+</section>
+<section id="sec-1b" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Por qué esto importa más allá de la exactitud técnica</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          La diferencia entre una respuesta con grounding y una sin él no es solo si el número es correcto — es si tú, como persona que recibe esa respuesta, puedes verificarla sin tener que confiar ciegamente en el modelo. Una respuesta que cita "según la API del Banco Mundial, actualizado el 13 de julio" te da algo que puedes comprobar tú mismo en cinco minutos si lo dudas. Una respuesta sin esa cita solo te da la palabra del modelo, que no tiene ninguna obligación de ser correcta ni forma de demostrarlo dentro del propio texto.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Esta distinción importa especialmente en contextos donde la verificabilidad no es opcional: periodismo, investigación académica, análisis financiero, cualquier documento que otra persona va a revisar y cuestionar después. En esos contextos, un agente sin grounding no es solo menos preciso, es estructuralmente inadecuado para la tarea, sin importar cuánto haya mejorado el modelo subyacente en benchmarks generales — el problema no es la inteligencia del modelo, es la ausencia de un ancla verificable en su respuesta.
+        </p>
+</section>
+<section id="sec-2" class="space-y-space-md">
+<figure data-inline-photo class="space-y-space-xs my-space-xl"><img class="w-full border border-outline-variant" src="../img/guias/foto-grounding-evitar-alucinaciones.jpg" alt="Documentación de Anthropic sobre citas: respuestas de Claude con su fuente" width="1280" height="720" loading="lazy" decoding="async"/><figcaption class="font-caption text-caption text-on-surface-variant">Captura de pantalla: <a class="underline" href="https://docs.anthropic.com/en/docs/build-with-claude/citations" rel="nofollow noopener" target="_blank">docs.anthropic.com</a>.</figcaption></figure>
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Cómo instruir al modelo para que cite su fuente</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Darle al modelo acceso a una fuente no basta por sí solo — también hay que instruirle explícitamente para que la use y la cite, en vez de "adornar" la respuesta con conocimiento propio sin marcar la diferencia entre lo uno y lo otro. Una instrucción de sistema típica para esto incluye tres elementos: la obligación de basar la respuesta en la fuente proporcionada, qué hacer si la fuente no cubre la pregunta (decirlo, no rellenar el hueco), y el formato exacto de la cita.
+        </p>
+<div class="bg-[#0b0d12] text-surface p-space-md my-space-md overflow-x-auto">
+<pre class="font-mono text-body-sm leading-relaxed">Responde ÚNICAMENTE con información contenida en el CONTEXTO de abajo.
+Si el contexto no contiene la respuesta, di explícitamente
+"No tengo esa información en las fuentes disponibles" —
+no completes el hueco con conocimiento general.
+Cita la fuente exacta (nombre y fecha) de cada afirmación concreta.
+
+CONTEXTO:
+{resultado_de_la_herramienta}
+
+PREGUNTA: {pregunta_del_usuario}</pre>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          La frase "si el contexto no contiene la respuesta, dilo explícitamente" es, en la práctica, la línea más importante de todo el prompt. Sin ella, un modelo tiende a mezclar el contexto real que le diste con su conocimiento de fondo sin avisar, produciendo una respuesta que suena igual de fundamentada esté o no basada de verdad en la fuente que le pasaste.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Un caso real donde esto se nota especialmente: un chatbot de atención al cliente conectado a la base de conocimiento de una empresa mediante RAG. Sin la instrucción explícita de admitir cuando no sabe algo, un modelo tiende a "ayudar" combinando el fragmento real que recuperó con suposiciones razonables pero no verificadas sobre política de devoluciones o plazos de envío — información que suena a la empresa, pero que nadie de la empresa escribió. Con la instrucción bien puesta, el mismo chatbot responde "no tengo esa política documentada, te paso con una persona" cuando de verdad no hay fragmento relevante, en vez de inventar una respuesta plausible que luego alguien tiene que desmentir al cliente. Ese montaje completo — qué documentos darle, cómo obligarle a abstenerse y cuándo escalar a una persona — lo desarrollamos en la guía sobre <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="bot-atencion-cliente-ia.html">montar un bot de atención al cliente que no invente respuestas</a>.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Esta misma estructura de prompt funciona igual para el caso de tool use: en vez de "CONTEXTO" con un fragmento de documento, el marcador contiene el resultado real de la API consultada, y la instrucción de "no completar el hueco con conocimiento general" sigue aplicando exactamente igual si la herramienta no devolvió un dato para lo que se preguntó.
+        </p>
+</section>
+<section id="sec-3" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Qué el grounding no arregla</h2>
+<div class="space-y-space-sm">
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h3 class="font-headline-sm text-headline-sm text-primary mb-1">Un "grounding" superficial que no cambia nada de verdad</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Pedirle al modelo que "cite fuentes" sin darle realmente acceso a ninguna fuente externa no es grounding, es solo una instrucción de estilo — el modelo puede inventar también la cita, con el mismo aplomo con el que inventaba el dato. El grounding real exige que la fuente exista de verdad y llegue al modelo como parte del contexto de esa llamada concreta, no solo como una petición de formato.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h3 class="font-headline-sm text-headline-sm text-primary mb-1">Una fuente incorrecta sigue siendo incorrecta</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Si el documento o la API que consultas tiene un error, el grounding hace que el modelo repita ese error con la misma confianza, solo que ahora con una cita que parece darle más autoridad de la que merece. Y tampoco lo arregla entrenar el modelo con esos documentos: hay medición de que meter conocimiento nuevo por esa vía aumenta las invenciones, como contamos en <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="fine-tuning-prompting-rag.html">fine-tuning, prompting o RAG</a>.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h3 class="font-headline-sm text-headline-sm text-primary mb-1">Interpretar mal un dato correcto</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Recuperar el fragmento correcto no garantiza que el modelo lo lea bien — puede confundir una cifra con otra similar en el mismo documento, o sacarla de contexto. El grounding reduce la invención, no elimina el error de lectura. Y cuando la fuente es una imagen o un PDF escaneado, ese error de lectura es bastante más probable: lo desglosamos en la guía sobre <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="analizar-imagenes-pdf-ia.html">cómo analizar imágenes y PDFs con IA</a>.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h3 class="font-headline-sm text-headline-sm text-primary mb-1">Una fuente que no cubre bien la pregunta</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Si el sistema de recuperación (RAG) trae fragmentos poco relevantes, o la API consultada no tiene el dato exacto que se pidió, un modelo mal instruido puede "estirar" lo que sí encontró para parecer que responde, en vez de admitir que la fuente no cubre la pregunta.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h3 class="font-headline-sm text-headline-sm text-primary mb-1">Fuentes desactualizadas que parecen recientes</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Un documento indexado hace meses puede seguir apareciendo como la mejor coincidencia en una búsqueda RAG aunque exista una versión más reciente en otro sitio. El grounding cita "una" fuente, no necesariamente "la fuente más actualizada" — mantener el índice al día es trabajo aparte, no algo que el grounding resuelva por sí solo.</p>
+</div>
+</div>
+</section>
+<section id="sec-4" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Cómo probar si tu grounding funciona de verdad</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Antes de confiar en un sistema con grounding, vale la pena someterlo a tres pruebas deliberadas: preguntar algo que la fuente NO cubre (¿admite que no lo sabe, o inventa igualmente?), preguntar algo con una respuesta ambigua o contradictoria entre fuentes (¿señala la ambigüedad, o elige una versión sin avisar?), y preguntar lo mismo dos veces con distinta redacción (¿da la misma respuesta fundamentada, o varía de forma inconsistente?). Un sistema de grounding bien diseñado pasa las tres pruebas con comportamiento predecible; uno mal diseñado suele fallar la primera, que es la más reveladora.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Vale la pena repetir estas tres pruebas periódicamente, no solo una vez al lanzar el sistema. Si cambias de modelo, actualizas el prompt de instrucciones, o el volumen o formato de las fuentes cambia con el tiempo, el comportamiento frente a estos casos límite puede cambiar con ello sin que nada más en el sistema lo anuncie. Un pequeño conjunto de estas preguntas de prueba, guardado y repetido cada vez que cambias algo relevante, es una forma barata de detectar una regresión antes de que la note un usuario real.
+        </p>
+</section>
+</article>
+<aside class="lg:col-span-4 space-y-space-xl">
+<div class="bg-surface-container-lowest p-space-md border border-outline-variant text-center">
+<div class="w-16 h-16 mx-auto mb-space-sm flex items-center justify-center rounded-full border border-secondary text-secondary">
+<span class="material-symbols-outlined text-[32px]">verified</span>
+</div>
+<span class="font-kicker text-kicker uppercase tracking-widest text-primary block mb-space-xxs">FICHA TÉCNICA</span>
+<dl class="space-y-space-xs font-body-sm text-body-sm text-left pt-space-sm border-t border-outline-variant">
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Técnicas cubiertas:</dt><dd class="font-semibold text-primary">RAG, tool use, búsqueda</dd></div>
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">API de demo:</dt><dd class="font-semibold text-primary">Frankfurter (gratis)</dd></div>
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Nivel técnico:</dt><dd class="font-semibold text-secondary">Intermedio</dd></div>
+</dl>
+</div>
+<div class="bg-surface-container-low p-space-lg sticky top-space-md">
+<div class="flex items-center gap-2 font-kicker text-kicker uppercase tracking-widest text-on-surface-variant mb-space-md">
+<span class="material-symbols-outlined text-[16px]">format_list_bulleted</span>
+ÍNDICE DE LA GUÍA
+</div>
+<nav class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant">
+<a class="block hover:text-primary transition-colors" href="#demo">Compara los dos enfoques</a>
+<a class="block hover:text-primary transition-colors" href="#sec-1">Las tres formas de grounding</a>
+<a class="block hover:text-primary transition-colors" href="#sec-1b">Por qué importa</a>
+<a class="block hover:text-primary transition-colors" href="#sec-2">Cómo instruir al modelo</a>
+<a class="block hover:text-primary transition-colors" href="#sec-3">Qué el grounding no arregla</a>
+<a class="block hover:text-primary transition-colors" href="#sec-4">Cómo probar si funciona</a>
+</nav>
+</div>
+
+</aside>
+</div>
+<section class="mb-space-2xl">
+<h2 class="font-headline-md text-headline-md text-primary mb-space-md">Preguntas frecuentes</h2>
+<div class="space-y-space-md">
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Grounding y RAG son lo mismo?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+RAG es una técnica concreta de grounding, la más habitual para documentos: trocear texto, buscar los fragmentos relevantes y dárselos al modelo. Grounding es el concepto más amplio que incluye RAG, pero también tool use contra una API en vivo, una búsqueda web integrada o una consulta SQL directa. Todo grounding ancla la respuesta en algo externo; no todo grounding usa la arquitectura específica de RAG.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿El grounding elimina las alucinaciones al cien por cien?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+No, las reduce drásticamente pero no las elimina. El modelo puede seguir interpretando mal un dato correcto que sí recuperó, o mezclar información de dos fuentes distintas de forma incorrecta. El grounding cambia el problema de raíz de "inventar de la nada" a "malinterpretar algo real", que es un fallo mucho más fácil de detectar y corregir.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Cómo sé si una respuesta de mi agente está bien fundamentada (grounded) o no?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+La señal más clara es si la respuesta cita explícitamente de dónde sale cada afirmación concreta (una fuente, un fragmento de documento, un resultado de API), en vez de dar una cifra o un hecho sin ningún respaldo verificable en el propio texto de la respuesta.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Necesito una base de datos vectorial para hacer grounding?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Solo si tu grounding es sobre documentos propios extensos (la variante RAG). Si tu fuente de verdad es una API en vivo, como en la demo de esta guía, no necesitas ninguna base de datos vectorial — el mecanismo es tool use puro, más simple de montar que un pipeline RAG completo.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Esto sustituye a revisar las respuestas del modelo?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+No. El grounding reduce el riesgo de forma importante, pero para decisiones de peso sigue mereciendo la pena una revisión humana, sobre todo verificando que el modelo interpretó correctamente la fuente que consultó y no solo que consultó una fuente real.
+</div>
+</div>
+</div>
+</section>
+<div class="bg-surface-container-low p-space-lg mb-space-2xl flex flex-col sm:flex-row items-start sm:items-center gap-space-md shadow-sm">
+<div class="w-16 h-16 bg-primary text-on-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[32px]">shield_person</span>
+</div>
+<div class="space-y-1">
+<div class="font-headline-sm text-headline-sm text-primary">Redacción El Telar</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Frankfurter (Banco Central Europeo) no ha pagado por aparecer en esta guía. La elegimos por ser gratuita, oficial y no exigir clave de acceso.
+          </p>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-space-2xl">
+          Si te llevas una sola idea de esta guía, que sea esta: la pregunta que separa un agente fiable de uno que no lo es no es "¿qué modelo usa?", es "¿puedo verificar de dónde sale cada afirmación concreta que hace?". Un modelo modesto con buen grounding suele ser más fiable en la práctica que el modelo más potente del mercado respondiendo solo de memoria — la calidad de la fuente y la disciplina del diseño pesan más que el tamaño del modelo en este problema concreto.
+        </p>
+<section class="mt-space-4xl pt-space-xl border-t-2 border-primary space-y-space-lg">
+<h3 class="font-headline-md text-headline-md text-primary tracking-tight">Continúa explorando el archivo</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-col-gap"><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="alucinaciones-ia.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-alucinaciones-ia.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="alucinaciones-ia.html">Alucinaciones de la IA: cómo detectar cuando se inventa algo</a></h4></div></article><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="rag-explicado.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-rag-explicado.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="rag-explicado.html">RAG explicado: cómo hacer que la IA responda con tus propios documentos</a></h4></div></article><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="agente-api-datos-reales.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-agente-api-datos-reales.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="agente-api-datos-reales.html">Cómo darle a un agente de IA acceso a datos reales y gratis</a></h4></div></article></div>
+</section>
+</div></main>
+<footer class="w-full bg-surface-container-low border-t border-outline-variant mt-space-4xl"><div class="max-w-site-max-width mx-auto px-space-md py-space-3xl"><div class="grid grid-cols-1 md:grid-cols-3 gap-col-gap"><div class="space-y-space-sm"><span class="font-headline-md text-headline-md text-primary">El Telar</span><p class="font-body-sm text-body-sm text-on-surface-variant">Publicación independiente de tecnología y automatización con agentes. Contenidos verificados en producción, sin patrocinios opacos ni promesas vacías.</p></div><div><h3 class="font-kicker text-kicker uppercase tracking-wider text-on-surface mb-space-md">SECCIONES</h3><ul class="space-y-space-xs font-body-sm text-body-sm"><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html#guias">Archivo de Guías</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../empieza-aqui.html">Guía para Principiantes</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../sobre-nosotros.html">Manifiesto Editorial</a></li><li class="pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html#despacho">Boletín Semanal</a></li></ul></div><div><h3 class="font-kicker text-kicker uppercase tracking-wider text-on-surface mb-space-md">CONTACTO &amp; PRENSA</h3><div class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant"><p class="font-semibold text-on-surface">contacto@eltelar.es</p><p>Síguenos: <a class="hover:text-primary underline" href="https://www.instagram.com/eltelar_es/" rel="me noopener" target="_blank">Instagram</a> · <a class="hover:text-primary underline" href="https://www.threads.com/@eltelar_es" rel="me noopener" target="_blank">Threads</a> · <a class="hover:text-primary underline" href="https://x.com/eltelar_es" rel="me noopener" target="_blank">X</a></p></div></div></div></div><div class="border-t border-outline-variant py-space-md bg-surface-container-lowest"><div class="max-w-site-max-width mx-auto px-space-md flex flex-col md:flex-row items-center justify-between gap-space-sm text-caption font-caption text-on-surface-variant"><div>© 2026 El Telar. Todos los derechos reservados. Independencia editorial garantizada.</div><div class="flex items-center gap-space-md"><a class="hover:text-on-surface transition-colors" href="../privacidad.html">Privacidad</a><a class="hover:text-on-surface transition-colors" href="../terminos.html">Términos</a><a class="hover:text-on-surface transition-colors" href="../sobre-nosotros.html">Sobre nosotros</a><a class="hover:text-on-surface transition-colors" href="../contacto.html">Contacto</a></div></div></div></footer><script defer src="../js/copy-guide.js"></script><script defer src="../js/guide-interactions.js"></script><script defer src="../js/reading-progress.js"></script><script defer src="../js/search.js?v=7"></script><script defer src="../js/entrance.js"></script><script defer src="../js/cookie-consent.js?v=4"></script></body></html>

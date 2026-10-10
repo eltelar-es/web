@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>n8n y IA: automatización visual sin código | El Telar</title>
+<meta name="description" content="Cómo montar tu primer flujo en n8n conectado a un modelo de IA sin escribir código, y cuándo tiene más sentido que pedírselo todo a un agente.">
+<link rel="canonical" href="https://eltelar.es/articulos/automatizar-n8n-ia.html"><link rel="icon" type="image/svg+xml" href="../img/favicon.svg?v=4"><link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32.png?v=4"><link rel="apple-touch-icon" href="../img/apple-touch-icon.png?v=4"><meta name="theme-color" content="#072417"><link rel="manifest" href="../manifest.json"><link rel="alternate" type="application/rss+xml" title="El Telar" href="../feed.xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="n8n y IA: automatización visual sin código paso a paso | El Telar">
+<meta property="og:description" content="Cómo montar tu primer flujo en n8n conectado a un modelo de IA, sin escribir código, y cuándo esta herramienta tiene más sentido que pedirle todo directamente a un agente.">
+<meta property="og:url" content="https://eltelar.es/articulos/automatizar-n8n-ia.html">
+<meta property="og:site_name" content="El Telar">
+<meta property="og:locale" content="es_ES"><meta property="og:image" content="https://eltelar.es/img/og/guia-automatizar-n8n-ia.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="n8n y IA: automatización visual sin código paso a paso | El Telar">
+<meta name="twitter:description" content="Cómo montar tu primer flujo en n8n conectado a un modelo de IA, sin escribir código, y cuándo esta herramienta tiene más sentido que pedirle todo directamente a un agente."><meta name="twitter:image" content="https://eltelar.es/img/og/guia-automatizar-n8n-ia.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "n8n y IA: automatización visual sin código paso a paso",
+  "description": "Cómo montar tu primer flujo en n8n conectado a un modelo de IA, sin escribir código, y cuándo esta herramienta tiene más sentido que pedirle todo directamente a un agente.",
+  "image": "https://eltelar.es/img/og-image.jpg",
+  "author": { "@type": "Organization", "name": "El Telar", "url": "https://eltelar.es/sobre-nosotros.html" },
+  "publisher": { "@type": "Organization", "name": "El Telar" },
+  "datePublished": "2026-09-08",
+  "dateModified": "2026-09-08",
+  "mainEntityOfPage": "https://eltelar.es/articulos/automatizar-n8n-ia.html",
+  "inLanguage": "es"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Necesito saber programar para usar n8n?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No para los flujos básicos: conectar nodos, escribir instrucciones para el nodo de IA y mapear campos entre pasos se hace todo visualmente. Hay un nodo de \"Código\" opcional para lógica avanzada en JavaScript, pero es completamente prescindible para el 90% de los casos de uso reales."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué diferencia hay entre n8n y Zapier o Make?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Son competidores directos con el mismo concepto de nodos visuales. La diferencia principal es que n8n es de código abierto y se puede autoalojar gratis sin límite de ejecuciones, mientras que Zapier y Make son exclusivamente servicios en la nube de pago por uso. A cambio, n8n exige algo más de comodidad técnica si eliges autoalojarlo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo usar un modelo de IA gratuito dentro de n8n?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí, n8n soporta modelos locales a través de Ollama, que corren en tu propio hardware sin coste por token, aunque con capacidades menores que los modelos comerciales grandes y necesitando un ordenador con suficiente memoria gráfica para ir razonablemente rápido."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué pasa si el flujo falla a mitad de ejecución?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "n8n guarda un registro de cada ejecución con el estado exacto de cada nodo en el momento del fallo, y permite reintentar solo desde el punto donde falló en vez de repetir el flujo entero desde cero. También puedes configurar un nodo de notificación (correo, Slack) que te avise específicamente cuando algo falla."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Es seguro conectar mis cuentas reales (correo, CRM) a n8n?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Si lo autoalojas, los datos y credenciales quedan en tu propio servidor bajo tu control, igual que cualquier aplicación que instales tú mismo. Si usas la versión en la nube, revisa la política de datos del proveedor igual que harías con cualquier otro servicio de terceros al que le das acceso a tu correo o tus contactos."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo migrar un flujo de n8n de mi ordenador a un servidor en producción?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí, cada flujo se puede exportar como un archivo JSON e importar directamente en otra instancia de n8n, credenciales aparte (que se reconfiguran una vez en el destino por seguridad). Es habitual desarrollar y probar un flujo en local y luego moverlo tal cual a la instancia de producción sin rehacer nada."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://eltelar.es/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Guías",
+      "item": "https://eltelar.es/index.html#guias"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "n8n y IA: automatización visual sin código paso a paso",
+      "item": "https://eltelar.es/articulos/automatizar-n8n-ia.html"
+    }
+  ]
+}
+</script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet"/></noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet"/></noscript>
+<style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><link rel="stylesheet" href="../css/tailwind.css"><link rel="stylesheet" href="../css/entrance.css?v=2"><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}(function(){var c=null;try{c=localStorage.getItem('eltelar-cookie-consent')}catch(e){}var g=c==='accepted'?'granted':'denied';gtag('consent','default',{ad_storage:g,ad_user_data:g,ad_personalization:g,analytics_storage:g,wait_for_update:500});window.adsbygoogle=window.adsbygoogle||[];if(g!=='granted'){window.adsbygoogle.requestNonPersonalizedAds=1;}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-4DPTKEG79N"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4DPTKEG79N');</script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8239907995939753" crossorigin="anonymous"></script></head><body class="bg-background font-body-md text-on-surface antialiased">
+<header class="w-full bg-surface-container-lowest border-b border-outline-variant"><div class="border-b border-outline-variant py-space-xxs px-space-md hidden md:block"><div class="max-w-site-max-width mx-auto flex items-center justify-between font-kicker text-kicker text-on-surface-variant uppercase tracking-wider"><span>EDICIÓN DIGITAL // ACTUALIZADO 2026 // EL TELAR &amp; AGENTES</span><span>MADRID · REMOTO</span><span>SIN HUMO · 100% PRODUCCIÓN</span></div></div><div class="max-w-site-max-width mx-auto px-space-md py-space-md sm:py-space-xl text-center"><p class="hidden sm:block font-kicker text-kicker uppercase tracking-widest text-on-surface-variant mb-space-xs">Publicación Independiente de Tecnología &amp; Agentes</p><a class="inline-block" href="../index.html"><div class="font-display text-display max-sm:text-[40px] max-sm:leading-none text-primary tracking-tight">El Telar</div></a><p class="hidden sm:block font-caption text-caption uppercase tracking-widest text-on-surface-variant mt-space-xs">EL BOLETÍN Y ARCHIVO PRÁCTICO DE INTELIGENCIA ARTIFICIAL Y AGENTES AUTÓNOMOS</p></div><div class="border-t border-b border-outline-variant"><div class="max-w-site-max-width mx-auto px-space-md flex items-center justify-between gap-space-sm h-14"><nav class="flex items-center gap-space-md sm:gap-space-lg h-full min-w-0 overflow-x-auto [scrollbar-width:none] whitespace-nowrap"><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../index.html#guias">GUÍAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../empieza-aqui.html">EMPIEZA AQUÍ</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../sobre-nosotros.html">SOBRE NOSOTROS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../noticias/index.html">NOTICIAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../herramientas/index.html">HERRAMIENTAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../prompts/index.html">PROMPTS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../contacto.html">CONTACTO</a></nav><div class="flex items-center gap-space-md"><button id="search-trigger" type="button" aria-label="Buscar en las guías" class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[20px]">search</span></button><a class="hidden sm:inline-block bg-primary-container text-surface px-space-md py-space-xs font-label-md text-label-md uppercase tracking-wider hover:bg-primary transition-colors" href="../index.html#despacho">SUSCRÍBETE GRATIS</a></div></div></div><div class="hidden md:block bg-surface-container-low border-b border-outline-variant py-space-xs px-space-md"><div class="max-w-site-max-width mx-auto text-center"><p class="font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">47 GUÍAS COMPLETAS EN EXPANSIÓN · ACTUALIZADO A MODELOS 2026 · PROBADO EN TERMINAL Y FLUJOS REALES · CERO HUMO NI TEORÍA VACÍA</p></div></div></header>
+<main class="w-full max-w-site-max-width mx-auto px-space-md py-space-xl"><div class="flex flex-col w-full">
+<nav class="w-full mb-space-lg">
+<ol class="flex flex-wrap items-center gap-space-xs font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">
+<li><a class="hover:text-primary transition-colors" href="../index.html">Inicio</a></li>
+<li class="text-on-surface-variant">/</li>
+<li><a class="hover:text-primary transition-colors" href="../index.html#guias">Guías</a></li>
+<li class="text-on-surface-variant">/</li>
+<li class="text-primary font-bold">n8n y automatización visual</li>
+</ol>
+</nav>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-col-gap">
+<article class="lg:col-span-8 flex flex-col space-y-space-xl">
+<figure data-hero class="space-y-space-xs"><img class="w-full border border-outline-variant" src="../img/guias/hero-automatizar-n8n-ia.jpg" alt="Portada de n8n, la herramienta de automatización visual" width="1280" height="720" fetchpriority="high" decoding="async"/><figcaption class="font-caption text-caption text-on-surface-variant">Captura de pantalla: <a class="underline" href="https://n8n.io/" rel="nofollow noopener" target="_blank">n8n.io</a>.</figcaption></figure>
+<header class="space-y-space-md border-b border-outline-variant pb-space-xl">
+<span class="bg-surface-container-high text-secondary border border-outline-variant px-space-xs py-space-xxs font-kicker text-kicker uppercase tracking-widest inline-block">AUTOMATIZACIÓN // SIN CÓDIGO</span>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight leading-tight">n8n y IA: automatización visual sin código paso a paso</h1>
+<p class="font-lead-paragraph text-lead-paragraph text-on-surface-variant leading-relaxed">Un lienzo visual de cajas conectadas por flechas, en vez de escribir un prompt cada vez. Cómo montar tu primer flujo real con IA integrada, y cuándo esta herramienta gana a pedírselo todo directamente a un agente de chat.</p>
+<div class="pt-space-sm border-t border-outline-variant flex flex-wrap items-center justify-between gap-space-sm font-label-md text-label-md text-on-surface-variant">
+<span class="font-semibold text-on-surface">Por la Redacción de El Telar</span>
+<button class="inline-flex items-center gap-1 mt-2 px-3 py-1.5 bg-surface-container text-primary font-label-md text-[12px] font-semibold uppercase tracking-wider hover:bg-surface-container-high transition-colors" id="copy-guide-btn" type="button"><span class="material-symbols-outlined text-[16px]">content_copy</span> Copiar guía para tu IA</button><span class="inline-flex items-center gap-1 ml-1"><button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" id="save-guide-btn" title="Guardar guía" type="button"><span class="material-symbols-outlined text-[16px]">bookmark_border</span></button><button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" id="copy-link-btn" title="Copiar enlace permanente" type="button"><span class="material-symbols-outlined text-[16px]">share</span></button></span>
+<span class="flex items-center gap-1 text-caption font-caption">
+<span class="material-symbols-outlined text-[15px] text-on-surface-variant">schedule</span>
+              13 min de lectura
+            </span>
+</div>
+</header>
+<section class="prose max-w-editorial-max-width space-y-space-md">
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed">
+<span class="float-left text-primary font-display text-[68px] leading-[0.8] pr-3 pt-1 font-normal select-none">N</span>uestra guía sobre <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="automatizar-tareas-agentes-ia.html">automatizar tareas con agentes de IA</a> parte de escribirle instrucciones a un modelo dentro de una conversación. n8n resuelve un problema distinto: qué hacer cuando la automatización necesita conectar cinco servicios distintos, ejecutarse todos los días a la misma hora sin que tú la dispares, y seguir funcionando aunque cambies de portátil o cierres la sesión. Es la diferencia entre pedirle algo a un asistente cada vez que lo necesitas y montar una tubería que corre sola en segundo plano.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          n8n es una plataforma de automatización visual: en vez de escribir código, arrastras y conectas "nodos" —cada uno representa un servicio, una condición o una acción— sobre un lienzo. Es de código abierto, puedes alojarla tú mismo de forma gratuita o usar su versión en la nube por suscripción, y desde 2025 tiene soporte nativo para nodos de IA (modelos de lenguaje, memoria de conversación, agentes con herramientas) integrados directamente en el mismo lienzo donde ya conectas tu correo, tu CRM o tu hoja de cálculo.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          El nombre viene de "node to node" (de nodo a nodo), y la propia comunidad de la herramienta ronda ya los doscientos mil seguidores en GitHub, una cifra que por sí sola no prueba nada sobre si te conviene, pero sí confirma que no es un proyecto de nicho abandonado: hay documentación abundante, una comunidad activa resolviendo dudas y actualizaciones frecuentes con soporte para los modelos de IA más recientes en cuanto salen.
+        </p>
+</section>
+<section id="sec-1" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Qué es exactamente un nodo y por qué importa</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Cada nodo en n8n hace una cosa concreta: recibir un formulario, leer una fila de una base de datos, enviar un mensaje a Slack, preguntarle algo a un modelo de IA. Los conectas con flechas para formar un flujo de trabajo (<em>workflow</em>) que se ejecuta de principio a fin cuando algo lo dispara: una hora programada, un correo nuevo, un formulario enviado, una petición HTTP desde otra aplicación. La ventaja frente a escribir un script tradicional es que ves visualmente por dónde pasan los datos en cada paso, y puedes ejecutar el flujo nodo a nodo para depurar exactamente dónde falla algo, sin añadir líneas de <code class="font-mono text-body-sm bg-surface-container-low px-1">print()</code> por todo el código.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          n8n distingue tres grandes familias de nodos. Los <strong class="text-on-surface">disparadores</strong> (triggers) son siempre el primer nodo del flujo y determinan cuándo arranca: por calendario (cada hora, cada lunes a las nueve), por evento externo (un correo, un mensaje en un formulario web, un webhook que otra aplicación llama), o de forma manual mientras pruebas. Los <strong class="text-on-surface">nodos de acción</strong> son la mayoría del lienzo: conectan con más de cuatrocientos servicios ya integrados (Gmail, Slack, Notion, bases de datos, hojas de cálculo) además de nodos genéricos para cualquier servicio con una API HTTP normal. Y los <strong class="text-on-surface">nodos de lógica</strong> (condicionales, bucles, divisores, fusionadores) deciden por qué rama sigue el flujo según los datos que van llegando, igual que un <code class="font-mono text-body-sm bg-surface-container-low px-1">if</code> en cualquier lenguaje de programación, pero dibujado como una bifurcación visual en vez de código.
+        </p>
+<figure class="my-space-lg">
+<img class="w-full border border-outline-variant bg-[#0b0d12] p-space-md" src="../img/guias/n8n-flujo-real.png" alt="Flujo real de n8n: un formulario dispara un agente de IA con herramientas conectadas a un modelo de Anthropic, memoria en Postgres, Microsoft Entra ID y Jira, que decide si añadir a un canal de Slack o actualizar un perfil según si el usuario es responsable." loading="lazy" width="1511" height="794"/>
+<figcaption class="font-caption text-caption text-on-surface-variant mt-space-xs">Ejemplo real de flujo publicado por <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="https://n8n.io" target="_blank" rel="noopener">n8n.io</a>: un agente de IA con acceso a herramientas decide la siguiente acción según el rol del usuario recién creado.</figcaption>
+</figure>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          En ese ejemplo real, el nodo "AI Agent" no es un simple paso de "pregunta y respuesta": tiene acceso a un modelo de lenguaje (Anthropic), a memoria persistente (una base de datos Postgres que recuerda conversaciones anteriores) y a herramientas externas (Microsoft Entra ID para gestión de usuarios, Jira para tickets). El agente decide él mismo, dentro del flujo, cuál de esas herramientas usar según el caso — exactamente el mismo concepto de nuestra guía sobre <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="que-es-un-agente-ia.html">qué es un agente de IA</a>, pero orquestado visualmente en vez de en una conversación de texto.
+        </p>
+</section>
+<section id="sec-2" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Tu primer flujo, paso a paso</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          El ejemplo más simple y útil para empezar: recibir un correo, resumirlo con IA y guardar el resumen en una hoja de cálculo. Así se vería montado:
+        </p>
+<div class="bg-[#0b0d12] text-surface p-space-md my-space-md overflow-x-auto">
+<pre class="font-mono text-body-sm leading-relaxed"><span class="text-secondary-container">[Trigger: Nuevo correo]</span> → <span class="text-inverse-primary">[Nodo IA: Resumir en 3 frases]</span> → <span class="text-inverse-primary">[Nodo: Añadir fila a Google Sheets]</span></pre>
+</div>
+<ol class="space-y-space-sm font-body-md text-body-md text-on-surface-variant list-decimal pl-space-lg">
+<li><strong class="text-on-surface">Elige el disparador (trigger):</strong> el nodo "Email Trigger" (IMAP) revisa tu bandeja cada minuto y arranca el flujo cuando llega un correo nuevo que cumple el filtro que definas.</li>
+<li><strong class="text-on-surface">Conecta el nodo de IA:</strong> el nodo "Basic LLM Chain" o "AI Agent" recibe el asunto y cuerpo del correo como variables automáticas, y tú escribes la instrucción una sola vez ("resume este correo en tres frases en español, sin rodeos").</li>
+<li><strong class="text-on-surface">Guarda el resultado:</strong> el nodo de Google Sheets (o Airtable, Notion, una base de datos) recibe la salida del paso anterior y añade una fila nueva, sin que tengas que copiar y pegar nada a mano.</li>
+<li><strong class="text-on-surface">Activa el flujo:</strong> un interruptor en la esquina superior lo pasa de modo prueba a modo producción, corriendo solo en el servidor de n8n aunque cierres el portátil.</li>
+</ol>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Cada nodo de IA necesita una credencial de un proveedor de modelos (OpenAI, Anthropic, Google, o un modelo local vía Ollama) configurada una sola vez y reutilizable en todos tus flujos futuros. n8n no cobra por el uso del modelo en sí — eso lo facturas directamente con el proveedor cuya clave conectaste, aparte de tu suscripción a n8n si usas la versión en la nube.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Un detalle que ahorra frustración la primera vez: los datos que pasan de un nodo a otro viajan en formato JSON, visible en un panel lateral en cada paso de la prueba. Si el nodo de IA no encuentra el campo que esperaba (por ejemplo, el asunto del correo llegó vacío porque el filtro del disparador era demasiado amplio), ese panel te lo muestra de inmediato, en vez de fallar en silencio varios pasos más adelante sin pista de dónde se rompió la cadena.
+        </p>
+</section>
+<section id="sec-2b" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Un caso real: clasificar tickets de soporte antes de que lleguen a una persona</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Una tienda online pequeña recibía entre 40 y 60 correos de soporte al día, todos mezclados en la misma bandeja: devoluciones, dudas de envío, quejas urgentes y preguntas genéricas que ya respondía su página de preguntas frecuentes. Antes de automatizar nada, una persona dedicaba la primera hora de cada mañana solo a leer y repartir esos correos al departamento correcto.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          El flujo que montaron en n8n hace ese primer triaje solo: un disparador de correo lee cada mensaje nuevo, un nodo de IA lo clasifica en una de cinco categorías predefinidas y extrae el número de pedido si aparece en el texto, y un nodo condicional reparte el resultado — las quejas urgentes van directas a un canal de Slack con una mención al responsable de turno, las preguntas genéricas reciben una respuesta automática con el enlace a la sección relevante de la web, y el resto se etiqueta y espera en la bandeja para revisión humana en el orden de prioridad que asignó el modelo.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          El resultado no fue "cero personas gestionando soporte": siguió habiendo una persona revisando y respondiendo caso por caso. Lo que cambió fue que esa persona empezaba el día con los correos ya ordenados por urgencia real en vez de por orden de llegada, y las preguntas genéricas —que eran casi un tercio del volumen diario— dejaron de ocupar tiempo humano en absoluto. El flujo completo, incluido el nodo de IA y las cinco ramas de decisión, ocupa menos de quince nodos en el lienzo.
+        </p>
+</section>
+<section id="sec-3" class="space-y-space-md">
+<figure data-inline-photo class="space-y-space-xs my-space-xl"><img class="w-full border border-outline-variant" src="../img/guias/foto-automatizar-n8n-ia.jpg" alt="Documentación de n8n sobre flujos con IA" width="1280" height="720" loading="lazy" decoding="async"/><figcaption class="font-caption text-caption text-on-surface-variant">Captura de pantalla: <a class="underline" href="https://docs.n8n.io/advanced-ai/" rel="nofollow noopener" target="_blank">docs.n8n.io/advanced-ai</a>.</figcaption></figure>
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">n8n frente a pedírselo directamente a un agente</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          La pregunta que más nos hacen sobre esta herramienta es simple: si ya puedo pedirle a Claude o ChatGPT que automatice algo, ¿para qué necesito otra plataforma encima? La respuesta depende de dos factores: quién dispara la tarea y cuántos servicios distintos hay que conectar.
+        </p>
+<div class="overflow-x-auto">
+<table class="w-full text-left font-body-sm text-body-sm border border-outline-variant">
+<thead class="bg-surface-container-low">
+<tr><th class="p-space-sm border-b border-outline-variant">Situación</th><th class="p-space-sm border-b border-outline-variant">Mejor opción</th><th class="p-space-sm border-b border-outline-variant">Por qué</th></tr>
+</thead>
+<tbody>
+<tr><td class="p-space-sm border-b border-outline-variant align-top">Tarea puntual, la disparas tú al pedirla</td><td class="p-space-sm border-b border-outline-variant align-top font-semibold text-primary">Agente de chat</td><td class="p-space-sm border-b border-outline-variant align-top text-on-surface-variant">No necesitas nada corriendo en segundo plano; con la conversación basta.</td></tr>
+<tr><td class="p-space-sm border-b border-outline-variant align-top">Debe ejecutarse sola, todos los días, sin que estés presente</td><td class="p-space-sm border-b border-outline-variant align-top font-semibold text-primary">n8n</td><td class="p-space-sm border-b border-outline-variant align-top text-on-surface-variant">El flujo vive en un servidor propio, no depende de que tengas una ventana de chat abierta.</td></tr>
+<tr><td class="p-space-sm border-b border-outline-variant align-top">Conecta 4 o más servicios distintos con lógica condicional entre ellos</td><td class="p-space-sm border-b border-outline-variant align-top font-semibold text-primary">n8n</td><td class="p-space-sm border-b border-outline-variant align-top text-on-surface-variant">Ver el flujo completo en un lienzo es mucho más fácil de mantener que una cadena de instrucciones en texto.</td></tr>
+<tr><td class="p-space-sm border-b border-outline-variant align-top">Necesitas razonamiento flexible sobre archivos o código en el momento</td><td class="p-space-sm border-b border-outline-variant align-top font-semibold text-primary">Agente de chat</td><td class="p-space-sm border-b border-outline-variant align-top text-on-surface-variant">n8n ejecuta pasos predefinidos; un agente de terminal como <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="que-es-claude-code.html">Claude Code</a> improvisa sobre la marcha.</td></tr>
+</tbody>
+</table>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          En la práctica, muchos equipos usan ambos a la vez: un flujo de n8n que corre de fondo conectando sistemas, y que en un paso concreto delega en un modelo de IA la parte que requiere criterio (clasificar, resumir, decidir) antes de devolver el control al flujo estructurado.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Hay un matiz adicional dentro de n8n mismo: el nodo "AI Agent" no es lo mismo que el nodo "Basic LLM Chain". El segundo es una llamada simple —le pasas un texto, el modelo responde, fin del paso—, útil para tareas de un solo turno como resumir o traducir. El primero, en cambio, puede decidir por sí mismo usar una o varias herramientas conectadas (buscar en una base de datos, consultar una API externa, incluso ejecutar otro flujo de n8n como subrutina) antes de dar una respuesta final, en un bucle de razonamiento con varios pasos internos. Usar un "AI Agent" para una tarea que solo necesita una llamada simple es gastar más tokens y tiempo de ejecución de los necesarios; usar un "Basic LLM Chain" para una tarea que de verdad requiere consultar varias fuentes antes de decidir se queda corto.
+        </p>
+</section>
+<section id="sec-4" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Dónde alojarlo y qué cuesta de verdad</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          n8n es de código abierto bajo una licencia propia (Sustainable Use License): puedes autoalojarlo gratis en tu propio servidor o incluso en tu ordenador para pruebas, sin límite de flujos ni de ejecuciones, con la única condición de que no lo revendas como servicio a terceros. La alternativa es la versión en la nube gestionada por la propia empresa, de pago, que te ahorra mantener un servidor pero factura por número de ejecuciones mensuales.
+        </p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<div class="flex items-center gap-space-xs mb-space-xs text-primary">
+<span class="material-symbols-outlined text-[20px]">dns</span>
+<span class="font-label-md text-label-md font-bold uppercase">Autoalojado (self-hosted)</span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant leading-relaxed">Gratis sin límite de uso, pero tú mantienes el servidor (actualizaciones, copias de seguridad, tiempo de actividad). Requiere algo de comodidad técnica inicial con Docker.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<div class="flex items-center gap-space-xs mb-space-xs text-primary">
+<span class="material-symbols-outlined text-[20px]">cloud</span>
+<span class="font-label-md text-label-md font-bold uppercase">Cloud (n8n.io)</span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant leading-relaxed">Sin mantenimiento propio, listo en minutos desde el navegador. Factura por ejecuciones mensuales; el plan gratuito de prueba es limitado en el tiempo.</p>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          El coste real de un flujo con IA no es la licencia de n8n, sino el consumo de tokens del modelo que conectaste — el mismo principio que explicamos en nuestra guía sobre <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="automatizar-tareas-agentes-ia.html#sec-4-coste">cómo no descubrir la factura al final de mes</a>. Un flujo que llama a un modelo grande en cada ejecución, ejecutado cientos de veces al día, puede acumular un gasto que sorprenda si no lo revisas con el panel de uso de tu proveedor de IA cada semana.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Si decides autoalojarlo, la vía más simple es Docker: n8n publica una imagen oficial que arranca con un único comando y expone la interfaz en tu navegador en el puerto que elijas, sin instalar dependencias sueltas en tu sistema operativo. Para un uso personal o de un equipo pequeño, un servidor modesto en la nube (el más barato de cualquier proveedor habitual) es más que suficiente para correr decenas de flujos simultáneos, siempre que ninguno procese volúmenes masivos de datos en paralelo. Solo cuando el volumen de ejecuciones crece mucho —miles al día— conviene plantearse una instancia más potente o repartir la carga entre varios workers, algo que n8n soporta de forma nativa en su modo de cola.
+        </p>
+</section>
+<section id="sec-5" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Errores típicos al empezar con n8n</h2>
+<div class="space-y-space-sm">
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h3 class="font-headline-sm text-headline-sm text-primary mb-1">Activar el flujo antes de probarlo paso a paso</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">n8n permite ejecutar el flujo completo en modo prueba, nodo por nodo, viendo el resultado exacto de cada paso antes de activarlo en producción. Saltarse esa prueba es la causa más común de flujos que fallan en silencio durante días antes de que alguien note que algo iba mal.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h3 class="font-headline-sm text-headline-sm text-primary mb-1">No poner límites al nodo de IA dentro de un bucle</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Si el flujo procesa una lista de cien correos y cada uno llama al modelo de IA, son cien llamadas facturables cada vez que se ejecuta. Añade un límite o un filtro antes del nodo de IA cuando proceses lotes grandes, en vez de descubrir el coste al final de mes.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h3 class="font-headline-sm text-headline-sm text-primary mb-1">Guardar credenciales sensibles directamente en el nodo</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">n8n tiene un gestor de credenciales cifrado independiente de cada nodo; usarlo siempre en vez de escribir claves de API a mano dentro de un nodo de código evita que esas claves queden expuestas si exportas o compartes el flujo con alguien.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h3 class="font-headline-sm text-headline-sm text-primary mb-1">Construir un flujo enorme antes de probar la primera parte</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Es tentador dibujar los quince nodos del flujo completo antes de ejecutar nada. Es mucho más eficaz construir y probar de tres en tres nodos, confirmando que los datos llegan con el formato esperado en cada tramo, porque un error de formato al principio del flujo se multiplica y se hace más difícil de rastrear cuanto más lejos viaja sin detectarse.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h3 class="font-headline-sm text-headline-sm text-primary mb-1">No fijar un formato de salida al nodo de IA</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Si el nodo siguiente en el flujo espera un dato concreto (una categoría de una lista cerrada, un número, un JSON con campos fijos), pídele al modelo explícitamente ese formato exacto en la instrucción. Sin esa restricción, la respuesta del modelo varía de forma sutil entre ejecuciones y rompe el nodo siguiente justo cuando menos lo esperas.</p>
+</div>
+</div>
+</section>
+</article>
+<aside class="lg:col-span-4 space-y-space-xl">
+<div class="bg-surface-container-lowest p-space-md border border-outline-variant text-center">
+<div class="w-16 h-16 mx-auto mb-space-sm flex items-center justify-center rounded-full border border-secondary text-secondary">
+<span class="material-symbols-outlined text-[32px]">account_tree</span>
+</div>
+<span class="font-kicker text-kicker uppercase tracking-widest text-primary block mb-space-xxs">FICHA TÉCNICA</span>
+<dl class="space-y-space-xs font-body-sm text-body-sm text-left pt-space-sm border-t border-outline-variant">
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Licencia:</dt><dd class="font-semibold text-primary">Sustainable Use</dd></div>
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Autoalojado:</dt><dd class="font-semibold text-primary">Gratis</dd></div>
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Nivel técnico:</dt><dd class="font-semibold text-secondary">Principiante / Intermedio</dd></div>
+</dl>
+</div>
+<div class="bg-surface-container-low p-space-lg sticky top-space-md">
+<div class="flex items-center gap-2 font-kicker text-kicker uppercase tracking-widest text-on-surface-variant mb-space-md">
+<span class="material-symbols-outlined text-[16px]">format_list_bulleted</span>
+ÍNDICE DE LA GUÍA
+</div>
+<nav class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant">
+<a class="block hover:text-primary transition-colors" href="#sec-1">Qué es un nodo</a>
+<a class="block hover:text-primary transition-colors" href="#sec-2">Tu primer flujo, paso a paso</a>
+<a class="block hover:text-primary transition-colors" href="#sec-2b">Caso real: clasificar tickets</a>
+<a class="block hover:text-primary transition-colors" href="#sec-3">n8n frente a un agente de chat</a>
+<a class="block hover:text-primary transition-colors" href="#sec-4">Dónde alojarlo y qué cuesta</a>
+<a class="block hover:text-primary transition-colors" href="#sec-5">Errores típicos al empezar</a>
+</nav>
+</div>
+
+</aside>
+</div>
+<section class="mb-space-2xl">
+<h2 class="font-headline-md text-headline-md text-primary mb-space-md">Preguntas frecuentes</h2>
+<div class="space-y-space-md">
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Necesito saber programar para usar n8n?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+No para los flujos básicos: conectar nodos, escribir instrucciones para el nodo de IA y mapear campos entre pasos se hace todo visualmente. Hay un nodo de "Código" opcional para lógica avanzada en JavaScript, pero es completamente prescindible para el 90% de los casos de uso reales.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Qué diferencia hay entre n8n y Zapier o Make?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Son competidores directos con el mismo concepto de nodos visuales. La diferencia principal es que n8n es de código abierto y se puede autoalojar gratis sin límite de ejecuciones, mientras que Zapier y Make son exclusivamente servicios en la nube de pago por uso. A cambio, n8n exige algo más de comodidad técnica si eliges autoalojarlo.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Puedo usar un modelo de IA gratuito dentro de n8n?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Sí, n8n soporta modelos locales a través de Ollama, que corren en tu propio hardware sin coste por token, aunque con capacidades menores que los modelos comerciales grandes y necesitando un ordenador con suficiente memoria gráfica para ir razonablemente rápido.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Qué pasa si el flujo falla a mitad de ejecución?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+n8n guarda un registro de cada ejecución con el estado exacto de cada nodo en el momento del fallo, y permite reintentar solo desde el punto donde falló en vez de repetir el flujo entero desde cero. También puedes configurar un nodo de notificación (correo, Slack) que te avise específicamente cuando algo falla.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Es seguro conectar mis cuentas reales (correo, CRM) a n8n?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Si lo autoalojas, los datos y credenciales quedan en tu propio servidor bajo tu control, igual que cualquier aplicación que instales tú mismo. Si usas la versión en la nube, revisa la política de datos del proveedor igual que harías con cualquier otro servicio de terceros al que le das acceso a tu correo o tus contactos.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Puedo migrar un flujo de n8n de mi ordenador a un servidor en producción?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Sí, cada flujo se puede exportar como un archivo JSON e importar directamente en otra instancia de n8n, credenciales aparte (que se reconfiguran una vez en el destino por seguridad). Es habitual desarrollar y probar un flujo en local y luego moverlo tal cual a la instancia de producción sin rehacer nada.
+</div>
+</div>
+</div>
+</section>
+<div class="bg-surface-container-low p-space-lg mb-space-2xl flex flex-col sm:flex-row items-start sm:items-center gap-space-md shadow-sm">
+<div class="w-16 h-16 bg-primary text-on-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[32px]">shield_person</span>
+</div>
+<div class="space-y-1">
+<div class="font-headline-sm text-headline-sm text-primary">Redacción El Telar</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            n8n no ha pagado por aparecer en esta guía ni ha revisado el contenido antes de publicarse.
+          </p>
+</div>
+</div>
+<section class="mt-space-4xl pt-space-xl border-t-2 border-primary space-y-space-lg">
+<h3 class="font-headline-md text-headline-md text-primary tracking-tight">Continúa explorando el archivo</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-col-gap"><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="automatizar-tareas-agentes-ia.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-automatizar-tareas-agentes-ia.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="automatizar-tareas-agentes-ia.html">Cómo automatizar tareas repetitivas con agentes de IA</a></h4></div></article><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="mcp-explicado.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-mcp-explicado.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="mcp-explicado.html">MCP explicado: cómo conectar la IA con tus propias herramientas</a></h4></div></article><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="agente-cripto-noticias.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-agente-cripto-noticias.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="agente-cripto-noticias.html">El agente que vigila cripto y te resume las noticias</a></h4></div></article></div>
+</section>
+</div></main>
+<footer class="w-full bg-surface-container-low border-t border-outline-variant mt-space-4xl"><div class="max-w-site-max-width mx-auto px-space-md py-space-3xl"><div class="grid grid-cols-1 md:grid-cols-3 gap-col-gap"><div class="space-y-space-sm"><span class="font-headline-md text-headline-md text-primary">El Telar</span><p class="font-body-sm text-body-sm text-on-surface-variant">Publicación independiente de tecnología y automatización con agentes. Contenidos verificados en producción, sin patrocinios opacos ni promesas vacías.</p></div><div><h3 class="font-kicker text-kicker uppercase tracking-wider text-on-surface mb-space-md">SECCIONES</h3><ul class="space-y-space-xs font-body-sm text-body-sm"><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html#guias">Archivo de Guías</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../empieza-aqui.html">Guía para Principiantes</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../sobre-nosotros.html">Manifiesto Editorial</a></li><li class="pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html#despacho">Boletín Semanal</a></li></ul></div><div><h3 class="font-kicker text-kicker uppercase tracking-wider text-on-surface mb-space-md">CONTACTO &amp; PRENSA</h3><div class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant"><p class="font-semibold text-on-surface">contacto@eltelar.es</p><p>Síguenos: <a class="hover:text-primary underline" href="https://www.instagram.com/eltelar_es/" rel="me noopener" target="_blank">Instagram</a> · <a class="hover:text-primary underline" href="https://www.threads.com/@eltelar_es" rel="me noopener" target="_blank">Threads</a> · <a class="hover:text-primary underline" href="https://x.com/eltelar_es" rel="me noopener" target="_blank">X</a></p></div></div></div></div><div class="border-t border-outline-variant py-space-md bg-surface-container-lowest"><div class="max-w-site-max-width mx-auto px-space-md flex flex-col md:flex-row items-center justify-between gap-space-sm text-caption font-caption text-on-surface-variant"><div>© 2026 El Telar. Todos los derechos reservados. Independencia editorial garantizada.</div><div class="flex items-center gap-space-md"><a class="hover:text-on-surface transition-colors" href="../privacidad.html">Privacidad</a><a class="hover:text-on-surface transition-colors" href="../terminos.html">Términos</a><a class="hover:text-on-surface transition-colors" href="../sobre-nosotros.html">Sobre nosotros</a><a class="hover:text-on-surface transition-colors" href="../contacto.html">Contacto</a></div></div></div></footer><script defer src="../js/copy-guide.js"></script><script defer src="../js/guide-interactions.js"></script><script defer src="../js/reading-progress.js"></script><script defer src="../js/search.js?v=7"></script><script defer src="../js/entrance.js"></script><script defer src="../js/cookie-consent.js?v=4"></script></body></html>

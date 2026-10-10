@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Traducir con IA: cuál usar y cuándo no fiarte | El Telar</title>
+<meta name="description" content="DeepL frente a ChatGPT, Claude o Gemini para traducir: cuándo gana cada uno y en qué documentos una traducción automática puede salir muy cara.">
+<link rel="canonical" href="https://eltelar.es/articulos/traducir-con-ia.html"><link rel="icon" type="image/svg+xml" href="../img/favicon.svg?v=4"><link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32.png?v=4"><link rel="apple-touch-icon" href="../img/apple-touch-icon.png?v=4"><meta name="theme-color" content="#072417"><link rel="manifest" href="../manifest.json"><link rel="alternate" type="application/rss+xml" title="El Telar" href="../feed.xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Traducir con IA: cuál usar y cuándo no fiarte | El Telar">
+<meta property="og:description" content="DeepL frente a ChatGPT, Claude o Gemini para traducir, y cuándo una traducción automática puede salir muy cara.">
+<meta property="og:url" content="https://eltelar.es/articulos/traducir-con-ia.html">
+<meta property="og:site_name" content="El Telar">
+<meta property="og:locale" content="es_ES"><meta property="og:image" content="https://eltelar.es/img/og/guia-traducir-con-ia.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="DeepL vs. ChatGPT vs. Claude para traducir | El Telar">
+<meta name="twitter:description" content="Cuándo gana cada uno, y cuándo no fiarte de ninguno."><meta name="twitter:image" content="https://eltelar.es/img/og/guia-traducir-con-ia.jpg">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Traducir con IA: cuál usar y cuándo no fiarte",
+  "description": "DeepL frente a ChatGPT, Claude o Gemini para traducir: cuándo gana cada uno, y los tres tipos de documento donde una traducción automática puede salir muy cara. Con plantilla de prompt para traducir con matices.",
+  "image": "https://eltelar.es/img/og-image.jpg",
+  "author": { "@type": "Organization", "name": "El Telar", "url": "https://eltelar.es/sobre-nosotros.html" },
+  "publisher": { "@type": "Organization", "name": "El Telar" },
+  "datePublished": "2026-09-15",
+  "dateModified": "2026-09-28",
+  "mainEntityOfPage": "https://eltelar.es/articulos/traducir-con-ia.html",
+  "inLanguage": "es"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "¿DeepL es mejor que ChatGPT para traducir?", "acceptedAnswer": { "@type": "Answer", "text": "Para una traducción rápida de un texto largo en los idiomas europeos que mejor cubre, DeepL suele sonar más natural con menos esfuerzo. La ventaja de un chat de IA como ChatGPT, Claude o Gemini es que puedes pedirle que explique por qué eligió una expresión concreta, que adapte el registro (formal/informal) o que señale los matices que no tienen traducción literal — algo que DeepL no ofrece." } },
+    { "@type": "Question", "name": "¿Puedo fiarme de una traducción automática para un contrato o documento legal?", "acceptedAnswer": { "@type": "Answer", "text": "No sin revisión de alguien cualificado. Un error de matiz en una cláusula legal puede cambiar una obligación entera, y ni DeepL ni un chat de IA garantizan precisión jurídica — están entrenados para sonar naturales, no para preservar significado legal exacto. Úsalos como primer borrador rápido, nunca como versión final de un documento vinculante." } },
+    { "@type": "Question", "name": "¿Por qué un chiste o un juego de palabras se traduce mal casi siempre?", "acceptedAnswer": { "@type": "Answer", "text": "Porque el humor basado en el propio idioma (un doble sentido, una rima, un juego con el sonido de las palabras) depende de una estructura que casi nunca existe igual en otro idioma. Una traducción literal pierde la gracia; una IA que entiende esto puede proponer un chiste equivalente en el idioma de destino, pero eso ya no es traducir, es reescribir — y conviene saber cuál de las dos cosas necesitas." } }
+  , {"@type":"Question","name":"¿Sirve la IA para una traducción jurada u oficial?","acceptedAnswer":{"@type":"Answer","text":"No. En España las traducciones juradas solo las pueden firmar traductores-intérpretes jurados nombrados por el Ministerio de Asuntos Exteriores. La IA es útil para entender el documento antes y revisar nombres y fechas después."}}, {"@type":"Question","name":"¿Cómo traduzco un PDF sin perder el formato?","acceptedAnswer":{"@type":"Answer","text":"Usa la opción de traducir documentos de DeepL o Google Translate, que devuelven el archivo con la maquetación casi intacta. Si el PDF es un escaneo, revisa antes el texto reconocido, porque sus errores pasan a la traducción."}}, {"@type":"Question","name":"¿Es seguro pegar documentos de trabajo en un traductor gratuito?","acceptedAnswer":{"@type":"Answer","text":"Depende del contenido. Las versiones gratuitas pueden guardar lo que pegas. Quita datos personales y confidenciales, usa la herramienta que haya aprobado tu empresa o un modelo local si el texto es sensible."}}]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://eltelar.es/" },
+    { "@type": "ListItem", "position": 2, "name": "Guías", "item": "https://eltelar.es/index.html#guias" },
+    { "@type": "ListItem", "position": 3, "name": "Traducir con IA", "item": "https://eltelar.es/articulos/traducir-con-ia.html" }
+  ]
+}
+</script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet"/></noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet"/></noscript>
+<style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><link rel="stylesheet" href="../css/tailwind.css"><link rel="stylesheet" href="../css/entrance.css?v=2"><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}(function(){var c=null;try{c=localStorage.getItem('eltelar-cookie-consent')}catch(e){}var g=c==='accepted'?'granted':'denied';gtag('consent','default',{ad_storage:g,ad_user_data:g,ad_personalization:g,analytics_storage:g,wait_for_update:500});window.adsbygoogle=window.adsbygoogle||[];if(g!=='granted'){window.adsbygoogle.requestNonPersonalizedAds=1;}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-4DPTKEG79N"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4DPTKEG79N');</script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8239907995939753" crossorigin="anonymous"></script></head><body class="bg-background font-body-md text-on-surface antialiased">
+<header class="w-full bg-surface-container-lowest border-b border-outline-variant"><div class="border-b border-outline-variant py-space-xxs px-space-md hidden md:block"><div class="max-w-site-max-width mx-auto flex items-center justify-between font-kicker text-kicker text-on-surface-variant uppercase tracking-wider"><span>EDICIÓN DIGITAL // ACTUALIZADO 2026 // EL TELAR &amp; AGENTES</span><span>MADRID · REMOTO</span><span>SIN HUMO · 100% PRODUCCIÓN</span></div></div><div class="max-w-site-max-width mx-auto px-space-md py-space-md sm:py-space-xl text-center"><p class="hidden sm:block font-kicker text-kicker uppercase tracking-widest text-on-surface-variant mb-space-xs">Publicación Independiente de Tecnología &amp; Agentes</p><a class="inline-block" href="../index.html"><div class="font-display text-display max-sm:text-[40px] max-sm:leading-none text-primary tracking-tight">El Telar</div></a><p class="hidden sm:block font-caption text-caption uppercase tracking-widest text-on-surface-variant mt-space-xs">EL BOLETÍN Y ARCHIVO PRÁCTICO DE INTELIGENCIA ARTIFICIAL Y AGENTES AUTÓNOMOS</p></div><div class="border-t border-b border-outline-variant"><div class="max-w-site-max-width mx-auto px-space-md flex items-center justify-between gap-space-sm h-14"><nav class="flex items-center gap-space-md sm:gap-space-lg h-full min-w-0 overflow-x-auto [scrollbar-width:none] whitespace-nowrap"><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../index.html#guias">GUÍAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../empieza-aqui.html">EMPIEZA AQUÍ</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../sobre-nosotros.html">SOBRE NOSOTROS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../noticias/index.html">NOTICIAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../herramientas/index.html">HERRAMIENTAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../prompts/index.html">PROMPTS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../contacto.html">CONTACTO</a></nav><div class="flex items-center gap-space-md"><button id="search-trigger" type="button" aria-label="Buscar en las guías" class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[20px]">search</span></button><a class="hidden sm:inline-block bg-primary-container text-surface px-space-md py-space-xs font-label-md text-label-md uppercase tracking-wider hover:bg-primary transition-colors" href="../index.html#despacho">SUSCRÍBETE GRATIS</a></div></div></div><div class="hidden md:block bg-surface-container-low border-b border-outline-variant py-space-xs px-space-md"><div class="max-w-site-max-width mx-auto text-center"><p class="font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">47 GUÍAS COMPLETAS EN EXPANSIÓN · ACTUALIZADO A MODELOS 2026 · PROBADO EN TERMINAL Y FLUJOS REALES · CERO HUMO NI TEORÍA VACÍA</p></div></div></header>
+<main class="w-full max-w-site-max-width mx-auto px-space-md py-space-xl"><div class="flex flex-col w-full">
+<nav class="w-full mb-space-lg">
+<ol class="flex flex-wrap items-center gap-space-xs font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">
+<li><a class="hover:text-primary transition-colors" href="../index.html">Inicio</a></li>
+<li class="text-on-surface-variant">/</li>
+<li><a class="hover:text-primary transition-colors" href="../index.html#guias">Guías</a></li>
+<li class="text-on-surface-variant">/</li>
+<li class="text-primary font-bold truncate max-w-[280px] sm:max-w-md">Traducir con IA</li>
+</ol>
+</nav>
+<header class="w-full pb-space-xl mb-space-2xl">
+<div class="flex flex-wrap items-center gap-space-xs mb-space-md">
+<span class="bg-surface-container-high text-secondary px-space-sm py-1 font-kicker text-kicker uppercase tracking-widest">
+        COMPARATIVA // TUTORIAL
+      </span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight max-w-editorial-max-width mb-space-md">
+      Traducir con IA: cuál usar y cuándo no fiarte
+    </h1>
+<p class="font-lead-paragraph text-lead-paragraph text-on-surface-variant max-w-editorial-max-width mb-space-xl">
+      DeepL frente a ChatGPT, Claude o Gemini: cuándo gana cada uno, y los tres tipos de documento donde una traducción automática puede salir muy cara. Con plantilla de prompt para traducir con matices.
+    </p>
+<div class="bg-surface-container-lowest p-space-md flex flex-wrap items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 bg-primary text-on-primary flex items-center justify-center font-headline-sm text-headline-sm">
+          ET
+        </div>
+<div>
+<div class="font-label-md text-label-md text-on-surface font-semibold">Por la Redacción de El Telar</div><div class="font-caption text-caption text-on-surface-variant">Guías prácticas de IA y agentes, probadas en flujos de trabajo reales antes de publicarlas.</div>
+<button class="inline-flex items-center gap-1 mt-2 px-3 py-1.5 bg-surface-container text-primary font-label-md text-[12px] font-semibold uppercase tracking-wider hover:bg-surface-container-high transition-colors" id="copy-guide-btn" type="button"><span class="material-symbols-outlined text-[16px]">content_copy</span> Copiar guía para tu IA</button><span class="inline-flex items-center gap-1 ml-1"><button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" id="save-guide-btn" title="Guardar guía" type="button"><span class="material-symbols-outlined text-[16px]">bookmark_border</span></button><button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" id="copy-link-btn" title="Copiar enlace permanente" type="button"><span class="material-symbols-outlined text-[16px]">share</span></button></span>
+</div>
+</div>
+<div class="flex items-center gap-space-lg text-on-surface-variant font-caption text-caption uppercase tracking-wider">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">schedule</span> 11 min de lectura
+        </span>
+</div>
+</div>
+</header>
+<div class="w-full mb-space-2xl space-y-1">
+<div class="w-full h-0.5 bg-primary"></div>
+<div class="w-full h-px bg-surface-container-highest"></div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-col-gap">
+<article class="lg:col-span-8 flex flex-col space-y-space-xl">
+<figure data-hero class="space-y-space-xs"><img class="w-full border border-outline-variant" src="../img/guias/hero-traducir-con-ia.jpg" alt="Web de DeepL, el traductor con IA" width="1280" height="720" fetchpriority="high" decoding="async"/><figcaption class="font-caption text-caption text-on-surface-variant">Captura de pantalla: <a class="underline" href="https://www.deepl.com/es/" rel="nofollow noopener" target="_blank">deepl.com/es</a>.</figcaption></figure>
+<div class="font-lead-paragraph text-lead-paragraph text-on-surface leading-relaxed">
+<span class="float-left text-display font-display text-primary leading-none pr-space-sm pt-1 uppercase">T</span>
+        raducir con IA ya no significa pegar un texto en Google Translate y cruzar los dedos. Hay al menos dos categorías de herramienta con puntos fuertes distintos — un traductor especializado como DeepL, y un chat de propósito general como ChatGPT, Claude o Gemini — y saber cuál usar según el texto ahorra tanto tiempo como corregir después una mala elección.
+      </div>
+<section class="space-y-space-md">
+<span class="font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">Opción 1</span>
+<h2 id="sec-1" class="font-headline-md text-headline-md text-primary">
+          1. DeepL: rápido y natural, con menos control
+        </h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          DeepL está especializado únicamente en traducción, y para los idiomas europeos que mejor cubre suele producir un resultado más natural con menos esfuerzo que pedírselo a un chat general — pegas el texto, eliges el idioma de destino, y listo. La contrapartida es que no puedes pedirle explicaciones: no sabes por qué eligió una expresión concreta, ni puedes pedirle que ajuste el tono o el registro sin reescribir tú el resultado a mano.
+        </p>
+</section>
+<section class="space-y-space-md">
+<span class="font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">Opción 2</span>
+<h2 id="sec-2" class="font-headline-md text-headline-md text-primary">
+          2. Un chat de IA: más lento, pero puedes preguntarle por qué
+        </h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          La ventaja real de pedirle una traducción a ChatGPT, Claude o Gemini no es la calidad base — es que puedes seguir conversando sobre la traducción: pedirle que explique una expresión ambigua, que la adapte a un registro más formal o más cercano, o que señale qué partes no tienen equivalente exacto en el idioma de destino. Es la diferencia entre una traducción como producto final y una traducción como punto de partida para revisar con criterio.
+        </p>
+<div class="bg-surface-container-lowest p-space-lg space-y-space-md" id="prompt-traducir">
+<div class="flex items-center justify-between flex-wrap gap-space-xs">
+<span class="font-kicker text-kicker text-secondary uppercase tracking-wider flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">prompt_suggestion</span>
+              PLANTILLA QUE PUEDES COPIAR
+            </span>
+<button class="inline-flex items-center gap-1 px-3 py-1.5 bg-surface-container text-primary font-label-md text-[12px] font-semibold uppercase tracking-wider hover:bg-surface-container-high transition-colors" id="copiar-prompt-traducir" type="button"><span class="material-symbols-outlined text-[16px]">content_copy</span> Copiar</button>
+</div>
+<pre class="font-mono text-caption text-on-surface bg-surface-container-low p-space-md overflow-x-auto whitespace-pre-wrap" id="prompt-traducir-texto">Traduce el siguiente texto de [idioma origen] a [idioma destino], con un registro [formal / neutro / cercano].
+
+Después de la traducción:
+1. Señala cualquier expresión, modismo o juego de palabras del original que no tenga equivalente exacto, y explica brevemente qué decisión tomaste en su lugar.
+2. Si hay alguna frase ambigua que podría interpretarse de más de una forma, indícalo.
+3. Dame una alternativa de traducción para la frase que consideres más difícil del texto.
+
+Texto:
+[pega aquí el texto]</pre>
+</div>
+</section>
+<figure class="my-space-lg">
+<div class="p-space-md bg-surface-container-lowest">
+<div class="font-kicker text-kicker uppercase text-on-surface-variant tracking-wider mb-space-sm text-center">DIAGRAMA // QUÉ TEXTO VA CON QUÉ HERRAMIENTA</div>
+<svg aria-label="Tres tipos de texto (largo y directo, con matices, legal o contractual) mapeados a la herramienta más adecuada" class="w-full h-auto" fill="none" role="img" viewBox="0 0 680 170" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#ebeef8" height="80" width="200" x="10" y="15"></rect>
+<text fill="#072417" font-family="Inter" font-size="9.5" font-weight="700" text-anchor="middle" x="110" y="45">Texto largo,</text>
+<text fill="#072417" font-family="Inter" font-size="9.5" font-weight="700" text-anchor="middle" x="110" y="60">sentido directo</text>
+<text fill="#424843" font-family="Inter" font-size="8" text-anchor="middle" x="110" y="80">→ DeepL, rápido</text>
+<rect fill="#caead4" height="80" width="200" x="240" y="15"></rect>
+<text fill="#042013" font-family="Inter" font-size="9.5" font-weight="700" text-anchor="middle" x="340" y="45">Con matices,</text>
+<text fill="#042013" font-family="Inter" font-size="9.5" font-weight="700" text-anchor="middle" x="340" y="60">tono o humor</text>
+<text fill="#042013" font-family="Inter" font-size="8" text-anchor="middle" x="340" y="80">→ Chat de IA, con preguntas</text>
+<rect fill="#ffdad6" height="80" width="200" x="470" y="15"></rect>
+<text fill="#93000a" font-family="Inter" font-size="9.5" font-weight="700" text-anchor="middle" x="570" y="45">Legal, médico,</text>
+<text fill="#93000a" font-family="Inter" font-size="9.5" font-weight="700" text-anchor="middle" x="570" y="60">contractual</text>
+<text fill="#93000a" font-family="Inter" font-size="8" text-anchor="middle" x="570" y="80">→ Ninguna sin revisión humana</text>
+</svg>
+</div>
+<figcaption class="font-caption text-caption text-on-surface-variant mt-space-xs">Cuanto más importa el matiz exacto, menos debería decidir la máquina sola.</figcaption>
+</figure>
+<blockquote class="bg-surface-container-lowest p-space-xl my-space-lg shadow-sm">
+<div class="flex items-start gap-space-md">
+<span class="text-secondary font-display text-display leading-none select-none">«</span>
+<div>
+<p class="font-headline-sm text-headline-sm text-primary italic leading-snug mb-space-sm">
+              Una traducción automática suena natural casi siempre — y eso es precisamente lo peligroso: suena bien incluso cuando ha cambiado el sentido.
+            </p>
+<cite class="font-kicker text-kicker text-on-surface-variant uppercase tracking-widest block not-italic">
+              — Redacción El Telar
+            </cite>
+</div>
+</div>
+</blockquote>
+<section class="space-y-space-md">
+<span class="font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">Donde falla</span>
+<h2 id="sec-3" class="font-headline-md text-headline-md text-primary">
+          3. Tres tipos de texto donde ninguna IA debería decidir sola
+        </h2>
+<div class="space-y-space-sm">
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h4 class="font-label-md text-label-md text-primary font-bold mb-1">Documentos legales o contractuales</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Un error de matiz en una cláusula puede cambiar una obligación entera. Ni DeepL ni un chat de IA garantizan precisión jurídica — están entrenados para sonar naturales, no para preservar significado legal exacto.
+            </p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h4 class="font-label-md text-label-md text-primary font-bold mb-1">Textos médicos</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Dosis, síntomas o instrucciones de tratamiento traducidos mal pueden tener consecuencias graves — trátalo siempre como borrador para que revise un profesional, nunca como versión final.
+            </p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h4 class="font-label-md text-label-md text-primary font-bold mb-1">Humor y juegos de palabras</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Un chiste basado en el sonido o la estructura del idioma casi nunca sobrevive a una traducción literal. Una IA puede proponer un chiste equivalente, pero eso ya es reescribir, no traducir — conviene saber cuál de las dos cosas necesitas antes de pedirla.
+            </p>
+</div>
+</div>
+</section>
+<section class="space-y-space-md">
+<span class="font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">Verificación</span>
+<h2 id="sec-verificar" class="font-headline-md text-headline-md text-primary">
+          4. Cómo comprobar una traducción sin hablar el idioma de destino
+        </h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          Si no dominas el idioma al que has traducido, la comprobación más fiable no es "leerla y ver si suena bien" — no tienes forma de juzgar eso. La técnica que sí funciona es la retrotraducción: pide a la misma IA, en una conversación nueva y sin contexto previo, que traduzca el resultado de vuelta a tu idioma original. Si el significado vuelve razonablemente intacto, la traducción es sólida; si aparecen cambios de sentido, has encontrado justo la frase que merece revisión humana antes de usarla.
+        </p>
+</section>
+<section class="space-y-space-md">
+<span class="font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">Caso real</span>
+<h2 id="sec-caso" class="font-headline-md text-headline-md text-primary">
+          5. Un email profesional, traducido bien y mal
+        </h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          La diferencia entre una traducción literal y una que funciona de verdad se nota más en el registro que en el vocabulario. Un ejemplo con una frase española habitual en un correo de trabajo:
+        </p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<div class="bg-surface-container-low p-space-md">
+<div class="font-kicker text-kicker text-secondary uppercase tracking-widest mb-1">TRADUCCIÓN LITERAL</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              "Cuando puedas, échale un ojo" → "When you can, throw an eye at it" — gramaticalmente reconocible, pero suena extraño y poco profesional en inglés.
+            </p>
+</div>
+<div class="bg-surface-container-low p-space-md">
+<div class="font-kicker text-kicker text-secondary uppercase tracking-widest mb-1">TRADUCCIÓN CON REGISTRO</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              La misma frase, pidiendo "registro profesional" al chat → "Whenever you get a chance, could you take a look?" — mismo mensaje, tono correcto para un entorno de trabajo.
+            </p>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Esa es la razón por la que especificar el registro en el prompt (formal, neutro, cercano) no es un detalle menor — cambia el resultado más que elegir entre DeepL y un chat de IA.
+        </p>
+</section>
+<section class="space-y-space-md">
+<span class="font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">Documentos enteros</span>
+<figure data-inline-photo class="space-y-space-xs my-space-xl"><img class="w-full border border-outline-variant" src="../img/guias/foto-traducir-con-ia.jpg" alt="Artículo de Wikipedia sobre la traducción automática y sus límites" width="1280" height="720" loading="lazy" decoding="async"/><figcaption class="font-caption text-caption text-on-surface-variant">Captura de pantalla: <a class="underline" href="https://es.wikipedia.org/wiki/Traducci%C3%B3n_autom%C3%A1tica" rel="nofollow noopener" target="_blank">es.wikipedia.org</a>.</figcaption></figure>
+<h2 id="sec-documentos" class="font-headline-md text-headline-md text-primary">
+          6. Traducir un documento entero sin romper el formato
+        </h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          Pegar un Word de veinte páginas en un chat tiene dos problemas: pierdes el formato (tablas, negritas, numeración) y, en documentos largos, el modelo tiende a resumir o saltarse párrafos sin avisar. Es uno de los fallos más difíciles de detectar, porque el resultado se lee bien: simplemente le faltan trozos.
+        </p>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          Para documentos, lo más cómodo es la función de traducir archivos que ofrecen DeepL y Google Translate: subes el .docx o el .pdf y te devuelven el mismo archivo con la maquetación casi intacta. Si prefieres un chat porque necesitas controlar el tono, trabaja por bloques de dos o tres páginas y pide al final de cada bloque que confirme cuántos párrafos ha traducido.
+        </p>
+<div class="space-y-space-sm">
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h4 class="font-label-md text-label-md text-primary font-bold mb-1">Compara la longitud</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Una traducción al inglés suele ocupar algo menos que el español, y al alemán algo más, pero nunca la mitad. Si un bloque vuelve mucho más corto que el original, falta texto.
+            </p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h4 class="font-label-md text-label-md text-primary font-bold mb-1">Revisa números y fechas</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Cifras, importes, porcentajes y fechas son lo que más cuesta ver cuando cambia. Comprueba que coinciden uno a uno con el original: en inglés, además, el punto y la coma decimales van al revés.
+            </p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h4 class="font-label-md text-label-md text-primary font-bold mb-1">Cuidado con los PDF escaneados</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Si el PDF es una foto del papel, primero hay que reconocer el texto (OCR). Los errores del OCR, como una cifra mal leída, pasan a la traducción sin que nadie los marque.
+            </p>
+</div>
+</div>
+</section>
+<section class="space-y-space-md">
+<span class="font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">Coherencia</span>
+<h2 id="sec-glosario" class="font-headline-md text-headline-md text-primary">
+          7. Un glosario para que no cambie de palabra a mitad del texto
+        </h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          En un manual, una web o un contrato, el mismo término tiene que traducirse igual en todas partes. Si en la página 2 "cliente" es <em>customer</em> y en la página 9 es <em>client</em>, el lector duda de si hablan de lo mismo. Los traductores automáticos no garantizan esa coherencia entre bloques, porque cada fragmento se traduce casi por separado.
+        </p>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          La solución profesional se llama glosario: una lista corta de términos con su traducción obligatoria. DeepL permite guardar glosarios en algunos de sus planes; en un chat basta con ponerlo al principio de cada petición.
+        </p>
+<div class="bg-surface-container-lowest p-space-lg space-y-space-md" id="prompt-glosario">
+<div class="flex items-center justify-between flex-wrap gap-space-xs">
+<span class="font-kicker text-kicker text-secondary uppercase tracking-wider flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">prompt_suggestion</span>
+              PLANTILLA QUE PUEDES COPIAR
+            </span>
+<button class="inline-flex items-center gap-1 px-3 py-1.5 bg-surface-container text-primary font-label-md text-[12px] font-semibold uppercase tracking-wider hover:bg-surface-container-high transition-colors" data-copy="prompt-glosario-texto" type="button"><span class="material-symbols-outlined text-[16px]">content_copy</span> Copiar</button>
+</div>
+<pre class="font-mono text-caption text-on-surface bg-surface-container-low p-space-md overflow-x-auto whitespace-pre-wrap" id="prompt-glosario-texto">Vas a traducir un documento de [idioma origen] a [idioma destino] en varios bloques.
+
+Usa SIEMPRE estas traducciones, sin variar:
+- [término 1] → [traducción 1]
+- [término 2] → [traducción 2]
+- [nombre de producto o marca] → no se traduce
+
+Reglas:
+1. Mantén el formato: títulos, listas y negritas.
+2. No resumas ni omitas nada. Al final dime cuántos párrafos has traducido.
+3. Si aparece un término técnico que no está en la lista, tradúcelo y añádelo a una lista de &quot;términos nuevos&quot; al final para que yo lo revise.
+
+Bloque 1:
+[pega aquí el texto]</pre>
+</div>
+</section>
+<section class="space-y-space-md">
+<span class="font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">Localizar</span>
+<h2 id="sec-localizar" class="font-headline-md text-headline-md text-primary">
+          8. Traducir no es localizar: webs, tiendas y marketing
+        </h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          Una web o un anuncio no se traducen, se adaptan. Una traducción perfecta de una página de producto española puede fallar en México o en Estados Unidos por cosas que no son de idioma: la moneda, el formato de fecha, las tallas, una referencia cultural que allí no se entiende o un tono demasiado formal para ese mercado.
+        </p>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          Aquí un chat de IA sí aporta más que un traductor, porque puedes pedirle que actúe como alguien de ese país y que te señale lo que chirría. No sustituye a un nativo que revise el texto final, pero te llega mucho más pulido.
+        </p>
+<div class="bg-surface-container-lowest p-space-lg space-y-space-md" id="prompt-localizar">
+<div class="flex items-center justify-between flex-wrap gap-space-xs">
+<span class="font-kicker text-kicker text-secondary uppercase tracking-wider flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">prompt_suggestion</span>
+              PLANTILLA QUE PUEDES COPIAR
+            </span>
+<button class="inline-flex items-center gap-1 px-3 py-1.5 bg-surface-container text-primary font-label-md text-[12px] font-semibold uppercase tracking-wider hover:bg-surface-container-high transition-colors" data-copy="prompt-localizar-texto" type="button"><span class="material-symbols-outlined text-[16px]">content_copy</span> Copiar</button>
+</div>
+<pre class="font-mono text-caption text-on-surface bg-surface-container-low p-space-md overflow-x-auto whitespace-pre-wrap" id="prompt-localizar-texto">Actúa como redactor nativo de [país] especializado en [sector].
+
+Adapta este texto de mi web para ese mercado, no lo traduzcas literalmente:
+- Moneda, fechas, unidades y tallas en el formato local.
+- Cambia expresiones o referencias que allí no se entiendan.
+- Tono: [cercano / profesional], como escribiría una marca local.
+
+Después, haz una lista de cada cambio que no sea una simple traducción y explica por qué lo has hecho.
+
+Texto:
+[pega aquí el texto]</pre>
+</div>
+</section>
+<section class="space-y-space-md">
+<span class="font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">Documentos oficiales</span>
+<h2 id="sec-oficial" class="font-headline-md text-headline-md text-primary">
+          9. Cuando necesitas una traducción oficial, la IA no vale
+        </h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          Para presentar un título, un certificado de nacimiento o unos antecedentes penales ante una administración española, normalmente te pedirán una <strong>traducción jurada</strong>. En España solo la pueden firmar los traductores-intérpretes jurados nombrados por el Ministerio de Asuntos Exteriores, que publica la lista oficial en su web. Una traducción hecha con IA, por buena que sea, no tiene validez para ese trámite.
+        </p>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          Donde sí te ahorra dinero la IA es antes: entender qué dice el documento, comprobar que es el que te piden y preparar una lista de dudas. Y después: revisar que la traducción jurada no tiene errores en nombres, fechas o números de documento, que son los fallos que más problemas dan en ventanilla.
+        </p>
+</section>
+<section class="space-y-space-md">
+<span class="font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">Privacidad</span>
+<h2 id="sec-privacidad" class="font-headline-md text-headline-md text-primary">
+          10. Qué no deberías pegar en un traductor gratuito
+        </h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          Todo lo que pegas en un traductor o en un chat viaja a los servidores de la empresa. En las versiones gratuitas, las condiciones de uso suelen permitir guardar ese texto y, en algunos casos, usarlo para mejorar el servicio. Algunos planes de pago y de empresa se comprometen a no conservarlo, pero hay que leer las condiciones de cada uno, porque cambian.
+        </p>
+<div class="space-y-space-sm">
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h4 class="font-label-md text-label-md text-primary font-bold mb-1">Datos personales de terceros</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Nóminas, historiales médicos, DNI o direcciones de clientes. Sustitúyelos por [NOMBRE], [DNI] o [DIRECCIÓN] antes de traducir y vuelve a ponerlos después.
+            </p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h4 class="font-label-md text-label-md text-primary font-bold mb-1">Documentos confidenciales de tu empresa</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Contratos en negociación, cifras sin publicar o código propio. Consulta primero si tu empresa tiene una herramienta aprobada.
+            </p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h4 class="font-label-md text-label-md text-primary font-bold mb-1">Si no hay alternativa</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Un modelo instalado en tu propio ordenador traduce sin enviar nada fuera. Lo explicamos en la guía de IA local.
+            </p>
+</div>
+</div>
+</section>
+<section class="space-y-space-md">
+<span class="font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">Flujo de trabajo</span>
+<h2 id="sec-flujo" class="font-headline-md text-headline-md text-primary">
+          11. El flujo que usamos, en cinco pasos
+        </h2>
+<ol class="list-decimal pl-space-lg space-y-space-sm">
+<li class="font-body-md text-body-md text-on-surface leading-relaxed"><strong class="text-primary">Decide qué tipo de texto es.</strong> Informativo y largo: traductor. Con tono o matices: chat. Legal, médico u oficial: borrador para un profesional.</li>
+<li class="font-body-md text-body-md text-on-surface leading-relaxed"><strong class="text-primary">Prepara el terreno.</strong> Quita datos personales y escribe el glosario si el texto tiene términos fijos.</li>
+<li class="font-body-md text-body-md text-on-surface leading-relaxed"><strong class="text-primary">Traduce por bloques.</strong> Pide siempre el registro (formal, neutro, cercano) y que no resuma.</li>
+<li class="font-body-md text-body-md text-on-surface leading-relaxed"><strong class="text-primary">Comprueba.</strong> Retrotraducción de las frases clave, números uno a uno y longitud de cada bloque.</li>
+<li class="font-body-md text-body-md text-on-surface leading-relaxed"><strong class="text-primary">Revisión humana según el riesgo.</strong> Un email interno no la necesita; una web que va a leer un cliente, sí; un contrato, siempre.</li>
+</ol>
+</section>
+<section class="space-y-space-md">
+<span class="font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">Preguntas frecuentes</span>
+<h2 class="font-headline-md text-headline-md text-primary">
+          Preguntas frecuentes
+        </h2>
+<div class="space-y-space-md">
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿DeepL es mejor que ChatGPT para traducir?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Para una traducción rápida en los idiomas europeos que mejor cubre, DeepL suele sonar más natural con menos esfuerzo. La ventaja de un chat de IA es que puedes pedirle que explique sus elecciones, adapte el registro o señale matices sin traducción literal — algo que DeepL no ofrece.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Puedo fiarme de una traducción automática para un contrato o documento legal?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+No sin revisión de alguien cualificado. Un error de matiz en una cláusula legal puede cambiar una obligación entera. Úsalas como primer borrador rápido, nunca como versión final de un documento vinculante.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Por qué un chiste o un juego de palabras se traduce mal casi siempre?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Porque el humor basado en el propio idioma depende de una estructura que casi nunca existe igual en otro. Una traducción literal pierde la gracia; una IA puede proponer un chiste equivalente, pero eso ya es reescribir, no traducir.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Sirve la IA para una traducción jurada u oficial?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+No. En España las traducciones juradas solo las pueden firmar traductores-intérpretes jurados nombrados por el Ministerio de Asuntos Exteriores. La IA es útil para entender el documento antes y revisar nombres y fechas después.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Cómo traduzco un PDF sin perder el formato?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Usa la opción de traducir documentos de DeepL o Google Translate, que devuelven el archivo con la maquetación casi intacta. Si el PDF es un escaneo, revisa antes el texto reconocido, porque sus errores pasan a la traducción.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Es seguro pegar documentos de trabajo en un traductor gratuito?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Depende del contenido. Las versiones gratuitas pueden guardar lo que pegas. Quita datos personales y confidenciales, usa la herramienta que haya aprobado tu empresa o un modelo local si el texto es sensible.
+</div>
+</div>
+</div>
+</section>
+<footer class="bg-surface-container-lowest p-space-lg shadow-sm mt-space-xl">
+<div class="flex flex-col sm:flex-row items-start sm:items-center gap-space-md">
+<div class="w-16 h-16 bg-primary text-on-primary flex items-center justify-center font-display text-headline-md shrink-0">ET</div>
+<div class="space-y-space-xxs">
+<span class="font-label-md text-label-md text-primary font-bold uppercase tracking-wider">Redacción El Telar</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              No recibimos comisión de DeepL ni de ningún proveedor de IA mencionado aquí.
+            </p>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mt-space-md">
+          Ninguna herramienta traduce sentido — traducen palabras que suelen coincidir con el sentido. La diferencia importa más cuanto más importa el texto.</p>
+</footer>
+</article>
+<aside class="lg:col-span-4 flex flex-col space-y-space-xl">
+<div class="bg-surface-container-lowest p-space-lg shadow-sm">
+<div class="flex items-center justify-between pb-space-xs mb-space-sm">
+<span class="font-kicker text-kicker text-primary uppercase tracking-widest">ÍNDICE DE LA GUÍA</span>
+</div>
+<ol class="space-y-space-xs font-body-sm text-body-sm text-on-surface">
+<li class="flex items-start gap-space-xs py-1"><span class="text-secondary font-mono font-bold">01.</span><a class="hover:text-primary transition-colors" href="#sec-1">DeepL</a></li>
+<li class="flex items-start gap-space-xs py-1"><span class="text-secondary font-mono font-bold">02.</span><a class="hover:text-primary transition-colors" href="#sec-2">Un chat de IA</a></li>
+<li class="flex items-start gap-space-xs py-1"><a class="text-secondary font-semibold hover:underline" href="#prompt-traducir">→ Plantilla de prompt</a></li>
+<li class="flex items-start gap-space-xs py-1"><span class="text-secondary font-mono font-bold">03.</span><a class="hover:text-primary transition-colors" href="#sec-3">Dónde no fiarte</a></li>
+<li class="flex items-start gap-space-xs py-1"><span class="text-secondary font-mono font-bold">04.</span><a class="hover:text-primary transition-colors" href="#sec-verificar">Comprobar sin hablar el idioma</a></li>
+<li class="flex items-start gap-space-xs py-1"><span class="text-secondary font-mono font-bold">05.</span><a class="hover:text-primary transition-colors" href="#sec-caso">Caso real: email profesional</a></li>
+<li class="flex items-start gap-space-xs py-1"><span class="text-secondary font-mono font-bold">06.</span><a class="hover:text-primary transition-colors" href="#sec-documentos">Documentos sin romper el formato</a></li>
+<li class="flex items-start gap-space-xs py-1"><span class="text-secondary font-mono font-bold">07.</span><a class="hover:text-primary transition-colors" href="#sec-glosario">Glosario y términos fijos</a></li>
+<li class="flex items-start gap-space-xs py-1"><span class="text-secondary font-mono font-bold">08.</span><a class="hover:text-primary transition-colors" href="#sec-localizar">Traducir no es localizar</a></li>
+<li class="flex items-start gap-space-xs py-1"><span class="text-secondary font-mono font-bold">09.</span><a class="hover:text-primary transition-colors" href="#sec-oficial">Traducciones juradas</a></li>
+<li class="flex items-start gap-space-xs py-1"><span class="text-secondary font-mono font-bold">10.</span><a class="hover:text-primary transition-colors" href="#sec-privacidad">Qué no deberías pegar</a></li>
+<li class="flex items-start gap-space-xs py-1"><span class="text-secondary font-mono font-bold">11.</span><a class="hover:text-primary transition-colors" href="#sec-flujo">Flujo en 5 pasos</a></li>
+</ol>
+</div>
+<div class="bg-surface-container-low p-space-lg shadow-sm space-y-space-md">
+<span class="font-kicker text-kicker text-secondary uppercase tracking-widest block">
+          FICHA TÉCNICA
+        </span>
+<div class="space-y-space-xs">
+<div class="flex items-center justify-between pb-1">
+<span class="font-caption text-caption text-on-surface-variant">Herramientas cubiertas:</span>
+<span class="font-caption text-caption font-mono font-bold text-primary">DeepL + 3 chats de IA</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-caption text-caption text-on-surface-variant">Incluye:</span>
+<span class="font-caption text-caption font-mono font-bold text-secondary">Plantilla de prompt</span>
+</div>
+</div>
+</div>
+</aside>
+</div>
+<section class="w-full mt-space-4xl pt-space-2xl bg-surface-container-lowest p-space-xl shadow-sm">
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-space-xl gap-space-xs">
+<h3 class="font-headline-md text-headline-md text-primary">
+          Continúa explorando el archivo
+        </h3>
+<a class="font-label-md text-label-md text-primary hover:text-secondary uppercase tracking-wider transition-colors flex items-center gap-1" href="../index.html#guias">
+        Ver todas las guías <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-col-gap"><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="chatgpt-claude-gemini.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-chatgpt-claude-gemini.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="chatgpt-claude-gemini.html">ChatGPT, Claude o Gemini: cuál usar</a></h4></div></article><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="como-escribir-prompts.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-como-escribir-prompts.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="como-escribir-prompts.html">Cómo escribir instrucciones que la IA entienda bien</a></h4></div></article><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="ia-para-estudiar.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-ia-para-estudiar.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="ia-para-estudiar.html">Cómo usar IA para estudiar y aprender más rápido</a></h4></div></article></div>
+</section>
+</div>
+<script>
+  document.getElementById('copiar-prompt-traducir').addEventListener('click', function () {
+    const texto = document.getElementById('prompt-traducir-texto').textContent;
+    navigator.clipboard.writeText(texto).then(() => {
+      const btn = document.getElementById('copiar-prompt-traducir');
+      const original = btn.innerHTML;
+      btn.innerHTML = '<span class="material-symbols-outlined text-[16px]">check</span> Copiado';
+      setTimeout(() => { btn.innerHTML = original; }, 2000);
+    });
+  });
+</script>
+</main><footer class="w-full bg-surface-container-low border-t border-outline-variant mt-space-4xl"><div class="max-w-site-max-width mx-auto px-space-md py-space-3xl"><div class="grid grid-cols-1 md:grid-cols-3 gap-col-gap"><div class="space-y-space-sm"><span class="font-headline-md text-headline-md text-primary">El Telar</span><p class="font-body-sm text-body-sm text-on-surface-variant">Publicación independiente de tecnología y automatización con agentes. Contenidos verificados en producción, sin patrocinios opacos ni promesas vacías.</p></div><div><h3 class="font-kicker text-kicker uppercase tracking-wider text-on-surface mb-space-md">SECCIONES</h3><ul class="space-y-space-xs font-body-sm text-body-sm"><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html#guias">Archivo de Guías</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../empieza-aqui.html">Guía para Principiantes</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../sobre-nosotros.html">Manifiesto Editorial</a></li><li class="pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html#despacho">Boletín Semanal</a></li></ul></div><div><h3 class="font-kicker text-kicker uppercase tracking-wider text-on-surface mb-space-md">CONTACTO &amp; PRENSA</h3><div class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant"><p class="font-semibold text-on-surface">contacto@eltelar.es</p><p>Síguenos: <a class="hover:text-primary underline" href="https://www.instagram.com/eltelar_es/" rel="me noopener" target="_blank">Instagram</a> · <a class="hover:text-primary underline" href="https://www.threads.com/@eltelar_es" rel="me noopener" target="_blank">Threads</a> · <a class="hover:text-primary underline" href="https://x.com/eltelar_es" rel="me noopener" target="_blank">X</a></p></div></div></div></div><div class="border-t border-outline-variant py-space-md bg-surface-container-lowest"><div class="max-w-site-max-width mx-auto px-space-md flex flex-col md:flex-row items-center justify-between gap-space-sm text-caption font-caption text-on-surface-variant"><div>© 2026 El Telar. Todos los derechos reservados. Independencia editorial garantizada.</div><div class="flex items-center gap-space-md"><a class="hover:text-on-surface transition-colors" href="../privacidad.html">Privacidad</a><a class="hover:text-on-surface transition-colors" href="../terminos.html">Términos</a><a class="hover:text-on-surface transition-colors" href="../sobre-nosotros.html">Sobre nosotros</a><a class="hover:text-on-surface transition-colors" href="../contacto.html">Contacto</a></div></div></div></footer><script defer src="../js/copy-guide.js"></script><script defer src="../js/guide-interactions.js"></script><script defer src="../js/reading-progress.js"></script><script defer src="../js/search.js?v=7"></script><script defer src="../js/entrance.js"></script><script defer src="../js/cookie-consent.js?v=4"></script><script data-copy-handler>document.addEventListener('click',function(e){var b=e.target.closest('[data-copy]');if(!b)return;var t=document.getElementById(b.getAttribute('data-copy')).innerText;navigator.clipboard.writeText(t).then(function(){var o=b.innerHTML;b.textContent='Copiado';setTimeout(function(){b.innerHTML=o},1500)});});</script></body></html>

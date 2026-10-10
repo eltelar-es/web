@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>RAG explicado: cómo funciona | El Telar</title>
+<meta name="description" content="Qué es RAG (Retrieval-Augmented Generation), por qué reduce las alucinaciones y cómo usarlo para que un asistente de IA conozca tus propios documentos.">
+<link rel="canonical" href="https://eltelar.es/articulos/rag-explicado.html"><link rel="icon" type="image/svg+xml" href="../img/favicon.svg?v=4"><link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32.png?v=4"><link rel="apple-touch-icon" href="../img/apple-touch-icon.png?v=4"><meta name="theme-color" content="#072417"><link rel="manifest" href="../manifest.json"><link rel="alternate" type="application/rss+xml" title="El Telar" href="../feed.xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RAG explicado: cómo hacer que la IA responda con tus propios documentos | El Telar">
+<meta property="og:description" content="Qué es RAG (Retrieval-Augmented Generation), por qué reduce las alucinaciones y cómo usarlo para que un asistente de IA conozca tus propios documentos.">
+<meta property="og:url" content="https://eltelar.es/articulos/rag-explicado.html">
+<meta property="og:site_name" content="El Telar">
+<meta property="og:locale" content="es_ES"><meta property="og:image" content="https://eltelar.es/img/og/guia-rag-explicado.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="RAG explicado: cómo hacer que la IA responda con tus propios documentos | El Telar">
+<meta name="twitter:description" content="Qué es RAG (Retrieval-Augmented Generation), por qué reduce las alucinaciones y cómo usarlo para que un asistente de IA conozca tus propios documentos."><meta name="twitter:image" content="https://eltelar.es/img/og/guia-rag-explicado.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "RAG explicado: cómo hacer que la IA responda con tus propios documentos",
+  "description": "Qué es RAG (Retrieval-Augmented Generation), por qué reduce las alucinaciones y cómo usarlo para que un asistente de IA conozca tus propios documentos.",
+  "image": "https://eltelar.es/img/og-image.jpg",
+  "author": { "@type": "Organization", "name": "El Telar", "url": "https://eltelar.es/sobre-nosotros.html" },
+  "publisher": { "@type": "Organization", "name": "El Telar" },
+  "datePublished": "2026-01-01",
+  "dateModified": "2026-10-05",
+  "mainEntityOfPage": "https://eltelar.es/articulos/rag-explicado.html",
+  "inLanguage": "es"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿RAG funciona igual de bien con cualquier tipo de documento?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Funciona mejor con texto bien estructurado que con texto muy desordenado o con mucha información en tablas complejas, donde el troceado por párrafos pierde parte de la estructura."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Necesito saber programar para usar RAG?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Para las opciones integradas en asistentes generales, no. Para construir un sistema propio, sí se necesita cierto conocimiento técnico, aunque los frameworks actuales han simplificado mucho el proceso."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuántos documentos hacen falta para que valga la pena?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Si tus documentos caben cómodamente en una sola conversación, probablemente no necesitas RAG todavía. Con cientos de documentos o miles de páginas que cambian con regularidad, ahí empieza a justificar la inversión."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿RAG resuelve el problema de datos desactualizados?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Parcialmente. Resuelve que el modelo no conoce tus documentos privados, pero si esos documentos están desactualizados, RAG entregará esa información con la misma confianza que si fuera correcta."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿RAG y fine-tuning compiten o se combinan?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Se combinan. RAG da acceso a información actualizada sin cambiar el comportamiento del modelo; el fine-tuning cambia el comportamiento (tono, estructura) sin necesariamente dar información nueva. Cuál toca en tu caso, y en qué orden conviene probarlos, lo desglosamos en la guía «Fine-tuning, prompting o RAG: cuál usar y cuándo»."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué pasa si dos fragmentos recuperados se contradicen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ocurre con más frecuencia de la que se piensa, sobre todo en bases de documentos que se han ido actualizando con el tiempo sin retirar las versiones antiguas. Un sistema bien diseñado debería incluir la fecha o versión de cada documento como parte de los metadatos recuperados, para que el modelo (o una capa de lógica adicional) pueda priorizar la información más reciente en vez de mezclar ambas versiones en la respuesta final sin distinguirlas, algo que confundiría más al usuario que no darle ningún dato."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo usar RAG con documentos en varios idiomas a la vez?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí, la mayoría de modelos de embeddings modernos manejan bien la búsqueda entre idiomas distintos, encontrando el fragmento relevante en español aunque la pregunta se haga en inglés, por ejemplo. La calidad de esa búsqueda cruzada entre idiomas varía según el modelo de embeddings concreto, así que conviene probarlo con tu combinación específica de idiomas antes de asumir que funcionará igual de bien que dentro de un solo idioma."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://eltelar.es/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Guías",
+      "item": "https://eltelar.es/index.html#guias"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "RAG explicado: cómo hacer que la IA responda con tus propios documentos",
+      "item": "https://eltelar.es/articulos/rag-explicado.html"
+    }
+  ]
+}
+</script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet"/></noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet"/></noscript>
+<style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><link rel="stylesheet" href="../css/tailwind.css"><link rel="stylesheet" href="../css/entrance.css?v=2"><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}(function(){var c=null;try{c=localStorage.getItem('eltelar-cookie-consent')}catch(e){}var g=c==='accepted'?'granted':'denied';gtag('consent','default',{ad_storage:g,ad_user_data:g,ad_personalization:g,analytics_storage:g,wait_for_update:500});window.adsbygoogle=window.adsbygoogle||[];if(g!=='granted'){window.adsbygoogle.requestNonPersonalizedAds=1;}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-4DPTKEG79N"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4DPTKEG79N');</script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8239907995939753" crossorigin="anonymous"></script></head><body class="bg-background font-body-md text-on-surface antialiased">
+<header class="w-full bg-surface-container-lowest border-b border-outline-variant"><div class="border-b border-outline-variant py-space-xxs px-space-md hidden md:block"><div class="max-w-site-max-width mx-auto flex items-center justify-between font-kicker text-kicker text-on-surface-variant uppercase tracking-wider"><span>EDICIÓN DIGITAL // ACTUALIZADO 2026 // EL TELAR &amp; AGENTES</span><span>MADRID · REMOTO</span><span>SIN HUMO · 100% PRODUCCIÓN</span></div></div><div class="max-w-site-max-width mx-auto px-space-md py-space-md sm:py-space-xl text-center"><p class="hidden sm:block font-kicker text-kicker uppercase tracking-widest text-on-surface-variant mb-space-xs">Publicación Independiente de Tecnología &amp; Agentes</p><a class="inline-block" href="../index.html"><div class="font-display text-display max-sm:text-[40px] max-sm:leading-none text-primary tracking-tight">El Telar</div></a><p class="hidden sm:block font-caption text-caption uppercase tracking-widest text-on-surface-variant mt-space-xs">EL BOLETÍN Y ARCHIVO PRÁCTICO DE INTELIGENCIA ARTIFICIAL Y AGENTES AUTÓNOMOS</p></div><div class="border-t border-b border-outline-variant"><div class="max-w-site-max-width mx-auto px-space-md flex items-center justify-between gap-space-sm h-14"><nav class="flex items-center gap-space-md sm:gap-space-lg h-full min-w-0 overflow-x-auto [scrollbar-width:none] whitespace-nowrap"><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../index.html#guias">GUÍAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../empieza-aqui.html">EMPIEZA AQUÍ</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../sobre-nosotros.html">SOBRE NOSOTROS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../noticias/index.html">NOTICIAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../herramientas/index.html">HERRAMIENTAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../prompts/index.html">PROMPTS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../contacto.html">CONTACTO</a></nav><div class="flex items-center gap-space-md"><button id="search-trigger" type="button" aria-label="Buscar en las guías" class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[20px]">search</span></button><a class="hidden sm:inline-block bg-primary-container text-surface px-space-md py-space-xs font-label-md text-label-md uppercase tracking-wider hover:bg-primary transition-colors" href="../index.html#despacho">SUSCRÍBETE GRATIS</a></div></div></div><div class="hidden md:block bg-surface-container-low border-b border-outline-variant py-space-xs px-space-md"><div class="max-w-site-max-width mx-auto text-center"><p class="font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">47 GUÍAS COMPLETAS EN EXPANSIÓN · ACTUALIZADO A MODELOS 2026 · PROBADO EN TERMINAL Y FLUJOS REALES · CERO HUMO NI TEORÍA VACÍA</p></div></div></header>
+<main class="w-full max-w-site-max-width mx-auto px-space-md py-space-xl"><div class="flex flex-col w-full">
+<nav class="w-full mb-space-lg">
+<ol class="flex flex-wrap items-center gap-space-xs font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">
+<li><a class="hover:text-primary transition-colors" href="../index.html">Inicio</a></li>
+<li class="text-on-surface-variant">/</li>
+<li><a class="hover:text-primary transition-colors" href="../index.html#guias">Guías</a></li>
+<li class="text-on-surface-variant">/</li>
+<li class="text-primary font-bold truncate max-w-[280px] sm:max-w-md">RAG explicado</li>
+</ol>
+</nav>
+<header class="w-full pb-space-xl mb-space-2xl">
+<div class="flex flex-wrap items-center gap-space-xs mb-space-md">
+<span class="bg-surface-container-high text-secondary px-space-sm py-1 font-kicker text-kicker uppercase tracking-widest">
+        ARQUITECTURA // BASES DE CONOCIMIENTO
+      </span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight max-w-editorial-max-width mb-space-md">
+      RAG explicado: cómo hacer que la IA responda con tus propios documentos
+    </h1>
+<p class="font-lead-paragraph text-lead-paragraph text-on-surface-variant max-w-editorial-max-width mb-space-xl">
+      Qué es Retrieval-Augmented Generation, por qué reduce las alucinaciones y cómo usarlo para que un asistente conozca tu propia base de conocimiento.
+    </p>
+<div class="bg-surface-container-lowest p-space-md flex flex-wrap items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 bg-primary text-on-primary flex items-center justify-center font-headline-sm text-headline-sm">
+          ET
+        </div>
+<div>
+<div class="font-label-md text-label-md text-on-surface font-semibold">Por la Redacción de El Telar</div><div class="font-caption text-caption text-on-surface-variant">Guías prácticas de IA y agentes, probadas en flujos de trabajo reales antes de publicarlas.</div>
+<button class="inline-flex items-center gap-1 mt-2 px-3 py-1.5 bg-surface-container text-primary font-label-md text-[12px] font-semibold uppercase tracking-wider hover:bg-surface-container-high transition-colors" id="copy-guide-btn" type="button"><span class="material-symbols-outlined text-[16px]">content_copy</span> Copiar guía para tu IA</button><span class="inline-flex items-center gap-1 ml-1"><button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" id="save-guide-btn" title="Guardar guía" type="button"><span class="material-symbols-outlined text-[16px]">bookmark_border</span></button><button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" id="copy-link-btn" title="Copiar enlace permanente" type="button"><span class="material-symbols-outlined text-[16px]">share</span></button></span>
+</div>
+</div>
+<div class="flex items-center gap-space-lg text-on-surface-variant font-caption text-caption uppercase tracking-wider">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">schedule</span> 15 min de lectura</span>
+</div>
+</div>
+</header>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-col-gap">
+<article class="lg:col-span-8 flex flex-col space-y-space-xl">
+<figure data-hero class="space-y-space-xs"><img class="w-full border border-outline-variant" src="../img/guias/hero-rag-explicado.jpg" alt="Web de LlamaIndex, framework para montar sistemas RAG" width="1280" height="720" fetchpriority="high" decoding="async"/><figcaption class="font-caption text-caption text-on-surface-variant">Captura de pantalla: <a class="underline" href="https://www.llamaindex.ai/" rel="nofollow noopener" target="_blank">llamaindex.ai</a>.</figcaption></figure>
+<div class="relative bg-surface-container-lowest p-space-lg shadow-sm">
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed text-justify">
+<span class="float-left font-display text-primary text-6xl leading-none pr-3 pt-1 font-bold">R</span>AG (Retrieval-Augmented Generation, "generación aumentada por recuperación") es la técnica detrás de la mayoría de asistentes de IA que responden preguntas sobre documentos internos de una empresa, manuales, o tu propia base de conocimiento. Sin ella, un modelo solo sabe lo que aprendió en su entrenamiento; con ella, puede consultar información concreta y actual antes de responder, sin necesidad de reentrenar nada ni esperar a la siguiente versión del modelo para incorporar datos nuevos.
+        </p>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Aunque el nombre suena técnico, la idea de fondo es sencilla y se parece a cómo trabaja cualquier profesional que consulta sus propias notas antes de responder algo importante en vez de fiarse solo de la memoria. Un abogado no responde una pregunta compleja de memoria: busca la cláusula exacta en el contrato antes de opinar, porque confiar solo en el recuerdo aproximado de un documento que leyó hace meses es exactamente el tipo de error que un buen profesional aprende a evitar con el tiempo. RAG hace exactamente eso con un modelo de IA — antes de responder, busca el fragmento de texto relevante en una base de documentos y lo usa como referencia real, en vez de generar la respuesta apoyándose solo en patrones aprendidos durante el entrenamiento.
+        </p>
+<section class="space-y-space-lg">
+<h2 id="sec-1" class="font-headline-lg text-headline-lg text-primary">
+          Un ejemplo completo, de principio a fin
+        </h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          Imagina una empresa con un manual interno de 200 páginas sobre políticas de vacaciones, bajas y permisos. Sin RAG, si un empleado le pregunta a un asistente de IA genérico "¿cuántos días de permiso por mudanza tengo?", el modelo no tiene forma de saberlo — no ha visto ese manual — y puede inventar una respuesta plausible basada en políticas típicas de otras empresas, que puede no coincidir en absoluto con la política real de esa empresa concreta.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Con RAG configurado sobre ese manual: el documento se trocea en secciones (una de ellas, por ejemplo, "Permisos por cambio de domicilio: 1 día laborable, previa notificación con 48 horas de antelación"). Cuando el empleado hace la misma pregunta, el sistema busca en la base de fragmentos y encuentra esa sección exacta por su significado, aunque el empleado no haya usado las palabras exactas del documento. Ese fragmento se envía al modelo junto con la pregunta, y el modelo responde citando la política real. La diferencia entre las dos respuestas no es de estilo, es de si la información es correcta o inventada — y esa diferencia es exactamente lo que está en juego cada vez que alguien confía en un asistente de IA para una respuesta que va a usar en una decisión real.
+        </p>
+<h3 class="font-headline-sm text-headline-sm text-primary">El problema que resuelve</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Un modelo de lenguaje no tiene acceso en tiempo real a tus documentos privados, ni a información publicada después de su entrenamiento. Si le preguntas algo sobre un contrato interno que nunca vio, puede inventar una respuesta plausible en vez de decir "no lo sé". RAG evita esto dándole al modelo los fragmentos de texto relevantes justo antes de responder.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Este problema no es exclusivo de documentos privados. Cualquier información publicada después de la fecha de corte del entrenamiento también cae en el mismo hueco: el modelo no la conoce, y sin ayuda externa, tiene dos opciones — decir honestamente que no lo sabe, o rellenar el hueco con una respuesta que suena plausible pero puede ser falsa. RAG es una de las formas más efectivas de evitar la segunda opción, dándole al modelo material real y actual sobre el que apoyarse.
+        </p>
+</section>
+<section class="space-y-space-md">
+<h2 id="sec-2" class="font-headline-lg text-headline-lg text-primary">
+          Cómo funciona, paso a paso
+        </h2>
+<div class="my-space-xl p-space-md bg-surface-container-lowest">
+<div class="font-kicker text-kicker uppercase text-on-surface-variant tracking-wider mb-space-sm text-center">DIAGRAMA // EL CICLO DE RAG</div>
+<svg aria-label="Diagrama del ciclo de retrieval augmented generation" class="w-full h-auto" fill="none" role="img" viewBox="0 0 680 150" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#ebeef8" height="90" width="120" x="10" y="20"></rect>
+<text fill="#072417" font-family="Inter" font-size="10" font-weight="700" text-anchor="middle" x="70" y="48">1. TROCEA</text>
+<text fill="#424843" font-family="Inter" font-size="9" text-anchor="middle" x="70" y="66">tus documentos</text>
+<text fill="#424843" font-family="Inter" font-size="9" text-anchor="middle" x="70" y="80">en fragmentos</text>
+<path d="M130 65 H158" stroke="#727973" stroke-width="1.5"></path><polygon fill="#727973" points="158,62 165,65 158,68"></polygon>
+<rect fill="#caead4" height="90" width="120" x="168" y="20"></rect>
+<text fill="#042013" font-family="Inter" font-size="10" font-weight="700" text-anchor="middle" x="228" y="48">2. EMBEDDINGS</text>
+<text fill="#042013" font-family="Inter" font-size="9" text-anchor="middle" x="228" y="66">convierte cada</text>
+<text fill="#042013" font-family="Inter" font-size="9" text-anchor="middle" x="228" y="80">fragmento en vector</text>
+<path d="M288 65 H316" stroke="#727973" stroke-width="1.5"></path><polygon fill="#727973" points="316,62 323,65 316,68"></polygon>
+<rect fill="#ebeef8" height="90" width="120" x="326" y="20"></rect>
+<text fill="#072417" font-family="Inter" font-size="10" font-weight="700" text-anchor="middle" x="386" y="48">3. GUARDA</text>
+<text fill="#424843" font-family="Inter" font-size="9" text-anchor="middle" x="386" y="66">en base de datos</text>
+<text fill="#424843" font-family="Inter" font-size="9" text-anchor="middle" x="386" y="80">vectorial</text>
+<path d="M446 65 H474" stroke="#727973" stroke-width="1.5"></path><polygon fill="#727973" points="474,62 481,65 474,68"></polygon>
+<rect fill="#fd8a42" height="90" width="120" x="484" y="20"></rect>
+<text fill="#ffffff" font-family="Inter" font-size="10" font-weight="700" text-anchor="middle" x="544" y="48">4. BUSCA</text>
+<text fill="#ffffff" font-family="Inter" font-size="9" text-anchor="middle" x="544" y="66">fragmentos más</text>
+<text fill="#ffffff" font-family="Inter" font-size="9" text-anchor="middle" x="544" y="80">relevantes</text>
+<path d="M604 65 H632" stroke="#727973" stroke-width="1.5"></path><polygon fill="#727973" points="632,62 639,65 632,68"></polygon>
+<rect fill="#072417" height="90" width="46" x="634" y="20"></rect>
+<text fill="#f9f9ff" font-family="Inter" font-size="9.5" font-weight="700" text-anchor="middle" x="657" y="55">5.</text>
+<text fill="#f1f3fe" font-family="Inter" font-size="8" text-anchor="middle" x="657" y="70">RESPON-</text>
+<text fill="#f1f3fe" font-family="Inter" font-size="8" text-anchor="middle" x="657" y="82">DE</text>
+</svg>
+</div>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          El paso que más determina la calidad del resultado final es el troceado. Si los fragmentos son demasiado pequeños, se pierde contexto (una frase suelta sin el párrafo que la explica puede llevar a una respuesta incompleta o mal interpretada). Si son demasiado grandes, se pierde precisión (el sistema recupera un fragmento enorme cuando solo una frase de él era relevante, desperdiciando espacio de contexto con información irrelevante). Encontrar el tamaño de fragmento adecuado para tu tipo de documento es, en la práctica, donde se libra la mayor parte de la batalla por la calidad de un sistema RAG bien construido.
+        </p>
+<div class="bg-primary text-surface-bright p-space-md border-l-2 border-secondary">
+<p class="font-body-md text-body-md leading-relaxed"><strong>En una frase:</strong> RAG es darle al modelo una chuleta con la información exacta que necesita justo antes del examen, en vez de esperar que se la sepa de memoria.</p>
+</div>
+</section>
+
+<section class="space-y-space-md">
+<h2 id="sec-3" class="font-headline-lg text-headline-lg text-primary">
+          Por qué reduce las alucinaciones (pero no las elimina)
+        </h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          Al responder con fragmentos reales de tus documentos delante, el modelo tiene mucho menos margen para inventar. Pero la calidad depende de la búsqueda: si el sistema recupera fragmentos irrelevantes o incompletos, el modelo seguirá respondiendo con seguridad aunque la base sea mala. RAG mejora la fiabilidad, no la garantiza por sí solo — sigue siendo prudente verificar datos críticos, aunque la técnica reduzca notablemente la frecuencia con la que hace falta hacerlo.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Hay dos formas distintas en que un sistema RAG puede fallar, y conviene distinguirlas porque se solucionan de forma diferente. La primera es un fallo de <strong>recuperación</strong>: la búsqueda no encuentra el fragmento correcto, aunque exista en la base de documentos. La segunda es un fallo de <strong>generación</strong>: la búsqueda sí encontró el fragmento correcto, pero el modelo lo interpreta mal o mezcla su contenido con conocimiento previo de su entrenamiento en vez de ceñirse estrictamente a lo que se le dio. El primer tipo se corrige mejorando cómo se trocean y buscan los documentos; el segundo se corrige con instrucciones más estrictas al modelo sobre ceñirse solo al material proporcionado, sin mezclarlo con lo que ya sabía de su entrenamiento previo.
+        </p>
+<h3 class="font-headline-sm text-headline-sm text-primary">Qué papel juegan los embeddings en todo esto</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          El paso que hace posible la "búsqueda por significado" (en vez de por palabra exacta) son los embeddings. Un embedding convierte un fragmento de texto en una lista de números que representa su significado en un espacio matemático; textos con significados parecidos acaban con números parecidos, aunque no compartan ni una palabra. Es lo que permite que buscar "cómo cancelar mi suscripción" encuentre un fragmento titulado "dar de baja el servicio", sin que ninguna de las dos frases comparta una sola palabra exacta con la otra.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          No hace falta entender las matemáticas exactas para usar RAG con criterio, pero sí ayuda entender la implicación práctica: la calidad de la búsqueda depende directamente de qué tan bueno es el modelo de embeddings usado. Un modelo mediocre puede fallar en distinguir matices importantes (confundir "cancelar una suscripción" con "cancelar un pedido"), lo que arrastra el error hacia adelante en toda la cadena, aunque el modelo de lenguaje final sea excelente generando la respuesta. Existen varios modelos de embeddings de distintos proveedores, y no todos están entrenados igual de bien para cada idioma o dominio especializado — si tu caso es muy técnico (terminología legal o médica particular), merece la pena probar más de uno antes de asumir que el más popular es el más adecuado.
+        </p>
+</section>
+<figure class="my-space-xl p-space-lg bg-surface-container-low pl-space-xl">
+<blockquote class="font-headline-sm italic text-primary leading-snug">
+          «RAG es darle al modelo una chuleta con la información exacta que necesita justo antes del examen, en vez de esperar que se la sepa de memoria.»
+        </blockquote>
+<figcaption class="mt-space-sm font-kicker text-kicker uppercase tracking-widest text-secondary font-semibold">
+          — REDACCIÓN EL TELAR
+        </figcaption>
+</figure>
+<section class="bg-surface-container-low p-space-lg space-y-space-md">
+<figure data-inline-photo class="space-y-space-xs my-space-xl"><img class="w-full border border-outline-variant" src="../img/guias/foto-rag-explicado.jpg" alt="Web de Chroma, base de datos vectorial de código abierto" width="1280" height="720" loading="lazy" decoding="async"/><figcaption class="font-caption text-caption text-on-surface-variant">Captura de pantalla: <a class="underline" href="https://www.trychroma.com/" rel="nofollow noopener" target="_blank">trychroma.com</a>.</figcaption></figure>
+<h2 id="sec-4" class="font-headline-lg text-headline-lg text-primary">
+          Cuándo tiene sentido montar un sistema RAG
+        </h2>
+<ul class="space-y-space-xs font-body-md text-body-md text-on-surface list-disc pl-space-lg">
+<li>Tienes documentación extensa (manuales, políticas, tickets de soporte) que cambia con el tiempo</li>
+<li>Necesitas que las respuestas citen o se basen en información específica y verificable</li>
+<li>El contenido es demasiado grande para pegarlo entero en cada conversación</li>
+</ul>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          Si tu caso es simple (unos pocos documentos que caben en el contexto de la conversación), a veces basta con pegarlos directamente en el chat sin montar toda esta infraestructura, ya que RAG solo compensa el esfuerzo de configurarlo cuando el volumen de información hace inviable esa opción manual. Hay un cuarto criterio, menos obvio: cuando necesitas que distintos usuarios vean solo un subconjunto de la información según su rol o permisos — un sistema RAG bien diseñado puede filtrar qué documentos son accesibles para cada búsqueda, algo mucho más difícil de gestionar si simplemente pegas todo el contenido sin ese control de acceso incorporado.
+        </p>
+<h3 class="font-headline-sm text-headline-sm text-primary">RAG frente a una ventana de contexto enorme</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Los modelos actuales ya admiten ventanas de contexto muy grandes, lo que tienta a saltarse RAG por completo. Funciona, pero tiene costes que no siempre se ven a simple vista: pagar (en tokens) por leer el documento entero cada vez aunque solo necesites un párrafo, más ruido que puede distraer al modelo, y más latencia — procesar cientos de páginas tarda más en generar una respuesta que procesar solo los fragmentos relevantes recuperados por RAG.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Dicho esto, no son mutuamente excluyentes: los sistemas más robustos combinan ambos, usando RAG para acotar a un subconjunto razonable de documentos, y aprovechando la ventana de contexto amplia para incluir fragmentos completos en vez de recortes muy pequeños. Conviene saber que una ventana grande no equivale a usarla bien: la precisión se degrada mucho antes de llegar al límite, y por eso acotar sigue mereciendo la pena — lo explicamos en <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="ventana-contexto-memoria-ia.html">ventana de contexto y memoria</a>. La tendencia práctica que se está imponiendo no es "uno u otro": es combinarlos, usando una búsqueda para acotar qué fragmentos son relevantes, y luego dando al modelo esos fragmentos concretos dentro de una ventana de contexto amplia para que razone sobre ellos con margen. Para volúmenes pequeños de documentos, la ventana de contexto grande sola sigue siendo la opción más simple de montar.
+        </p>
+</section>
+<section class="space-y-space-md">
+<h2 id="sec-5" class="font-headline-lg text-headline-lg text-primary">
+          Herramientas, agentes y errores comunes
+        </h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          No hace falta programar un sistema RAG desde cero para probarlo: muchos asistentes de IA ya permiten "subir documentos" o conectar una carpeta como fuente de conocimiento, y hacen todo el proceso de troceado, indexado y búsqueda por ti. Es la forma más rápida de comprobar si esta técnica te sirve antes de invertir tiempo y presupuesto en una solución a medida construida desde cero.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          El caso de uso más común de todo esto es la atención al cliente, y tiene sus propias trampas: lo contamos en <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="bot-atencion-cliente-ia.html">cómo montar un bot de soporte que no invente respuestas</a>. Las opciones nativas de los asistentes generales (subir documentos a un proyecto de Claude o a un GPT personalizado, por ejemplo) cubren bien casos con un volumen moderado de documentos y sin necesidad de integrarlo en otra aplicación. Si necesitas que la búsqueda forme parte de una aplicación propia (un chatbot en tu web, una herramienta interna), existen frameworks especializados que gestionan el troceado, los embeddings y la búsqueda por ti, dejándote solo la conexión con tu propia fuente de datos. Para probar la idea sin comprometerte a ninguna infraestructura, empezar con la opción integrada de un asistente ya existente es casi siempre el camino más rápido de validar si RAG resuelve de verdad tu problema antes de invertir tiempo en una solución más elaborada.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Aunque RAG se explica normalmente en el contexto de "hacer preguntas sobre documentos", la misma técnica es una pieza fundamental dentro de agentes más complejos. Un agente que necesita decidir qué herramienta usar para una tarea puede apoyarse en RAG para buscar, entre decenas de herramientas disponibles, cuál es relevante para la petición concreta del usuario, en vez de tener todas las descripciones de herramientas cargadas permanentemente en su contexto. De la misma forma, un agente que trabaja sobre un proyecto de código grande puede usar RAG para encontrar los archivos relevantes a una tarea concreta, sin necesidad de cargar el proyecto entero en cada petición.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Esta aplicación menos conocida de RAG — como mecanismo de búsqueda interna dentro de un sistema más grande, no solo como respuesta a preguntas de un usuario — es cada vez más común a medida que los agentes se vuelven más complejos y necesitan gestionar más información de la que cabe cómodamente en una sola ventana de contexto.
+        </p>
+<ul class="space-y-space-xs font-body-md text-body-md text-on-surface-variant list-disc pl-space-lg">
+<li><strong class="text-on-surface">Trocear de forma demasiado mecánica</strong> (cada 500 caracteres exactos), lo que puede cortar una idea a la mitad entre dos fragmentos</li>
+<li><strong class="text-on-surface">No actualizar el índice cuando los documentos cambian</strong>, dejando que el sistema responda con información desactualizada</li>
+<li><strong class="text-on-surface">Recuperar demasiados fragmentos "por si acaso"</strong>, llenando el contexto de ruido y degradando la respuesta</li>
+<li><strong class="text-on-surface">No probar con preguntas reales de usuarios finales</strong> — las que se te ocurren a ti al diseñarlo rara vez cubren la variedad real</li>
+</ul>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          Existen varios modelos de embeddings disponibles, de distintos proveedores y con distinto coste, y no todos están entrenados igual de bien para cada idioma o cada dominio especializado. Un modelo de embeddings general puede funcionar razonablemente bien para documentación de oficina en español, pero rendir peor en un dominio muy técnico y específico donde palabras con matices distintos entre sí podrían no distinguirse bien en ese espacio matemático.
+        </p>
+</section>
+<section class="bg-surface-container-lowest p-space-lg shadow-sm space-y-space-md" id="montalo-tu">
+<span class="font-kicker text-kicker text-secondary uppercase tracking-widest">MANOS A LA OBRA</span>
+<h2 class="font-headline-md text-headline-md text-primary">Monta el tuyo en los próximos 10 minutos</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+        Dos rutas reales, no una lista de nombres — elige una según cuánto control necesitas.
+      </p>
+<div class="space-y-space-sm">
+<div class="bg-surface-container-low p-space-md">
+<h4 class="font-label-md text-label-md text-primary font-bold mb-1">Ruta rápida, sin escribir una línea de código</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              En <strong>claude.ai</strong>: crea un Proyecto nuevo → pestaña "Conocimiento del proyecto" → sube tus PDFs, Word o archivos de texto (hasta el límite de tamaño del proyecto) → listo, ya puedes preguntarle sobre ellos en esa conversación. En <strong>ChatGPT</strong>: crea un GPT personalizado desde "Explorar GPTs → Crear" → en la pestaña "Configurar" sube los archivos en "Conocimiento" → guarda. Ambos hacen el troceado, los embeddings y la búsqueda por ti — es la forma más rápida de comprobar si RAG resuelve tu problema antes de montar nada a medida.
+            </p>
+</div>
+<div class="bg-surface-container-lowest p-space-lg space-y-space-sm shadow-sm">
+<div class="flex items-center justify-between pb-space-xs">
+<span class="font-kicker text-kicker text-secondary uppercase tracking-wider flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">prompt_suggestion</span>
+              RUTA CON CÓDIGO — PROMPT DE EJEMPLO
+            </span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant font-mono leading-relaxed bg-surface-container-low p-space-md">
+            «Actúa como desarrollador senior en Python. Quiero un script mínimo de RAG local usando LangChain o LlamaIndex (dime cuál recomiendas y por qué para mi caso) que:<br/><br/>
+            1. Cargue todos los archivos .pdf y .txt de una carpeta local.<br/>
+            2. Los trocee en fragmentos de un tamaño razonable, con solapamiento entre fragmentos consecutivos.<br/>
+            3. Genere embeddings y los guarde en una base de datos vectorial local (Chroma o FAISS, la que sea más simple de instalar).<br/>
+            4. Exponga una función que reciba una pregunta, recupere los 3 fragmentos más relevantes y se los pase a un modelo de IA junto con la pregunta para generar la respuesta.<br/>
+            5. Imprima también qué fragmentos usó, para poder verificar de dónde salió cada respuesta.»
+          </p>
+</div>
+</div>
+<p class="font-caption text-caption text-on-surface-variant">
+        La ruta rápida te dice en minutos si RAG es lo que necesitas. La ruta con código te da el control para ajustar el tamaño de fragmento, cambiar el modelo de embeddings o conectarlo a tu propia aplicación — sube a ella solo cuando la primera se te quede corta.
+      </p>
+</section>
+<section class="space-y-space-md">
+<h2 id="sec-5b" class="font-headline-lg text-headline-lg text-primary">
+          Cómo evaluar si tu sistema RAG está funcionando bien
+        </h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          Montar un sistema RAG es solo la mitad del trabajo; la otra mitad, que se salta con más frecuencia de la deseable, es medir si de verdad está recuperando los fragmentos correctos. La forma más simple es construir un conjunto de preguntas reales con la respuesta correcta ya conocida de antemano, y comprobar si el sistema recupera el fragmento que contiene esa respuesta antes de generar el texto final — si el fragmento correcto ni siquiera aparece entre los recuperados, ningún ajuste en la fase de generación va a arreglar el problema, porque el fallo ocurre antes.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Esta separación importa porque los dos tipos de fallo se corrigen de formas distintas: si es de recuperación, la solución está en ajustar el troceado o la consulta de búsqueda; si es de generación, la solución está en el prompt que se le da al modelo junto con los fragmentos. Diagnosticar mal cuál de los dos está fallando lleva a ajustar la parte equivocada del sistema sin que el resultado mejore, perdiendo tiempo en cambios que no atacan la causa real del problema.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Hay un tercer factor que rara vez se menciona en esta comparación entre RAG y ventana de contexto: la latencia. Procesar un documento entero de cientos de páginas en cada consulta tarda más en generar una respuesta que procesar solo los pocos fragmentos relevantes, porque el modelo tiene que "leer" mucho más texto antes de empezar a responder. Para un uso ocasional esa diferencia apenas se nota, pero en una aplicación con muchos usuarios simultáneos, la diferencia de velocidad puede ser determinante para que la experiencia se sienta fluida o lenta.
+        </p>
+</section>
+<section class="space-y-space-md">
+<h2 class="font-headline-lg text-headline-lg text-primary">
+          Preguntas frecuentes
+        </h2>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿RAG funciona igual de bien con cualquier tipo de documento?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Funciona mejor con texto bien estructurado que con texto muy desordenado o con mucha información en tablas complejas, donde el troceado por párrafos pierde parte de la estructura.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Necesito saber programar para usar RAG?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Para las opciones integradas en asistentes generales, no. Para construir un sistema propio, sí se necesita cierto conocimiento técnico, aunque los frameworks actuales han simplificado mucho el proceso.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Cuántos documentos hacen falta para que valga la pena?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Si tus documentos caben cómodamente en una sola conversación, probablemente no necesitas RAG todavía. Con cientos de documentos o miles de páginas que cambian con regularidad, ahí empieza a justificar la inversión.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿RAG resuelve el problema de datos desactualizados?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Parcialmente. Resuelve que el modelo no conoce tus documentos privados, pero si esos documentos están desactualizados, RAG entregará esa información con la misma confianza que si fuera correcta.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿RAG y fine-tuning compiten o se combinan?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Se combinan. RAG da acceso a información actualizada sin cambiar el comportamiento del modelo; el fine-tuning cambia el comportamiento (tono, estructura) sin necesariamente dar información nueva. Cuál toca en tu caso, y en qué orden conviene probarlos, lo desglosamos en <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="fine-tuning-prompting-rag.html">fine-tuning, prompting o RAG: cuál usar y cuándo</a>.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Qué pasa si dos fragmentos recuperados se contradicen?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Ocurre con más frecuencia de la que se piensa, sobre todo en bases de documentos que se han ido actualizando con el tiempo sin retirar las versiones antiguas. Un sistema bien diseñado debería incluir la fecha o versión de cada documento como parte de los metadatos recuperados, para que el modelo (o una capa de lógica adicional) pueda priorizar la información más reciente en vez de mezclar ambas versiones en la respuesta final sin distinguirlas, algo que confundiría más al usuario que no darle ningún dato.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Puedo usar RAG con documentos en varios idiomas a la vez?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Sí, la mayoría de modelos de embeddings modernos manejan bien la búsqueda entre idiomas distintos, encontrando el fragmento relevante en español aunque la pregunta se haga en inglés, por ejemplo. La calidad de esa búsqueda cruzada entre idiomas varía según el modelo de embeddings concreto, así que conviene probarlo con tu combinación específica de idiomas antes de asumir que funcionará igual de bien que dentro de un solo idioma.
+</div>
+</div>
+</section>
+<div class="bg-surface-container-low p-space-lg flex flex-col sm:flex-row items-start sm:items-center gap-space-md">
+<div class="w-16 h-16 bg-primary text-on-primary flex items-center justify-center font-display text-headline-md shrink-0">ET</div>
+<div class="space-y-space-xxs">
+<span class="font-label-md text-label-md text-primary font-bold uppercase tracking-wider">Redacción El Telar</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">No aceptamos patrocinios de proveedores de bases de datos vectoriales ni de frameworks de RAG, para poder recomendar sin conflicto de intereses la opción que mejor encaje con cada caso concreto.</p>
+</div>
+</div>
+</article>
+<aside class="lg:col-span-4 flex flex-col space-y-space-xl">
+<div class="bg-surface-container-lowest p-space-lg shadow-sm sticky top-space-md">
+<div class="flex items-center justify-between mb-space-sm pb-space-xs">
+<span class="font-kicker text-kicker uppercase tracking-widest text-primary font-bold">ÍNDICE DE LA GUÍA</span>
+<span class="material-symbols-outlined text-on-surface-variant text-base">format_list_bulleted</span>
+</div>
+<nav class="space-y-space-xs font-body-sm text-body-sm">
+<a class="block text-primary hover:text-secondary font-medium transition-colors" href="#sec-1">Un ejemplo completo</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-2">Cómo funciona, paso a paso</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-3">Por qué reduce alucinaciones</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-4">Cuándo montar RAG</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-5">Herramientas y errores</a>
+<a class="block text-secondary font-semibold hover:underline" href="#montalo-tu">→ Móntalo en 10 minutos</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-5b">Evaluar si funciona bien</a>
+</nav>
+</div>
+
+<div class="bg-surface-container-high p-space-md space-y-space-sm shadow-sm">
+<span class="font-kicker text-kicker uppercase tracking-widest text-primary font-bold">FICHA TÉCNICA</span>
+<dl class="space-y-space-xs font-caption text-caption">
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Nombre completo:</dt><dd class="font-semibold text-primary">Retrieval-Augmented Generation</dd></div>
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Piezas clave:</dt><dd class="font-semibold text-primary">Embeddings + búsqueda</dd></div>
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Resuelve:</dt><dd class="font-semibold text-primary">Datos privados/actuales</dd></div>
+</dl>
+</div>
+</aside>
+</div>
+<section class="w-full mt-space-4xl pt-space-2xl bg-surface-container-lowest p-space-lg shadow-sm">
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-space-xl gap-space-xs">
+<h3 class="font-headline-md text-headline-md text-primary">Continúa explorando el archivo</h3>
+<a class="font-label-md text-label-md text-primary hover:text-secondary uppercase tracking-wider transition-colors flex items-center gap-1" href="../index.html#guias">Ver todas las guías <span class="material-symbols-outlined text-[16px]">arrow_forward</span></a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-col-gap"><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="mcp-explicado.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-mcp-explicado.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="mcp-explicado.html">MCP explicado: cómo conectar la IA con tus propias herramientas</a></h4></div></article><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="alucinaciones-ia.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-alucinaciones-ia.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="alucinaciones-ia.html">Alucinaciones de la IA: cómo detectar cuando se inventa algo</a></h4></div></article><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="grounding-evitar-alucinaciones.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-grounding-evitar-alucinaciones.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="grounding-evitar-alucinaciones.html">Grounding: cómo evitar que tu IA invente datos conectándola a la realidad</a></h4></div></article></div>
+</section>
+</div></main><footer class="w-full bg-surface-container-low border-t border-outline-variant mt-space-4xl"><div class="max-w-site-max-width mx-auto px-space-md py-space-3xl"><div class="grid grid-cols-1 md:grid-cols-3 gap-col-gap"><div class="space-y-space-sm"><span class="font-headline-md text-headline-md text-primary">El Telar</span><p class="font-body-sm text-body-sm text-on-surface-variant">Publicación independiente de tecnología y automatización con agentes. Contenidos verificados en producción, sin patrocinios opacos ni promesas vacías.</p></div><div><h3 class="font-kicker text-kicker uppercase tracking-wider text-on-surface mb-space-md">SECCIONES</h3><ul class="space-y-space-xs font-body-sm text-body-sm"><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html#guias">Archivo de Guías</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../empieza-aqui.html">Guía para Principiantes</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../sobre-nosotros.html">Manifiesto Editorial</a></li><li class="pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html#despacho">Boletín Semanal</a></li></ul></div><div><h3 class="font-kicker text-kicker uppercase tracking-wider text-on-surface mb-space-md">CONTACTO &amp; PRENSA</h3><div class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant"><p class="font-semibold text-on-surface">contacto@eltelar.es</p><p>Síguenos: <a class="hover:text-primary underline" href="https://www.instagram.com/eltelar_es/" rel="me noopener" target="_blank">Instagram</a> · <a class="hover:text-primary underline" href="https://www.threads.com/@eltelar_es" rel="me noopener" target="_blank">Threads</a> · <a class="hover:text-primary underline" href="https://x.com/eltelar_es" rel="me noopener" target="_blank">X</a></p></div></div></div></div><div class="border-t border-outline-variant py-space-md bg-surface-container-lowest"><div class="max-w-site-max-width mx-auto px-space-md flex flex-col md:flex-row items-center justify-between gap-space-sm text-caption font-caption text-on-surface-variant"><div>© 2026 El Telar. Todos los derechos reservados. Independencia editorial garantizada.</div><div class="flex items-center gap-space-md"><a class="hover:text-on-surface transition-colors" href="../privacidad.html">Privacidad</a><a class="hover:text-on-surface transition-colors" href="../terminos.html">Términos</a><a class="hover:text-on-surface transition-colors" href="../sobre-nosotros.html">Sobre nosotros</a><a class="hover:text-on-surface transition-colors" href="../contacto.html">Contacto</a></div></div></div></footer><script defer src="../js/copy-guide.js"></script><script defer src="../js/guide-interactions.js"></script><script defer src="../js/reading-progress.js"></script><script defer src="../js/search.js?v=7"></script><script defer src="../js/entrance.js"></script><script defer src="../js/cookie-consent.js?v=4"></script></body></html>

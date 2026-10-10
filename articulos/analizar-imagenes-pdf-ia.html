@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Analizar imágenes y PDFs con IA: guía práctica | El Telar</title>
+<meta name="description" content="Cómo procesa la IA una imagen o un PDF por dentro, qué límites publica cada herramienta, cuánto cuesta de verdad y en qué casos concretos se equivoca.">
+<link rel="canonical" href="https://eltelar.es/articulos/analizar-imagenes-pdf-ia.html"><link rel="icon" type="image/svg+xml" href="../img/favicon.svg?v=4"><link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32.png?v=4"><link rel="apple-touch-icon" href="../img/apple-touch-icon.png?v=4"><meta name="theme-color" content="#072417"><link rel="manifest" href="../manifest.json"><link rel="alternate" type="application/rss+xml" title="El Telar" href="../feed.xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cómo analizar imágenes y PDFs con IA: qué funciona y qué no | El Telar">
+<meta property="og:description" content="Cómo procesa la IA una imagen o un PDF por dentro, qué límites publica cada herramienta, cuánto cuesta de verdad y en qué casos concretos se equivoca.">
+<meta property="og:url" content="https://eltelar.es/articulos/analizar-imagenes-pdf-ia.html">
+<meta property="og:site_name" content="El Telar">
+<meta property="og:locale" content="es_ES"><meta property="og:image" content="https://eltelar.es/img/og/guia-analizar-imagenes-pdf-ia.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Cómo analizar imágenes y PDFs con IA: qué funciona y qué no | El Telar">
+<meta name="twitter:description" content="Cómo procesa la IA una imagen o un PDF por dentro, qué límites publica cada herramienta, cuánto cuesta de verdad y en qué casos concretos se equivoca."><meta name="twitter:image" content="https://eltelar.es/img/og/guia-analizar-imagenes-pdf-ia.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Cómo analizar imágenes y PDFs con IA: qué funciona y qué no",
+  "description": "Cómo procesa la IA una imagen o un PDF por dentro, qué límites publica cada herramienta, cuánto cuesta de verdad y en qué casos concretos se equivoca.",
+  "image": "https://eltelar.es/img/og-image.jpg",
+  "author": { "@type": "Organization", "name": "El Telar", "url": "https://eltelar.es/sobre-nosotros.html" },
+  "publisher": {
+    "@type": "Organization",
+    "name": "El Telar"
+  },
+  "datePublished": "2026-09-24",
+  "dateModified": "2026-09-28",
+  "mainEntityOfPage": "https://eltelar.es/articulos/analizar-imagenes-pdf-ia.html",
+  "inLanguage": "es"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Es mejor subir el PDF o copiar y pegar el texto?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Depende de qué necesites. Si el documento tiene capa de texto y tu pregunta es sobre lo que dice, pegar el texto es bastante más barato: te ahorras la imagen de cada página. Si tu pregunta toca gráficos, sellos, firmas, casillas marcadas o la propia maquetación, necesitas la vía de la imagen y ahí subir el PDF sí compensa."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo esperar el mismo acierto con un PDF escaneado que con uno normal?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Un PDF con capa de texto le llega al modelo por dos vías (imagen y texto extraído) que se corrigen mutuamente; un escaneo solo le llega como imagen. Además, las evaluaciones de documentos publicadas este año coinciden en que el acierto medido sobre PDFs limpios no predice el rendimiento sobre escaneados o de maquetación variable."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Por qué se dispara el coste cuando empiezo a subir imágenes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Porque una imagen se cobra en tokens visuales, no por archivo. En el caso de Claude, la documentación da la fórmula: parches de 28x28 px, es decir el ancho entre 28 multiplicado por el alto entre 28, redondeando hacia arriba. Una imagen de 1000x1000 px son 1.296 tokens, aproximadamente lo que costaría un texto de mil palabras."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puede decirme si una foto está generada por IA o manipulada?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. La documentación de Anthropic dice explícitamente que el modelo no puede determinar si una imagen es generada por IA, que puede equivocarse si se le pregunta, y que no se use para detectar imágenes falsas o sintéticas."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Me puedo fiar de los totales que extrae de una factura?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No sin comprobarlos, y menos si la factura es un escaneo. Un buen hábito es pedirle que transcriba literalmente la línea de donde saca la cifra antes de darte el número. Para volúmenes altos, añade una comprobación automática y revisa a mano solo lo que no cuadre."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Lee la fecha o la localización de una foto?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Anthropic documenta que el modelo no recibe ni analiza los metadatos de la imagen, así que el EXIF (fecha, cámara, coordenadas GPS) no le llega. Si necesitas ese dato, extráelo con una herramienta de metadatos y pásaselo como texto."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://eltelar.es/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Guías",
+      "item": "https://eltelar.es/index.html#guias"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Cómo analizar imágenes y PDFs con IA: qué funciona y qué no",
+      "item": "https://eltelar.es/articulos/analizar-imagenes-pdf-ia.html"
+    }
+  ]
+}
+</script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet"/></noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet"/></noscript>
+<style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><link rel="stylesheet" href="../css/tailwind.css"><link rel="stylesheet" href="../css/entrance.css?v=2"><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}(function(){var c=null;try{c=localStorage.getItem('eltelar-cookie-consent')}catch(e){}var g=c==='accepted'?'granted':'denied';gtag('consent','default',{ad_storage:g,ad_user_data:g,ad_personalization:g,analytics_storage:g,wait_for_update:500});window.adsbygoogle=window.adsbygoogle||[];if(g!=='granted'){window.adsbygoogle.requestNonPersonalizedAds=1;}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-4DPTKEG79N"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4DPTKEG79N');</script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8239907995939753" crossorigin="anonymous"></script></head><body class="bg-background font-body-md text-on-surface antialiased">
+<header class="w-full bg-surface-container-lowest border-b border-outline-variant"><div class="border-b border-outline-variant py-space-xxs px-space-md hidden md:block"><div class="max-w-site-max-width mx-auto flex items-center justify-between font-kicker text-kicker text-on-surface-variant uppercase tracking-wider"><span>EDICIÓN DIGITAL // ACTUALIZADO 2026 // EL TELAR &amp; AGENTES</span><span>MADRID · REMOTO</span><span>SIN HUMO · 100% PRODUCCIÓN</span></div></div><div class="max-w-site-max-width mx-auto px-space-md py-space-md sm:py-space-xl text-center"><p class="hidden sm:block font-kicker text-kicker uppercase tracking-widest text-on-surface-variant mb-space-xs">Publicación Independiente de Tecnología &amp; Agentes</p><a class="inline-block" href="../index.html"><div class="font-display text-display max-sm:text-[40px] max-sm:leading-none text-primary tracking-tight">El Telar</div></a><p class="hidden sm:block font-caption text-caption uppercase tracking-widest text-on-surface-variant mt-space-xs">EL BOLETÍN Y ARCHIVO PRÁCTICO DE INTELIGENCIA ARTIFICIAL Y AGENTES AUTÓNOMOS</p></div><div class="border-t border-b border-outline-variant"><div class="max-w-site-max-width mx-auto px-space-md flex items-center justify-between gap-space-sm h-14"><nav class="flex items-center gap-space-md sm:gap-space-lg h-full min-w-0 overflow-x-auto [scrollbar-width:none] whitespace-nowrap"><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../index.html#guias">GUÍAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../empieza-aqui.html">EMPIEZA AQUÍ</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../sobre-nosotros.html">SOBRE NOSOTROS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../noticias/index.html">NOTICIAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../herramientas/index.html">HERRAMIENTAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../prompts/index.html">PROMPTS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../contacto.html">CONTACTO</a></nav><div class="flex items-center gap-space-md"><button id="search-trigger" type="button" aria-label="Buscar en las guías" class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[20px]">search</span></button><a class="hidden sm:inline-block bg-primary-container text-surface px-space-md py-space-xs font-label-md text-label-md uppercase tracking-wider hover:bg-primary transition-colors" href="../index.html#despacho">SUSCRÍBETE GRATIS</a></div></div></div><div class="hidden md:block bg-surface-container-low border-b border-outline-variant py-space-xs px-space-md"><div class="max-w-site-max-width mx-auto text-center"><p class="font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">47 GUÍAS COMPLETAS EN EXPANSIÓN · ACTUALIZADO A MODELOS 2026 · PROBADO EN TERMINAL Y FLUJOS REALES · CERO HUMO NI TEORÍA VACÍA</p></div></div></header>
+<main class="w-full max-w-site-max-width mx-auto px-space-md py-space-xl"><div class="flex flex-col w-full">
+<nav class="w-full mb-space-lg">
+<ol class="flex flex-wrap items-center gap-space-xs font-kicker text-kicker text-on-surface-variant uppercase tracking-wider">
+<li><a class="hover:text-primary transition-colors" href="../index.html">Inicio</a></li>
+<li class="text-on-surface-variant">/</li>
+<li><a class="hover:text-primary transition-colors" href="../index.html#guias">Guías</a></li>
+<li class="text-on-surface-variant">/</li>
+<li class="text-primary font-bold truncate max-w-[280px] sm:max-w-md">Analizar imágenes y PDFs con IA</li>
+</ol>
+</nav>
+<header class="w-full pb-space-xl mb-space-2xl">
+<div class="flex flex-wrap items-center gap-space-xs mb-space-md">
+<span class="bg-surface-container-high text-secondary px-space-sm py-1 font-kicker text-kicker uppercase tracking-widest">PRÁCTICA // ENTRADA MULTIMODAL</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight max-w-editorial-max mb-space-md">
+          Cómo analizar imágenes y PDFs con IA: qué funciona y qué no
+        </h1>
+<p class="font-lead-paragraph text-lead-paragraph text-on-surface-variant max-w-editorial-max leading-relaxed mb-space-lg">
+          Arrastrar una foto, una captura o un PDF de doscientas páginas y pedir que te lo expliquen ya funciona. Lo que casi nadie cuenta es cómo procesa el archivo por dentro, qué límites tiene cada herramienta y en qué casos concretos se equivoca.
+        </p>
+<div class="bg-surface-container-lowest p-space-md flex flex-wrap items-center justify-between gap-y-3 shadow-sm">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 bg-primary text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">document_scanner</span>
+</div>
+<div>
+<div class="font-label-md text-label-md text-on-surface font-semibold">Por la Redacción de El Telar</div><div class="font-caption text-caption text-on-surface-variant">Guías prácticas de IA y agentes, probadas en flujos de trabajo reales antes de publicarlas.</div>
+<button class="inline-flex items-center gap-1 mt-2 px-3 py-1.5 bg-surface-container text-primary font-label-md text-[12px] font-semibold uppercase tracking-wider hover:bg-surface-container-high transition-colors" id="copy-guide-btn" type="button"><span class="material-symbols-outlined text-[16px]">content_copy</span> Copiar guía para tu IA</button><span class="inline-flex items-center gap-1 ml-1"><button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" id="save-guide-btn" title="Guardar guía" type="button"><span class="material-symbols-outlined text-[16px]">bookmark_border</span></button><button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" id="copy-link-btn" title="Copiar enlace permanente" type="button"><span class="material-symbols-outlined text-[16px]">share</span></button></span>
+</div>
+</div>
+<div class="flex items-center gap-space-lg text-on-surface-variant font-caption text-caption uppercase tracking-wider">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">schedule</span> 15 min de lectura</span>
+</div>
+</div>
+</header>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-col-gap">
+<article class="lg:col-span-8 flex flex-col space-y-space-xl">
+<figure data-hero class="space-y-space-xs"><img class="w-full border border-outline-variant" src="../img/guias/hero-analizar-imagenes-pdf-ia.jpg" alt="Documentación oficial de Anthropic sobre la lectura de PDF con Claude" width="1280" height="720" fetchpriority="high" decoding="async"/><figcaption class="font-caption text-caption text-on-surface-variant">Captura de pantalla: <a class="underline" href="https://docs.anthropic.com/en/docs/build-with-claude/pdf-support" rel="nofollow noopener" target="_blank">docs.anthropic.com</a>.</figcaption></figure>
+<div class="relative bg-surface-container-lowest p-space-lg shadow-sm">
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed text-justify">
+<span class="float-left font-display text-primary text-6xl leading-none pr-3 pt-1 font-normal">D</span>
+          urante años, usar un modelo de lenguaje significaba escribir. Ahora puedes soltarle la foto de una factura arrugada, la captura de un panel que no entiendes o un informe en PDF, y pedirle que razone sobre ello. Funciona, y a menudo mejor de lo que esperabas. El problema es que también falla, y falla de formas que no se parecen a los errores que ya conoces del texto: no te dice "no puedo leer esto", te da una cifra equivocada con la misma seguridad con la que te habría dado la correcta.
+        </p>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Esta guía no va de qué herramienta es "la mejor" para ver imágenes. Va de entender qué pasa entre que sueltas el archivo y recibes la respuesta, porque casi todos los fallos y casi toda la factura se explican ahí. Los límites concretos que aparecen abajo salen de la documentación oficial de Anthropic y de Google para sus respectivas APIs; son los que estaban publicados al escribir esto, y conviene que los compruebes el día que montes algo encima de ellos.
+        </p>
+<section id="sec-1" class="space-y-space-lg">
+<h2 class="font-headline-lg text-headline-lg text-primary">Tu PDF no se lee: se fotografía</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          La intuición natural es que el modelo "abre" el PDF y lee el texto, como harías tú. No es lo que ocurre. Anthropic lo documenta paso a paso para su API: el sistema convierte <strong>cada página del documento en una imagen</strong>, extrae además el texto de esa página, y le entrega al modelo las dos cosas a la vez. El modelo mira la foto de la página y lee la transcripción en paralelo.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Esa doble entrega no es un capricho: es lo que permite preguntar por un gráfico de barras, por la casilla marcada de un formulario o por la estructura de una tabla a dos columnas. Un extractor de texto clásico te habría devuelto las cifras del gráfico solo si estaban escritas como texto; la vía de la imagen le deja además <em>ver</em> la barra.
+        </p>
+<div class="my-space-xl p-space-md bg-surface-container-lowest">
+<div class="font-kicker text-kicker uppercase text-on-surface-variant tracking-widest mb-space-sm text-center">DIAGRAMA // QUÉ LE LLEGA AL MODELO CUANDO SUELTAS UN PDF</div>
+<svg aria-label="Esquema del procesado de un PDF: cada página se convierte en una imagen y además se extrae su texto; ambas cosas se envían juntas al modelo, que responde pudiendo referirse tanto al texto como a los elementos visuales." class="w-full h-auto" fill="none" role="img" viewBox="0 0 700 210" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#ebeef8" height="46" width="108" x="8" y="80"></rect>
+<text fill="#072417" font-family="Inter" font-size="10" font-weight="700" x="30" y="100">TU PDF</text>
+<text fill="#43483f" font-family="Inter" font-size="8" x="21" y="114">página a página</text>
+<path d="M120 103 L156 103" stroke="#727973" stroke-width="1.2"></path>
+<polygon fill="#727973" points="156,99 164,103 156,107"></polygon>
+<rect fill="#caead4" height="40" width="150" x="170" y="42"></rect>
+<text fill="#042013" font-family="Inter" font-size="9" font-weight="700" x="185" y="60">1. Imagen de la página</text>
+<text fill="#43483f" font-family="Inter" font-size="8" x="185" y="74">gráficos, sellos, casillas</text>
+<rect fill="#caead4" height="40" width="150" x="170" y="124"></rect>
+<text fill="#042013" font-family="Inter" font-size="9" font-weight="700" x="185" y="142">2. Texto extraído</text>
+<text fill="#43483f" font-family="Inter" font-size="8" x="185" y="156">si la página lo tiene</text>
+<path d="M324 62 L360 95" stroke="#727973" stroke-width="1.2"></path>
+<path d="M324 144 L360 111" stroke="#727973" stroke-width="1.2"></path>
+<polygon fill="#727973" points="357,91 365,103 353,99"></polygon>
+<rect fill="#ebeef8" height="46" width="118" x="372" y="80"></rect>
+<text fill="#072417" font-family="Inter" font-size="10" font-weight="700" x="398" y="100">EL MODELO</text>
+<text fill="#43483f" font-family="Inter" font-size="8" x="386" y="114">recibe ambas a la vez</text>
+<path d="M494 103 L530 103" stroke="#727973" stroke-width="1.2"></path>
+<polygon fill="#727973" points="530,99 538,103 530,107"></polygon>
+<rect fill="#ebeef8" height="46" width="152" x="544" y="80"></rect>
+<text fill="#072417" font-family="Inter" font-size="10" font-weight="700" x="580" y="100">RESPUESTA</text>
+<text fill="#43483f" font-family="Inter" font-size="8" x="556" y="114">cita texto y elementos visuales</text>
+<text fill="#727973" font-family="Inter" font-size="7.5" x="8" y="190">Una página escaneada sin capa de texto solo recorre la vía 1: lo que el modelo sepa de ella sale de mirarla.</text>
+</svg>
+<figcaption class="font-caption text-caption text-on-surface-variant mt-space-xs">Esquema del procesado documentado por Anthropic para entrada de PDF en su API.</figcaption>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          De aquí salen dos consecuencias prácticas que conviene tener claras antes de seguir. La primera: un PDF escaneado —una fotocopia, un fax antiguo, un contrato firmado y pasado por el escáner— no tiene capa de texto, así que solo recorre la vía de la imagen. Todo lo que el modelo sepa de ese documento sale de mirarlo, con los errores de lectura que eso implica. Si lo que vas a pasar por ahí es justamente un contrato, conviene saber antes <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="revisar-contratos-ia.html">qué parte de esa revisión puedes delegar y cuál no</a>. La segunda es de dinero, y va en la sección siguiente.
+        </p>
+<div class="bg-surface-container-high p-space-md border-l-4 border-secondary">
+<p class="font-body-sm text-body-sm text-on-surface"><strong>La prueba de los treinta segundos:</strong> abre el PDF e intenta seleccionar un párrafo con el ratón. Si puedes seleccionarlo, tiene capa de texto. Si el cursor resbala por encima como si fuera una foto, es un escaneo — y ahí es donde se concentran casi todos los errores de lectura.</p>
+</div>
+</section>
+<section id="sec-2" class="space-y-space-lg">
+<h2 class="font-headline-lg text-headline-lg text-primary">Los límites que sí están publicados</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          Estos son los techos documentados por cada fabricante. Importan porque son la diferencia entre que tu proceso funcione y que devuelva un error a mitad de un lote de mil documentos.
+        </p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<span class="font-kicker text-kicker uppercase text-secondary mb-1 block">CLAUDE (API)</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              32 MB por petición, contando todo lo que mandes junto. Hasta 600 páginas por petición, que bajan a 100 si el modelo tiene una ventana de contexto menor de un millón de tokens. Cada imagen, hasta 10 MB y 8000×8000 px. En claude.ai, 20 imágenes por mensaje. Formatos: JPEG, PNG, GIF y WebP — las animaciones no se admiten, solo se usa el primer fotograma.
+            </p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<span class="font-kicker text-kicker uppercase text-secondary mb-1 block">GEMINI (API)</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Hasta 50 MB o 1.000 páginas por documento. Google publica además una cifra útil para calcular: cada página de documento equivale a 258 tokens. Las páginas grandes se reescalan a un máximo de 3072×3072 px y las pequeñas se amplían hasta 768×768, conservando la proporción.
+            </p>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Con ChatGPT la cosa es menos clara, y conviene decirlo tal cual: OpenAI no publica un límite oficial de páginas por PDF. El techo real acaba siendo el presupuesto de tokens del archivo y de la conversación, no un número redondo que puedas consultar. Si estás decidiendo dónde montar un proceso serio de documentos, esa opacidad es en sí misma un dato: no puedes dimensionar contra una cifra que nadie publica.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Y una advertencia que vale para las tres: estos números se mueven. La tabla de arriba es la foto del momento en que se escribió esta guía. Si vas a construir algo encima, ábrete la documentación del fabricante el mismo día y compruébalo — es literalmente un minuto, y te ahorra descubrirlo en producción.
+        </p>
+</section>
+<section id="sec-3" class="space-y-space-lg">
+<h2 class="font-headline-lg text-headline-lg text-primary">Por qué una captura de pantalla sale más cara de lo que crees</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          Aquí está la parte que sorprende a casi todo el mundo la primera vez que mira la factura. Anthropic documenta que su modelo no ve píxeles sueltos, sino parches de 28×28 px, y que cada parche es un token visual. La cuenta es directa: una imagen cuesta <strong>⌈ancho / 28⌉ × ⌈alto / 28⌉</strong> tokens visuales.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Una imagen de 1000×1000 px son 36×36 parches: 1.296 tokens visuales, según la propia tabla de la documentación. Es decir, una captura cuadrada modesta te cuesta aproximadamente lo mismo que unas mil palabras de texto. Y un PDF, recuerda, es una imagen por página <em>más</em> el texto extraído: Anthropic calcula entre 1.500 y 3.000 tokens por página según la densidad del contenido.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Hay un segundo factor. Los modelos recientes de Anthropic trabajan en una resolución mayor —hasta 2576 px de lado largo y 4.784 tokens visuales, frente a 1568 px y 1.568 tokens en los anteriores— y la documentación avisa de que eso puede multiplicar por tres el coste en tokens de la misma imagen. Más fidelidad para documentos densos, sí, pero se paga.
+        </p>
+<div class="bg-surface-container-high p-space-md border-l-4 border-secondary">
+<p class="font-body-sm text-body-sm text-on-surface"><strong>Lo que esto significa en la práctica:</strong> si mandas una captura en 4K, el sistema la va a reescalar de todas formas antes de procesarla. Redimensionarla tú antes de subirla no te quita calidad que fueras a aprovechar — te quita factura. Y si lo único que necesitas es el texto de un PDF que ya tiene capa de texto, extraerlo y pegarlo como texto plano es varias veces más barato que subir el PDF entero. Si quieres poner números a tu caso, tenemos una <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="../herramientas/calculadora-coste-api.html">calculadora de coste de API</a>.</p>
+</div>
+</section>
+<section id="sec-4" class="space-y-space-lg">
+<figure data-inline-photo class="space-y-space-xs my-space-xl"><img class="w-full border border-outline-variant" src="../img/guias/foto-analizar-imagenes-pdf-ia.jpg" alt="Documentación de Google sobre el procesamiento de documentos con Gemini" width="1280" height="720" loading="lazy" decoding="async"/><figcaption class="font-caption text-caption text-on-surface-variant">Captura de pantalla: <a class="underline" href="https://ai.google.dev/gemini-api/docs/document-processing" rel="nofollow noopener" target="_blank">ai.google.dev</a>.</figcaption></figure>
+<h2 class="font-headline-lg text-headline-lg text-primary">Dónde falla, según quien lo fabrica</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          Lo más útil de la documentación de Anthropic sobre visión no son las capacidades: es la lista de limitaciones, que es inusualmente franca para un material de producto. Merece la pena repasarla entera porque cada punto corresponde a un error real que te vas a encontrar.
+        </p>
+<div class="space-y-space-sm">
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h3 class="font-headline-sm text-headline-sm text-primary mb-1">Imágenes pequeñas, giradas o de mala calidad</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">La documentación admite que el modelo puede alucinar o equivocarse interpretando imágenes de baja calidad, rotadas o muy pequeñas —menciona explícitamente por debajo de 200 píxeles—. Es exactamente el perfil de una foto de un recibo hecha con el móvil de lado y con poca luz.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h3 class="font-headline-sm text-headline-sm text-primary mb-1">Contar cosas</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Da conteos aproximados, y el error crece cuando hay muchos objetos pequeños. Si tu tarea es "cuántas unidades hay en esta estantería" o "cuántas filas tiene esta tabla", no delegues la cifra sin comprobarla.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h3 class="font-headline-sm text-headline-sm text-primary mb-1">Posiciones y coordenadas</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Las salidas de localización son aproximadas, y la propia documentación pide verificarlas antes de depender de ellas. Relevante si pretendes recortar automáticamente una región concreta de un documento.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h3 class="font-headline-sm text-headline-sm text-primary mb-1">Detectar si una imagen es generada por IA</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">No puede, y la documentación lo dice sin rodeos: pide que no se use para eso. Si alguien te vende un detector de imágenes falsas que por dentro es un modelo generalista al que se le pregunta "¿esto es real?", te está vendiendo humo.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h3 class="font-headline-sm text-headline-sm text-primary mb-1">No lee los metadatos</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">El modelo no recibe ni analiza los metadatos de la imagen. La fecha, el modelo de cámara o las coordenadas GPS del EXIF no le llegan: si necesitas ese dato, extráelo tú con otra herramienta y pásaselo como texto.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h3 class="font-headline-sm text-headline-sm text-primary mb-1">Imágenes médicas y personas</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Anthropic señala que el modelo no está diseñado para interpretar pruebas diagnósticas complejas como un TAC o una resonancia, y que sus salidas no sustituyen a un profesional. Tampoco identifica a personas en imágenes: se niega por política de uso.</p>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          A esa lista conviene añadir un hallazgo que se repite en las evaluaciones de documentos publicadas este año, y que es quizá la frase más útil de toda esta guía si piensas automatizar algo: <strong>el acierto medio sobre PDFs limpios no predice el rendimiento sobre documentos escaneados, manuscritos o de maquetación variable</strong>. Traducido: la demo con el informe corporativo bien maquetado no te dice nada sobre cómo se va a comportar con las facturas reales de tus proveedores. La única prueba que vale es con tus documentos peores, no con los mejores.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          La letra manuscrita sigue siendo el caso más duro de todos. Ha mejorado mucho, pero es donde más separación hay entre modelos y donde más caro sale confiarse. Si tu flujo depende de leer anotaciones a mano, mide el acierto sobre una muestra tuya antes de montar nada encima.
+        </p>
+</section>
+<section id="sec-5" class="space-y-space-lg">
+<h2 class="font-headline-lg text-headline-lg text-primary">Cómo pedirlo para que salga bien</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          Buena parte de los errores evitables se corrigen con cambios que no cuestan nada. Estos salen de las buenas prácticas que publica Anthropic y de lo que se nota al usarlo a diario.
+        </p>
+<div class="space-y-space-sm">
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h3 class="font-headline-sm text-headline-sm text-primary mb-1">1. El archivo primero, la pregunta después</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Igual que con los documentos largos de texto, el modelo rinde mejor cuando la imagen o el PDF van <em>antes</em> de tu pregunta. Funciona al revés, pero peor. Es el cambio más barato de la lista.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h3 class="font-headline-sm text-headline-sm text-primary mb-1">2. Endereza las páginas</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Orientación vertical correcta, siempre. Una página girada 90 grados es una de las causas documentadas de error, y rotarla antes de enviarla es cuestión de un clic.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h3 class="font-headline-sm text-headline-sm text-primary mb-1">3. Redimensiona tú, no dejes que lo haga el sistema</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Si la imagen supera el máximo del modelo, se reescala sola — y al reescalarse, el texto pequeño puede volverse ilegible. Mejor que decidas tú el recorte y el tamaño, sabiendo qué parte importa.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h3 class="font-headline-sm text-headline-sm text-primary mb-1">4. Cuidado con comprimir de más</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Un JPEG muy comprimido pesa menos y viaja más rápido, pero los artefactos de compresión afectan al rendimiento, y con texto pequeño lo destrozan. La documentación recomienda mirar de verdad la imagen que estás enviando, no la original.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h3 class="font-headline-sm text-headline-sm text-primary mb-1">5. No recortes el contexto por agrandar el texto</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Es un error frecuente: ampliar tanto una cifra que se pierde la cabecera de la columna a la que pertenece. El número se lee mejor y significa menos.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h3 class="font-headline-sm text-headline-sm text-primary mb-1">6. Pide la cita antes que la conclusión</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">"Transcribe literalmente la línea donde aparece el total, y solo después dime cuál es" da mejores resultados que preguntar directamente por el total. Obligarle a copiar antes de interpretar deja el error a la vista, que es justo la lógica del <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="grounding-evitar-alucinaciones.html">grounding</a> aplicada a documentos.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h3 class="font-headline-sm text-headline-sm text-primary mb-1">7. Numera las páginas como las ve el visor</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Al referirte a una página concreta, usa el número que muestra el visor de PDF. Y si envías varias imágenes sueltas, etiquétalas ("Imagen 1:", "Imagen 2:") para poder referirte a ellas después sin ambigüedad.</p>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Una nota aparte sobre los documentos que subes. Un PDF de trabajo suele llevar nombres, cuentas, direcciones o datos de clientes, y al subirlo sales de tu ordenador. Antes de convertirlo en rutina, revisa qué política de retención tiene la herramienta concreta que usas y si el plan que tienes contratado entrena con lo que envías; lo desarrollamos en la guía sobre <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="proteger-datos-ia.html">cómo proteger tus datos al usar IA</a>.
+        </p>
+</section>
+<section id="sec-6" class="space-y-space-lg">
+<h2 class="font-headline-lg text-headline-lg text-primary">Cuándo no deberías usar un modelo generalista</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          Hay una idea instalada de que los modelos grandes han dejado obsoleto al OCR de toda la vida. Los resultados publicados este año en las comparativas de documentos dicen algo más matizado: modelos de OCR especializados y comparativamente diminutos —del orden de mil millones de parámetros— rinden mejor que modelos multimodales generalistas cientos de veces más grandes en las pruebas centradas en documentos.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          No es una contradicción, son dos trabajos distintos. Un modelo generalista es para <em>entender y razonar</em> sobre un documento: qué dice este contrato, qué implica este gráfico, en qué se diferencian estas dos versiones. Un OCR especializado es para <em>transcribir a escala</em>: convertir diez mil facturas escaneadas en datos estructurados, con un coste por documento y una tasa de error que puedes medir y presupuestar.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          La regla práctica: si el volumen es alto y la pregunta siempre es la misma, monta una tubería especializada y usa el modelo grande solo para los casos que esa tubería marque como dudosos. Si el volumen es bajo y la pregunta cambia cada vez, el modelo generalista es justo lo que quieres. Pagar tokens visuales por transcribir en masa algo que un OCR hace mejor y más barato es el error caro de este año.
+        </p>
+<div class="bg-surface-container-high p-space-md border-l-4 border-secondary">
+<p class="font-body-sm text-body-sm text-on-surface"><strong>Cómo decidirlo en una tarde:</strong> coge veinte documentos reales tuyos, y que sean los peores que tengas — escaneos torcidos, fotocopias, anotaciones a mano. Pásalos por las dos vías. Cuenta los errores a mano, uno a uno. Veinte documentos bien contados te dan una respuesta más fiable que cualquier comparativa publicada, porque están medidos sobre tus documentos y no sobre los de otro.</p>
+</div>
+</section>
+<section class="space-y-space-md">
+<h2 class="font-headline-lg text-headline-lg text-primary">
+          Preguntas frecuentes
+        </h2>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Es mejor subir el PDF o copiar y pegar el texto?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Depende de qué necesites. Si el documento tiene capa de texto y tu pregunta es sobre lo que dice, pegar el texto es bastante más barato: te ahorras la imagen de cada página. Si tu pregunta toca gráficos, sellos, firmas, casillas marcadas o la propia maquetación —qué columna corresponde a qué cabecera, por ejemplo—, necesitas la vía de la imagen y ahí subir el PDF sí compensa.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Puedo esperar el mismo acierto con un PDF escaneado que con uno normal?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+No. Un PDF con capa de texto le llega al modelo por dos vías (imagen y texto extraído) que se corrigen mutuamente; un escaneo solo le llega como imagen. Además, las evaluaciones de documentos publicadas este año coinciden en que el acierto medido sobre PDFs limpios no predice el rendimiento sobre escaneados o de maquetación variable. Si trabajas con escaneos, mide sobre escaneos tuyos.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Por qué se dispara el coste cuando empiezo a subir imágenes?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Porque una imagen se cobra en tokens visuales, no por archivo. En el caso de Claude, la documentación da la fórmula: parches de 28×28 px, es decir ⌈ancho/28⌉ × ⌈alto/28⌉ tokens. Una imagen de 1000×1000 px son 1.296 tokens, aproximadamente lo que costaría un texto de mil palabras. Multiplícalo por las páginas de un PDF y por cada turno de una conversación larga y el resultado sorprende.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Puede decirme si una foto está generada por IA o manipulada?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+No, y conviene ser tajante porque se pide mucho. La documentación de Anthropic dice explícitamente que el modelo no puede determinar si una imagen es generada por IA, que puede equivocarse si se le pregunta, y que no se use para detectar imágenes falsas o sintéticas. Que te dé una respuesta segura no significa que esa respuesta valga algo.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Me puedo fiar de los totales que extrae de una factura?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+No sin comprobarlos, y menos si la factura es un escaneo. Un buen hábito es pedirle que transcriba literalmente la línea de donde saca la cifra antes de darte el número: si la transcripción está mal, lo ves al instante en vez de descubrirlo al cuadrar el trimestre. Para volúmenes altos, añade una comprobación automática — que las líneas sumen el total, por ejemplo — y revisa a mano solo lo que no cuadre.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Lee la fecha o la localización de una foto?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+No. Anthropic documenta que el modelo no recibe ni analiza los metadatos de la imagen, así que el EXIF —fecha, cámara, coordenadas GPS— no le llega. Si ves una fecha en la respuesta, o la ha leído impresa dentro de la propia imagen, o se la está inventando. Cuando necesites ese dato, extráelo con una herramienta de metadatos y pásaselo como texto.
+</div>
+</div>
+</section>
+<section class="space-y-space-md">
+<h2 class="font-headline-lg text-headline-lg text-primary">En resumen</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          La entrada multimodal ha dejado de ser una demo y ya resuelve trabajo real, pero se comporta como una herramienta con mecánica propia, no como magia. Merece la pena quedarse con tres cosas: tu PDF llega al modelo como imágenes más texto, y eso explica a la vez lo que puede ver y lo que te cobra; las limitaciones que importan están publicadas por los propios fabricantes, así que leerlas sale más barato que descubrirlas; y la única evaluación que sirve es la que haces con tus peores documentos, no con los que enseñaría un comercial.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Si vas a automatizar algo con esto, el orden sensato es: mide primero sobre una muestra real tuya, pon una comprobación que detecte el error antes de que llegue a producción, y sube la autonomía solo cuando los números aguanten. Es la misma cautela que aplicamos a cualquier agente — y aquí, donde el error viene disfrazado de cifra concreta y bien formateada, con más razón.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Queda una entrada que esta guía no cubre y que funciona con una lógica distinta: el sonido. Transcribir, sintetizar voz o clonar la de alguien tiene sus propios fallos —una transcripción puede inventarse una frase entera sin que se note— y, a diferencia de leer un PDF, arrastra obligaciones legales propias. Está en la guía de <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="clonar-voz-transcribir-audio-ia.html">clonar voz, transcribir y generar audio con IA</a>.
+        </p>
+</section>
+</article>
+<aside class="lg:col-span-4 flex flex-col space-y-space-xl">
+<div class="bg-surface-container-lowest p-space-lg shadow-sm sticky top-space-md">
+<div class="flex items-center justify-between mb-space-sm pb-space-xs">
+<span class="font-kicker text-kicker uppercase tracking-widest text-primary font-bold">ÍNDICE DE LA GUÍA</span>
+<span class="material-symbols-outlined text-on-surface-variant text-base">format_list_bulleted</span>
+</div>
+<nav class="space-y-space-xs font-body-sm text-body-sm">
+<a class="block text-primary hover:text-secondary font-medium transition-colors" href="#sec-1">Tu PDF no se lee: se fotografía</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-2">Los límites publicados</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-3">Por qué sale cara una captura</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-4">Dónde falla</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-5">Cómo pedirlo bien</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-6">Cuándo usar OCR especializado</a>
+</nav>
+</div>
+
+<div class="bg-surface-container-high p-space-md space-y-space-sm shadow-sm">
+<span class="font-kicker text-kicker uppercase tracking-widest text-primary font-bold">FICHA TÉCNICA</span>
+<dl class="space-y-space-xs font-caption text-caption">
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Categoría:</dt><dd class="font-semibold text-primary">Práctica</dd></div>
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Nivel técnico:</dt><dd class="font-semibold text-primary">Principiante / Intermedio</dd></div>
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Fuentes citadas:</dt><dd class="font-semibold text-primary">Anthropic, Google</dd></div>
+</dl>
+</div>
+</aside>
+</div>
+<section class="w-full mt-space-4xl pt-space-2xl bg-surface-container-lowest p-space-lg shadow-sm">
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-space-xl gap-space-xs">
+<h3 class="font-headline-md text-headline-md text-primary">Continúa explorando el archivo</h3>
+<a class="font-label-md text-label-md text-primary hover:text-secondary uppercase tracking-wider transition-colors flex items-center gap-1" href="../index.html#guias">Ver todas las guías <span class="material-symbols-outlined text-[16px]">arrow_forward</span></a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-col-gap"><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="grounding-evitar-alucinaciones.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-grounding-evitar-alucinaciones.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="grounding-evitar-alucinaciones.html">Grounding: cómo hacer que la IA cite sus fuentes y deje de inventar</a></h4></div></article><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="proteger-datos-ia.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-proteger-datos-ia.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="proteger-datos-ia.html">Cómo proteger tus datos cuando usas IA</a></h4></div></article><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="ia-excel-hojas-calculo.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-ia-excel-hojas-calculo.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="ia-excel-hojas-calculo.html">Cómo usar IA en Excel y Google Sheets para tu trabajo</a></h4></div></article></div>
+</section>
+</div></main><footer class="w-full bg-surface-container-low border-t border-outline-variant mt-space-4xl"><div class="max-w-site-max-width mx-auto px-space-md py-space-3xl"><div class="grid grid-cols-1 md:grid-cols-3 gap-col-gap"><div class="space-y-space-sm"><span class="font-headline-md text-headline-md text-primary">El Telar</span><p class="font-body-sm text-body-sm text-on-surface-variant">Publicación independiente de tecnología y automatización con agentes. Contenidos verificados en producción, sin patrocinios opacos ni promesas vacías.</p></div><div><h3 class="font-kicker text-kicker uppercase tracking-wider text-on-surface mb-space-md">SECCIONES</h3><ul class="space-y-space-xs font-body-sm text-body-sm"><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html#guias">Archivo de Guías</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../empieza-aqui.html">Guía para Principiantes</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../sobre-nosotros.html">Manifiesto Editorial</a></li><li class="pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html#despacho">Boletín Semanal</a></li></ul></div><div><h3 class="font-kicker text-kicker uppercase tracking-wider text-on-surface mb-space-md">CONTACTO &amp; PRENSA</h3><div class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant"><p class="font-semibold text-on-surface">contacto@eltelar.es</p><p>Síguenos: <a class="hover:text-primary underline" href="https://www.instagram.com/eltelar_es/" rel="me noopener" target="_blank">Instagram</a> · <a class="hover:text-primary underline" href="https://www.threads.com/@eltelar_es" rel="me noopener" target="_blank">Threads</a> · <a class="hover:text-primary underline" href="https://x.com/eltelar_es" rel="me noopener" target="_blank">X</a></p></div></div></div></div><div class="border-t border-outline-variant py-space-md bg-surface-container-lowest"><div class="max-w-site-max-width mx-auto px-space-md flex flex-col md:flex-row items-center justify-between gap-space-sm text-caption font-caption text-on-surface-variant"><div>© 2026 El Telar. Todos los derechos reservados. Independencia editorial garantizada.</div><div class="flex items-center gap-space-md"><a class="hover:text-on-surface transition-colors" href="../privacidad.html">Privacidad</a><a class="hover:text-on-surface transition-colors" href="../terminos.html">Términos</a><a class="hover:text-on-surface transition-colors" href="../sobre-nosotros.html">Sobre nosotros</a><a class="hover:text-on-surface transition-colors" href="../contacto.html">Contacto</a></div></div></div></footer><script defer src="../js/copy-guide.js"></script><script defer src="../js/guide-interactions.js"></script><script defer src="../js/reading-progress.js"></script><script defer src="../js/search.js?v=7"></script><script defer src="../js/entrance.js"></script><script defer src="../js/cookie-consent.js?v=4"></script></body></html>

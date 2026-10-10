@@ -1,0 +1,110 @@
+@keyframes appearPop { 0% { opacity: 0; transform: scale(0.9); } 70% { opacity: 1; transform: scale(1.02); } 100% { opacity: 1; transform: scale(1); } }
+@keyframes appearSoft { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes appearBlur { from { opacity: 0.35; filter: blur(4px); } to { opacity: 1; filter: blur(0); } }
+.appear {
+  opacity: 1;
+  animation-duration: 0.9s;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  animation-delay: var(--d, 0.05s);
+}
+.appear--pop { animation-name: appearPop; }
+.appear--soft { animation-name: appearSoft; }
+.hero-em-reveal { animation: appearBlur 1s cubic-bezier(0.16, 1, 0.3, 1) both; animation-delay: 0.6s; }
+@media (prefers-reduced-motion: reduce) {
+  .appear, .hero-em-reveal { animation: none !important; opacity: 1 !important; transform: none !important; filter: none !important; }
+}
+
+/* --- Interaction polish: applies to existing hover-intent classes site-wide, no HTML edits needed --- */
+html { scroll-behavior: smooth; }
+
+a[class*="hover:border-primary"],
+a[class*="hover:shadow"],
+article[class*="hover:shadow"],
+article[class*="hover:border-primary"],
+div[class*="hover:shadow"],
+main article.group {
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s ease, border-color 0.28s ease;
+}
+a[class*="hover:border-primary"]:hover,
+a[class*="hover:shadow"]:hover,
+article[class*="hover:shadow"]:hover,
+article[class*="hover:border-primary"]:hover,
+div[class*="hover:shadow"]:hover,
+main article.group:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(7, 36, 23, 0.10);
+}
+
+button, .btn, a {
+  transition: transform 0.15s ease, background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+button:active, a:active { transform: scale(0.97); }
+
+/* FAQ accordion answers: fade+slide the content in when it opens (structure untouched) */
+[class*="border-outline-variant/40"]:not(.hidden) {
+  animation: appearSoft 0.28s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  a, button, .btn, main article.group,
+  [class*="border-outline-variant/40"] { transition: none !important; animation: none !important; transform: none !important; }
+}
+
+/* --- Premium polish pass: tinted layered shadows, sharper headline typography, ---
+   --- broader card hover-lift coverage. Global overrides, no HTML edits needed. --- */
+
+[class*="shadow-sm"] {
+  box-shadow: 0 1px 2px rgba(7, 36, 23, 0.045), 0 6px 18px -4px rgba(7, 36, 23, 0.07) !important;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+a[class*="shadow-sm"]:hover,
+article[class*="shadow-sm"]:hover,
+button[class*="shadow-sm"]:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 2px 6px rgba(7, 36, 23, 0.06), 0 20px 36px -8px rgba(7, 36, 23, 0.14) !important;
+}
+
+.font-headline-lg, .font-headline-lg-mobile, .font-display, .font-display-mobile {
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+.font-headline-md, .font-headline-sm {
+  text-wrap: balance;
+}
+
+/* Nav links: underline grows in from center instead of a flat color swap */
+nav a[href]:not([class*="border-b-2"]) {
+  position: relative;
+}
+nav a[href]:not([class*="border-b-2"])::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  right: 50%;
+  bottom: -2px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0;
+  transition: left 0.25s cubic-bezier(0.16, 1, 0.3, 1), right 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
+}
+nav a[href]:not([class*="border-b-2"]):hover::after {
+  left: 0;
+  right: 0;
+  opacity: 0.6;
+}
+
+/* Scroll-reveal targets (tagged by entrance.js via IntersectionObserver) */
+.reveal-up {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal-up { opacity: 1 !important; transform: none !important; transition: none !important; }
+}

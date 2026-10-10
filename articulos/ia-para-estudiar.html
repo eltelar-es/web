@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cómo usar IA para estudiar y aprender más rápido | El Telar</title>
+<meta name="description" content="La técnica Feynman con un tutor de IA, preguntas de repaso a partir de tus apuntes y por qué pedir la respuesta directa te hace aprender menos.">
+<link rel="canonical" href="https://eltelar.es/articulos/ia-para-estudiar.html"><link rel="icon" type="image/svg+xml" href="../img/favicon.svg?v=4"><link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32.png?v=4"><link rel="apple-touch-icon" href="../img/apple-touch-icon.png?v=4"><meta name="theme-color" content="#072417"><link rel="manifest" href="../manifest.json"><link rel="alternate" type="application/rss+xml" title="El Telar" href="../feed.xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cómo usar IA para estudiar y aprender más rápido | El Telar">
+<meta property="og:description" content="La técnica Feynman con un tutor de IA, y por qué pedir la respuesta directa es la forma más rápida de aprender menos.">
+<meta property="og:url" content="https://eltelar.es/articulos/ia-para-estudiar.html">
+<meta property="og:site_name" content="El Telar">
+<meta property="og:locale" content="es_ES"><meta property="og:image" content="https://eltelar.es/img/og/guia-ia-para-estudiar.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="IA para estudiar sin dejar de aprender | El Telar">
+<meta name="twitter:description" content="La técnica Feynman con un tutor de IA, con plantillas de prompt."><meta name="twitter:image" content="https://eltelar.es/img/og/guia-ia-para-estudiar.jpg">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Cómo usar IA para estudiar y aprender más rápido",
+  "description": "La técnica Feynman con un tutor de IA, generar preguntas de repaso a partir de tus apuntes, y por qué pedirle la respuesta directamente es la forma más rápida de aprender menos. Con plantillas de prompt.",
+  "image": "https://eltelar.es/img/og-image.jpg",
+  "author": { "@type": "Organization", "name": "El Telar", "url": "https://eltelar.es/sobre-nosotros.html" },
+  "publisher": { "@type": "Organization", "name": "El Telar" },
+  "datePublished": "2026-09-15",
+  "dateModified": "2026-09-28",
+  "mainEntityOfPage": "https://eltelar.es/articulos/ia-para-estudiar.html",
+  "inLanguage": "es"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "¿Usar IA para estudiar es hacer trampa?", "acceptedAnswer": { "@type": "Answer", "text": "Depende de para qué la uses. Pedirle que te resuelva el ejercicio y copiar la respuesta no es aprender, es delegar. Pedirle que te haga preguntas, que te explique dónde falla tu razonamiento, o que genere ejemplos nuevos para practicar sí es una forma legítima de estudiar — la diferencia está en si el esfuerzo cognitivo sigue siendo tuyo." } },
+    { "@type": "Question", "name": "¿Por qué es peor pedir la respuesta directa que pedir pistas?", "acceptedAnswer": { "@type": "Answer", "text": "Porque el aprendizaje ocurre en el esfuerzo de recuperar y conectar información, no en leer la respuesta correcta. La investigación sobre el 'efecto de recuperación' (retrieval practice) muestra que intentar responder algo tú mismo, aunque falles, afianza más el conocimiento que leer la respuesta directamente. Un tutor de IA bien usado te empuja hacia ese esfuerzo en vez de ahorrártelo." } },
+    { "@type": "Question", "name": "¿Puede la IA generar preguntas de examen fiables a partir de mis apuntes?", "acceptedAnswer": { "@type": "Answer", "text": "Sí, y es uno de los usos más sólidos: pegar tus apuntes y pedir preguntas de repaso basadas exclusivamente en ese contenido reduce mucho el riesgo de que la IA invente datos, porque no tiene que recurrir a lo que 'sabe' del tema — solo tiene que trabajar con el texto que le has dado." } }
+  , {"@type":"Question","name":"¿Qué herramienta es mejor para estudiar con mis propios apuntes?","acceptedAnswer":{"@type":"Answer","text":"Las que responden solo a partir de los documentos que subes y citan el fragmento exacto, como NotebookLM o los proyectos con archivos de ChatGPT y Claude. Así puedes comprobar cada respuesta en tus apuntes."}}, {"@type":"Question","name":"¿Puedo fiarme de la IA para resolver problemas de matemáticas?","acceptedAnswer":{"@type":"Answer","text":"Para el razonamiento, bastante; para los cálculos, no del todo. Los modelos aún fallan operaciones con seguridad aparente. Comprueba los números con una calculadora o pide que el cálculo se haga con código."}}, {"@type":"Question","name":"¿Se puede saber si un trabajo lo ha escrito una IA?","acceptedAnswer":{"@type":"Answer","text":"No con fiabilidad. Los detectores dan falsos positivos. Lo que sí notan los profesores es un texto que no encaja con tu forma de escribir o con lo que sabes explicar en persona."}}]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://eltelar.es/" },
+    { "@type": "ListItem", "position": 2, "name": "Guías", "item": "https://eltelar.es/index.html#guias" },
+    { "@type": "ListItem", "position": 3, "name": "IA para estudiar", "item": "https://eltelar.es/articulos/ia-para-estudiar.html" }
+  ]
+}
+</script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet"/></noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet"/></noscript>
+<style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><link rel="stylesheet" href="../css/tailwind.css"><link rel="stylesheet" href="../css/entrance.css?v=2"><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}(function(){var c=null;try{c=localStorage.getItem('eltelar-cookie-consent')}catch(e){}var g=c==='accepted'?'granted':'denied';gtag('consent','default',{ad_storage:g,ad_user_data:g,ad_personalization:g,analytics_storage:g,wait_for_update:500});window.adsbygoogle=window.adsbygoogle||[];if(g!=='granted'){window.adsbygoogle.requestNonPersonalizedAds=1;}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-4DPTKEG79N"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4DPTKEG79N');</script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8239907995939753" crossorigin="anonymous"></script></head><body class="bg-background font-body-md text-on-surface antialiased">
+<header class="w-full bg-surface-container-lowest border-b border-outline-variant"><div class="border-b border-outline-variant py-space-xxs px-space-md hidden md:block"><div class="max-w-site-max-width mx-auto flex items-center justify-between font-kicker text-kicker text-on-surface-variant uppercase tracking-wider"><span>EDICIÓN DIGITAL // ACTUALIZADO 2026 // EL TELAR &amp; AGENTES</span><span>MADRID · REMOTO</span><span>SIN HUMO · 100% PRODUCCIÓN</span></div></div><div class="max-w-site-max-width mx-auto px-space-md py-space-md sm:py-space-xl text-center"><p class="hidden sm:block font-kicker text-kicker uppercase tracking-widest text-on-surface-variant mb-space-xs">Publicación Independiente de Tecnología &amp; Agentes</p><a class="inline-block" href="../index.html"><div class="font-display text-display max-sm:text-[40px] max-sm:leading-none text-primary tracking-tight">El Telar</div></a><p class="hidden sm:block font-caption text-caption uppercase tracking-widest text-on-surface-variant mt-space-xs">EL BOLETÍN Y ARCHIVO PRÁCTICO DE INTELIGENCIA ARTIFICIAL Y AGENTES AUTÓNOMOS</p></div><div class="border-t border-b border-outline-variant"><div class="max-w-site-max-width mx-auto px-space-md flex items-center justify-between gap-space-sm h-14"><nav class="flex items-center gap-space-md sm:gap-space-lg h-full min-w-0 overflow-x-auto [scrollbar-width:none] whitespace-nowrap"><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../index.html#guias">GUÍAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../empieza-aqui.html">EMPIEZA AQUÍ</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../sobre-nosotros.html">SOBRE NOSOTROS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../noticias/index.html">NOTICIAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../herramientas/index.html">HERRAMIENTAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../prompts/index.html">PROMPTS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../contacto.html">CONTACTO</a></nav><div class="flex items-center gap-space-md"><button id="search-trigger" type="button" aria-label="Buscar en las guías" class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[20px]">search</span></button><a class="hidden sm:inline-block bg-primary-container text-surface px-space-md py-space-xs font-label-md text-label-md uppercase tracking-wider hover:bg-primary transition-colors" href="../index.html#despacho">SUSCRÍBETE GRATIS</a></div></div></div><div class="hidden md:block bg-surface-container-low border-b border-outline-variant py-space-xs px-space-md"><div class="max-w-site-max-width mx-auto text-center"><p class="font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">47 GUÍAS COMPLETAS EN EXPANSIÓN · ACTUALIZADO A MODELOS 2026 · PROBADO EN TERMINAL Y FLUJOS REALES · CERO HUMO NI TEORÍA VACÍA</p></div></div></header>
+<main class="w-full max-w-site-max-width mx-auto px-space-md py-space-xl"><div class="flex flex-col w-full">
+<nav class="w-full mb-space-lg">
+<ol class="flex flex-wrap items-center gap-space-xs font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">
+<li><a class="hover:text-primary transition-colors" href="../index.html">Inicio</a></li>
+<li class="text-on-surface-variant">/</li>
+<li><a class="hover:text-primary transition-colors" href="../index.html#guias">Guías</a></li>
+<li class="text-on-surface-variant">/</li>
+<li class="text-primary font-bold truncate max-w-[280px] sm:max-w-md">IA para estudiar</li>
+</ol>
+</nav>
+<header class="w-full pb-space-xl mb-space-2xl">
+<div class="flex flex-wrap items-center gap-space-xs mb-space-md">
+<span class="bg-surface-container-high text-secondary px-space-sm py-1 font-kicker text-kicker uppercase tracking-widest">
+        EDUCACIÓN // TUTORIAL
+      </span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight max-w-editorial-max-width mb-space-md">
+      Cómo usar IA para estudiar y aprender más rápido
+    </h1>
+<p class="font-lead-paragraph text-lead-paragraph text-on-surface-variant max-w-editorial-max-width mb-space-xl">
+      La técnica Feynman con un tutor de IA, preguntas de repaso generadas desde tus propios apuntes, y por qué pedir la respuesta directa es la forma más rápida de aprender menos. Con plantillas de prompt.
+    </p>
+<div class="bg-surface-container-lowest p-space-md flex flex-wrap items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 bg-primary text-on-primary flex items-center justify-center font-headline-sm text-headline-sm">
+          ET
+        </div>
+<div>
+<div class="font-label-md text-label-md text-on-surface font-semibold">Por la Redacción de El Telar</div><div class="font-caption text-caption text-on-surface-variant">Guías prácticas de IA y agentes, probadas en flujos de trabajo reales antes de publicarlas.</div>
+<button class="inline-flex items-center gap-1 mt-2 px-3 py-1.5 bg-surface-container text-primary font-label-md text-[12px] font-semibold uppercase tracking-wider hover:bg-surface-container-high transition-colors" id="copy-guide-btn" type="button"><span class="material-symbols-outlined text-[16px]">content_copy</span> Copiar guía para tu IA</button><span class="inline-flex items-center gap-1 ml-1"><button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" id="save-guide-btn" title="Guardar guía" type="button"><span class="material-symbols-outlined text-[16px]">bookmark_border</span></button><button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" id="copy-link-btn" title="Copiar enlace permanente" type="button"><span class="material-symbols-outlined text-[16px]">share</span></button></span>
+</div>
+</div>
+<div class="flex items-center gap-space-lg text-on-surface-variant font-caption text-caption uppercase tracking-wider">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">schedule</span> 11 min de lectura
+        </span>
+</div>
+</div>
+</header>
+<div class="w-full mb-space-2xl space-y-1">
+<div class="w-full h-0.5 bg-primary"></div>
+<div class="w-full h-px bg-surface-container-highest"></div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-col-gap">
+<article class="lg:col-span-8 flex flex-col space-y-space-xl">
+<figure data-hero class="space-y-space-xs"><img class="w-full border border-outline-variant" src="../img/guias/hero-ia-para-estudiar.jpg" alt="Web de NotebookLM, el asistente de Google que responde solo con tus documentos" width="1280" height="720" fetchpriority="high" decoding="async"/><figcaption class="font-caption text-caption text-on-surface-variant">Captura de pantalla: <a class="underline" href="https://notebooklm.google/" rel="nofollow noopener" target="_blank">notebooklm.google</a>.</figcaption></figure>
+<div class="font-lead-paragraph text-lead-paragraph text-on-surface leading-relaxed">
+<span class="float-left text-display font-display text-primary leading-none pr-space-sm pt-1 uppercase">L</span>
+        a forma más rápida de usar mal la IA para estudiar es pedirle que te resuelva el ejercicio. Da la sensación de productividad — el problema queda "hecho" — pero el aprendizaje real ocurre en el esfuerzo de intentarlo tú primero, no en leer la respuesta correcta. Esta guía cubre las formas de usar IA que sí generan ese esfuerzo, en vez de ahorrártelo.
+      </div>
+<section class="space-y-space-md">
+<span class="font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">Técnica 1</span>
+<h2 id="sec-1" class="font-headline-md text-headline-md text-primary">
+          1. La técnica Feynman, con un tutor que te hace de espejo
+        </h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          La técnica Feynman consiste en explicar un concepto con tus propias palabras, como si se lo enseñaras a alguien que no sabe nada del tema — y en el momento en que te trabas o usas jerga sin poder explicarla, has encontrado exactamente el punto que no entiendes de verdad. Un chat de IA es perfecto para esto: le pides que actúe como un alumno curioso, le explicas el concepto, y le pides que te interrumpa con preguntas cada vez que uses un término sin aclararlo.
+        </p>
+<div class="bg-surface-container-lowest p-space-lg space-y-space-md" id="prompt-feynman">
+<div class="flex items-center justify-between flex-wrap gap-space-xs">
+<span class="font-kicker text-kicker text-secondary uppercase tracking-wider flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">prompt_suggestion</span>
+              PLANTILLA QUE PUEDES COPIAR
+            </span>
+<button class="inline-flex items-center gap-1 px-3 py-1.5 bg-surface-container text-primary font-label-md text-[12px] font-semibold uppercase tracking-wider hover:bg-surface-container-high transition-colors" id="copiar-prompt-feynman" type="button"><span class="material-symbols-outlined text-[16px]">content_copy</span> Copiar</button>
+</div>
+<pre class="font-mono text-caption text-on-surface bg-surface-container-low p-space-md overflow-x-auto whitespace-pre-wrap" id="prompt-feynman-texto">Quiero explicarte el concepto de [tema] como si fueras un alumno curioso de 15 años que no sabe nada del tema.
+
+Reglas para ti:
+1. Escúchame explicar y, en cuanto use una palabra técnica sin explicarla en términos simples, interrúmpeme y pregúntame qué significa esa palabra.
+2. Si mi explicación tiene un hueco lógico o una parte incompleta, señálalo con una pregunta, no me des tú la respuesta.
+3. Al final, dime en qué parte de mi explicación mi comprensión parecía más débil, basándote solo en dónde dudé o simplifiqué de más.
+
+Aquí va mi explicación de [tema]:
+[tu explicación]</pre>
+</div>
+</section>
+<section class="space-y-space-md">
+<span class="font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">Técnica 2</span>
+<h2 id="sec-2" class="font-headline-md text-headline-md text-primary">
+          2. Preguntas de repaso generadas desde tus propios apuntes
+        </h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          En vez de buscar un examen tipo test genérico sobre el tema, pega tus apuntes reales y pide preguntas basadas exclusivamente en ese contenido. Esto reduce mucho el riesgo de que la IA invente datos — no tiene que recurrir a lo que "sabe" del tema en general, solo trabaja con el texto que le diste — y además repasa justo lo que tu profesor o tu material realmente cubrió, no una versión genérica del tema.
+        </p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<div class="bg-surface-container-low p-space-md">
+<div class="font-kicker text-kicker text-secondary uppercase tracking-widest mb-1">PIDE ESTO</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              "Genera 10 preguntas de repaso basadas solo en estos apuntes, sin usar información externa. No me des las respuestas todavía."
+            </p>
+</div>
+<div class="bg-surface-container-low p-space-md">
+<div class="font-kicker text-kicker text-secondary uppercase tracking-widest mb-1">NO PIDAS ESTO</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              "Hazme un examen sobre [tema]" — sin apuntes de por medio, la IA rellena con conocimiento general que puede no coincidir con lo que estudiaste.
+            </p>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Un paso más: pide explícitamente preguntas de distinto tipo, no solo memorización literal — "incluye alguna pregunta que me obligue a aplicar el concepto a un caso nuevo, no solo a repetir la definición". Reconocer una definición es mucho más fácil que aplicarla, y un examen real casi siempre exige lo segundo.
+        </p>
+</section>
+<section class="space-y-space-md">
+<span class="font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">Cuándo repasar</span>
+<h2 id="sec-espaciado" class="font-headline-md text-headline-md text-primary">
+          3. Que la IA te recuerde cuándo tocaba repasar, no solo qué
+        </h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          La repetición espaciada — repasar un tema con intervalos cada vez más largos, justo antes de que se te olvide — es de las técnicas con más evidencia detrás en investigación sobre memoria a largo plazo, pero solo funciona si de verdad respetas el calendario. Pide a la IA que te genere un calendario de repaso a partir de la fecha de tu examen y los temas que tienes que cubrir: por ejemplo, "tengo el examen el [fecha] y estos 5 temas por repasar, dame un calendario de repaso espaciado, con más frecuencia cerca de los temas que más me cuestan". No sustituye a un gestor de repetición espaciada dedicado, pero para armar un plan rápido sin instalar nada, es suficiente.
+        </p>
+</section>
+<figure class="my-space-lg">
+<div class="p-space-md bg-surface-container-lowest">
+<div class="font-kicker text-kicker uppercase text-on-surface-variant tracking-wider mb-space-sm text-center">DIAGRAMA // DOS FORMAS DE USAR IA PARA ESTUDIAR</div>
+<svg aria-label="Comparación entre pedir la respuesta directa (aprendizaje superficial) y usar la IA como tutor que hace preguntas (aprendizaje real)" class="w-full h-auto" fill="none" role="img" viewBox="0 0 680 170" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#ffdad6" height="130" width="310" x="10" y="15"></rect>
+<text fill="#93000a" font-family="Inter" font-size="10.5" font-weight="700" text-anchor="middle" x="165" y="40">"DAME LA RESPUESTA"</text>
+<text fill="#93000a" font-family="Inter" font-size="8.5" text-anchor="middle" x="165" y="62">Problema resuelto al instante</text>
+<text fill="#93000a" font-family="Inter" font-size="8.5" text-anchor="middle" x="165" y="78">Sensación de productividad</text>
+<text fill="#93000a" font-family="Inter" font-size="8.5" font-weight="700" text-anchor="middle" x="165" y="100">Pero: cero esfuerzo de</text>
+<text fill="#93000a" font-family="Inter" font-size="8.5" font-weight="700" text-anchor="middle" x="165" y="115">recuperación = olvido rápido</text>
+<rect fill="#caead4" height="130" width="310" x="360" y="15"></rect>
+<text fill="#042013" font-family="Inter" font-size="10.5" font-weight="700" text-anchor="middle" x="515" y="40">"HAZME PREGUNTAS"</text>
+<text fill="#042013" font-family="Inter" font-size="8.5" text-anchor="middle" x="515" y="62">Tienes que recuperar tú la info</text>
+<text fill="#042013" font-family="Inter" font-size="8.5" text-anchor="middle" x="515" y="78">Te señala dónde fallas</text>
+<text fill="#042013" font-family="Inter" font-size="8.5" font-weight="700" text-anchor="middle" x="515" y="100">Más lento hoy, pero</text>
+<text fill="#042013" font-family="Inter" font-size="8.5" font-weight="700" text-anchor="middle" x="515" y="115">se queda grabado de verdad</text>
+</svg>
+</div>
+<figcaption class="font-caption text-caption text-on-surface-variant mt-space-xs">El esfuerzo de recuperar la información es lo que hace que se quede grabada, no leer la respuesta.</figcaption>
+</figure>
+<blockquote class="bg-surface-container-lowest p-space-xl my-space-lg shadow-sm">
+<div class="flex items-start gap-space-md">
+<span class="text-secondary font-display text-display leading-none select-none">«</span>
+<div>
+<p class="font-headline-sm text-headline-sm text-primary italic leading-snug mb-space-sm">
+              Una IA que te da la respuesta te ahorra cinco minutos hoy. Una IA que te hace preguntas te ahorra media hora la noche antes del examen, cuando ya no hay tiempo de volver a aprenderlo desde cero.
+            </p>
+<cite class="font-kicker text-kicker text-on-surface-variant uppercase tracking-widest block not-italic">
+              — Redacción El Telar
+            </cite>
+</div>
+</div>
+</blockquote>
+<section class="space-y-space-md">
+<span class="font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">Técnica 3</span>
+<h2 id="sec-3" class="font-headline-md text-headline-md text-primary">
+          4. Tarjetas de repaso (flashcards) generadas en segundos
+        </h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          Pega un tema o capítulo y pide tarjetas de repaso en formato pregunta-respuesta corta, pensadas para repetición espaciada (el sistema de repasar cada vez con más tiempo entre repasos, el más efectivo según la investigación sobre memoria a largo plazo). Pide explícitamente que cada tarjeta cubra un único hecho o idea — tarjetas que mezclan varios conceptos son mucho menos efectivas para memorizar que una idea por tarjeta.
+        </p>
+</section>
+<section class="space-y-space-md">
+<span class="font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">El límite</span>
+<h2 id="sec-4" class="font-headline-md text-headline-md text-primary">
+          5. Cuándo estás usándola para aprender menos, no más
+        </h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          Hay una señal fiable de que te has pasado al lado equivocado: si dejas de intentar responder tú primero y vas directo a preguntar, estás sustituyendo el aprendizaje por la sensación de haber aprendido. La regla práctica más simple es intentar responder o resolver algo tú, con tus propias palabras o tu propio cálculo, antes de pedirle nada a la IA — úsala después para verificar, corregir o ampliar, nunca como primer paso.
+        </p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<div class="bg-surface-container-low p-space-md">
+<div class="font-kicker text-kicker text-secondary uppercase tracking-widest mb-1">SEÑAL DE QUE VAS BIEN</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Llegas a la IA con un intento propio ya hecho — una respuesta, un cálculo, una explicación — y la usas para contrastar o corregir ese intento.
+            </p>
+</div>
+<div class="bg-surface-container-low p-space-md">
+<div class="font-kicker text-kicker text-secondary uppercase tracking-widest mb-1">SEÑAL DE ALARMA</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Copias la pregunta del enunciado directamente en el chat sin haber intentado nada antes — el atajo se siente productivo, pero no deja nada aprendido detrás.
+            </p>
+</div>
+</div>
+</section>
+<section class="space-y-space-md">
+<span class="font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">Tus apuntes</span>
+<figure data-inline-photo class="space-y-space-xs my-space-xl"><img class="w-full border border-outline-variant" src="../img/guias/foto-ia-para-estudiar.jpg" alt="Web de Anki, la aplicación de tarjetas de repaso espaciado" width="1280" height="720" loading="lazy" decoding="async"/><figcaption class="font-caption text-caption text-on-surface-variant">Captura de pantalla: <a class="underline" href="https://apps.ankiweb.net/" rel="nofollow noopener" target="_blank">apps.ankiweb.net</a>.</figcaption></figure>
+<h2 id="sec-fuentes" class="font-headline-md text-headline-md text-primary">
+          6. Que responda solo con tus apuntes, no con lo que "sabe"
+        </h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          El problema de preguntarle a un chat general sobre tu temario es que mezcla lo que dicen tus apuntes con lo que aprendió en internet, y no te avisa de cuál es cuál. Si tu profesor explicó un concepto con un matiz concreto, o si la normativa de tu oposición cambió el año pasado, la IA puede darte la versión genérica y antigua con total seguridad.
+        </p>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          Por eso, para estudiar, funcionan mejor las herramientas que responden <strong>solo</strong> a partir de los documentos que tú subes, como NotebookLM de Google, o los proyectos con archivos de ChatGPT y Claude. La diferencia importante es que citan el fragmento exacto del que sale cada respuesta, así que puedes ir al apunte original y comprobarlo.
+        </p>
+<div class="bg-surface-container-lowest p-space-lg space-y-space-md" id="prompt-fuentes">
+<div class="flex items-center justify-between flex-wrap gap-space-xs">
+<span class="font-kicker text-kicker text-secondary uppercase tracking-wider flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">prompt_suggestion</span>
+              PLANTILLA QUE PUEDES COPIAR
+            </span>
+<button class="inline-flex items-center gap-1 px-3 py-1.5 bg-surface-container text-primary font-label-md text-[12px] font-semibold uppercase tracking-wider hover:bg-surface-container-high transition-colors" data-copy="prompt-fuentes-texto" type="button"><span class="material-symbols-outlined text-[16px]">content_copy</span> Copiar</button>
+</div>
+<pre class="font-mono text-caption text-on-surface bg-surface-container-low p-space-md overflow-x-auto whitespace-pre-wrap" id="prompt-fuentes-texto">Responde únicamente con la información de los documentos que te he pasado.
+
+Reglas:
+1. Si la respuesta no está en los documentos, dilo claramente en vez de completarla con conocimiento general.
+2. Después de cada afirmación, indica de qué documento y apartado sale.
+3. Si dos documentos se contradicen, señálalo.
+
+Pregunta: [tu pregunta sobre el temario]</pre>
+</div>
+</section>
+<section class="space-y-space-md">
+<span class="font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">Ciencias</span>
+<h2 id="sec-problemas" class="font-headline-md text-headline-md text-primary">
+          7. Matemáticas y problemas: pide pistas por niveles
+        </h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          En asignaturas de problemas, ver la solución completa da una falsa sensación de haberlo entendido. La alternativa es pedir ayuda graduada: primero una pista pequeña, luego una más concreta y solo al final el paso siguiente. Cada nivel te obliga a intentarlo otra vez.
+        </p>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          Un aviso importante: los modelos de lenguaje todavía se equivocan en cálculos, sobre todo con muchos decimales o pasos encadenados, y lo hacen con la misma seguridad con la que aciertan. Úsalos para el razonamiento y comprueba las operaciones con una calculadora o pidiéndoles que ejecuten el cálculo con código, si la herramienta lo permite.
+        </p>
+<div class="bg-surface-container-lowest p-space-lg space-y-space-md" id="prompt-pistas">
+<div class="flex items-center justify-between flex-wrap gap-space-xs">
+<span class="font-kicker text-kicker text-secondary uppercase tracking-wider flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">prompt_suggestion</span>
+              PLANTILLA QUE PUEDES COPIAR
+            </span>
+<button class="inline-flex items-center gap-1 px-3 py-1.5 bg-surface-container text-primary font-label-md text-[12px] font-semibold uppercase tracking-wider hover:bg-surface-container-high transition-colors" data-copy="prompt-pistas-texto" type="button"><span class="material-symbols-outlined text-[16px]">content_copy</span> Copiar</button>
+</div>
+<pre class="font-mono text-caption text-on-surface bg-surface-container-low p-space-md overflow-x-auto whitespace-pre-wrap" id="prompt-pistas-texto">Estoy estudiando [asignatura] y tengo este problema:
+[enunciado]
+
+No me des la solución. Ayúdame así:
+- Nivel 1: una pista general sobre qué concepto aplicar.
+- Espera a que yo lo intente.
+- Nivel 2 (solo si te lo pido): una pista más concreta sobre el primer paso.
+- Nivel 3 (solo si te lo pido): el siguiente paso resuelto, pero no el resto.
+
+Cuando te dé mi resultado, dime si es correcto y, si no, en qué paso me he equivocado sin corregirlo tú.</pre>
+</div>
+</section>
+<section class="space-y-space-md">
+<span class="font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">Idiomas</span>
+<h2 id="sec-idiomas" class="font-headline-md text-headline-md text-primary">
+          8. Idiomas: un compañero de conversación que corrige sin cortar
+        </h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          Para un idioma, lo que más falta suele ser práctica de conversación sin vergüenza. Los modos de voz de ChatGPT o Gemini permiten hablar en voz alta, y en texto puedes pedir algo que un compañero humano rara vez hace bien: que te deje terminar y te corrija después, con explicación, solo los errores que se repiten.
+        </p>
+<div class="bg-surface-container-lowest p-space-lg space-y-space-md" id="prompt-idiomas">
+<div class="flex items-center justify-between flex-wrap gap-space-xs">
+<span class="font-kicker text-kicker text-secondary uppercase tracking-wider flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">prompt_suggestion</span>
+              PLANTILLA QUE PUEDES COPIAR
+            </span>
+<button class="inline-flex items-center gap-1 px-3 py-1.5 bg-surface-container text-primary font-label-md text-[12px] font-semibold uppercase tracking-wider hover:bg-surface-container-high transition-colors" data-copy="prompt-idiomas-texto" type="button"><span class="material-symbols-outlined text-[16px]">content_copy</span> Copiar</button>
+</div>
+<pre class="font-mono text-caption text-on-surface bg-surface-container-low p-space-md overflow-x-auto whitespace-pre-wrap" id="prompt-idiomas-texto">Quiero practicar [idioma], nivel [A2/B1/B2...].
+
+Vamos a tener una conversación sobre [tema]. Reglas:
+1. Háblame solo en [idioma], con vocabulario de mi nivel.
+2. No me corrijas durante la conversación.
+3. Cuando escriba &quot;fin&quot;, dame una lista con mis 5 errores más importantes, la forma correcta y una regla breve para cada uno.
+4. Termina con 5 frases para practicar esos errores.</pre>
+</div>
+</section>
+<section class="space-y-space-md">
+<span class="font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">Planificar</span>
+<h2 id="sec-plan" class="font-headline-md text-headline-md text-primary">
+          9. Un plan de estudio que empieza por la fecha del examen
+        </h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          Los planes de estudio fallan casi siempre por lo mismo: se reparten los temas a partes iguales y no se reserva tiempo para repasar ni para los imprevistos. Un chat es bueno haciendo el cálculo inverso desde la fecha del examen si le das datos reales: cuántas horas tienes de verdad cada día y qué temas te cuestan más.
+        </p>
+<div class="bg-surface-container-lowest p-space-lg space-y-space-md" id="prompt-plan">
+<div class="flex items-center justify-between flex-wrap gap-space-xs">
+<span class="font-kicker text-kicker text-secondary uppercase tracking-wider flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">prompt_suggestion</span>
+              PLANTILLA QUE PUEDES COPIAR
+            </span>
+<button class="inline-flex items-center gap-1 px-3 py-1.5 bg-surface-container text-primary font-label-md text-[12px] font-semibold uppercase tracking-wider hover:bg-surface-container-high transition-colors" data-copy="prompt-plan-texto" type="button"><span class="material-symbols-outlined text-[16px]">content_copy</span> Copiar</button>
+</div>
+<pre class="font-mono text-caption text-on-surface bg-surface-container-low p-space-md overflow-x-auto whitespace-pre-wrap" id="prompt-plan-texto">Tengo un examen de [asignatura u oposición] el [fecha].
+Temario: [lista de temas]. Los que más me cuestan: [temas].
+Tiempo real disponible: [horas] entre semana y [horas] el fin de semana.
+
+Hazme un plan día a día hacia atrás desde el examen que:
+- dedique más tiempo a los temas difíciles,
+- reserve la última semana solo para repasar y hacer simulacros,
+- deje un día libre a la semana para recuperar retrasos,
+- incluya repasos espaciados de cada tema (a los 2, 7 y 21 días).
+Preséntalo en una tabla.</pre>
+</div>
+</section>
+<section class="space-y-space-md">
+<span class="font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">Normas</span>
+<h2 id="sec-normas" class="font-headline-md text-headline-md text-primary">
+          10. Las normas de tu centro y los detectores de IA
+        </h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          Antes de usar IA en un trabajo que se va a evaluar, mira qué dice la guía docente o el reglamento de tu centro: cada vez más universidades y profesores fijan qué usos están permitidos, cuáles hay que declarar y cuáles cuentan como plagio. Lo que se permite en una asignatura puede estar prohibido en la de al lado.
+        </p>
+<div class="space-y-space-sm">
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h4 class="font-label-md text-label-md text-primary font-bold mb-1">Suele estar permitido</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Pedir explicaciones, generar preguntas de repaso, corregir la ortografía o pedir opinión sobre la estructura de un trabajo que has escrito tú.
+            </p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h4 class="font-label-md text-label-md text-primary font-bold mb-1">Suele haber que declararlo</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Usar IA para buscar fuentes, resumir artículos o reformular partes del texto. Lo seguro es indicarlo en una nota, como cualquier otra ayuda.
+            </p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h4 class="font-label-md text-label-md text-primary font-bold mb-1">Los detectores no son fiables</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Las herramientas que dicen detectar textos escritos con IA dan falsos positivos, sobre todo con estudiantes que escriben en un idioma que no es el suyo. Si te acusan, guardar tus borradores y el historial de versiones es tu mejor prueba.
+            </p>
+</div>
+</div>
+</section>
+<section class="space-y-space-md">
+<span class="font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">Preguntas frecuentes</span>
+<h2 class="font-headline-md text-headline-md text-primary">
+          Preguntas frecuentes
+        </h2>
+<div class="space-y-space-md">
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Usar IA para estudiar es hacer trampa?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Depende de para qué la uses. Pedirle que te resuelva el ejercicio y copiar la respuesta no es aprender, es delegar. Pedirle que te haga preguntas o genere ejemplos para practicar sí es una forma legítima — la diferencia está en si el esfuerzo cognitivo sigue siendo tuyo.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Por qué es peor pedir la respuesta directa que pedir pistas?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Porque el aprendizaje ocurre en el esfuerzo de recuperar y conectar información, no en leer la respuesta correcta. Intentar responder tú mismo, aunque falles, afianza más el conocimiento que leer la respuesta directamente.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Puede la IA generar preguntas de examen fiables a partir de mis apuntes?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Sí, y es uno de los usos más sólidos: pegar tus apuntes y pedir preguntas basadas exclusivamente en ese contenido reduce mucho el riesgo de que la IA invente datos, porque solo trabaja con el texto que le has dado.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Qué herramienta es mejor para estudiar con mis propios apuntes?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Las que responden solo a partir de los documentos que subes y citan el fragmento exacto, como NotebookLM o los proyectos con archivos de ChatGPT y Claude. Así puedes comprobar cada respuesta en tus apuntes.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Puedo fiarme de la IA para resolver problemas de matemáticas?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Para el razonamiento, bastante; para los cálculos, no del todo. Los modelos aún fallan operaciones con seguridad aparente. Comprueba los números con una calculadora o pide que el cálculo se haga con código.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Se puede saber si un trabajo lo ha escrito una IA?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+No con fiabilidad. Los detectores dan falsos positivos. Lo que sí notan los profesores es un texto que no encaja con tu forma de escribir o con lo que sabes explicar en persona.
+</div>
+</div>
+</div>
+</section>
+<footer class="bg-surface-container-lowest p-space-lg shadow-sm mt-space-xl">
+<div class="flex flex-col sm:flex-row items-start sm:items-center gap-space-md">
+<div class="w-16 h-16 bg-primary text-on-primary flex items-center justify-center font-display text-headline-md shrink-0">ET</div>
+<div class="space-y-space-xxs">
+<span class="font-label-md text-label-md text-primary font-bold uppercase tracking-wider">Redacción El Telar</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Probado con temario real, no con ejemplos de manual.
+            </p>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mt-space-md">
+          La IA más útil para estudiar no es la que responde rápido — es la que te obliga a pensar antes de contestar ella.</p>
+</footer>
+</article>
+<aside class="lg:col-span-4 flex flex-col space-y-space-xl">
+<div class="bg-surface-container-lowest p-space-lg shadow-sm">
+<div class="flex items-center justify-between pb-space-xs mb-space-sm">
+<span class="font-kicker text-kicker text-primary uppercase tracking-widest">ÍNDICE DE LA GUÍA</span>
+</div>
+<ol class="space-y-space-xs font-body-sm text-body-sm text-on-surface">
+<li class="flex items-start gap-space-xs py-1"><span class="text-secondary font-mono font-bold">01.</span><a class="hover:text-primary transition-colors" href="#sec-1">La técnica Feynman</a></li>
+<li class="flex items-start gap-space-xs py-1"><a class="text-secondary font-semibold hover:underline" href="#prompt-feynman">→ Plantilla de prompt</a></li>
+<li class="flex items-start gap-space-xs py-1"><span class="text-secondary font-mono font-bold">02.</span><a class="hover:text-primary transition-colors" href="#sec-2">Preguntas desde tus apuntes</a></li>
+<li class="flex items-start gap-space-xs py-1"><span class="text-secondary font-mono font-bold">03.</span><a class="hover:text-primary transition-colors" href="#sec-espaciado">Calendario de repaso espaciado</a></li>
+<li class="flex items-start gap-space-xs py-1"><span class="text-secondary font-mono font-bold">04.</span><a class="hover:text-primary transition-colors" href="#sec-3">Flashcards en segundos</a></li>
+<li class="flex items-start gap-space-xs py-1"><span class="text-secondary font-mono font-bold">05.</span><a class="hover:text-primary transition-colors" href="#sec-4">Cuándo aprendes menos</a></li>
+<li class="flex items-start gap-space-xs py-1"><span class="text-secondary font-mono font-bold">06.</span><a class="hover:text-primary transition-colors" href="#sec-fuentes">Estudiar solo con tus fuentes</a></li>
+<li class="flex items-start gap-space-xs py-1"><span class="text-secondary font-mono font-bold">07.</span><a class="hover:text-primary transition-colors" href="#sec-problemas">Problemas con pistas, no soluciones</a></li>
+<li class="flex items-start gap-space-xs py-1"><span class="text-secondary font-mono font-bold">08.</span><a class="hover:text-primary transition-colors" href="#sec-idiomas">Practicar un idioma hablando</a></li>
+<li class="flex items-start gap-space-xs py-1"><span class="text-secondary font-mono font-bold">09.</span><a class="hover:text-primary transition-colors" href="#sec-plan">Plan de estudio hacia atrás</a></li>
+<li class="flex items-start gap-space-xs py-1"><span class="text-secondary font-mono font-bold">10.</span><a class="hover:text-primary transition-colors" href="#sec-normas">Normas de tu centro</a></li>
+</ol>
+</div>
+<div class="bg-surface-container-low p-space-lg shadow-sm space-y-space-md">
+<span class="font-kicker text-kicker text-secondary uppercase tracking-widest block">
+          FICHA TÉCNICA
+        </span>
+<div class="space-y-space-xs">
+<div class="flex items-center justify-between pb-1">
+<span class="font-caption text-caption text-on-surface-variant">Coste:</span>
+<span class="font-caption text-caption font-mono font-bold text-primary">0 € (chat gratuito)</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-caption text-caption text-on-surface-variant">Incluye:</span>
+<span class="font-caption text-caption font-mono font-bold text-secondary">Plantilla de prompt</span>
+</div>
+</div>
+</div>
+</aside>
+</div>
+<section class="w-full mt-space-4xl pt-space-2xl bg-surface-container-lowest p-space-xl shadow-sm">
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-space-xl gap-space-xs">
+<h3 class="font-headline-md text-headline-md text-primary">
+          Continúa explorando el archivo
+        </h3>
+<a class="font-label-md text-label-md text-primary hover:text-secondary uppercase tracking-wider transition-colors flex items-center gap-1" href="../index.html#guias">
+        Ver todas las guías <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-col-gap"><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="como-escribir-prompts.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-como-escribir-prompts.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="como-escribir-prompts.html">Cómo escribir instrucciones que la IA entienda bien</a></h4></div></article><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="traducir-con-ia.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-traducir-con-ia.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="traducir-con-ia.html">Traducir con IA: cuál usar y cuándo no fiarte</a></h4></div></article><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="curriculum-entrevistas-ia.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-curriculum-entrevistas-ia.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="curriculum-entrevistas-ia.html">Currículum y entrevistas con IA</a></h4></div></article></div>
+</section>
+</div>
+<script>
+  document.getElementById('copiar-prompt-feynman').addEventListener('click', function () {
+    const texto = document.getElementById('prompt-feynman-texto').textContent;
+    navigator.clipboard.writeText(texto).then(() => {
+      const btn = document.getElementById('copiar-prompt-feynman');
+      const original = btn.innerHTML;
+      btn.innerHTML = '<span class="material-symbols-outlined text-[16px]">check</span> Copiado';
+      setTimeout(() => { btn.innerHTML = original; }, 2000);
+    });
+  });
+</script>
+</main><footer class="w-full bg-surface-container-low border-t border-outline-variant mt-space-4xl"><div class="max-w-site-max-width mx-auto px-space-md py-space-3xl"><div class="grid grid-cols-1 md:grid-cols-3 gap-col-gap"><div class="space-y-space-sm"><span class="font-headline-md text-headline-md text-primary">El Telar</span><p class="font-body-sm text-body-sm text-on-surface-variant">Publicación independiente de tecnología y automatización con agentes. Contenidos verificados en producción, sin patrocinios opacos ni promesas vacías.</p></div><div><h3 class="font-kicker text-kicker uppercase tracking-wider text-on-surface mb-space-md">SECCIONES</h3><ul class="space-y-space-xs font-body-sm text-body-sm"><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html#guias">Archivo de Guías</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../empieza-aqui.html">Guía para Principiantes</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../sobre-nosotros.html">Manifiesto Editorial</a></li><li class="pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html#despacho">Boletín Semanal</a></li></ul></div><div><h3 class="font-kicker text-kicker uppercase tracking-wider text-on-surface mb-space-md">CONTACTO &amp; PRENSA</h3><div class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant"><p class="font-semibold text-on-surface">contacto@eltelar.es</p><p>Síguenos: <a class="hover:text-primary underline" href="https://www.instagram.com/eltelar_es/" rel="me noopener" target="_blank">Instagram</a> · <a class="hover:text-primary underline" href="https://www.threads.com/@eltelar_es" rel="me noopener" target="_blank">Threads</a> · <a class="hover:text-primary underline" href="https://x.com/eltelar_es" rel="me noopener" target="_blank">X</a></p></div></div></div></div><div class="border-t border-outline-variant py-space-md bg-surface-container-lowest"><div class="max-w-site-max-width mx-auto px-space-md flex flex-col md:flex-row items-center justify-between gap-space-sm text-caption font-caption text-on-surface-variant"><div>© 2026 El Telar. Todos los derechos reservados. Independencia editorial garantizada.</div><div class="flex items-center gap-space-md"><a class="hover:text-on-surface transition-colors" href="../privacidad.html">Privacidad</a><a class="hover:text-on-surface transition-colors" href="../terminos.html">Términos</a><a class="hover:text-on-surface transition-colors" href="../sobre-nosotros.html">Sobre nosotros</a><a class="hover:text-on-surface transition-colors" href="../contacto.html">Contacto</a></div></div></div></footer><script defer src="../js/copy-guide.js"></script><script defer src="../js/guide-interactions.js"></script><script defer src="../js/reading-progress.js"></script><script defer src="../js/search.js?v=7"></script><script defer src="../js/entrance.js"></script><script defer src="../js/cookie-consent.js?v=4"></script><script data-copy-handler>document.addEventListener('click',function(e){var b=e.target.closest('[data-copy]');if(!b)return;var t=document.getElementById(b.getAttribute('data-copy')).innerText;navigator.clipboard.writeText(t).then(function(){var o=b.innerHTML;b.textContent='Copiado';setTimeout(function(){b.innerHTML=o},1500)});});</script></body></html>

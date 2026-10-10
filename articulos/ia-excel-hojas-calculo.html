@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cómo usar IA en Excel y Google Sheets | El Telar</title>
+<meta name="description" content="Copilot en Excel, Gemini en Sheets o pegar tus datos en un chat: fórmulas, limpieza de datos y tablas dinámicas paso a paso, con plantilla de prompt.">
+<link rel="canonical" href="https://eltelar.es/articulos/ia-excel-hojas-calculo.html"><link rel="icon" type="image/svg+xml" href="../img/favicon.svg?v=4"><link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32.png?v=4"><link rel="apple-touch-icon" href="../img/apple-touch-icon.png?v=4"><meta name="theme-color" content="#072417"><link rel="manifest" href="../manifest.json"><link rel="alternate" type="application/rss+xml" title="El Telar" href="../feed.xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cómo usar IA en Excel y Google Sheets para tu trabajo | El Telar">
+<meta property="og:description" content="Copilot en Excel, Gemini en Sheets, y la alternativa gratis de pegar tus datos en un chat — con plantilla de prompt incluida.">
+<meta property="og:url" content="https://eltelar.es/articulos/ia-excel-hojas-calculo.html">
+<meta property="og:site_name" content="El Telar">
+<meta property="og:locale" content="es_ES"><meta property="og:image" content="https://eltelar.es/img/og/guia-ia-excel-hojas-calculo.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="IA en Excel y Google Sheets, paso a paso | El Telar">
+<meta name="twitter:description" content="Fórmulas, limpieza de datos y tablas dinámicas con IA, con plantilla de prompt incluida."><meta name="twitter:image" content="https://eltelar.es/img/og/guia-ia-excel-hojas-calculo.jpg">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Cómo usar IA en Excel y Google Sheets para automatizar tu trabajo",
+  "description": "Copilot en Excel, Gemini en Sheets, y la alternativa gratis de pegar tus datos en un chat — fórmulas, limpieza de datos y tablas dinámicas explicadas paso a paso, con plantilla de prompt incluida.",
+  "image": "https://eltelar.es/img/og-image.jpg",
+  "author": { "@type": "Organization", "name": "El Telar", "url": "https://eltelar.es/sobre-nosotros.html" },
+  "publisher": { "@type": "Organization", "name": "El Telar" },
+  "datePublished": "2026-09-15",
+  "dateModified": "2026-09-15",
+  "mainEntityOfPage": "https://eltelar.es/articulos/ia-excel-hojas-calculo.html",
+  "inLanguage": "es"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "¿Necesito pagar Copilot o Gemini para usar IA en mis hojas de cálculo?", "acceptedAnswer": { "@type": "Answer", "text": "No. Copilot en Excel requiere Microsoft 365 Copilot y Gemini en Sheets requiere Google Workspace con el complemento de Gemini, ambos de pago. La alternativa gratuita — pegar tus datos o describir tu hoja en ChatGPT, Claude o Gemini normal y pedir la fórmula — funciona igual de bien para la mayoría de casos puntuales, solo que copias y pegas el resultado tú mismo en vez de que aparezca directamente en la celda." } },
+    { "@type": "Question", "name": "¿Es seguro pegar los datos de mi empresa en un chat de IA?", "acceptedAnswer": { "@type": "Answer", "text": "Depende de qué datos sean. Nunca pegues información personal identificable de clientes, datos financieros sensibles o cualquier cosa cubierta por un acuerdo de confidencialidad en un chat de consumo estándar. Si solo necesitas la lógica de una fórmula, sustituye los datos reales por ejemplos inventados con la misma estructura — la IA no necesita ver tus cifras reales para escribirte la fórmula correcta." } },
+    { "@type": "Question", "name": "¿Puede la IA equivocarse en una fórmula compleja?", "acceptedAnswer": { "@type": "Answer", "text": "Sí, sobre todo en fórmulas anidadas largas o con referencias a múltiples hojas. Trátala como un primer borrador que aceleraría mucho tu trabajo, no como un resultado final: pruébala siempre con un caso donde ya conozcas la respuesta correcta antes de aplicarla a todo el documento." } },
+    { "@type": "Question", "name": "¿Puede la IA crear directamente la tabla dinámica o el gráfico?", "acceptedAnswer": { "@type": "Answer", "text": "Con Copilot en Excel o Gemini en Sheets, ambos de pago, sí, directamente en tu hoja. Con un chat normal gratuito, te da los pasos exactos o la fórmula equivalente para que lo hagas tú — el resultado final es el mismo, cambia quién ejecuta el último clic." } }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://eltelar.es/" },
+    { "@type": "ListItem", "position": 2, "name": "Guías", "item": "https://eltelar.es/index.html#guias" },
+    { "@type": "ListItem", "position": 3, "name": "IA en Excel y Google Sheets", "item": "https://eltelar.es/articulos/ia-excel-hojas-calculo.html" }
+  ]
+}
+</script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet"/></noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet"/></noscript>
+<style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><link rel="stylesheet" href="../css/tailwind.css"><link rel="stylesheet" href="../css/entrance.css?v=2"><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}(function(){var c=null;try{c=localStorage.getItem('eltelar-cookie-consent')}catch(e){}var g=c==='accepted'?'granted':'denied';gtag('consent','default',{ad_storage:g,ad_user_data:g,ad_personalization:g,analytics_storage:g,wait_for_update:500});window.adsbygoogle=window.adsbygoogle||[];if(g!=='granted'){window.adsbygoogle.requestNonPersonalizedAds=1;}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-4DPTKEG79N"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4DPTKEG79N');</script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8239907995939753" crossorigin="anonymous"></script></head><body class="bg-background font-body-md text-on-surface antialiased">
+<header class="w-full bg-surface-container-lowest border-b border-outline-variant"><div class="border-b border-outline-variant py-space-xxs px-space-md hidden md:block"><div class="max-w-site-max-width mx-auto flex items-center justify-between font-kicker text-kicker text-on-surface-variant uppercase tracking-wider"><span>EDICIÓN DIGITAL // ACTUALIZADO 2026 // EL TELAR &amp; AGENTES</span><span>MADRID · REMOTO</span><span>SIN HUMO · 100% PRODUCCIÓN</span></div></div><div class="max-w-site-max-width mx-auto px-space-md py-space-md sm:py-space-xl text-center"><p class="hidden sm:block font-kicker text-kicker uppercase tracking-widest text-on-surface-variant mb-space-xs">Publicación Independiente de Tecnología &amp; Agentes</p><a class="inline-block" href="../index.html"><div class="font-display text-display max-sm:text-[40px] max-sm:leading-none text-primary tracking-tight">El Telar</div></a><p class="hidden sm:block font-caption text-caption uppercase tracking-widest text-on-surface-variant mt-space-xs">EL BOLETÍN Y ARCHIVO PRÁCTICO DE INTELIGENCIA ARTIFICIAL Y AGENTES AUTÓNOMOS</p></div><div class="border-t border-b border-outline-variant"><div class="max-w-site-max-width mx-auto px-space-md flex items-center justify-between gap-space-sm h-14"><nav class="flex items-center gap-space-md sm:gap-space-lg h-full min-w-0 overflow-x-auto [scrollbar-width:none] whitespace-nowrap"><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../index.html#guias">GUÍAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../empieza-aqui.html">EMPIEZA AQUÍ</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../sobre-nosotros.html">SOBRE NOSOTROS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../noticias/index.html">NOTICIAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../herramientas/index.html">HERRAMIENTAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../prompts/index.html">PROMPTS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../contacto.html">CONTACTO</a></nav><div class="flex items-center gap-space-md"><button id="search-trigger" type="button" aria-label="Buscar en las guías" class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[20px]">search</span></button><a class="hidden sm:inline-block bg-primary-container text-surface px-space-md py-space-xs font-label-md text-label-md uppercase tracking-wider hover:bg-primary transition-colors" href="../index.html#despacho">SUSCRÍBETE GRATIS</a></div></div></div><div class="hidden md:block bg-surface-container-low border-b border-outline-variant py-space-xs px-space-md"><div class="max-w-site-max-width mx-auto text-center"><p class="font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">47 GUÍAS COMPLETAS EN EXPANSIÓN · ACTUALIZADO A MODELOS 2026 · PROBADO EN TERMINAL Y FLUJOS REALES · CERO HUMO NI TEORÍA VACÍA</p></div></div></header>
+<main class="w-full max-w-site-max-width mx-auto px-space-md py-space-xl"><div class="flex flex-col w-full">
+<nav class="w-full mb-space-lg">
+<ol class="flex flex-wrap items-center gap-space-xs font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">
+<li><a class="hover:text-primary transition-colors" href="../index.html">Inicio</a></li>
+<li class="text-on-surface-variant">/</li>
+<li><a class="hover:text-primary transition-colors" href="../index.html#guias">Guías</a></li>
+<li class="text-on-surface-variant">/</li>
+<li class="text-primary font-bold truncate max-w-[280px] sm:max-w-md">IA en Excel y Sheets</li>
+</ol>
+</nav>
+<header class="w-full pb-space-xl mb-space-2xl">
+<div class="flex flex-wrap items-center gap-space-xs mb-space-md">
+<span class="bg-surface-container-high text-secondary px-space-sm py-1 font-kicker text-kicker uppercase tracking-widest">
+        TUTORIAL // PRODUCTIVIDAD
+      </span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight max-w-editorial-max-width mb-space-md">
+      Cómo usar IA en Excel y Google Sheets para automatizar tu trabajo
+    </h1>
+<p class="font-lead-paragraph text-lead-paragraph text-on-surface-variant max-w-editorial-max-width mb-space-xl">
+      Copilot en Excel, Gemini en Sheets, y la alternativa gratuita que funciona igual de bien para la mayoría de casos: pegar tus datos en un chat normal. Con plantilla de prompt lista para copiar.
+    </p>
+<div class="bg-surface-container-lowest p-space-md flex flex-wrap items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 bg-primary text-on-primary flex items-center justify-center font-headline-sm text-headline-sm">
+          ET
+        </div>
+<div>
+<div class="font-label-md text-label-md text-on-surface font-semibold">Por la Redacción de El Telar</div><div class="font-caption text-caption text-on-surface-variant">Guías prácticas de IA y agentes, probadas en flujos de trabajo reales antes de publicarlas.</div>
+<button class="inline-flex items-center gap-1 mt-2 px-3 py-1.5 bg-surface-container text-primary font-label-md text-[12px] font-semibold uppercase tracking-wider hover:bg-surface-container-high transition-colors" id="copy-guide-btn" type="button"><span class="material-symbols-outlined text-[16px]">content_copy</span> Copiar guía para tu IA</button><span class="inline-flex items-center gap-1 ml-1"><button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" id="save-guide-btn" title="Guardar guía" type="button"><span class="material-symbols-outlined text-[16px]">bookmark_border</span></button><button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" id="copy-link-btn" title="Copiar enlace permanente" type="button"><span class="material-symbols-outlined text-[16px]">share</span></button></span>
+</div>
+</div>
+<div class="flex items-center gap-space-lg text-on-surface-variant font-caption text-caption uppercase tracking-wider">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">schedule</span> 9 min de lectura
+        </span>
+</div>
+</div>
+</header>
+<div class="w-full mb-space-2xl space-y-1">
+<div class="w-full h-0.5 bg-primary"></div>
+<div class="w-full h-px bg-surface-container-highest"></div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-col-gap">
+<article class="lg:col-span-8 flex flex-col space-y-space-xl">
+<figure data-hero class="space-y-space-xs"><img class="w-full border border-outline-variant" src="../img/guias/hero-ia-excel-hojas-calculo.jpg" alt="Página de Google Sheets con Gemini" width="1280" height="720" fetchpriority="high" decoding="async"/><figcaption class="font-caption text-caption text-on-surface-variant">Captura de pantalla: <a class="underline" href="https://workspace.google.com/products/sheets/" rel="nofollow noopener" target="_blank">workspace.google.com/products/sheets</a>.</figcaption></figure>
+<div class="font-lead-paragraph text-lead-paragraph text-on-surface leading-relaxed">
+<span class="float-left text-display font-display text-primary leading-none pr-space-sm pt-1 uppercase">L</span>
+        a fórmula que necesitas ya existe — el problema casi nunca es que Excel no pueda hacer lo que quieres, es que tú no recuerdas la sintaxis exacta de un BUSCARX anidado con tres condiciones. Ese es exactamente el tipo de tarea donde la IA rinde mejor: no reemplaza tu criterio sobre qué datos analizar, pero te ahorra la parte mecánica de traducir lo que quieres a la sintaxis que la hoja de cálculo entiende.
+      </div>
+<section class="space-y-space-md">
+<span class="font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">Opción 1</span>
+<h2 id="sec-1" class="font-headline-md text-headline-md text-primary">
+          1. Copilot en Excel y Gemini en Sheets: la vía integrada
+        </h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          Microsoft 365 Copilot añade un panel lateral en Excel donde describes en lenguaje normal lo que necesitas — "añade una columna que calcule el margen porcentual de cada fila" — y la IA escribe la fórmula directamente en la hoja, con la ventaja de que ya tiene acceso al contexto completo de tus datos sin que tengas que copiarlos. Google Workspace ofrece el mismo tipo de integración con Gemini en Sheets: genera fórmulas, resume rangos de celdas y puede clasificar texto libre en categorías con la función "Ayúdame a organizar".
+        </p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<div class="bg-surface-container-low p-space-md">
+<div class="font-kicker text-kicker text-secondary uppercase tracking-widest mb-1">VENTAJA REAL</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              El resultado aparece directamente en tu hoja, con acceso a todo el contexto de tus datos — no tienes que copiar y pegar nada.
+            </p>
+</div>
+<div class="bg-surface-container-low p-space-md">
+<div class="font-kicker text-kicker text-secondary uppercase tracking-widest mb-1">EL COSTE QUE NADIE MENCIONA</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Ambas requieren una suscripción de pago independiente (Microsoft 365 Copilot o el complemento de Gemini en Workspace) — no vienen incluidas en el Excel u Office normal que ya tengas instalado.
+            </p>
+</div>
+</div>
+</section>
+<section class="space-y-space-md">
+<span class="font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">Opción 2</span>
+<h2 id="sec-2" class="font-headline-md text-headline-md text-primary">
+          2. La alternativa gratuita: pegar tus datos en un chat normal
+        </h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          Para la mayoría de necesidades puntuales — una fórmula concreta, limpiar una columna desordenada, entender por qué un VLOOKUP no funciona — no necesitas ninguna suscripción adicional. Copia un ejemplo pequeño y representativo de tu tabla (encabezados + 3-5 filas), pégalo en Claude, ChatGPT o Gemini normal, y describe exactamente qué resultado quieres. La IA te devuelve la fórmula exacta, lista para pegar en tu celda.
+        </p>
+<div class="bg-surface-container-lowest p-space-lg space-y-space-md" id="prompt-formula">
+<div class="flex items-center justify-between flex-wrap gap-space-xs">
+<span class="font-kicker text-kicker text-secondary uppercase tracking-wider flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">prompt_suggestion</span>
+              PLANTILLA QUE PUEDES COPIAR
+            </span>
+<button class="inline-flex items-center gap-1 px-3 py-1.5 bg-surface-container text-primary font-label-md text-[12px] font-semibold uppercase tracking-wider hover:bg-surface-container-high transition-colors" id="copiar-prompt-formula" type="button"><span class="material-symbols-outlined text-[16px]">content_copy</span> Copiar</button>
+</div>
+<pre class="font-mono text-caption text-on-surface bg-surface-container-low p-space-md overflow-x-auto whitespace-pre-wrap" id="prompt-formula-texto">Tengo una hoja de cálculo con estas columnas: [pega aquí tus encabezados, ej: Fecha | Cliente | Importe | Estado].
+
+Aquí tienes un ejemplo de 3 filas con datos ficticios de la misma estructura:
+[pega 3 filas de ejemplo, con datos inventados si son sensibles]
+
+Necesito una fórmula que: [describe exactamente el resultado, ej: "sume el Importe de todas las filas donde Estado sea 'Pagado' y la Fecha esté en el mes actual"].
+
+Indícame:
+1. La fórmula exacta, lista para pegar en la celda.
+2. En qué celda o rango debo colocarla.
+3. Un caso donde esta fórmula podría dar un resultado inesperado, para que lo revise antes de aplicarla a todo el documento.</pre>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          El paso 3 del prompt no es opcional — pedirle explícitamente que señale dónde podría fallar la fórmula es lo que convierte una respuesta genérica en una que puedes verificar antes de confiar en ella con datos reales.
+        </p>
+</section>
+<section class="space-y-space-md">
+<span class="font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">Caso real</span>
+<h2 id="sec-caso" class="font-headline-md text-headline-md text-primary">
+          3. De 200 filas desordenadas a un informe en cinco minutos
+        </h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          Un ejemplo concreto de principio a fin, con el tipo de hoja que casi todo el mundo tiene guardada en algún sitio: un listado de gastos exportado de un banco o una app de facturas, con fechas en formatos distintos, categorías escritas de formas diferentes, y sin ningún resumen.
+        </p>
+<div class="space-y-space-sm">
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h4 class="font-label-md text-label-md text-primary font-bold mb-1">Paso 1 — Normalizar el formato</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Pega 10 filas de ejemplo y pide: "Estas fechas están en tres formatos distintos (DD/MM/AAAA, MM-DD-AA, texto). Dame la fórmula para convertirlas todas a AAAA-MM-DD en una columna nueva." La IA te da una fórmula con FECHA, VALOR y extracción de texto combinadas — la clase de fórmula que a mano tarda veinte minutos en tantear.
+            </p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h4 class="font-label-md text-label-md text-primary font-bold mb-1">Paso 2 — Unificar categorías</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              "Comida", "comida", "COMIDA " y "Restaurantes" deberían ser la misma categoría. Pide una tabla de correspondencias (categoría original → categoría normalizada) y la fórmula BUSCARX que la aplica — mucho más fiable que corregir celda por celda a mano.
+            </p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h4 class="font-label-md text-label-md text-primary font-bold mb-1">Paso 3 — Tabla dinámica sin abrir el menú</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Describe qué resumen quieres ("total gastado por categoría y mes") y pide los pasos exactos para crear la tabla dinámica, o directamente la fórmula SUMAR.SI.CONJUNTO si prefieres evitarla. Copilot y Gemini, en su versión de pago, pueden crear la tabla dinámica directamente sin que toques el menú.
+            </p>
+</div>
+</div>
+</section>
+<section class="space-y-space-md">
+<span class="font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">Más allá de fórmulas</span>
+<h2 id="sec-graficos" class="font-headline-md text-headline-md text-primary">
+          4. Elegir el gráfico correcto, no solo el más bonito
+        </h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          Un error común es usar un gráfico de tarta para comparar doce categorías (ilegible pasadas cuatro o cinco) o un gráfico de líneas para datos que no son una serie temporal. Describe tus columnas y qué quieres mostrar — comparación entre categorías, evolución en el tiempo, distribución de un valor — y pide qué tipo de gráfico encaja mejor y por qué, no solo que "haga un gráfico". Esa pregunta de "por qué" es la que evita el error más habitual de visualización de datos.
+        </p>
+</section>
+<figure class="my-space-lg">
+<div class="p-space-md bg-surface-container-lowest">
+<div class="font-kicker text-kicker uppercase text-on-surface-variant tracking-wider mb-space-sm text-center">DIAGRAMA // QUÉ TAREA VA CON QUÉ HERRAMIENTA</div>
+<svg aria-label="Tres tareas de hoja de cálculo (fórmula puntual, limpieza de datos, análisis recurrente) mapeadas a la herramienta más adecuada" class="w-full h-auto" fill="none" role="img" viewBox="0 0 680 190" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#ebeef8" height="70" width="200" x="10" y="15"></rect>
+<text fill="#072417" font-family="Inter" font-size="9.5" font-weight="700" text-anchor="middle" x="110" y="40">Fórmula puntual</text>
+<text fill="#424843" font-family="Inter" font-size="8" text-anchor="middle" x="110" y="56">o duda concreta</text>
+<path d="M110 85 V100" stroke="#727973" stroke-width="1.5"></path><polygon fill="#727973" points="106,97 110,105 114,97"></polygon>
+<text fill="#072417" font-family="Inter" font-size="8.5" font-weight="700" text-anchor="middle" x="110" y="120">Chat normal</text>
+<text fill="#424843" font-family="Inter" font-size="7.5" text-anchor="middle" x="110" y="133">(gratis, copia/pega)</text>
+<rect fill="#caead4" height="70" width="200" x="240" y="15"></rect>
+<text fill="#042013" font-family="Inter" font-size="9.5" font-weight="700" text-anchor="middle" x="340" y="40">Limpieza de datos</text>
+<text fill="#042013" font-family="Inter" font-size="8" text-anchor="middle" x="340" y="56">desordenados</text>
+<path d="M340 85 V100" stroke="#727973" stroke-width="1.5"></path><polygon fill="#727973" points="336,97 340,105 344,97"></polygon>
+<text fill="#072417" font-family="Inter" font-size="8.5" font-weight="700" text-anchor="middle" x="340" y="120">Chat o Copilot/Gemini</text>
+<text fill="#424843" font-family="Inter" font-size="7.5" text-anchor="middle" x="340" y="133">según el volumen</text>
+<rect fill="#fd8a42" fill-opacity="0.25" height="70" width="200" x="470" y="15"></rect>
+<text fill="#072417" font-family="Inter" font-size="9.5" font-weight="700" text-anchor="middle" x="570" y="40">Análisis recurrente</text>
+<text fill="#424843" font-family="Inter" font-size="8" text-anchor="middle" x="570" y="56">cada semana/mes</text>
+<path d="M570 85 V100" stroke="#727973" stroke-width="1.5"></path><polygon fill="#727973" points="566,97 570,105 574,97"></polygon>
+<text fill="#072417" font-family="Inter" font-size="8.5" font-weight="700" text-anchor="middle" x="570" y="120">Copilot/Gemini</text>
+<text fill="#424843" font-family="Inter" font-size="7.5" text-anchor="middle" x="570" y="133">(o automatización con n8n)</text>
+</svg>
+</div>
+<figcaption class="font-caption text-caption text-on-surface-variant mt-space-xs">Cuanto más recurrente la tarea, más se amortiza pagar por la integración directa.</figcaption>
+</figure>
+<blockquote class="bg-surface-container-lowest p-space-xl my-space-lg shadow-sm">
+<div class="flex items-start gap-space-md">
+<span class="text-secondary font-display text-display leading-none select-none">«</span>
+<div>
+<p class="font-headline-sm text-headline-sm text-primary italic leading-snug mb-space-sm">
+              La IA no sabe qué fila de tu hoja es la que importa de verdad. Sabe escribir la fórmula perfecta para la pregunta que le hagas — la parte de hacer la pregunta correcta sigue siendo tuya.
+            </p>
+<cite class="font-kicker text-kicker text-on-surface-variant uppercase tracking-widest block not-italic">
+              — Redacción El Telar
+            </cite>
+</div>
+</div>
+</blockquote>
+<section class="space-y-space-md">
+<span class="font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">Casos de uso</span>
+<figure data-inline-photo class="space-y-space-xs my-space-xl"><img class="w-full border border-outline-variant" src="../img/guias/foto-ia-excel-hojas-calculo.jpg" alt="Página de Microsoft Excel con Copilot" width="1280" height="720" loading="lazy" decoding="async"/><figcaption class="font-caption text-caption text-on-surface-variant">Captura de pantalla: <a class="underline" href="https://www.microsoft.com/es-es/microsoft-365/excel" rel="nofollow noopener" target="_blank">microsoft.com/es-es/microsoft-365/excel</a>.</figcaption></figure>
+<h2 id="sec-3" class="font-headline-md text-headline-md text-primary">
+          5. Cuatro tareas donde esto ahorra más tiempo
+        </h2>
+<div class="space-y-space-sm">
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h4 class="font-label-md text-label-md text-primary font-bold mb-1">Limpiar datos desordenados</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Nombres con mayúsculas inconsistentes, fechas en tres formatos distintos, categorías escritas de formas diferentes ("Madrid", "MADRID", "madrid ") — describe el patrón que quieres normalizar y pide la fórmula (o combinación de SUSTITUIR/MAYUSC/ESPACIOS) que lo resuelve de una vez.
+            </p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h4 class="font-label-md text-label-md text-primary font-bold mb-1">Fórmulas anidadas que nadie recuerda de memoria</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              BUSCARX con múltiples condiciones, SUMAR.SI.CONJUNTO cruzando tres criterios, fórmulas de fecha para calcular días laborables — la sintaxis exacta es justo el tipo de detalle mecánico donde la IA no se equivoca casi nunca si le das un ejemplo claro.
+            </p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h4 class="font-label-md text-label-md text-primary font-bold mb-1">Explicar una hoja que heredaste de otra persona</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Pega una fórmula larga que no entiendes y pide que te la explique paso a paso — es mucho más rápido que ir desmontándola celda por celda tú mismo.
+            </p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h4 class="font-label-md text-label-md text-primary font-bold mb-1">Convertir texto libre en tabla estructurada</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Pega un correo o un párrafo con datos mezclados ("el pedido de Ana fue de 340€ el martes, el de Luis 210€ el jueves...") y pide que lo convierta en una tabla con columnas — la función "Ayúdame a organizar" de Sheets hace justo esto de forma integrada, o cualquier chat normal lo hace igual de bien copiando el resultado después.
+            </p>
+</div>
+</div>
+</section>
+<section class="space-y-space-md">
+<span class="font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">Comparativa</span>
+<h2 id="sec-comparativa" class="font-headline-md text-headline-md text-primary">
+          6. Las tres vías, una junto a otra
+        </h2>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b-2 border-outline">
+<th class="py-space-sm pr-space-md font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">Vía</th>
+<th class="py-space-sm pr-space-md font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">Coste</th>
+<th class="py-space-sm pr-space-md font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">Resultado aparece en</th>
+<th class="py-space-sm font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">Mejor para</th>
+</tr>
+</thead>
+<tbody class="font-body-sm text-body-sm text-on-surface-variant">
+<tr class="border-b border-outline-variant"><td class="py-space-sm pr-space-md font-semibold text-on-surface">Chat normal</td><td class="py-space-sm pr-space-md">Gratis</td><td class="py-space-sm pr-space-md">Copias y pegas tú</td><td class="py-space-sm">Consultas puntuales, cualquier frecuencia baja</td></tr>
+<tr class="border-b border-outline-variant"><td class="py-space-sm pr-space-md font-semibold text-on-surface">Copilot en Excel</td><td class="py-space-sm pr-space-md">Microsoft 365 Copilot</td><td class="py-space-sm pr-space-md">Directamente en la celda</td><td class="py-space-sm">Uso diario intensivo en Excel de escritorio</td></tr>
+<tr><td class="py-space-sm pr-space-md font-semibold text-on-surface">Gemini en Sheets</td><td class="py-space-sm pr-space-md">Google Workspace + complemento</td><td class="py-space-sm pr-space-md">Directamente en la celda</td><td class="py-space-sm">Equipos que ya trabajan en Google Workspace</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="space-y-space-md">
+<span class="font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">Antes de pegar nada</span>
+<h2 id="sec-4" class="font-headline-md text-headline-md text-primary">
+          7. Qué datos no deberías pegar nunca en un chat
+        </h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          Un chat de IA de consumo no es un entorno confidencial por defecto. Antes de copiar una tabla real, pregúntate si contiene datos personales de clientes, cifras financieras internas no públicas, o cualquier cosa cubierta por un acuerdo de confidencialidad con tu empresa — si la respuesta es sí, sustituye los valores reales por ejemplos inventados con la misma estructura antes de pegarlos. La IA no necesita ver tus cifras reales para escribirte la fórmula correcta, solo necesita entender la forma de tus datos. Lo cubrimos con más detalle en <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="proteger-datos-ia.html">nuestra guía de cómo proteger tus datos al usar IA</a>.
+        </p>
+</section>
+<section class="space-y-space-md">
+<span class="font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">Errores comunes</span>
+<h2 id="sec-errores" class="font-headline-md text-headline-md text-primary">
+          8. Por qué una fórmula "correcta" a veces da mal resultado
+        </h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          La fórmula que te da la IA puede ser sintácticamente perfecta y aun así fallar en tu caso concreto, casi siempre por uno de estos tres motivos — vale la pena revisarlos antes de asumir que "la IA se equivocó".
+        </p>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+<div class="bg-surface-container-low p-space-md">
+<div class="font-kicker text-kicker text-secondary uppercase tracking-widest mb-1">CAUSA 1</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              <strong class="text-on-surface">Referencias relativas vs. absolutas:</strong> si copias la fórmula a otras celdas sin fijar con $ la referencia correcta, se desplaza y apunta a la celda equivocada.
+            </p>
+</div>
+<div class="bg-surface-container-low p-space-md">
+<div class="font-kicker text-kicker text-secondary uppercase tracking-widest mb-1">CAUSA 2</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              <strong class="text-on-surface">Formato de celda distinto al ejemplo:</strong> una fecha guardada como texto en vez de fecha real hace que las fórmulas de fecha fallen en silencio, sin mensaje de error visible.
+            </p>
+</div>
+<div class="bg-surface-container-low p-space-md">
+<div class="font-kicker text-kicker text-secondary uppercase tracking-widest mb-1">CAUSA 3</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              <strong class="text-on-surface">Tu ejemplo no representaba todos los casos:</strong> si el ejemplo que pegaste no incluía una fila con un valor vacío o un caso límite, la fórmula puede no contemplarlo.
+            </p>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Cuando algo no cuadre, vuelve al chat con el resultado exacto que obtuviste y el que esperabas — "esta fórmula me da 0 en la fila 15 en vez de 340, aquí está esa fila" — en vez de pedir "arréglalo" sin más contexto. La IA corrige mucho más rápido con el caso concreto delante que adivinando qué pudo haber fallado.
+        </p>
+</section>
+<section class="space-y-space-md">
+<span class="font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">Preguntas frecuentes</span>
+<h2 class="font-headline-md text-headline-md text-primary">
+          Preguntas frecuentes
+        </h2>
+<div class="space-y-space-md">
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Necesito pagar Copilot o Gemini para usar IA en mis hojas de cálculo?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+No. Copilot en Excel y Gemini en Sheets requieren suscripción de pago, pero la alternativa gratuita — pegar tus datos o describir tu hoja en un chat normal y pedir la fórmula — funciona igual de bien para la mayoría de casos puntuales, solo que copias el resultado tú mismo en vez de que aparezca directamente en la celda.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Es seguro pegar los datos de mi empresa en un chat de IA?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Depende de qué datos sean. Nunca pegues información personal de clientes, cifras financieras sensibles o nada cubierto por confidencialidad en un chat de consumo estándar. Si solo necesitas la lógica de una fórmula, sustituye los datos reales por ejemplos inventados con la misma estructura.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Puede la IA equivocarse en una fórmula compleja?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Sí, sobre todo en fórmulas anidadas largas. Trátala como un primer borrador: pruébala siempre con un caso donde ya conozcas la respuesta correcta antes de aplicarla a todo el documento.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Puede la IA crear directamente la tabla dinámica o el gráfico?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Con Copilot en Excel o Gemini en Sheets (ambos de pago), sí, directamente en tu hoja. Con un chat normal gratuito, te da los pasos exactos o la fórmula equivalente para que lo hagas tú — el resultado final es el mismo, cambia solo quién ejecuta el último clic.
+</div>
+</div>
+</div>
+</section>
+<footer class="bg-surface-container-lowest p-space-lg shadow-sm mt-space-xl">
+<div class="flex flex-col sm:flex-row items-start sm:items-center gap-space-md">
+<div class="w-16 h-16 bg-primary text-on-primary flex items-center justify-center font-display text-headline-md shrink-0">ET</div>
+<div class="space-y-space-xxs">
+<span class="font-label-md text-label-md text-primary font-bold uppercase tracking-wider">Redacción El Telar</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Probado con hojas de cálculo reales de trabajo, no con ejemplos de manual.
+            </p>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mt-space-md">
+          El truco no es memorizar sintaxis de fórmulas — es saber describir con precisión el resultado que quieres. Eso es lo único que sigue siendo trabajo tuyo.</p>
+</footer>
+</article>
+<aside class="lg:col-span-4 flex flex-col space-y-space-xl">
+<div class="bg-surface-container-lowest p-space-lg shadow-sm">
+<div class="flex items-center justify-between pb-space-xs mb-space-sm">
+<span class="font-kicker text-kicker text-primary uppercase tracking-widest">ÍNDICE DE LA GUÍA</span>
+</div>
+<ol class="space-y-space-xs font-body-sm text-body-sm text-on-surface">
+<li class="flex items-start gap-space-xs py-1"><span class="text-secondary font-mono font-bold">01.</span><a class="hover:text-primary transition-colors" href="#sec-1">Copilot y Gemini: la vía integrada</a></li>
+<li class="flex items-start gap-space-xs py-1"><span class="text-secondary font-mono font-bold">02.</span><a class="hover:text-primary transition-colors" href="#sec-2">La alternativa gratuita</a></li>
+<li class="flex items-start gap-space-xs py-1"><a class="text-secondary font-semibold hover:underline" href="#prompt-formula">→ Plantilla de prompt</a></li>
+<li class="flex items-start gap-space-xs py-1"><span class="text-secondary font-mono font-bold">03.</span><a class="hover:text-primary transition-colors" href="#sec-caso">Caso real, paso a paso</a></li>
+<li class="flex items-start gap-space-xs py-1"><span class="text-secondary font-mono font-bold">04.</span><a class="hover:text-primary transition-colors" href="#sec-graficos">Elegir el gráfico correcto</a></li>
+<li class="flex items-start gap-space-xs py-1"><span class="text-secondary font-mono font-bold">05.</span><a class="hover:text-primary transition-colors" href="#sec-3">Cuatro casos de uso</a></li>
+<li class="flex items-start gap-space-xs py-1"><span class="text-secondary font-mono font-bold">06.</span><a class="hover:text-primary transition-colors" href="#sec-comparativa">Las tres vías comparadas</a></li>
+<li class="flex items-start gap-space-xs py-1"><span class="text-secondary font-mono font-bold">07.</span><a class="hover:text-primary transition-colors" href="#sec-4">Qué no pegar nunca</a></li>
+<li class="flex items-start gap-space-xs py-1"><span class="text-secondary font-mono font-bold">08.</span><a class="hover:text-primary transition-colors" href="#sec-errores">Por qué falla una fórmula "correcta"</a></li>
+</ol>
+</div>
+<div class="bg-surface-container-low p-space-lg shadow-sm space-y-space-md">
+<span class="font-kicker text-kicker text-secondary uppercase tracking-widest block">
+          FICHA TÉCNICA
+        </span>
+<div class="space-y-space-xs">
+<div class="flex items-center justify-between pb-1">
+<span class="font-caption text-caption text-on-surface-variant">Coste mínimo:</span>
+<span class="font-caption text-caption font-mono font-bold text-primary">0 € (chat normal)</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-caption text-caption text-on-surface-variant">Herramientas cubiertas:</span>
+<span class="font-caption text-caption font-mono font-bold text-secondary">Copilot, Gemini, cualquier chat</span>
+</div>
+</div>
+</div>
+</aside>
+</div>
+<section class="w-full mt-space-4xl pt-space-2xl bg-surface-container-lowest p-space-xl shadow-sm">
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-space-xl gap-space-xs">
+<h3 class="font-headline-md text-headline-md text-primary">
+          Continúa explorando el archivo
+        </h3>
+<a class="font-label-md text-label-md text-primary hover:text-secondary uppercase tracking-wider transition-colors flex items-center gap-1" href="../index.html#guias">
+        Ver todas las guías <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-col-gap"><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="automatizar-n8n-ia.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-automatizar-n8n-ia.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="automatizar-n8n-ia.html">n8n y IA: automatización visual sin código</a></h4></div></article><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="proteger-datos-ia.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-proteger-datos-ia.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="proteger-datos-ia.html">Cómo proteger tus datos al conectar la IA</a></h4></div></article><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="como-escribir-prompts.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-como-escribir-prompts.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="como-escribir-prompts.html">Cómo escribir instrucciones que la IA entienda bien</a></h4></div></article></div>
+</section>
+</div>
+<script>
+  document.getElementById('copiar-prompt-formula').addEventListener('click', function () {
+    const texto = document.getElementById('prompt-formula-texto').textContent;
+    navigator.clipboard.writeText(texto).then(() => {
+      const btn = document.getElementById('copiar-prompt-formula');
+      const original = btn.innerHTML;
+      btn.innerHTML = '<span class="material-symbols-outlined text-[16px]">check</span> Copiado';
+      setTimeout(() => { btn.innerHTML = original; }, 2000);
+    });
+  });
+</script>
+</main><footer class="w-full bg-surface-container-low border-t border-outline-variant mt-space-4xl"><div class="max-w-site-max-width mx-auto px-space-md py-space-3xl"><div class="grid grid-cols-1 md:grid-cols-3 gap-col-gap"><div class="space-y-space-sm"><span class="font-headline-md text-headline-md text-primary">El Telar</span><p class="font-body-sm text-body-sm text-on-surface-variant">Publicación independiente de tecnología y automatización con agentes. Contenidos verificados en producción, sin patrocinios opacos ni promesas vacías.</p></div><div><h3 class="font-kicker text-kicker uppercase tracking-wider text-on-surface mb-space-md">SECCIONES</h3><ul class="space-y-space-xs font-body-sm text-body-sm"><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html#guias">Archivo de Guías</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../empieza-aqui.html">Guía para Principiantes</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../sobre-nosotros.html">Manifiesto Editorial</a></li><li class="pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html#despacho">Boletín Semanal</a></li></ul></div><div><h3 class="font-kicker text-kicker uppercase tracking-wider text-on-surface mb-space-md">CONTACTO &amp; PRENSA</h3><div class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant"><p class="font-semibold text-on-surface">contacto@eltelar.es</p><p>Síguenos: <a class="hover:text-primary underline" href="https://www.instagram.com/eltelar_es/" rel="me noopener" target="_blank">Instagram</a> · <a class="hover:text-primary underline" href="https://www.threads.com/@eltelar_es" rel="me noopener" target="_blank">Threads</a> · <a class="hover:text-primary underline" href="https://x.com/eltelar_es" rel="me noopener" target="_blank">X</a></p></div></div></div></div><div class="border-t border-outline-variant py-space-md bg-surface-container-lowest"><div class="max-w-site-max-width mx-auto px-space-md flex flex-col md:flex-row items-center justify-between gap-space-sm text-caption font-caption text-on-surface-variant"><div>© 2026 El Telar. Todos los derechos reservados. Independencia editorial garantizada.</div><div class="flex items-center gap-space-md"><a class="hover:text-on-surface transition-colors" href="../privacidad.html">Privacidad</a><a class="hover:text-on-surface transition-colors" href="../terminos.html">Términos</a><a class="hover:text-on-surface transition-colors" href="../sobre-nosotros.html">Sobre nosotros</a><a class="hover:text-on-surface transition-colors" href="../contacto.html">Contacto</a></div></div></div></footer><script defer src="../js/copy-guide.js"></script><script defer src="../js/guide-interactions.js"></script><script defer src="../js/reading-progress.js"></script><script defer src="../js/search.js?v=7"></script><script defer src="../js/entrance.js"></script><script defer src="../js/cookie-consent.js?v=4"></script></body></html>

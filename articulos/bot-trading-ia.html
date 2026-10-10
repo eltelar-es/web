@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cómo construir un bot de trading con IA | El Telar</title>
+<meta name="description" content="Arquitectura, gestión de riesgos y límites reales de automatizar trading con ayuda de IA: por qué la IA no predice el mercado, pero sí ejecuta con disciplina.">
+<link rel="canonical" href="https://eltelar.es/articulos/bot-trading-ia.html"><link rel="icon" type="image/svg+xml" href="../img/favicon.svg?v=4"><link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32.png?v=4"><link rel="apple-touch-icon" href="../img/apple-touch-icon.png?v=4"><meta name="theme-color" content="#072417"><link rel="manifest" href="../manifest.json"><link rel="alternate" type="application/rss+xml" title="El Telar" href="../feed.xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cómo se construye un bot de trading con IA (sin ser programador) | El Telar">
+<meta property="og:description" content="Arquitectura, gestión de riesgos y límites reales de automatizar trading con ayuda de IA: por qué la IA no predice el mercado, pero sí ejecuta con disciplina.">
+<meta property="og:url" content="https://eltelar.es/articulos/bot-trading-ia.html">
+<meta property="og:site_name" content="El Telar">
+<meta property="og:locale" content="es_ES"><meta property="og:image" content="https://eltelar.es/img/og/guia-bot-trading-ia.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Cómo se construye un bot de trading con IA (sin ser programador) | El Telar">
+<meta name="twitter:description" content="Arquitectura, gestión de riesgos y límites reales de automatizar trading con ayuda de IA: por qué la IA no predice el mercado, pero sí ejecuta con disciplina."><meta name="twitter:image" content="https://eltelar.es/img/og/guia-bot-trading-ia.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Cómo se construye un bot de trading con IA (sin ser programador)",
+  "description": "Arquitectura, gestión de riesgos y límites reales de automatizar trading con ayuda de IA: por qué la IA no predice el mercado, pero sí ejecuta con disciplina.",
+  "image": "https://eltelar.es/img/og-image.jpg",
+  "author": { "@type": "Organization", "name": "El Telar", "url": "https://eltelar.es/sobre-nosotros.html" },
+  "publisher": { "@type": "Organization", "name": "El Telar" },
+  "datePublished": "2026-01-01",
+  "dateModified": "2026-09-06",
+  "mainEntityOfPage": "https://eltelar.es/articulos/bot-trading-ia.html",
+  "inLanguage": "es"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Cuánto tiempo se tarda en tener un sistema decente funcionando en paper trading?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "La parte de escribir el código con ayuda de un asistente de IA puede llevar desde un fin de semana hasta un par de semanas, según la complejidad de la lógica. Lo que lleva más tiempo, y no debería acelerarse, es el periodo de prueba en paper trading suficientemente largo para cubrir distintos regímenes de mercado — apresurarse en esa fase para \"empezar ya\" es la causa más común de sorpresas desagradables al pasar a dinero real."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Necesito saber programar de verdad, o basta con pedírselo todo a la IA?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No hace falta ser programador profesional, pero sí conviene entender lo básico de lo que el código hace — qué es una función, qué hace cada bloque del script — lo suficiente para leer el resultado generado y detectar si algo no tiene sentido. Delegar la escritura del código está bien; delegar también la comprensión de qué hace ese código con tu dinero no es una buena idea. Una prueba sencilla de si entiendes lo suficiente: si no puedes explicarle a otra persona, con tus propias palabras, qué condición exacta hace que el sistema abra o cierre una posición, todavía no estás listo para dejarlo operando sin supervisión constante."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Es buena idea usar un modelo de IA para decidir en tiempo real si comprar o vender, en vez de reglas fijas?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Es un enfoque más frágil que el descrito en esta guía. Un modelo de lenguaje puede tener comportamiento inconsistente ante entradas casi idénticas, y depurar por qué tomó una decisión concreta en tiempo real es mucho más difícil que depurar una regla matemática fija y determinista. El enfoque más robusto, y el que sigue esta guía, es usar la IA para escribir y mejorar las reglas fuera de línea, dejando la ejecución en tiempo real a lógica determinista y predecible."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué cantidad de dinero real es razonable arriesgar cuando por fin se pasa de paper trading?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Esta guía no da cifras concretas porque depende enteramente de tu situación financiera personal, algo que ninguna guía genérica puede evaluar por ti. Lo que sí es una práctica extendida y razonable es empezar con una cantidad cuya pérdida total no afecte a tus finanzas esenciales, y aumentar la exposición de forma gradual solo después de acumular un historial real (no solo simulado) que respalde la confianza en el sistema."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://eltelar.es/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Guías",
+      "item": "https://eltelar.es/index.html#guias"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Cómo se construye un bot de trading con IA (sin ser programador)",
+      "item": "https://eltelar.es/articulos/bot-trading-ia.html"
+    }
+  ]
+}
+</script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet"/></noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet"/></noscript>
+<style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><link rel="stylesheet" href="../css/tailwind.css"><link rel="stylesheet" href="../css/entrance.css?v=2"><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}(function(){var c=null;try{c=localStorage.getItem('eltelar-cookie-consent')}catch(e){}var g=c==='accepted'?'granted':'denied';gtag('consent','default',{ad_storage:g,ad_user_data:g,ad_personalization:g,analytics_storage:g,wait_for_update:500});window.adsbygoogle=window.adsbygoogle||[];if(g!=='granted'){window.adsbygoogle.requestNonPersonalizedAds=1;}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-4DPTKEG79N"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4DPTKEG79N');</script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8239907995939753" crossorigin="anonymous"></script></head><body class="bg-background font-body-md text-on-surface antialiased">
+<header class="w-full bg-surface-container-lowest border-b border-outline-variant"><div class="border-b border-outline-variant py-space-xxs px-space-md hidden md:block"><div class="max-w-site-max-width mx-auto flex items-center justify-between font-kicker text-kicker text-on-surface-variant uppercase tracking-wider"><span>EDICIÓN DIGITAL // ACTUALIZADO 2026 // EL TELAR &amp; AGENTES</span><span>MADRID · REMOTO</span><span>SIN HUMO · 100% PRODUCCIÓN</span></div></div><div class="max-w-site-max-width mx-auto px-space-md py-space-md sm:py-space-xl text-center"><p class="hidden sm:block font-kicker text-kicker uppercase tracking-widest text-on-surface-variant mb-space-xs">Publicación Independiente de Tecnología &amp; Agentes</p><a class="inline-block" href="../index.html"><div class="font-display text-display max-sm:text-[40px] max-sm:leading-none text-primary tracking-tight">El Telar</div></a><p class="hidden sm:block font-caption text-caption uppercase tracking-widest text-on-surface-variant mt-space-xs">EL BOLETÍN Y ARCHIVO PRÁCTICO DE INTELIGENCIA ARTIFICIAL Y AGENTES AUTÓNOMOS</p></div><div class="border-t border-b border-outline-variant"><div class="max-w-site-max-width mx-auto px-space-md flex items-center justify-between gap-space-sm h-14"><nav class="flex items-center gap-space-md sm:gap-space-lg h-full min-w-0 overflow-x-auto [scrollbar-width:none] whitespace-nowrap"><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../index.html#guias">GUÍAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../empieza-aqui.html">EMPIEZA AQUÍ</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../sobre-nosotros.html">SOBRE NOSOTROS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../noticias/index.html">NOTICIAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../herramientas/index.html">HERRAMIENTAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../prompts/index.html">PROMPTS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../contacto.html">CONTACTO</a></nav><div class="flex items-center gap-space-md"><button id="search-trigger" type="button" aria-label="Buscar en las guías" class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[20px]">search</span></button><a class="hidden sm:inline-block bg-primary-container text-surface px-space-md py-space-xs font-label-md text-label-md uppercase tracking-wider hover:bg-primary transition-colors" href="../index.html#despacho">SUSCRÍBETE GRATIS</a></div></div></div><div class="hidden md:block bg-surface-container-low border-b border-outline-variant py-space-xs px-space-md"><div class="max-w-site-max-width mx-auto text-center"><p class="font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">47 GUÍAS COMPLETAS EN EXPANSIÓN · ACTUALIZADO A MODELOS 2026 · PROBADO EN TERMINAL Y FLUJOS REALES · CERO HUMO NI TEORÍA VACÍA</p></div></div></header>
+<main class="w-full max-w-site-max-width mx-auto px-space-md py-space-xl"><div class="flex flex-col w-full">
+<nav class="w-full mb-space-lg">
+<ol class="flex flex-wrap items-center gap-space-xs font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">
+<li><a class="hover:text-primary transition-colors" href="../index.html">Inicio</a></li>
+<li class="text-on-surface-variant">/</li>
+<li><a class="hover:text-primary transition-colors" href="../index.html#guias">Guías</a></li>
+<li class="text-on-surface-variant">/</li>
+<li><a class="hover:text-primary transition-colors" href="../index.html#guias">Caso Real</a></li>
+<li class="text-on-surface-variant">/</li>
+<li class="text-primary font-bold truncate max-w-[280px] sm:max-w-md">Cómo se construye un bot de trading con IA</li>
+</ol>
+</nav>
+<header class="w-full pb-space-xl mb-space-2xl">
+<div class="flex flex-wrap items-center gap-space-xs mb-space-md">
+<span class="bg-surface-container-high text-secondary px-space-sm py-1 font-kicker text-kicker uppercase tracking-widest">
+        CASO REAL // DESMITIFICACIÓN FINANCIERA
+      </span>
+<span class="bg-primary-container text-surface-container-lowest px-space-sm py-1 font-kicker text-kicker uppercase tracking-widest flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">verified_user</span>
+        SOLO DINERO SIMULADO (PAPER TRADING)
+      </span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight max-w-editorial-max-width mb-space-md">
+      Cómo se construye un bot de trading con IA (sin ser programador)
+    </h1>
+<p class="font-lead-paragraph text-lead-paragraph text-on-surface-variant max-w-editorial-max-width mb-space-xl">
+      Arquitectura, análisis de datos de mercado y gestión de riesgos explicados con honestidad. Por qué la IA no predice el futuro, pero sí puede automatizar la ejecución con disciplina fría.
+    </p>
+<div class="bg-surface-container-lowest p-space-md flex flex-wrap items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 bg-primary text-on-primary flex items-center justify-center font-headline-sm text-headline-sm">
+          ET
+        </div>
+<div>
+<div class="font-label-md text-label-md text-on-surface font-semibold">Por la Redacción de El Telar</div><div class="font-caption text-caption text-on-surface-variant">Guías prácticas de IA y agentes, probadas en flujos de trabajo reales antes de publicarlas.</div>
+<button class="inline-flex items-center gap-1 mt-2 px-3 py-1.5 bg-surface-container text-primary font-label-md text-[12px] font-semibold uppercase tracking-wider hover:bg-surface-container-high transition-colors" id="copy-guide-btn" type="button"><span class="material-symbols-outlined text-[16px]">content_copy</span> Copiar guía para tu IA</button><span class="inline-flex items-center gap-1 ml-1"><button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" id="save-guide-btn" title="Guardar guía" type="button"><span class="material-symbols-outlined text-[16px]">bookmark_border</span></button><button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" id="copy-link-btn" title="Copiar enlace permanente" type="button"><span class="material-symbols-outlined text-[16px]">share</span></button></span>
+</div>
+</div>
+<div class="flex items-center gap-space-lg text-on-surface-variant font-caption text-caption uppercase tracking-wider">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">schedule</span> 14 min de lectura
+        </span>
+</div>
+</div>
+</header>
+<div class="w-full mb-space-2xl space-y-1">
+<div class="w-full h-0.5 bg-primary"></div>
+<div class="w-full h-px bg-surface-container-highest"></div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-col-gap">
+<article class="lg:col-span-8 flex flex-col space-y-space-xl">
+<figure data-hero class="space-y-space-xs"><img class="w-full border border-outline-variant" src="../img/guias/hero-bot-trading-ia.jpg" alt="Web de Alpaca, bróker con API y cuenta de paper trading" width="1280" height="720" fetchpriority="high" decoding="async"/><figcaption class="font-caption text-caption text-on-surface-variant">Captura de pantalla: <a class="underline" href="https://alpaca.markets/" rel="nofollow noopener" target="_blank">alpaca.markets</a>.</figcaption></figure>
+<div class="font-lead-paragraph text-lead-paragraph text-on-surface leading-relaxed">
+<span class="float-left text-display font-display text-primary leading-none pr-space-sm pt-1 uppercase">E</span>
+        l ecosistema de vídeos en YouTube y TikTok rebosa de creadores que prometen retornos de cuatro dígitos con supuestos «bots secretos de trading con IA». En casi todos los casos, la realidad matemática es demoledora: curvas sobreoptimizadas en backtest que colapsan al primer contacto con el deslizamiento real, las comisiones del bróker y la latencia de red. Los modelos de lenguaje no ven el futuro. Pero, sin la fantasía especulativa, sí permiten a alguien sin experiencia en programación diseñar la lógica, auditar datos de mercado y forzar reglas de protección de capital con rigor.
+      </div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+        Conviene separar dos preguntas que se suelen mezclar: "¿puede una IA ayudarme a construir el código de un sistema de trading?" y "¿puede una IA predecir hacia dónde va a moverse el precio de un activo?". La respuesta a la primera es que sí, de forma razonable, con las precauciones que cubre esta guía. La respuesta a la segunda sigue siendo no, de forma consistente: ningún modelo de lenguaje tiene acceso a información privilegiada sobre el futuro, y tratarlo como un oráculo de predicción es exactamente el error que separa una herramienta de automatización útil de una apuesta cara disfrazada de tecnología.</p>
+<section class="bg-surface-container-low p-space-lg shadow-sm">
+<div class="flex items-center justify-between mb-space-sm">
+<div class="font-kicker text-kicker text-secondary uppercase tracking-widest">
+            ADVERTENCIA EDITORIAL
+          </div>
+<span class="material-symbols-outlined text-secondary text-[20px]">shield</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-space-md">
+          Esta guía no contiene consejos financieros ni recetas de enriquecimiento. Los mercados son sistemas complejos con expectativa matemática difícil para el inversor minorista desinformado. Lo que cubrimos es ingeniería de automatización:
+        </p>
+<ul class="space-y-space-xs font-body-sm text-body-sm text-on-surface">
+<li class="flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[16px] mt-0.5">check_circle</span>
+<span><strong>Cero promesas de rentabilidad:</strong> ningún modelo de lenguaje predice rupturas de tendencia.</span>
+</li>
+<li class="flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[16px] mt-0.5">check_circle</span>
+<span><strong>Arquitectura real en Python asistido por IA:</strong> generación de scripts modulares sin tocar terminales a ciegas.</span>
+</li>
+<li class="flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[16px] mt-0.5">check_circle</span>
+<span><strong>Backtesting y paper trading obligatorios:</strong> por qué probar sin dinero real es el único paso entre tus ahorros y una mala sorpresa.</span>
+</li>
+</ul>
+</section>
+<figure class="my-space-lg">
+<img class="w-full border border-outline-variant" src="../img/guias/tradingview-btc-chart.jpg" alt="Gráfico real de TradingView mostrando el precio de Bitcoin (BTCUSD) con su variación reciente, el tipo de vista que consultaría un bot de trading." loading="lazy" width="1280" height="800"/>
+<figcaption class="font-caption text-caption text-on-surface-variant mt-space-xs">Gráfico en vivo de <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="https://www.tradingview.com" target="_blank" rel="noopener">TradingView</a>: el tipo de dato de mercado que consume un bot antes de decidir.</figcaption>
+</figure>
+<section class="space-y-space-md">
+<span class="font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">Fase I</span>
+<h2 id="sec-1" class="font-headline-md text-headline-md text-primary">
+          1. La anatomía de un sistema de trading automatizado
+        </h2>
+<p class="font-body-lg text-body-lg text-on-surface">
+          El error típico consiste en pedirle a un modelo: <em>«Escribe un bot que compre barato y venda caro»</em>. El resultado casi siempre es un bloque de código monolítico sin manejo de errores ni separación de responsabilidades.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant">
+          Un sistema razonable separa siempre la adquisición de datos, el cálculo estadístico y el envío de órdenes en tres capas independientes:
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Esta separación no es un capricho de diseño limpio: es lo que permite depurar el sistema cuando algo falla. Si las tres responsabilidades están mezcladas en un único bloque de código, un error en la capa de datos (un dato de precio corrupto, una vela con fecha incorrecta) puede propagarse silenciosamente hasta la capa de ejecución y provocar una orden basada en información errónea, sin que quede claro en qué punto del proceso se originó el problema. Con las capas separadas, cada una puede probarse y auditarse de forma independiente, y un fallo se aísla al componente donde ocurrió en vez de contaminar el resto del sistema.</p>
+<div class="bg-surface-container-lowest p-space-lg shadow-sm space-y-space-md">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+<div class="bg-surface-container-low p-space-md">
+<span class="font-kicker text-kicker text-secondary uppercase tracking-widest block mb-1">01</span>
+<div class="font-headline-sm text-headline-sm text-primary mb-1">Capa de datos</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                Conectores con librerías abiertas para descargar velas históricas cada cierto intervalo, sin intervención del modelo.
+              </p>
+</div>
+<div class="bg-surface-container-low p-space-md">
+<span class="font-kicker text-kicker text-primary uppercase tracking-widest block mb-1">02</span>
+<div class="font-headline-sm text-headline-sm text-primary mb-1">Motor de reglas</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                Indicadores matemáticos fríos y reglas binarias. El modelo no decide la ejecución en tiempo real; solo ayudó a escribir las reglas.
+              </p>
+</div>
+<div class="bg-surface-container-low p-space-md">
+<span class="font-kicker text-kicker text-secondary uppercase tracking-widest block mb-1">03</span>
+<div class="font-headline-sm text-headline-sm text-primary mb-1">Capa de pruebas</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                Cuenta de prueba (paper trading) con claves de solo lectura o de simulación. Cero acceso a retiros de fondos bajo ningún concepto.
+              </p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="space-y-space-md">
+<span class="font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">Fase II</span>
+<h2 id="sec-2" class="font-headline-md text-headline-md text-primary">
+          2. Cómo pedirle a la IA el script de análisis y backtesting
+        </h2>
+<p class="font-body-md text-body-md text-on-surface">
+          Para quien no tiene formación técnica, la clave es usar modelos con buena capacidad de razonamiento como si fueran un programador senior que escribe código limpio, añade registros y aísla las variables sensibles.
+        </p>
+<div class="bg-surface-container-lowest p-space-lg space-y-space-sm shadow-sm">
+<div class="flex items-center justify-between pb-space-xs">
+<span class="font-kicker text-kicker text-secondary uppercase tracking-wider flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">prompt_suggestion</span>
+              PROMPT DE EJEMPLO
+            </span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant font-mono leading-relaxed bg-surface-container-low p-space-md">
+            «Actúa como un desarrollador senior en análisis cuantitativo. Necesito un script en Python modular que:<br/><br/>
+            1. Descargue el historial de velas de un activo con una librería abierta de datos de mercado.<br/>
+            2. Calcule un cruce de medias móviles y filtre entradas según un indicador de sobrecompra/sobreventa.<br/>
+            3. Reste un porcentaje de comisión por cada cambio de posición, simulando el coste real del bróker.<br/>
+            4. Imprima una tabla con: tasa de acierto, máxima caída (drawdown) y retorno neto.<br/>
+            5. Separe la lógica en funciones documentadas con tipado claro.»
+          </p>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+          El código de este paso no se ejecuta con dinero real: se prueba en local. Un sistema que parece muy rentable en teoría suele caer con fuerza en cuanto se incluyen las comisiones de entrada y salida y el diferencial entre oferta y demanda — probarlo con y sin esos costes es el paso que más sorpresas evita.
+        </p>
+</section>
+<blockquote class="bg-surface-container-lowest p-space-xl my-space-lg shadow-sm">
+<div class="flex items-start gap-space-md">
+<span class="text-secondary font-display text-display leading-none select-none">«</span>
+<div>
+<p class="font-headline-sm text-headline-sm text-primary italic leading-snug mb-space-sm">
+              Si tu bot no sobrevive a un backtest con costes de comisión reales incluidos, no tienes un algoritmo: tienes un billete de lotería caro.
+            </p>
+<cite class="font-kicker text-kicker text-on-surface-variant uppercase tracking-widest block not-italic">
+              — Redacción El Telar
+            </cite>
+</div>
+</div>
+</blockquote>
+<section class="space-y-space-md">
+<span class="font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">Fase II-B</span>
+<h2 id="sec-2b" class="font-headline-md text-headline-md text-primary">
+          Cómo saber si tu backtest está sobreajustado (overfitting)
+        </h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          El sobreajuste es, según análisis del sector, la causa que más estrategias de trading rotas produce: el bot memoriza el ruido específico de los datos históricos en vez de aprender un patrón real que se repita. Tres señales de alarma:
+        </p>
+<ul class="space-y-space-xs font-body-md text-body-md text-on-surface-variant list-disc pl-space-lg">
+<li>Cambiar la fecha de inicio o fin del backtest por solo unas semanas cambia el resultado de forma drástica</li>
+<li>Una regla usa un número muy concreto y arbitrario (por ejemplo, "esperar exactamente 17 velas") sin ninguna razón de mercado detrás, solo porque ese número dio buen resultado en el histórico</li>
+<li>La estrategia tiene más de 10-15 parámetros ajustados a mano sobre los mismos datos</li>
+</ul>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Como referencia de cuánto se suele degradar un sistema al pasar de backtest a mercado real: estudios sobre el tema encuentran de media un 26% menos de rendimiento fuera de la muestra de datos usada para diseñar la estrategia, y una caída adicional de 30-50% al añadir slippage y comisiones reales de ejecución. Si tu backtest no sobrevive aplicando esos descuentos de forma conservadora antes de arriesgar nada, no lo despliegues.
+        </p>
+</section>
+<section class="space-y-space-md">
+<span class="font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">Fase II-C</span>
+<h2 id="sec-2c" class="font-headline-md text-headline-md text-primary">
+          Elegir dónde probarlo: por qué el entorno de paper trading importa tanto como el código
+        </h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          No todos los entornos de simulación son igual de honestos. Algunos bróker ofrecen cuentas de "papel" que ejecutan las órdenes de forma instantánea y sin deslizamiento, dando una imagen artificialmente perfecta del sistema que luego no se sostiene con dinero real. Al elegir dónde simular, prioriza un entorno que module al menos aproximadamente la latencia de ejecución y el deslizamiento de precio en momentos de volatilidad, aunque sea de forma simplificada — un simulador demasiado optimista es casi tan peligroso como no probar nada, porque genera una falsa sensación de seguridad.</p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Otro factor que se pasa por alto al elegir dónde simular: la calidad y el coste de los datos históricos que usarás para el backtest inicial. Un proveedor de datos gratuito con huecos o errores en el histórico puede hacer que una estrategia parezca funcionar cuando en realidad está aprendiendo de datos defectuosos. Antes de confiar en un resultado de backtest, revisa manualmente una muestra de los datos usados — unas pocas velas al azar comparadas con otra fuente — para descartar errores sistemáticos en el origen de los datos.</p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Un hábito recomendable es correr el sistema en paper trading durante un periodo razonablemente largo (varias semanas, no unos pocos días) antes de plantearte siquiera arriesgar una cantidad simbólica de dinero real. Los mercados atraviesan regímenes distintos (alta volatilidad, tendencia clara, lateral sin dirección), y un sistema que solo se ha probado durante un régimen concreto puede comportarse de forma muy distinta en cuanto el mercado cambia de carácter.</p>
+</section>
+<section class="space-y-space-md">
+<span class="font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">Fase III-B</span>
+<figure data-inline-photo class="space-y-space-xs my-space-xl"><img class="w-full border border-outline-variant" src="../img/guias/foto-bot-trading-ia.jpg" alt="Web de Backtrader, librería de Python para hacer backtesting" width="1280" height="720" loading="lazy" decoding="async"/><figcaption class="font-caption text-caption text-on-surface-variant">Captura de pantalla: <a class="underline" href="https://www.backtrader.com/" rel="nofollow noopener" target="_blank">backtrader.com</a>.</figcaption></figure>
+<h2 id="sec-2d" class="font-headline-md text-headline-md text-primary">
+          Lo que casi nadie menciona: fiscalidad y marco legal
+        </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Automatizar la ejecución no automatiza tus obligaciones fiscales. Cada operación cerrada con ganancia o pérdida sigue generando una obligación de declarar según la normativa de tu país de residencia, y un bot que abre y cierra decenas de posiciones al día puede generar cientos de eventos fiscales a final de año que hay que reconstruir uno a uno si no llevaste un registro adecuado desde el principio. Pide a tu sistema, desde el primer día, que registre cada operación con fecha, precio de entrada y salida, y resultado neto en un archivo exportable — reconstruir ese historial después, operación por operación, desde los logs crudos del bróker es mucho más costoso que registrarlo bien desde el principio.</p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Además, dependiendo del bróker o exchange que uses y de tu jurisdicción, operar de forma automatizada con determinados instrumentos (derivados, apalancamiento) puede estar sujeto a restricciones específicas para inversores minoristas. Esta guía no sustituye el asesoramiento de un profesional fiscal o legal cualificado en tu país — considéralo un paso obligatorio antes de operar con dinero real, no un extra opcional para cuando "el bot ya funcione bien".</p>
+</section>
+<section class="space-y-space-md">
+<span class="font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">Fase III</span>
+<h2 id="sec-3" class="font-headline-md text-headline-md text-primary">
+          3. La regla suprema: paper trading, stop-loss y un interruptor de emergencia
+        </h2>
+<p class="font-body-md text-body-md text-on-surface">
+          El código generado por IA puede asumir incorrectamente que una orden se ejecutó al recibir una respuesta correcta del servidor, cuando en realidad el bróker la rechazó por saldo insuficiente. Si el bot entra en un bucle de reintento ciego, puede multiplicar posiciones sin darte cuenta.
+        </p>
+<div class="space-y-space-sm">
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h4 class="font-label-md text-label-md text-primary font-bold mb-1">A. El stop-loss vive en el servidor del bróker, no en tu script</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Si tu conexión se cae, una orden condicional guardada solo en tu ordenador nunca llegará a ejecutarse. Envía la orden de protección directamente al motor del bróker.
+            </p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h4 class="font-label-md text-label-md text-primary font-bold mb-1">D. Confirma cada orden ejecutada contra el estado real de la cuenta</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              No asumas que una orden se ejecutó solo porque el bróker respondió sin error. Consulta el saldo y las posiciones abiertas después de cada operación para confirmar que el estado real coincide con lo que tu script cree que pasó, antes de calcular la siguiente decisión sobre datos que podrían estar desincronizados.
+            </p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h4 class="font-label-md text-label-md text-primary font-bold mb-1">B. Límite de pérdida diaria</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Si la cartera cae más de un porcentaje fijo en 24 horas, el sistema se detiene solo y avisa, sin reiniciarse automáticamente.
+            </p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h4 class="font-label-md text-label-md text-primary font-bold mb-1">C. Un interruptor independiente</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Un proceso separado que solo consulta el saldo y puede revocar las claves de API si detecta un desvío anómalo, aunque el bot principal se cuelgue.
+            </p>
+</div>
+</div>
+</section>
+<section class="space-y-space-md">
+<span class="font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">Fase IV</span>
+<h2 id="sec-4" class="font-headline-md text-headline-md text-primary">
+          4. Lo que suele fallar al probar esto en la práctica
+        </h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<div class="bg-surface-container-low p-space-md">
+<div class="font-kicker text-kicker text-secondary uppercase tracking-widest mb-1">HALLAZGO FRECUENTE</div>
+<div class="font-headline-sm text-headline-sm text-primary mb-2">Límites de peticiones silenciosos</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Las APIs gratuitas de datos de mercado suelen bloquear temporalmente sin avisar. Diseñar reintentos con espera creciente evita desconexiones justo en momentos de volatilidad.
+            </p>
+</div>
+<div class="bg-surface-container-low p-space-md">
+<div class="font-kicker text-kicker text-secondary uppercase tracking-widest mb-1">HALLAZGO FRECUENTE</div>
+<div class="font-headline-sm text-headline-sm text-primary mb-2">Simple suele ganar a complejo</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Sistemas con dos indicadores sencillos y reglas de riesgo estrictas suelen sostenerse mejor con costes reales que modelos más sofisticados de predicción de sentimiento.
+            </p>
+</div>
+<div class="bg-surface-container-low p-space-md">
+<div class="font-kicker text-kicker text-secondary uppercase tracking-widest mb-1">HALLAZGO FRECUENTE</div>
+<div class="font-headline-sm text-headline-sm text-primary mb-2">El modelo puede alucinar una función de una librería</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Al generar código de análisis financiero, es habitual que un modelo invente el nombre de una función que no existe en la librería real, o confunda el orden de sus parámetros. Ejecutar el script en un entorno de pruebas y revisar el primer error de importación antes de asumir que "ya funciona" ahorra horas de depuración (más detalle en la guía de esta web sobre alucinaciones de la IA).
+            </p>
+</div>
+<div class="bg-surface-container-low p-space-md">
+<div class="font-kicker text-kicker text-secondary uppercase tracking-widest mb-1">HALLAZGO FRECUENTE</div>
+<div class="font-headline-sm text-headline-sm text-primary mb-2">Confundir correlación de backtest con causalidad de mercado</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Que un indicador haya funcionado bien en el histórico no explica por qué debería seguir funcionando. Preferir reglas con una lógica de mercado comprensible (por ejemplo, una relación conocida entre volumen y volatilidad) sobre reglas puramente estadísticas sin explicación reduce el riesgo de que dejen de funcionar en cuanto cambien las condiciones del mercado.
+            </p>
+</div>
+<div class="bg-surface-container-low p-space-md">
+<div class="font-kicker text-kicker text-secondary uppercase tracking-widest mb-1">HALLAZGO FRECUENTE</div>
+<div class="font-headline-sm text-headline-sm text-primary mb-2">Cambios de horario de mercado y festivos rompen la lógica</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Un script que asume que el mercado está siempre abierto en un horario fijo puede comportarse de forma inesperada en días festivos, cambios de horario estacional o sesiones con horario reducido. Verificar el calendario de mercado antes de operar es una comprobación barata que evita errores costosos en fechas atípicas.
+            </p>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+          La IA no convierte a nadie en un gestor de fondos de la noche a la mañana. Lo que sí hace es comprimir buena parte del trabajo de estructurar el código y las pruebas, dejando más tiempo para lo que de verdad importa: definir bien las reglas de riesgo antes de arriesgar nada.
+        </p>
+</section>
+<section class="space-y-space-md">
+<span class="font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">Fase V</span>
+<h2 id="sec-4b" class="font-headline-md text-headline-md text-primary">
+          Monitorización: qué revisar cada día, no solo al desplegar
+        </h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          Un sistema que funcionó bien el primer mes puede degradarse de forma silenciosa sin que ningún error visible lo señale. Pide a tu asistente de IA que te ayude a montar un panel simple (una hoja de cálculo actualizada automáticamente, o un mensaje diario a un canal de Slack o Telegram) con tres cifras mínimas: número de operaciones del día, resultado neto acumulado del mes y máxima caída actual respecto al pico anterior. Revisar esas tres cifras cada mañana durante cinco minutos detecta una degradación real mucho antes que revisar el código completo una vez al mes.</p>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          Un criterio simple para saber cuándo detener el sistema y revisarlo a fondo: si la caída actual supera la máxima caída observada durante todo el periodo de backtesting y paper trading, es una señal de que el comportamiento real se ha salido del rango que el sistema demostró poder tolerar, y conviene pausarlo hasta entender por qué, no seguir operando "a ver si se recupera solo".</p>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          Pausar el sistema no es un fracaso del proyecto, es exactamente el comportamiento que se supone que debe tener un sistema bien diseñado. La alternativa — dejarlo correr indefinidamente "a ver qué pasa" con la esperanza de que se corrija solo — es la actitud que convierte una herramienta de automatización disciplinada en el mismo tipo de apuesta especulativa que esta guía advierte evitar desde el principio.</p>
+</section>
+<section class="space-y-space-md">
+<span class="font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">Fase VI</span>
+<h2 class="font-headline-md text-headline-md text-primary">
+          Preguntas frecuentes
+        </h2>
+<div class="space-y-space-md">
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Cuánto tiempo se tarda en tener un sistema decente funcionando en paper trading?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+La parte de escribir el código con ayuda de un asistente de IA puede llevar desde un fin de semana hasta un par de semanas, según la complejidad de la lógica. Lo que lleva más tiempo, y no debería acelerarse, es el periodo de prueba en paper trading suficientemente largo para cubrir distintos regímenes de mercado — apresurarse en esa fase para "empezar ya" es la causa más común de sorpresas desagradables al pasar a dinero real.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Necesito saber programar de verdad, o basta con pedírselo todo a la IA?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+No hace falta ser programador profesional, pero sí conviene entender lo básico de lo que el código hace — qué es una función, qué hace cada bloque del script — lo suficiente para leer el resultado generado y detectar si algo no tiene sentido. Delegar la escritura del código está bien; delegar también la comprensión de qué hace ese código con tu dinero no es una buena idea. Una prueba sencilla de si entiendes lo suficiente: si no puedes explicarle a otra persona, con tus propias palabras, qué condición exacta hace que el sistema abra o cierre una posición, todavía no estás listo para dejarlo operando sin supervisión constante.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Es buena idea usar un modelo de IA para decidir en tiempo real si comprar o vender, en vez de reglas fijas?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Es un enfoque más frágil que el descrito en esta guía. Un modelo de lenguaje puede tener comportamiento inconsistente ante entradas casi idénticas, y depurar por qué tomó una decisión concreta en tiempo real es mucho más difícil que depurar una regla matemática fija y determinista. El enfoque más robusto, y el que sigue esta guía, es usar la IA para escribir y mejorar las reglas fuera de línea, dejando la ejecución en tiempo real a lógica determinista y predecible.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Qué cantidad de dinero real es razonable arriesgar cuando por fin se pasa de paper trading?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Esta guía no da cifras concretas porque depende enteramente de tu situación financiera personal, algo que ninguna guía genérica puede evaluar por ti. Lo que sí es una práctica extendida y razonable es empezar con una cantidad cuya pérdida total no afecte a tus finanzas esenciales, y aumentar la exposición de forma gradual solo después de acumular un historial real (no solo simulado) que respalde la confianza en el sistema.
+</div>
+</div>
+</div>
+</section>
+<footer class="bg-surface-container-lowest p-space-lg shadow-sm mt-space-xl">
+<div class="flex flex-col sm:flex-row items-start sm:items-center gap-space-md">
+<div class="w-16 h-16 bg-primary text-on-primary flex items-center justify-center font-display text-headline-md shrink-0">ET</div>
+<div class="space-y-space-xxs">
+<span class="font-label-md text-label-md text-primary font-bold uppercase tracking-wider">Redacción El Telar</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              No aceptamos comisiones de brókers ni patrocinios de plataformas de trading.
+            </p>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mt-space-md">
+          El resumen de esta guía cabe en una frase: la IA acorta el tiempo de construir la infraestructura, no el tiempo de validarla con disciplina. Quien se salta la fase de paper trading, las reglas de protección de capital o el registro fiscal para "llegar antes" al dinero real está usando la parte fácil de esta guía y descartando la parte que realmente protege su capital. Trata cada fase como un requisito, no como una sugerencia opcional que se puede acelerar cuando la impaciencia aprieta.</p>
+</footer>
+</article>
+<aside class="lg:col-span-4 flex flex-col space-y-space-xl">
+<div class="bg-surface-container-lowest p-space-lg shadow-sm">
+<div class="flex items-center justify-between pb-space-xs mb-space-sm">
+<span class="font-kicker text-kicker text-primary uppercase tracking-widest">ÍNDICE DE LA GUÍA</span>
+</div>
+<ol class="space-y-space-xs font-body-sm text-body-sm text-on-surface">
+<li class="flex items-start gap-space-xs py-1">
+<span class="text-secondary font-mono font-bold">01.</span>
+<a class="hover:text-primary transition-colors" href="#sec-1">Arquitectura: cerebro y músculo separados</a>
+</li>
+<li class="flex items-start gap-space-xs py-1">
+<span class="text-secondary font-mono font-bold">02.</span>
+<a class="hover:text-primary transition-colors" href="#sec-2">Script de análisis y backtest asistido</a>
+</li>
+<li class="flex items-start gap-space-xs py-1">
+<span class="text-secondary font-mono font-bold">03.</span>
+<a class="hover:text-primary transition-colors" href="#sec-2b">Cómo saber si tu backtest está sobreajustado</a>
+</li>
+<li class="flex items-start gap-space-xs py-1">
+<span class="text-secondary font-mono font-bold">04.</span>
+<a class="hover:text-primary transition-colors" href="#sec-2c">Elegir dónde probarlo</a>
+</li>
+<li class="flex items-start gap-space-xs py-1">
+<span class="text-secondary font-mono font-bold">05.</span>
+<a class="hover:text-primary transition-colors" href="#sec-2d">Fiscalidad y marco legal</a>
+</li>
+<li class="flex items-start gap-space-xs py-1">
+<span class="text-secondary font-mono font-bold">06.</span>
+<a class="hover:text-primary transition-colors" href="#sec-3">Paper trading, stop-loss e interruptor</a>
+</li>
+<li class="flex items-start gap-space-xs py-1">
+<span class="text-secondary font-mono font-bold">07.</span>
+<a class="hover:text-primary transition-colors" href="#sec-4">Qué suele fallar en la práctica</a>
+</li>
+<li class="flex items-start gap-space-xs py-1">
+<span class="text-secondary font-mono font-bold">08.</span>
+<a class="hover:text-primary transition-colors" href="#sec-4b">Monitorización: qué revisar cada día</a>
+</li>
+</ol>
+</div>
+<div class="bg-surface-container-low p-space-lg shadow-sm space-y-space-md">
+<span class="font-kicker text-kicker text-secondary uppercase tracking-widest block">
+          FICHA TÉCNICA
+        </span>
+<div class="space-y-space-xs">
+<div class="flex items-center justify-between pb-1">
+<span class="font-caption text-caption text-on-surface-variant">Lenguaje &amp; stack:</span>
+<span class="font-caption text-caption font-mono font-bold text-primary">Python / Pandas</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-caption text-caption text-on-surface-variant">Dinero real arriesgado:</span>
+<span class="font-caption text-caption font-mono font-bold text-secondary">0 € (solo pruebas)</span>
+</div>
+</div>
+</div>
+
+</aside>
+</div>
+<section class="w-full mt-space-4xl pt-space-2xl bg-surface-container-lowest p-space-xl shadow-sm">
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-space-xl gap-space-xs">
+<h3 class="font-headline-md text-headline-md text-primary">
+          Continúa explorando el archivo
+        </h3>
+<a class="font-label-md text-label-md text-primary hover:text-secondary uppercase tracking-wider transition-colors flex items-center gap-1" href="../index.html#guias">
+        Ver todas las guías <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-col-gap"><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="automatizar-tareas-agentes-ia.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-automatizar-tareas-agentes-ia.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="automatizar-tareas-agentes-ia.html">Cómo automatizar tareas repetitivas con agentes de IA</a></h4></div></article><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="alucinaciones-ia.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-alucinaciones-ia.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="alucinaciones-ia.html">Alucinaciones de la IA: cómo detectar cuando se está inventando algo</a></h4></div></article><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="agente-cripto-noticias.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-agente-cripto-noticias.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="agente-cripto-noticias.html">El agente que vigila cripto y te resume las noticias</a></h4></div></article></div>
+</section>
+</div></main><footer class="w-full bg-surface-container-low border-t border-outline-variant mt-space-4xl"><div class="max-w-site-max-width mx-auto px-space-md py-space-3xl"><div class="grid grid-cols-1 md:grid-cols-3 gap-col-gap"><div class="space-y-space-sm"><span class="font-headline-md text-headline-md text-primary">El Telar</span><p class="font-body-sm text-body-sm text-on-surface-variant">Publicación independiente de tecnología y automatización con agentes. Contenidos verificados en producción, sin patrocinios opacos ni promesas vacías.</p></div><div><h3 class="font-kicker text-kicker uppercase tracking-wider text-on-surface mb-space-md">SECCIONES</h3><ul class="space-y-space-xs font-body-sm text-body-sm"><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html#guias">Archivo de Guías</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../empieza-aqui.html">Guía para Principiantes</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../sobre-nosotros.html">Manifiesto Editorial</a></li><li class="pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html#despacho">Boletín Semanal</a></li></ul></div><div><h3 class="font-kicker text-kicker uppercase tracking-wider text-on-surface mb-space-md">CONTACTO &amp; PRENSA</h3><div class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant"><p class="font-semibold text-on-surface">contacto@eltelar.es</p><p>Síguenos: <a class="hover:text-primary underline" href="https://www.instagram.com/eltelar_es/" rel="me noopener" target="_blank">Instagram</a> · <a class="hover:text-primary underline" href="https://www.threads.com/@eltelar_es" rel="me noopener" target="_blank">Threads</a> · <a class="hover:text-primary underline" href="https://x.com/eltelar_es" rel="me noopener" target="_blank">X</a></p></div></div></div></div><div class="border-t border-outline-variant py-space-md bg-surface-container-lowest"><div class="max-w-site-max-width mx-auto px-space-md flex flex-col md:flex-row items-center justify-between gap-space-sm text-caption font-caption text-on-surface-variant"><div>© 2026 El Telar. Todos los derechos reservados. Independencia editorial garantizada.</div><div class="flex items-center gap-space-md"><a class="hover:text-on-surface transition-colors" href="../privacidad.html">Privacidad</a><a class="hover:text-on-surface transition-colors" href="../terminos.html">Términos</a><a class="hover:text-on-surface transition-colors" href="../sobre-nosotros.html">Sobre nosotros</a><a class="hover:text-on-surface transition-colors" href="../contacto.html">Contacto</a></div></div></div></footer><script defer src="../js/copy-guide.js"></script><script defer src="../js/guide-interactions.js"></script><script defer src="../js/reading-progress.js"></script><script defer src="../js/search.js?v=7"></script><script defer src="../js/entrance.js"></script><script defer src="../js/cookie-consent.js?v=4"></script></body></html>

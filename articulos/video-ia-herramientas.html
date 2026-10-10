@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Herramientas de vídeo con IA hoy | El Telar</title>
+<meta name="description" content="Qué pueden hacer de verdad Veo, Runway y Kling en 2026, sus límites de duración y coherencia, y por qué el cierre de Sora obliga a no atarte a un solo proveedor.">
+<link rel="canonical" href="https://eltelar.es/articulos/video-ia-herramientas.html"><link rel="icon" type="image/svg+xml" href="../img/favicon.svg?v=4"><link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32.png?v=4"><link rel="apple-touch-icon" href="../img/apple-touch-icon.png?v=4"><meta name="theme-color" content="#072417"><link rel="manifest" href="../manifest.json"><link rel="alternate" type="application/rss+xml" title="El Telar" href="../feed.xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Herramientas de vídeo con IA: qué puedes generar y editar hoy | El Telar">
+<meta property="og:description" content="Qué pueden hacer de verdad Veo, Runway y Kling en 2026, sus límites de duración y coherencia, y por qué el cierre de Sora obliga a no atarte a un solo proveedor.">
+<meta property="og:url" content="https://eltelar.es/articulos/video-ia-herramientas.html">
+<meta property="og:site_name" content="El Telar">
+<meta property="og:locale" content="es_ES"><meta property="og:image" content="https://eltelar.es/img/og/guia-video-ia-herramientas.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Herramientas de vídeo con IA: qué puedes generar y editar hoy | El Telar">
+<meta name="twitter:description" content="Qué pueden hacer de verdad Veo, Runway y Kling en 2026, sus límites de duración y coherencia, y por qué el cierre de Sora obliga a no atarte a un solo proveedor."><meta name="twitter:image" content="https://eltelar.es/img/og/guia-video-ia-herramientas.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Herramientas de vídeo con IA: qué puedes generar y editar hoy",
+  "description": "Qué pueden hacer de verdad Veo, Runway y Kling en 2026, sus límites de duración y coherencia, y por qué el cierre de Sora obliga a no atarte a un solo proveedor.",
+  "image": "https://eltelar.es/img/og-image.jpg",
+  "author": { "@type": "Organization", "name": "El Telar", "url": "https://eltelar.es/sobre-nosotros.html" },
+  "publisher": { "@type": "Organization", "name": "El Telar" },
+  "datePublished": "2026-09-08",
+  "dateModified": "2026-09-29",
+  "mainEntityOfPage": "https://eltelar.es/articulos/video-ia-herramientas.html",
+  "inLanguage": "es"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Puedo generar un vídeo largo, de varios minutos, de una sola vez?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No de forma directa: los tres modelos generan clips cortos por defecto. Para algo más largo, la técnica habitual es generar varios clips encadenados usando el último fotograma de uno como referencia inicial del siguiente, y unirlos después en un editor de vídeo tradicional."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Necesito experiencia previa en edición de vídeo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Para generar un clip suelto, no. Para montar varios clips en algo con narrativa y ritmo, sí ayuda tener nociones básicas de un editor de vídeo (cortar, ordenar, ajustar duración), porque los modelos generan material bruto, no un vídeo final montado."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Estos modelos sustituyen a un cámara o a un editor profesional?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No en producciones que requieren control preciso de actuación, iluminación real o localización concreta. Su punto fuerte es previsualización, contenido de apoyo y volumen (muchas variantes rápidas), no sustituir un rodaje donde el resultado final depende de detalles que hoy no se pueden especificar con precisión en un prompt."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Por qué el audio generado suena distinto según la escena?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "El audio se genera junto con el vídeo a partir de la misma comprensión de la escena, así que hereda la misma variabilidad: dos generaciones del mismo prompt pueden producir tonos de voz o ambientes sonoros distintos, igual que ocurre con el aspecto visual."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuál de los tres es mejor para empezar sin gastar dinero?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Si ya pagas un plan de Gemini, prueba primero Veo: la generación de vídeo suele venir incluida sin coste adicional hasta cierto límite mensual. Si no pagas nada todavía, Kling es el nivel de entrada más barato de los tres. Empezar con Runway tiene sentido cuando el control de cámara y la calidad de producción importan más que el precio. Y ojo: ChatGPT Plus ya no incluye vídeo, porque Sora está cerrado desde 2026."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo usar mi propio vídeo como punto de partida en vez de generar desde cero?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí, los tres ofrecen alguna forma de vídeo-a-vídeo: subes un clip real y el modelo lo transforma manteniendo el movimiento original pero cambiando el estilo visual, el entorno o ciertos elementos. Suele dar resultados más consistentes que generar desde cero porque el movimiento base ya es real, no inventado por el modelo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Se nota que un vídeo está generado por IA a simple vista?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Cada vez menos en clips cortos y estáticos, pero los fallos de física de fluidos, pelo y telas que mencionamos siguen siendo la pista más fiable. En escenas con movimiento complejo de varios personajes a la vez, un ojo entrenado todavía distingue el resultado generado del real la mayoría de las veces."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://eltelar.es/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Guías",
+      "item": "https://eltelar.es/index.html#guias"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Herramientas de vídeo con IA: qué puedes generar y editar hoy",
+      "item": "https://eltelar.es/articulos/video-ia-herramientas.html"
+    }
+  ]
+}
+</script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet"/></noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet"/></noscript>
+<style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><link rel="stylesheet" href="../css/tailwind.css"><link rel="stylesheet" href="../css/entrance.css?v=2"><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}(function(){var c=null;try{c=localStorage.getItem('eltelar-cookie-consent')}catch(e){}var g=c==='accepted'?'granted':'denied';gtag('consent','default',{ad_storage:g,ad_user_data:g,ad_personalization:g,analytics_storage:g,wait_for_update:500});window.adsbygoogle=window.adsbygoogle||[];if(g!=='granted'){window.adsbygoogle.requestNonPersonalizedAds=1;}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-4DPTKEG79N"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4DPTKEG79N');</script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8239907995939753" crossorigin="anonymous"></script></head><body class="bg-background font-body-md text-on-surface antialiased">
+<header class="w-full bg-surface-container-lowest border-b border-outline-variant"><div class="border-b border-outline-variant py-space-xxs px-space-md hidden md:block"><div class="max-w-site-max-width mx-auto flex items-center justify-between font-kicker text-kicker text-on-surface-variant uppercase tracking-wider"><span>EDICIÓN DIGITAL // ACTUALIZADO 2026 // EL TELAR &amp; AGENTES</span><span>MADRID · REMOTO</span><span>SIN HUMO · 100% PRODUCCIÓN</span></div></div><div class="max-w-site-max-width mx-auto px-space-md py-space-md sm:py-space-xl text-center"><p class="hidden sm:block font-kicker text-kicker uppercase tracking-widest text-on-surface-variant mb-space-xs">Publicación Independiente de Tecnología &amp; Agentes</p><a class="inline-block" href="../index.html"><div class="font-display text-display max-sm:text-[40px] max-sm:leading-none text-primary tracking-tight">El Telar</div></a><p class="hidden sm:block font-caption text-caption uppercase tracking-widest text-on-surface-variant mt-space-xs">EL BOLETÍN Y ARCHIVO PRÁCTICO DE INTELIGENCIA ARTIFICIAL Y AGENTES AUTÓNOMOS</p></div><div class="border-t border-b border-outline-variant"><div class="max-w-site-max-width mx-auto px-space-md flex items-center justify-between gap-space-sm h-14"><nav class="flex items-center gap-space-md sm:gap-space-lg h-full min-w-0 overflow-x-auto [scrollbar-width:none] whitespace-nowrap"><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../index.html#guias">GUÍAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../empieza-aqui.html">EMPIEZA AQUÍ</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../sobre-nosotros.html">SOBRE NOSOTROS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../noticias/index.html">NOTICIAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../herramientas/index.html">HERRAMIENTAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../prompts/index.html">PROMPTS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../contacto.html">CONTACTO</a></nav><div class="flex items-center gap-space-md"><button id="search-trigger" type="button" aria-label="Buscar en las guías" class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[20px]">search</span></button><a class="hidden sm:inline-block bg-primary-container text-surface px-space-md py-space-xs font-label-md text-label-md uppercase tracking-wider hover:bg-primary transition-colors" href="../index.html#despacho">SUSCRÍBETE GRATIS</a></div></div></div><div class="hidden md:block bg-surface-container-low border-b border-outline-variant py-space-xs px-space-md"><div class="max-w-site-max-width mx-auto text-center"><p class="font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">47 GUÍAS COMPLETAS EN EXPANSIÓN · ACTUALIZADO A MODELOS 2026 · PROBADO EN TERMINAL Y FLUJOS REALES · CERO HUMO NI TEORÍA VACÍA</p></div></div></header>
+<main class="w-full max-w-site-max-width mx-auto px-space-md py-space-xl"><div class="flex flex-col w-full">
+<nav class="w-full mb-space-lg">
+<ol class="flex flex-wrap items-center gap-space-xs font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">
+<li><a class="hover:text-primary transition-colors" href="../index.html">Inicio</a></li>
+<li class="text-on-surface-variant">/</li>
+<li><a class="hover:text-primary transition-colors" href="../index.html#guias">Guías</a></li>
+<li class="text-on-surface-variant">/</li>
+<li class="text-primary font-bold">Vídeo con IA</li>
+</ol>
+</nav>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-col-gap">
+<article class="lg:col-span-8 flex flex-col space-y-space-xl">
+<figure data-hero class="space-y-space-xs"><img class="w-full border border-outline-variant" src="../img/guias/hero-video-ia-herramientas.jpg" alt="Página de Veo, el modelo de vídeo de Google DeepMind" width="1280" height="720" fetchpriority="high" decoding="async"/><figcaption class="font-caption text-caption text-on-surface-variant">Captura de pantalla: <a class="underline" href="https://deepmind.google/models/veo/" rel="nofollow noopener" target="_blank">deepmind.google/models/veo</a>.</figcaption></figure>
+<header class="space-y-space-md border-b border-outline-variant pb-space-xl">
+<span class="bg-surface-container-high text-secondary border border-outline-variant px-space-xs py-space-xxs font-kicker text-kicker uppercase tracking-widest inline-block">HERRAMIENTAS // VÍDEO</span>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight leading-tight">Herramientas de vídeo con IA: qué puedes generar y editar hoy</h1>
+<p class="font-lead-paragraph text-lead-paragraph text-on-surface-variant leading-relaxed">Veo, Runway y Kling comparados sin adjetivos de marketing: cuánto duran los clips que puedes generar de verdad, dónde se rompe la coherencia entre escenas y qué flujo de trabajo real usan los equipos que ya lo integran en su producción.</p>
+<div class="pt-space-sm border-t border-outline-variant flex flex-wrap items-center justify-between gap-space-sm font-label-md text-label-md text-on-surface-variant">
+<span class="font-semibold text-on-surface">Por la Redacción de El Telar</span>
+<button class="inline-flex items-center gap-1 mt-2 px-3 py-1.5 bg-surface-container text-primary font-label-md text-[12px] font-semibold uppercase tracking-wider hover:bg-surface-container-high transition-colors" id="copy-guide-btn" type="button"><span class="material-symbols-outlined text-[16px]">content_copy</span> Copiar guía para tu IA</button><span class="inline-flex items-center gap-1 ml-1"><button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" id="save-guide-btn" title="Guardar guía" type="button"><span class="material-symbols-outlined text-[16px]">bookmark_border</span></button><button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" id="copy-link-btn" title="Copiar enlace permanente" type="button"><span class="material-symbols-outlined text-[16px]">share</span></button></span>
+<span class="flex items-center gap-1 text-caption font-caption">
+<span class="material-symbols-outlined text-[15px] text-on-surface-variant">schedule</span>
+              14 min de lectura
+            </span>
+</div>
+</header>
+<section class="prose max-w-editorial-max-width space-y-space-md">
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed">
+<span class="float-left text-primary font-display text-[68px] leading-[0.8] pr-3 pt-1 font-normal select-none">G</span>enerar vídeo con IA en 2026 ya no es la curiosidad de clips de cinco segundos con objetos que se deforman entre fotograma y fotograma. Los modelos de referencia —Veo de Google, la plataforma de Runway y Kling, de la china Kuaishou— producen clips con audio sincronizado, cámara estable y coherencia de personaje razonable durante varios segundos seguidos. La cuarta pata de esa mesa, Sora de OpenAI, ya no existe: es la primera lección de esta guía y la explicamos abajo. Pero "razonable durante varios segundos" no es lo mismo que "listo para sustituir a un rodaje real", y esa distancia entre lo que promete el vídeo de demostración y lo que obtienes en tu tercer intento es exactamente lo que esta guía intenta medir con honestidad.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Esta guía complementa la de <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="generar-imagenes-ia.html">generación de imágenes con IA</a>: muchas de las técnicas de prompt (especificidad, encuadre, iluminación) se trasladan directamente, con la capa añadida del movimiento y el tiempo, que introduce sus propios problemas específicos.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          El salto de calidad entre 2024 y 2026 ha sido más rápido en vídeo que en casi cualquier otra modalidad de IA generativa, precisamente porque partía de una base más débil: los primeros modelos públicos de vídeo generaban tres o cuatro segundos con artefactos visibles en cada fotograma. Los modelos actuales resuelven razonablemente bien la coherencia de un plano fijo o un movimiento de cámara simple; donde sigue notándose la diferencia con un rodaje real es en escenas largas, con varios personajes interactuando entre sí, o con física de fluidos y telas —el punto que desarrollamos con detalle más abajo.
+        </p>
+</section>
+<section id="sec-1" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Qué son estos modelos y por qué generar movimiento es distinto</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Un generador de vídeo hace, en esencia, lo mismo que un generador de imágenes —difusión guiada por texto— pero repetido a lo largo de decenas de fotogramas que además tienen que ser coherentes entre sí: si un personaje lleva una chaqueta roja en el fotograma diez, tiene que seguir siendo roja en el fotograma cien, y el movimiento de la cámara tiene que respetar la física básica de una cámara real (no puede teletransportarse ni cambiar de lente a media toma sin que se note). Esa coherencia temporal es el problema técnico central del vídeo generativo, y es la razón por la que estos modelos consumen mucha más potencia de cálculo que sus equivalentes de imagen fija.
+        </p>
+<figure class="my-space-lg">
+<img class="w-full border border-outline-variant" src="../img/guias/runway-video-ia.jpg" alt="Fotograma de un vídeo generado con IA mostrando una criatura fantástica emergiendo de un agujero en un paisaje desértico, con una explosión luminosa de fondo, publicado como ejemplo oficial por Runway." loading="lazy" width="1200" height="643"/>
+<figcaption class="font-caption text-caption text-on-surface-variant mt-space-xs">Fotograma de ejemplo publicado por <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="https://runway.com/product" target="_blank" rel="noopener">Runway</a> en su página oficial de producto.</figcaption>
+</figure>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Los tres modelos de referencia añaden además generación de audio sincronizado (diálogo, efectos de sonido, ambiente) directamente ligado al contenido visual, algo que hasta hace poco requería un paso de posproducción completamente aparte. Eso reduce el número de herramientas distintas que necesitas para un clip corto, aunque la calidad del audio generado sigue siendo más irregular que la del vídeo, especialmente en diálogo hablado con labios sincronizados con precisión.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Otra limitación estructural que ningún vídeo de demostración muestra: la física de fluidos, telas y pelo sigue siendo el punto más frágil de los tres modelos. Agua que se comporta de forma extraña, cabello que atraviesa un hombro en vez de rozarlo, o una prenda de ropa que cambia ligeramente de forma entre fotogramas son los fallos más comunes cuando la escena incluye estos elementos, precisamente porque son los más difíciles de simular de forma consistente fotograma a fotograma sin un motor de física real detrás. Escenas con superficies rígidas (edificios, vehículos, paisajes estáticos) tienen una tasa de acierto notablemente más alta que escenas con estos elementos fluidos.
+        </p>
+</section>
+<section id="sec-2" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Los tres modelos, comparados de frente</h2>
+<div class="overflow-x-auto">
+<table class="w-full text-left font-body-sm text-body-sm border border-outline-variant">
+<thead class="bg-surface-container-low">
+<tr><th class="p-space-sm border-b border-outline-variant">Modelo</th><th class="p-space-sm border-b border-outline-variant">Duración por clip</th><th class="p-space-sm border-b border-outline-variant">Punto fuerte</th><th class="p-space-sm border-b border-outline-variant">Dónde falla más</th></tr>
+</thead>
+<tbody>
+<tr><td class="p-space-sm border-b border-outline-variant align-top font-semibold text-primary">Veo (Google)</td><td class="p-space-sm border-b border-outline-variant align-top text-on-surface-variant">Hasta unos segundos por clip, extensible encadenando generaciones</td><td class="p-space-sm border-b border-outline-variant align-top text-on-surface-variant">Audio nativo sincronizado y buena física de cámara</td><td class="p-space-sm border-b border-outline-variant align-top text-on-surface-variant">Escenas con muchos personajes interactuando a la vez</td></tr>
+<tr><td class="p-space-sm border-b border-outline-variant align-top font-semibold text-primary">Kling (Kuaishou)</td><td class="p-space-sm border-b border-outline-variant align-top text-on-surface-variant">El más largo por generación de los tres, sin encadenar tramos</td><td class="p-space-sm border-b border-outline-variant align-top text-on-surface-variant">Movimiento y escenas con varios personajes a la vez; el más barato para empezar</td><td class="p-space-sm border-b border-outline-variant align-top text-on-surface-variant">Seguir el prompt al pie de la letra y el diálogo fuera del inglés, español incluido</td></tr>
+<tr><td class="p-space-sm border-b border-outline-variant align-top font-semibold text-primary">Runway (Gen-4 y sucesores)</td><td class="p-space-sm border-b border-outline-variant align-top text-on-surface-variant">Clips cortos, orientado a flujo de producción profesional</td><td class="p-space-sm border-b border-outline-variant align-top text-on-surface-variant">Herramientas de control de cámara y referencia de personaje más maduras</td><td class="p-space-sm border-b border-outline-variant align-top text-on-surface-variant">Precio por segundo generado, más alto que la competencia en uso intensivo</td></tr>
+</tbody>
+</table>
+</div>
+<div class="bg-surface-container-low border-l-4 border-secondary p-space-lg space-y-space-sm">
+<h3 class="font-kicker text-kicker uppercase tracking-wider text-secondary">SORA YA NO ESTÁ EN ESTA TABLA, Y ESO IMPORTA</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+            Durante dos años Sora, de OpenAI, fue el nombre con el que se explicaba el vídeo generativo al gran público. Ya no se puede usar. OpenAI anunció su cierre el 24 de marzo de 2026, apagó la aplicación y la web el 26 de abril, y desconectó la API para desarrolladores el 24 de septiembre. No nombró ningún modelo sustituto: quien había montado un producto encima tuvo que irse a otro proveedor, no a una versión nueva.
+          </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+            Las razones que se han publicado apuntan todas al mismo sitio: generar vídeo cuesta muchísimo más cómputo que generar texto o imágenes, y los ingresos no acompañaron. Es el riesgo real de esta categoría, y por eso lo ponemos antes que cualquier comparativa: si vas a montar un flujo de trabajo sobre una de estas herramientas, monta la parte tuya —guion, prompts, montaje, archivos fuente— de forma que puedas cambiar de proveedor sin rehacerlo todo. No es pesimismo: es lo que le habría ahorrado el susto a quien facturaba con la API de Sora en agosto.
+          </p>
+<p class="font-caption text-caption text-on-surface-variant">
+            Basado en el aviso de retirada de la propia OpenAI y en la cobertura de <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="https://www.axios.com/2026/03/24/openai-discontinue-sora-video-app" rel="noopener nofollow" target="_blank">Axios</a> y <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="https://the-decoder.com/openai-sets-two-stage-sora-shutdown-with-app-closing-april-2026-and-api-following-in-september/" rel="noopener nofollow" target="_blank">The Decoder</a> sobre el cierre en dos fases.
+          </p>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Ningún fabricante publica de forma prominente la tasa real de "descarta y repite" — cuántos intentos hacen falta de media hasta conseguir un clip aprovechable. Por experiencia de quienes ya lo usan en producción, esa tasa varía mucho según la complejidad de la escena: un plano fijo de un paisaje o un objeto suele salir bien a la primera o segunda vez; una escena con dos personajes hablando y gesticulando con naturalidad puede necesitar diez intentos o más antes de obtener algo usable sin cortes raros.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Todos los proveedores están además en una carrera de versiones constante: lo que hoy es cierto sobre duración máxima o coste por segundo puede cambiar en un trimestre, algo que ya vimos con los saltos de versión de <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="chatgpt-claude-gemini.html">los modelos de texto que comparamos en otra guía</a>. Trata las cifras concretas de duración y precio de esta comparación como un punto de partida orientativo, y confirma siempre los límites vigentes en la página oficial del proveedor antes de presupuestar un proyecto real con ellos.
+        </p>
+</section>
+<section id="sec-2b" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Cómo escribir un prompt de vídeo, no solo de imagen</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Todo lo que explicamos sobre sujeto, estilo y encuadre en nuestra guía de <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="generar-imagenes-ia.html#sec-3">generación de imágenes</a> sigue siendo válido aquí, pero el vídeo añade una dimensión que la imagen fija no tiene: el movimiento, tanto del sujeto como de la cámara. Describir solo la escena estática y esperar que el modelo invente un movimiento interesante por su cuenta produce, casi siempre, un plano fijo aburrido o un movimiento genérico de cámara que no aporta nada a la narrativa.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          El vocabulario que mejor funciona es, de nuevo, el de cine real: "travelling lateral lento", "zoom lento hacia el rostro", "plano cenital que desciende", "cámara en mano con ligero temblor". Los tres modelos entienden estos términos técnicos de cinematografía mucho mejor que descripciones genéricas como "cámara que se mueve de forma interesante", exactamente por la misma razón que el vocabulario fotográfico funciona en generación de imágenes: forma parte del material de entrenamiento etiquetado con precisión.
+        </p>
+<div class="bg-surface-container p-space-md border border-outline-variant my-space-md">
+<div class="flex items-center justify-between mb-space-xxs">
+<span class="font-kicker text-kicker uppercase tracking-wider text-secondary">PROMPT DÉBIL</span>
+</div>
+<p class="font-body-sm text-body-sm font-mono text-on-surface bg-surface-container-lowest p-space-xs mb-space-sm">"Un perro corriendo en un parque"</p>
+<div class="flex items-center justify-between mb-space-xxs">
+<span class="font-kicker text-kicker uppercase tracking-wider text-primary">PROMPT SÓLIDO</span>
+</div>
+<p class="font-body-sm text-body-sm font-mono text-on-surface bg-surface-container-lowest p-space-xs">"Travelling lateral que sigue a un labrador dorado corriendo por un parque al atardecer, luz cálida rasante, hierba salpicando bajo sus patas, cámara a la altura del animal"</p>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          También conviene ser explícito sobre la duración del movimiento dentro de la escena ("empieza quieto y arranca a correr a mitad del clip") y sobre lo que no debe cambiar ("el fondo permanece desenfocado durante todo el plano"), porque sin esa instrucción el modelo puede decidir por su cuenta introducir un cambio de plano o un corte que rompe la continuidad que buscabas.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Cuando el clip incluye diálogo, escribe el texto exacto entre comillas igual que recomendamos para carteles en imágenes fijas, y especifica el tono de la interpretación ("dicho con calma", "en tono de urgencia"). La sincronización labial mejora notablemente cuando la frase es corta y directa; frases largas con subordinadas complejas tienden a desincronizarse hacia el final del clip, un problema que ningún modelo de los tres resuelve todavía de forma fiable al cien por cien.
+        </p>
+</section>
+<section id="sec-3" class="space-y-space-md">
+<figure data-inline-photo class="space-y-space-xs my-space-xl"><img class="w-full border border-outline-variant" src="../img/guias/foto-video-ia-herramientas.jpg" alt="Web de Kling, generador de vídeo con IA" width="1280" height="720" loading="lazy" decoding="async"/><figcaption class="font-caption text-caption text-on-surface-variant">Captura de pantalla: <a class="underline" href="https://klingai.com/" rel="nofollow noopener" target="_blank">klingai.com</a>.</figcaption></figure>
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Cómo se integra esto en un flujo de producción real</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Nadie serio está sustituyendo un rodaje completo por vídeo generativo todavía; el uso real que está ganando tracción es más quirúrgico. Estudios de animación usan estos modelos para previsualización rápida (previs): bocetar cómo se vería una secuencia antes de invertir semanas en animarla a mano, ahorrando iteraciones caras en la fase de guion gráfico. Estudios de marketing generan variantes cortas de un mismo anuncio para probar cuál rinde mejor en redes, algo que antes exigía volver a grabar con actores cada vez que querían probar un ángulo distinto.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          El flujo típico combina generación con edición tradicional: generas varios clips cortos con el modelo de IA, los llevas a un editor de vídeo convencional para cortar, ordenar y ajustar el ritmo, y añades <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="clonar-voz-transcribir-audio-ia.html">locución o música con herramientas de audio separadas</a> cuando el audio nativo del modelo no llega al nivel necesario. Es una pieza más de la cadena de producción, no un sustituto de toda la cadena.
+        </p>
+<div class="bg-surface-container-low p-space-md my-space-md">
+<h3 class="font-kicker text-kicker uppercase tracking-wider text-primary mb-space-xs">PARA MANTENER LA COHERENCIA ENTRE VARIOS CLIPS</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+            Si necesitas que el mismo personaje aparezca en varias escenas distintas, genera primero una imagen de referencia fija de ese personaje (con un generador de imágenes) y súbela como referencia visual en cada generación de vídeo posterior, en vez de describir al personaje de nuevo con palabras cada vez. Los tres modelos aceptan una imagen de referencia y la mantienen con más fidelidad que una descripción textual repetida.
+          </p>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Un pequeño estudio de animación independiente que ya lo integra en su flujo describe el proceso así: por cada minuto final de animación tradicional, generan entre quince y veinte clips cortos de previsualización con IA para decidir encuadres, ritmo de corte y composición antes de que un animador humano dibuje un solo fotograma definitivo. Ese paso de previsualización, que antes se hacía con bocetos estáticos en un guion gráfico, ahora incluye movimiento real desde el principio, lo que reduce las correcciones tardías cuando una escena no funciona en movimiento aunque se viera bien en boceto fijo. El resultado final sigue siendo animación tradicional; lo que cambió es cuánto se decide antes de invertir las horas caras de animación manual.
+        </p>
+</section>
+<section id="sec-4" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Cuánto cuesta de verdad</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          El vídeo generativo es, con diferencia, la modalidad más cara de IA generativa por unidad de contenido: un clip corto puede costar el equivalente a decenas o cientos de imágenes generadas, porque el modelo tiene que calcular coherencia a lo largo de muchos fotogramas en vez de uno solo. Los tres proveedores cobran por segundo de vídeo generado o por créditos consumidos, con planes de suscripción mensual que incluyen una cuota fija de generación y tarifas adicionales por encima de ese límite.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          La forma más barata de probar sin comprometerte es a través de los planes generales de IA que ya podrías tener contratados: Google incluye una cuota de generación de vídeo con Veo dentro de ciertos planes de Gemini, con límites mensuales más generosos en los niveles de pago más altos. Ese atajo ya no existe en ChatGPT: con Sora apagado, pagar OpenAI no te da hoy ninguna cuota de vídeo. Runway y Kling, al ser plataformas especializadas solo en esto, tampoco tienen ese colchón de "ya lo tengo incluido" y siempre son un coste aparte, aunque el nivel de entrada de Kling es el más barato de los tres.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Esto tiene una consecuencia práctica para presupuestar un proyecto: calcula el coste por el número de intentos reales que vas a necesitar, no por el número de clips finales que quieres. Si sabes por experiencia que una escena con dos personajes hablando necesita de media ocho a diez generaciones antes de conseguir una aprovechable, multiplica el coste unitario por ese número, no por uno. Es el mismo error de cálculo que ocurre al presupuestar generación de texto sin contar las iteraciones de corrección, solo que aquí el coste por intento es mucho más alto.
+        </p>
+</section>
+<section id="sec-5" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Derechos, deepfakes y el límite que no deberías cruzar</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Todo lo que explicamos sobre derechos de autor en nuestra guía de <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="generar-imagenes-ia.html#sec-5">generación de imágenes</a> aplica igual aquí, con un riesgo adicional propio del vídeo: generar a una persona real diciendo o haciendo algo que nunca dijo ni hizo es mucho más convincente y mucho más dañino en vídeo con audio sincronizado que en una imagen estática. Los tres proveedores tienen filtros que bloquean generar el rostro de figuras públicas conocidas sin autorización, pero esos filtros no son infalibles ni cubren a personas privadas no públicas.
+        </p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-col-gap bg-surface-container-lowest p-space-lg">
+<div class="space-y-space-md pr-0 md:pr-space-md md:border-r border-outline-variant">
+<div class="flex items-center gap-space-xs pb-space-xs border-b border-outline-variant">
+<span class="material-symbols-outlined text-primary-container text-[20px]">check_circle</span>
+<h3 class="font-kicker text-kicker uppercase tracking-wider text-primary font-bold">USO RAZONABLE</h3>
+</div>
+<ul class="space-y-space-sm font-body-sm text-body-sm text-on-surface-variant">
+<li>Previsualización interna antes de un rodaje o animación real.</li>
+<li>Variantes de anuncios genéricos sin personas reales identificables.</li>
+<li>Fondos, paisajes o escenas de apoyo para un proyecto más grande.</li>
+</ul>
+</div>
+<div class="space-y-space-md pt-space-lg md:pt-0 pl-0 md:pl-space-md">
+<div class="flex items-center gap-space-xs pb-space-xs border-b border-outline-variant">
+<span class="material-symbols-outlined text-secondary text-[20px]">cancel</span>
+<h3 class="font-kicker text-kicker uppercase tracking-wider text-secondary font-bold">RIESGO REAL</h3>
+</div>
+<ul class="space-y-space-sm font-body-sm text-body-sm text-on-surface-variant">
+<li>Generar a una persona real (conocida o no) diciendo algo que no dijo.</li>
+<li>Presentar un clip generado como grabación real de un evento.</li>
+<li>Usar la voz clonada de alguien sin su consentimiento explícito.</li>
+</ul>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed pt-space-md">
+          Igual que con las imágenes, el Reglamento de IA europeo exige etiquetar como sintético cualquier vídeo generado que pueda confundirse con una grabación real, y las plataformas de vídeo más grandes ya exigen esa etiqueta al subir contenido generado por IA a partir de 2026, con sanciones que van desde la retirada del vídeo hasta la suspensión de la cuenta en caso de incumplimiento reiterado.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Si trabajas con vídeo de forma habitual —canal propio, contenido para redes, material educativo— la recomendación práctica es sencilla: usa vídeo generado libremente para escenas de apoyo, transiciones o previsualización, y sé explícito con tu audiencia cuando un fragmento concreto es sintético en vez de grabado, especialmente si el contenido tiene apariencia documental o informativa. La confianza del público es más fácil de perder de golpe por una etiqueta que faltó que de recuperar después.
+        </p>
+</section>
+</article>
+<aside class="lg:col-span-4 space-y-space-xl">
+<div class="bg-surface-container-lowest p-space-md border border-outline-variant text-center">
+<div class="w-16 h-16 mx-auto mb-space-sm flex items-center justify-center rounded-full border border-secondary text-secondary">
+<span class="material-symbols-outlined text-[32px]">movie</span>
+</div>
+<span class="font-kicker text-kicker uppercase tracking-widest text-primary block mb-space-xxs">FICHA TÉCNICA</span>
+<dl class="space-y-space-xs font-body-sm text-body-sm text-left pt-space-sm border-t border-outline-variant">
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Modelos citados:</dt><dd class="font-semibold text-primary">3</dd></div>
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Audio nativo:</dt><dd class="font-semibold text-primary">Sí, en los 3</dd></div>
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Nivel técnico:</dt><dd class="font-semibold text-primary">Cualquiera</dd></div>
+</dl>
+</div>
+<div class="bg-surface-container-low p-space-lg sticky top-space-md">
+<div class="flex items-center gap-2 font-kicker text-kicker uppercase tracking-widest text-on-surface-variant mb-space-md">
+<span class="material-symbols-outlined text-[16px]">format_list_bulleted</span>
+ÍNDICE DE LA GUÍA
+</div>
+<nav class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant">
+<a class="block hover:text-primary transition-colors" href="#sec-1">Qué son estos modelos</a>
+<a class="block hover:text-primary transition-colors" href="#sec-2">Los tres modelos comparados</a>
+<a class="block hover:text-primary transition-colors" href="#sec-2b">Cómo escribir un prompt de vídeo</a>
+<a class="block hover:text-primary transition-colors" href="#sec-3">Cómo se integra en producción</a>
+<a class="block hover:text-primary transition-colors" href="#sec-4">Cuánto cuesta de verdad</a>
+<a class="block hover:text-primary transition-colors" href="#sec-5">Derechos y deepfakes</a>
+<a class="block hover:text-primary transition-colors" href="#hyperframes">HyperFrames: vídeo con código</a>
+<a class="block hover:text-primary transition-colors" href="#voicestudio">VoiceStudio: clonar voz y doblar</a>
+</nav>
+</div>
+
+</aside>
+</div>
+<section class="space-y-space-md">
+<h2 id="hyperframes" class="font-headline-lg text-headline-lg text-primary">
+          HyperFrames: vídeos con IA escritos como una página web
+        </h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">HyperFrames es la herramienta de código abierto de HeyGen para hacer vídeos con código. El vídeo se escribe como una página web (HTML, CSS y animaciones) y HyperFrames lo convierte en un MP4. Lo interesante es que está pensado para que lo use un asistente de IA: le pides a Claude Code, Codex, Cursor o Gemini CLI un vídeo con un título animado, un gráfico y música, y él escribe la página y la renderiza.</p>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Nosotros lo usamos: el clip de títulos y gráfico animado que sale en nuestro reel lo hicimos con HyperFrames en el ordenador, y tardó unos cinco segundos en renderizar un vídeo de cuatro.</p>
+<p class="font-body-sm text-body-sm mt-space-sm"><strong class="text-on-surface">Dónde conseguirlo:</strong> <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" href="https://github.com/heygen-com/hyperframes" target="_blank" rel="noopener">heygen-com/hyperframes · oficial de HeyGen ↗</a></p>
+<p class="font-body-sm text-body-sm text-on-surface mt-space-xs"><strong>Instalarlo en Claude Code (dos comandos):</strong></p><code class="block font-mono text-body-sm bg-primary text-on-primary px-space-sm py-space-xs mt-space-xxs overflow-x-auto">claude plugin marketplace add heygen-com/hyperframes<br>claude plugin install hyperframes@hyperframes</code>
+<p class="font-body-sm text-body-sm text-on-surface mt-space-xs"><strong>O como skills para cualquier agente:</strong></p><code class="block font-mono text-body-sm bg-primary text-on-primary px-space-sm py-space-xs mt-space-xxs overflow-x-auto">npx skills add heygen-com/hyperframes</code>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Es gratis (licencia Apache 2.0) y funciona en tu ordenador; necesitas Node.js 22 o superior. Lo que pagas, si acaso, es el asistente de IA que escribe el vídeo. Para piezas cortas de redes con texto, gráficos y música funciona muy bien; para vídeo con personas reales sigue haciendo falta grabar o usar las herramientas de la guía de arriba.</p>
+</section>
+<section class="space-y-space-md">
+<h2 id="voicestudio" class="font-headline-lg text-headline-lg text-primary">
+          VoiceStudio: clona tu voz y dobla vídeos gratis, en tu ordenador
+        </h2>
+<figure class="space-y-space-xs my-space-md"><img class="w-full border border-outline-variant" src="../img/guias/voicestudio-doblaje.jpg" alt="Pantalla de doblaje de VoiceStudio: el audio original en inglés junto a la versión doblada al español" width="1080" height="672" loading="lazy" decoding="async"/><figcaption class="font-caption text-caption text-on-surface-variant">El doblaje de VoiceStudio: original en inglés y versión en español, sincronizados. Captura del <a class="underline" href="https://github.com/debpalash/VoiceStudio" rel="nofollow noopener" target="_blank">repositorio oficial</a> (licencia AGPL-3.0).</figcaption></figure>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">VoiceStudio es una aplicación de escritorio de código abierto que hace en tu ordenador lo que servicios como ElevenLabs hacen en la nube: clona una voz a partir de una grabación corta, dobla un vídeo a otro idioma con la voz sincronizada, transcribe audio, dicta y crea audiolibros. Según su documentación admite 646 idiomas, funciona sin cuentas y sin enviar tu audio a ningún servidor, y tiene más de 56.000 estrellas en GitHub.</p>
+<p class="font-body-sm text-body-sm mt-space-sm"><strong class="text-on-surface">Dónde conseguirlo:</strong> <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://github.com/debpalash/VoiceStudio">debpalash/VoiceStudio · repositorio oficial ↗</a> · <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://voicestudio.sh/">voicestudio.sh ↗</a></p>
+<p class="font-body-sm text-body-sm text-on-surface mt-space-xs"><strong>Instalarla en Mac o Linux (un comando):</strong></p><code class="block font-mono text-body-sm bg-primary text-on-primary px-space-sm py-space-xs mt-space-xxs overflow-x-auto">curl -fsSL https://voicestudio.sh/install | sh</code>
+<p class="font-body-sm text-body-sm text-on-surface mt-space-xs"><strong>En Windows (PowerShell):</strong></p><code class="block font-mono text-body-sm bg-primary text-on-primary px-space-sm py-space-xs mt-space-xxs overflow-x-auto">irm https://voicestudio.sh/install | iex</code>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">También puedes bajar el instalador (.dmg para Mac, .exe para Windows) desde la sección de <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://github.com/debpalash/VoiceStudio/releases/latest">Releases</a>; pesa unos 270 MB. Al abrir "Voice cloning" te pide instalar el modelo de voz, que se descarga una sola vez. Con un Mac de Apple Silicon o una tarjeta NVIDIA va rápido; sin tarjeta gráfica funciona en la CPU, más despacio, y necesita unos 5 GB libres. En un Mac con procesador Intel solo sirve la interfaz, conectada a otro equipo.</p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Si prefieres que lo instale tu asistente, el propio proyecto publica este prompt para Claude Code, Codex o Cursor:</p>
+<div class="bg-[#0b0d12] text-surface p-space-md my-space-md overflow-x-auto"><pre class="font-mono text-body-sm leading-relaxed whitespace-pre-wrap">Instala la app de escritorio VoiceStudio en este equipo y comprueba que funciona, siguiendo
+https://github.com/debpalash/VoiceStudio/blob/main/docs/install/agent.md</pre></div>
+<h3 class="font-headline-md text-headline-md text-primary tracking-tight">Prompts para sacarle partido</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Cambia lo que va entre corchetes. Pégalos en la IA que ya uses.</p>
+<p class="font-body-sm text-body-sm text-on-surface mt-space-xs"><strong>1. Preparar el texto para clonar tu voz</strong></p>
+<div class="bg-[#0b0d12] text-surface p-space-md my-space-md overflow-x-auto"><pre class="font-mono text-body-sm leading-relaxed whitespace-pre-wrap">Necesito grabar entre 30 y 60 segundos de mi voz para clonarla con VoiceStudio.
+Escríbeme un texto en español natural, con frases de distinta longitud, preguntas y
+exclamaciones, y números y nombres propios, para que la grabación recoja bien mi
+entonación. Tema: [tu tema]. Tono: [cercano / profesional / divertido].</pre></div>
+<p class="font-body-sm text-body-sm text-on-surface mt-space-xs"><strong>2. Traducir un guion para doblarlo</strong></p>
+<div class="bg-[#0b0d12] text-surface p-space-md my-space-md overflow-x-auto"><pre class="font-mono text-body-sm leading-relaxed whitespace-pre-wrap">Traduce este guion de [idioma] a español de España para doblar un vídeo.
+Reglas: que suene hablado, no literal; que cada frase dure parecido a la original
+(para que encaje con la imagen); sin tecnicismos innecesarios; y conserva los nombres
+de marcas y productos. Devuélvelo frase a frase, con el original al lado.
+
+[pega aquí el guion o la transcripción]</pre></div>
+<p class="font-body-sm text-body-sm text-on-surface mt-space-xs"><strong>3. Revisar el doblaje antes de publicarlo</strong></p>
+<div class="bg-[#0b0d12] text-surface p-space-md my-space-md overflow-x-auto"><pre class="font-mono text-body-sm leading-relaxed whitespace-pre-wrap">Te paso la transcripción original y la traducción de un vídeo doblado. Compáralas y
+dime: (1) frases que cambian el sentido, (2) frases demasiado largas para el tiempo
+que ocupan, (3) términos que suenan raros en español. Propón la versión corregida de
+cada una.
+
+Original: [pega]
+Traducción: [pega]</pre></div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed"><strong class="text-on-surface">Usa la clonación con cabeza.</strong> Clona solo tu propia voz o la de alguien que te haya dado permiso. Suplantar a otra persona es un abuso y, según el caso, puede ser delito. El proyecto lo recuerda en su licencia, y el doblaje automático puede equivocarse: revísalo antes de publicar. Los modelos de voz tienen cada uno su licencia, así que si vas a usarlos con fines comerciales, léela.</p>
+</section>
+<section class="mb-space-2xl">
+<h2 class="font-headline-md text-headline-md text-primary mb-space-md">Preguntas frecuentes</h2>
+<div class="space-y-space-md">
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Puedo generar un vídeo largo, de varios minutos, de una sola vez?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+No de forma directa: los tres modelos generan clips cortos por defecto. Para algo más largo, la técnica habitual es generar varios clips encadenados usando el último fotograma de uno como referencia inicial del siguiente, y unirlos después en un editor de vídeo tradicional.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Necesito experiencia previa en edición de vídeo?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Para generar un clip suelto, no. Para montar varios clips en algo con narrativa y ritmo, sí ayuda tener nociones básicas de un editor de vídeo (cortar, ordenar, ajustar duración), porque los modelos generan material bruto, no un vídeo final montado.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Estos modelos sustituyen a un cámara o a un editor profesional?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+No en producciones que requieren control preciso de actuación, iluminación real o localización concreta. Su punto fuerte es previsualización, contenido de apoyo y volumen (muchas variantes rápidas), no sustituir un rodaje donde el resultado final depende de detalles que hoy no se pueden especificar con precisión en un prompt.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Por qué el audio generado suena distinto según la escena?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+El audio se genera junto con el vídeo a partir de la misma comprensión de la escena, así que hereda la misma variabilidad: dos generaciones del mismo prompt pueden producir tonos de voz o ambientes sonoros distintos, igual que ocurre con el aspecto visual.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Cuál de los tres es mejor para empezar sin gastar dinero?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Si ya pagas un plan de Gemini, prueba primero Veo: la generación de vídeo suele venir incluida sin coste adicional hasta cierto límite mensual. Si no pagas nada todavía, Kling es el nivel de entrada más barato de los tres. Empezar con Runway tiene sentido cuando el control de cámara y la calidad de producción importan más que el precio. Y ojo: ChatGPT Plus ya no incluye vídeo, porque Sora está cerrado desde 2026.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Puedo usar mi propio vídeo como punto de partida en vez de generar desde cero?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Sí, los tres ofrecen alguna forma de vídeo-a-vídeo: subes un clip real y el modelo lo transforma manteniendo el movimiento original pero cambiando el estilo visual, el entorno o ciertos elementos. Suele dar resultados más consistentes que generar desde cero porque el movimiento base ya es real, no inventado por el modelo.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Se nota que un vídeo está generado por IA a simple vista?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Cada vez menos en clips cortos y estáticos, pero los fallos de física de fluidos, pelo y telas que mencionamos siguen siendo la pista más fiable. En escenas con movimiento complejo de varios personajes a la vez, un ojo entrenado todavía distingue el resultado generado del real la mayoría de las veces.
+</div>
+</div>
+</div>
+</section>
+<div class="bg-surface-container-low p-space-lg mb-space-2xl flex flex-col sm:flex-row items-start sm:items-center gap-space-md shadow-sm">
+<div class="w-16 h-16 bg-primary text-on-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[32px]">shield_person</span>
+</div>
+<div class="space-y-1">
+<div class="font-headline-sm text-headline-sm text-primary">Redacción El Telar</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Ningún fabricante de estas herramientas paga por aparecer en esta comparación ni revisa el contenido antes de publicarse.
+          </p>
+</div>
+</div>
+<section class="mt-space-4xl pt-space-xl border-t-2 border-primary space-y-space-lg">
+<h3 class="font-headline-md text-headline-md text-primary tracking-tight">Continúa explorando el archivo</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-col-gap"><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="generar-imagenes-ia.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-generar-imagenes-ia.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="generar-imagenes-ia.html">Cómo generar imágenes con IA: Gemini, Midjourney y ChatGPT comparados</a></h4></div></article><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="ia-redes-sociales.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-ia-redes-sociales.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="ia-redes-sociales.html">Cómo usar IA para redes sociales sin perder autenticidad</a></h4></div></article><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="mejores-asistentes-ia-no-programadores.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-mejores-asistentes-ia-no-programadores.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="mejores-asistentes-ia-no-programadores.html">Los mejores asistentes de IA para quien no programa</a></h4></div></article></div>
+</section>
+</div></main>
+<footer class="w-full bg-surface-container-low border-t border-outline-variant mt-space-4xl"><div class="max-w-site-max-width mx-auto px-space-md py-space-3xl"><div class="grid grid-cols-1 md:grid-cols-3 gap-col-gap"><div class="space-y-space-sm"><span class="font-headline-md text-headline-md text-primary">El Telar</span><p class="font-body-sm text-body-sm text-on-surface-variant">Publicación independiente de tecnología y automatización con agentes. Contenidos verificados en producción, sin patrocinios opacos ni promesas vacías.</p></div><div><h3 class="font-kicker text-kicker uppercase tracking-wider text-on-surface mb-space-md">SECCIONES</h3><ul class="space-y-space-xs font-body-sm text-body-sm"><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html#guias">Archivo de Guías</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../empieza-aqui.html">Guía para Principiantes</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../sobre-nosotros.html">Manifiesto Editorial</a></li><li class="pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html#despacho">Boletín Semanal</a></li></ul></div><div><h3 class="font-kicker text-kicker uppercase tracking-wider text-on-surface mb-space-md">CONTACTO &amp; PRENSA</h3><div class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant"><p class="font-semibold text-on-surface">contacto@eltelar.es</p><p>Síguenos: <a class="hover:text-primary underline" href="https://www.instagram.com/eltelar_es/" rel="me noopener" target="_blank">Instagram</a> · <a class="hover:text-primary underline" href="https://www.threads.com/@eltelar_es" rel="me noopener" target="_blank">Threads</a> · <a class="hover:text-primary underline" href="https://x.com/eltelar_es" rel="me noopener" target="_blank">X</a></p></div></div></div></div><div class="border-t border-outline-variant py-space-md bg-surface-container-lowest"><div class="max-w-site-max-width mx-auto px-space-md flex flex-col md:flex-row items-center justify-between gap-space-sm text-caption font-caption text-on-surface-variant"><div>© 2026 El Telar. Todos los derechos reservados. Independencia editorial garantizada.</div><div class="flex items-center gap-space-md"><a class="hover:text-on-surface transition-colors" href="../privacidad.html">Privacidad</a><a class="hover:text-on-surface transition-colors" href="../terminos.html">Términos</a><a class="hover:text-on-surface transition-colors" href="../sobre-nosotros.html">Sobre nosotros</a><a class="hover:text-on-surface transition-colors" href="../contacto.html">Contacto</a></div></div></div></footer><script defer src="../js/copy-guide.js"></script><script defer src="../js/guide-interactions.js"></script><script defer src="../js/reading-progress.js"></script><script defer src="../js/search.js?v=7"></script><script defer src="../js/entrance.js"></script><script defer src="../js/cookie-consent.js?v=4"></script></body></html>

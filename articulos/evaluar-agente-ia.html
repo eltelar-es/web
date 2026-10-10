@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Evaluar un agente de IA: cómo saber si funciona | El Telar</title>
+<meta name="description" content="Cómo montar un conjunto de pruebas que tu agente no haya visto, qué medir en cada tipo de sistema y los tres sesgos que inflan tus resultados cuando usas una IA para corregir a otra.">
+<link rel="canonical" href="https://eltelar.es/articulos/evaluar-agente-ia.html"><link rel="icon" type="image/svg+xml" href="../img/favicon.svg?v=4"><link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32.png?v=4"><link rel="apple-touch-icon" href="../img/apple-touch-icon.png?v=4"><meta name="theme-color" content="#072417"><link rel="manifest" href="../manifest.json"><link rel="alternate" type="application/rss+xml" title="El Telar" href="../feed.xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Evaluar un agente de IA: cómo saber si funciona | El Telar">
+<meta property="og:description" content="Cómo montar un conjunto de pruebas que tu agente no haya visto, qué medir en cada tipo de sistema y los tres sesgos que inflan tus resultados cuando usas una IA para corregir a otra.">
+<meta property="og:url" content="https://eltelar.es/articulos/evaluar-agente-ia.html">
+<meta property="og:site_name" content="El Telar">
+<meta property="og:locale" content="es_ES"><meta property="og:image" content="https://eltelar.es/img/og/guia-evaluar-agente-ia.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Evaluar un agente de IA: cómo saber si funciona | El Telar">
+<meta name="twitter:description" content="Cómo montar un conjunto de pruebas que tu agente no haya visto, qué medir en cada tipo de sistema y los tres sesgos que inflan tus resultados cuando usas una IA para corregir a otra."><meta name="twitter:image" content="https://eltelar.es/img/og/guia-evaluar-agente-ia.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Cómo saber si tu agente de IA funciona de verdad",
+  "description": "Cómo montar un conjunto de pruebas que tu agente no haya visto, qué medir en cada tipo de sistema y los tres sesgos que inflan tus resultados cuando usas una IA para corregir a otra.",
+  "image": "https://eltelar.es/img/og/guia-evaluar-agente-ia.jpg",
+  "author": {
+    "@type": "Organization",
+    "name": "El Telar",
+    "url": "https://eltelar.es/sobre-nosotros.html"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "El Telar"
+  },
+  "datePublished": "2026-10-07",
+  "dateModified": "2026-10-07",
+  "mainEntityOfPage": "https://eltelar.es/articulos/evaluar-agente-ia.html",
+  "inLanguage": "es"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Cuántos casos de prueba necesito como mínimo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Entre 30 y 50 casos reales ya te enseñan la mayor parte de lo que vas a ver, y es una cantidad que se corrige a mano en una tarde. Lo que decide la calidad no es el número sino la composición: si los 50 son casos normales, valen menos que 20 bien elegidos donde la mitad sean entradas ambiguas, documentos mal escaneados y preguntas cuya respuesta no existe en tu documentación. Crece el conjunto cuando aparezca un fallo nuevo en producción, añadiendo ese caso concreto; así el examen va cubriendo justo lo que te ha costado dinero."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Me puedo fiar de los benchmarks públicos para elegir modelo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Para descartar, sí; para decidir, no. Sirven para saber qué modelos están en la liga que te interesa, y poco más, por dos motivos. El primero es la contaminación: las preguntas de los exámenes públicos acaban en los datos de entrenamiento de los modelos siguientes, así que parte de la nota mide memoria y no capacidad — por eso la comprobación limpia consiste en escribir un examen gemelo nuevo y ver si la puntuación aguanta. El segundo es que esos exámenes miden tareas genéricas, y tu caso no lo es. Un modelo que puntúa algo peor en abstracto puede ser bastante mejor leyendo tus facturas. La decisión se toma pasando tu propio conjunto de casos a dos o tres candidatos, que además es barato."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo usar un modelo para corregir a otro y fiarme del resultado?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Con tres cautelas, porque tiene sesgos medidos. Favorece a la respuesta que ve primero (cambia el orden y el veredicto puede cambiar), prefiere las respuestas largas aunque digan lo mismo, y tiende a puntuar mejor su propio texto que el de otro modelo. Las cautelas: pásale cada comparación dos veces con el orden invertido y quédate con los casos en que coincide consigo mismo; no uses de juez al modelo que generó la respuesta; y haz preguntas cerradas y comprobables en vez de pedir una nota del 1 al 10. Aun así, revisa a mano una muestra para comprobar que el juez coincide contigo. Vale para seguir tendencias con mucho volumen, no para decidir si algo sale publicado."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Mi agente funcionaba y ha empezado a fallar sin que yo tocara nada. ¿Qué ha pasado?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Casi siempre es una de tres. La versión del modelo ha cambiado: los proveedores actualizan y retiran versiones, y el comportamiento se mueve aunque sea para mejor. Los documentos de los que bebe el agente han cambiado: alguien actualizó una página o subió un PDF que contradice al anterior. O ha cambiado lo que le llega: entradas de un tipo que antes no recibías. Se distinguen rápido si guardaste los resultados anteriores con fecha y versión del modelo, que es justo para lo que sirve la prueba de regresión. Si no los guardaste, el atajo es pasar hoy el conjunto de casos y mirar si lo que falla es un tipo concreto de caso (apunta a los datos) o todo un poco (apunta al modelo)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Necesito una herramienta de evaluación o me vale una hoja de cálculo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Empieza con la hoja de cálculo: entrada, respuesta esperada, respuesta obtenida y una columna de bien/mal. Resuelve el 90% del problema y la entiende todo el equipo, que importa más de lo que parece. Las plataformas específicas — promptfoo, Langfuse y otras, varias con versión de código abierto — aportan tres cosas que la hoja no hace: repetir cada caso varias veces para ver si el resultado es estable, guardar el histórico para comparar entre versiones, y avisarte cuando algo que funcionaba deja de hacerlo. Da el salto cuando pasar el conjunto a mano te dé pereza, porque es justo entonces cuando dejarás de hacerlo."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://eltelar.es/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Guías",
+      "item": "https://eltelar.es/index.html#guias"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Cómo saber si tu agente de IA funciona de verdad",
+      "item": "https://eltelar.es/articulos/evaluar-agente-ia.html"
+    }
+  ]
+}
+</script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet"/></noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet"/></noscript>
+<style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><link rel="stylesheet" href="../css/tailwind.css"><link rel="stylesheet" href="../css/entrance.css?v=2"><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}(function(){var c=null;try{c=localStorage.getItem('eltelar-cookie-consent')}catch(e){}var g=c==='accepted'?'granted':'denied';gtag('consent','default',{ad_storage:g,ad_user_data:g,ad_personalization:g,analytics_storage:g,wait_for_update:500});window.adsbygoogle=window.adsbygoogle||[];if(g!=='granted'){window.adsbygoogle.requestNonPersonalizedAds=1;}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-4DPTKEG79N"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4DPTKEG79N');</script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8239907995939753" crossorigin="anonymous"></script></head><body class="bg-background font-body-md text-on-surface antialiased">
+<header class="w-full bg-surface-container-lowest border-b border-outline-variant"><div class="border-b border-outline-variant py-space-xxs px-space-md hidden md:block"><div class="max-w-site-max-width mx-auto flex items-center justify-between font-kicker text-kicker text-on-surface-variant uppercase tracking-wider"><span>EDICIÓN DIGITAL // ACTUALIZADO 2026 // EL TELAR &amp; AGENTES</span><span>MADRID · REMOTO</span><span>SIN HUMO · 100% PRODUCCIÓN</span></div></div><div class="max-w-site-max-width mx-auto px-space-md py-space-md sm:py-space-xl text-center"><p class="hidden sm:block font-kicker text-kicker uppercase tracking-widest text-on-surface-variant mb-space-xs">Publicación Independiente de Tecnología &amp; Agentes</p><a class="inline-block" href="../index.html"><div class="font-display text-display max-sm:text-[40px] max-sm:leading-none text-primary tracking-tight">El Telar</div></a><p class="hidden sm:block font-caption text-caption uppercase tracking-widest text-on-surface-variant mt-space-xs">EL BOLETÍN Y ARCHIVO PRÁCTICO DE INTELIGENCIA ARTIFICIAL Y AGENTES AUTÓNOMOS</p></div><div class="border-t border-b border-outline-variant"><div class="max-w-site-max-width mx-auto px-space-md flex items-center justify-between gap-space-sm h-14"><nav class="flex items-center gap-space-md sm:gap-space-lg h-full min-w-0 overflow-x-auto [scrollbar-width:none] whitespace-nowrap"><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../index.html#guias">GUÍAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../empieza-aqui.html">EMPIEZA AQUÍ</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../sobre-nosotros.html">SOBRE NOSOTROS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../noticias/index.html">NOTICIAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../herramientas/index.html">HERRAMIENTAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../prompts/index.html">PROMPTS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../contacto.html">CONTACTO</a></nav><div class="flex items-center gap-space-md"><button id="search-trigger" type="button" aria-label="Buscar en las guías" class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[20px]">search</span></button><a class="hidden sm:inline-block bg-primary-container text-surface px-space-md py-space-xs font-label-md text-label-md uppercase tracking-wider hover:bg-primary transition-colors" href="../index.html#despacho">SUSCRÍBETE GRATIS</a></div></div></div><div class="hidden md:block bg-surface-container-low border-b border-outline-variant py-space-xs px-space-md"><div class="max-w-site-max-width mx-auto text-center"><p class="font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">47 GUÍAS COMPLETAS EN EXPANSIÓN · ACTUALIZADO A MODELOS 2026 · PROBADO EN TERMINAL Y FLUJOS REALES · CERO HUMO NI TEORÍA VACÍA</p></div></div></header>
+<main class="w-full max-w-site-max-width mx-auto px-space-md py-space-xl"><div class="flex flex-col w-full">
+<nav class="w-full mb-space-lg">
+<ol class="flex flex-wrap items-center gap-space-xs font-kicker text-kicker text-on-surface-variant uppercase tracking-wider">
+<li><a class="hover:text-primary transition-colors" href="../index.html">Inicio</a></li>
+<li class="text-on-surface-variant">/</li>
+<li><a class="hover:text-primary transition-colors" href="../index.html#guias">Guías</a></li>
+<li class="text-on-surface-variant">/</li>
+<li class="text-primary font-bold truncate max-w-[280px] sm:max-w-md">Evaluar un agente de IA</li>
+</ol>
+</nav>
+<header class="w-full pb-space-xl mb-space-2xl">
+<div class="flex flex-wrap items-center gap-space-xs mb-space-md">
+<span class="bg-surface-container-high text-secondary px-space-sm py-1 font-kicker text-kicker uppercase tracking-widest">AGENTES // EVALUACIÓN</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight max-w-editorial-max mb-space-md">
+          Cómo saber si tu agente de IA funciona de verdad
+        </h1>
+<p class="font-lead-paragraph text-lead-paragraph text-on-surface-variant max-w-editorial-max leading-relaxed mb-space-lg">
+          Lo montaste, lo probaste, funcionó. Eso no es una prueba: es una anécdota. Esta guía va de montar el examen que tu agente no ha visto antes — el único que te dice algo — y de los tres sesgos que hacen que tus números salgan mejores de lo que son.
+        </p>
+<div class="bg-surface-container-lowest p-space-md flex flex-wrap items-center justify-between gap-y-3 shadow-sm">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 bg-primary text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">fact_check</span>
+</div>
+<div>
+<div class="font-label-md text-label-md text-on-surface font-semibold">Por la Redacción de El Telar</div><div class="font-caption text-caption text-on-surface-variant">Guías prácticas de IA y agentes, probadas en flujos de trabajo reales antes de publicarlas.</div>
+<button class="inline-flex items-center gap-1 mt-2 px-3 py-1.5 bg-surface-container text-primary font-label-md text-[12px] font-semibold uppercase tracking-wider hover:bg-surface-container-high transition-colors" id="copy-guide-btn" type="button"><span class="material-symbols-outlined text-[16px]">content_copy</span> Copiar guía para tu IA</button><span class="inline-flex items-center gap-1 ml-1"><button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" id="save-guide-btn" title="Guardar guía" type="button"><span class="material-symbols-outlined text-[16px]">bookmark_border</span></button><button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" id="copy-link-btn" title="Copiar enlace permanente" type="button"><span class="material-symbols-outlined text-[16px]">share</span></button></span>
+</div>
+</div>
+<div class="flex items-center gap-space-lg text-on-surface-variant font-caption text-caption uppercase tracking-wider">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">schedule</span> 17 min de lectura</span>
+</div>
+</div>
+</header>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-col-gap">
+<article class="lg:col-span-8 flex flex-col space-y-space-xl">
+<figure data-hero class="space-y-space-xs"><img class="w-full border border-outline-variant" src="../img/guias/hero-evaluar-agente-ia.jpg" alt="Web de Promptfoo, herramienta de pruebas automatizadas para agentes de IA" width="1280" height="720" fetchpriority="high" decoding="async"/><figcaption class="font-caption text-caption text-on-surface-variant">Captura de pantalla: <a class="underline" href="https://www.promptfoo.dev/" rel="nofollow noopener" target="_blank">promptfoo.dev</a>.</figcaption></figure>
+<div class="relative bg-surface-container-lowest p-space-lg shadow-sm">
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed text-justify">
+<span class="float-left font-display text-primary text-6xl leading-none pr-3 pt-1 font-normal">H</span>
+          ay un problema conocido en la evaluación de modelos de lenguaje que explica mejor que ningún consejo por qué tus pruebas caseras salen tan bien: se llama contaminación de <em>benchmarks</em>. Las preguntas de los exámenes públicos con los que se mide a los modelos — y a veces también sus respuestas — acaban dentro de los datos con los que se entrenan los modelos siguientes. Cuando después les pasas ese examen, no están razonando: están reconociendo un texto que ya habían visto.
+        </p>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          La nota sube, la capacidad no. Los laboratorios lo saben y lo intentan medir: OpenAI describió para GPT-3 un filtro de solapamiento de 13 palabras seguidas entre el examen y los datos de entrenamiento, y para GPT-4 lo subió a 40. Aun así, el método falla en cuanto alguien reformula la pregunta. La comprobación que de verdad funciona es otra, y es la que te interesa a ti: <strong>construir un examen nuevo, de dificultad parecida, y comparar</strong>. Si el modelo puntúa mucho mejor en el viejo que en el gemelo recién escrito, la diferencia es memoria, no habilidad. De ahí sale la única idea importante de esta guía, y conviene decirla antes que nada: el único examen que mide algo es el que tu sistema no ha visto nunca. Si lo has publicado, si se lo has enseñado al modelo mientras ajustabas el <em>prompt</em>, o si lo escribiste imaginando lo que el agente haría, ya no mide. Esta guía va de montar ese examen, pasarlo con cierta disciplina y leerlo sin engañarte.
+        </p>
+<section class="space-y-space-md">
+<h2 id="sec-1" class="font-headline-lg text-headline-lg text-primary">
+        1. Por qué la demo siempre sale bien
+      </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Cuando pruebas algo que acabas de construir, no eliges los casos al azar: eliges los que tenías en la cabeza mientras lo construías. Son los mismos que guiaron el diseño, así que el sistema está hecho a su medida. Por eso la demo sale bien — y por eso no significa nada. El examen y el temario los has escrito tú, el mismo día, con la misma idea de lo que el agente debía hacer.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Hay un segundo efecto que agrava el primero, y es el que pilla a casi todo el mundo: <strong>los fallos de un modelo no se reparten de forma uniforme</strong>. No se equivoca un 5% de las veces en cualquier pregunta. Acierta casi siempre en lo frecuente y se concentra en lo raro: la pregunta mal escrita, el documento con dos versiones, el caso que no estaba previsto, la factura con el sello encima del importe. Como esos casos son por definición los que no se te ocurrieron, son también los que no están en tu prueba. El resultado es un sistema que marca un 95% en tu hoja y falla justo en lo que justificaba montarlo.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Y hay un tercero, menos comentado: probar a mano es probar una vez. Un modelo de lenguaje no da la misma respuesta dos veces necesariamente. Si lanzas una pregunta, sale bien y pasas a la siguiente, no has medido si funciona: has medido que funcionó esa vez. La diferencia entre «funciona» y «funcionó una vez» es exactamente lo que separa una demo de un sistema en producción, y solo se ve repitiendo.
+        </p>
+</section>
+<section class="space-y-space-md">
+<h2 id="sec-2" class="font-headline-lg text-headline-lg text-primary">
+        2. Antes de medir nada: escribe qué significa fallar
+      </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          «Que funcione bien» no es medible, y mientras siga sin estarlo cualquier número que saques será decorativo. El paso que ahorra más tiempo es el más aburrido: escribir, en una frase por caso, qué cuenta como fallo <em>en tu sistema concreto</em>. No fallo en abstracto — fallo aquí.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          La clave es que no todos los fallos valen lo mismo, y tratarlos igual te lleva a optimizar lo que no importa. Un asistente que dice «no lo sé» cuando sí había respuesta te molesta. Ese mismo asistente inventando una política de devoluciones delante de un cliente te puede costar una reclamación. Los dos son «un fallo» y cuentan igual en un porcentaje de aciertos, pero uno cuesta cien veces más que el otro. Antes de contar nada, sepáralos en dos categorías y acepta la asimetría: casi siempre vas a querer un sistema que se calle de más antes que uno que rellene de menos.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Para un agente que además <em>actúa</em> — envía correos, modifica una hoja, llama a una API — la lista tiene una categoría propia que no existe en un chat: las acciones irreversibles. Ahí el fallo no es «respondió mal», es «hizo algo que no se puede deshacer». Conviene escribirlas aparte y por su nombre: envió un correo a un cliente, borró una fila, hizo un pago, publicó algo. Si tu sistema puede hacer alguna de ellas, esa lista es la parte más importante de tu evaluación, aunque sean cinco casos de cincuenta.
+        </p>
+</section>
+<section class="space-y-space-md">
+<h2 id="sec-3" class="font-headline-lg text-headline-lg text-primary">
+        3. El conjunto de casos: 30 reales valen más que 1.000 inventados
+      </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          A esto se le llama <em>conjunto de evaluación</em>, y es sencillamente una lista de entradas con el resultado que esperas de cada una. No necesitas miles. Con 30 o 50 casos bien elegidos ya ves casi todo lo que vas a ver; lo que decide la calidad no es el tamaño, es de dónde salen.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          <strong>Sácalos de lo que ya ha pasado, no de tu imaginación.</strong> Correos reales que recibiste, tickets antiguos, documentos que de verdad circulan por tu negocio, las preguntas que la gente hace por teléfono. Si todavía no tienes historial, el sustituto menos malo es pedirle a otra persona del equipo que escriba los casos sin mirar cómo has montado el agente. La contaminación que te importa a esta escala no es la del entrenamiento del modelo: es que el examen lo escriba quien hizo el temario.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          <strong>Mete a propósito lo que sabes que va mal.</strong> Un conjunto compuesto solo de casos normales no sirve. Hace falta, con nombres y apellidos: entradas ambiguas, documentos mal escaneados, preguntas cuya respuesta no está en ninguna parte (para comprobar que dice que no lo sabe), casos con dos respuestas posibles, textos en otro idioma si te pueden llegar, y entradas que intentan colar instrucciones al agente — eso último es <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="prompt-injection-agentes-ia.html">prompt injection</a>, y si tu agente lee contenido que no has escrito tú, debe estar en tu examen.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          <strong>Congélalo y guárdalo aparte.</strong> En cuanto empieces a ajustar el <em>prompt</em> mirando los fallos, el conjunto se gasta: estarás afinando el sistema contra esos casos concretos, que es la versión doméstica de la contaminación del principio. La solución estándar es partirlo en dos desde el primer día: un grupo que usas para corregir y otro que no tocas y solo pasas al final. Si solo vas a mantener uno, que sea el segundo.
+        </p>
+<figure data-inline-photo class="space-y-space-xs my-space-xl"><img class="w-full border border-outline-variant" src="../img/guias/foto-evaluar-agente-ia.jpg" alt="Web de Langfuse, plataforma de código abierto para evaluación y observabilidad de agentes de IA" width="1280" height="720" loading="lazy" decoding="async"/><figcaption class="font-caption text-caption text-on-surface-variant">Captura de pantalla: <a class="underline" href="https://langfuse.com/" rel="nofollow noopener" target="_blank">langfuse.com</a>.</figcaption></figure>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Para empezar no necesitas ninguna herramienta: una hoja de cálculo con tres columnas — entrada, respuesta esperada, respuesta obtenida — hace el trabajo y tiene la ventaja de que la entiende todo el equipo. Las plataformas de la captura (<em>promptfoo</em>, <em>Langfuse</em> y similares, varias con versión de código abierto) resuelven lo que la hoja no: repetir cada caso varias veces, guardar el histórico y avisarte cuando algo que funcionaba deja de funcionar. Merecen la pena cuando ya tienes un conjunto de casos que vale algo. Antes, no: la herramienta no sustituye al examen, solo lo corrige más rápido.
+        </p>
+</section>
+<section class="space-y-space-md">
+<h2 id="sec-4" class="font-headline-lg text-headline-lg text-primary">
+        4. Qué medir, según lo que hayas montado
+      </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          No hay una métrica buena para todo. Lo que se mide depende de la forma de la salida, y la mayoría de sistemas caen en uno de estos cuatro cajones.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          <strong>Extracción de datos</strong> — facturas, formularios, documentos. Es el caso fácil y el que más gente mide mal: no puntúes el documento entero como acierto o fallo, puntúa campo a campo. Un albarán con nueve campos bien y el importe mal no es «90% correcto», es un albarán inservible. Mide cada campo por separado y vigila especialmente los numéricos y las fechas. Lo desarrollamos en la guía de <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="analizar-imagenes-pdf-ia.html">analizar imágenes y PDFs con IA</a>.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          <strong>Preguntas sobre tus documentos</strong> — el caso de un bot de soporte o un buscador interno. Aquí la métrica útil no es si la respuesta «suena bien», sino tres comprobaciones separadas: si la fuente recuperada era la correcta, si lo que afirma la respuesta está efectivamente en esa fuente, y si dijo «no lo sé» cuando la respuesta no estaba. La tercera es la que casi nadie mide y la que más disgustos ahorra: si tu conjunto no incluye preguntas sin respuesta posible, no estás midiendo nada de eso. Está desarrollado en <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="bot-atencion-cliente-ia.html">cómo montar un bot que no invente</a> y en <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="grounding-evitar-alucinaciones.html">grounding</a>.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          <strong>Clasificar o decidir</strong> — ordenar correos, marcar prioridades, decidir si algo pasa a revisión. Es el cajón donde el porcentaje de aciertos engaña más. Si el 95% de tus correos no son urgentes, un sistema que conteste «no urgente» siempre acierta el 95%: parece bueno y no sirve para nada. Lo que hay que mirar son los dos errores por separado — cuántos urgentes se le escapan y cuántos no urgentes marca como urgentes — porque casi nunca cuestan lo mismo.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          <strong>Agentes que ejecutan pasos</strong> — el caso más difícil de medir, porque no hay una respuesta correcta única: hay varios caminos válidos. Medir el texto final no te dice si el camino fue razonable. Lo que funciona es puntuar tres cosas distintas: si llegó al resultado, cuántos pasos necesitó (un agente que acierta en treinta llamadas te va a costar dinero y tiempo) y, sobre todo, si hizo alguna de las acciones irreversibles de tu lista sin que tocara. Si has repartido el trabajo entre varios agentes, mide también cada uno por separado: cuando falla el conjunto, el porcentaje global no te dice cuál de ellos lo rompió — lo comentamos en <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="varios-agentes-ia-o-uno.html">varios agentes o uno solo</a>.
+        </p>
+</section>
+<section class="space-y-space-md">
+<h2 id="sec-5" class="font-headline-lg text-headline-lg text-primary">
+        5. Usar una IA para corregir a otra: cuándo vale y cuándo te engaña
+      </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Corregir cincuenta respuestas largas a mano cansa, y la salida evidente es pedirle a un modelo que puntúe las respuestas de otro. Se le llama <em>LLM-as-a-judge</em> y funciona razonablemente para algunas cosas, pero tiene sesgos documentados que conviene conocer antes de fiarte de un número que ha salido de ahí. Hay literatura abundante midiéndolos, y los tres principales son estos.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          <strong>Sesgo de posición.</strong> Cuando le pides que compare dos respuestas, tiende a favorecer a la que ve primero. Varios trabajos lo han comprobado de la forma más simple posible: cambiando el orden de las dos candidatas, el veredicto cambia. <strong>Sesgo de verbosidad.</strong> Prefiere la respuesta más larga y detallada aunque diga lo mismo; se mide poniéndole delante una versión más palabrera pero equivalente y viendo que la puntúa mejor. <strong>Sesgo de autopreferencia.</strong> Un modelo tiende a puntuar mejor su propio texto que el de otros. La explicación que se le da en la investigación no es vanidad: los modelos puntúan más alto los textos que les resultan más predecibles, y el suyo propio lo es por construcción.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Nada de esto lo invalida; lo acota. Cuatro medidas lo dejan utilizable. Pásale cada comparación dos veces con el orden invertido y quédate solo con los casos en que el veredicto coincide. No uses como juez al mismo modelo que generó la respuesta. Pregúntale cosas comprobables y cerradas («¿esta afirmación aparece en este documento, sí o no?») en vez de pedirle una nota del 1 al 10, que es donde los sesgos tienen sitio para actuar. Y corrige tú a mano una muestra de veinte casos para ver si el juez coincide contigo: si no coincide, el problema no está en el agente, está en el corrector.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          La regla práctica: un modelo juez vale para vigilar tendencias y para filtrar mucho volumen, no para decidir si algo se publica. Para lo que de verdad importa — las acciones irreversibles, los casos límite de tu lista — se corrige a mano. Son pocos, por eso los escribiste aparte.
+        </p>
+</section>
+<section class="space-y-space-md">
+<h2 id="sec-6" class="font-headline-lg text-headline-lg text-primary">
+        6. La prueba de regresión: el paso que casi nadie da
+      </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Casi todo el mundo que evalúa un agente lo hace una vez, el día que lo monta. Y la evaluación de un solo día tiene un valor limitado, porque lo que mide caduca. Hay tres cosas que cambian debajo de tus pies.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          La primera eres tú: cada vez que retocas una instrucción para arreglar un caso, puedes romper otro que ya funcionaba. Es el fallo más frecuente y el más invisible, porque nadie vuelve a probar lo que ya daba por bueno. La segunda son tus documentos: si el agente responde a partir de una base que alguien actualiza, la misma pregunta puede empezar a dar otra respuesta sin que hayas tocado nada. Y la tercera es el modelo. Las versiones se actualizan, los proveedores retiran las antiguas y el comportamiento cambia — a veces a mejor, y aun así cambia. Basta mirar el ritmo de lanzamientos y retiradas de <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="../noticias/lo-ultimo-en-ia.html">los últimos meses</a> para ver que esto no es una hipótesis.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          La respuesta a las tres es la misma y es sencilla: el conjunto de casos se vuelve a pasar entero cada vez que cambia algo, y se guarda el resultado con la fecha y la versión del modelo. Eso es una prueba de regresión, y el nombre importa poco; lo que importa es que compares con la vez anterior en vez de mirar el número de hoy a solas. Un 88% no significa nada. Un 88% cuando la semana pasada era un 94% y lo único que has tocado es una frase del <em>prompt</em> te está diciendo exactamente dónde mirar.
+        </p>
+</section>
+<section class="space-y-space-md">
+<h2 id="sec-7" class="font-headline-lg text-headline-lg text-primary">
+        7. Lo que no cabe en el porcentaje
+      </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Un sistema puede acertar mucho y aun así no servir. Hay cuatro cosas que no salen en la tasa de aciertos y deciden igual si esto se queda o se apaga.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          <strong>Lo que cuesta.</strong> Mide el coste por caso resuelto, no por llamada. Un agente que acierta más porque hace diez consultas en vez de dos puede salirte peor que uno algo menos preciso. Tenemos una <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="../herramientas/calculadora-coste-api.html">calculadora de coste de API</a> para hacer esa cuenta. <strong>Lo que tarda.</strong> Mira el caso lento, no la media: si uno de cada veinte tarda cuarenta segundos, eso es lo que va a definir la experiencia de quien lo use, no el promedio. <strong>Cuántas veces acaba en una persona.</strong> No es un fracaso — en muchos diseños es el comportamiento correcto — pero es el número que convierte la evaluación en horas de trabajo reales. <strong>Y si alguien lo usa.</strong> Un asistente interno con una precisión excelente que el equipo ha dejado de abrir tiene una tasa de acierto perfecta y un valor de cero.
+        </p>
+</section>
+<section class="space-y-space-md">
+<h2 id="sec-8" class="font-headline-lg text-headline-lg text-primary">
+        8. Y cuando ya está en producción
+      </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          El conjunto de casos te dice cómo se porta con lo que previste. Producción te enseña lo que no previste, y hay tres señales baratas que no exigen leerse nada entero.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          La primera son las correcciones que te regala el usuario: cuando alguien repite la pregunta, la reformula o escribe «eso no es correcto», te está marcando un fallo gratis. Recoger esas conversaciones es la fuente de casos nuevos más barata que vas a encontrar, y además son casos reales por definición. La segunda son las respuestas sin fuente: si tu sistema debe citar un documento, las respuestas que no citan ninguno son sospechosas sin necesidad de leerlas. La tercera es la deriva silenciosa: vigila la proporción de «no lo sé» y la longitud media de las respuestas. Si cualquiera de las dos se mueve de golpe sin que hayas tocado nada, algo ha cambiado por debajo — casi siempre el modelo o los documentos.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Leer transcripciones al azar, que es lo que casi todo el mundo hace, es el método menos eficaz de los cuatro. Las respuestas inventadas se leen igual de bien que las correctas: por eso hay que buscarlas por señales indirectas y no por lectura.
+        </p>
+</section>
+<section class="space-y-space-md">
+<h2 id="sec-9" class="font-headline-lg text-headline-lg text-primary">
+        9. Cuándo no hace falta nada de esto
+      </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Montar una evaluación cuesta tiempo, y no siempre compensa. Si eres tú solo usando un chat para redactar borradores que revisas antes de enviar, no necesitas un conjunto de casos: tú eres la evaluación, caso por caso, y el error se queda en tu pantalla. La pregunta que decide es quién ve la salida antes que una persona.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          En cuanto la respuesta llega a un cliente sin que nadie la lea, o el agente hace algo por su cuenta, o lo va a usar un equipo entero y no solo quien lo montó, la cuenta cambia: treinta casos bien elegidos son más baratos que una reclamación. Y si no estás en ninguno de esos supuestos, el consejo honesto es el contrario al que esperarías de una guía sobre evaluar: no montes el aparato de medición todavía. Guarda los casos raros según te vayan apareciendo, en una hoja, sin más ceremonia. Cuando llegue el momento de evaluar en serio, ese archivo será lo más valioso que tengas — y es justo lo que nadie tiene cuando le hace falta.
+        </p>
+</section>
+<section class="space-y-space-md">
+<h2 id="sec-faq" class="font-headline-lg text-headline-lg text-primary">
+        Preguntas frecuentes
+      </h2>
+<div class="space-y-space-md">
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Cuántos casos de prueba necesito como mínimo?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Entre 30 y 50 casos reales ya te enseñan la mayor parte de lo que vas a ver, y es una cantidad que se corrige a mano en una tarde. Lo que decide la calidad no es el número sino la composición: si los 50 son casos normales, valen menos que 20 bien elegidos donde la mitad sean entradas ambiguas, documentos mal escaneados y preguntas cuya respuesta no existe en tu documentación. Crece el conjunto cuando aparezca un fallo nuevo en producción, añadiendo ese caso concreto; así el examen va cubriendo justo lo que te ha costado dinero.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Me puedo fiar de los benchmarks públicos para elegir modelo?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Para descartar, sí; para decidir, no. Sirven para saber qué modelos están en la liga que te interesa, y poco más, por dos motivos. El primero es la contaminación: las preguntas de los exámenes públicos acaban en los datos de entrenamiento de los modelos siguientes, así que parte de la nota mide memoria y no capacidad — por eso la comprobación limpia consiste en escribir un examen gemelo nuevo y ver si la puntuación aguanta. El segundo es que esos exámenes miden tareas genéricas, y tu caso no lo es. Un modelo que puntúa algo peor en abstracto puede ser bastante mejor leyendo tus facturas. La decisión se toma pasando tu propio conjunto de casos a dos o tres candidatos, que además es barato.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Puedo usar un modelo para corregir a otro y fiarme del resultado?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Con tres cautelas, porque tiene sesgos medidos. Favorece a la respuesta que ve primero (cambia el orden y el veredicto puede cambiar), prefiere las respuestas largas aunque digan lo mismo, y tiende a puntuar mejor su propio texto que el de otro modelo. Las cautelas: pásale cada comparación dos veces con el orden invertido y quédate con los casos en que coincide consigo mismo; no uses de juez al modelo que generó la respuesta; y haz preguntas cerradas y comprobables en vez de pedir una nota del 1 al 10. Aun así, revisa a mano una muestra para comprobar que el juez coincide contigo. Vale para seguir tendencias con mucho volumen, no para decidir si algo sale publicado.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">Mi agente funcionaba y ha empezado a fallar sin que yo tocara nada. ¿Qué ha pasado?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Casi siempre es una de tres. La versión del modelo ha cambiado: los proveedores actualizan y retiran versiones, y el comportamiento se mueve aunque sea para mejor. Los documentos de los que bebe el agente han cambiado: alguien actualizó una página o subió un PDF que contradice al anterior. O ha cambiado lo que le llega: entradas de un tipo que antes no recibías. Se distinguen rápido si guardaste los resultados anteriores con fecha y versión del modelo, que es justo para lo que sirve la prueba de regresión. Si no los guardaste, el atajo es pasar hoy el conjunto de casos y mirar si lo que falla es un tipo concreto de caso (apunta a los datos) o todo un poco (apunta al modelo).
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Necesito una herramienta de evaluación o me vale una hoja de cálculo?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Empieza con la hoja de cálculo: entrada, respuesta esperada, respuesta obtenida y una columna de bien/mal. Resuelve el 90% del problema y la entiende todo el equipo, que importa más de lo que parece. Las plataformas específicas — promptfoo, Langfuse y otras, varias con versión de código abierto — aportan tres cosas que la hoja no hace: repetir cada caso varias veces para ver si el resultado es estable, guardar el histórico para comparar entre versiones, y avisarte cuando algo que funcionaba deja de hacerlo. Da el salto cuando pasar el conjunto a mano te dé pereza, porque es justo entonces cuando dejarás de hacerlo.
+</div>
+</div>
+</div>
+</section>
+</article>
+<aside class="lg:col-span-4 flex flex-col space-y-space-xl">
+<div class="bg-surface-container-lowest p-space-lg shadow-sm sticky top-space-md">
+<div class="flex items-center justify-between mb-space-sm pb-space-xs">
+<span class="font-kicker text-kicker uppercase tracking-widest text-primary font-bold">ÍNDICE DE LA GUÍA</span>
+<span class="material-symbols-outlined text-on-surface-variant text-base">format_list_bulleted</span>
+</div>
+<nav class="space-y-space-xs font-body-sm text-body-sm">
+<a class="block text-primary hover:text-secondary font-medium transition-colors" href="#sec-1">Por qué la demo sale bien</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-2">Qué significa fallar</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-3">El conjunto de casos</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-4">Qué medir en cada caso</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-5">Una IA corrigiendo a otra</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-6">La prueba de regresión</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-7">Lo que no cabe en el %</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-8">Ya en producción</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-9">Cuándo no hace falta</a>
+</nav>
+</div>
+<div class="bg-surface-container-high p-space-md space-y-space-sm shadow-sm">
+<span class="font-kicker text-kicker uppercase tracking-widest text-primary font-bold">FICHA TÉCNICA</span>
+<dl class="space-y-space-xs font-caption text-caption">
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Categoría:</dt><dd class="font-semibold text-primary">Agentes</dd></div>
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Nivel técnico:</dt><dd class="font-semibold text-primary">Intermedio</dd></div>
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Fuentes citadas:</dt><dd class="font-semibold text-primary">Investigación sobre contaminación de benchmarks (MMLU-CF, arXiv 2310.18018), encuesta sobre LLM-as-a-judge (arXiv 2412.05579), sesgo de autopreferencia (arXiv 2410.21819)</dd></div>
+</dl>
+</div>
+</aside>
+</div>
+<section class="w-full mt-space-4xl pt-space-2xl bg-surface-container-lowest p-space-lg shadow-sm">
+<div class="mb-space-lg">
+<h3 class="font-headline-md text-headline-md text-primary">Continúa explorando el archivo</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-col-gap"><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="bot-atencion-cliente-ia.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-bot-atencion-cliente-ia.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="bot-atencion-cliente-ia.html">Bot de atención al cliente con IA que no invente</a></h4></div></article><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="alucinaciones-ia.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-alucinaciones-ia.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="alucinaciones-ia.html">Alucinaciones de la IA: cómo detectarlas</a></h4></div></article><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="varios-agentes-ia-o-uno.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-varios-agentes-ia-o-uno.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="varios-agentes-ia-o-uno.html">Varios agentes de IA o uno solo: cuándo dividir</a></h4></div></article></div>
+</section>
+</div></main><footer class="w-full bg-surface-container-low border-t border-outline-variant mt-space-4xl"><div class="max-w-site-max-width mx-auto px-space-md py-space-3xl"><div class="grid grid-cols-1 md:grid-cols-3 gap-col-gap"><div class="space-y-space-sm"><span class="font-headline-md text-headline-md text-primary">El Telar</span><p class="font-body-sm text-body-sm text-on-surface-variant">Publicación independiente de tecnología y automatización con agentes. Contenidos verificados en producción, sin patrocinios opacos ni promesas vacías.</p></div><div><h3 class="font-kicker text-kicker uppercase tracking-wider text-on-surface mb-space-md">SECCIONES</h3><ul class="space-y-space-xs font-body-sm text-body-sm"><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html#guias">Archivo de Guías</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../empieza-aqui.html">Guía para Principiantes</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../sobre-nosotros.html">Manifiesto Editorial</a></li><li class="pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html#despacho">Boletín Semanal</a></li></ul></div><div><h3 class="font-kicker text-kicker uppercase tracking-wider text-on-surface mb-space-md">CONTACTO &amp; PRENSA</h3><div class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant"><p class="font-semibold text-on-surface">contacto@eltelar.es</p><p>Síguenos: <a class="hover:text-primary underline" href="https://www.instagram.com/eltelar_es/" rel="me noopener" target="_blank">Instagram</a> · <a class="hover:text-primary underline" href="https://www.threads.com/@eltelar_es" rel="me noopener" target="_blank">Threads</a> · <a class="hover:text-primary underline" href="https://x.com/eltelar_es" rel="me noopener" target="_blank">X</a></p></div></div></div></div><div class="border-t border-outline-variant py-space-md bg-surface-container-lowest"><div class="max-w-site-max-width mx-auto px-space-md flex flex-col md:flex-row items-center justify-between gap-space-sm text-caption font-caption text-on-surface-variant"><div>© 2026 El Telar. Todos los derechos reservados. Independencia editorial garantizada.</div><div class="flex items-center gap-space-md"><a class="hover:text-on-surface transition-colors" href="../privacidad.html">Privacidad</a><a class="hover:text-on-surface transition-colors" href="../terminos.html">Términos</a><a class="hover:text-on-surface transition-colors" href="../sobre-nosotros.html">Sobre nosotros</a><a class="hover:text-on-surface transition-colors" href="../contacto.html">Contacto</a></div></div></div></footer><script defer src="../js/copy-guide.js"></script><script defer src="../js/guide-interactions.js"></script><script defer src="../js/reading-progress.js"></script><script defer src="../js/search.js?v=7"></script><script defer src="../js/entrance.js"></script><script defer src="../js/cookie-consent.js?v=4"></script></body></html>

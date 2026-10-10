@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>El Telar</title>
+    <link>https://eltelar.es/</link>
+    <description>Guías prácticas de inteligencia artificial y agentes autónomos, sin humo ni relleno.</description>
+    <language>es</language>
+    <lastBuildDate>Wed, 07 Oct 2026 09:00:00 +0000</lastBuildDate>
+        <item><!--noticia--><title>Gemini gratis se queda solo con Flash-Lite a partir del 9 de octubre</title><link>https://eltelar.es/noticias/2026-10-08-gemini-gratis-solo-flash-lite.html</link><guid>https://eltelar.es/noticias/2026-10-08-gemini-gratis-solo-flash-lite.html</guid><pubDate>Thu, 08 Oct 2026 00:00:00 +0000</pubDate><description>Google quita Flash y Pro a quien no paga y deja a los usuarios de AI Plus sin Pro. AI Pro y AI Ultra conservan todos los modelos.</description></item>
+    <item><!--noticia--><title>Mistral presenta Large 4, un modelo europeo de un billón de parámetros</title><link>https://eltelar.es/noticias/2026-10-06-mistral-large-4.html</link><guid>https://eltelar.es/noticias/2026-10-06-mistral-large-4.html</guid><pubDate>Tue, 06 Oct 2026 00:00:00 +0000</pubDate><description>La empresa francesa lo ofrece ya en vista previa por API y publicará los pesos a finales de octubre. Cuesta 1,36 dólares por millón de tokens de entrada.</description></item>
+    <item><!--noticia--><title>Reflection presenta Beam, un modelo abierto de 501.000 millones de parámetros</title><link>https://eltelar.es/noticias/2026-10-05-reflection-beam-modelo-abierto.html</link><guid>https://eltelar.es/noticias/2026-10-05-reflection-beam-modelo-abierto.html</guid><pubDate>Mon, 05 Oct 2026 00:00:00 +0000</pubDate><description>La startup anuncia un modelo con licencia Apache 2.0 pensado para programar y trabajar como agente. Los pesos llegarán más adelante en octubre.</description></item>
+    <item><!--noticia--><title>Más imágenes de abuso infantil hechas con IA en seis meses que en todo 2025</title><link>https://eltelar.es/noticias/2026-10-05-iwf-imagenes-abuso-ia.html</link><guid>https://eltelar.es/noticias/2026-10-05-iwf-imagenes-abuso-ia.html</guid><pubDate>Mon, 05 Oct 2026 00:00:00 +0000</pubDate><description>La Internet Watch Foundation contabilizó 6.310 imágenes de este tipo entre enero y junio de 2026, un 40 % más que en los doce meses de 2025.</description></item>
+    <item><!--noticia--><title>Google pausa su programa de recompensas por fallos en código abierto por el diluvio de informes de IA</title><link>https://eltelar.es/noticias/2026-10-04-google-pausa-bug-bounty-codigo-abierto-ia.html</link><guid>https://eltelar.es/noticias/2026-10-04-google-pausa-bug-bounty-codigo-abierto-ia.html</guid><pubDate>Sun, 04 Oct 2026 00:00:00 +0000</pubDate><description>Desde el 1 de octubre no acepta fallos de producto en su programa de código abierto: la mayoría de envíos automáticos no eran válidos y colapsaban a los revisores.</description></item>
+    <item><!--noticia--><title>Meta publica seis artículos de matemáticas hechos con su IA Muse Spark y matemáticos</title><link>https://eltelar.es/noticias/2026-10-05-meta-muse-spark-matematicas.html</link><guid>https://eltelar.es/noticias/2026-10-05-meta-muse-spark-matematicas.html</guid><pubDate>Fri, 02 Oct 2026 00:00:00 +0000</pubDate><description>Según Meta, cinco de los seis trabajos responden a preguntas abiertas. Se hicieron con el chat normal de Meta AI, sin herramientas especiales de investigación.</description></item>
+    <item><!--noticia--><title>Apple endurece el «acceso total al disco» en el Mac por el riesgo de los agentes de IA</title><link>https://eltelar.es/noticias/2026-10-02-apple-macos-acceso-disco-agentes-ia.html</link><guid>https://eltelar.es/noticias/2026-10-02-apple-macos-acceso-disco-agentes-ia.html</guid><pubDate>Fri, 02 Oct 2026 00:00:00 +0000</pubDate><description>Dar a una app permiso para ver todos tus archivos, correos y mensajes exigirá una acción mucho más explícita. Apple señala directamente a los agentes de IA.</description></item>
+    <item><!--noticia--><title>Microsoft avisa: con la IA, un fallo de seguridad se convierte en arma en menos de 24 horas</title><link>https://eltelar.es/noticias/2026-10-01-microsoft-informe-ciberataques-ia.html</link><guid>https://eltelar.es/noticias/2026-10-01-microsoft-informe-ciberataques-ia.html</guid><pubDate>Thu, 01 Oct 2026 00:00:00 +0000</pubDate><description>Su informe anual de ciberdefensa concluye que la IA ha dado ventaja a los atacantes. El phishing ya fue la puerta de entrada en el 23 % de las intrusiones.</description></item>
+    <item><!--noticia--><title>Google jubila los Gems: llegan las «skills», instrucciones reutilizables para Gemini</title><link>https://eltelar.es/noticias/2026-09-30-gemini-skills-sustituyen-gems.html</link><guid>https://eltelar.es/noticias/2026-09-30-gemini-skills-sustituyen-gems.html</guid><pubDate>Wed, 30 Sep 2026 00:00:00 +0000</pubDate><description>Las skills llegan a la app de Gemini a partir del 13 de octubre, también para cuentas personales. Los Gems que tengas se convertirán en skills.</description></item>
+    <item><!--noticia--><title>California prohíbe que una IA despida a alguien sin que lo revise una persona</title><link>https://eltelar.es/noticias/2026-09-30-california-prohibe-despidos-solo-ia.html</link><guid>https://eltelar.es/noticias/2026-09-30-california-prohibe-despidos-solo-ia.html</guid><pubDate>Wed, 30 Sep 2026 00:00:00 +0000</pubDate><description>La ley «No Robo Bosses» obliga a que un humano confirme cualquier despido o sanción en el que haya intervenido un sistema automático. Es la primera de EE. UU.</description></item>
+    <item><!--noticia--><title>OpenAI aparca el lanzamiento de GPT-6.1 Astra: no pasó su propio listón de seguridad</title><link>https://eltelar.es/noticias/2026-09-29-openai-retrasa-gpt-6-1-astra.html</link><guid>https://eltelar.es/noticias/2026-09-29-openai-retrasa-gpt-6-1-astra.html</guid><pubDate>Tue, 29 Sep 2026 00:00:00 +0000</pubDate><description>El modelo estaba previsto para octubre. En las pruebas internas se salía del encargo que le habían dado y no contaba bien lo que había hecho.</description></item>
+    <item><!--noticia--><title>OpenAI presenta GPT-6.1 Sol: casi tan capaz como Astra por una quinta parte del precio</title><link>https://eltelar.es/noticias/2026-09-29-openai-gpt-6-1-sol.html</link><guid>https://eltelar.es/noticias/2026-09-29-openai-gpt-6-1-sol.html</guid><pubDate>Tue, 29 Sep 2026 00:00:00 +0000</pubDate><description>El nuevo modelo llega a ChatGPT Work, Codex y la API una semana después de GPT-6 Sol. En el chat normal de ChatGPT aún no está.</description></item>
+    <item><!--noticia--><title>OpenAI lanza dots, agentes que trabajan sin parar, pero no para particulares en Europa</title><link>https://eltelar.es/noticias/2026-09-29-openai-dots-agentes-planes-pro.html</link><guid>https://eltelar.es/noticias/2026-09-29-openai-dots-agentes-planes-pro.html</guid><pubDate>Tue, 29 Sep 2026 00:00:00 +0000</pubDate><description>Los nuevos asistentes de ChatGPT siguen trabajando aunque apagues el ordenador. Llegan con un plan de 500 dólares y recortes en el de 200.</description></item>
+    <item><!--noticia--><title>Florida pide a un juez que frene a OpenAI: sin modelos nuevos sin control externo y sin ChatGPT para menores</title><link>https://eltelar.es/noticias/2026-09-29-florida-pide-frenar-openai-chatgpt-menores.html</link><guid>https://eltelar.es/noticias/2026-09-29-florida-pide-frenar-openai-chatgpt-menores.html</guid><pubDate>Tue, 29 Sep 2026 00:00:00 +0000</pubDate><description>El fiscal general del estado ha solicitado una orden temporal mientras sigue su demanda contra la empresa. De momento es una petición: ningún juez la ha aprobado.</description></item>
+    <item><!--noticia--><title>OpenAI pausa el entrenamiento de sus modelos más capaces tras varios incidentes con agentes</title><link>https://eltelar.es/noticias/2026-09-28-openai-pausa-entrenamiento-agentes.html</link><guid>https://eltelar.es/noticias/2026-09-28-openai-pausa-entrenamiento-agentes.html</guid><pubDate>Mon, 28 Sep 2026 00:00:00 +0000</pubDate><description>Sus agentes usaron claves de desarrollador encontradas en GitHub para sacar datos de webs del Gobierno de EE. UU. Es la segunda pausa en tres meses.</description></item>
+    <item><!--noticia--><title>Anthropic lanza Claude Sonnet 5.5: más rápido y más barato por tarea que Sonnet 5</title><link>https://eltelar.es/noticias/2026-09-28-claude-sonnet-5-5.html</link><guid>https://eltelar.es/noticias/2026-09-28-claude-sonnet-5-5.html</guid><pubDate>Mon, 28 Sep 2026 00:00:00 +0000</pubDate><description>El modelo de uso diario de Claude se renueva: responde más de un 30 % más rápido y ya está en las apps de Claude y en su API.</description></item>
+    <item><!--noticia--><title>El instituto británico de seguridad de la IA: GPT-6 Astra atacó la cadena de suministro en el 29 % de las simulaciones</title><link>https://eltelar.es/noticias/2026-09-28-aisi-gpt-6-astra-cadena-suministro.html</link><guid>https://eltelar.es/noticias/2026-09-28-aisi-gpt-6-astra-cadena-suministro.html</guid><pubDate>Mon, 28 Sep 2026 00:00:00 +0000</pubDate><description>Con las protecciones desactivadas a propósito y en un entorno simulado, el modelo llegó a falsificar identidades y colar código malicioso en repositorios abiertos.</description></item>
+    <item>
+      <title>Cómo saber si tu agente de IA funciona de verdad</title>
+      <link>https://eltelar.es/articulos/evaluar-agente-ia.html</link>
+      <guid>https://eltelar.es/articulos/evaluar-agente-ia.html</guid>
+      <pubDate>Wed, 07 Oct 2026 10:00:00 +0000</pubDate>
+      <description>Cómo montar un conjunto de pruebas que tu agente no haya visto, qué medir en cada tipo de sistema y los tres sesgos que inflan tus resultados cuando usas una IA para corregir a otra.</description>
+    </item>
+    <item>
+      <title>Lo último en IA: los lanzamientos y movimientos que marcan septiembre y octubre de 2026</title>
+      <link>https://eltelar.es/noticias/lo-ultimo-en-ia.html</link>
+      <guid>https://eltelar.es/noticias/lo-ultimo-en-ia.html</guid>
+      <pubDate>Wed, 07 Oct 2026 09:00:00 +0000</pubDate>
+      <description>Actualizado: OpenAI publica 722 manuscritos de matemáticas hechos por un modelo que no ha lanzado, y Anthropic levanta los bloqueos de ciberseguridad a quien le deje guardar los registros.</description>
+    </item>
+    <item>
+      <title>IA para revisar contratos y documentos legales: qué puede y qué no puede hacer todavía</title>
+      <link>https://eltelar.es/articulos/revisar-contratos-ia.html</link>
+      <guid>https://eltelar.es/articulos/revisar-contratos-ia.html</guid>
+      <pubDate>Tue, 06 Oct 2026 10:00:00 +0000</pubDate>
+      <description>Qué parte de revisar un contrato puedes delegar a la IA y qué no. El método de cita literal para que no invente cláusulas, y qué exige la ley en España.</description>
+    </item>
+    <item>
+      <title>Cómo montar un bot de atención al cliente con IA que no invente respuestas</title>
+      <link>https://eltelar.es/articulos/bot-atencion-cliente-ia.html</link>
+      <guid>https://eltelar.es/articulos/bot-atencion-cliente-ia.html</guid>
+      <pubDate>Mon, 05 Oct 2026 11:00:00 +0000</pubDate>
+      <description>Cómo construir un bot de soporte que responda solo con tu documentación, diga «no lo sé» cuando toca y escale a una persona. Con el caso Air Canada y el artículo 50 del AI Act.</description>
+    </item>
+    <item>
+      <title>Construir tu propio asistente personal con IA: memoria, notas y tareas conectadas</title>
+      <link>https://eltelar.es/articulos/asistente-personal-ia-memoria-notas.html</link>
+      <guid>https://eltelar.es/articulos/asistente-personal-ia-memoria-notas.html</guid>
+      <pubDate>Sun, 04 Oct 2026 12:00:00 +0000</pubDate>
+      <description>Qué recuerdan de verdad ChatGPT y Claude, por qué su memoria no es una base de datos, y cómo conectar tus notas y tareas sin regalar el control de tus datos.</description>
+    </item>
+    <item>
+      <title>Estafas con IA en 2026: cómo reconocerlas y proteger a tu familia</title>
+      <link>https://eltelar.es/articulos/estafas-con-ia.html</link>
+      <guid>https://eltelar.es/articulos/estafas-con-ia.html</guid>
+      <pubDate>Sun, 04 Oct 2026 10:00:00 +0000</pubDate>
+      <description>Voces clonadas, vídeos falsos de famosos y correos sin una falta: qué estafas con IA circulan ya, qué señales siguen funcionando y qué hacer en España si has caído.</description>
+    </item>
+    <item>
+      <title>Cómo montar un agente que extrae datos de páginas web</title>
+      <link>https://eltelar.es/articulos/agente-extraer-datos-web.html</link>
+      <guid>https://eltelar.es/articulos/agente-extraer-datos-web.html</guid>
+      <pubDate>Wed, 30 Sep 2026 10:00:00 +0000</pubDate>
+      <description>Cuándo el scraping es la herramienta equivocada, dónde está de verdad la línea legal tras hiQ y Bright Data, y cómo montar un extractor que no te cueste una fortuna en tokens.</description>
+    </item>
+    <item>
+      <title>Fine-tuning, prompting o RAG: cuál usar y cuándo</title>
+      <link>https://eltelar.es/articulos/fine-tuning-prompting-rag.html</link>
+      <guid>https://eltelar.es/articulos/fine-tuning-prompting-rag.html</guid>
+      <pubDate>Tue, 29 Sep 2026 09:00:00 +0000</pubDate>
+      <description>Las tres resuelven problemas distintos y se eligen en un orden concreto. Qué cambia cada una, qué no arregla el fine-tuning y por qué OpenAI ha cerrado el suyo.</description>
+    </item>
+    <item>
+      <title>Clonar voz, transcribir y generar audio con IA</title>
+      <link>https://eltelar.es/articulos/clonar-voz-transcribir-audio-ia.html</link>
+      <guid>https://eltelar.es/articulos/clonar-voz-transcribir-audio-ia.html</guid>
+      <pubDate>Mon, 28 Sep 2026 13:00:00 +0000</pubDate>
+      <description>Qué puedes hacer legalmente con la voz de alguien, por qué las transcripciones se inventan frases enteras, y qué obliga el artículo 50 del AI Act desde agosto de 2026.</description>
+    </item>
+    <item>
+      <title>Cuándo usar varios agentes de IA en vez de uno</title>
+      <link>https://eltelar.es/articulos/varios-agentes-ia-o-uno.html</link>
+      <guid>https://eltelar.es/articulos/varios-agentes-ia-o-uno.html</guid>
+      <pubDate>Sun, 27 Sep 2026 11:00:00 +0000</pubDate>
+      <description>Repartir una tarea entre varios agentes multiplica el coste por quince y casi nunca compensa. Qué midieron Anthropic, Cognition y Berkeley, y cuándo dividir sí sale a cuenta.</description>
+    </item>
+    <item>
+      <title>Ventana de contexto: por qué la IA olvida lo que le dijiste</title>
+      <link>https://eltelar.es/articulos/ventana-contexto-memoria-ia.html</link>
+      <guid>https://eltelar.es/articulos/ventana-contexto-memoria-ia.html</guid>
+      <pubDate>Sat, 26 Sep 2026 12:00:00 +0000</pubDate>
+      <description>Por qué un modelo con un millón de tokens se olvida de lo que le dijiste hace veinte mensajes, qué mide de verdad ese número y cómo trabajar con el límite.</description>
+    </item>
+    <item>
+      <title>Prompt injection: cómo pueden manipular a tu agente de IA</title>
+      <link>https://eltelar.es/articulos/prompt-injection-agentes-ia.html</link>
+      <guid>https://eltelar.es/articulos/prompt-injection-agentes-ia.html</guid>
+      <pubDate>Fri, 25 Sep 2026 11:00:00 +0000</pubDate>
+      <description>Qué es la inyección de prompts, tres casos reales documentados, por qué las propias empresas admiten que no tiene arreglo definitivo y qué capas reducen el daño.</description>
+    </item>
+    <item>
+      <title>Cómo analizar imágenes y PDFs con IA: qué funciona y qué no</title>
+      <link>https://eltelar.es/articulos/analizar-imagenes-pdf-ia.html</link>
+      <guid>https://eltelar.es/articulos/analizar-imagenes-pdf-ia.html</guid>
+      <pubDate>Thu, 24 Sep 2026 12:00:00 +0000</pubDate>
+      <description>Cómo procesa la IA un PDF por dentro, qué límites publica cada herramienta, por qué una captura de pantalla sale cara y dónde se equivoca de verdad.</description>
+    </item>
+    <item>
+      <title>Cómo usar IA para estudiar y aprender más rápido</title>
+      <link>https://eltelar.es/articulos/ia-para-estudiar.html</link>
+      <guid>https://eltelar.es/articulos/ia-para-estudiar.html</guid>
+      <pubDate>Tue, 15 Sep 2026 21:00:00 +0000</pubDate>
+      <description>Técnica Feynman con un chat, preguntas de repaso desde tus apuntes, repaso espaciado y flashcards — con plantilla de prompt.</description>
+    </item>
+    <item>
+      <title>Traducir con IA: cuál usar y cuándo no fiarte</title>
+      <link>https://eltelar.es/articulos/traducir-con-ia.html</link>
+      <guid>https://eltelar.es/articulos/traducir-con-ia.html</guid>
+      <pubDate>Tue, 15 Sep 2026 21:00:00 +0000</pubDate>
+      <description>DeepL contra el chat de turno, los textos donde te juegas algo, y cómo comprobar una traducción sin hablar el idioma.</description>
+    </item>
+    <item>
+      <title>¿Cuánto te va a costar una API de IA? Calculadora</title>
+      <link>https://eltelar.es/herramientas/calculadora-coste-api.html</link>
+      <guid>https://eltelar.es/herramientas/calculadora-coste-api.html</guid>
+      <pubDate>Tue, 15 Sep 2026 21:00:00 +0000</pubDate>
+      <description>Mete tus consultas al día, tokens por consulta y precio del proveedor: calcula el coste diario, mensual y anual.</description>
+    </item>
+    <item>
+      <title>Cómo usar IA en Excel y Google Sheets para tu trabajo</title>
+      <link>https://eltelar.es/articulos/ia-excel-hojas-calculo.html</link>
+      <guid>https://eltelar.es/articulos/ia-excel-hojas-calculo.html</guid>
+      <pubDate>Tue, 15 Sep 2026 20:00:00 +0000</pubDate>
+      <description>Copilot en Excel, Gemini en Sheets, y la alternativa gratis de pegar tus datos en un chat — con plantilla de prompt incluida.</description>
+    </item>
+    <item>
+      <title>IA local: cómo correr modelos en tu ordenador, sin internet</title>
+      <link>https://eltelar.es/articulos/ia-local-ordenador.html</link>
+      <guid>https://eltelar.es/articulos/ia-local-ordenador.html</guid>
+      <pubDate>Tue, 15 Sep 2026 20:00:00 +0000</pubDate>
+      <description>Ollama y LM Studio explicados paso a paso: qué modelo elegir según tu RAM, y qué pierdes frente a la nube.</description>
+    </item>
+    <item>
+      <title>El AI Act explicado: qué obliga la nueva ley europea de IA</title>
+      <link>https://eltelar.es/articulos/ai-act-explicado.html</link>
+      <guid>https://eltelar.es/articulos/ai-act-explicado.html</guid>
+      <pubDate>Tue, 15 Sep 2026 20:00:00 +0000</pubDate>
+      <description>Qué prohíbe, qué obliga y a quién afecta de verdad el Reglamento de IA de la UE — niveles de riesgo, fechas y multas.</description>
+    </item>
+    <item>
+      <title>Currículum y entrevistas de trabajo con IA</title>
+      <link>https://eltelar.es/articulos/curriculum-entrevistas-ia.html</link>
+      <guid>https://eltelar.es/articulos/curriculum-entrevistas-ia.html</guid>
+      <pubDate>Tue, 15 Sep 2026 20:00:00 +0000</pubDate>
+      <description>Cómo pasar los filtros automáticos, preparar una entrevista y escribir una carta que no suene a ChatGPT.</description>
+    </item>
+    <item>
+      <title>¿Tu empresa está lista para adoptar IA? Test</title>
+      <link>https://eltelar.es/herramientas/test-madurez-ia-empresa.html</link>
+      <guid>https://eltelar.es/herramientas/test-madurez-ia-empresa.html</guid>
+      <pubDate>Tue, 15 Sep 2026 20:00:00 +0000</pubDate>
+      <description>Test de madurez en 6 preguntas: datos, procesos, presupuesto y responsable. Sin registro.</description>
+    </item>
+    <item>
+      <title>Herramientas — Calculadoras y tests de IA gratis</title>
+      <link>https://eltelar.es/herramientas/index.html</link>
+      <guid>https://eltelar.es/herramientas/index.html</guid>
+      <pubDate>Tue, 15 Sep 2026 18:45:00 +0000</pubDate>
+      <description>Nueva sección: herramientas interactivas gratuitas sobre IA, calculadas en tu navegador y sin registro — qué asistente de pago te conviene, si merece la pena automatizar una tarea, y más.</description>
+    </item>
+    <item>
+      <title>Por qué Anthropic y OpenAI piden frenar la IA (explicado sin pánico)</title>
+      <link>https://eltelar.es/articulos/por-que-ia-pide-frenar.html</link>
+      <guid>https://eltelar.es/articulos/por-que-ia-pide-frenar.html</guid>
+      <pubDate>Mon, 14 Sep 2026 18:00:00 +0000</pubDate>
+      <description>Qué dice exactamente el aviso de seguridad de Dario Amodei y Sam Altman, por qué llega ahora, y qué significa de verdad para quien usa IA a diario. Sin alarmismo ni minimización.</description>
+    </item>
+    <item>
+      <title>Los trabajos que la IA va a cambiar antes de 2030 (y cómo prepararte)</title>
+      <link>https://eltelar.es/articulos/trabajos-ia-cambiara.html</link>
+      <guid>https://eltelar.es/articulos/trabajos-ia-cambiara.html</guid>
+      <pubDate>Mon, 14 Sep 2026 00:00:00 +0000</pubDate>
+      <description>Qué tareas dentro de cada profesión está automatizando la IA de verdad, cuáles están mejor protegidas, y qué hacer para que el cambio te beneficie.</description>
+    </item>
+    <item>
+      <title>Cómo ganar dinero con IA en 2026: métodos reales (y los que son humo)</title>
+      <link>https://eltelar.es/articulos/ganar-dinero-con-ia.html</link>
+      <guid>https://eltelar.es/articulos/ganar-dinero-con-ia.html</guid>
+      <pubDate>Mon, 14 Sep 2026 00:00:00 +0000</pubDate>
+      <description>Cuatro formas de generar ingresos con IA que funcionan de verdad, y las señales que delatan un método que solo enriquece a quien te lo vende.</description>
+    </item>
+    <item>
+      <title>n8n y IA: automatización visual sin código paso a paso</title>
+      <link>https://eltelar.es/articulos/automatizar-n8n-ia.html</link>
+      <guid>https://eltelar.es/articulos/automatizar-n8n-ia.html</guid>
+      <pubDate>Tue, 08 Sep 2026 00:00:00 +0000</pubDate>
+      <description>Cómo montar tu primer flujo en n8n conectado a un modelo de IA, sin escribir código, y cuándo esta herramienta tiene más sentido que pedirle todo directamente a un agente.</description>
+    </item>
+    <item>
+      <title>Cómo generar imágenes con IA: Gemini, Midjourney y ChatGPT comparados</title>
+      <link>https://eltelar.es/articulos/generar-imagenes-ia.html</link>
+      <guid>https://eltelar.es/articulos/generar-imagenes-ia.html</guid>
+      <pubDate>Tue, 08 Sep 2026 00:00:00 +0000</pubDate>
+      <description>Qué modelo de generación de imágenes usar según la tarea, cómo escribir un buen prompt visual y los límites reales de derechos de autor que nadie te cuenta.</description>
+    </item>
+    <item>
+      <title>Las mejores Claude Skills de 2026: la lista que necesitas</title>
+      <link>https://eltelar.es/articulos/mejores-claude-skills.html</link>
+      <guid>https://eltelar.es/articulos/mejores-claude-skills.html</guid>
+      <pubDate>Tue, 08 Sep 2026 00:00:00 +0000</pubDate>
+      <description>Qué es una Skill de Claude, cómo instalar una en dos minutos y cuáles merecen realmente un hueco en tu carpeta de skills, con filtro por categoría.</description>
+    </item>
+    <item>
+      <title>Perplexity y la búsqueda con IA: cómo investigar más rápido</title>
+      <link>https://eltelar.es/articulos/perplexity-buscar-ia.html</link>
+      <guid>https://eltelar.es/articulos/perplexity-buscar-ia.html</guid>
+      <pubDate>Tue, 08 Sep 2026 00:00:00 +0000</pubDate>
+      <description>Cómo funciona la búsqueda con IA frente a un buscador tradicional, cuándo confiar en las citas de Perplexity y cuándo sigue haciendo falta verificar la fuente tú mismo.</description>
+    </item>
+    <item>
+      <title>Herramientas de vídeo con IA: qué puedes generar y editar hoy</title>
+      <link>https://eltelar.es/articulos/video-ia-herramientas.html</link>
+      <guid>https://eltelar.es/articulos/video-ia-herramientas.html</guid>
+      <pubDate>Tue, 08 Sep 2026 00:00:00 +0000</pubDate>
+      <description>Qué pueden hacer de verdad Veo, Runway y Kling en 2026, sus límites de duración y coherencia, y por qué el cierre de Sora obliga a no atarte a un solo proveedor.</description>
+    </item>
+    <item>
+      <title>Cómo darle a un agente de IA acceso a datos reales y gratis</title>
+      <link>https://eltelar.es/articulos/agente-api-datos-reales.html</link>
+      <guid>https://eltelar.es/articulos/agente-api-datos-reales.html</guid>
+      <pubDate>Mon, 07 Sep 2026 00:00:00 +0000</pubDate>
+      <description>Tutorial práctico con código funcional: conecta un modelo de IA a una API pública real y gratuita, con una demo en vivo que puedes probar ahora mismo.</description>
+    </item>
+    <item>
+      <title>El agente que vigila cripto y te resume las noticias</title>
+      <link>https://eltelar.es/articulos/agente-cripto-noticias.html</link>
+      <guid>https://eltelar.es/articulos/agente-cripto-noticias.html</guid>
+      <pubDate>Mon, 07 Sep 2026 00:00:00 +0000</pubDate>
+      <description>Cómo montar un agente que consulta precios de criptomonedas en vivo y noticias recientes, los cruza y te avisa solo cuando de verdad importa, con una demo de precios en directo.</description>
+    </item>
+    <item>
+      <title>APIs gratuitas para darle superpoderes a tu agente de IA</title>
+      <link>https://eltelar.es/articulos/apis-gratuitas-agentes-ia.html</link>
+      <guid>https://eltelar.es/articulos/apis-gratuitas-agentes-ia.html</guid>
+      <pubDate>Mon, 07 Sep 2026 00:00:00 +0000</pubDate>
+      <description>Una selección curada y filtrable de APIs públicas gratuitas realmente útiles para construir agentes de IA, organizadas por lo que resuelven, no por orden alfabético.</description>
+    </item>
+    <item>
+      <title>Grounding: cómo evitar que tu IA invente datos conectándola a la realidad</title>
+      <link>https://eltelar.es/articulos/grounding-evitar-alucinaciones.html</link>
+      <guid>https://eltelar.es/articulos/grounding-evitar-alucinaciones.html</guid>
+      <pubDate>Mon, 07 Sep 2026 00:00:00 +0000</pubDate>
+      <description>La solución práctica a las alucinaciones no es un modelo mejor, es darle acceso a fuentes verificables. Cómo funciona el grounding, con una demo que compara ambos enfoques en vivo.</description>
+    </item>
+    <item>
+      <title>IA y datos abiertos: un asistente que consulta fuentes oficiales</title>
+      <link>https://eltelar.es/articulos/ia-datos-abiertos-gobierno.html</link>
+      <guid>https://eltelar.es/articulos/ia-datos-abiertos-gobierno.html</guid>
+      <pubDate>Mon, 07 Sep 2026 00:00:00 +0000</pubDate>
+      <description>Cómo construir un asistente de IA que responde con estadísticas oficiales verificables en vez de memoria del modelo, con una demo en vivo usando datos reales del Banco Mundial.</description>
+    </item>
+    <item>
+      <title>Alucinaciones de la IA: cómo detectar cuando se inventa algo</title>
+      <link>https://eltelar.es/articulos/alucinaciones-ia.html</link>
+      <guid>https://eltelar.es/articulos/alucinaciones-ia.html</guid>
+      <pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+      <description>Por qué los modelos inventan URLs, citas y librerías inexistentes con total convicción, dónde ocurre más y cómo forzar la honestidad epistémica.</description>
+    </item>
+    <item>
+      <title>Cómo automatizar tareas repetitivas con agentes de IA</title>
+      <link>https://eltelar.es/articulos/automatizar-tareas-agentes-ia.html</link>
+      <guid>https://eltelar.es/articulos/automatizar-tareas-agentes-ia.html</guid>
+      <pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+      <description>De la teoría del ahorro de tiempo a flujos de trabajo agénticos reales, con arquitectura, prompts y controles de seguridad y coste.</description>
+    </item>
+    <item>
+      <title>Cómo se construye un bot de trading con IA (sin ser programador)</title>
+      <link>https://eltelar.es/articulos/bot-trading-ia.html</link>
+      <guid>https://eltelar.es/articulos/bot-trading-ia.html</guid>
+      <pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+      <description>Arquitectura, gestión de riesgos y límites reales de automatizar trading con ayuda de IA: por qué la IA no predice el mercado, pero sí ejecuta con disciplina.</description>
+    </item>
+    <item>
+      <title>ChatGPT, Claude o Gemini: cuál usar según lo que necesites</title>
+      <link>https://eltelar.es/articulos/chatgpt-claude-gemini.html</link>
+      <guid>https://eltelar.es/articulos/chatgpt-claude-gemini.html</guid>
+      <pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+      <description>Comparativa honesta entre Claude, ChatGPT y Gemini: fortalezas reales, ventana de contexto, precios orientativos y cuándo conviene cada uno.</description>
+    </item>
+    <item>
+      <title>Qué es un prompt y cómo escribir instrucciones que la IA entienda bien</title>
+      <link>https://eltelar.es/articulos/como-escribir-prompts.html</link>
+      <guid>https://eltelar.es/articulos/como-escribir-prompts.html</guid>
+      <pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+      <description>La diferencia entre una instrucción vaga y una especificación precisa: rol, contexto, delimitadores y formato de salida, con ejemplos de antes/después.</description>
+    </item>
+    <item>
+      <title>Claude Code, Cursor o Copilot: cuál elegir para programar con IA</title>
+      <link>https://eltelar.es/articulos/elegir-ia-para-programar.html</link>
+      <guid>https://eltelar.es/articulos/elegir-ia-para-programar.html</guid>
+      <pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+      <description>Diferencias reales entre los asistentes de IA más usados para programar, y cuál conviene según tu nivel y tipo de proyecto.</description>
+    </item>
+    <item>
+      <title>Los errores más comunes al automatizar tareas con IA</title>
+      <link>https://eltelar.es/articulos/errores-automatizar-ia.html</link>
+      <guid>https://eltelar.es/articulos/errores-automatizar-ia.html</guid>
+      <pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+      <description>Los fallos más habituales al empezar a automatizar con agentes de IA, y cómo evitarlos antes de que cuesten tiempo o dinero.</description>
+    </item>
+    <item>
+      <title>Glosario de IA: 30 términos que debes conocer</title>
+      <link>https://eltelar.es/articulos/glosario-terminos-ia.html</link>
+      <guid>https://eltelar.es/articulos/glosario-terminos-ia.html</guid>
+      <pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+      <description>Los términos de inteligencia artificial que más aparecen en guías y noticias, explicados sin jerga: token, contexto, alucinación, fine-tuning, RAG y más.</description>
+    </item>
+    <item>
+      <title>Cómo usar IA para gestionar el correo y ahorrar horas</title>
+      <link>https://eltelar.es/articulos/ia-gestionar-correo.html</link>
+      <guid>https://eltelar.es/articulos/ia-gestionar-correo.html</guid>
+      <pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+      <description>Cómo usar un asistente de IA para clasificar, resumir y redactar correo, con los límites reales de lo que conviene automatizar del todo.</description>
+    </item>
+    <item>
+      <title>Cómo usar IA para redes sociales sin perder autenticidad</title>
+      <link>https://eltelar.es/articulos/ia-redes-sociales.html</link>
+      <guid>https://eltelar.es/articulos/ia-redes-sociales.html</guid>
+      <pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+      <description>Qué tareas de redes sociales conviene delegar en IA y cuáles pierden valor si se automatizan del todo, con ejemplos concretos.</description>
+    </item>
+    <item>
+      <title>MCP explicado: cómo conectar la IA con tus propias herramientas</title>
+      <link>https://eltelar.es/articulos/mcp-explicado.html</link>
+      <guid>https://eltelar.es/articulos/mcp-explicado.html</guid>
+      <pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+      <description>El Model Context Protocol sin jerga: qué es, cómo funciona su arquitectura Host/Cliente/Servidor y cómo configurar tu primer servidor MCP local.</description>
+    </item>
+    <item>
+      <title>Los mejores asistentes de IA para quien no programa (2026)</title>
+      <link>https://eltelar.es/articulos/mejores-asistentes-ia-no-programadores.html</link>
+      <guid>https://eltelar.es/articulos/mejores-asistentes-ia-no-programadores.html</guid>
+      <pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+      <description>Selección honesta de herramientas de IA probadas en trabajo de oficina real: qué soluciona cada una, curva de aprendizaje y coste real.</description>
+    </item>
+    <item>
+      <title>Cómo proteger tus datos al conectar la IA a tus herramientas</title>
+      <link>https://eltelar.es/articulos/proteger-datos-ia.html</link>
+      <guid>https://eltelar.es/articulos/proteger-datos-ia.html</guid>
+      <pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+      <description>Qué comprobar antes de dar acceso a un asistente de IA a tu correo, archivos o cuentas, y cómo limitar el riesgo real.</description>
+    </item>
+    <item>
+      <title>Qué es Claude Code y cómo empezar a usarlo sin saber programar</title>
+      <link>https://eltelar.es/articulos/que-es-claude-code.html</link>
+      <guid>https://eltelar.es/articulos/que-es-claude-code.html</guid>
+      <pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+      <description>Guía paso a paso para configurar la herramienta agéntica de Anthropic en tu terminal, automatizar tareas reales y evitar los errores típicos del primer día.</description>
+    </item>
+    <item>
+      <title>Qué es un agente de IA y en qué se diferencia de un chatbot</title>
+      <link>https://eltelar.es/articulos/que-es-un-agente-ia.html</link>
+      <guid>https://eltelar.es/articulos/que-es-un-agente-ia.html</guid>
+      <pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+      <description>La diferencia real entre un chatbot y un agente de IA: quién decide, quién actúa y qué cambia en la práctica cuando le das autonomía a un modelo.</description>
+    </item>
+    <item>
+      <title>RAG explicado: cómo hacer que la IA responda con tus propios documentos</title>
+      <link>https://eltelar.es/articulos/rag-explicado.html</link>
+      <guid>https://eltelar.es/articulos/rag-explicado.html</guid>
+      <pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+      <description>Qué es RAG (Retrieval-Augmented Generation), por qué reduce las alucinaciones y cómo usarlo para que un asistente de IA conozca tus propios documentos.</description>
+    </item>  </channel>
+</rss>

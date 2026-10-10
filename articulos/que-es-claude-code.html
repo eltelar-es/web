@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Qué es Claude Code y cómo empezar a usarlo | El Telar</title>
+<meta name="description" content="Guía paso a paso para configurar la herramienta agéntica de Anthropic en tu terminal, automatizar tareas reales y evitar los errores típicos del primer día.">
+<link rel="canonical" href="https://eltelar.es/articulos/que-es-claude-code.html"><link rel="icon" type="image/svg+xml" href="../img/favicon.svg?v=4"><link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32.png?v=4"><link rel="apple-touch-icon" href="../img/apple-touch-icon.png?v=4"><meta name="theme-color" content="#072417"><link rel="manifest" href="../manifest.json"><link rel="alternate" type="application/rss+xml" title="El Telar" href="../feed.xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Qué es Claude Code y cómo empezar a usarlo sin saber programar | El Telar">
+<meta property="og:description" content="Guía paso a paso para configurar la herramienta agéntica de Anthropic en tu terminal, automatizar tareas reales y evitar los errores típicos del primer día.">
+<meta property="og:url" content="https://eltelar.es/articulos/que-es-claude-code.html">
+<meta property="og:site_name" content="El Telar">
+<meta property="og:locale" content="es_ES"><meta property="og:image" content="https://eltelar.es/img/og/guia-que-es-claude-code.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Qué es Claude Code y cómo empezar a usarlo sin saber programar | El Telar">
+<meta name="twitter:description" content="Guía paso a paso para configurar la herramienta agéntica de Anthropic en tu terminal, automatizar tareas reales y evitar los errores típicos del primer día."><meta name="twitter:image" content="https://eltelar.es/img/og/guia-que-es-claude-code.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Qué es Claude Code y cómo empezar a usarlo sin saber programar",
+  "description": "Guía paso a paso para configurar la herramienta agéntica de Anthropic en tu terminal, automatizar tareas reales y evitar los errores típicos del primer día.",
+  "image": "https://eltelar.es/img/og-image.jpg",
+  "author": { "@type": "Organization", "name": "El Telar", "url": "https://eltelar.es/sobre-nosotros.html" },
+  "publisher": { "@type": "Organization", "name": "El Telar" },
+  "datePublished": "2026-01-01",
+  "dateModified": "2026-09-06",
+  "mainEntityOfPage": "https://eltelar.es/articulos/que-es-claude-code.html",
+  "inLanguage": "es"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Puedo usar Claude Code sin saber absolutamente nada de terminal?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí, para el uso básico: abrir la aplicación de terminal de tu sistema, pegar los tres comandos de instalación de esta guía y escribir instrucciones en español normal es todo lo que necesitas. Lo único que ayuda aprender con el tiempo es a leer la salida de la terminal lo suficiente para saber si algo salió bien o mal, no a escribir comandos tú mismo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué pasa si le pido algo y el resultado no es el esperado?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Como con cualquier asistente de IA, puedes pedirle que ajuste el resultado en la misma conversación en vez de empezar de cero: dile específicamente qué está mal, y el agente iterará sobre el trabajo ya hecho. Si te preocupa que haya modificado algo antes de tiempo, recuerda que por defecto pide confirmación antes de escribir o borrar archivos, así que siempre tienes la oportunidad de revisar el plan antes de que se ejecute."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Es seguro dejarlo trabajar en una carpeta con archivos importantes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Con el flag interactivo activado (el comportamiento por defecto), no debería modificar ni borrar nada sin tu confirmación explícita, lo que reduce mucho el riesgo. Aun así, para la primera vez que pruebes una tarea nueva, es buena práctica trabajar sobre una copia de la carpeta o sobre un directorio de prueba sin datos críticos, como recomienda la lista de comprobación de esta guía, hasta que confíes en cómo se comporta con ese tipo de tarea concreta."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Claude Code reemplaza a un editor de código como VS Code?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No están pensados como sustitutos mutuos: Claude Code también se puede usar como extensión dentro de editores compatibles, complementando el flujo visual del editor con el razonamiento agéntico de la terminal, en vez de forzarte a elegir entre uno u otro. Para quien no programa, el uso más común es directamente desde la terminal, sin necesidad de instalar ningún editor de código adicional."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué pasa con mis archivos si cancelo la suscripción o dejo de usarlo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Todo el trabajo que Claude Code produce (los archivos que crea o modifica) se queda guardado normalmente en tu disco, exactamente igual que cualquier otro archivo local — no depende de una conexión continua ni queda \"bloqueado\" en ningún formato propietario. Dejar de usar la herramienta no afecta a los archivos que ya generó mientras la usabas."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo usarlo para tareas fuera de código, como organizar fotos o planificar un evento?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí, y de hecho tres de los cuatro casos de uso de esta guía no son de programación en sentido estricto: son gestión documental, análisis de datos y diagnóstico de configuración. Cualquier tarea que implique leer, comparar o reorganizar archivos en tu ordenador es un candidato razonable, independientemente de si tiene relación con escribir código o no."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Hay una versión de prueba gratuita antes de comprometerme con un plan?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "La disponibilidad y condiciones de los planes cambian con el tiempo, así que consulta siempre la página oficial de precios de Anthropic antes de decidir — es la única fuente que refleja las condiciones vigentes en el momento en que lo pruebes."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://eltelar.es/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Guías",
+      "item": "https://eltelar.es/index.html#guias"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Qué es Claude Code y cómo empezar a usarlo sin saber programar",
+      "item": "https://eltelar.es/articulos/que-es-claude-code.html"
+    }
+  ]
+}
+</script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet"/></noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet"/></noscript>
+<style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><link rel="stylesheet" href="../css/tailwind.css"><link rel="stylesheet" href="../css/entrance.css?v=2"><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}(function(){var c=null;try{c=localStorage.getItem('eltelar-cookie-consent')}catch(e){}var g=c==='accepted'?'granted':'denied';gtag('consent','default',{ad_storage:g,ad_user_data:g,ad_personalization:g,analytics_storage:g,wait_for_update:500});window.adsbygoogle=window.adsbygoogle||[];if(g!=='granted'){window.adsbygoogle.requestNonPersonalizedAds=1;}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-4DPTKEG79N"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4DPTKEG79N');</script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8239907995939753" crossorigin="anonymous"></script></head><body class="bg-background font-body-md text-on-surface antialiased">
+<header class="w-full bg-surface-container-lowest border-b border-outline-variant"><div class="border-b border-outline-variant py-space-xxs px-space-md hidden md:block"><div class="max-w-site-max-width mx-auto flex items-center justify-between font-kicker text-kicker text-on-surface-variant uppercase tracking-wider"><span>EDICIÓN DIGITAL // ACTUALIZADO 2026 // EL TELAR &amp; AGENTES</span><span>MADRID · REMOTO</span><span>SIN HUMO · 100% PRODUCCIÓN</span></div></div><div class="max-w-site-max-width mx-auto px-space-md py-space-md sm:py-space-xl text-center"><p class="hidden sm:block font-kicker text-kicker uppercase tracking-widest text-on-surface-variant mb-space-xs">Publicación Independiente de Tecnología &amp; Agentes</p><a class="inline-block" href="../index.html"><div class="font-display text-display max-sm:text-[40px] max-sm:leading-none text-primary tracking-tight">El Telar</div></a><p class="hidden sm:block font-caption text-caption uppercase tracking-widest text-on-surface-variant mt-space-xs">EL BOLETÍN Y ARCHIVO PRÁCTICO DE INTELIGENCIA ARTIFICIAL Y AGENTES AUTÓNOMOS</p></div><div class="border-t border-b border-outline-variant"><div class="max-w-site-max-width mx-auto px-space-md flex items-center justify-between gap-space-sm h-14"><nav class="flex items-center gap-space-md sm:gap-space-lg h-full min-w-0 overflow-x-auto [scrollbar-width:none] whitespace-nowrap"><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../index.html#guias">GUÍAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../empieza-aqui.html">EMPIEZA AQUÍ</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../sobre-nosotros.html">SOBRE NOSOTROS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../noticias/index.html">NOTICIAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../herramientas/index.html">HERRAMIENTAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../prompts/index.html">PROMPTS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../contacto.html">CONTACTO</a></nav><div class="flex items-center gap-space-md"><button id="search-trigger" type="button" aria-label="Buscar en las guías" class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[20px]">search</span></button><a class="hidden sm:inline-block bg-primary-container text-surface px-space-md py-space-xs font-label-md text-label-md uppercase tracking-wider hover:bg-primary transition-colors" href="../index.html#despacho">SUSCRÍBETE GRATIS</a></div></div></div><div class="hidden md:block bg-surface-container-low border-b border-outline-variant py-space-xs px-space-md"><div class="max-w-site-max-width mx-auto text-center"><p class="font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">47 GUÍAS COMPLETAS EN EXPANSIÓN · ACTUALIZADO A MODELOS 2026 · PROBADO EN TERMINAL Y FLUJOS REALES · CERO HUMO NI TEORÍA VACÍA</p></div></div></header>
+<main class="w-full max-w-site-max-width mx-auto px-space-md py-space-xl"><div class="flex flex-col w-full">
+<div class="fixed top-0 left-0 w-full h-1 z-50 bg-surface-container-high pointer-events-none">
+<div class="h-full bg-primary transition-all duration-75 w-0" id="scroll-progress"></div>
+</div>
+<nav aria-label="Ruta de navegación" class="w-full pb-space-sm mb-space-md">
+<div class="flex items-center flex-wrap gap-space-xs font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">
+<a class="hover:text-primary transition-colors" href="../index.html">INICIO</a>
+<span class="text-on-surface-variant">/</span>
+<a class="hover:text-primary transition-colors" href="../index.html#guias">GUÍAS</a>
+<span class="text-on-surface-variant">/</span>
+<a class="hover:text-primary transition-colors" href="../empieza-aqui.html">EMPEZAR</a>
+<span class="text-on-surface-variant">/</span>
+<span class="text-primary font-bold">QUÉ ES CLAUDE CODE</span>
+</div>
+</nav>
+<header class="w-full max-w-editorial-max-width mb-space-2xl">
+<div class="inline-flex items-center gap-space-xs bg-primary-container/10 px-space-sm py-1 mb-space-md">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+<span class="font-kicker text-kicker tracking-widest text-primary-container uppercase">EMPEZAR // GUÍA FUNDACIONAL</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight mb-space-md leading-tight">
+      Qué es Claude Code y cómo empezar a usarlo sin saber programar
+    </h1>
+<p class="font-lead-paragraph text-lead-paragraph text-on-surface-variant font-light leading-relaxed mb-space-xl">
+      Guía paso a paso para configurar la herramienta agéntica de Anthropic directamente en tu terminal, automatizar tareas reales y evitar los errores típicos del primer día.
+    </p>
+<div class="w-full py-space-sm my-space-md bg-surface-container-lowest px-space-md flex flex-col md:flex-row md:items-center justify-between gap-space-sm">
+<div class="flex flex-wrap items-center gap-x-space-sm gap-y-1 font-caption text-caption text-on-surface-variant">
+<span class="font-medium text-on-surface flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-primary">verified_user</span>
+          Por la Redacción de El Telar
+        </span>
+<span class="text-on-surface-variant">·</span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+          14 min de lectura
+        </span>
+<span class="text-on-surface-variant">·</span>
+<time datetime="2026-02-18">Actualizado en 2026</time>
+<span class="text-on-surface-variant">·</span>
+<span class="inline-flex items-center px-1.5 py-0.5 bg-surface-container font-kicker text-[10px] uppercase tracking-wider text-primary">
+          Verificado en entorno real
+        </span>
+</div>
+<div class="flex items-center gap-space-xs self-end md:self-auto">
+<button class="inline-flex items-center gap-1 px-space-sm py-1.5 bg-surface-container text-primary font-label-md text-[12px] font-semibold uppercase tracking-wider hover:bg-surface-container-high transition-colors" id="copy-guide-btn" type="button">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+          Copiar guía para tu IA
+        </button><button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors flex items-center" id="save-guide-btn" title="Guardar guía" type="button"><span class="material-symbols-outlined text-[18px]">bookmark_border</span></button>
+<button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors flex items-center" id="copy-link-btn" title="Copiar enlace permanente">
+<span class="material-symbols-outlined text-[18px]">share</span>
+</button>
+<button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors font-label-md text-[13px] font-semibold" id="toggle-font-btn" title="Ajustar tamaño de lectura">
+          aA
+        </button>
+</div>
+</div>
+</header>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-col-gap items-start">
+<article class="lg:col-span-8 flex flex-col max-w-editorial-max-width" id="article-content">
+<figure data-hero class="space-y-space-xs mb-space-xl"><img class="w-full border border-outline-variant" src="../img/guias/hero-que-es-claude-code.jpg" alt="Repositorio oficial de Claude Code en GitHub" width="1280" height="720" fetchpriority="high" decoding="async"/><figcaption class="font-caption text-caption text-on-surface-variant">Captura de pantalla: <a class="underline" href="https://github.com/anthropics/claude-code" rel="nofollow noopener" target="_blank">github.com/anthropics/claude-code</a>.</figcaption></figure>
+<p class="font-lead-paragraph text-lead-paragraph text-on-surface leading-relaxed mb-space-xl first-letter:float-left first-letter:font-display first-letter:text-[68px] first-letter:leading-[58px] first-letter:pr-3 first-letter:pt-1 first-letter:font-normal first-letter:text-primary">
+        Durante años, la promesa de la inteligencia artificial para automatizar código estuvo restringida a programadores experimentados. Claude Code rompe esa barrera al operar no como un simple chat de sugerencias, sino como un agente autónomo de terminal capaz de leer tu directorio, ejecutar comandos y resolver problemas en bloque.
+      </p>
+<div class="bg-surface-container-low p-space-lg mb-space-2xl">
+<div class="flex items-center gap-2 mb-space-sm font-kicker text-kicker uppercase tracking-widest text-primary font-bold">
+<span class="material-symbols-outlined text-[18px]">insights</span>
+          EN SÍNTESIS // LO QUE APRENDERÁS HOY
+        </div>
+<ul class="space-y-space-xs font-body-md text-body-md text-on-surface">
+<li class="flex items-start gap-space-xs">
+<span class="text-secondary font-bold select-none">01.</span>
+<span>La diferencia conceptual entre autocompletado en el editor y un agente con acceso nativo al intérprete de tu sistema operativo.</span>
+</li>
+<li class="flex items-start gap-space-xs">
+<span class="text-secondary font-bold select-none">02.</span>
+<span>Instalación guiada sin dependencias complejas en macOS, Windows (WSL) y Linux.</span>
+</li>
+<li class="flex items-start gap-space-xs">
+<span class="text-secondary font-bold select-none">03.</span>
+<span>Tres recetas directas para auditar ficheros caóticos, ordenar datos y compilar informes técnicos sin teclear una sola línea en Python ni Bash.</span>
+</li>
+<li class="flex items-start gap-space-xs">
+<span class="text-secondary font-bold select-none">04.</span>
+<span>Salvaguardas presupuestarias para controlar el consumo de tokens en repositorios voluminosos.</span>
+</li>
+</ul>
+</div>
+<section class="mb-space-2xl">
+<h2 id="sec-1" class="font-headline-md text-headline-md text-primary mb-space-md tracking-tight">
+          1. Qué hace diferente a un agente de terminal
+        </h2>
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed mb-space-md">
+          La mayoría de usuarios conciben los modelos de lenguaje a través de la ventana de chat: realizas una pregunta, el modelo emite texto formateado, lo copias con el botón lateral y lo pegas manualmente en tus archivos locales. Si la sugerencia falla por una ruta mal nombrada o una librería desactualizada, te ves obligado a pegar de nuevo el mensaje de error para solicitar una rectificación.
+        </p>
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed mb-space-md">
+          Este intercambio manual introduce una fricción insoportable para quienes no conocen la sintaxis exacta de su consola. Un agente de terminal como <strong class="font-semibold text-primary">Claude Code</strong> opera bajo un paradigma completamente opuesto: el ciclo reflexivo <code class="bg-surface-container px-1.5 py-0.5 text-body-sm font-mono">Observe-Plan-Act</code>.
+        </p>
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed mb-space-md">
+          La consecuencia práctica de este ciclo es que el agente no necesita que le expliques la solución técnica, solo el resultado que quieres conseguir. Si tú mismo no sabes qué comando de terminal resolvería tu problema, no hay ningún paso previo que tengas que investigar antes de pedirlo: describes el objetivo en tus propias palabras, y es el agente quien decide qué comandos ejecutar para llegar ahí, mostrándote cada paso antes de aplicarlo si el cambio afecta a tus archivos. Esa combinación — no necesitar saber la solución técnica de antemano, pero mantener visibilidad y control sobre cada paso — es lo que hace razonable delegar tareas reales desde el primer día, no solo experimentos de prueba.</p>
+<div class="my-space-xl p-space-md bg-surface-container-lowest">
+<div class="font-kicker text-kicker uppercase text-on-surface-variant tracking-wider mb-space-sm text-center">
+            DIAGRAMA 1.0 // CICLO DE EJECUCIÓN AUTÓNOMA EN CLAUDE CODE
+          </div>
+<svg aria-label="Diagrama de flujo del ciclo del agente" class="w-full h-auto text-primary" fill="none" role="img" viewBox="0 0 680 160" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#ebeef8" height="90" rx="0" width="130" x="10" y="30"></rect>
+<text fill="#072417" font-family="Inter" font-size="11" font-weight="700" text-anchor="middle" x="75" y="65">1. INSTRUCCIÓN</text>
+<text fill="#424843" font-family="Inter" font-size="10" text-anchor="middle" x="75" y="85">Objetivo en lenguaje</text>
+<text fill="#424843" font-family="Inter" font-size="10" text-anchor="middle" x="75" y="100">natural humano</text>
+<path d="M140 75 H175" stroke="#727973" stroke-dasharray="3 3" stroke-width="1.5"></path>
+<polygon fill="#727973" points="175,72 182,75 175,78"></polygon>
+<rect fill="#caead4" height="90" rx="0" width="140" x="185" y="30"></rect>
+<text fill="#042013" font-family="Inter" font-size="11" font-weight="700" text-anchor="middle" x="255" y="65">2. INSPECCIÓN</text>
+<text fill="#042013" font-family="Inter" font-size="10" text-anchor="middle" x="255" y="85">Lectura recursiva de</text>
+<text fill="#042013" font-family="Inter" font-size="10" text-anchor="middle" x="255" y="100">archivos y contexto</text>
+<path d="M325 75 H360" stroke="#727973" stroke-width="1.5"></path>
+<polygon fill="#727973" points="360,72 367,75 360,78"></polygon>
+<rect fill="#1e3a2b" height="90" rx="0" width="140" x="370" y="30"></rect>
+<text fill="#ffffff" font-family="Inter" font-size="11" font-weight="700" text-anchor="middle" x="440" y="65">3. ACCIÓN</text>
+<text fill="#aeceb9" font-family="Inter" font-size="10" text-anchor="middle" x="440" y="85">Ejecuta comandos CLI</text>
+<text fill="#aeceb9" font-family="Inter" font-size="10" text-anchor="middle" x="440" y="100">y edita en memoria</text>
+<path d="M510 75 H545" stroke="#727973" stroke-dasharray="3 3" stroke-width="1.5"></path>
+<polygon fill="#727973" points="545,72 552,75 545,78"></polygon>
+<rect fill="#ebeef8" height="90" rx="0" width="115" x="555" y="30"></rect>
+<text fill="#072417" font-family="Inter" font-size="11" font-weight="700" text-anchor="middle" x="612" y="65">4. VERIFICACIÓN</text>
+<text fill="#424843" font-family="Inter" font-size="10" text-anchor="middle" x="612" y="85">Comprueba output,</text>
+<text fill="#424843" font-family="Inter" font-size="10" text-anchor="middle" x="612" y="100">itera o concluye</text>
+</svg>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed mb-space-lg">
+          Cuando le ordenas a Claude Code: <em>«Localiza todas las imágenes en este directorio que pesen más de 2MB y optimízalas en formato WebP preservando los metadatos»</em>, el agente no te recita comandos de ImageMagick para que los descifres. En su lugar, evalúa qué binarios residen en tu máquina, instala los adaptadores necesarios si se lo autorizas, ejecuta los lotes de conversión, revisa los códigos de salida de la terminal y te entrega un reporte.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-space-lg">
+          Este mismo ejemplo ilustra por qué la confirmación previa antes de instalar algo nuevo en tu sistema importa: instalar un adaptador de conversión de imágenes es una acción con efecto duradero en tu máquina, no solo en el proyecto actual, así que el agente te lo señala explícitamente antes de proceder en vez de instalarlo en silencio como un paso intermedio más.</p>
+<aside class="my-space-xl p-space-lg bg-surface-container-lowest relative pl-space-xl">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-secondary"></div>
+<div class="flex items-center gap-2 mb-space-xs">
+<span class="material-symbols-outlined text-secondary text-[20px]">verified</span>
+<span class="font-kicker text-kicker uppercase tracking-widest text-secondary font-bold">NOTA DE PRODUCCIÓN // ARQUITECTURA</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+            Claude Code no es una extensión pasiva de tu editor. Funciona como un binario conectado al Model Context Protocol de Anthropic, trabajando en tu terminal nativa con permisos estrictos de lectura y escritura otorgados bajo tu supervisión explícita.
+          </p>
+</aside>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Esta diferencia se nota sobre todo en tareas que abarcan varios archivos a la vez. Pedirle a un chat normal que renombre una variable usada en quince archivos distintos exige copiar y pegar quince veces, verificando cada uno a mano. Un agente de terminal localiza todas las referencias, aplica el cambio de forma coherente en los quince archivos y te muestra el resultado consolidado para tu aprobación antes de escribir nada — la diferencia no es solo de comodidad, es de qué tipo de tareas resulta razonable delegar en primer lugar.</p>
+</section>
+
+<section class="mb-space-2xl">
+<h2 id="sec-2" class="font-headline-md text-headline-md text-primary mb-space-md tracking-tight">
+          2. Instalación en 3 minutos (incluso si jamás has abierto la consola)
+        </h2>
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed mb-space-md">
+          El mayor obstáculo psicológico para profesionales no técnicos es la ventana negra de la terminal. Sin embargo, no precisas configurar entornos virtuales complejos en Python ni compilar dependencias en C++. Si tu ordenador cuenta con Node.js instalado, el despliegue requiere exactamente dos instrucciones.
+        </p>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md mb-space-md">
+<div class="bg-surface-container-low p-space-sm">
+<span class="font-kicker text-kicker uppercase text-secondary block mb-1">macOS</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Terminal nativa. Sin pasos extra: los comandos de abajo funcionan tal cual.</p>
+</div>
+<div class="bg-surface-container-low p-space-sm">
+<span class="font-kicker text-kicker uppercase text-secondary block mb-1">Linux</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Cualquier terminal de tu distribución. Igual de directo que en macOS.</p>
+</div>
+<div class="bg-surface-container-low p-space-sm">
+<span class="font-kicker text-kicker uppercase text-secondary block mb-1">Windows</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Instala primero WSL (<code class="font-mono text-[11px] bg-surface-container px-1">wsl --install</code> en PowerShell como administrador, y reinicia). Después, los mismos comandos funcionan dentro de esa terminal Linux.</p>
+</div>
+</div>
+<div class="my-space-lg bg-inverse-surface text-inverse-on-surface p-space-md">
+<div class="flex items-center justify-between pb-space-xs mb-space-sm bg-inverse-surface/40">
+<div class="flex items-center gap-2 font-mono text-caption text-surface-variant">
+<span class="w-2.5 h-2.5 rounded-full bg-error inline-block"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-secondary-container inline-block"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-inverse-primary inline-block"></span>
+<span class="ml-2">bash — terminal</span>
+</div>
+<button class="flex items-center gap-1 font-kicker text-kicker uppercase text-surface-variant hover:text-surface transition-colors" id="copy-code-btn">
+<span class="material-symbols-outlined text-[14px]">content_copy</span>
+<span id="copy-btn-text">COPIAR COMANDOS</span>
+</button>
+</div>
+<pre class="font-mono text-body-sm leading-relaxed overflow-x-auto py-space-xs"><span class="text-inverse-primary"># 1. Instalar el paquete de Claude Code globalmente en tu sistema</span>
+<span class="text-surface">npm install -g @anthropic-ai/claude-code</span>
+
+<span class="text-inverse-primary"># 2. Iniciar sesión vinculando tu cuenta de Anthropic</span>
+<span class="text-surface">claude login</span>
+
+<span class="text-inverse-primary"># 3. Lanzar el entorno agéntico dentro de cualquier carpeta</span>
+<span class="text-secondary-container">claude</span></pre>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed mb-space-md">
+          Al escribir <code class="bg-surface-container px-1.5 py-0.5 text-body-sm font-mono">claude login</code>, se abrirá tu navegador para autorizar la sesión con tu cuenta de Anthropic (Consola estándar o Claude Pro/Team, según tu plan).
+        </p>
+<div class="bg-surface-container-low p-space-md my-space-md">
+<h3 class="font-kicker text-kicker uppercase tracking-wider text-primary mb-space-xs">¿QUÉ VES AL INGRESAR POR PRIMERA VEZ?</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+            La interfaz reemplaza el prompt tradicional de Bash por una línea de entrada interactiva enriquecida. Claude Code indexa en segundos los nombres de los ficheros del directorio activo, calcula el árbol de dependencias y muestra un resumen de contexto.
+          </p>
+</div>
+<figure class="my-space-lg">
+<img class="w-full border border-outline-variant" src="../img/guias/claude-code-interfaz.png" alt="Interfaz de Claude Code mostrando una sesión real: barra lateral con sesiones recientes y panel de conversación resolviendo un bug de cobros duplicados en un checkout." loading="lazy" width="1444" height="840"/>
+<figcaption class="font-caption text-caption text-on-surface-variant mt-space-xs">Captura de la interfaz oficial de Claude Code (<a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="https://claude.com/product/claude-code" target="_blank" rel="noopener">claude.com/product/claude-code</a>). El proyecto y la tarea del ejemplo son ilustrativos, no de esta guía.</figcaption>
+</figure>
+<div class="bg-surface-container-low p-space-md my-space-md">
+<h3 class="font-kicker text-kicker uppercase tracking-wider text-primary mb-space-xs">Si algo falla en la instalación</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+            El error más común es que <code class="font-mono text-[11px] bg-surface-container px-1">npm</code> no esté disponible porque Node.js no está instalado. Comprueba con <code class="font-mono text-[11px] bg-surface-container px-1">node -v</code> antes del primer paso; si no devuelve un número de versión, instala Node.js desde su web oficial antes de continuar. El segundo error más común en Windows es intentar ejecutar los comandos directamente en PowerShell en vez de dentro de la terminal de WSL — los comandos de esta guía están pensados para un entorno tipo Linux, no para PowerShell nativo. Si `claude login` no abre el navegador automáticamente, copia el enlace que aparece impreso en la terminal y pégalo tú mismo en cualquier navegador para completar la autorización manualmente.
+          </p>
+</div>
+</section>
+<figure class="my-space-2xl py-space-lg px-space-xl bg-surface-container-lowest">
+<blockquote class="font-headline-lg text-headline-lg text-primary italic leading-tight mb-space-sm">
+          «Un agente de IA útil no es el que inventa código complejo, sino el que comprende tu proyecto entero antes de escribir una sola línea.»
+        </blockquote>
+<figcaption class="font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">
+          — REDACCIÓN EL TELAR
+        </figcaption>
+</figure>
+<section class="mb-space-2xl">
+<h2 id="sec-3" class="font-headline-md text-headline-md text-primary mb-space-md tracking-tight">
+          3. Tus tres primeros flujos de automatización sin picar código
+        </h2>
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed mb-space-md">
+          No necesitas ser desarrollador web para extraer rendimientos tangibles desde la primera hora. A continuación, tres casos de uso probados en terminal real que puedes reproducir de inmediato:
+        </p>
+<div class="space-y-space-md my-space-lg">
+<div class="bg-surface-container-lowest p-space-lg hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-kicker text-kicker uppercase tracking-wider text-secondary font-bold">CASO DE USO 01 // GESTIÓN DOCUMENTAL</span>
+<span class="font-caption text-caption text-on-surface-variant">Tiempo de ahorro: ~45 min</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-space-xs">
+              Auditoría y normalización de carpetas de notas o contratos
+            </h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-space-sm leading-relaxed">
+              Si tienes un directorio con decenas de archivos en Markdown, CSV o TXT con fechas incoherentes o campos incompletos, indícale al agente que analice los esquemas y proponga una estructura uniforme.
+            </p>
+<div class="bg-surface-container-low p-space-sm font-mono text-body-sm text-primary">
+<span class="text-on-surface-variant select-none">&gt; </span>claude "Examina los 30 archivos .md en /notas, extrae los metadatos de autor y fecha del encabezado y genera una tabla index.md ordenada cronológicamente sin alterar el texto original."
+            </div>
+</div>
+<div class="bg-surface-container-lowest p-space-lg hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-kicker text-kicker uppercase tracking-wider text-secondary font-bold">CASO DE USO 02 // ANÁLISIS DE DATOS</span>
+<span class="font-caption text-caption text-on-surface-variant">Tiempo de ahorro: ~90 min</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-space-xs">
+              Depuración de hojas de cálculo rotas y discrepancias numéricas
+            </h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-space-sm leading-relaxed">
+              Claude Code lee ficheros de datos tabulares, detecta registros nulos, comprueba fórmulas y crea scripts temporales para entregarte un archivo limpio.
+            </p>
+<div class="bg-surface-container-low p-space-sm font-mono text-body-sm text-primary">
+<span class="text-on-surface-variant select-none">&gt; </span>claude "Lee facturacion_q4.csv, busca filas con totales que no coincidan con la suma de impuestos y guárdame un reporte anomalias.txt explicando la discrepancia."
+            </div>
+</div>
+<div class="bg-surface-container-lowest p-space-lg hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-kicker text-kicker uppercase tracking-wider text-secondary font-bold">CASO DE USO 03 // INFRAESTRUCTURA PERSONAL</span>
+<span class="font-caption text-caption text-on-surface-variant">Tiempo de ahorro: ~120 min</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-space-xs">
+              Diagnóstico de errores locales y configuración de entornos
+            </h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-space-sm leading-relaxed">
+              Cuando una herramienta de código abierto llena la pantalla de advertencias crípticas, el agente inspecciona el log del sistema y formula la solución puntual.
+            </p>
+<div class="bg-surface-container-low p-space-sm font-mono text-body-sm text-primary">
+<span class="text-on-surface-variant select-none">&gt; </span>claude "¿Por qué falla la ejecución del servidor web al escribir 'npm run dev'? Revisa el archivo de configuración y soluciona el conflicto de puertos."
+            </div>
+</div>
+<div class="bg-surface-container-lowest p-space-lg hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-kicker text-kicker uppercase tracking-wider text-secondary font-bold">CASO DE USO 04 // DOCUMENTACIÓN</span>
+<span class="font-caption text-caption text-on-surface-variant">Tiempo de ahorro: ~60 min</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-space-xs">
+              Redactar un resumen ejecutivo a partir de varios documentos dispersos
+            </h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-space-sm leading-relaxed">
+              Si tienes actas de reunión, un informe en PDF y una hoja de cálculo con cifras, todos relacionados con el mismo proyecto, el agente puede leer los tres a la vez y redactar un resumen que cruce la información sin que tengas que copiar nada manualmente entre archivos.
+            </p>
+<div class="bg-surface-container-low p-space-sm font-mono text-body-sm text-primary">
+<span class="text-on-surface-variant select-none">&gt; </span>claude "Lee las actas en /reuniones, el informe informe_q3.pdf y las cifras de presupuesto.xlsx, y redacta un resumen.md de una página cruzando decisiones tomadas con el estado real del presupuesto."
+            </div>
+</div>
+</div>
+</section>
+<section class="mb-space-2xl">
+<figure data-inline-photo class="space-y-space-xs my-space-xl"><img class="w-full border border-outline-variant" src="../img/guias/foto-que-es-claude-code.jpg" alt="Documentación oficial de Claude Code" width="1280" height="720" loading="lazy" decoding="async"/><figcaption class="font-caption text-caption text-on-surface-variant">Captura de pantalla: <a class="underline" href="https://docs.anthropic.com/en/docs/claude-code/overview" rel="nofollow noopener" target="_blank">docs.anthropic.com/en/docs/claude-code/overview</a>.</figcaption></figure>
+<h2 id="sec-4" class="font-headline-md text-headline-md text-primary mb-space-md tracking-tight">
+          4. Los 3 límites que nadie te cuenta (y cómo no quemar tu cuota)
+        </h2>
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed mb-space-md">
+          El entusiasmo inicial suele provocar que usuarios noveles consuman su límite de tokens en minutos. Aplica estas tres directrices para mantener tu factura bajo control:
+        </p>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md my-space-lg">
+<div class="p-space-md bg-surface-container-low">
+<span class="font-headline-md text-secondary font-bold select-none block mb-1">01</span>
+<h4 class="font-label-md text-label-md text-primary uppercase font-bold mb-space-xs">Usa .claudeignore</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Crea un archivo <code class="font-mono text-[11px] bg-surface-container px-1">.claudeignore</code> en la raíz y excluye carpetas masivas como <code class="font-mono text-[11px]">node_modules</code>, <code class="font-mono text-[11px]">.git</code> o binarios pesados.
+            </p>
+</div>
+<div class="p-space-md bg-surface-container-low">
+<span class="font-headline-md text-secondary font-bold select-none block mb-1">02</span>
+<h4 class="font-label-md text-label-md text-primary uppercase font-bold mb-space-xs">Permiso de escritura</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Por defecto, Claude Code pide confirmación antes de escribir o borrar archivos. <strong>Nunca desactives el flag interactivo</strong> hasta haber verificado el plan.
+            </p>
+</div>
+<div class="p-space-md bg-surface-container-low">
+<span class="font-headline-md text-secondary font-bold select-none block mb-1">03</span>
+<h4 class="font-label-md text-label-md text-primary uppercase font-bold mb-space-xs">Context Compaction</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Si llevas 20 minutos encadenando preguntas, escribe <code class="font-mono text-[11px] bg-surface-container px-1">/compact</code> para condensar el historial y purgar redundancias.
+            </p>
+</div>
+</div>
+<div class="bg-surface-container-low p-space-md my-space-md">
+<h3 class="font-kicker text-kicker uppercase tracking-wider text-primary mb-space-xs">Comandos rápidos que usarás desde el primer día</h3>
+<dl class="space-y-space-xs font-body-sm text-body-sm">
+<div class="flex gap-space-sm"><dt class="font-mono text-primary font-bold w-24 shrink-0">/clear</dt><dd class="text-on-surface-variant">Empieza una conversación nueva, sin arrastrar contexto de la anterior.</dd></div>
+<div class="flex gap-space-sm"><dt class="font-mono text-primary font-bold w-24 shrink-0">/compact</dt><dd class="text-on-surface-variant">Resume la conversación actual para liberar espacio de contexto sin perder el hilo.</dd></div>
+<div class="flex gap-space-sm"><dt class="font-mono text-primary font-bold w-24 shrink-0">/help</dt><dd class="text-on-surface-variant">Lista todos los comandos disponibles en tu versión instalada.</dd></div>
+<div class="flex gap-space-sm"><dt class="font-mono text-primary font-bold w-24 shrink-0">Esc</dt><dd class="text-on-surface-variant">Interrumpe al agente a media tarea si ves que va por mal camino.</dd></div>
+</dl>
+</div>
+</section>
+<section class="mb-space-2xl">
+<h2 id="sec-5" class="font-headline-md text-headline-md text-primary mb-space-md tracking-tight">
+          5. El archivo CLAUDE.md: cómo evitar repetir el mismo contexto cada vez
+        </h2>
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed mb-space-md">
+          Si trabajas de forma habitual en la misma carpeta de proyecto, repetir cada vez las mismas indicaciones ("no toques la carpeta de backups", "los informes van siempre en formato tabla") es una fricción evitable. Un archivo llamado <code class="bg-surface-container px-1.5 py-0.5 text-body-sm font-mono">CLAUDE.md</code> en la raíz del proyecto se lee automáticamente al iniciar una sesión en esa carpeta, y su contenido se trata como contexto permanente sin que tengas que repetirlo en cada instrucción.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Un CLAUDE.md útil no necesita ser largo: unas pocas líneas indicando qué carpetas evitar, qué formato de salida prefieres para los informes, o convenciones propias de tu forma de organizar archivos ya ahorra tener que repetir esas mismas instrucciones sesión tras sesión. No lo trates como documentación formal para otras personas, trátalo como una nota rápida para ti mismo: cuanto más concreto y corto, más probable que lo mantengas actualizado con el tiempo. Si trabajas en varios proyectos distintos, cada uno puede tener su propio CLAUDE.md con reglas específicas de ese proyecto en concreto.</p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Una forma práctica de empezar sin pensar demasiado en la estructura: la primera vez que corrijas al agente por algo que ya deberías haber especificado ("no, los informes van siempre en tabla, no en prosa"), añade esa misma corrección al CLAUDE.md del proyecto en ese momento, en vez de solo corregirlo en la conversación actual. Con el tiempo, el archivo se convierte en un resumen vivo de las convenciones de ese proyecto, construido a partir de correcciones reales en vez de una lista teórica escrita de antemano sin saber qué haría falta.</p>
+</section>
+<section class="mb-space-2xl">
+<h2 id="sec-6" class="font-headline-md text-headline-md text-primary mb-space-md tracking-tight">
+          6. Suscripción frente a clave de API: qué opción conviene según tu uso
+        </h2>
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed mb-space-md">
+          Al ejecutar <code class="bg-surface-container px-1.5 py-0.5 text-body-sm font-mono">claude login</code> puedes vincular una cuenta de suscripción (Claude Pro o Claude Max) o una clave de API de la Consola de Anthropic con facturación por uso. La diferencia práctica: la suscripción tiene un coste mensual fijo con un límite de uso incluido, mientras que la clave de API cobra por cada token procesado, sin límite mensual fijo pero con la posibilidad de fijar un tope de gasto manual.</p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Para un uso diario moderado y predecible (unas pocas horas de trabajo por día), la suscripción suele salir más barata y más simple de controlar, porque sabes de antemano cuánto vas a pagar ese mes. La clave de API tiene sentido cuando tu uso es muy variable o esporádico, o cuando quieres integrar Claude Code en un flujo automatizado propio donde necesitas control fino sobre el gasto por tarea concreta. Si empiezas y no sabes cuál de los dos patrones describe mejor tu caso, la suscripción es la opción más simple para probar sin sorpresas en la primera factura.</p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Puedes cambiar de una opción a otra más adelante sin perder tu configuración local (el CLAUDE.md del proyecto, el archivo .claudeignore, tus preferencias) — la elección inicial no es una decisión permanente, es solo el punto de partida más razonable dado lo que sabes de tu propio patrón de uso en este momento.</p>
+</section>
+<section class="bg-surface-container-lowest p-space-lg mb-space-2xl">
+<h3 class="font-kicker text-kicker uppercase tracking-wider text-primary mb-space-md flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[18px]">checklist</span>
+          LISTA DE COMPROBACIÓN ANTES DE TU PRIMER DESPACHO
+        </h3>
+<div class="space-y-space-sm font-body-sm text-body-sm">
+<label class="flex items-center gap-space-sm cursor-pointer select-none">
+<input checked="" class="w-4 h-4 accent-primary rounded-none" type="checkbox"/>
+<span class="text-on-surface">Node.js (v18.0 o superior) verificado en la consola mediante <code class="font-mono text-[12px]">node -v</code></span>
+</label>
+<label class="flex items-center gap-space-sm cursor-pointer select-none">
+<input checked="" class="w-4 h-4 accent-primary rounded-none" type="checkbox"/>
+<span class="text-on-surface">Clave de API de Anthropic generada con límite de gasto mensual prefijado</span>
+</label>
+<label class="flex items-center gap-space-sm cursor-pointer select-none">
+<input class="w-4 h-4 accent-primary rounded-none" type="checkbox"/>
+<span class="text-on-surface">Directorio de prueba inicial aislado sin archivos críticos ni datos confidenciales</span>
+</label>
+<label class="flex items-center gap-space-sm cursor-pointer select-none">
+<input class="w-4 h-4 accent-primary rounded-none" type="checkbox"/>
+<span class="text-on-surface">Archivo <code class="font-mono text-[12px]">.claudeignore</code> configurado con exclusión de backups</span>
+</label>
+</div>
+</section>
+<section class="mb-space-2xl">
+<h2 class="font-headline-md text-headline-md text-primary mb-space-md tracking-tight">
+          Preguntas frecuentes
+        </h2>
+<div class="space-y-space-md">
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Puedo usar Claude Code sin saber absolutamente nada de terminal?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Sí, para el uso básico: abrir la aplicación de terminal de tu sistema, pegar los tres comandos de instalación de esta guía y escribir instrucciones en español normal es todo lo que necesitas. Lo único que ayuda aprender con el tiempo es a leer la salida de la terminal lo suficiente para saber si algo salió bien o mal, no a escribir comandos tú mismo.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Qué pasa si le pido algo y el resultado no es el esperado?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Como con cualquier asistente de IA, puedes pedirle que ajuste el resultado en la misma conversación en vez de empezar de cero: dile específicamente qué está mal, y el agente iterará sobre el trabajo ya hecho. Si te preocupa que haya modificado algo antes de tiempo, recuerda que por defecto pide confirmación antes de escribir o borrar archivos, así que siempre tienes la oportunidad de revisar el plan antes de que se ejecute.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Es seguro dejarlo trabajar en una carpeta con archivos importantes?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Con el flag interactivo activado (el comportamiento por defecto), no debería modificar ni borrar nada sin tu confirmación explícita, lo que reduce mucho el riesgo. Aun así, para la primera vez que pruebes una tarea nueva, es buena práctica trabajar sobre una copia de la carpeta o sobre un directorio de prueba sin datos críticos, como recomienda la lista de comprobación de esta guía, hasta que confíes en cómo se comporta con ese tipo de tarea concreta.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Claude Code reemplaza a un editor de código como VS Code?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+No están pensados como sustitutos mutuos: Claude Code también se puede usar como extensión dentro de editores compatibles, complementando el flujo visual del editor con el razonamiento agéntico de la terminal, en vez de forzarte a elegir entre uno u otro. Para quien no programa, el uso más común es directamente desde la terminal, sin necesidad de instalar ningún editor de código adicional.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Qué pasa con mis archivos si cancelo la suscripción o dejo de usarlo?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Todo el trabajo que Claude Code produce (los archivos que crea o modifica) se queda guardado normalmente en tu disco, exactamente igual que cualquier otro archivo local — no depende de una conexión continua ni queda "bloqueado" en ningún formato propietario. Dejar de usar la herramienta no afecta a los archivos que ya generó mientras la usabas.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Puedo usarlo para tareas fuera de código, como organizar fotos o planificar un evento?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Sí, y de hecho tres de los cuatro casos de uso de esta guía no son de programación en sentido estricto: son gestión documental, análisis de datos y diagnóstico de configuración. Cualquier tarea que implique leer, comparar o reorganizar archivos en tu ordenador es un candidato razonable, independientemente de si tiene relación con escribir código o no.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Hay una versión de prueba gratuita antes de comprometerme con un plan?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+La disponibilidad y condiciones de los planes cambian con el tiempo, así que consulta siempre la página oficial de precios de Anthropic antes de decidir — es la única fuente que refleja las condiciones vigentes en el momento en que lo pruebes.
+</div>
+</div>
+</div>
+</section>
+</article>
+<aside class="lg:col-span-4 space-y-space-xl sticky top-6 hidden lg:block">
+<div class="bg-surface-container-lowest p-space-lg">
+<div class="font-kicker text-kicker uppercase tracking-widest text-on-surface-variant mb-space-md flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">format_list_bulleted</span>
+          ÍNDICE DE LA GUÍA
+        </div>
+<nav aria-label="Tabla de contenidos" class="space-y-space-sm font-body-sm text-body-sm">
+<a class="block text-on-surface-variant hover:text-primary transition-colors" href="#sec-1">
+            1. Qué hace diferente a un agente de terminal
+          </a>
+<a class="block text-on-surface-variant hover:text-primary transition-colors pl-2" href="#sec-2">
+            2. Instalación en 3 minutos
+          </a>
+<a class="block text-on-surface-variant hover:text-primary transition-colors pl-2" href="#sec-3">
+            3. Tres flujos de automatización sin código
+          </a>
+<a class="block text-on-surface-variant hover:text-primary transition-colors pl-2" href="#sec-4">
+            4. Los 3 límites que nadie te cuenta
+          </a>
+<a class="block text-on-surface-variant hover:text-primary transition-colors pl-2" href="#sec-5">
+            5. El archivo CLAUDE.md
+          </a>
+<a class="block text-on-surface-variant hover:text-primary transition-colors pl-2" href="#sec-6">
+            6. Suscripción frente a clave de API
+          </a>
+</nav>
+</div>
+<div class="bg-surface-container-low p-space-lg">
+<div class="font-kicker text-kicker uppercase tracking-widest text-primary mb-space-sm font-bold">
+          FICHA TÉCNICA
+        </div>
+<dl class="space-y-space-xs font-body-sm text-body-sm">
+<div class="flex justify-between py-1">
+<dt class="text-on-surface-variant">Herramienta:</dt>
+<dd class="font-mono font-medium text-primary">Claude Code CLI</dd>
+</div>
+<div class="flex justify-between py-1">
+<dt class="text-on-surface-variant">Desarrollador:</dt>
+<dd class="font-medium text-on-surface">Anthropic</dd>
+</div>
+<div class="flex justify-between py-1">
+<dt class="text-on-surface-variant">Nivel técnico:</dt>
+<dd class="font-medium text-secondary">Principiante / Intermedio</dd>
+</div>
+</dl>
+</div>
+<div class="bg-primary text-on-primary p-space-lg space-y-space-sm">
+<div class="font-kicker text-kicker uppercase tracking-widest text-primary-fixed font-bold">
+          BOLETÍN SEMANAL
+        </div>
+<h4 class="font-headline-sm text-headline-sm leading-snug">
+          Recibe análisis técnicos de agentes sin ruido comercial.
+        </h4>
+<p class="font-body-sm text-body-sm text-primary-fixed-dim leading-relaxed">
+          Cuando publicamos una guía nueva a fondo, te avisamos por correo. Nada más.
+        </p>
+<form class="space-y-space-xs pt-space-xs" id="newsletter-form-guide" name="newsletter" method="POST" action="/api/form" data-telar-form data-ok="subscribe-ok-guide">
+<input type="hidden" name="form-name" value="newsletter"/>
+<p class="hidden"><label>No rellenar: <input name="bot-field" tabindex="-1" autocomplete="off"/></label></p>
+<input name="email" aria-label="Correo electrónico" class="w-full bg-surface-container-lowest text-on-surface px-space-sm py-2 font-body-sm focus:outline-none focus:ring-1 focus:ring-primary-fixed" placeholder="tu@correo.com" required="" type="email"/>
+<button class="w-full bg-secondary-container text-on-secondary-container hover:bg-secondary font-label-md text-label-md uppercase tracking-wider py-2 transition-colors font-bold" type="submit">
+            SUSCRIPCIÓN GRATUITA
+          </button>
+</form>
+<p class="hidden font-body-sm text-body-sm" id="subscribe-ok-guide">Apuntado. Te avisaremos cuando publiquemos una guía nueva.</p>
+<div class="font-caption text-[11px] text-primary-fixed-dim/80 pt-1">
+          Cero spam. Puedes darte de baja cuando quieras.
+        </div>
+</div>
+
+</aside>
+</div>
+<section class="w-full mt-space-4xl pt-space-2xl bg-surface-container-low p-space-xl">
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-space-xl gap-space-sm">
+<div>
+<div class="font-kicker text-kicker uppercase tracking-widest text-secondary font-bold mb-space-xxs">
+          ARCHIVO EDITORIAL
+        </div>
+<h2 class="font-headline-lg text-headline-lg text-primary tracking-tight">
+          Continúa explorando el archivo
+        </h2>
+</div>
+<a class="font-label-md text-label-md text-primary font-bold uppercase tracking-wider hover:underline flex items-center gap-1" href="../index.html#guias">
+        Ver todas las guías
+        <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-col-gap"><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="automatizar-tareas-agentes-ia.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-automatizar-tareas-agentes-ia.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="automatizar-tareas-agentes-ia.html">Cómo automatizar tareas repetitivas con agentes de IA</a></h4></div></article><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="mcp-explicado.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-mcp-explicado.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="mcp-explicado.html">MCP explicado: cómo conectar la IA con tus propias herramientas</a></h4></div></article><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="mejores-claude-skills.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-mejores-claude-skills.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="mejores-claude-skills.html">Las mejores Claude Skills de 2026: la lista que necesitas</a></h4></div></article></div>
+</section>
+<script>
+    (function() {
+      window.addEventListener('scroll', function() {
+        const article = document.getElementById('article-content');
+        if (!article) return;
+        const totalHeight = article.clientHeight;
+        const scrollPosition = window.scrollY - article.offsetTop;
+        const progress = Math.min(Math.max((scrollPosition / totalHeight) * 100, 0), 100);
+        const progressBar = document.getElementById('scroll-progress');
+        if (progressBar) progressBar.style.width = progress + '%';
+      });
+      const copyBtn = document.getElementById('copy-code-btn');
+      if (copyBtn) {
+        copyBtn.addEventListener('click', function() {
+          const codeToCopy = `npm install -g @anthropic-ai/claude-code\nclaude login\nclaude`;
+          navigator.clipboard.writeText(codeToCopy).then(function() {
+            const btnText = document.getElementById('copy-btn-text');
+            if (btnText) {
+              const original = btnText.textContent;
+              btnText.textContent = '¡COPIADO!';
+              setTimeout(function() { btnText.textContent = original; }, 2000);
+            }
+          });
+        });
+      }
+      const copyLinkBtn = document.getElementById('copy-link-btn');
+      if (copyLinkBtn) {
+        copyLinkBtn.addEventListener('click', function() {
+          navigator.clipboard.writeText(window.location.href);
+          const icon = copyLinkBtn.querySelector('.material-symbols-outlined');
+          if (icon) { icon.textContent = 'check'; setTimeout(() => { icon.textContent = 'share'; }, 2000); }
+        });
+      }
+      const fontToggleBtn = document.getElementById('toggle-font-btn');
+      if (fontToggleBtn) {
+        let isLarge = false;
+        fontToggleBtn.addEventListener('click', function() {
+          isLarge = !isLarge;
+          const article = document.getElementById('article-content');
+          if (article) { article.classList.toggle('scale-105', isLarge); article.classList.toggle('origin-top-left', isLarge); }
+        });
+      }
+    })();
+  </script>
+</div></main>
+<footer class="w-full bg-surface-container-low border-t border-outline-variant mt-space-4xl"><div class="max-w-site-max-width mx-auto px-space-md py-space-3xl"><div class="grid grid-cols-1 md:grid-cols-3 gap-col-gap"><div class="space-y-space-sm"><span class="font-headline-md text-headline-md text-primary">El Telar</span><p class="font-body-sm text-body-sm text-on-surface-variant">Publicación independiente de tecnología y automatización con agentes. Contenidos verificados en producción, sin patrocinios opacos ni promesas vacías.</p></div><div><h3 class="font-kicker text-kicker uppercase tracking-wider text-on-surface mb-space-md">SECCIONES</h3><ul class="space-y-space-xs font-body-sm text-body-sm"><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html#guias">Archivo de Guías</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../empieza-aqui.html">Guía para Principiantes</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../sobre-nosotros.html">Manifiesto Editorial</a></li><li class="pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html#despacho">Boletín Semanal</a></li></ul></div><div><h3 class="font-kicker text-kicker uppercase tracking-wider text-on-surface mb-space-md">CONTACTO &amp; PRENSA</h3><div class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant"><p class="font-semibold text-on-surface">contacto@eltelar.es</p><p>Síguenos: <a class="hover:text-primary underline" href="https://www.instagram.com/eltelar_es/" rel="me noopener" target="_blank">Instagram</a> · <a class="hover:text-primary underline" href="https://www.threads.com/@eltelar_es" rel="me noopener" target="_blank">Threads</a> · <a class="hover:text-primary underline" href="https://x.com/eltelar_es" rel="me noopener" target="_blank">X</a></p></div></div></div></div><div class="border-t border-outline-variant py-space-md bg-surface-container-lowest"><div class="max-w-site-max-width mx-auto px-space-md flex flex-col md:flex-row items-center justify-between gap-space-sm text-caption font-caption text-on-surface-variant"><div>© 2026 El Telar. Todos los derechos reservados. Independencia editorial garantizada.</div><div class="flex items-center gap-space-md"><a class="hover:text-on-surface transition-colors" href="../privacidad.html">Privacidad</a><a class="hover:text-on-surface transition-colors" href="../terminos.html">Términos</a><a class="hover:text-on-surface transition-colors" href="../sobre-nosotros.html">Sobre nosotros</a><a class="hover:text-on-surface transition-colors" href="../contacto.html">Contacto</a></div></div></div></footer><script defer src="../js/copy-guide.js"></script><script defer src="../js/guide-interactions.js"></script><script defer src="../js/reading-progress.js"></script><script defer src="../js/search.js?v=7"></script><script defer src="../js/forms.js"></script><script defer src="../js/entrance.js"></script><script defer src="../js/cookie-consent.js?v=4"></script></body></html>

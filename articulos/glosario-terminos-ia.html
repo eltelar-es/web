@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Glosario de IA: 30 términos que debes conocer | El Telar</title>
+<meta name="description" content="Los términos de inteligencia artificial que más aparecen en guías y noticias, explicados sin jerga: token, contexto, alucinación, fine-tuning, RAG y más.">
+<link rel="canonical" href="https://eltelar.es/articulos/glosario-terminos-ia.html"><link rel="icon" type="image/svg+xml" href="../img/favicon.svg?v=4"><link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32.png?v=4"><link rel="apple-touch-icon" href="../img/apple-touch-icon.png?v=4"><meta name="theme-color" content="#072417"><link rel="manifest" href="../manifest.json"><link rel="alternate" type="application/rss+xml" title="El Telar" href="../feed.xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Glosario de IA: 30 términos que debes conocer | El Telar">
+<meta property="og:description" content="Los términos de inteligencia artificial que más aparecen en guías y noticias, explicados sin jerga: token, contexto, alucinación, fine-tuning, RAG y más.">
+<meta property="og:url" content="https://eltelar.es/articulos/glosario-terminos-ia.html">
+<meta property="og:site_name" content="El Telar">
+<meta property="og:locale" content="es_ES"><meta property="og:image" content="https://eltelar.es/img/og/guia-glosario-terminos-ia.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Glosario de IA: 30 términos que debes conocer | El Telar">
+<meta name="twitter:description" content="Los términos de inteligencia artificial que más aparecen en guías y noticias, explicados sin jerga: token, contexto, alucinación, fine-tuning, RAG y más."><meta name="twitter:image" content="https://eltelar.es/img/og/guia-glosario-terminos-ia.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Glosario de IA: 30 términos que debes conocer",
+  "description": "Los términos de inteligencia artificial que más aparecen en guías y noticias, explicados sin jerga: token, contexto, alucinación, fine-tuning, RAG y más.",
+  "image": "https://eltelar.es/img/og-image.jpg",
+  "author": { "@type": "Organization", "name": "El Telar", "url": "https://eltelar.es/sobre-nosotros.html" },
+  "publisher": { "@type": "Organization", "name": "El Telar" },
+  "datePublished": "2026-01-01",
+  "dateModified": "2026-09-06",
+  "mainEntityOfPage": "https://eltelar.es/articulos/glosario-terminos-ia.html",
+  "inLanguage": "es"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Estos términos cambian con cada nuevo modelo que sale?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Los conceptos fundamentales (token, contexto, prompt, alucinación) son estables y llevan años siendo relevantes. Lo que cambia con cada generación de modelos son los valores concretos (cuántos tokens de contexto soporta un modelo, qué tan frecuentes son las alucinaciones), no el vocabulario en sí. Este glosario se revisa periódicamente para añadir términos nuevos que ganan relevancia, pero la base de conceptos fundamentales cambia muy poco de una revisión a otra."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Hace falta memorizar todos estos términos?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. El objetivo de un glosario no es memorizar, es tener un sitio al que volver cuando te encuentres un término que no reconoces mientras lees otra guía, una noticia sobre IA o la documentación de una herramienta nueva."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Por qué tantos términos en inglés si el contenido está en español?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "La mayoría de estos términos nacieron en papers de investigación y documentación técnica en inglés, y la comunidad hispanohablante los adoptó tal cual en vez de traducirlos, de forma parecida a como ocurrió con términos de informática más antiguos (\"software\", \"hardware\", \"email\"). Usar el término en inglés, aunque suene menos natural, facilita encontrar más información si necesitas profundizar en algo más adelante."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cómo sé si un término nuevo que me encuentro merece la pena aprenderlo o es una moda pasajera?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Una señal práctica: si el término describe un concepto técnico de fondo (cómo funciona el modelo, qué límite tiene, qué riesgo gestiona), suele mantenerse relevante durante años, como los treinta de este glosario. Si describe el nombre comercial de una función concreta de un producto, es más probable que cambie o desaparezca con la siguiente actualización de ese producto en particular."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Dónde verifico la definición exacta si tengo dudas?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Para términos con origen académico (RAG, embeddings, function calling), la fuente más fiable suele ser el paper de investigación original o la documentación técnica del laboratorio que lo introdujo. Para términos de producto específicos de una herramienta, la documentación oficial de esa herramienta es la referencia más actualizada, más que cualquier glosario general como este, precisamente porque un glosario general no puede actualizarse a la misma velocidad que cada producto individual."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cómo sé si un término nuevo que me encuentro merece la pena aprenderlo o es una moda pasajera?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Una señal práctica adicional: si varias fuentes independientes y no relacionadas entre sí (documentación técnica, papers, varios proveedores distintos) usan el mismo término con el mismo significado, es una señal de que se ha consolidado como parte del vocabulario estándar del sector, no de una campaña de marketing de un solo fabricante intentando posicionar su propia jerga."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://eltelar.es/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Guías",
+      "item": "https://eltelar.es/index.html#guias"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Glosario de IA: 30 términos que debes conocer",
+      "item": "https://eltelar.es/articulos/glosario-terminos-ia.html"
+    }
+  ]
+}
+</script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet"/></noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet"/></noscript>
+<style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><link rel="stylesheet" href="../css/tailwind.css"><link rel="stylesheet" href="../css/entrance.css?v=2"><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}(function(){var c=null;try{c=localStorage.getItem('eltelar-cookie-consent')}catch(e){}var g=c==='accepted'?'granted':'denied';gtag('consent','default',{ad_storage:g,ad_user_data:g,ad_personalization:g,analytics_storage:g,wait_for_update:500});window.adsbygoogle=window.adsbygoogle||[];if(g!=='granted'){window.adsbygoogle.requestNonPersonalizedAds=1;}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-4DPTKEG79N"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4DPTKEG79N');</script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8239907995939753" crossorigin="anonymous"></script></head><body class="bg-background font-body-md text-on-surface antialiased">
+<header class="w-full bg-surface-container-lowest border-b border-outline-variant"><div class="border-b border-outline-variant py-space-xxs px-space-md hidden md:block"><div class="max-w-site-max-width mx-auto flex items-center justify-between font-kicker text-kicker text-on-surface-variant uppercase tracking-wider"><span>EDICIÓN DIGITAL // ACTUALIZADO 2026 // EL TELAR &amp; AGENTES</span><span>MADRID · REMOTO</span><span>SIN HUMO · 100% PRODUCCIÓN</span></div></div><div class="max-w-site-max-width mx-auto px-space-md py-space-md sm:py-space-xl text-center"><p class="hidden sm:block font-kicker text-kicker uppercase tracking-widest text-on-surface-variant mb-space-xs">Publicación Independiente de Tecnología &amp; Agentes</p><a class="inline-block" href="../index.html"><div class="font-display text-display max-sm:text-[40px] max-sm:leading-none text-primary tracking-tight">El Telar</div></a><p class="hidden sm:block font-caption text-caption uppercase tracking-widest text-on-surface-variant mt-space-xs">EL BOLETÍN Y ARCHIVO PRÁCTICO DE INTELIGENCIA ARTIFICIAL Y AGENTES AUTÓNOMOS</p></div><div class="border-t border-b border-outline-variant"><div class="max-w-site-max-width mx-auto px-space-md flex items-center justify-between gap-space-sm h-14"><nav class="flex items-center gap-space-md sm:gap-space-lg h-full min-w-0 overflow-x-auto [scrollbar-width:none] whitespace-nowrap"><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../index.html#guias">GUÍAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../empieza-aqui.html">EMPIEZA AQUÍ</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../sobre-nosotros.html">SOBRE NOSOTROS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../noticias/index.html">NOTICIAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../herramientas/index.html">HERRAMIENTAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../prompts/index.html">PROMPTS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../contacto.html">CONTACTO</a></nav><div class="flex items-center gap-space-md"><button id="search-trigger" type="button" aria-label="Buscar en las guías" class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[20px]">search</span></button><a class="hidden sm:inline-block bg-primary-container text-surface px-space-md py-space-xs font-label-md text-label-md uppercase tracking-wider hover:bg-primary transition-colors" href="../index.html#despacho">SUSCRÍBETE GRATIS</a></div></div></div><div class="hidden md:block bg-surface-container-low border-b border-outline-variant py-space-xs px-space-md"><div class="max-w-site-max-width mx-auto text-center"><p class="font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">47 GUÍAS COMPLETAS EN EXPANSIÓN · ACTUALIZADO A MODELOS 2026 · PROBADO EN TERMINAL Y FLUJOS REALES · CERO HUMO NI TEORÍA VACÍA</p></div></div></header>
+<main class="w-full max-w-site-max-width mx-auto px-space-md py-space-xl"><div class="flex flex-col w-full">
+<nav class="w-full mb-space-lg">
+<ol class="flex flex-wrap items-center gap-space-xs font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">
+<li><a class="hover:text-primary transition-colors" href="../index.html">Inicio</a></li>
+<li class="text-on-surface-variant">/</li>
+<li><a class="hover:text-primary transition-colors" href="../index.html#guias">Guías</a></li>
+<li class="text-on-surface-variant">/</li>
+<li class="text-primary font-bold truncate max-w-[280px] sm:max-w-md">Glosario de IA</li>
+</ol>
+</nav>
+<header class="w-full pb-space-xl mb-space-2xl">
+<div class="flex flex-wrap items-center gap-space-xs mb-space-md">
+<span class="bg-surface-container-high text-secondary px-space-sm py-1 font-kicker text-kicker uppercase tracking-widest">
+        CONCEPTOS // REFERENCIA
+      </span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight max-w-editorial-max-width mb-space-md">
+      Glosario de IA: 30 términos que debes conocer
+    </h1>
+<p class="font-lead-paragraph text-lead-paragraph text-on-surface-variant max-w-editorial-max-width mb-space-xl">
+      Los términos que más aparecen en guías y noticias sobre IA, explicados en una frase clara cada uno, con un ejemplo real y concreto de dónde te lo vas a encontrar en tu día a día.
+    </p>
+<div class="bg-surface-container-lowest p-space-md flex flex-wrap items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 bg-primary text-on-primary flex items-center justify-center font-headline-sm text-headline-sm">
+          ET
+        </div>
+<div>
+<div class="font-label-md text-label-md text-on-surface font-semibold">Por la Redacción de El Telar</div><div class="font-caption text-caption text-on-surface-variant">Guías prácticas de IA y agentes, probadas en flujos de trabajo reales antes de publicarlas.</div>
+<button class="inline-flex items-center gap-1 mt-2 px-3 py-1.5 bg-surface-container text-primary font-label-md text-[12px] font-semibold uppercase tracking-wider hover:bg-surface-container-high transition-colors" id="copy-guide-btn" type="button"><span class="material-symbols-outlined text-[16px]">content_copy</span> Copiar guía para tu IA</button><span class="inline-flex items-center gap-1 ml-1"><button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" id="save-guide-btn" title="Guardar guía" type="button"><span class="material-symbols-outlined text-[16px]">bookmark_border</span></button><button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" id="copy-link-btn" title="Copiar enlace permanente" type="button"><span class="material-symbols-outlined text-[16px]">share</span></button></span>
+</div>
+</div>
+<div class="flex items-center gap-space-lg text-on-surface-variant font-caption text-caption uppercase tracking-wider">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">schedule</span> 14 min de lectura</span>
+</div>
+</div>
+</header>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-col-gap">
+<article class="lg:col-span-8 flex flex-col space-y-space-xl">
+<figure data-hero class="space-y-space-xs"><img class="w-full border border-outline-variant" src="../img/guias/hero-glosario-terminos-ia.jpg" alt="Curso gratuito de Hugging Face sobre modelos de lenguaje" width="1280" height="720" fetchpriority="high" decoding="async"/><figcaption class="font-caption text-caption text-on-surface-variant">Captura de pantalla: <a class="underline" href="https://huggingface.co/learn/llm-course/chapter1/1" rel="nofollow noopener" target="_blank">huggingface.co/learn/llm-course/chapter1/1</a>.</figcaption></figure>
+<div class="relative bg-surface-container-lowest p-space-lg shadow-sm">
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed text-justify">
+<span class="float-left font-display text-primary text-6xl leading-none pr-3 pt-1 font-bold">E</span>stos son los términos que más aparecen al leer sobre IA y agentes, explicados en una frase cada uno, sin dar por hecho que ya sabes de qué va el tema. Cada término va acompañado de un ejemplo de dónde te lo vas a encontrar en la práctica, no solo la definición técnica seca, porque un término solo se queda de verdad cuando se ve funcionando en un caso concreto y reconocible.
+        </p>
+</div>
+<section class="space-y-space-lg">
+<h2 id="sec-1" class="font-headline-lg text-headline-lg text-primary">
+          Por qué merece la pena conocer estos términos
+        </h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          No hace falta saber programar ni tener formación técnica previa para beneficiarse de este glosario. La jerga de la IA se ha vuelto parte del vocabulario habitual en reuniones de trabajo, artículos de noticias y decisiones de compra de herramientas, y no entender un término concreto suele llevar a dos problemas distintos: o bien aceptas afirmaciones de marketing sin poder evaluarlas críticamente ("nuestro modelo tiene la ventana de contexto más grande del mercado" suena impresionante hasta que sabes qué significa realmente y si te importa para tu caso concreto), o bien te sientes excluido de conversaciones donde en realidad los conceptos, una vez explicados con claridad, no son tan complicados como parecen a primera vista.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Un ejemplo habitual: alguien lee que un modelo "alucina" y asume que es un fallo raro y poco frecuente, cuando en realidad es un comportamiento estructural presente en mayor o menor medida en todos los modelos actuales. Saber esto cambia cómo usas la herramienta — no como sustituto ciego de la verificación, sino como un asistente cuyo trabajo hay que revisar con criterio, igual que revisarías el de cualquier colaborador nuevo. Esta guía trata el tema con más detalle en el artículo dedicado a las alucinaciones de la IA, enlazado al final de esta página.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          También ayuda a la hora de evaluar contratos y propuestas comerciales de proveedores de software que integran IA. Frases como "usamos RAG para garantizar precisión" o "nuestro modelo tiene fine-tuning específico para tu sector" son, en la práctica, promesas verificables si entiendes qué significa cada término — puedes preguntar directamente "¿qué documentos concretos consulta el RAG?" o "¿con cuántos ejemplos se hizo el fine-tuning?" en vez de aceptar el término como si fuera automáticamente sinónimo de calidad. Esta capacidad de hacer la pregunta correcta es, en la práctica, el verdadero valor de un glosario como este: no memorizar definiciones para repetirlas, sino ganar la seguridad de detectar cuándo un término técnico se está usando con precisión y cuándo se está usando solo por su efecto persuasivo.
+        </p>
+<h3 class="font-headline-sm text-headline-sm text-primary">Confusiones habituales entre términos parecidos</h3>
+<ul class="space-y-space-xs font-body-md text-body-md text-on-surface-variant list-disc pl-space-lg">
+<li><strong class="text-on-surface">Fine-tuning vs. RAG:</strong> el fine-tuning reentrena el modelo de forma permanente; RAG no toca el modelo, solo le da documentos como referencia al momento de responder</li>
+<li><strong class="text-on-surface">Agente vs. chatbot:</strong> la diferencia no es de "inteligencia", sino de capacidad de acción — un agente ejecuta acciones reales, un chatbot solo genera texto</li>
+<li><strong class="text-on-surface">Alucinación vs. error de datos:</strong> una alucinación es el modelo inventando; un error de datos es cuando la fuente original ya estaba mal. El segundo no es culpa del modelo</li>
+<li><strong class="text-on-surface">Token vs. palabra:</strong> una palabra larga puede dividirse en varios tokens, mientras que varias palabras cortas pueden empaquetarse en menos</li>
+<li><strong class="text-on-surface">Ventana de contexto vs. memoria:</strong> la ventana es lo que el modelo ve en la conversación activa; la memoria persiste entre conversaciones distintas. Un modelo con ventana enorme pero sin memoria olvida todo al empezar una conversación nueva, igual que uno con ventana pequeña</li>
+<li><strong class="text-on-surface">Prompt engineering vs. fine-tuning:</strong> el primero ajusta las instrucciones sin tocar el modelo; el segundo lo reentrena. El prompt engineering es la primera opción a probar siempre, por ser más rápido, más barato y completamente reversible</li>
+</ul>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          Reconocer estos pares de términos parecidos evita uno de los errores más comunes al leer sobre IA: asumir que dos palabras que suenan similares describen lo mismo, cuando en realidad responden a mecanismos técnicos distintos con implicaciones prácticas (y de coste) muy diferentes entre sí. Confundirlos no es solo un error académico sin consecuencias — puede llevar a elegir la técnica equivocada para resolver un problema concreto, o a malinterpretar por completo lo que promete realmente una herramienta cuando la describe usando uno de estos términos.
+        </p>
+</section>
+<section class="space-y-space-lg">
+<h2 id="sec-2" class="font-headline-lg text-headline-lg text-primary">
+          Conceptos básicos y cómo funcionan por dentro
+        </h2>
+<div class="space-y-space-sm">
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<span class="font-label-md text-label-md font-bold text-primary">LLM (modelo de lenguaje grande)</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">El tipo de modelo detrás de Claude, ChatGPT o Gemini, entrenado con enormes cantidades de texto. <em>Ejemplo:</em> cuando dices "uso ChatGPT", en realidad usas un LLM concreto a través de esa interfaz.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<span class="font-label-md text-label-md font-bold text-primary">Token</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">La unidad mínima de texto que procesa un modelo, aproximadamente ¾ de una palabra en español. <em>Ejemplo:</em> un correo de 500 palabras equivale a unos 650-700 tokens, y ese número determina cuánto cobra la API por procesarlo.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<span class="font-label-md text-label-md font-bold text-primary">Ventana de contexto</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">La cantidad máxima de texto que un modelo puede "tener en mente" antes de empezar a olvidar. <em>Ejemplo:</em> si pegas un documento largo y preguntas sobre el principio, una ventana pequeña puede hacer que ya no lo "recuerde". Lo desarrollamos en la guía de <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="ventana-contexto-memoria-ia.html">ventana de contexto y memoria</a>.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<span class="font-label-md text-label-md font-bold text-primary">Prompt</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">La instrucción que le das al modelo; su calidad determina en gran parte la calidad de la respuesta. <em>Ejemplo:</em> "escribe sobre marketing" es pobre; dar contexto real y un tono concreto es útil.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<span class="font-label-md text-label-md font-bold text-primary">Alucinación</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Cuando el modelo genera información falsa con la misma seguridad que información correcta. <em>Ejemplo:</em> una cita bibliográfica que suena perfectamente real pero no existe.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<span class="font-label-md text-label-md font-bold text-primary">Entrenamiento (training)</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">El proceso de exponer al modelo a grandes cantidades de datos para que aprenda patrones. <em>Ejemplo:</em> ocurre mucho antes de que tú escribas tu primer mensaje.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<span class="font-label-md text-label-md font-bold text-primary">Fine-tuning</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Ajustar un modelo ya entrenado con datos específicos para especializarlo. <em>Ejemplo:</em> una empresa que ajusta un modelo con miles de conversaciones de soporte para su tono de marca.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<span class="font-label-md text-label-md font-bold text-primary">Embeddings</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Una representación numérica del significado de un texto, usada para comparar similitud. <em>Ejemplo:</em> permite encontrar un documento relevante aunque no comparta ni una palabra exacta con tu pregunta.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<span class="font-label-md text-label-md font-bold text-primary">Temperatura</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Parámetro que controla cuánta variedad tiene la respuesta; más baja da respuestas más predecibles. <em>Ejemplo:</em> baja para código, más alta para lluvia de ideas creativas.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<span class="font-label-md text-label-md font-bold text-primary">Inferencia</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">El proceso de generar una respuesta a partir de un modelo ya entrenado. <em>Ejemplo:</em> el tiempo que tarda en aparecer la respuesta en pantalla es, en gran parte, tiempo de inferencia.</p>
+</div>
+</div>
+</section>
+<div class="bg-primary text-surface-bright p-space-md border-l-2 border-secondary">
+<p class="font-body-md text-body-md leading-relaxed"><strong>Para no perderse:</strong> si un término técnico aparece en una guía y no lo reconoces, probablemente está aquí. Guarda esta página en tus marcadores y vuelve a ella cuando lo necesites, en vez de intentar memorizar los treinta términos de una sola vez.</p>
+</div>
+
+<section class="space-y-space-lg">
+<figure data-inline-photo class="space-y-space-xs my-space-xl"><img class="w-full border border-outline-variant" src="../img/guias/foto-glosario-terminos-ia.jpg" alt="Tokenizador de OpenAI, que muestra cómo un texto se divide en tokens" width="1280" height="720" loading="lazy" decoding="async"/><figcaption class="font-caption text-caption text-on-surface-variant">Captura de pantalla: <a class="underline" href="https://tiktokenizer.vercel.app/" rel="nofollow noopener" target="_blank">tiktokenizer.vercel.app</a>.</figcaption></figure>
+<h2 id="sec-3" class="font-headline-lg text-headline-lg text-primary">
+          Herramientas, arquitecturas y uso diario
+        </h2>
+<div class="space-y-space-sm">
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<span class="font-label-md text-label-md font-bold text-primary">Agente</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Un sistema de IA que puede decidir y ejecutar acciones por sí mismo, no solo responder texto. <em>Ejemplo:</em> una herramienta que no solo te dice cómo organizar tus archivos, sino que los mueve ella misma.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<span class="font-label-md text-label-md font-bold text-primary">MCP (Model Context Protocol)</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">El estándar abierto que permite conectar un modelo con herramientas externas de forma uniforme. <em>Ejemplo:</em> el mismo servidor MCP puede usarse con distintos asistentes sin reescribirlo cada vez.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<span class="font-label-md text-label-md font-bold text-primary">RAG (Retrieval-Augmented Generation)</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Técnica para que el modelo consulte documentos concretos antes de responder. <em>Ejemplo:</em> un asistente de soporte que cita el manual real de tu producto, no información inventada.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<span class="font-label-md text-label-md font-bold text-primary">Base de datos vectorial</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Diseñada para buscar por similitud de significado usando embeddings, no por coincidencia exacta. <em>Ejemplo:</em> buscar "cómo cancelar mi cuenta" encuentra "dar de baja el servicio".</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<span class="font-label-md text-label-md font-bold text-primary">Function calling / tool use</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">La capacidad de un modelo de decidir cuándo usar una herramienta externa. <em>Ejemplo:</em> el modelo decide consultar una API del clima en vez de inventar una respuesta.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<span class="font-label-md text-label-md font-bold text-primary">API</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">La vía técnica por la que una aplicación externa se conecta a un modelo de IA para usarlo de forma programática. <em>Ejemplo:</em> una app que dice "impulsado por IA" normalmente se conecta a la API de Claude o GPT por detrás, sin que el usuario final lo note directamente.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<span class="font-label-md text-label-md font-bold text-primary">Few-shot prompting</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Dar al modelo dos o tres ejemplos del resultado esperado antes de tu pregunta real. <em>Ejemplo:</em> mostrar dos reseñas ya clasificadas antes de pedirle que clasifique una tercera.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<span class="font-label-md text-label-md font-bold text-primary">Multimodal</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Un modelo capaz de procesar más de un tipo de contenido (texto, imágenes, audio). <em>Ejemplo:</em> subir una foto de un recibo y pedir que extraiga el importe total.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<span class="font-label-md text-label-md font-bold text-primary">Context window overflow</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Cuando una conversación supera el límite de contexto y el modelo pierde información anterior. <em>Ejemplo:</em> el modelo "olvida" algo que le dijiste al principio de una charla muy larga.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<span class="font-label-md text-label-md font-bold text-primary">System prompt</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Instrucciones previas, invisibles para el usuario final, que configuran de antemano cómo debe comportarse el modelo durante toda la conversación. <em>Ejemplo:</em> hace que un asistente de una empresa siempre responda con un tono determinado.</p>
+</div>
+</div>
+</section>
+<figure class="my-space-xl p-space-lg bg-surface-container-low pl-space-xl">
+<blockquote class="font-headline-sm italic text-primary leading-snug">
+          «Entender el mapa completo de estos términos, aunque sea a grandes rasgos, es más útil que memorizar cada definición por separado.»
+        </blockquote>
+<figcaption class="mt-space-sm font-kicker text-kicker uppercase tracking-widest text-secondary font-semibold">
+          — REDACCIÓN EL TELAR
+        </figcaption>
+</figure>
+<section class="space-y-space-lg">
+<h2 id="sec-4" class="font-headline-lg text-headline-lg text-primary">
+          Coste, rendimiento, agentes y seguridad
+        </h2>
+<div class="space-y-space-sm">
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<span class="font-label-md text-label-md font-bold text-primary">Benchmark</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Prueba estandarizada para comparar el rendimiento de modelos en una tarea concreta. <em>Ejemplo:</em> un modelo que "obtiene un 80% en SWE-bench", un benchmark de programación.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<span class="font-label-md text-label-md font-bold text-primary">Latencia</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">El tiempo que tarda un modelo en empezar a responder. <em>Ejemplo:</em> en voz en tiempo real, una latencia alta se nota como una pausa incómoda.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<span class="font-label-md text-label-md font-bold text-primary">Streaming</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Mostrar la respuesta palabra a palabra a medida que se genera. <em>Ejemplo:</em> por qué ves el texto "escribiéndose" en vez de aparecer todo de golpe.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<span class="font-label-md text-label-md font-bold text-primary">Prompt caching</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Reutilizar partes de una instrucción larga entre peticiones sin reprocesarla entera. <em>Ejemplo:</em> un agente que consulta el mismo documento largo en cada paso sin pagar por reprocesarlo.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<span class="font-label-md text-label-md font-bold text-primary">Cuota / rate limit</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">El límite de peticiones o tokens que puedes usar en un periodo de tiempo. <em>Ejemplo:</em> un error de "demasiadas peticiones" significa que alcanzaste ese límite.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<span class="font-label-md text-label-md font-bold text-primary">Multiagente</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Un sistema donde varios agentes especializados colaboran entre sí en una misma tarea compleja. <em>Ejemplo:</em> uno investiga un tema, otro redacta el informe con esa investigación, y un tercero lo revisa contra criterios de calidad antes de entregarlo. Conviene saber que dividir así multiplica el coste y los fallos: lo tratamos en <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="varios-agentes-ia-o-uno.html">cuándo usar varios agentes en vez de uno</a>.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<span class="font-label-md text-label-md font-bold text-primary">Sandboxing</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Ejecutar el código o las acciones de un agente en un entorno aislado, separado del resto del sistema. <em>Ejemplo:</em> dejar que un agente pruebe código nuevo en una carpeta temporal aislada antes de aplicarlo a tu proyecto real de verdad.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<span class="font-label-md text-label-md font-bold text-primary">Guardrails</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Reglas y comprobaciones que limitan explícitamente lo que un modelo o agente puede hacer, reduciendo el riesgo de una acción no deseada. <em>Ejemplo:</em> una regla que impide que un agente ejecute una transferencia superior a cierta cantidad sin confirmación humana explícita.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<span class="font-label-md text-label-md font-bold text-primary">Inyección de prompt</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Texto externo que contiene instrucciones ocultas dirigidas a manipular al modelo. <em>Ejemplo:</em> un correo con texto oculto que intenta ordenar reenviar información sensible.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<span class="font-label-md text-label-md font-bold text-primary">Zero-shot</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Pedir al modelo una tarea sin darle ningún ejemplo previo; lo opuesto a few-shot. <em>Ejemplo:</em> pedir directamente "traduce esto al francés" sin ejemplos.</p>
+</div>
+</div>
+</section>
+<section class="bg-surface-container-low p-space-lg space-y-space-md">
+<h2 id="sec-5" class="font-headline-lg text-headline-lg text-primary">
+          Cómo se conectan estos términos entre sí
+        </h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          Los treinta términos de este glosario no son piezas sueltas: describen distintas capas de un mismo sistema, desde lo más básico hasta lo más complejo. Piensa en este mapa como capas superpuestas, cada una construida sobre la anterior: primero está el modelo en sí y cómo procesa texto; encima, cómo se le da información externa cuando la necesita; encima de eso, cómo se le permite actuar en el mundo real; y en la capa más externa, cómo se le pone freno para que esa capacidad de actuar no se salga de control.
+        </p>
+<div class="my-space-xl p-space-md bg-surface-container-lowest">
+<div class="font-kicker text-kicker uppercase text-on-surface-variant tracking-wider mb-space-sm text-center">DIAGRAMA // LAS CUATRO CAPAS DEL SISTEMA</div>
+<svg aria-label="Diagrama de las cuatro capas de un sistema de IA" class="w-full h-auto" fill="none" role="img" viewBox="0 0 680 180" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#072417" height="30" width="660" x="10" y="10"></rect>
+<text fill="#f9f9ff" font-family="Inter" font-size="11" font-weight="700" text-anchor="middle" x="340" y="30">1. MODELO — LLM, token, ventana de contexto, prompt, inferencia</text>
+<rect fill="#1e3a2b" height="30" width="660" x="10" y="50"></rect>
+<text fill="#caead4" font-family="Inter" font-size="11" font-weight="700" text-anchor="middle" x="340" y="70">2. INFORMACIÓN EXTERNA — RAG, embeddings, base de datos vectorial</text>
+<rect fill="#9b4500" height="30" width="660" x="10" y="90"></rect>
+<text fill="#ffffff" font-family="Inter" font-size="11" font-weight="700" text-anchor="middle" x="340" y="110">3. ACCIÓN EN EL MUNDO REAL — agente, function calling, MCP</text>
+<rect fill="#fd8a42" height="30" width="660" x="10" y="130"></rect>
+<text fill="#072417" font-family="Inter" font-size="11" font-weight="700" text-anchor="middle" x="340" y="150">4. PROTECCIÓN — guardrails, sandboxing, inyección de prompt</text>
+</svg>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          En la base está el <strong>LLM</strong>, entrenado sobre grandes volúmenes de datos y capaz de procesar texto en unidades discretas llamadas <strong>tokens</strong> dentro de una <strong>ventana de contexto</strong> limitada que define hasta dónde puede "ver" en cada momento. Sobre esa base, un <strong>prompt</strong> bien construido determina en gran medida la calidad de la respuesta que genera el modelo mediante el proceso de <strong>inferencia</strong>. Cuando ese modelo necesita información que no tenía en su entrenamiento original, entra en juego <strong>RAG</strong>, apoyado en <strong>embeddings</strong> guardados en una base de datos preparada para búsquedas por significado. Cuando necesita actuar en el mundo real, se convierte en un <strong>agente</strong> mediante <strong>function calling</strong>, conectado a herramientas externas mediante <strong>MCP</strong>, el protocolo abierto que estandariza esa conexión. Y todo ese sistema, cuanto más autónomo se vuelve, necesita capas de protección — <strong>guardrails</strong> que limitan qué puede hacer, <strong>sandboxing</strong> que aísla el riesgo, y atención constante a la <strong>inyección de prompt</strong> como principal vector de ataque.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Entender este mapa completo, aunque sea a grandes rasgos, es más útil que memorizar cada definición por separado: te permite ubicar cualquier término nuevo dentro de esta misma estructura, en vez de tratarlo como una palabra suelta sin contexto. Un término nuevo casi siempre encaja en una de estas cuatro capas, lo que ayuda a entender de un vistazo para qué sirve dentro del sistema completo, incluso antes de leer su definición exacta palabra por palabra.
+        </p>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          La forma más útil de usar esta página no es leerla de un tirón, sino guardarla como referencia y volver a ella cuando aparezca un término desconocido mientras lees otra guía, una noticia o la documentación de una herramienta. Si trabajas habitualmente con IA, vale la pena revisar la sección de agentes y seguridad con algo más de atención que el resto: son los conceptos que con más frecuencia aparecen mal explicados o exagerados en contenido de baja calidad sobre el tema, y tener claras las definiciones reales ayuda a distinguir una afirmación seria de una alarmista sin fundamento.
+        </p>
+</section>
+<section class="space-y-space-md">
+<h2 class="font-headline-lg text-headline-lg text-primary">
+          Preguntas frecuentes
+        </h2>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Estos términos cambian con cada nuevo modelo que sale?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Los conceptos fundamentales (token, contexto, prompt, alucinación) son estables y llevan años siendo relevantes. Lo que cambia con cada generación de modelos son los valores concretos (cuántos tokens de contexto soporta un modelo, qué tan frecuentes son las alucinaciones), no el vocabulario en sí. Este glosario se revisa periódicamente para añadir términos nuevos que ganan relevancia, pero la base de conceptos fundamentales cambia muy poco de una revisión a otra.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Hace falta memorizar todos estos términos?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+No. El objetivo de un glosario no es memorizar, es tener un sitio al que volver cuando te encuentres un término que no reconoces mientras lees otra guía, una noticia sobre IA o la documentación de una herramienta nueva.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Por qué tantos términos en inglés si el contenido está en español?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+La mayoría de estos términos nacieron en papers de investigación y documentación técnica en inglés, y la comunidad hispanohablante los adoptó tal cual en vez de traducirlos, de forma parecida a como ocurrió con términos de informática más antiguos ("software", "hardware", "email"). Usar el término en inglés, aunque suene menos natural, facilita encontrar más información si necesitas profundizar en algo más adelante.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Cómo sé si un término nuevo que me encuentro merece la pena aprenderlo o es una moda pasajera?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Una señal práctica: si el término describe un concepto técnico de fondo (cómo funciona el modelo, qué límite tiene, qué riesgo gestiona), suele mantenerse relevante durante años, como los treinta de este glosario. Si describe el nombre comercial de una función concreta de un producto, es más probable que cambie o desaparezca con la siguiente actualización de ese producto en particular.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Dónde verifico la definición exacta si tengo dudas?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Para términos con origen académico (RAG, embeddings, function calling), la fuente más fiable suele ser el paper de investigación original o la documentación técnica del laboratorio que lo introdujo. Para términos de producto específicos de una herramienta, la documentación oficial de esa herramienta es la referencia más actualizada, más que cualquier glosario general como este, precisamente porque un glosario general no puede actualizarse a la misma velocidad que cada producto individual.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Cómo sé si un término nuevo que me encuentro merece la pena aprenderlo o es una moda pasajera?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Una señal práctica adicional: si varias fuentes independientes y no relacionadas entre sí (documentación técnica, papers, varios proveedores distintos) usan el mismo término con el mismo significado, es una señal de que se ha consolidado como parte del vocabulario estándar del sector, no de una campaña de marketing de un solo fabricante intentando posicionar su propia jerga.
+</div>
+</div>
+</section>
+<div class="bg-surface-container-low p-space-lg flex flex-col sm:flex-row items-start sm:items-center gap-space-md">
+<div class="w-16 h-16 bg-primary text-on-primary flex items-center justify-center font-display text-headline-md shrink-0">ET</div>
+<div class="space-y-space-xxs">
+<span class="font-label-md text-label-md text-primary font-bold uppercase tracking-wider">Redacción El Telar</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Esta página se revisa periódicamente para añadir términos nuevos que ganan relevancia en el sector, y para retirar o actualizar los que dejan de describir con precisión cómo funcionan las herramientas actuales.</p>
+</div>
+</div>
+</article>
+<aside class="lg:col-span-4 flex flex-col space-y-space-xl">
+<div class="bg-surface-container-lowest p-space-lg shadow-sm sticky top-space-md">
+<div class="flex items-center justify-between mb-space-sm pb-space-xs">
+<span class="font-kicker text-kicker uppercase tracking-widest text-primary font-bold">ÍNDICE DE LA GUÍA</span>
+<span class="material-symbols-outlined text-on-surface-variant text-base">format_list_bulleted</span>
+</div>
+<nav class="space-y-space-xs font-body-sm text-body-sm">
+<a class="block text-primary hover:text-secondary font-medium transition-colors" href="#sec-1">Por qué conocer estos términos</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-2">Conceptos básicos</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-3">Herramientas y uso diario</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-4">Coste, agentes y seguridad</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-5">Cómo se conectan</a>
+</nav>
+</div>
+
+<div class="bg-surface-container-high p-space-md space-y-space-sm shadow-sm">
+<span class="font-kicker text-kicker uppercase tracking-widest text-primary font-bold">FICHA TÉCNICA</span>
+<dl class="space-y-space-xs font-caption text-caption">
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Términos incluidos:</dt><dd class="font-semibold text-primary">30</dd></div>
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Origen mayoritario:</dt><dd class="font-semibold text-primary">Inglés técnico</dd></div>
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Categorías:</dt><dd class="font-semibold text-primary">6</dd></div>
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Formato:</dt><dd class="font-semibold text-primary">Término + ejemplo</dd></div>
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Nivel técnico:</dt><dd class="font-semibold text-primary">Cualquiera</dd></div>
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Actualización:</dt><dd class="font-semibold text-primary">Periódica</dd></div>
+</dl>
+</div>
+</aside>
+</div>
+<section class="w-full mt-space-4xl pt-space-2xl bg-surface-container-lowest p-space-lg shadow-sm">
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-space-xl gap-space-xs">
+<h3 class="font-headline-md text-headline-md text-primary">Continúa explorando el archivo</h3>
+<a class="font-label-md text-label-md text-primary hover:text-secondary uppercase tracking-wider transition-colors flex items-center gap-1" href="../index.html#guias">Ver todas las guías <span class="material-symbols-outlined text-[16px]">arrow_forward</span></a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-col-gap"><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="que-es-un-agente-ia.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-que-es-un-agente-ia.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="que-es-un-agente-ia.html">Qué es un agente de IA y en qué se diferencia de un chatbot</a></h4></div></article><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="rag-explicado.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-rag-explicado.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="rag-explicado.html">RAG explicado: cómo hacer que la IA responda con tus propios documentos</a></h4></div></article><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="alucinaciones-ia.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-alucinaciones-ia.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="alucinaciones-ia.html">Alucinaciones de la IA: cómo detectar cuando se inventa algo</a></h4></div></article></div>
+</section>
+</div></main><footer class="w-full bg-surface-container-low border-t border-outline-variant mt-space-4xl"><div class="max-w-site-max-width mx-auto px-space-md py-space-3xl"><div class="grid grid-cols-1 md:grid-cols-3 gap-col-gap"><div class="space-y-space-sm"><span class="font-headline-md text-headline-md text-primary">El Telar</span><p class="font-body-sm text-body-sm text-on-surface-variant">Publicación independiente de tecnología y automatización con agentes. Contenidos verificados en producción, sin patrocinios opacos ni promesas vacías.</p></div><div><h3 class="font-kicker text-kicker uppercase tracking-wider text-on-surface mb-space-md">SECCIONES</h3><ul class="space-y-space-xs font-body-sm text-body-sm"><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html#guias">Archivo de Guías</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../empieza-aqui.html">Guía para Principiantes</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../sobre-nosotros.html">Manifiesto Editorial</a></li><li class="pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html#despacho">Boletín Semanal</a></li></ul></div><div><h3 class="font-kicker text-kicker uppercase tracking-wider text-on-surface mb-space-md">CONTACTO &amp; PRENSA</h3><div class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant"><p class="font-semibold text-on-surface">contacto@eltelar.es</p><p>Síguenos: <a class="hover:text-primary underline" href="https://www.instagram.com/eltelar_es/" rel="me noopener" target="_blank">Instagram</a> · <a class="hover:text-primary underline" href="https://www.threads.com/@eltelar_es" rel="me noopener" target="_blank">Threads</a> · <a class="hover:text-primary underline" href="https://x.com/eltelar_es" rel="me noopener" target="_blank">X</a></p></div></div></div></div><div class="border-t border-outline-variant py-space-md bg-surface-container-lowest"><div class="max-w-site-max-width mx-auto px-space-md flex flex-col md:flex-row items-center justify-between gap-space-sm text-caption font-caption text-on-surface-variant"><div>© 2026 El Telar. Todos los derechos reservados. Independencia editorial garantizada.</div><div class="flex items-center gap-space-md"><a class="hover:text-on-surface transition-colors" href="../privacidad.html">Privacidad</a><a class="hover:text-on-surface transition-colors" href="../terminos.html">Términos</a><a class="hover:text-on-surface transition-colors" href="../sobre-nosotros.html">Sobre nosotros</a><a class="hover:text-on-surface transition-colors" href="../contacto.html">Contacto</a></div></div></div></footer><script defer src="../js/copy-guide.js"></script><script defer src="../js/guide-interactions.js"></script><script defer src="../js/reading-progress.js"></script><script defer src="../js/search.js?v=7"></script><script defer src="../js/entrance.js"></script><script defer src="../js/cookie-consent.js?v=4"></script></body></html>
