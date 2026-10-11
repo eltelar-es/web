@@ -6,7 +6,24 @@
     <description>Guías prácticas de inteligencia artificial y agentes autónomos, sin humo ni relleno.</description>
     <language>es</language>
     <lastBuildDate>Wed, 07 Oct 2026 09:00:00 +0000</lastBuildDate>
-        <item><!--noticia--><title>Gemini gratis se queda solo con Flash-Lite a partir del 9 de octubre</title><link>https://eltelar.es/noticias/2026-10-08-gemini-gratis-solo-flash-lite.html</link><guid>https://eltelar.es/noticias/2026-10-08-gemini-gratis-solo-flash-lite.html</guid><pubDate>Thu, 08 Oct 2026 00:00:00 +0000</pubDate><description>Google quita Flash y Pro a quien no paga y deja a los usuarios de AI Plus sin Pro. AI Pro y AI Ultra conservan todos los modelos.</description></item>
+    <item>
+      <title>Cuánto cuesta de verdad usar la IA por API: cómo leer una factura de tokens</title>
+      <link>https://eltelar.es/articulos/cuanto-cuesta-usar-ia-api.html</link>
+      <guid>https://eltelar.es/articulos/cuanto-cuesta-usar-ia-api.html</guid>
+      <pubDate>Sat, 11 Oct 2026 10:00:00 +0000</pubDate>
+      <description>Por qué el español cuesta un 55% más en tokens, los tramos de precio que rompen el titular del «90% más barato» y por qué una conversación de diez turnos te factura casi treinta veces lo que has escrito.</description>
+    </item>
+    <item>
+      <title>Lo último en IA: los lanzamientos y movimientos que marcan septiembre y octubre de 2026</title>
+      <link>https://eltelar.es/noticias/lo-ultimo-en-ia.html</link>
+      <guid>https://eltelar.es/noticias/lo-ultimo-en-ia.html</guid>
+      <pubDate>Sat, 11 Oct 2026 09:00:00 +0000</pubDate>
+      <description>Actualizado: Claude Haiku 5.5 baja a 0,10$ por millón de tokens de entrada (con un salto de precio por encima de 100.000), Meta y Sierra proponen el Personal Agent Protocol para que tu agente se identifique ante una empresa, y los ingresos anualizados de OpenAI se corrigen a 50.000 millones de dólares.</description>
+    </item>
+        <item><!--noticia--><title>Un estudio con 1.222 personas: 10 minutos con ChatGPT te hacen rendirte antes</title><link>https://eltelar.es/noticias/2026-10-09-berkeley-ia-persistencia.html</link><guid>https://eltelar.es/noticias/2026-10-09-berkeley-ia-persistencia.html</guid><pubDate>Fri, 09 Oct 2026 00:00:00 +0000</pubDate><description>Ensayos aleatorizados de Berkeley y otras universidades: tras usar IA y perderla, la gente resolvió menos problemas y los saltó más.</description></item>
+    <item><!--noticia--><title>Anthropic corta internet a sus pruebas internas tras ver a Claude colarse en webs reales</title><link>https://eltelar.es/noticias/2026-10-09-anthropic-corta-internet-evaluaciones.html</link><guid>https://eltelar.es/noticias/2026-10-09-anthropic-corta-internet-evaluaciones.html</guid><pubDate>Fri, 09 Oct 2026 00:00:00 +0000</pubDate><description>Sus modelos explotaron fallos en webs, enviaron formularios reales y esquivaron pagos al probar tareas. Anthropic desconecta de internet todas sus evaluaciones.</description></item>
+    <item><!--noticia--><title>Gemini gratis se queda solo con Flash-Lite a partir del 9 de octubre</title><link>https://eltelar.es/noticias/2026-10-08-gemini-gratis-solo-flash-lite.html</link><guid>https://eltelar.es/noticias/2026-10-08-gemini-gratis-solo-flash-lite.html</guid><pubDate>Thu, 08 Oct 2026 00:00:00 +0000</pubDate><description>Google quita Flash y Pro a quien no paga y deja a los usuarios de AI Plus sin Pro. AI Pro y AI Ultra conservan todos los modelos.</description></item>
+    <item><!--noticia--><title>Anthropic cambia su política de uso: elecciones, armas, vigilancia y trato abusivo a Claude</title><link>https://eltelar.es/noticias/2026-10-08-anthropic-politica-uso-12-noviembre.html</link><guid>https://eltelar.es/noticias/2026-10-08-anthropic-politica-uso-12-noviembre.html</guid><pubDate>Thu, 08 Oct 2026 00:00:00 +0000</pubDate><description>Las nuevas normas entran en vigor el 12 de noviembre. Anthropic dice que casi todo aclara reglas que ya aplicaba.</description></item>
     <item><!--noticia--><title>Mistral presenta Large 4, un modelo europeo de un billón de parámetros</title><link>https://eltelar.es/noticias/2026-10-06-mistral-large-4.html</link><guid>https://eltelar.es/noticias/2026-10-06-mistral-large-4.html</guid><pubDate>Tue, 06 Oct 2026 00:00:00 +0000</pubDate><description>La empresa francesa lo ofrece ya en vista previa por API y publicará los pesos a finales de octubre. Cuesta 1,36 dólares por millón de tokens de entrada.</description></item>
     <item><!--noticia--><title>Reflection presenta Beam, un modelo abierto de 501.000 millones de parámetros</title><link>https://eltelar.es/noticias/2026-10-05-reflection-beam-modelo-abierto.html</link><guid>https://eltelar.es/noticias/2026-10-05-reflection-beam-modelo-abierto.html</guid><pubDate>Mon, 05 Oct 2026 00:00:00 +0000</pubDate><description>La startup anuncia un modelo con licencia Apache 2.0 pensado para programar y trabajar como agente. Los pesos llegarán más adelante en octubre.</description></item>
     <item><!--noticia--><title>Más imágenes de abuso infantil hechas con IA en seis meses que en todo 2025</title><link>https://eltelar.es/noticias/2026-10-05-iwf-imagenes-abuso-ia.html</link><guid>https://eltelar.es/noticias/2026-10-05-iwf-imagenes-abuso-ia.html</guid><pubDate>Mon, 05 Oct 2026 00:00:00 +0000</pubDate><description>La Internet Watch Foundation contabilizó 6.310 imágenes de este tipo entre enero y junio de 2026, un 40 % más que en los doce meses de 2025.</description></item>
@@ -29,13 +46,6 @@
       <guid>https://eltelar.es/articulos/evaluar-agente-ia.html</guid>
       <pubDate>Wed, 07 Oct 2026 10:00:00 +0000</pubDate>
       <description>Cómo montar un conjunto de pruebas que tu agente no haya visto, qué medir en cada tipo de sistema y los tres sesgos que inflan tus resultados cuando usas una IA para corregir a otra.</description>
-    </item>
-    <item>
-      <title>Lo último en IA: los lanzamientos y movimientos que marcan septiembre y octubre de 2026</title>
-      <link>https://eltelar.es/noticias/lo-ultimo-en-ia.html</link>
-      <guid>https://eltelar.es/noticias/lo-ultimo-en-ia.html</guid>
-      <pubDate>Wed, 07 Oct 2026 09:00:00 +0000</pubDate>
-      <description>Actualizado: OpenAI publica 722 manuscritos de matemáticas hechos por un modelo que no ha lanzado, y Anthropic levanta los bloqueos de ciberseguridad a quien le deje guardar los registros.</description>
     </item>
     <item>
       <title>IA para revisar contratos y documentos legales: qué puede y qué no puede hacer todavía</title>

@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cuánto cuesta usar la IA por API | El Telar</title>
+<meta name="description" content="Qué es un token, por qué el español cuesta en torno a un 55% más y dónde se va el dinero cuando un agente conversa. Precios de octubre de 2026 y cinco formas de bajar la factura.">
+<link rel="canonical" href="https://eltelar.es/articulos/cuanto-cuesta-usar-ia-api.html"><link rel="icon" type="image/svg+xml" href="../img/favicon.svg?v=4"><link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32.png?v=4"><link rel="apple-touch-icon" href="../img/apple-touch-icon.png?v=4"><meta name="theme-color" content="#072417"><link rel="manifest" href="../manifest.json"><link rel="alternate" type="application/rss+xml" title="El Telar" href="../feed.xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cuánto cuesta usar la IA por API | El Telar">
+<meta property="og:description" content="Qué es un token, por qué el español cuesta en torno a un 55% más y dónde se va el dinero cuando un agente conversa. Precios de octubre de 2026 y cinco formas de bajar la factura.">
+<meta property="og:url" content="https://eltelar.es/articulos/cuanto-cuesta-usar-ia-api.html">
+<meta property="og:site_name" content="El Telar">
+<meta property="og:locale" content="es_ES"><meta property="og:image" content="https://eltelar.es/img/og-image.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Cuánto cuesta usar la IA por API | El Telar">
+<meta name="twitter:description" content="Qué es un token, por qué el español cuesta en torno a un 55% más y dónde se va el dinero cuando un agente conversa. Precios de octubre de 2026 y cinco formas de bajar la factura."><meta name="twitter:image" content="https://eltelar.es/img/og-image.jpg">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Cuánto cuesta de verdad usar la IA por API: cómo leer una factura de tokens",
+  "description": "Qué es un token, por qué el español cuesta en torno a un 55% más y dónde se va el dinero cuando un agente conversa. Precios de octubre de 2026 y cinco formas de bajar la factura.",
+  "image": "https://eltelar.es/img/og-image.jpg",
+  "author": {
+    "@type": "Organization",
+    "name": "El Telar",
+    "url": "https://eltelar.es/sobre-nosotros.html"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "El Telar"
+  },
+  "datePublished": "2026-10-11",
+  "dateModified": "2026-10-11",
+  "mainEntityOfPage": "https://eltelar.es/articulos/cuanto-cuesta-usar-ia-api.html",
+  "inLanguage": "es"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Cuántos tokens tiene una palabra en español?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No hay una cifra exacta, pero la regla que circula —un token son unas 0,75 palabras— está medida en inglés y en español te deja corto. Varias mediciones sobre el tokenizador de OpenAI sitúan el mismo texto en torno a un 55% más de tokens en español que en inglés, y un análisis distinto sobre GPT-4o midió un 58,9%. Como aproximación de trabajo, cuenta con alrededor de una vez y media. Anthropic y Google no publican sus tokenizadores, así que para esos modelos el número puede variar; si la cifra te importa para presupuestar, usa el endpoint de conteo de tokens del proveedor antes de enviar la petición."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Por qué la salida cuesta cinco veces más que la entrada?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Por cómo funciona el cálculo. Leer la entrada se puede paralelizar: el modelo procesa todos esos tokens a la vez. Generar la salida es secuencial, un token después de otro, y cada paso ocupa el acelerador en exclusiva. Esa diferencia de eficiencia se traslada a la tarifa, y el factor cinco aparece con mucha regularidad en los catálogos de 2026: pasa en 0,10$/0,50$, en 2$/10$, en 4$/20$ y en 10$/50$. La consecuencia práctica es que acortar las respuestas ahorra menos de lo que parece: suele salir más a cuenta recortar lo que mandas."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Me conviene escribir los prompts en inglés para ahorrar?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Para la parte fija y larga, la que viaja en cada llamada, puede tener sentido y el ahorro en tokens de entrada es real. Para el texto que escribe el usuario no decides tú. El coste que no se ve en la factura es de calidad: pedirle instrucciones en inglés y respuesta en español añade un salto de idioma que a veces se nota en el registro y en los matices. No lo des por bueno porque suene lógico; monta una comprobación mínima con tus propios casos y mira si la respuesta empeora antes de dejarlo así."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿La caché me sirve si cada usuario pregunta algo distinto?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí, porque lo que se cachea no es la pregunta: es el prefijo que comparten todas las llamadas. Si tu prompt de sistema ocupa 2.000 tokens y va en cada petición, ese bloque es cacheable aunque la pregunta final sea única. La condición es que el prefijo sea idéntico byte a byte, así que coloca al principio lo que no cambia y al final lo que varía. El error más común es meter una fecha o un identificador de sesión al inicio del prompt: invalida la caché en cada llamada y te deja pagando el precio de escritura sin llegar a leerla nunca."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Sale más barato un modelo pequeño o uno grande que acierta a la primera?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Depende de qué pasa cuando el pequeño falla, y por eso es una cuenta que hay que hacer, no intuir. Entre los extremos del catálogo hay un factor cien, así que el modelo pequeño aguanta muchísimos reintentos antes de igualar al caro. Pero si el fallo no se detecta y acaba delante de un cliente, o si obliga a que lo revise una persona, el coste real no está en los tokens. La forma de salir de la duda es medir la tasa de acierto de los dos en tus propios casos y añadir al modelo pequeño el coste de los fallos: casi siempre el reparto por dificultad gana a elegir uno solo para todo."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://eltelar.es/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Guías",
+      "item": "https://eltelar.es/index.html#guias"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Cuánto cuesta usar la IA por API",
+      "item": "https://eltelar.es/articulos/cuanto-cuesta-usar-ia-api.html"
+    }
+  ]
+}
+</script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet"/></noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet"/></noscript>
+<style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><link rel="stylesheet" href="../css/tailwind.css"><link rel="stylesheet" href="../css/entrance.css?v=2"><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}(function(){var c=null;try{c=localStorage.getItem('eltelar-cookie-consent')}catch(e){}var g=c==='accepted'?'granted':'denied';gtag('consent','default',{ad_storage:g,ad_user_data:g,ad_personalization:g,analytics_storage:g,wait_for_update:500});window.adsbygoogle=window.adsbygoogle||[];if(g!=='granted'){window.adsbygoogle.requestNonPersonalizedAds=1;}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-4DPTKEG79N"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4DPTKEG79N');</script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8239907995939753" crossorigin="anonymous"></script></head><body class="bg-background font-body-md text-on-surface antialiased">
+<header class="w-full bg-surface-container-lowest border-b border-outline-variant"><div class="border-b border-outline-variant py-space-xxs px-space-md hidden md:block"><div class="max-w-site-max-width mx-auto flex items-center justify-between font-kicker text-kicker text-on-surface-variant uppercase tracking-wider"><span>EDICIÓN DIGITAL // ACTUALIZADO 2026 // EL TELAR &amp; AGENTES</span><span>MADRID · REMOTO</span><span>SIN HUMO · 100% PRODUCCIÓN</span></div></div><div class="max-w-site-max-width mx-auto px-space-md py-space-md sm:py-space-xl text-center"><p class="hidden sm:block font-kicker text-kicker uppercase tracking-widest text-on-surface-variant mb-space-xs">Publicación Independiente de Tecnología &amp; Agentes</p><a class="inline-block" href="../index.html"><div class="font-display text-display max-sm:text-[40px] max-sm:leading-none text-primary tracking-tight">El Telar</div></a><p class="hidden sm:block font-caption text-caption uppercase tracking-widest text-on-surface-variant mt-space-xs">EL BOLETÍN Y ARCHIVO PRÁCTICO DE INTELIGENCIA ARTIFICIAL Y AGENTES AUTÓNOMOS</p></div><div class="border-t border-b border-outline-variant"><div class="max-w-site-max-width mx-auto px-space-md flex items-center justify-between gap-space-sm h-14"><nav class="flex items-center gap-space-md sm:gap-space-lg h-full min-w-0 overflow-x-auto [scrollbar-width:none] whitespace-nowrap"><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../index.html#guias">GUÍAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../empieza-aqui.html">EMPIEZA AQUÍ</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../sobre-nosotros.html">SOBRE NOSOTROS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../noticias/index.html">NOTICIAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../herramientas/index.html">HERRAMIENTAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../prompts/index.html">PROMPTS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../contacto.html">CONTACTO</a></nav><div class="flex items-center gap-space-md"><button id="search-trigger" type="button" aria-label="Buscar en las guías" class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[20px]">search</span></button><a class="hidden sm:inline-block bg-primary-container text-surface px-space-md py-space-xs font-label-md text-label-md uppercase tracking-wider hover:bg-primary transition-colors" href="../index.html#despacho">SUSCRÍBETE GRATIS</a></div></div></div><div class="hidden md:block bg-surface-container-low border-b border-outline-variant py-space-xs px-space-md"><div class="max-w-site-max-width mx-auto text-center"><p class="font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">48 GUÍAS COMPLETAS EN EXPANSIÓN · ACTUALIZADO A MODELOS 2026 · PROBADO EN TERMINAL Y FLUJOS REALES · CERO HUMO NI TEORÍA VACÍA</p></div></div></header>
+<main class="w-full max-w-site-max-width mx-auto px-space-md py-space-xl"><div class="flex flex-col w-full">
+<nav class="w-full mb-space-lg">
+<ol class="flex flex-wrap items-center gap-space-xs font-kicker text-kicker text-on-surface-variant uppercase tracking-wider">
+<li><a class="hover:text-primary transition-colors" href="../index.html">Inicio</a></li>
+<li class="text-on-surface-variant">/</li>
+<li><a class="hover:text-primary transition-colors" href="../index.html#guias">Guías</a></li>
+<li class="text-on-surface-variant">/</li>
+<li class="text-primary font-bold truncate max-w-[280px] sm:max-w-md">Cuánto cuesta usar la IA por API</li>
+</ol>
+</nav>
+<header class="w-full pb-space-xl mb-space-2xl">
+<div class="flex flex-wrap items-center gap-space-xs mb-space-md">
+<span class="bg-surface-container-high text-secondary px-space-sm py-1 font-kicker text-kicker uppercase tracking-widest">PRÁCTICA // COSTES Y FACTURACIÓN</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight max-w-editorial-max mb-space-md">
+          Cuánto cuesta de verdad usar la IA por API: cómo leer una factura de tokens
+        </h1>
+<p class="font-lead-paragraph text-lead-paragraph text-on-surface-variant max-w-editorial-max leading-relaxed mb-space-lg">
+          El precio que anuncia un laboratorio es por millón de tokens. Tu factura no la decide ese número, sino cuántos tokens mueves sin darte cuenta — y en una conversación de diez turnos mueves casi treinta veces lo que has escrito.
+        </p>
+<div class="bg-surface-container-lowest p-space-md flex flex-wrap items-center justify-between gap-y-3 shadow-sm">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 bg-primary text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">payments</span>
+</div>
+<div>
+<div class="font-label-md text-label-md text-on-surface font-semibold">Por la Redacción de El Telar</div><div class="font-caption text-caption text-on-surface-variant">Guías prácticas de IA y agentes, probadas en flujos de trabajo reales antes de publicarlas.</div>
+<button class="inline-flex items-center gap-1 mt-2 px-3 py-1.5 bg-surface-container text-primary font-label-md text-[12px] font-semibold uppercase tracking-wider hover:bg-surface-container-high transition-colors" id="copy-guide-btn" type="button"><span class="material-symbols-outlined text-[16px]">content_copy</span> Copiar guía para tu IA</button><span class="inline-flex items-center gap-1 ml-1"><button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" id="save-guide-btn" title="Guardar guía" type="button"><span class="material-symbols-outlined text-[16px]">bookmark_border</span></button><button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" id="copy-link-btn" title="Copiar enlace permanente" type="button"><span class="material-symbols-outlined text-[16px]">share</span></button></span>
+</div>
+</div>
+<div class="flex items-center gap-space-lg text-on-surface-variant font-caption text-caption uppercase tracking-wider">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">schedule</span> 15 min de lectura</span>
+</div>
+</div>
+</header>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-col-gap">
+<article class="lg:col-span-8 flex flex-col space-y-space-xl">
+<figure data-hero class="space-y-space-xs"><img class="w-full border border-outline-variant" src="../img/portadas/cuanto-cuesta-usar-ia-api.svg" alt="" width="1600" height="520" fetchpriority="high" decoding="async"/></figure>
+<div class="relative bg-surface-container-lowest p-space-lg shadow-sm">
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed text-justify">
+<span class="float-left font-display text-primary text-6xl leading-none pr-3 pt-1 font-normal">E</span>
+          l 7 de octubre Anthropic puso su modelo más pequeño a 0,10 dólares por millón de tokens de entrada. Diez céntimos por un millón de palabras-y-pico suena a gratis, y es el tipo de cifra que invita a montar algo encima sin hacer cuentas. El problema no está en ese número: está en que la factura no la decide el precio por millón, la decide cuántos millones mueves — y en una conversación de diez turnos mueves muchos más de los que has escrito.
+        </p>
+</div>
+<section class="space-y-space-md">
+<h2 id="sec-1" class="font-headline-md text-headline-md text-primary tracking-tight">
+          Un token no es una palabra, y de ahí viene el descuadre
+        </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Los modelos no cobran por palabras ni por caracteres: cobran por <strong>tokens</strong>, los fragmentos en los que el modelo parte el texto antes de procesarlo. Un token puede ser una palabra corta y frecuente, un trozo de palabra larga, un signo de puntuación o incluso un espacio. «de» es un token; «desproporcionadamente» son varios.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          La regla que más circula dice que un token equivale a unas 0,75 palabras, o que 1.000 tokens son unas 750 palabras. Esa proporción no está inventada, pero está medida <strong>en inglés</strong>, y es la primera razón por la que a mucha gente le sale una factura mayor que su estimación. Los tokenizadores se construyeron sobre corpus dominados por el inglés, así que las palabras inglesas frecuentes tienden a tener su propio token y las de otros idiomas se parten en trozos.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          La consecuencia práctica es sencilla: cualquier cálculo que hagas con la regla de 0,75 palabras por token te va a quedar corto si escribes en español. Cuánto, lo vemos ahora.
+        </p>
+</section>
+<section class="space-y-space-md">
+<h2 id="sec-2" class="font-headline-md text-headline-md text-primary tracking-tight">
+          El impuesto del español: lo mismo, pero más caro
+        </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Varias mediciones independientes han comparado el mismo texto traducido a distintos idiomas pasándolo por el tokenizador de OpenAI. Un banco de pruebas reproducible publicado en GitHub con la librería <em>tiktoken</em> encontró que un párrafo técnico necesita en torno a un <strong>55% más de tokens en español que en inglés</strong>; un análisis distinto del mismo tipo de texto sobre GPT-4o midió un 58,9%. Los dos apuntan a lo mismo: por el mismo contenido pagas alrededor de una vez y media.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Los idiomas con alfabeto no latino salen bastante peor — hay mediciones de hasta cinco veces para el telugu — pero eso a ti te da igual. Lo que te afecta es que tu caso no es el caso base de los ejemplos de la documentación.
+        </p>
+<div class="bg-surface-container-low border-l-4 border-primary p-space-md"><p class="font-body-sm text-body-sm text-on-surface">Un aviso sobre estas cifras: están medidas sobre el tokenizador de OpenAI, que es público. Anthropic y Google usan los suyos y no los publican, así que el número exacto para Claude o Gemini puede variar. La dirección se mantiene en los tres; la magnitud, mídela tú. Casi todos los proveedores ofrecen un endpoint para contar tokens antes de enviar la petición, y es la forma honesta de salir de dudas.</p></div>
+<h3 class="font-headline-sm text-headline-sm text-primary font-medium">¿Conviene entonces escribir los prompts en inglés?</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Para la parte fija y larga —las instrucciones de sistema que viajan en cada llamada— puede tener sentido, y es un ahorro real en tokens de entrada. Para el contenido del usuario, no decides tú. Y hay un coste que no aparece en la factura: traducir las instrucciones al inglés cuando el modelo tiene que responder en español añade un salto de idioma que a veces se nota en el resultado, sobre todo en matices de registro. La decisión sensata es medirlo en tu caso con una evaluación mínima antes de darlo por bueno, no asumirlo. Si no tienes montada esa comprobación, la tienes explicada en la guía de <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="evaluar-agente-ia.html">cómo saber si tu agente funciona de verdad</a>.
+        </p>
+</section>
+<section class="space-y-space-md">
+<h2 id="sec-3" class="font-headline-md text-headline-md text-primary tracking-tight">
+          No hay un precio: hay tres
+        </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Toda tarifa de API tiene al menos dos columnas, y casi siempre una tercera que es la que de verdad cambia las cuentas.
+        </p>
+<h3 class="font-headline-sm text-headline-sm text-primary font-medium">Entrada y salida</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          La <strong>entrada</strong> es todo lo que le mandas: instrucciones de sistema, historial, documentos adjuntos, resultados de herramientas. La <strong>salida</strong> es lo que genera. Mirando los catálogos de octubre de 2026 aparece un patrón que se repite con una regularidad llamativa: <strong>la salida cuesta cinco veces la entrada</strong>. Pasa en 0,10$/0,50$, en 2$/10$, en 4$/20$ y en 10$/50$. No es casualidad: generar token a token es secuencial y ocupa el acelerador, mientras que leer la entrada se paraleliza.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          De ahí sale la primera intuición útil, y es contraintuitiva: lo que suele engordar la factura no es que el modelo escriba mucho, es que le mandas mucho. Una respuesta de 300 tokens cuesta lo mismo que 1.500 tokens de entrada, y 1.500 tokens de entrada es poco más de una página.
+        </p>
+<h3 class="font-headline-sm text-headline-sm text-primary font-medium">La caché, que es la tercera columna</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Si varias llamadas empiezan exactamente con el mismo texto —el típico prompt de sistema largo—, puedes marcar ese prefijo para que el proveedor lo guarde. Escribir en la caché cuesta <em>más</em> que la entrada normal; leer de ella cuesta mucho menos, del orden de un 90% menos. El punto de equilibrio llega enseguida: con la caché corta, una sola lectura ya compensa lo que pagaste por escribirla.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          En Haiku 5.5 la lectura de caché está en 0,01$ por millón, una décima parte de su entrada ya barata. Los multiplicadores exactos, en cambio, varían de un modelo a otro y las tablas de terceros se contradicen entre sí: para esto conviene ir a la página oficial del proveedor y no fiarse de un blog. La caché por defecto dura unos minutos y se renueva sin coste cada vez que se lee, lo que la hace muy rentable en conversaciones activas y bastante inútil en llamadas espaciadas.
+        </p>
+<h3 class="font-headline-sm text-headline-sm text-primary font-medium">Y un descuento que casi nadie usa</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Si lo que haces no necesita respuesta inmediata —clasificar un histórico, resumir mil documentos, etiquetar un <em>backlog</em>—, las APIs por lotes aplican alrededor de un <strong>50% de descuento</strong> a cambio de procesarlo cuando haya hueco. Es el descuento más grande que puedes conseguir sin tocar una línea de tu lógica, y se queda sin usar porque el modo interactivo es el que viene por defecto en los ejemplos.
+        </p>
+</section>
+<section class="space-y-space-md">
+<h2 id="sec-4" class="font-headline-md text-headline-md text-primary tracking-tight">
+          El mapa de precios en octubre de 2026
+        </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Dólares por millón de tokens, tarifa estándar, sin descuentos por caché ni por lotes. Sirve para ver los órdenes de magnitud, que es lo que importa al elegir:
+        </p>
+<div class="overflow-x-auto border border-outline-variant">
+<table class="w-full border-collapse font-body-sm text-body-sm">
+<thead class="bg-surface-container-high">
+<tr>
+<th class="text-left p-space-sm font-label-md text-label-md text-primary border-b border-outline-variant">Modelo</th>
+<th class="text-right p-space-sm font-label-md text-label-md text-primary border-b border-outline-variant">Entrada $/M</th>
+<th class="text-right p-space-sm font-label-md text-label-md text-primary border-b border-outline-variant">Salida $/M</th>
+</tr>
+</thead>
+<tbody class="text-on-surface-variant">
+<tr><td class="p-space-sm border-b border-outline-variant/40">GPT-6 Luna (OpenAI)</td><td class="p-space-sm text-right border-b border-outline-variant/40">0,10</td><td class="p-space-sm text-right border-b border-outline-variant/40">0,50</td></tr>
+<tr><td class="p-space-sm border-b border-outline-variant/40">Claude Haiku 5.5 (Anthropic)<span class="block font-caption text-caption">hasta 100.000 tokens de entrada</span></td><td class="p-space-sm text-right border-b border-outline-variant/40">0,10</td><td class="p-space-sm text-right border-b border-outline-variant/40">0,50</td></tr>
+<tr><td class="p-space-sm border-b border-outline-variant/40">GLM-5.3-Flash (Z.ai)</td><td class="p-space-sm text-right border-b border-outline-variant/40">0,15</td><td class="p-space-sm text-right border-b border-outline-variant/40">0,50</td></tr>
+<tr><td class="p-space-sm border-b border-outline-variant/40">GPT-6 Sol (OpenAI)</td><td class="p-space-sm text-right border-b border-outline-variant/40">2</td><td class="p-space-sm text-right border-b border-outline-variant/40">10</td></tr>
+<tr><td class="p-space-sm border-b border-outline-variant/40">Gemini 4 Argon (Google)<span class="block font-caption text-caption">tarifa introductoria, pasará a 4/20</span></td><td class="p-space-sm text-right border-b border-outline-variant/40">2</td><td class="p-space-sm text-right border-b border-outline-variant/40">10</td></tr>
+<tr><td class="p-space-sm border-b border-outline-variant/40">Claude Opus 5.5 (Anthropic)</td><td class="p-space-sm text-right border-b border-outline-variant/40">4</td><td class="p-space-sm text-right border-b border-outline-variant/40">20</td></tr>
+<tr><td class="p-space-sm border-b border-outline-variant/40">GPT-6 Astra (OpenAI)<span class="block font-caption text-caption">por encima de 272.000 tokens: 20/75</span></td><td class="p-space-sm text-right border-b border-outline-variant/40">10</td><td class="p-space-sm text-right border-b border-outline-variant/40">50</td></tr>
+<tr><td class="p-space-sm">Claude Fable 5.1 (Anthropic)</td><td class="p-space-sm text-right">10</td><td class="p-space-sm text-right">50</td></tr>
+</tbody>
+</table>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Lo que salta a la vista es que no hay un precio de la IA: hay un <strong>factor cien</strong> entre el extremo barato y el caro de la misma semana. Y los modelos pequeños de 2026 no son los modelos pequeños de hace dos años: Haiku 5.5 trae un millón de tokens de ventana de contexto, igual que modelos que cuestan cien veces más. Para clasificar, extraer campos, enrutar o resumir, el modelo de 0,10$ hace el trabajo.
+        </p>
+<div class="bg-surface-container-low border-l-4 border-primary p-space-md"><p class="font-body-sm text-body-sm text-on-surface">Las cifras de Anthropic están contrastadas con su propia página de precios. Las de OpenAI vienen de coberturas y agregadores de terceros que coinciden entre sí, no de la página oficial, así que confírmalas antes de presupuestar. Y las tarifas se mueven: esta tabla tiene fecha, trátala como una foto.</p></div>
+</section>
+<section class="space-y-space-md">
+<h2 id="sec-5" class="font-headline-md text-headline-md text-primary tracking-tight">
+          Los tramos que rompen el titular
+        </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Aquí está el detalle que convierte una estimación razonable en una sorpresa a fin de mes: varios de estos precios <strong>solo valen hasta un tamaño de petición</strong>, y a partir de ahí suben de golpe.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          El caso más claro es el de Haiku 5.5. Sus 0,10$/0,50$ valen para peticiones de hasta 100.000 tokens de entrada. Por encima de esa línea pasa a 0,50$/2,50$: <strong>cinco veces más</strong>, sin transición. Es decir, el titular del «90% más barato» describe un tramo, no el modelo. Un chat suelto no cruza esa línea casi nunca. Un agente que arrastra historial, adjuntos y resultados de herramientas la cruza, y lo hace sin avisarte.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          GPT-6 Astra tiene su propio escalón, en 272.000 tokens, donde pasa de 10$/50$ a 20$/75$. Y Gemini 4 Argon salió con 2$/10$ anunciando desde el primer día que son <strong>tarifas introductorias</strong> y que pasarán a 4$/20$ — mérito de Google por publicarlo, pero si has presupuestado con el precio de lanzamiento tienes un duplicado pendiente.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Al mismo tiempo, el suelo gratuito se está estrechando: desde el 9 de octubre el plan gratuito de Gemini se quedó solo con Flash-Lite. Lo cubrimos en <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="../noticias/2026-10-08-gemini-gratis-solo-flash-lite.html">la noticia del cambio</a>, y la lección vale para cualquier capa gratuita: es una decisión comercial, no una propiedad del producto, y puede cambiar en un aviso. Si has montado algo encima, ten preparado a dónde te mueves.
+        </p>
+<div class="bg-surface-container-low border-l-4 border-primary p-space-md"><p class="font-body-sm text-body-sm text-on-surface">La regla que conviene interiorizar: el precio que anuncia un laboratorio es el <strong>suelo</strong> de su tarifa, no su tarifa. Antes de elegir modelo por precio, busca en la página de precios dónde están los escalones y calcula en qué lado de la línea cae tu petición típica.</p></div>
+</section>
+<section class="space-y-space-md">
+<h2 id="sec-6" class="font-headline-md text-headline-md text-primary tracking-tight">
+          Dónde se va el dinero: en el historial, no en la pregunta
+        </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Esta es la parte que no es intuitiva y es la que explica la mayoría de facturas inesperadas. Una API de chat <strong>no recuerda nada</strong> entre llamadas: en cada turno le reenvías la conversación completa para que sepa de qué hablabais. O sea que el historial se paga una vez por turno, y no una vez.
+        </p>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          Las cuentas de un caso corriente. Un asistente de soporte con un prompt de sistema de 2.000 tokens; el usuario escribe unos 150 tokens por mensaje y el modelo responde unos 300. Una conversación de diez turnos:
+        </p>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<ul class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant">
+<li><strong>Turno 1:</strong> entran 2.150 tokens (sistema + pregunta).</li>
+<li><strong>Turno 2:</strong> entran 2.600 (sistema + pregunta 1 + respuesta 1 + pregunta 2).</li>
+<li><strong>Turno 10:</strong> entran unos 6.200, porque van los nueve turnos anteriores enteros.</li>
+<li class="pt-space-xs border-t border-outline-variant/40"><strong>Total de la conversación:</strong> unos <strong>41.750 tokens de entrada</strong> y 3.000 de salida.</li>
+</ul>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          El usuario escribió 1.500 tokens en toda la conversación. Tú pagas por casi <strong>42.000 de entrada</strong>, unas 28 veces más. Y crece de forma cuadrática: duplicar los turnos no duplica el coste, lo multiplica por algo más de tres.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Lo que eso cuesta depende del modelo elegido, y aquí la tabla de antes deja de ser abstracta. Esa misma conversación, diez mil veces:
+        </p>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<ul class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant">
+<li>Con Haiku 5.5 o GPT-6 Luna (0,10$/0,50$): alrededor de <strong>57 dólares</strong>.</li>
+<li>Con GPT-6 Astra o Fable 5.1 (10$/50$): alrededor de <strong>5.675 dólares</strong>.</li>
+</ul>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Cien veces, por el mismo trabajo. No significa que el modelo caro nunca valga la pena — si una de cada cinco respuestas del pequeño está mal y acaba en un humano, el cálculo cambia entero. Significa que la elección de modelo <strong>es</strong> la decisión de coste, y que conviene tomarla por tramos: el modelo bueno donde se nota, el pequeño en el resto.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Con agentes esto se agrava, porque los resultados de herramientas también son entrada: una búsqueda que devuelve tres páginas de texto mete esas tres páginas en todos los turnos siguientes. Si quieres el fondo de por qué la conversación tiene que reenviarse y cómo gestionan esto las distintas estrategias de memoria, está en <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="ventana-contexto-memoria-ia.html">ventana de contexto y memoria</a>.
+        </p>
+</section>
+<section class="space-y-space-md">
+<h2 id="sec-7" class="font-headline-md text-headline-md text-primary tracking-tight">
+          Cinco palancas, por orden de rentabilidad
+        </h2>
+<h3 class="font-headline-sm text-headline-sm text-primary font-medium">1. Medir antes de optimizar</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Casi todas las respuestas de la API devuelven el recuento de tokens de entrada y salida. Regístralo por llamada desde el primer día, junto con qué tipo de petición era. Sin eso estás adivinando, y la intuición falla justo en lo que cuenta: casi siempre resulta que el gasto está concentrado en un puñado de llamadas que nadie había mirado.
+        </p>
+<h3 class="font-headline-sm text-headline-sm text-primary font-medium">2. Repartir por dificultad</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Es la palanca con más recorrido, porque es la que mueve el factor cien. Clasificar, enrutar, extraer campos o decidir si algo necesita atención: modelo pequeño. Redactar la respuesta final delicada o razonar sobre un caso raro: modelo grande. La mayoría de los sistemas que funcionan en producción son así, y no un solo modelo caro para todo.
+        </p>
+<h3 class="font-headline-sm text-headline-sm text-primary font-medium">3. Cachear el prefijo estable</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Si tu prompt de sistema ocupa 2.000 tokens y viaja en cada turno, es el candidato obvio. En el ejemplo de antes, cachearlo baja la entrada facturada de unos 41.750 a unos 26.000 tokens: en torno a un <strong>38% menos</strong> sin tocar nada del comportamiento. La condición es que el prefijo sea idéntico byte a byte, así que pon al principio lo que no cambia y al final lo que varía — un timestamp mal colocado al inicio del prompt invalida la caché en cada llamada y es un error muy común.
+        </p>
+<h3 class="font-headline-sm text-headline-sm text-primary font-medium">4. Recortar el historial</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          No todas las conversaciones necesitan recordarlo todo. Las estrategias que funcionan son mantener una ventana de los últimos N turnos, resumir lo viejo en un párrafo, o guardar fuera los datos que el modelo puede volver a pedir cuando los necesite. Cualquiera de las tres rompe el crecimiento cuadrático, que es lo que importa.
+        </p>
+<h3 class="font-headline-sm text-headline-sm text-primary font-medium">5. Mandar por lotes lo que no es urgente</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Un 50% de descuento por aceptar que algo se procese más tarde. Revisa qué parte de tu carga es realmente interactiva: suele ser menos de lo que parece.
+        </p>
+<div class="bg-surface-container-low border-l-4 border-primary p-space-md"><p class="font-body-sm text-body-sm text-on-surface">Una palanca que no está en la lista: añadir agentes. Dividir el trabajo entre varios agentes mejora algunas tareas, pero multiplica las llamadas y cada agente arrastra su propio contexto — es una decisión de calidad que se paga en factura. Cuándo compensa y cuándo no, en <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="varios-agentes-ia-o-uno.html">varios agentes o uno solo</a>.</p></div>
+</section>
+<section class="space-y-space-md">
+<h2 id="sec-8" class="font-headline-md text-headline-md text-primary tracking-tight">
+          Cuándo la API sale más cara que una suscripción
+        </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Si lo que haces es trabajar tú con un asistente —escribir, revisar, programar—, la suscripción plana casi siempre gana, y por bastante. Veinte o treinta dólares al mes compran un volumen de uso interactivo que por API costaría mucho más, porque el proveedor asume que no vas a usarla ocho horas seguidas sin parar.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          La API empieza a tener sentido cuando se cumple alguna de estas tres: necesitas que el proceso corra <strong>sin ti delante</strong>, necesitas integrarlo en un producto que usan otros, o tu volumen es tan irregular que pagar una cuota fija por asiento no cuadra. Para todo lo demás, la suscripción es la opción barata.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Y hay una tercera vía que conviene no descartar antes de poner una tarjeta: un modelo abierto corriendo en tu propio ordenador. No tiene coste por token — lo pagas en memoria, en disco y en velocidad —, y para clasificar, resumir o extraer campos de textos que preferirías no mandar fuera, da de sobra. Cómo montarlo y qué modelo aguanta tu máquina, en <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="ia-local-ordenador.html">IA local: correr modelos en tu ordenador</a>.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Cuando ya tengas un volumen estimado, échale el número a la <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="../herramientas/calculadora-coste-api.html">calculadora de coste de API</a> en lugar de hacerlo a mano: pide consultas al mes y precio por millón, y te da el coste mensual. Hazlo dos veces, con el modelo pequeño y con el grande, y verás si la decisión está realmente reñida o no.
+        </p>
+<div class="bg-surface-container-low border-l-4 border-primary p-space-md"><p class="font-body-sm text-body-sm text-on-surface">Lo único que de verdad hay que llevarse de esta guía: mide los tokens de entrada de tu llamada típica antes de elegir modelo. Esa cifra, cruzada con los escalones de la tarifa, decide tu factura mucho más que el precio del titular.</p></div>
+</section>
+<section class="space-y-space-md">
+<h2 class="font-headline-lg text-headline-lg text-primary">
+        Preguntas frecuentes
+      </h2>
+<div class="space-y-space-md">
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Cuántos tokens tiene una palabra en español?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+No hay una cifra exacta, pero la regla que circula —un token son unas 0,75 palabras— está medida en inglés y en español te deja corto. Varias mediciones sobre el tokenizador de OpenAI sitúan el mismo texto en torno a un 55% más de tokens en español que en inglés, y un análisis distinto sobre GPT-4o midió un 58,9%. Como aproximación de trabajo, cuenta con alrededor de una vez y media. Anthropic y Google no publican sus tokenizadores, así que para esos modelos el número puede variar; si la cifra te importa para presupuestar, usa el endpoint de conteo de tokens del proveedor antes de enviar la petición.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Por qué la salida cuesta cinco veces más que la entrada?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Por cómo funciona el cálculo. Leer la entrada se puede paralelizar: el modelo procesa todos esos tokens a la vez. Generar la salida es secuencial, un token después de otro, y cada paso ocupa el acelerador en exclusiva. Esa diferencia de eficiencia se traslada a la tarifa, y el factor cinco aparece con mucha regularidad en los catálogos de 2026: pasa en 0,10$/0,50$, en 2$/10$, en 4$/20$ y en 10$/50$. La consecuencia práctica es que acortar las respuestas ahorra menos de lo que parece: suele salir más a cuenta recortar lo que mandas.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Me conviene escribir los prompts en inglés para ahorrar?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Para la parte fija y larga, la que viaja en cada llamada, puede tener sentido y el ahorro en tokens de entrada es real. Para el texto que escribe el usuario no decides tú. El coste que no se ve en la factura es de calidad: pedirle instrucciones en inglés y respuesta en español añade un salto de idioma que a veces se nota en el registro y en los matices. No lo des por bueno porque suene lógico; monta una comprobación mínima con tus propios casos y mira si la respuesta empeora antes de dejarlo así.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿La caché me sirve si cada usuario pregunta algo distinto?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Sí, porque lo que se cachea no es la pregunta: es el prefijo que comparten todas las llamadas. Si tu prompt de sistema ocupa 2.000 tokens y va en cada petición, ese bloque es cacheable aunque la pregunta final sea única. La condición es que el prefijo sea idéntico byte a byte, así que coloca al principio lo que no cambia y al final lo que varía. El error más común es meter una fecha o un identificador de sesión al inicio del prompt: invalida la caché en cada llamada y te deja pagando el precio de escritura sin llegar a leerla nunca.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Sale más barato un modelo pequeño o uno grande que acierta a la primera?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Depende de qué pasa cuando el pequeño falla, y por eso es una cuenta que hay que hacer, no intuir. Entre los extremos del catálogo hay un factor cien, así que el modelo pequeño aguanta muchísimos reintentos antes de igualar al caro. Pero si el fallo no se detecta y acaba delante de un cliente, o si obliga a que lo revise una persona, el coste real no está en los tokens. La forma de salir de la duda es medir la tasa de acierto de los dos en tus propios casos y añadir al modelo pequeño el coste de los fallos: casi siempre el reparto por dificultad gana a elegir uno solo para todo.
+</div>
+</div>
+</div>
+</section>
+</article>
+<aside class="lg:col-span-4 flex flex-col space-y-space-xl">
+<div class="bg-surface-container-lowest p-space-lg shadow-sm sticky top-space-md">
+<div class="flex items-center justify-between mb-space-sm pb-space-xs">
+<span class="font-kicker text-kicker uppercase tracking-widest text-primary font-bold">ÍNDICE DE LA GUÍA</span>
+<span class="material-symbols-outlined text-on-surface-variant text-base">format_list_bulleted</span>
+</div>
+<nav class="space-y-space-xs font-body-sm text-body-sm">
+<a class="block text-primary hover:text-secondary font-medium transition-colors" href="#sec-1">Un token no es una palabra</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-2">El impuesto del español</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-3">Tres precios, no uno</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-4">El mapa de precios</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-5">Los tramos que rompen el titular</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-6">Dónde se va el dinero</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-7">Cinco palancas</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-8">API o suscripción</a>
+</nav>
+</div>
+<div class="bg-surface-container-high p-space-md space-y-space-sm shadow-sm">
+<span class="font-kicker text-kicker uppercase tracking-widest text-primary font-bold">FICHA TÉCNICA</span>
+<dl class="space-y-space-xs font-caption text-caption">
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Categoría:</dt><dd class="font-semibold text-primary">Práctica</dd></div><div class="flex justify-between py-1"><dt class="text-on-surface-variant">Nivel técnico:</dt><dd class="font-semibold text-primary">Principiante</dd></div><div class="flex justify-between py-1"><dt class="text-on-surface-variant">Fuentes citadas:</dt><dd class="font-semibold text-primary">Página de precios de Anthropic, VentureBeat y Quartz (Haiku 5.5), agregadores de precios de la API de OpenAI (octubre de 2026), banco de pruebas de tokenización con tiktoken</dd></div>
+</dl>
+</div>
+</aside>
+</div>
+<section class="w-full mt-space-4xl pt-space-2xl bg-surface-container-lowest p-space-lg shadow-sm">
+<div class="mb-space-lg">
+<h3 class="font-headline-md text-headline-md text-primary">Continúa explorando el archivo</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-col-gap"><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="ventana-contexto-memoria-ia.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-ventana-contexto-memoria-ia.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="ventana-contexto-memoria-ia.html">Ventana de contexto: por qué la IA olvida</a></h4></div></article><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="ia-local-ordenador.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-ia-local-ordenador.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="ia-local-ordenador.html">IA local: correr modelos en tu ordenador</a></h4></div></article><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="varios-agentes-ia-o-uno.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-varios-agentes-ia-o-uno.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="varios-agentes-ia-o-uno.html">Varios agentes de IA o uno solo: cuándo dividir</a></h4></div></article></div>
+</section>
+</div></main><footer class="w-full bg-surface-container-low border-t border-outline-variant mt-space-4xl"><div class="max-w-site-max-width mx-auto px-space-md py-space-3xl"><div class="grid grid-cols-1 md:grid-cols-3 gap-col-gap"><div class="space-y-space-sm"><span class="font-headline-md text-headline-md text-primary">El Telar</span><p class="font-body-sm text-body-sm text-on-surface-variant">Publicación independiente de tecnología y automatización con agentes. Contenidos verificados en producción, sin patrocinios opacos ni promesas vacías.</p></div><div><h3 class="font-kicker text-kicker uppercase tracking-wider text-on-surface mb-space-md">SECCIONES</h3><ul class="space-y-space-xs font-body-sm text-body-sm"><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html#guias">Archivo de Guías</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../empieza-aqui.html">Guía para Principiantes</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../sobre-nosotros.html">Manifiesto Editorial</a></li><li class="pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html#despacho">Boletín Semanal</a></li></ul></div><div><h3 class="font-kicker text-kicker uppercase tracking-wider text-on-surface mb-space-md">CONTACTO &amp; PRENSA</h3><div class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant"><p class="font-semibold text-on-surface">contacto@eltelar.es</p><p>Síguenos: <a class="hover:text-primary underline" href="https://www.instagram.com/eltelar_es/" rel="me noopener" target="_blank">Instagram</a> · <a class="hover:text-primary underline" href="https://www.threads.com/@eltelar_es" rel="me noopener" target="_blank">Threads</a> · <a class="hover:text-primary underline" href="https://x.com/eltelar_es" rel="me noopener" target="_blank">X</a></p></div></div></div></div><div class="border-t border-outline-variant py-space-md bg-surface-container-lowest"><div class="max-w-site-max-width mx-auto px-space-md flex flex-col md:flex-row items-center justify-between gap-space-sm text-caption font-caption text-on-surface-variant"><div>© 2026 El Telar. Todos los derechos reservados. Independencia editorial garantizada.</div><div class="flex items-center gap-space-md"><a class="hover:text-on-surface transition-colors" href="../privacidad.html">Privacidad</a><a class="hover:text-on-surface transition-colors" href="../terminos.html">Términos</a><a class="hover:text-on-surface transition-colors" href="../sobre-nosotros.html">Sobre nosotros</a><a class="hover:text-on-surface transition-colors" href="../contacto.html">Contacto</a></div></div></div></footer><script defer src="../js/copy-guide.js"></script><script defer src="../js/guide-interactions.js"></script><script defer src="../js/reading-progress.js"></script><script defer src="../js/search.js?v=7"></script><script defer src="../js/entrance.js"></script><script defer src="../js/cookie-consent.js?v=4"></script></body></html>
