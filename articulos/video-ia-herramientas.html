@@ -23,7 +23,7 @@
   "author": { "@type": "Organization", "name": "El Telar", "url": "https://eltelar.es/sobre-nosotros.html" },
   "publisher": { "@type": "Organization", "name": "El Telar" },
   "datePublished": "2026-09-08",
-  "dateModified": "2026-10-10",
+  "dateModified": "2026-10-11",
   "mainEntityOfPage": "https://eltelar.es/articulos/video-ia-herramientas.html",
   "inLanguage": "es"
 }
@@ -342,6 +342,18 @@
 <p class="font-body-sm text-body-sm text-on-surface mt-space-xs"><strong>Instalarlo en Claude Code (dos comandos):</strong></p><code class="block font-mono text-body-sm bg-primary text-on-primary px-space-sm py-space-xs mt-space-xxs overflow-x-auto">claude plugin marketplace add heygen-com/hyperframes<br>claude plugin install hyperframes@hyperframes</code>
 <p class="font-body-sm text-body-sm text-on-surface mt-space-xs"><strong>O como skills para cualquier agente:</strong></p><code class="block font-mono text-body-sm bg-primary text-on-primary px-space-sm py-space-xs mt-space-xxs overflow-x-auto">npx skills add heygen-com/hyperframes</code>
 <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Es gratis (licencia Apache 2.0) y funciona en tu ordenador; necesitas Node.js 22 o superior. Lo que pagas, si acaso, es el asistente de IA que escribe el vídeo. Para piezas cortas de redes con texto, gráficos y música funciona muy bien; para vídeo con personas reales sigue haciendo falta grabar o usar las herramientas de la guía de arriba.</p>
+</section>
+<section class="space-y-space-md">
+<h2 id="youtube-agent-skill" class="font-headline-lg text-headline-lg text-primary">
+          YouTube Agent Skill: 11 skills de Claude para tu canal de YouTube
+        </h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">YouTube Agent Skill es un paquete gratuito de once skills (instrucciones reutilizables) para Claude que ayudan a llevar un canal de YouTube. Según su autor, una escribe el guion a partir de 21 fórmulas de gancho y puntúa el gancho antes de grabar; otra revisa el título y la miniatura como una pareja, para que no digan lo mismo dos veces; otra lee la retención que exportas de YouTube Studio y te dice el segundo exacto en que la gente se fue y qué estabas diciendo; otra convierte una transcripción en una lista de cortes; otra encuentra los Shorts que ya hay dentro de un vídeo largo, y otra busca qué funciona en tu nicho. Tiene licencia MIT y más de mil estrellas en GitHub.</p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed"><strong class="text-on-surface">No publica nada por ti.</strong> Las skills escriben y analizan; subir el vídeo lo haces tú. No pide registro ni clave de API.</p>
+<p class="font-body-sm text-body-sm mt-space-sm"><strong class="text-on-surface">Dónde conseguirlo:</strong> <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://github.com/Jakeschincariol/youtube-agent-skill">Jakeschincariol/youtube-agent-skill · repositorio oficial ↗</a></p>
+<p class="font-body-sm text-body-sm text-on-surface mt-space-xs"><strong>La forma más fácil: pega esto en Claude Code</strong></p><code class="block font-mono text-body-sm bg-primary text-on-primary px-space-sm py-space-xs mt-space-xxs overflow-x-auto">https://github.com/Jakeschincariol/youtube-agent-skill<br>Install this skill, then confirm /yt-script works.</code>
+<p class="font-body-sm text-body-sm text-on-surface mt-space-xs"><strong>O como plugin de Claude Code:</strong></p><code class="block font-mono text-body-sm bg-primary text-on-primary px-space-sm py-space-xs mt-space-xxs overflow-x-auto">/plugin marketplace add Jakeschincariol/youtube-agent-skill<br>/plugin install youtube-agent</code>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Para sacarle todo el partido necesitas Claude Code, porque varias skills usan pequeñas herramientas en Python (las de guion, retención y cortes). Si solo usas Claude en el navegador, puedes pegar el archivo <code>SKILL.md</code> de una skill al principio del chat y funciona como un modo, aunque sin esas herramientas. El autor recomienda dedicar diez minutos a rellenar <code>templates/voice.md</code> con tu forma de hablar: todas las skills lo leen.</p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed"><strong class="text-on-surface">Ojo:</strong> las notas y recomendaciones son orientativas; no garantizan más visitas. Para la retención necesitas exportar los datos de tu propio canal desde YouTube Studio.</p>
 </section>
 <section class="space-y-space-md">
 <h2 id="voicestudio" class="font-headline-lg text-headline-lg text-primary">
