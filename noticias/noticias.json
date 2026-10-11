@@ -1,5 +1,132 @@
 [
  {
+  "slug": "2026-10-09-claude-flujos-dinamicos-1000-agentes",
+  "date": "2026-10-09",
+  "category": "Herramientas",
+  "title": "Claude ya puede escribir su propio flujo de trabajo y lanzar hasta 1.000 agentes",
+  "dek": "Anthropic añade los «flujos dinámicos» a Claude Managed Agents, en beta: un agente reparte el trabajo entre muchos otros y junta los resultados.",
+  "tldr": "Anthropic ha activado los flujos dinámicos en Claude Managed Agents (beta). El agente escribe un programa que lanza otros agentes en paralelo y combina lo que devuelven. Es una función para desarrolladores y consume muchos tokens.",
+  "key_facts": [
+   {
+    "value": "1.000",
+    "label": "agentes como máximo en toda una ejecución"
+   },
+   {
+    "value": "64",
+    "label": "hilos trabajando a la vez en una ejecución"
+   },
+   {
+    "value": "66 de 70",
+    "label": "fallos hallados en la prueba de Anthropic, frente a 14-27 con un solo agente"
+   },
+   {
+    "value": "24 h",
+    "label": "duración máxima por defecto de una ejecución"
+   }
+  ],
+  "body": [
+   "El 9 de octubre de 2026 Anthropic incorporó los «flujos dinámicos» (dynamic workflows) a Claude Managed Agents, su servicio para que las empresas ejecuten agentes de Claude en la nube. Está en beta, es decir, en pruebas y puede cambiar.",
+   "La idea es sencilla: en vez de hacerlo todo en una sola conversación, el agente escribe un programa, el «flujo», que arranca otros agentes en segundo plano, recoge lo que cada uno devuelve y lo combina. Anthropic lo plantea para tareas demasiado grandes para una sola conversación, como revisar cientos de documentos.",
+   "Según la documentación oficial, una ejecución puede tener como máximo 64 hilos trabajando a la vez y 1.000 agentes en total a lo largo de su vida, y dura 24 horas por defecto. Si el flujo pide más agentes, el servidor no los arranca y la ejecución termina con un error.",
+   "En una prueba de Anthropic con un código de 116.000 líneas con 70 fallos escondidos, un solo agente encontraba entre 14 y 27 por intento, mientras que el flujo dinámico llegó a 66 de forma constante, según informa The Decoder. Es una prueba de la propia empresa y puede no repetirse en otras tareas.",
+   "Un detalle importante: la ejecución no tiene precio propio, pero cada agente gasta tokens a la tarifa normal de su modelo y la sesión cobra además 0,08 dólares por hora mientras trabaja. Los sistemas con varios agentes suelen gastar entre 3 y 10 veces más tokens que uno solo, así que Anthropic recomienda empezar con pocos."
+  ],
+  "impact": [
+   "Si no programas, no cambia nada en tu día a día: es una herramienta para quien construye aplicaciones con agentes.",
+   "Si la usas, empieza con una tarea pequeña y pon un presupuesto de tokens desde el principio: no se puede añadir después.",
+   "Que un flujo diga «completado» no garantiza que todo saliera bien: conviene revisar los resultados."
+  ],
+  "sources": [
+   {
+    "name": "Anthropic, documentación de Claude Managed Agents: orquestación multiagente",
+    "url": "https://platform.claude.com/docs/en/managed-agents/multiagent-orchestration"
+   },
+   {
+    "name": "Anthropic, documentación: workflow runs (límites y comportamiento)",
+    "url": "https://platform.claude.com/docs/en/managed-agents/workflow-runs"
+   },
+   {
+    "name": "The Decoder, «Claude can now orchestrate up to 1,000 AI agents in parallel»",
+    "url": "https://the-decoder.com/anthropics-claude-can-now-orchestrate-up-to-1000-ai-agents-in-parallel-through-dynamic-workflows/"
+   }
+  ],
+  "related": [
+   {
+    "title": "¿Varios agentes de IA o uno solo?",
+    "url": "../articulos/varios-agentes-ia-o-uno.html"
+   },
+   {
+    "title": "Qué es un agente de IA",
+    "url": "../articulos/que-es-un-agente-ia.html"
+   }
+  ],
+  "photo": {
+   "alt": "Un grupo de hormigas obreras trabajando juntas en una colonia (imagen de archivo)",
+   "author": "Alex Wild",
+   "license": "CC0",
+   "url": "https://commons.wikimedia.org/w/index.php?curid=37627490"
+  }
+ },
+ {
+  "slug": "2026-10-08-openai-red-iran-articulos-falsos",
+  "date": "2026-10-08",
+  "category": "Seguridad",
+  "title": "OpenAI cierra una red iraní que colocó unos 100 artículos con periodistas inventados",
+  "dek": "La operación «Bogus Bylines» usó ChatGPT para redactar y vender textos a medios con siete firmas falsas, según el informe de OpenAI.",
+  "tldr": "OpenAI anunció el 8 de octubre que bloqueó cuentas de Irán que usaban ChatGPT para colocar casi 100 artículos de opinión en medios con siete periodistas falsos. Los textos criticaban la guerra de EE. UU. contra Irán.",
+  "key_facts": [
+   {
+    "value": "~100",
+    "label": "artículos colocados en medios"
+   },
+   {
+    "value": "7",
+    "label": "periodistas falsos inventados"
+   },
+   {
+    "value": "4 de 6",
+    "label": "nivel de la escala de OpenAI para campañas de influencia"
+   }
+  ],
+  "body": [
+   "El 8 de octubre de 2026 OpenAI explicó que había bloqueado un grupo de cuentas de ChatGPT originadas en Irán. La operación, bautizada «Bogus Bylines», usó siete personajes inventados que se presentaban como periodistas occidentales, sobre todo estadounidenses, para ofrecer artículos de opinión a medios.",
+   "Según el informe, la actividad empezó en julio de 2025 y creció con la escalada de la guerra entre EE. UU. e Irán. Los operadores usaban ChatGPT para pulir los textos, adaptarlos a los requisitos de cada medio y redactar los correos con los que los proponían a los editores. Según Crypto Briefing, escribían las instrucciones en persa y el modelo devolvía un inglés pulido.",
+   "En total se colocaron cerca de 100 artículos en más de una docena de publicaciones, desde periódicos locales hasta webs internacionales; entre las citadas están Daily Kos y Middle East Monitor. Varios medios retiraron después los textos y las páginas de autor.",
+   "OpenAI sitúa esta operación en el nivel 4 de una escala de seis que mide hasta dónde llega una campaña fuera de su propia red, y dice que no está claro quién la dirigía ni si había relación con el Gobierno iraní: la actividad encajaba con la de una empresa que trabaja por encargo."
+  ],
+  "impact": [
+   "Una firma con foto y biografía no prueba que haya una persona real detrás: conviene comprobar que el autor existe y ha publicado en otros sitios.",
+   "Fíjate en si varios artículos distintos repiten los mismos argumentos con el mismo tono.",
+   "Los medios pequeños que aceptan colaboraciones sin verificar a los autores son el objetivo más fácil."
+  ],
+  "sources": [
+   {
+    "name": "Engadget, «OpenAI shut down an Iranian influence op that used ChatGPT to generate bogus news articles»",
+    "url": "https://www.engadget.com/cybersecurity/openai-shut-down-an-iranian-influence-op-that-used-chatgpt-to-generate-bogus-news-articles-202526662.html"
+   },
+   {
+    "name": "Crypto Briefing, resumen del informe de OpenAI",
+    "url": "https://cryptobriefing.com/openai-disrupts-iranian-fake-articles-campaign/"
+   },
+   {
+    "name": "AI Weekly, «OpenAI Bans Iran-Linked ChatGPT Op That Placed ~100 Articles»",
+    "url": "https://aiweekly.co/alerts/openai-bans-iran-linked-chatgpt-op-that-placed-100-articles"
+   }
+  ],
+  "related": [
+   {
+    "title": "Estafas con IA: cómo reconocerlas",
+    "url": "../articulos/estafas-con-ia.html"
+   }
+  ],
+  "photo": {
+   "alt": "Una pila de periódicos (imagen de archivo)",
+   "author": "rawpixel",
+   "license": "CC0",
+   "url": "https://www.rawpixel.com/image/5925139/photo-image-paper-public-domain-black"
+  }
+ },
+ {
   "slug": "2026-10-09-berkeley-ia-persistencia",
   "date": "2026-10-09",
   "category": "Herramientas",
@@ -50,7 +177,13 @@
     "title": "Cómo usar la IA para estudiar",
     "url": "../articulos/ia-para-estudiar.html"
    }
-  ]
+  ],
+  "photo": {
+   "alt": "Torre Sather y edificios del campus de la Universidad de California en Berkeley (imagen de archivo)",
+   "author": "brainchildvn on Flickr",
+   "license": "CC BY 2.0",
+   "url": "https://commons.wikimedia.org/w/index.php?curid=6638057"
+  }
  },
  {
   "slug": "2026-10-09-anthropic-corta-internet-evaluaciones",
@@ -104,7 +237,13 @@
     "title": "Qué es un agente de IA",
     "url": "../articulos/que-es-un-agente-ia.html"
    }
-  ]
+  ],
+  "photo": {
+   "alt": "Cables de red conectados a un panel de conexiones en una sala de servidores (imagen de archivo)",
+   "author": "Moses Cursor Ssebunya",
+   "license": "CC0",
+   "url": "https://wordpress.org/photos/photo/64767dd6fa/"
+  }
  },
  {
   "slug": "2026-10-08-anthropic-politica-uso-12-noviembre",
@@ -154,7 +293,13 @@
     "title": "Estafas con IA",
     "url": "../articulos/estafas-con-ia.html"
    }
-  ]
+  ],
+  "photo": {
+   "alt": "Un mazo de juez junto a un libro de leyes (imagen de archivo)",
+   "author": "Blogtrepreneur",
+   "license": "CC BY 2.0",
+   "url": "https://commons.wikimedia.org/w/index.php?curid=50979436"
+  }
  },
  {
   "slug": "2026-10-08-gemini-gratis-solo-flash-lite",
@@ -200,7 +345,13 @@
     "title": "ChatGPT, Claude o Gemini: cuál usar según lo que necesites",
     "url": "../articulos/chatgpt-claude-gemini.html#gemini-gratis"
    }
-  ]
+  ],
+  "photo": {
+   "alt": "Fachada de la sede de Google en Mountain View, California (imagen de archivo)",
+   "author": "David Nagle",
+   "license": "CC BY-SA 4.0",
+   "url": "https://commons.wikimedia.org/w/index.php?curid=63205382"
+  }
  },
  {
   "slug": "2026-10-06-mistral-large-4",

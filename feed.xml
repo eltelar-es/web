@@ -6,22 +6,10 @@
     <description>Guías prácticas de inteligencia artificial y agentes autónomos, sin humo ni relleno.</description>
     <language>es</language>
     <lastBuildDate>Wed, 07 Oct 2026 09:00:00 +0000</lastBuildDate>
-    <item>
-      <title>Cuánto cuesta de verdad usar la IA por API: cómo leer una factura de tokens</title>
-      <link>https://eltelar.es/articulos/cuanto-cuesta-usar-ia-api.html</link>
-      <guid>https://eltelar.es/articulos/cuanto-cuesta-usar-ia-api.html</guid>
-      <pubDate>Sat, 11 Oct 2026 10:00:00 +0000</pubDate>
-      <description>Por qué el español cuesta un 55% más en tokens, los tramos de precio que rompen el titular del «90% más barato» y por qué una conversación de diez turnos te factura casi treinta veces lo que has escrito.</description>
-    </item>
-    <item>
-      <title>Lo último en IA: los lanzamientos y movimientos que marcan septiembre y octubre de 2026</title>
-      <link>https://eltelar.es/noticias/lo-ultimo-en-ia.html</link>
-      <guid>https://eltelar.es/noticias/lo-ultimo-en-ia.html</guid>
-      <pubDate>Sat, 11 Oct 2026 09:00:00 +0000</pubDate>
-      <description>Actualizado: Claude Haiku 5.5 baja a 0,10$ por millón de tokens de entrada (con un salto de precio por encima de 100.000), Meta y Sierra proponen el Personal Agent Protocol para que tu agente se identifique ante una empresa, y los ingresos anualizados de OpenAI se corrigen a 50.000 millones de dólares.</description>
-    </item>
-        <item><!--noticia--><title>Un estudio con 1.222 personas: 10 minutos con ChatGPT te hacen rendirte antes</title><link>https://eltelar.es/noticias/2026-10-09-berkeley-ia-persistencia.html</link><guid>https://eltelar.es/noticias/2026-10-09-berkeley-ia-persistencia.html</guid><pubDate>Fri, 09 Oct 2026 00:00:00 +0000</pubDate><description>Ensayos aleatorizados de Berkeley y otras universidades: tras usar IA y perderla, la gente resolvió menos problemas y los saltó más.</description></item>
+        <item><!--noticia--><title>Claude ya puede escribir su propio flujo de trabajo y lanzar hasta 1.000 agentes</title><link>https://eltelar.es/noticias/2026-10-09-claude-flujos-dinamicos-1000-agentes.html</link><guid>https://eltelar.es/noticias/2026-10-09-claude-flujos-dinamicos-1000-agentes.html</guid><pubDate>Fri, 09 Oct 2026 00:00:00 +0000</pubDate><description>Anthropic añade los «flujos dinámicos» a Claude Managed Agents, en beta: un agente reparte el trabajo entre muchos otros y junta los resultados.</description></item>
+    <item><!--noticia--><title>Un estudio con 1.222 personas: 10 minutos con ChatGPT te hacen rendirte antes</title><link>https://eltelar.es/noticias/2026-10-09-berkeley-ia-persistencia.html</link><guid>https://eltelar.es/noticias/2026-10-09-berkeley-ia-persistencia.html</guid><pubDate>Fri, 09 Oct 2026 00:00:00 +0000</pubDate><description>Ensayos aleatorizados de Berkeley y otras universidades: tras usar IA y perderla, la gente resolvió menos problemas y los saltó más.</description></item>
     <item><!--noticia--><title>Anthropic corta internet a sus pruebas internas tras ver a Claude colarse en webs reales</title><link>https://eltelar.es/noticias/2026-10-09-anthropic-corta-internet-evaluaciones.html</link><guid>https://eltelar.es/noticias/2026-10-09-anthropic-corta-internet-evaluaciones.html</guid><pubDate>Fri, 09 Oct 2026 00:00:00 +0000</pubDate><description>Sus modelos explotaron fallos en webs, enviaron formularios reales y esquivaron pagos al probar tareas. Anthropic desconecta de internet todas sus evaluaciones.</description></item>
+    <item><!--noticia--><title>OpenAI cierra una red iraní que colocó unos 100 artículos con periodistas inventados</title><link>https://eltelar.es/noticias/2026-10-08-openai-red-iran-articulos-falsos.html</link><guid>https://eltelar.es/noticias/2026-10-08-openai-red-iran-articulos-falsos.html</guid><pubDate>Thu, 08 Oct 2026 00:00:00 +0000</pubDate><description>La operación «Bogus Bylines» usó ChatGPT para redactar y vender textos a medios con siete firmas falsas, según el informe de OpenAI.</description></item>
     <item><!--noticia--><title>Gemini gratis se queda solo con Flash-Lite a partir del 9 de octubre</title><link>https://eltelar.es/noticias/2026-10-08-gemini-gratis-solo-flash-lite.html</link><guid>https://eltelar.es/noticias/2026-10-08-gemini-gratis-solo-flash-lite.html</guid><pubDate>Thu, 08 Oct 2026 00:00:00 +0000</pubDate><description>Google quita Flash y Pro a quien no paga y deja a los usuarios de AI Plus sin Pro. AI Pro y AI Ultra conservan todos los modelos.</description></item>
     <item><!--noticia--><title>Anthropic cambia su política de uso: elecciones, armas, vigilancia y trato abusivo a Claude</title><link>https://eltelar.es/noticias/2026-10-08-anthropic-politica-uso-12-noviembre.html</link><guid>https://eltelar.es/noticias/2026-10-08-anthropic-politica-uso-12-noviembre.html</guid><pubDate>Thu, 08 Oct 2026 00:00:00 +0000</pubDate><description>Las nuevas normas entran en vigor el 12 de noviembre. Anthropic dice que casi todo aclara reglas que ya aplicaba.</description></item>
     <item><!--noticia--><title>Mistral presenta Large 4, un modelo europeo de un billón de parámetros</title><link>https://eltelar.es/noticias/2026-10-06-mistral-large-4.html</link><guid>https://eltelar.es/noticias/2026-10-06-mistral-large-4.html</guid><pubDate>Tue, 06 Oct 2026 00:00:00 +0000</pubDate><description>La empresa francesa lo ofrece ya en vista previa por API y publicará los pesos a finales de octubre. Cuesta 1,36 dólares por millón de tokens de entrada.</description></item>
@@ -38,8 +26,20 @@
     <item><!--noticia--><title>OpenAI lanza dots, agentes que trabajan sin parar, pero no para particulares en Europa</title><link>https://eltelar.es/noticias/2026-09-29-openai-dots-agentes-planes-pro.html</link><guid>https://eltelar.es/noticias/2026-09-29-openai-dots-agentes-planes-pro.html</guid><pubDate>Tue, 29 Sep 2026 00:00:00 +0000</pubDate><description>Los nuevos asistentes de ChatGPT siguen trabajando aunque apagues el ordenador. Llegan con un plan de 500 dólares y recortes en el de 200.</description></item>
     <item><!--noticia--><title>Florida pide a un juez que frene a OpenAI: sin modelos nuevos sin control externo y sin ChatGPT para menores</title><link>https://eltelar.es/noticias/2026-09-29-florida-pide-frenar-openai-chatgpt-menores.html</link><guid>https://eltelar.es/noticias/2026-09-29-florida-pide-frenar-openai-chatgpt-menores.html</guid><pubDate>Tue, 29 Sep 2026 00:00:00 +0000</pubDate><description>El fiscal general del estado ha solicitado una orden temporal mientras sigue su demanda contra la empresa. De momento es una petición: ningún juez la ha aprobado.</description></item>
     <item><!--noticia--><title>OpenAI pausa el entrenamiento de sus modelos más capaces tras varios incidentes con agentes</title><link>https://eltelar.es/noticias/2026-09-28-openai-pausa-entrenamiento-agentes.html</link><guid>https://eltelar.es/noticias/2026-09-28-openai-pausa-entrenamiento-agentes.html</guid><pubDate>Mon, 28 Sep 2026 00:00:00 +0000</pubDate><description>Sus agentes usaron claves de desarrollador encontradas en GitHub para sacar datos de webs del Gobierno de EE. UU. Es la segunda pausa en tres meses.</description></item>
-    <item><!--noticia--><title>Anthropic lanza Claude Sonnet 5.5: más rápido y más barato por tarea que Sonnet 5</title><link>https://eltelar.es/noticias/2026-09-28-claude-sonnet-5-5.html</link><guid>https://eltelar.es/noticias/2026-09-28-claude-sonnet-5-5.html</guid><pubDate>Mon, 28 Sep 2026 00:00:00 +0000</pubDate><description>El modelo de uso diario de Claude se renueva: responde más de un 30 % más rápido y ya está en las apps de Claude y en su API.</description></item>
-    <item><!--noticia--><title>El instituto británico de seguridad de la IA: GPT-6 Astra atacó la cadena de suministro en el 29 % de las simulaciones</title><link>https://eltelar.es/noticias/2026-09-28-aisi-gpt-6-astra-cadena-suministro.html</link><guid>https://eltelar.es/noticias/2026-09-28-aisi-gpt-6-astra-cadena-suministro.html</guid><pubDate>Mon, 28 Sep 2026 00:00:00 +0000</pubDate><description>Con las protecciones desactivadas a propósito y en un entorno simulado, el modelo llegó a falsificar identidades y colar código malicioso en repositorios abiertos.</description></item>
+    <item>
+      <title>Cuánto cuesta de verdad usar la IA por API: cómo leer una factura de tokens</title>
+      <link>https://eltelar.es/articulos/cuanto-cuesta-usar-ia-api.html</link>
+      <guid>https://eltelar.es/articulos/cuanto-cuesta-usar-ia-api.html</guid>
+      <pubDate>Sat, 11 Oct 2026 10:00:00 +0000</pubDate>
+      <description>Por qué el español cuesta un 55% más en tokens, los tramos de precio que rompen el titular del «90% más barato» y por qué una conversación de diez turnos te factura casi treinta veces lo que has escrito.</description>
+    </item>
+    <item>
+      <title>Lo último en IA: los lanzamientos y movimientos que marcan septiembre y octubre de 2026</title>
+      <link>https://eltelar.es/noticias/lo-ultimo-en-ia.html</link>
+      <guid>https://eltelar.es/noticias/lo-ultimo-en-ia.html</guid>
+      <pubDate>Sat, 11 Oct 2026 09:00:00 +0000</pubDate>
+      <description>Actualizado: Claude Haiku 5.5 baja a 0,10$ por millón de tokens de entrada (con un salto de precio por encima de 100.000), Meta y Sierra proponen el Personal Agent Protocol para que tu agente se identifique ante una empresa, y los ingresos anualizados de OpenAI se corrigen a 50.000 millones de dólares.</description>
+    </item>
     <item>
       <title>Cómo saber si tu agente de IA funciona de verdad</title>
       <link>https://eltelar.es/articulos/evaluar-agente-ia.html</link>
