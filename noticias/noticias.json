@@ -55,7 +55,8 @@
         "title": "Prompt injection en agentes de IA",
         "url": "../articulos/prompt-injection-agentes-ia.html"
       }
-    ]
+    ],
+    "published": "2026-10-12"
   },
   {
     "slug": "2026-10-08-usa-today-demanda-openai-250-millones",
@@ -101,7 +102,8 @@
         "name": "Demanda (PDF, CourtListener)",
         "url": "https://storage.courtlistener.com/recap/gov.uscourts.nysd.674652/gov.uscourts.nysd.674652.1.0_1.pdf"
       }
-    ]
+    ],
+    "published": "2026-10-12"
   },
   {
     "slug": "2026-10-09-claude-flujos-dinamicos-1000-agentes",
@@ -169,7 +171,8 @@
       "author": "Alex Wild",
       "license": "CC0",
       "url": "https://commons.wikimedia.org/w/index.php?curid=37627490"
-    }
+    },
+    "published": "2026-10-11"
   },
   {
     "slug": "2026-10-08-openai-red-iran-articulos-falsos",
@@ -228,7 +231,8 @@
       "author": "rawpixel",
       "license": "CC0",
       "url": "https://www.rawpixel.com/image/5925139/photo-image-paper-public-domain-black"
-    }
+    },
+    "published": "2026-10-11"
   },
   {
     "slug": "2026-10-09-berkeley-ia-persistencia",
@@ -287,7 +291,8 @@
       "author": "brainchildvn on Flickr",
       "license": "CC BY 2.0",
       "url": "https://commons.wikimedia.org/w/index.php?curid=6638057"
-    }
+    },
+    "published": "2026-10-11"
   },
   {
     "slug": "2026-10-09-anthropic-corta-internet-evaluaciones",
@@ -347,7 +352,8 @@
       "author": "Moses Cursor Ssebunya",
       "license": "CC0",
       "url": "https://wordpress.org/photos/photo/64767dd6fa/"
-    }
+    },
+    "published": "2026-10-11"
   },
   {
     "slug": "2026-10-08-anthropic-politica-uso-12-noviembre",
@@ -403,7 +409,8 @@
       "author": "Blogtrepreneur",
       "license": "CC BY 2.0",
       "url": "https://commons.wikimedia.org/w/index.php?curid=50979436"
-    }
+    },
+    "published": "2026-10-11"
   },
   {
     "slug": "2026-10-08-gemini-gratis-solo-flash-lite",
@@ -455,7 +462,8 @@
       "author": "David Nagle",
       "license": "CC BY-SA 4.0",
       "url": "https://commons.wikimedia.org/w/index.php?curid=63205382"
-    }
+    },
+    "published": "2026-10-08"
   },
   {
     "slug": "2026-10-06-mistral-large-4",
@@ -516,7 +524,8 @@
       "author": "Jan2342342423",
       "license": "CC0",
       "url": "https://commons.wikimedia.org/w/index.php?curid=183903636"
-    }
+    },
+    "published": "2026-10-07"
   },
   {
     "slug": "2026-10-05-iwf-imagenes-abuso-ia",
@@ -571,7 +580,8 @@
       "author": "One Idea LLC",
       "license": "CC0",
       "url": "https://stocksnap.io/photo/laptop-keyboard-QGU10TMNPE"
-    }
+    },
+    "published": "2026-10-07"
   },
   {
     "slug": "2026-10-05-reflection-beam-modelo-abierto",
@@ -630,7 +640,8 @@
       "author": "Derrick Coetzee from Berkeley, CA, USA",
       "license": "CC0",
       "url": "https://commons.wikimedia.org/w/index.php?curid=17460421"
-    }
+    },
+    "published": "2026-10-06"
   },
   {
     "slug": "2026-10-05-meta-muse-spark-matematicas",
@@ -694,7 +705,8 @@
       "author": "rawpixel",
       "license": "CC0 1.0",
       "url": "https://www.rawpixel.com/image/5905126/photo-image-background-public-domain-black"
-    }
+    },
+    "published": "2026-10-05"
   },
   {
     "slug": "2026-10-04-google-pausa-bug-bounty-codigo-abierto-ia",
@@ -749,7 +761,8 @@
       "author": "Outreach Pete",
       "license": "CC BY 2.0",
       "url": "https://commons.wikimedia.org/w/index.php?curid=79798162"
-    }
+    },
+    "published": "2026-10-05"
   },
   {
     "slug": "2026-10-02-apple-macos-acceso-disco-agentes-ia",
@@ -809,7 +822,8 @@
       "author": "Lauren Mancke",
       "license": "CC0",
       "url": "https://stocksnap.io/photo/macbook-laptop-F7OLW2SG0C"
-    }
+    },
+    "published": "2026-10-04"
   },
   {
     "slug": "2026-10-01-microsoft-informe-ciberataques-ia",
@@ -882,7 +896,8 @@
       "author": "Jiaqian AirplaneFan",
       "license": "CC BY 3.0",
       "url": "https://commons.wikimedia.org/w/index.php?curid=59096620"
-    }
+    },
+    "published": "2026-10-04"
   },
   {
     "slug": "2026-09-30-gemini-skills-sustituyen-gems",
@@ -949,7 +964,8 @@
       "author": "Steven Zimmerman",
       "license": "CC BY-SA 4.0",
       "url": "https://commons.wikimedia.org/w/index.php?curid=61607994"
-    }
+    },
+    "published": "2026-10-04"
   },
   {
     "slug": "2026-09-30-california-prohibe-despidos-solo-ia",
@@ -1013,7 +1029,8 @@
       "author": "Steven Pavlov",
       "license": "CC BY-SA 3.0",
       "url": "https://commons.wikimedia.org/w/index.php?curid=19327176"
-    }
+    },
+    "published": "2026-10-04"
   },
   {
     "slug": "2026-09-29-openai-gpt-6-1-sol",
@@ -1095,7 +1112,8 @@
       "author": "Steve Jurvetson",
       "license": "CC BY 2.0",
       "url": "https://commons.wikimedia.org/w/index.php?curid=164150862"
-    }
+    },
+    "published": "2026-09-30"
   },
   {
     "slug": "2026-09-29-openai-dots-agentes-planes-pro",
@@ -1180,7 +1198,8 @@
       "author": "Jernej Furman from Slovenia",
       "license": "CC BY 2.0",
       "url": "https://commons.wikimedia.org/w/index.php?curid=134006156"
-    }
+    },
+    "published": "2026-09-30"
   },
   {
     "slug": "2026-09-28-claude-sonnet-5-5",
@@ -1254,7 +1273,8 @@
       "author": "TechCrunch",
       "license": "CC BY 2.0",
       "url": "https://commons.wikimedia.org/w/index.php?curid=148412072"
-    }
+    },
+    "published": "2026-09-28"
   },
   {
     "slug": "2026-09-29-openai-retrasa-gpt-6-1-astra",
@@ -1318,7 +1338,8 @@
       "author": "TechCrunch",
       "license": "CC BY 2.0",
       "url": "https://commons.wikimedia.org/w/index.php?curid=92008259"
-    }
+    },
+    "published": "2026-09-29"
   },
   {
     "slug": "2026-09-28-openai-pausa-entrenamiento-agentes",
@@ -1386,7 +1407,8 @@
       "author": "The National Archives (Reino Unido)",
       "license": "CC BY 3.0",
       "url": "https://commons.wikimedia.org/w/index.php?curid=16886979"
-    }
+    },
+    "published": "2026-09-29"
   },
   {
     "slug": "2026-09-28-aisi-gpt-6-astra-cadena-suministro",
@@ -1450,7 +1472,8 @@
       "author": "Martin Vorel",
       "license": "CC BY-SA 4.0",
       "url": "https://commons.wikimedia.org/w/index.php?curid=113444223"
-    }
+    },
+    "published": "2026-09-29"
   },
   {
     "slug": "2026-09-29-florida-pide-frenar-openai-chatgpt-menores",
@@ -1522,6 +1545,7 @@
       "author": "Shixart1985",
       "license": "CC BY 2.0",
       "url": "https://commons.wikimedia.org/w/index.php?curid=186235965"
-    }
+    },
+    "published": "2026-09-29"
   }
 ]
