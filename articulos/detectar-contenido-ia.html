@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Detectar contenido hecho con IA: qué funciona | El Telar</title>
+<meta name="description" content="Por qué los detectores de texto marcan a quien no escribe en su idioma, qué son las Content Credentials y SynthID, y qué obliga el artículo 50 del AI Act desde agosto de 2026.">
+<link rel="canonical" href="https://eltelar.es/articulos/detectar-contenido-ia.html"><link rel="icon" type="image/svg+xml" href="../img/favicon.svg?v=4"><link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32.png?v=4"><link rel="apple-touch-icon" href="../img/apple-touch-icon.png?v=4"><meta name="theme-color" content="#072417"><link rel="manifest" href="../manifest.json"><link rel="alternate" type="application/rss+xml" title="El Telar" href="../feed.xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Detectar contenido hecho con IA: qué funciona | El Telar">
+<meta property="og:description" content="Por qué los detectores de texto marcan a quien no escribe en su idioma, qué son las Content Credentials y SynthID, y qué obliga el artículo 50 del AI Act desde agosto de 2026.">
+<meta property="og:url" content="https://eltelar.es/articulos/detectar-contenido-ia.html">
+<meta property="og:site_name" content="El Telar">
+<meta property="og:locale" content="es_ES"><meta property="og:image" content="https://eltelar.es/img/og-image.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Detectar contenido hecho con IA: qué funciona | El Telar">
+<meta name="twitter:description" content="Por qué los detectores de texto marcan a quien no escribe en su idioma, qué son las Content Credentials y SynthID, y qué obliga el artículo 50 del AI Act desde agosto de 2026."><meta name="twitter:image" content="https://eltelar.es/img/og-image.jpg">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Cómo saber si un texto, una imagen o un audio los ha hecho una IA",
+  "description": "Por qué los detectores de texto marcan a quien no escribe en su idioma, qué son las Content Credentials y SynthID, y qué obliga el artículo 50 del AI Act desde agosto de 2026.",
+  "image": "https://eltelar.es/img/og-image.jpg",
+  "author": {
+    "@type": "Organization",
+    "name": "El Telar",
+    "url": "https://eltelar.es/sobre-nosotros.html"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "El Telar"
+  },
+  "datePublished": "2026-10-12",
+  "dateModified": "2026-10-12",
+  "mainEntityOfPage": "https://eltelar.es/articulos/detectar-contenido-ia.html",
+  "inLanguage": "es"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Hay algún detector de texto fiable?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No hay ninguno con el que puedas decidir nada. Casi todos miden lo predecible que resulta un texto, y un texto escrito con vocabulario común y frases simples es predecible lo escriba quien lo escriba. OpenAI retiró el suyo en julio de 2023 por su baja tasa de acierto: identificaba el 26% de los textos de IA y marcaba como IA el 9% de los humanos. El problema no es que la tecnología esté verde, es que la señal que miden no distingue autoría de sencillez."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Un profesor me acusa con la captura de un detector. ¿Qué hago?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Pide tres datos: qué herramienta, con qué umbral y qué tasa de falsos positivos documenta su fabricante. Aporta el historial de versiones del documento, que muestra cómo creció el texto y que ningún detector puede refutar. Y ofrece defenderlo en voz alta: explicar tu argumento, tus fuentes y por qué lo ordenaste así. Si escribiste en un idioma que no es el tuyo, el estudio de Stanford publicado en Patterns en 2023 es el dato pertinente: con redacciones del TOEFL escritas por personas, siete detectores dieron una media del 61,22% de falsos positivos."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Se puede borrar una marca de agua como SynthID?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Google dice que está diseñada para resistir los retoques habituales —recortes, filtros, compresión con pérdida, ruido o cambios de velocidad en audio— pero no afirma que sea indestructible, y su página oficial no documenta en qué casos falla. Trátala como una señal útil, no como un candado. En la práctica el agujero grande no es borrarla: es que solo la ponen los generadores que participan en el sistema, así que un archivo sin marca no prueba nada."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Por qué una imagen pierde sus Content Credentials al subirla a redes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Porque las Content Credentials son metadatos firmados que acompañan al archivo, no algo incrustado en los píxeles. Cuando una plataforma recomprime la imagen para servirla, o cuando alguien hace una captura de pantalla, el manifiesto se queda por el camino salvo que esa plataforma lo conserve a propósito. Por eso la ausencia de credenciales no es indicio de nada: el archivo original las llevaba y la copia que circula, no."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Estoy obligado por ley a avisar de que he usado IA?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Depende de qué publiques. Desde el 2 de agosto de 2026, el artículo 50 del Reglamento europeo de IA obliga a declarar una imagen, un audio o un vídeo manipulados que podrían pasar por auténticos; en obras claramente artísticas o satíricas basta una indicación que no estropee la obra. Para un texto generado con IA que informe al público sobre asuntos de interés general también hay que declararlo, salvo que una persona lo haya revisado o editado y alguien asuma la responsabilidad editorial. La obligación de marcar la salida en formato legible por máquina recae sobre quien ofrece el sistema, no sobre ti."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://eltelar.es/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Guías",
+      "item": "https://eltelar.es/index.html#guias"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Detectar contenido hecho con IA",
+      "item": "https://eltelar.es/articulos/detectar-contenido-ia.html"
+    }
+  ]
+}
+</script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet"/></noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet"/></noscript>
+<style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><link rel="stylesheet" href="../css/tailwind.css"><link rel="stylesheet" href="../css/entrance.css?v=2"><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}(function(){var c=null;try{c=localStorage.getItem('eltelar-cookie-consent')}catch(e){}var g=c==='accepted'?'granted':'denied';gtag('consent','default',{ad_storage:g,ad_user_data:g,ad_personalization:g,analytics_storage:g,wait_for_update:500});window.adsbygoogle=window.adsbygoogle||[];if(g!=='granted'){window.adsbygoogle.requestNonPersonalizedAds=1;}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-4DPTKEG79N"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4DPTKEG79N');</script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8239907995939753" crossorigin="anonymous"></script></head><body class="bg-background font-body-md text-on-surface antialiased">
+<header class="w-full bg-surface-container-lowest border-b border-outline-variant"><div class="border-b border-outline-variant py-space-xxs px-space-md hidden md:block"><div class="max-w-site-max-width mx-auto flex items-center justify-between font-kicker text-kicker text-on-surface-variant uppercase tracking-wider"><span>EDICIÓN DIGITAL // ACTUALIZADO 2026 // EL TELAR &amp; AGENTES</span><span>MADRID · REMOTO</span><span>SIN HUMO · 100% PRODUCCIÓN</span></div></div><div class="max-w-site-max-width mx-auto px-space-md py-space-md sm:py-space-xl text-center"><p class="hidden sm:block font-kicker text-kicker uppercase tracking-widest text-on-surface-variant mb-space-xs">Publicación Independiente de Tecnología &amp; Agentes</p><a class="inline-block" href="../index.html"><div class="font-display text-display max-sm:text-[40px] max-sm:leading-none text-primary tracking-tight">El Telar</div></a><p class="hidden sm:block font-caption text-caption uppercase tracking-widest text-on-surface-variant mt-space-xs">EL BOLETÍN Y ARCHIVO PRÁCTICO DE INTELIGENCIA ARTIFICIAL Y AGENTES AUTÓNOMOS</p></div><div class="border-t border-b border-outline-variant"><div class="max-w-site-max-width mx-auto px-space-md flex items-center justify-between gap-space-sm h-14"><nav class="flex items-center gap-space-md sm:gap-space-lg h-full min-w-0 overflow-x-auto [scrollbar-width:none] whitespace-nowrap"><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../index.html#guias">GUÍAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../empieza-aqui.html">EMPIEZA AQUÍ</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../sobre-nosotros.html">SOBRE NOSOTROS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../noticias/index.html">NOTICIAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../herramientas/index.html">HERRAMIENTAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../prompts/index.html">PROMPTS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../contacto.html">CONTACTO</a></nav><div class="flex items-center gap-space-md"><button id="search-trigger" type="button" aria-label="Buscar en las guías" class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[20px]">search</span></button><a class="hidden sm:inline-block bg-primary-container text-surface px-space-md py-space-xs font-label-md text-label-md uppercase tracking-wider hover:bg-primary transition-colors" href="../index.html#despacho">SUSCRÍBETE GRATIS</a></div></div></div><div class="hidden md:block bg-surface-container-low border-b border-outline-variant py-space-xs px-space-md"><div class="max-w-site-max-width mx-auto text-center"><p class="font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">49 GUÍAS COMPLETAS EN EXPANSIÓN · ACTUALIZADO A MODELOS 2026 · PROBADO EN TERMINAL Y FLUJOS REALES · CERO HUMO NI TEORÍA VACÍA</p></div></div></header>
+<main class="w-full max-w-site-max-width mx-auto px-space-md py-space-xl"><div class="flex flex-col w-full">
+<nav class="w-full mb-space-lg">
+<ol class="flex flex-wrap items-center gap-space-xs font-kicker text-kicker text-on-surface-variant uppercase tracking-wider">
+<li><a class="hover:text-primary transition-colors" href="../index.html">Inicio</a></li>
+<li class="text-on-surface-variant">/</li>
+<li><a class="hover:text-primary transition-colors" href="../index.html#guias">Guías</a></li>
+<li class="text-on-surface-variant">/</li>
+<li class="text-primary font-bold truncate max-w-[280px] sm:max-w-md">Detectar contenido hecho con IA</li>
+</ol>
+</nav>
+<header class="w-full pb-space-xl mb-space-2xl">
+<div class="flex flex-wrap items-center gap-space-xs mb-space-md">
+<span class="bg-surface-container-high text-secondary px-space-sm py-1 font-kicker text-kicker uppercase tracking-widest">SEGURIDAD // VERIFICAR CONTENIDO</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight max-w-editorial-max mb-space-md">
+          Cómo saber si un texto, una imagen o un audio los ha hecho una IA
+        </h1>
+<p class="font-lead-paragraph text-lead-paragraph text-on-surface-variant max-w-editorial-max leading-relaxed mb-space-lg">
+          Los detectores que devuelven un porcentaje de «escrito por IA» fallan de una forma concreta y medida: señalan a quien escribe en un idioma que no es el suyo. Lo que sí sirve es preguntar de dónde viene el archivo — y en Europa, desde agosto, marcarlo es obligatorio.
+        </p>
+<div class="bg-surface-container-lowest p-space-md flex flex-wrap items-center justify-between gap-y-3 shadow-sm">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 bg-primary text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">fact_check</span>
+</div>
+<div>
+<div class="font-label-md text-label-md text-on-surface font-semibold">Por la Redacción de El Telar</div><div class="font-caption text-caption text-on-surface-variant">Guías prácticas de IA y agentes, probadas en flujos de trabajo reales antes de publicarlas.</div>
+<button class="inline-flex items-center gap-1 mt-2 px-3 py-1.5 bg-surface-container text-primary font-label-md text-[12px] font-semibold uppercase tracking-wider hover:bg-surface-container-high transition-colors" id="copy-guide-btn" type="button"><span class="material-symbols-outlined text-[16px]">content_copy</span> Copiar guía para tu IA</button><span class="inline-flex items-center gap-1 ml-1"><button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" id="save-guide-btn" title="Guardar guía" type="button"><span class="material-symbols-outlined text-[16px]">bookmark_border</span></button><button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" id="copy-link-btn" title="Copiar enlace permanente" type="button"><span class="material-symbols-outlined text-[16px]">share</span></button></span>
+</div>
+</div>
+<div class="flex items-center gap-space-lg text-on-surface-variant font-caption text-caption uppercase tracking-wider">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">schedule</span> 15 min de lectura</span>
+</div>
+</div>
+</header>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-col-gap">
+<article class="lg:col-span-8 flex flex-col space-y-space-xl">
+<figure data-hero class="space-y-space-xs"><img class="w-full border border-outline-variant" src="../img/portadas/detectar-contenido-ia.svg" alt="" width="1600" height="520" fetchpriority="high" decoding="async"/></figure>
+<div class="relative bg-surface-container-lowest p-space-lg shadow-sm">
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed text-justify">
+<span class="float-left font-display text-primary text-6xl leading-none pr-3 pt-1 font-normal">E</span>
+          l 20 de julio de 2023 OpenAI retiró su propio detector de textos escritos con IA. No lo anunció con un comunicado: añadió una nota al artículo con el que lo había presentado seis meses antes, diciendo que lo quitaba por su baja tasa de acierto. Quien mejor sabe cómo escribe un modelo de lenguaje intentó construir la herramienta que todo el mundo pedía, la tuvo medio año en la calle y la retiró. Hoy se venden decenas de detectores que prometen exactamente eso, y encima con un porcentaje. Conviene entender por qué ese porcentaje no mide lo que parece, y qué es lo que sí sirve para saber de dónde sale un archivo.
+        </p>
+</div>
+<section class="space-y-space-md">
+<h2 id="sec-1" class="font-headline-md text-headline-md text-primary tracking-tight">
+          Por qué un detector de texto no puede acertar
+        </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Casi todos los detectores de texto miden lo mismo: lo predecible que resulta un texto para un modelo de lenguaje. Es una medida que tiene nombre técnico, <strong>perplejidad</strong>, y una idea sencilla detrás: si cada palabra es la que un modelo habría puesto, el texto parece de máquina; si hay giros raros, parece humano.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          El problema está en el salto lógico. Lo predecible no es propiedad exclusiva de un texto generado: escribir con vocabulario común, frases cortas y estructuras simples también es predecible. Es decir, el detector no distingue «escrito por una IA» de «escrito con claridad y sin florituras». Son dos cosas distintas que la herramienta ve igual, y no hay ajuste de umbral que las separe, porque la señal es la misma.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          El detector que OpenAI retiró deja ver el tamaño del fallo con sus propios números. En las pruebas que publicó la empresa, identificaba como «probablemente escrito por IA» el <strong>26%</strong> de los textos que efectivamente lo eran — se le escapaban casi tres de cada cuatro — y al mismo tiempo marcaba como IA el <strong>9%</strong> de los textos escritos por personas. Además exigía pegar al menos 1.000 caracteres para dar un resultado. Traducido a un aula de treinta alumnos: deja pasar a la mayoría de quien copia y señala a dos o tres que no han hecho nada.
+        </p>
+<div class="bg-surface-container-low border-l-4 border-primary p-space-md"><p class="font-body-sm text-body-sm text-on-surface">Ese 9% es lo que convierte un detector en un problema y no en una ayuda imperfecta. Una herramienta que falla a favor del acusado es molesta; una que inventa culpables a un ritmo conocido y encima lo presenta con dos decimales es otra cosa.</p></div>
+</section>
+<section class="space-y-space-md">
+<h2 id="sec-2" class="font-headline-md text-headline-md text-primary tracking-tight">
+          El estudio que debería cerrar el debate
+        </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          En julio de 2023 la revista <em>Patterns</em> publicó un trabajo de Weixin Liang, Mert Yuksekgonul, Yining Mao, Eric Wu y James Zou (Universidad de Stanford) que puso siete detectores comerciales a examinar dos montones de textos, todos escritos por personas: 91 redacciones del examen TOEFL, hechas por gente cuyo idioma materno no es el inglés, y 88 redacciones de estudiantes estadounidenses de catorce años.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          El resultado no es un matiz. Con las redacciones de los estudiantes estadounidenses los detectores acertaron casi siempre. Con las del TOEFL, la tasa media de falsos positivos fue del <strong>61,22%</strong>: más de la mitad de los textos escritos por personas fueron clasificados como generados por una máquina. Los siete detectores coincidieron en señalar 18 de las 91 redacciones (el 19,78%), y <strong>89 de las 91</strong> —el 97,80%— fueron marcadas por al menos uno de ellos.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          La causa es la que cabía esperar: las redacciones señaladas tenían una perplejidad medidamente más baja. Escribir en un idioma que no es el tuyo significa manejar menos vocabulario y construcciones más simples — exactamente la huella que el detector lee como «máquina». No es un error de calibración, es el método funcionando como está diseñado.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Y queda el detalle que remata el argumento: cuando los autores pidieron a un modelo que reescribiera esas mismas redacciones con vocabulario más rico, la tasa de falsos positivos cayó al <strong>11,77%</strong>. O sea, el detector se desactiva haciendo el texto <em>más</em> sofisticado. No está detectando quién escribe: está detectando lo llano que es lo escrito. Los propios autores recomiendan no usar estas herramientas en contextos de evaluación o educación.
+        </p>
+<div class="bg-surface-container-low border-l-4 border-primary p-space-md"><p class="font-body-sm text-body-sm text-on-surface">Si escribes en inglés para trabajar o estudiar, tú eres el grupo del TOEFL. Es el dato con el que conviene ir a una reunión donde alguien proponga pasar los textos del equipo por un detector. Dos avisos honestos sobre el estudio: es de 2023 y mide detectores de texto en inglés, y los productos han cambiado desde entonces. Lo que no ha cambiado es el mecanismo del que viven.</p></div>
+</section>
+<section class="space-y-space-md">
+<h2 id="sec-3" class="font-headline-md text-headline-md text-primary tracking-tight">
+          Si te acusan: qué guardar y qué pedir
+        </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          La defensa no se improvisa después, se prepara antes, y es barata: <strong>escribe en una herramienta que guarde el historial</strong>. El historial de versiones de Google Docs o de Word deja un rastro de cómo creció el texto —párrafos reescritos, frases abandonadas, el orden en que apareció cada cosa— que ningún detector puede fabricar ni refutar. Un documento que aparece entero de una vez no prueba nada malo, pero uno que crece a lo largo de días prueba bastante.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Si la acusación llega, pide tres cosas concretas: qué herramienta se ha usado, con qué umbral, y qué tasa de falsos positivos documenta su fabricante. Es una petición razonable y suele ser el final de la conversación, porque la mayoría de estos productos no publican esa cifra de forma verificable. Ofrece además lo que un detector no puede dar: explicar en voz alta tu argumento, de dónde salió cada fuente y por qué ordenaste el trabajo así.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Lo mismo vale en la otra dirección. Si corriges trabajos, un porcentaje no es un expediente: lo que de verdad detecta a quien no ha hecho el trabajo es una conversación de cinco minutos sobre lo que supuestamente ha escrito. En la guía de <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="ia-para-estudiar.html">cómo usar la IA para estudiar</a> está el detalle de qué suele estar permitido declarar y qué cuenta como plagio según la normativa de cada centro.
+        </p>
+</section>
+<section class="space-y-space-md">
+<h2 id="sec-4" class="font-headline-md text-headline-md text-primary tracking-tight">
+          Lo que sí funciona (1): la procedencia firmada
+        </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          La alternativa seria no intenta adivinar el origen mirando el resultado: hace que el origen viaje con el archivo. Es lo que propone <strong>C2PA</strong>, un estándar técnico abierto cuyo comité de dirección reúne a Adobe, Amazon, la BBC, Google, Meta, Microsoft, OpenAI, Publicis, Sony, TikTok y Truepic. Lo que el estándar añade a un archivo se llama Content Credentials, y su propia documentación lo compara con una <em>etiqueta nutricional</em> del contenido: quién lo creó, con qué herramienta y qué ediciones ha sufrido, todo firmado criptográficamente.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Fíjate en la dirección de la prueba, porque es lo que casi todo el mundo invierte. Las Content Credentials no dicen «esto es IA»: dicen «este archivo trae una historia verificable y aquí está». Sirven para confirmar lo que algo <em>es</em>, no para desmentir lo que no es.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Y de ahí sale su debilidad, que conviene conocer antes de confiar en ellas: son metadatos que acompañan al archivo, no algo incrustado en la imagen. Una captura de pantalla, una recompresión o una plataforma que no conserve el manifiesto los dejan por el camino. En nuestra guía de <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="generar-imagenes-ia.html">generar imágenes con IA</a> ya avisábamos de esto con los tres modelos grandes: el archivo original los lleva, la imagen que acaba circulando por redes casi nunca. Que una foto no traiga credenciales no significa nada en absoluto.
+        </p>
+</section>
+<section class="space-y-space-md">
+<h2 id="sec-5" class="font-headline-md text-headline-md text-primary tracking-tight">
+          Lo que sí funciona (2): la marca dentro de la señal
+        </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          El otro enfoque mete la marca en el contenido mismo, no en sus metadatos. El caso más extendido es <strong>SynthID</strong>, de Google DeepMind: una marca de agua invisible en imágenes y vídeo, inaudible en audio —lo usan el modelo musical Lyria y los pódcast de NotebookLM— y, en texto, un ajuste de las probabilidades de cada palabra durante la generación, aplicado a lo que produce la aplicación Gemini.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Según Google, la marca está diseñada para sobrevivir a los retoques habituales: recortes, filtros, cambios de fotogramas y compresión con pérdida en imagen y vídeo; ruido, compresión MP3 y cambios de velocidad en audio. Merece la pena leer eso como lo que es —objetivos de diseño que la empresa describe, no una garantía contrastada por terceros—, porque su página oficial no documenta en qué casos falla.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Para comprobarlo hay una herramienta pública, SynthID Detector, que empezó limitada a periodistas y profesionales de medios y cuyo acceso Google ha ido abriendo a cualquiera; Gemini, el buscador y Chrome también pueden revisar una imagen, un vídeo o un audio que les subas y decir si encuentran la marca. Cubre lo generado por Google y por sus socios, y la lista pública incluye a OpenAI, NVIDIA y Kakao, con Apple anunciada.
+        </p>
+<div class="bg-surface-container-low border-l-4 border-primary p-space-md"><p class="font-body-sm text-body-sm text-on-surface">El límite es el mismo que en C2PA y es el que hay que tener claro: la pregunta que responde SynthID Detector es «¿esto lleva marca de SynthID?», no «¿esto lo hizo una IA?». Cualquier cosa salida de un generador que no participe en el sistema sale limpia, y limpio no quiere decir humano.</p></div>
+</section>
+<section class="space-y-space-md">
+<h2 id="sec-6" class="font-headline-md text-headline-md text-primary tracking-tight">
+          Las dos juntas, y lo que ninguna te da
+        </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Son complementarias porque fallan por motivos distintos: una vive fuera del contenido y se cae al recomprimir, la otra vive dentro y aguanta, pero solo la ponen quienes se han sumado.
+        </p>
+<div class="overflow-x-auto border border-outline-variant">
+<table class="w-full border-collapse font-body-sm text-body-sm">
+<thead class="bg-surface-container-high">
+<tr>
+<th class="text-left p-space-sm font-label-md text-label-md text-primary border-b border-outline-variant">&nbsp;</th>
+<th class="text-left p-space-sm font-label-md text-label-md text-primary border-b border-outline-variant">Content Credentials (C2PA)</th>
+<th class="text-left p-space-sm font-label-md text-label-md text-primary border-b border-outline-variant">Marca de agua (SynthID)</th>
+</tr>
+</thead>
+<tbody class="text-on-surface-variant">
+<tr><td class="p-space-sm border-b border-outline-variant/40 font-semibold text-on-surface">Dónde vive</td><td class="p-space-sm border-b border-outline-variant/40">En los metadatos, firmados</td><td class="p-space-sm border-b border-outline-variant/40">Dentro de los píxeles o de la onda</td></tr>
+<tr><td class="p-space-sm border-b border-outline-variant/40 font-semibold text-on-surface">Qué te cuenta</td><td class="p-space-sm border-b border-outline-variant/40">Origen, herramienta y ediciones</td><td class="p-space-sm border-b border-outline-variant/40">Solo si la marca está o no</td></tr>
+<tr><td class="p-space-sm border-b border-outline-variant/40 font-semibold text-on-surface">Qué la rompe</td><td class="p-space-sm border-b border-outline-variant/40">Una captura o una recompresión</td><td class="p-space-sm border-b border-outline-variant/40">Que el generador no la implemente</td></tr>
+<tr><td class="p-space-sm font-semibold text-on-surface">Qué no te dice</td><td class="p-space-sm">Nada sobre un archivo sin credenciales</td><td class="p-space-sm">Nada sobre generadores ajenos al sistema</td></tr>
+</tbody>
+</table>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Y de ahí la asimetría que resume el asunto: <strong>las dos prueban presencia, ninguna prueba ausencia</strong>. Encontrar una marca o una credencial te dice algo firme. No encontrarla no te dice nada: puede ser un archivo hecho por una persona, o uno generado con una herramienta que no marca, o el mismo archivo marcado al que una captura de pantalla le quitó el rastro.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Por eso la pregunta útil no es «¿lo ha hecho una IA?», que casi nunca tiene respuesta, sino «¿de dónde sale este archivo y quién responde por él?», que casi siempre la tiene. Es el mismo cambio de enfoque que sirve con los datos que te da un modelo: no te fíes de su seguridad, mira la fuente — lo desarrollamos en la guía sobre <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="alucinaciones-ia.html">alucinaciones de la IA</a>.
+        </p>
+</section>
+<section class="space-y-space-md">
+<h2 id="sec-7" class="font-headline-md text-headline-md text-primary tracking-tight">
+          Lo que obliga la ley europea desde agosto
+        </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Desde el <strong>2 de agosto de 2026</strong> se aplica el artículo 50 del Reglamento europeo de IA, el que regula la transparencia. Es la parte del AI Act que afecta a esto, y va dirigida a quien genera y a quien publica, no a ti como lector.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          A quien ofrece un sistema de IA generativa le exige que su salida —audio, imagen, vídeo o texto— vaya <strong>marcada en un formato legible por máquina</strong> y resulte detectable como generada o manipulada artificialmente, con soluciones «eficaces, interoperables, sólidas y fiables en la medida en que sea técnicamente viable». Queda fuera el caso en que el sistema solo asiste en una edición estándar y no altera sustancialmente lo que le entra.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          A quien usa esos sistemas y publica el resultado le exige dos cosas distintas. Si difunde una imagen, un audio o un vídeo manipulados que podrían pasar por auténticos —un <em>deepfake</em>—, tiene que declararlo; cuando la obra es claramente artística, satírica o de ficción, basta una indicación que no estropee el disfrute. Y si publica un texto generado con IA para informar al público sobre asuntos de interés general, debe declararlo también, con una excepción importante: no se aplica si una persona ha revisado o editado el contenido y alguien asume la responsabilidad editorial de publicarlo.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          La lectura honesta del artículo está en esas siete palabras: «en la medida en que sea técnicamente viable». La ley da por supuesta una tecnología de marcado mejor de la que existe hoy, y ese es el margen por el que se cuela todo lo que no está marcado. Si quieres el mapa completo de la norma —a quién obliga, con qué plazos y qué niveles de riesgo distingue—, está en la guía del <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="ai-act-explicado.html">AI Act explicado</a>.
+        </p>
+</section>
+<section class="space-y-space-md">
+<h2 id="sec-8" class="font-headline-md text-headline-md text-primary tracking-tight">
+          Un procedimiento en cinco pasos
+        </h2>
+<h3 class="font-headline-sm text-headline-sm text-primary font-medium">1. Cambia la pregunta</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          De «¿esto lo ha hecho una IA?» a «¿de dónde sale y quién responde por él?». La primera casi nunca se puede contestar; la segunda se contesta con cinco minutos de trabajo y es la que de verdad te protege.
+        </p>
+<h3 class="font-headline-sm text-headline-sm text-primary font-medium">2. Busca el origen antes que la señal</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Una búsqueda inversa de la imagen, la primera publicación donde apareció, la antigüedad y el historial de la cuenta que la difunde. Esto resuelve más casos que cualquier herramienta técnica, y resuelve también el fraude más común, que no es el contenido generado sino el contenido real sacado de contexto.
+        </p>
+<h3 class="font-headline-sm text-headline-sm text-primary font-medium">3. Comprueba la procedencia, si la hay</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Content Credentials y SynthID Detector, en ese orden de facilidad. Si encuentras algo, es información firme. Si no encuentras nada, no has averiguado nada: vuelve al paso 2.
+        </p>
+<h3 class="font-headline-sm text-headline-sm text-primary font-medium">4. Con voz y vídeo, verifica por otro canal</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Si hay una petición urgente de dinero o de datos de por medio, ninguna comprobación técnica llega a tiempo. Corta y devuelve la llamada por un número que tengas tú guardado. Es la defensa que explicamos en <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="clonar-voz-transcribir-audio-ia.html">clonar voz y generar audio con IA</a> y en la de <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="estafas-con-ia.html">estafas con IA</a>, y sigue siendo la única que no envejece.
+        </p>
+<h3 class="font-headline-sm text-headline-sm text-primary font-medium">5. No uses un porcentaje como prueba</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Ni contra un alumno, ni contra un proveedor, ni contra ti mismo cuando alguien te lo ponga delante. Un número con decimales parece una medición y en esto no lo es.
+        </p>
+<div class="bg-surface-container-low border-l-4 border-primary p-space-md"><p class="font-body-sm text-body-sm text-on-surface">Resumen en una línea: los detectores de texto no son una herramienta inmadura que mejorará, son una respuesta a una pregunta mal planteada. La procedencia firmada y las marcas de agua sí avanzan, pero prueban presencia y nunca ausencia — y mientras eso siga así, la verificación sigue siendo un trabajo de origen y de fuentes, no de software.</p></div>
+</section>
+<section class="space-y-space-md">
+<h2 class="font-headline-lg text-headline-lg text-primary">
+        Preguntas frecuentes
+      </h2>
+<div class="space-y-space-md">
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Hay algún detector de texto fiable?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+No hay ninguno con el que puedas decidir nada. Casi todos miden lo predecible que resulta un texto, y un texto escrito con vocabulario común y frases simples es predecible lo escriba quien lo escriba. OpenAI retiró el suyo en julio de 2023 por su baja tasa de acierto: identificaba el 26% de los textos de IA y marcaba como IA el 9% de los humanos. El problema no es que la tecnología esté verde, es que la señal que miden no distingue autoría de sencillez.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">Un profesor me acusa con la captura de un detector. ¿Qué hago?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Pide tres datos: qué herramienta, con qué umbral y qué tasa de falsos positivos documenta su fabricante. Aporta el historial de versiones del documento, que muestra cómo creció el texto y que ningún detector puede refutar. Y ofrece defenderlo en voz alta: explicar tu argumento, tus fuentes y por qué lo ordenaste así. Si escribiste en un idioma que no es el tuyo, el estudio de Stanford publicado en Patterns en 2023 es el dato pertinente: con redacciones del TOEFL escritas por personas, siete detectores dieron una media del 61,22% de falsos positivos.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Se puede borrar una marca de agua como SynthID?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Google dice que está diseñada para resistir los retoques habituales —recortes, filtros, compresión con pérdida, ruido o cambios de velocidad en audio— pero no afirma que sea indestructible, y su página oficial no documenta en qué casos falla. Trátala como una señal útil, no como un candado. En la práctica el agujero grande no es borrarla: es que solo la ponen los generadores que participan en el sistema, así que un archivo sin marca no prueba nada.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Por qué una imagen pierde sus Content Credentials al subirla a redes?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Porque las Content Credentials son metadatos firmados que acompañan al archivo, no algo incrustado en los píxeles. Cuando una plataforma recomprime la imagen para servirla, o cuando alguien hace una captura de pantalla, el manifiesto se queda por el camino salvo que esa plataforma lo conserve a propósito. Por eso la ausencia de credenciales no es indicio de nada: el archivo original las llevaba y la copia que circula, no.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Estoy obligado por ley a avisar de que he usado IA?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Depende de qué publiques. Desde el 2 de agosto de 2026, el artículo 50 del Reglamento europeo de IA obliga a declarar una imagen, un audio o un vídeo manipulados que podrían pasar por auténticos; en obras claramente artísticas o satíricas basta una indicación que no estropee la obra. Para un texto generado con IA que informe al público sobre asuntos de interés general también hay que declararlo, salvo que una persona lo haya revisado o editado y alguien asuma la responsabilidad editorial. La obligación de marcar la salida en formato legible por máquina recae sobre quien ofrece el sistema, no sobre ti.
+</div>
+</div>
+</div>
+</section>
+</article>
+<aside class="lg:col-span-4 flex flex-col space-y-space-xl">
+<div class="bg-surface-container-lowest p-space-lg shadow-sm sticky top-space-md">
+<div class="flex items-center justify-between mb-space-sm pb-space-xs">
+<span class="font-kicker text-kicker uppercase tracking-widest text-primary font-bold">ÍNDICE DE LA GUÍA</span>
+<span class="material-symbols-outlined text-on-surface-variant text-base">format_list_bulleted</span>
+</div>
+<nav class="space-y-space-xs font-body-sm text-body-sm">
+<a class="block text-primary hover:text-secondary font-medium transition-colors" href="#sec-1">Por qué no puede acertar</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-2">El estudio que lo cierra</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-3">Si te acusan</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-4">Procedencia firmada</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-5">La marca en la señal</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-6">Lo que ninguna te da</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-7">Lo que obliga la ley</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-8">Cinco pasos</a>
+</nav>
+</div>
+<div class="bg-surface-container-high p-space-md space-y-space-sm shadow-sm">
+<span class="font-kicker text-kicker uppercase tracking-widest text-primary font-bold">FICHA TÉCNICA</span>
+<dl class="space-y-space-xs font-caption text-caption">
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Categoría:</dt><dd class="font-semibold text-primary">Seguridad</dd></div><div class="flex justify-between py-1"><dt class="text-on-surface-variant">Nivel técnico:</dt><dd class="font-semibold text-primary">Principiante</dd></div><div class="flex justify-between py-1"><dt class="text-on-surface-variant">Fuentes citadas:</dt><dd class="font-semibold text-primary">Liang et al., «GPT detectors are biased against non-native English writers» (Patterns, 2023); nota de retirada del AI Text Classifier de OpenAI; página oficial de SynthID (Google DeepMind); sitio del estándar C2PA; artículo 50 del Reglamento (UE) 2024/1689</dd></div>
+</dl>
+</div>
+</aside>
+</div>
+<section class="w-full mt-space-4xl pt-space-2xl bg-surface-container-lowest p-space-lg shadow-sm">
+<div class="mb-space-lg">
+<h3 class="font-headline-md text-headline-md text-primary">Continúa explorando el archivo</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-col-gap"><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="estafas-con-ia.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-estafas-con-ia.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="estafas-con-ia.html">Estafas con IA: cómo reconocerlas</a></h4></div></article><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="ia-para-estudiar.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-ia-para-estudiar.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="ia-para-estudiar.html">Cómo usar IA para estudiar y aprender más rápido</a></h4></div></article><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="generar-imagenes-ia.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-generar-imagenes-ia.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="generar-imagenes-ia.html">Generar imágenes con IA: modelos comparados</a></h4></div></article></div>
+</section>
+</div></main><footer class="w-full bg-surface-container-low border-t border-outline-variant mt-space-4xl"><div class="max-w-site-max-width mx-auto px-space-md py-space-3xl"><div class="grid grid-cols-1 md:grid-cols-3 gap-col-gap"><div class="space-y-space-sm"><span class="font-headline-md text-headline-md text-primary">El Telar</span><p class="font-body-sm text-body-sm text-on-surface-variant">Publicación independiente de tecnología y automatización con agentes. Contenidos verificados en producción, sin patrocinios opacos ni promesas vacías.</p></div><div><h3 class="font-kicker text-kicker uppercase tracking-wider text-on-surface mb-space-md">SECCIONES</h3><ul class="space-y-space-xs font-body-sm text-body-sm"><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html#guias">Archivo de Guías</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../empieza-aqui.html">Guía para Principiantes</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../sobre-nosotros.html">Manifiesto Editorial</a></li><li class="pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html#despacho">Boletín Semanal</a></li></ul></div><div><h3 class="font-kicker text-kicker uppercase tracking-wider text-on-surface mb-space-md">CONTACTO &amp; PRENSA</h3><div class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant"><p class="font-semibold text-on-surface">contacto@eltelar.es</p><p>Síguenos: <a class="hover:text-primary underline" href="https://www.instagram.com/eltelar_es/" rel="me noopener" target="_blank">Instagram</a> · <a class="hover:text-primary underline" href="https://www.threads.com/@eltelar_es" rel="me noopener" target="_blank">Threads</a> · <a class="hover:text-primary underline" href="https://x.com/eltelar_es" rel="me noopener" target="_blank">X</a></p></div></div></div></div><div class="border-t border-outline-variant py-space-md bg-surface-container-lowest"><div class="max-w-site-max-width mx-auto px-space-md flex flex-col md:flex-row items-center justify-between gap-space-sm text-caption font-caption text-on-surface-variant"><div>© 2026 El Telar. Todos los derechos reservados. Independencia editorial garantizada.</div><div class="flex items-center gap-space-md"><a class="hover:text-on-surface transition-colors" href="../privacidad.html">Privacidad</a><a class="hover:text-on-surface transition-colors" href="../terminos.html">Términos</a><a class="hover:text-on-surface transition-colors" href="../sobre-nosotros.html">Sobre nosotros</a><a class="hover:text-on-surface transition-colors" href="../contacto.html">Contacto</a></div></div></div></footer><script defer src="../js/copy-guide.js"></script><script defer src="../js/guide-interactions.js"></script><script defer src="../js/reading-progress.js"></script><script defer src="../js/search.js?v=7"></script><script defer src="../js/entrance.js"></script><script defer src="../js/cookie-consent.js?v=4"></script></body></html>

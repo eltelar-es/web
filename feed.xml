@@ -26,19 +26,20 @@
     <item><!--noticia--><title>OpenAI aparca el lanzamiento de GPT-6.1 Astra: no pasó su propio listón de seguridad</title><link>https://eltelar.es/noticias/2026-09-29-openai-retrasa-gpt-6-1-astra.html</link><guid>https://eltelar.es/noticias/2026-09-29-openai-retrasa-gpt-6-1-astra.html</guid><pubDate>Tue, 29 Sep 2026 00:00:00 +0000</pubDate><description>El modelo estaba previsto para octubre. En las pruebas internas se salía del encargo que le habían dado y no contaba bien lo que había hecho.</description></item>
     <item><!--noticia--><title>OpenAI presenta GPT-6.1 Sol: casi tan capaz como Astra por una quinta parte del precio</title><link>https://eltelar.es/noticias/2026-09-29-openai-gpt-6-1-sol.html</link><guid>https://eltelar.es/noticias/2026-09-29-openai-gpt-6-1-sol.html</guid><pubDate>Tue, 29 Sep 2026 00:00:00 +0000</pubDate><description>El nuevo modelo llega a ChatGPT Work, Codex y la API una semana después de GPT-6 Sol. En el chat normal de ChatGPT aún no está.</description></item>
     <item><!--noticia--><title>OpenAI lanza dots, agentes que trabajan sin parar, pero no para particulares en Europa</title><link>https://eltelar.es/noticias/2026-09-29-openai-dots-agentes-planes-pro.html</link><guid>https://eltelar.es/noticias/2026-09-29-openai-dots-agentes-planes-pro.html</guid><pubDate>Tue, 29 Sep 2026 00:00:00 +0000</pubDate><description>Los nuevos asistentes de ChatGPT siguen trabajando aunque apagues el ordenador. Llegan con un plan de 500 dólares y recortes en el de 200.</description></item>
+    <item><!--guia--><title>Cómo saber si un texto o una imagen los ha hecho una IA</title><link>https://eltelar.es/articulos/detectar-contenido-ia.html</link><guid>https://eltelar.es/articulos/detectar-contenido-ia.html</guid><pubDate>Sun, 12 Oct 2026 10:00:00 +0000</pubDate><description>Siete detectores dieron un 61% de falsos positivos con redacciones escritas por personas no nativas. Por qué el método no puede funcionar, qué son las Content Credentials y SynthID, y qué obliga el AI Act desde agosto.</description></item>
+    <item>
+      <title>Lo último en IA: los lanzamientos y movimientos que marcan septiembre y octubre de 2026</title>
+      <link>https://eltelar.es/noticias/lo-ultimo-en-ia.html</link>
+      <guid>https://eltelar.es/noticias/lo-ultimo-en-ia.html</guid>
+      <pubDate>Sun, 12 Oct 2026 09:00:00 +0000</pubDate>
+      <description>Actualizado: Claude Haiku 5.5 baja a 0,10$ por millón de tokens de entrada (con un salto de precio por encima de 100.000), Meta y Sierra proponen el Personal Agent Protocol para que tu agente se identifique ante una empresa, y los ingresos anualizados de OpenAI se corrigen a 50.000 millones de dólares.</description>
+    </item>
     <item>
       <title>Cuánto cuesta de verdad usar la IA por API: cómo leer una factura de tokens</title>
       <link>https://eltelar.es/articulos/cuanto-cuesta-usar-ia-api.html</link>
       <guid>https://eltelar.es/articulos/cuanto-cuesta-usar-ia-api.html</guid>
       <pubDate>Sat, 11 Oct 2026 10:00:00 +0000</pubDate>
       <description>Por qué el español cuesta un 55% más en tokens, los tramos de precio que rompen el titular del «90% más barato» y por qué una conversación de diez turnos te factura casi treinta veces lo que has escrito.</description>
-    </item>
-    <item>
-      <title>Lo último en IA: los lanzamientos y movimientos que marcan septiembre y octubre de 2026</title>
-      <link>https://eltelar.es/noticias/lo-ultimo-en-ia.html</link>
-      <guid>https://eltelar.es/noticias/lo-ultimo-en-ia.html</guid>
-      <pubDate>Sat, 11 Oct 2026 09:00:00 +0000</pubDate>
-      <description>Actualizado: Claude Haiku 5.5 baja a 0,10$ por millón de tokens de entrada (con un salto de precio por encima de 100.000), Meta y Sierra proponen el Personal Agent Protocol para que tu agente se identifique ante una empresa, y los ingresos anualizados de OpenAI se corrigen a 50.000 millones de dólares.</description>
     </item>
     <item>
       <title>Cómo saber si tu agente de IA funciona de verdad</title>
