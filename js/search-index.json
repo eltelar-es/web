@@ -667,6 +667,13 @@
     "body": "somos pareja y queremos organizar el dinero  datos  aproximados  \n  ingresos netos al mes   persona a     y  persona b    \n  gastos comunes   alquiler o hipoteca  suministros  compra  otros \n  objetivos   ahorrar para     viajar  colchón de emergencia \n\n1  explícanos los sistemas de cuenta común  separada y mixta  con ventajas e inconvenientes para nuestro caso \n2  calcula un reparto proporcional a los ingresos de los gastos comunes y compáralo con un reparto al 50   \n3  propón cuánto ahorrar al mes para nuestros objetivos y de dónde puede salir \n4  danos una plantilla de reunión mensual de 20 minutos para revisar el dinero sin reproches "
   },
   {
+    "title": "Comparar ofertas de fibra y móvil sin perderte en la letra pequeña",
+    "url": "prompts/dinero-consumo.html#comparar-ofertas-internet",
+    "description": "Tu compañía te sube el precio o te llega una oferta y no sabes si compensa cambiar.",
+    "category": "Prompt · Dinero y trámites",
+    "body": "quiero comparar ofertas de  fibra   móvil   fibra   móvil   ahora pago  importe  al mes con  compañía   uso  gb de datos aproximados   velocidad que necesito   número de líneas  \n\nte pego dos o tres ofertas copiadas de las webs   pega aquí \n\n1  haz una tabla con precio mensual  precio tras la promoción  permanencia  instalación y penalización por irme \n2  calcula cuánto pagaría en total durante 24 meses en cada una  indica las cuentas  \n3  señala las condiciones que suelen pasarse por alto en la letra pequeña \n4  dime qué debería preguntar por teléfono antes de aceptar  si falta algún dato  pregúntamelo en vez de suponerlo "
+  },
+  {
     "title": "Adaptar tu currículum a una oferta concreta",
     "url": "prompts/trabajo-empleo.html#adaptar-cv",
     "description": "Mandas el mismo CV a todas las ofertas y no te llaman.",
@@ -793,6 +800,13 @@
     "body": "quiero hacerme autónomo en españa  mi actividad   qué voy a hacer   ingresos que espero el primer año     aproximados   clientes   particulares   empresas   extranjero  \n\n1  explícame en orden los trámites para darme de alta y dime en qué web oficial comprobar cada uno \n2  explícame cómo funciona la cuota de autónomos según ingresos  con un ejemplo con mis cifras \n3  hazme un calendario de las obligaciones fiscales trimestrales y anuales que tendría \n4  dame una plantilla de factura con los datos obligatorios \n5  calcula cuánto tendría que facturar al mes para ganar     netos  teniendo en cuenta cuota  impuestos y gastos \n\navísame de lo que conviene consultar con un gestor "
   },
   {
+    "title": "Preparar una reunión para que no sea una pérdida de tiempo",
+    "url": "prompts/trabajo-empleo.html#preparar-reunion",
+    "description": "Tienes que convocar o dirigir una reunión y quieres que salga con decisiones, no con más dudas.",
+    "category": "Prompt · Trabajo",
+    "body": "voy a dirigir una reunión de  duración  con  quiénes y cuántas personas   el objetivo es  qué quiero conseguir   temas   lista  \n\n1  redacta una agenda con tiempos por tema \n2  escribe el correo de convocatoria  corto  indicando qué tiene que traer preparado cada persona \n3  dame 3 preguntas para cerrar cada tema con una decisión \n4  prepárame una plantilla de acta con acuerdos  responsable y fecha "
+  },
+  {
     "title": "Hacer el menú de la semana y la lista de la compra",
     "url": "prompts/casa-salud-familia.html#menu-semanal",
     "description": "No sabes qué cocinar cada día y acabas improvisando o pidiendo comida.",
@@ -912,11 +926,11 @@
     "body": "organizo la cena del  24   25   31  de diciembre para  número  personas   adultos  niños  personas mayores   hay  alergias  vegetarianos  otras necesidades   presupuesto aproximado       tengo  horno   vitrocerámica   poco espacio  \n\n1  propón un menú  entrante  principal y postre  que se pueda preparar en buena parte el día antes \n2  hazme la lista de la compra con cantidades  agrupada por secciones del súper \n3  haz un horario de cocina desde 2 días antes para que no se junte todo el último día \n4  dime qué tareas puedo repartir entre los invitados \n5  dame 3 ideas para aprovechar las sobras "
   },
   {
-    "title": "Preparar una cita médica para aprovecharla",
-    "url": "prompts/casa-salud-familia.html#preparar-cita-medica",
-    "description": "Tienes diez minutos con el médico y sueles salir sin haber preguntado la mitad.",
+    "title": "Hablar con un vecino por el ruido sin montar una guerra",
+    "url": "prompts/casa-salud-familia.html#ruido-vecinos",
+    "description": "Te molesta el ruido de arriba o de al lado y quieres plantearlo bien antes de que acabe en bronca.",
     "category": "Prompt · Casa y familia",
-    "body": "tengo una cita con  médico de cabecera   especialista  dentro de  días  por  motivo  \n\nlo que me pasa   síntomas  desde cuándo  qué lo mejora o empeora  \nlo que ya me han dicho o hecho   pruebas  tratamientos  medicación  \n\n1  ayúdame a ordenar lo que voy a contar en 1 minuto \n2  hazme una lista de 8 preguntas útiles para la consulta \n3  dime qué documentos o resultados debería llevar \nimportante  no me des diagnósticos ni cambies mi tratamiento  solo ayúdame a preparar la cita "
+    "body": "tengo un problema de ruido con un vecino   qué ruido  a qué horas  desde cuándo   mi relación con él ella es  buena   casi nula   tensa  \n\n1  escríbeme una nota o mensaje amable para proponerle hablar  sin acusar ni dar por hecho que lo hace a propósito \n2  dame 3 frases para decirlo en persona si me lo cruzo en la escalera \n3  dime qué datos conviene que apunte  fechas y horas  por si el problema sigue \n4  si no cambia nada  explícame en general qué opciones suele haber  hablar con el administrador de la comunidad  mediación  y qué tendría que preguntar a un profesional o a mi ayuntamiento  no me des consejo legal concreto "
   },
   {
     "title": "Entender un tema que no te entra",
@@ -1017,11 +1031,11 @@
     "body": "estoy haciendo mi  tfg   tfm  de  grado o máster  sobre  tema   mi universidad permite usar ia para  lo que permita la normativa  si lo sé  \n\nno escribas el trabajo por mí  quiero que me ayudes así \n1  revisa si mi pregunta de investigación es clara y viable en  meses    pregunta  \n2  propón un índice con lo que debería ir en cada apartado \n3  dime qué tipo de fuentes y bases de datos académicas buscar  no inventes referencias concretas \n4  cuando te pase un párrafo mío  señala problemas de claridad y coherencia sin reescribirlo entero \n\nrecuérdame qué tendría que declarar sobre el uso de ia "
   },
   {
-    "title": "Montar un plan de estudio realista para un examen largo",
-    "url": "prompts/estudiar-aprender.html#plan-estudio-oposicion",
-    "description": "Tienes un examen o una oposición dentro de meses y no sabes cómo repartir el temario.",
+    "title": "Entender un estudio o artículo científico que te han enviado",
+    "url": "prompts/estudiar-aprender.html#entender-estudio-cientifico",
+    "description": "Alguien te manda un estudio como prueba de algo y no sabes si es fiable ni qué dice de verdad.",
     "category": "Prompt · Estudiar",
-    "body": "quiero preparar  examen u oposición  que es el  fecha   el temario tiene  número  temas   pega el índice  \n\npuedo estudiar  horas  al día   días  a la semana  mi punto de partida   nunca lo he estudiado   ya he visto una parte  \n\n1  reparte los temas en semanas  con repasos programados \n2  marca los temas más pesados y los más fáciles de puntuar \n3  propón una rutina diaria de estudio con descansos \n4  dime cómo medir cada semana si voy bien y qué hacer si voy tarde "
+    "body": "te pego el resumen  o el texto  de un estudio   pega aquí   me lo han enviado para defender que  afirmación  \n\n1  explícame con palabras sencillas qué se hizo y qué se encontró \n2  dime cuánta gente participó  de qué tipo  y si el estudio demuestra una causa o solo una relación \n3  indica qué no puede concluirse de este estudio \n4  dime qué comprobaría yo para saber si es fiable  revista  fecha  otros estudios  sin inventarte datos que no estén en el texto \nsi el texto que te doy no basta para responder  dímelo "
   },
   {
     "title": "Saber si tu idea de negocio tiene sentido antes de invertir",
@@ -1290,6 +1304,13 @@
     "body": "quiero una canción sobre  persona  tema o momento   en estilo  pop   rumba   balada   rap   otro   en español \ndetalles que quiero que aparezcan   anécdotas  nombres  frases  \n\n1  escribe la letra con estrofas  un estribillo pegadizo y un puente  que rime sin forzar \n2  revisa que las estrofas tengan un número de sílabas parecido para que se pueda cantar \n3  escribe una descripción del estilo musical  tempo  instrumentos  tipo de voz  para pegarla en un generador de música \n4  dime qué tengo que revisar sobre derechos y condiciones de uso antes de publicarla "
   },
   {
+    "title": "Redactar un mensaje claro para un grupo de WhatsApp",
+    "url": "prompts/crear-contenido.html#mensaje-grupo-whatsapp",
+    "description": "Tienes que avisar o pedir algo al grupo de vecinos, del colegio o de la familia sin que nadie lo malinterprete.",
+    "category": "Prompt · Escribir y crear",
+    "body": "necesito escribir un mensaje para el grupo de whatsapp de  vecinos   padres del colegio   familia   equipo   quiero  avisar   pedir algo   organizar una cita   datos   fecha  hora  lugar  importe  plazo  \n\n1  escríbelo en un máximo de  6  líneas  con tono  cercano y educado  \n2  pon lo importante  qué  cuándo  dónde  qué tiene que hacer cada persona  al principio \n3  dame una versión aún más corta por si la gente no lee los mensajes largos \n4  añade una frase para pedir confirmación sin sonar mandón mandona "
+  },
+  {
     "title": "Saber si un mensaje, un email o una llamada es una estafa",
     "url": "prompts/seguridad-privacidad.html#es-estafa",
     "description": "Te ha llegado un SMS, un WhatsApp, un email o una llamada que te da mala espina.",
@@ -1490,6 +1511,6 @@
     "url": "prompts/programar-automatizar.html#probar-idea-sin-programar",
     "description": "Tienes una idea de herramienta y quieres saber si es viable y por dónde empezar, sin gastar semanas.",
     "category": "Prompt · Automatizar",
-    "body": "tengo esta idea   describe qué haría y para quién  \n\n1  dime si ya existe algo parecido gratis y en qué se diferenciaría la mía \n2  descríbeme la versión mínima que podría probar en un fin de semana  con tres pantallas como máximo \n3  dime qué herramientas sin código o con ayuda de ia servirían  y cuáles son sus límites \n4  dame 5 preguntas para hacer a posibles usuarios antes de construir nada \n5  dime qué señal me indicaría que debo abandonar la idea \nsé sincero  si no ves futuro a la idea  dilo "
+    "body": "tengo una idea de  app   web   herramienta    descríbela en 2 3 frases   la usaría  quién  para  qué problema  \n\n1  dime si ya existe algo parecido gratuito o barato que resuelva el problema  sin inventarte nombres  si no estás seguro  dilo  \n2  propón la versión más pequeña que podría probar esta semana sin programar  hoja de cálculo  formulario  herramientas sin código o hacerlo a mano  \n3  dime cómo comprobar si alguien la querría de verdad antes de construirla  a quién preguntar y qué preguntar  \n4  dime qué señales me dirían que debo abandonar la idea "
   }
 ]
