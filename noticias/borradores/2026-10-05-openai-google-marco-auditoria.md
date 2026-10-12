@@ -59,3 +59,19 @@ resumen de buscador que lo afirme sin enlazar a una fuente primaria, porque es
 exactamente lo que ha pasado en las dos comprobaciones.
 
 Mantener sin publicar.
+
+## Tercera comprobación del 12 de octubre de 2026
+
+Tercer intento, mismo resultado: no existe. No aparece ningún documento con ese
+nombre de OpenAI, de Google, del NIST ni del BSI, y lo que devuelve la búsqueda son
+trabajos académicos sobre auditoría de modelos de frontera y la guía del Frontier
+Model Forum sobre evaluaciones de terceros, que es otra cosa. Se confirma además la
+hipótesis de la comprobación anterior: lo que sí existe y se parece es el Frontier
+Governance Framework que OpenAI publicó el 28 de mayo de 2026, un documento propio de
+gobernanza — no un marco conjunto con Google ni presentado ante organismos de
+normalización.
+
+Recomendación: descartar. Tres comprobaciones en una semana sin un solo indicio en
+fuente primaria son suficientes para tratarlo como bulo y no como noticia pendiente.
+Se deja el fichero como registro de lo comprobado, por si la afirmación vuelve a
+circular.
