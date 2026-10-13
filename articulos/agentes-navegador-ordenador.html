@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Agentes que usan tu navegador: qué funciona ya | El Telar</title>
+<meta name="description" content="Qué puede hacer hoy un agente que mueve el ratón por ti, por qué el 85 % de los benchmarks no significa lo que parece, el ataque que los fabricantes admiten que no tiene arreglo, y cómo darle permisos sin regalarle las llaves.">
+<link rel="canonical" href="https://eltelar.es/articulos/agentes-navegador-ordenador.html"><link rel="icon" type="image/svg+xml" href="../img/favicon.svg?v=4"><link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32.png?v=4"><link rel="apple-touch-icon" href="../img/apple-touch-icon.png?v=4"><meta name="theme-color" content="#072417"><link rel="manifest" href="../manifest.json"><link rel="alternate" type="application/rss+xml" title="El Telar" href="../feed.xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Agentes que usan tu navegador y tu ordenador | El Telar">
+<meta property="og:description" content="Qué puede hacer hoy un agente que mueve el ratón por ti, por qué el 85 % de los benchmarks no significa lo que parece, el ataque que los fabricantes admiten que no tiene arreglo, y cómo darle permisos sin regalarle las llaves.">
+<meta property="og:url" content="https://eltelar.es/articulos/agentes-navegador-ordenador.html">
+<meta property="og:site_name" content="El Telar">
+<meta property="og:locale" content="es_ES"><meta property="og:image" content="https://eltelar.es/img/og/guia-agentes-navegador-ordenador.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Agentes que usan tu navegador y tu ordenador | El Telar">
+<meta name="twitter:description" content="Qué puede hacer hoy un agente que mueve el ratón por ti, por qué el 85 % de los benchmarks no significa lo que parece, el ataque que los fabricantes admiten que no tiene arreglo, y cómo darle permisos sin regalarle las llaves."><meta name="twitter:image" content="https://eltelar.es/img/og/guia-agentes-navegador-ordenador.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Agentes que usan tu navegador y tu ordenador: qué funciona ya y qué no",
+  "description": "Qué puede hacer hoy un agente que mueve el ratón por ti, por qué el 85 % de los benchmarks no significa lo que parece, el ataque que los fabricantes admiten que no tiene arreglo, y cómo darle permisos sin regalarle las llaves.",
+  "image": "https://eltelar.es/img/og/guia-agentes-navegador-ordenador.jpg",
+  "author": { "@type": "Person", "name": "Juan Becerril Castañón", "url": "https://eltelar.es/sobre-nosotros.html#autor" },
+  "publisher": {
+    "@type": "Organization",
+    "name": "El Telar"
+  },
+  "datePublished": "2026-10-13",
+  "dateModified": "2026-10-13",
+  "mainEntityOfPage": "https://eltelar.es/articulos/agentes-navegador-ordenador.html",
+  "inLanguage": "es"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Merece la pena un navegador con agente para uso personal?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Para leer, comparar y resumir páginas, sí: ahí el agente no actúa, solo lee, y el peor caso es un resumen malo. Para que compre, rellene formularios o toque tu correo, la cuenta sale distinta, porque entonces hereda tu sesión abierta y cualquier instrucción escondida en una página pasa a ser una orden. Si vas a usarlo así, hazlo en un perfil del navegador aparte, sin el gestor de contraseñas y sin las cuentas que te dolería perder."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Si los benchmarks dan un 85 por ciento, ¿por qué falla en mis tareas?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Porque esa cifra la publica cada fabricante con su propio arnés y su propio presupuesto de pasos, sobre un catálogo de tareas cerradas y comprobables automáticamente. Tus tareas no son así: son más largas, dependen de una web que cambia de maquetación y a menudo no tienen una forma objetiva de decidir si salieron bien. La cifra mide el techo en condiciones de laboratorio, no lo que aguanta un martes cualquiera."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Es más rápido que hacerlo yo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Casi nunca, si lo mides en tiempo de reloj. El trabajo de OSWorld-Human, presentado en MLSys 2026, anotó a mano la ruta mínima de cada tarea y midió 16 agentes: incluso los mejores dan entre 2,7 y 4,3 veces más pasos de los necesarios, y hay tareas de pocos minutos para una persona que al agente le llevan decenas. La ventaja no es la velocidad, es que la tarea se hace sin que tú estés delante."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿La inyección de instrucciones se arregla con actualizaciones?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Los parches cierran casos concretos, no la clase de problema. La causa es estructural: el agente entra con tu sesión ya autenticada y lee contenido de terceros sin una frontera que separe lo que tú le has pedido de lo que ese contenido le ordena. El responsable de seguridad de la información de OpenAI, Dane Stuckey, lo describió en octubre de 2025 como un problema de seguridad de frontera sin resolver. Lo que sí funciona es reducir el daño: menos permisos y confirmación humana antes de cualquier acción irreversible."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué tareas le doy primero para probar?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Las que cumplan tres cosas a la vez: que puedas comprobar el resultado de un vistazo, que repitas a menudo, y que si sale mal no haya que deshacer nada. Recopilar datos de un listado público, rellenar un formulario interno de pruebas o renombrar y ordenar ficheros en una carpeta copiada son buenos primeros encargos. Mala idea para empezar: nada que envíe, pague, publique o borre."
+      }
+    }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://eltelar.es/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Guías",
+      "item": "https://eltelar.es/index.html#guias"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Agentes que usan el navegador y el ordenador",
+      "item": "https://eltelar.es/articulos/agentes-navegador-ordenador.html"
+    }
+  ]
+}
+</script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet"/></noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet"/></noscript>
+<style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><link rel="stylesheet" href="../css/tailwind.css"><link rel="stylesheet" href="../css/entrance.css?v=2"><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}(function(){var c=null;try{c=localStorage.getItem('eltelar-cookie-consent')}catch(e){}var g=c==='accepted'?'granted':'denied';gtag('consent','default',{ad_storage:g,ad_user_data:g,ad_personalization:g,analytics_storage:g,wait_for_update:500});window.adsbygoogle=window.adsbygoogle||[];if(g!=='granted'){window.adsbygoogle.requestNonPersonalizedAds=1;}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-4DPTKEG79N"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4DPTKEG79N');</script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8239907995939753" crossorigin="anonymous"></script></head><body class="bg-background font-body-md text-on-surface antialiased">
+<header class="w-full bg-surface-container-lowest border-b border-outline-variant"><div class="border-b border-outline-variant py-space-xxs px-space-md hidden md:block"><div class="max-w-site-max-width mx-auto flex items-center justify-between font-kicker text-kicker text-on-surface-variant uppercase tracking-wider"><span>EDICIÓN DIGITAL // ACTUALIZADO 2026 // EL TELAR &amp; AGENTES</span><span>MADRID · REMOTO</span><span>SIN HUMO · 100% PRODUCCIÓN</span></div></div><div class="max-w-site-max-width mx-auto px-space-md py-space-md sm:py-space-xl text-center"><p class="hidden sm:block font-kicker text-kicker uppercase tracking-widest text-on-surface-variant mb-space-xs">Publicación Independiente de Tecnología &amp; Agentes</p><a class="inline-block" href="../index.html"><div class="font-display text-display max-sm:text-[40px] max-sm:leading-none text-primary tracking-tight">El Telar</div></a><p class="hidden sm:block font-caption text-caption uppercase tracking-widest text-on-surface-variant mt-space-xs">EL BOLETÍN Y ARCHIVO PRÁCTICO DE INTELIGENCIA ARTIFICIAL Y AGENTES AUTÓNOMOS</p></div><div class="border-t border-b border-outline-variant"><div class="max-w-site-max-width mx-auto px-space-md flex items-center justify-between gap-space-sm h-14"><nav class="flex items-center gap-space-md sm:gap-space-lg h-full min-w-0 overflow-x-auto [scrollbar-width:none] whitespace-nowrap"><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../index.html#guias">GUÍAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../empieza-aqui.html">EMPIEZA AQUÍ</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../sobre-nosotros.html">SOBRE NOSOTROS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../noticias/index.html">NOTICIAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../herramientas/index.html">HERRAMIENTAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../prompts/index.html">PROMPTS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../contacto.html">CONTACTO</a></nav><div class="flex items-center gap-space-md"><button id="search-trigger" type="button" aria-label="Buscar en las guías" class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[20px]">search</span></button><a class="hidden sm:inline-block bg-primary-container text-surface px-space-md py-space-xs font-label-md text-label-md uppercase tracking-wider hover:bg-primary transition-colors" href="../index.html#despacho">SUSCRÍBETE GRATIS</a></div></div></div><div class="hidden md:block bg-surface-container-low border-b border-outline-variant py-space-xs px-space-md"><div class="max-w-site-max-width mx-auto text-center"><p class="font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">50 GUÍAS COMPLETAS EN EXPANSIÓN · ACTUALIZADO A MODELOS 2026 · PROBADO EN TERMINAL Y FLUJOS REALES · CERO HUMO NI TEORÍA VACÍA</p></div></div></header>
+<main class="w-full max-w-site-max-width mx-auto px-space-md py-space-xl"><div class="flex flex-col w-full">
+<nav class="w-full mb-space-lg">
+<ol class="flex flex-wrap items-center gap-space-xs font-kicker text-kicker text-on-surface-variant uppercase tracking-wider">
+<li><a class="hover:text-primary transition-colors" href="../index.html">Inicio</a></li>
+<li class="text-on-surface-variant">/</li>
+<li><a class="hover:text-primary transition-colors" href="../index.html#guias">Guías</a></li>
+<li class="text-on-surface-variant">/</li>
+<li class="text-primary font-bold truncate max-w-[280px] sm:max-w-md">Agentes que usan el navegador</li>
+</ol>
+</nav>
+<header class="w-full pb-space-xl mb-space-2xl">
+<div class="flex flex-wrap items-center gap-space-xs mb-space-md">
+<span class="bg-surface-container-high text-secondary px-space-sm py-1 font-kicker text-kicker uppercase tracking-widest">AGENTES // USO DEL ORDENADOR</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight max-w-editorial-max mb-space-md">
+          Agentes que usan tu navegador y tu ordenador: qué funciona ya y qué no
+        </h1>
+<p class="font-lead-paragraph text-lead-paragraph text-on-surface-variant max-w-editorial-max leading-relaxed mb-space-lg">
+          Ya no te explican cómo hacer la gestión: abren el navegador y la hacen. Los benchmarks dicen que superan a una persona, y al usarlos uno descubre que tardan diez veces más y que una página cualquiera puede darles órdenes. Las dos cosas son verdad, y conviene saber en qué orden importan.
+        </p>
+<div class="bg-surface-container-lowest p-space-md flex flex-wrap items-center justify-between gap-y-3 shadow-sm">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 bg-primary text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">smart_toy</span>
+</div>
+<div>
+<div class="font-label-md text-label-md text-on-surface font-semibold">Por la Redacción de El Telar</div><div class="font-caption text-caption text-on-surface-variant">Guías prácticas de IA y agentes, probadas en flujos de trabajo reales antes de publicarlas.</div>
+<button class="inline-flex items-center gap-1 mt-2 px-3 py-1.5 bg-surface-container text-primary font-label-md text-[12px] font-semibold uppercase tracking-wider hover:bg-surface-container-high transition-colors" id="copy-guide-btn" type="button"><span class="material-symbols-outlined text-[16px]">content_copy</span> Copiar guía para tu IA</button><span class="inline-flex items-center gap-1 ml-1"><button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" id="save-guide-btn" title="Guardar guía" type="button"><span class="material-symbols-outlined text-[16px]">bookmark_border</span></button><button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" id="copy-link-btn" title="Copiar enlace permanente" type="button"><span class="material-symbols-outlined text-[16px]">share</span></button></span>
+</div>
+</div>
+<div class="flex items-center gap-space-lg text-on-surface-variant font-caption text-caption uppercase tracking-wider">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">schedule</span> 14 min de lectura</span>
+</div>
+</div>
+</header>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-col-gap">
+<article class="lg:col-span-8 flex flex-col space-y-space-xl">
+<figure data-hero class="space-y-space-xs"><img class="w-full border border-outline-variant" src="../img/portadas/agentes-navegador-ordenador.svg" alt="" width="1600" height="520" fetchpriority="high" decoding="async"/></figure>
+<div class="relative bg-surface-container-lowest p-space-lg shadow-sm">
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed text-justify">
+<span class="float-left font-display text-primary text-6xl leading-none pr-3 pt-1 font-normal">H</span>
+          ay una diferencia de categoría entre un asistente que te dice dónde está el botón y uno que lo pulsa. El primero se equivoca y pierdes un minuto; el segundo se equivoca y has enviado un correo, cancelado una reserva o aceptado unas condiciones. Esa es toda la novedad de los agentes que manejan el navegador o el escritorio, y explica por qué el debate sobre ellos mezcla dos preguntas que conviene separar: si ya saben hacerlo, y si conviene dejarles hacerlo. La primera tiene respuesta medida. La segunda tiene una respuesta incómoda que los propios fabricantes han puesto por escrito.
+        </p>
+</div>
+<section class="space-y-space-md">
+<h2 id="sec-1" class="font-headline-md text-headline-md text-primary tracking-tight">
+          Qué es exactamente un agente que usa el ordenador
+        </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Un modelo de lenguaje normal recibe texto y devuelve texto. Un agente de uso del ordenador —<em>computer use</em> en la documentación en inglés— recibe además una captura de la pantalla, decide dónde hay que hacer clic o qué hay que escribir, y devuelve esa acción en forma de coordenadas y pulsaciones. El sistema las ejecuta de verdad sobre el ratón y el teclado, toma otra captura, y vuelve a empezar. Ese bucle —mirar, decidir, actuar, volver a mirar— es toda la arquitectura.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Lo importante de esa descripción es lo que implica: el agente no usa una API ni un conector diseñado para él, usa la misma interfaz gráfica que usarías tú. Por eso puede manejar programas que nunca previeron su existencia, y por eso también se rompe cuando una web cambia de maquetación o cuando un menú tarda medio segundo más de lo normal en desplegarse. Es potencia a cambio de fragilidad. Cuando sí existe una API o un conector, casi siempre es mejor camino: el fondo de esa decisión está en <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="mcp-explicado.html">qué es MCP y cómo conectar la IA con tus herramientas</a>.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Conviene no confundirlo con lo que ya cubrimos en <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="que-es-un-agente-ia.html">qué es un agente de IA</a>. Un agente, en general, es un modelo con herramientas y un objetivo. Un agente de uso del ordenador es un caso concreto: su herramienta es la pantalla.
+        </p>
+</section>
+<section class="space-y-space-md">
+<h2 id="sec-2" class="font-headline-md text-headline-md text-primary tracking-tight">
+          Las dos familias, y por qué no dan el mismo miedo
+        </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          La primera son los <strong>navegadores con agente</strong>: un navegador normal con un asistente dentro que puede abrir pestañas, leer lo que hay en ellas, rellenar campos y pulsar botones. Entran en esta familia los navegadores de IA que han ido saliendo desde 2025 y las extensiones de agente de los grandes laboratorios. Su alcance es la web, y su ventaja es que ya estás identificado en todas tus cuentas, lo cual es exactamente también su problema.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          La segunda son los <strong>agentes de escritorio</strong>: el agente ve toda la pantalla del ordenador y puede manejar cualquier programa, no solo el navegador. El alcance es mayor y el daño posible también, porque ahí dentro están tus ficheros. No es un riesgo teórico ni una preocupación de la prensa: Apple endureció el permiso de «acceso total al disco» en macOS precisamente por esto, como contamos en <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="../noticias/2026-10-02-apple-macos-acceso-disco-agentes-ia.html">la noticia del 2 de octubre</a>.
+        </p>
+<div class="bg-surface-container-low border-l-4 border-primary p-space-md"><p class="font-body-sm text-body-sm text-on-surface">La distinción práctica no es navegador contra escritorio: es leer contra actuar. Un agente que solo lee y te resume es una comodidad. Uno que puede pulsar «enviar», «pagar» o «borrar» es una delegación de autoridad, y se decide con otros criterios.</p></div>
+</section>
+<section class="space-y-space-md">
+<h2 id="sec-3" class="font-headline-md text-headline-md text-primary tracking-tight">
+          Lo que dicen los números, y lo que no dicen
+        </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          El examen de referencia es OSWorld: cientos de tareas reales en un ordenador de verdad —editar un documento, configurar algo, encadenar dos programas— con una comprobación automática de si la tarea quedó hecha. Cuando se publicó, el contraste era brutal: las personas resolvían el 72,36 % de las tareas y el mejor modelo de entonces se quedaba en el 12,24 %.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Hoy la tabla está irreconocible. Los primeros puestos de la variante OSWorld-Verified rondan el 85-86 %, por encima de aquella marca humana. Es un avance real y merece decirse sin rebajarlo. Pero antes de usar esa cifra para decidir nada, hay tres asteriscos que la propia tabla documenta.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          El primero: <strong>las puntuaciones las publica cada fabricante</strong>. En la tabla no hay ninguna verificación independiente de los primeros puestos. El segundo: <strong>no se corren en las mismas condiciones</strong>. Varios de los mejores resultados usan arneses revisados y un presupuesto de hasta cien pasos por tarea, y la propia tabla advierte de que algunas entradas no son directamente comparables con las anteriores. El tercero, el que más cambia la lectura: <strong>la marca humana del 72,36 % viene del examen original</strong>, no de la variante sobre la que se anuncian los 85 %. Comparar las dos cifras como si fueran la misma regla es la clase de atajo que convierte un avance en un titular engañoso.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Y queda el límite de fondo: estas tareas están acotadas y tienen una forma objetiva de decidir si salieron bien. Tus tareas, casi siempre, no. En flujos profesionales largos los resultados publicados se dispersan tanto entre fuentes que no hay aún una cifra que merezca citarse.
+        </p>
+</section>
+<section class="space-y-space-md">
+<h2 id="sec-4" class="font-headline-md text-headline-md text-primary tracking-tight">
+          El problema no es que fallen: es que dan diez vueltas
+        </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Hay un trabajo que mide justo lo que al usuario le importa y casi nadie cita. Se llama OSWorld-Human, se presentó en MLSys 2026, y su método es simple: anotar a mano, para cada una de las 369 tareas de OSWorld, la ruta mínima que seguiría una persona. Teniendo esa referencia, se puede medir no solo si el agente acierta, sino cuánto se desvía.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          El resultado, sobre 16 agentes evaluados: <strong>incluso los mejores dan entre 2,7 y 4,3 veces más pasos de los necesarios</strong>. Y como cada paso implica una llamada al modelo para planificar, revisar y juzgar, el tiempo se acumula: los autores describen tareas que a una persona le llevan unos minutos y al agente decenas. Para rematarlo, la cosa empeora sobre la marcha — según avanza una tarea, cada paso puede tardar hasta el triple que los del principio.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Esto reordena la expectativa. Un agente de uso del ordenador no es, hoy, una forma de ir más rápido. Es una forma de que algo se haga sin ti delante. Si la tarea te lleva dos minutos y tienes que quedarte mirando por si acaso, no has ganado nada; si te lleva veinte y puedes irte, has ganado los veinte aunque el agente tarde cuarenta.
+        </p>
+<div class="bg-surface-container-low border-l-4 border-primary p-space-md"><p class="font-body-sm text-body-sm text-on-surface">Criterio práctico: la pregunta «cúanto tarda» es la equivocada. La buena es «cuánta atención mía consume mientras tanto». Un agente lento y desatendido vale más que uno rápido que hay que vigilar paso a paso.</p></div>
+</section>
+<section class="space-y-space-md">
+<h2 id="sec-5" class="font-headline-md text-headline-md text-primary tracking-tight">
+          El fallo que los fabricantes admiten que no tiene arreglo
+        </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Aquí está la parte que conviene leer entera antes de dar permisos. Un agente que navega lee contenido que no controlas: páginas, correos, invitaciones de calendario, documentos compartidos. Si en ese contenido hay una instrucción escrita para él —en texto oculto, en el pie de un documento, dentro de una imagen—, el agente no tiene forma fiable de distinguir entre «lo que mi usuario me ha pedido» y «lo que este texto me ordena». Es la inyección indirecta de instrucciones, y la desarrollamos a fondo en <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="prompt-injection-agentes-ia.html">la guía de prompt injection</a>.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          La demostración más didáctica es de los investigadores de Brave, en octubre de 2025: escondieron instrucciones en una imagen de una página y pidieron al navegador con agente que la resumiera. El agente abrió Gmail, cogió el asunto del último correo recibido y lo añadió a una dirección controlada por los investigadores. Nadie pulsó nada: bastó con pedir un resumen.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          En marzo de 2026, Zenity Labs documentó una familia entera de estos ataques —la bautizó PleaseFix— que afecta a navegadores con agente y no necesita clics, ni código malicioso en tu equipo, ni engañar a nadie: solo contenido que el agente procese mientras hace su trabajo normal. No es un caso suelto. Junto a ella se han catalogado ataques equivalentes contra buscadores profundos, asistentes de documentos compartidos y la memoria de los navegadores de IA. El fabricante afectado había parcheado los caminos concretos antes de la publicación; la clase de producto sigue expuesta.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          La causa es estructural, y por eso no se cierra con una actualización: el agente entra con <strong>tu sesión ya autenticada</strong> y procesa contenido ajeno <strong>sin una frontera que separe tu intención de la instrucción inyectada</strong>. OWASP clasifica la inyección de instrucciones como la primera vulnerabilidad de las aplicaciones con modelos de lenguaje. Y no hay que recurrir a críticos externos para medir la gravedad: el responsable de seguridad de la información de OpenAI, Dane Stuckey, escribió en octubre de 2025 que la inyección de instrucciones «sigue siendo un problema de seguridad de frontera, sin resolver», y que sus adversarios dedicarían tiempo y recursos a encontrar la forma de que el agente caiga.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Cuando una empresa reconoce por escrito que su producto tiene un fallo sin solución conocida, lo sensato no es dejar de usarlo: es dejar de darle permisos que no necesita. En el sitio ya hay un caso real de agente saltándose restricciones de un portal público, recogido en <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="../noticias/lo-ultimo-en-ia.html">el repaso de actualidad</a>.
+        </p>
+</section>
+<section class="space-y-space-md">
+<h2 id="sec-6" class="font-headline-md text-headline-md text-primary tracking-tight">
+          Qué funciona hoy y qué no
+        </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Juntando lo anterior sale un patrón bastante nítido. Funciona bien lo que cumple tres condiciones a la vez: <strong>el resultado se comprueba de un vistazo</strong>, <strong>la tarea se repite</strong> y <strong>un fallo no obliga a deshacer nada</strong>. Recopilar los datos de un listado público, rellenar el mismo formulario cuarenta veces, extraer campos de una serie de facturas, ordenar y renombrar ficheros de una carpeta, comparar precios o condiciones entre varias webs y traerte la tabla.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Funciona mal —y conviene no insistir— lo que depende de muchos pasos encadenados sin comprobación intermedia, lo que exige criterio sobre consecuencias («cancela la que menos me convenga»), lo que se apoya en webs que cambian de aspecto a menudo, y sobre todo <strong>aquello cuyo fallo es silencioso</strong>: si el agente rellena mal un campo y nadie lo mira, el error viaja. Para la familia concreta de extracción de datos, con sus límites legales y técnicos, el detalle está en <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="agente-extraer-datos-web.html">cómo montar un agente que extrae datos de páginas web</a>.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Y hay una categoría aparte, la de «mejor no»: todo lo que implique dinero, identidad o cosas irreversibles. Pagar, firmar, aceptar condiciones, publicar en tu nombre, borrar. No porque el agente sea tonto, sino porque el coste de equivocarse no es simétrico con lo que ahorras.
+        </p>
+</section>
+<section class="space-y-space-md">
+<h2 id="sec-7" class="font-headline-md text-headline-md text-primary tracking-tight">
+          Cómo darle permisos sin regalarle las llaves
+        </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Dado que el fallo de fondo no se parchea, la defensa real es de daño: suponer que alguna vez el agente hará lo que le diga una página y dejar que eso importe poco. Seis medidas, de más a menos rentable.
+        </p>
+<h3 class="font-headline-sm text-headline-sm text-primary font-medium">1. Un perfil aparte, no el tuyo de siempre</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Usa el agente en un perfil del navegador distinto, con las cuentas mínimas y <strong>sin el gestor de contraseñas</strong>. La mayoría del daño de los casos documentados venía de que el agente entraba con una sesión que tenía acceso a todo.
+        </p>
+<h3 class="font-headline-sm text-headline-sm text-primary font-medium">2. Revisa los permisos que ya le diste</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Si en algún momento autorizaste el acceso a correo, calendario o archivos, entra y quita lo que no use una tarea concreta y viva. Permisos amplios y permanentes son el multiplicador del problema; el criterio general está en <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="proteger-datos-ia.html">cómo proteger tus datos al conectar la IA a tus herramientas</a>.
+        </p>
+<h3 class="font-headline-sm text-headline-sm text-primary font-medium">3. Confirmación humana antes de lo irreversible</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Envíos, pagos, borrados, cambios en recursos compartidos: que el agente enseñe qué va a hacer y espere. Es el único control que detiene un secuestro en curso, y el coste en comodidad es pequeño comparado con lo que evita.
+        </p>
+<h3 class="font-headline-sm text-headline-sm text-primary font-medium">4. Solo lectura mientras puedas</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Muchas tareas útiles no necesitan escribir nada: leer, comparar y traerte un resumen. Mantener al agente en lectura elimina de golpe la mitad del problema.
+        </p>
+<h3 class="font-headline-sm text-headline-sm text-primary font-medium">5. No le des contenido ajeno y permisos a la vez</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Las dos condiciones del ataque son «procesa algo que no controlas» y «puede actuar sobre algo tuyo». Si separas las dos cosas en sesiones distintas, el ataque se queda sin camino.
+        </p>
+<h3 class="font-headline-sm text-headline-sm text-primary font-medium">6. Mira el registro de lo que hizo</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Un agente útil deja traza de cada acción. Revísala las primeras veces: ahí se ve si está dando mil vueltas, y ahí aparecería una acción que nadie le pidió. Cómo comprobar sistemáticamente que un agente hace lo que dice, en <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="evaluar-agente-ia.html">cómo saber si tu agente funciona de verdad</a>.
+        </p>
+</section>
+<section class="space-y-space-md">
+<h2 id="sec-8" class="font-headline-md text-headline-md text-primary tracking-tight">
+          Cómo decidir si te conviene
+        </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Tres preguntas, en este orden. <strong>¿Puedo comprobar el resultado sin repetir el trabajo?</strong> Si no, el agente no te ahorra: te traslada el trabajo de hacer al de auditar. <strong>¿Qué pasa si sale mal y no me entero?</strong> Si la respuesta incomoda, la tarea no es para delegar todavía. <strong>¿Existe una API o un conector para esto?</strong> Si existe, casi siempre es más fiable y más barato que mover el ratón por la pantalla.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Si las tres salen bien, empieza por una tarea pequeña, repetitiva y sin consecuencias, con el agente en un perfil limpio y en lectura. Ese es el uso que hoy rinde de verdad. Lo demás —el agente que gestiona tu vida entera sin supervisión— está anunciado, no entregado.
+        </p>
+<div class="bg-surface-container-low border-l-4 border-primary p-space-md"><p class="font-body-sm text-body-sm text-on-surface">Resumen en una línea: ya saben manejar un ordenador mejor de lo que se cree y más despacio de lo que se vende, y el límite que de verdad decide cuánto les puedes delegar no es su habilidad, es que cualquier página que lean puede darles órdenes. Pocos permisos, tareas comprobables y confirmación antes de lo irreversible.</p></div>
+</section>
+<section class="space-y-space-md">
+<h2 class="font-headline-lg text-headline-lg text-primary">
+        Preguntas frecuentes
+      </h2>
+<div class="space-y-space-md">
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Merece la pena un navegador con agente para uso personal?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Para leer, comparar y resumir páginas, sí: ahí el agente no actúa, solo lee, y el peor caso es un resumen malo. Para que compre, rellene formularios o toque tu correo, la cuenta sale distinta, porque entonces hereda tu sesión abierta y cualquier instrucción escondida en una página pasa a ser una orden. Si vas a usarlo así, hazlo en un perfil del navegador aparte, sin el gestor de contraseñas y sin las cuentas que te dolería perder.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">Si los benchmarks dan un 85 %, ¿por qué falla en mis tareas?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Porque esa cifra la publica cada fabricante con su propio arnés y su propio presupuesto de pasos, sobre un catálogo de tareas cerradas y comprobables automáticamente. Tus tareas no son así: son más largas, dependen de una web que cambia de maquetación y a menudo no tienen una forma objetiva de decidir si salieron bien. La cifra mide el techo en condiciones de laboratorio, no lo que aguanta un martes cualquiera.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Es más rápido que hacerlo yo?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Casi nunca, si lo mides en tiempo de reloj. El trabajo de OSWorld-Human, presentado en MLSys 2026, anotó a mano la ruta mínima de cada tarea y midió 16 agentes: incluso los mejores dan entre 2,7 y 4,3 veces más pasos de los necesarios, y hay tareas de pocos minutos para una persona que al agente le llevan decenas. La ventaja no es la velocidad, es que la tarea se hace sin que tú estés delante.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿La inyección de instrucciones se arregla con actualizaciones?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Los parches cierran casos concretos, no la clase de problema. La causa es estructural: el agente entra con tu sesión ya autenticada y lee contenido de terceros sin una frontera que separe lo que tú le has pedido de lo que ese contenido le ordena. El responsable de seguridad de la información de OpenAI, Dane Stuckey, lo describió en octubre de 2025 como un problema de seguridad de frontera sin resolver. Lo que sí funciona es reducir el daño: menos permisos y confirmación humana antes de cualquier acción irreversible.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Qué tareas le doy primero para probar?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Las que cumplan tres cosas a la vez: que puedas comprobar el resultado de un vistazo, que repitas a menudo, y que si sale mal no haya que deshacer nada. Recopilar datos de un listado público, rellenar un formulario interno de pruebas o renombrar y ordenar ficheros en una carpeta copiada son buenos primeros encargos. Mala idea para empezar: nada que envíe, pague, publique o borre.
+</div>
+</div>
+</div>
+</section>
+</article>
+<aside class="lg:col-span-4 flex flex-col space-y-space-xl">
+<div class="bg-surface-container-lowest p-space-lg shadow-sm sticky top-space-md">
+<div class="flex items-center justify-between mb-space-sm pb-space-xs">
+<span class="font-kicker text-kicker uppercase tracking-widest text-primary font-bold">ÍNDICE DE LA GUÍA</span>
+<span class="material-symbols-outlined text-on-surface-variant text-base">format_list_bulleted</span>
+</div>
+<nav class="space-y-space-xs font-body-sm text-body-sm">
+<a class="block text-primary hover:text-secondary font-medium transition-colors" href="#sec-1">Qué es</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-2">Las dos familias</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-3">Lo que dicen los números</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-4">Dan diez vueltas</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-5">El fallo sin arreglo</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-6">Qué funciona y qué no</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-7">Permisos sin riesgo</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-8">Cómo decidir</a>
+</nav>
+</div>
+<div class="bg-surface-container-high p-space-md space-y-space-sm shadow-sm">
+<span class="font-kicker text-kicker uppercase tracking-widest text-primary font-bold">FICHA TÉCNICA</span>
+<dl class="space-y-space-xs font-caption text-caption">
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Categoría:</dt><dd class="font-semibold text-primary">Automatización</dd></div><div class="flex justify-between py-1"><dt class="text-on-surface-variant">Nivel técnico:</dt><dd class="font-semibold text-primary">Intermedio</dd></div><div class="flex justify-between py-1"><dt class="text-on-surface-variant">Fuentes citadas:</dt><dd class="font-semibold text-primary">Xie et al., «OSWorld» (NeurIPS 2024) y su tabla pública de resultados; «OSWorld-Human: Benchmarking the Efficiency of Computer-Use Agents» (MLSys 2026); divulgación de PleaseFix por Zenity Labs (marzo de 2026) y la nota de investigación de la Cloud Security Alliance; investigación de Brave sobre navegadores con agente y cobertura de The Register (octubre de 2025); OWASP Top 10 para aplicaciones con LLM (LLM01)</dd></div>
+</dl>
+</div>
+</aside>
+</div>
+<section class="w-full mt-space-4xl pt-space-2xl bg-surface-container-lowest p-space-lg shadow-sm">
+<div class="mb-space-lg">
+<h3 class="font-headline-md text-headline-md text-primary">Continúa explorando el archivo</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-col-gap"><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="prompt-injection-agentes-ia.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-prompt-injection-agentes-ia.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="prompt-injection-agentes-ia.html">Prompt injection: cómo manipulan a tu agente</a></h4></div></article><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="que-es-un-agente-ia.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-que-es-un-agente-ia.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="que-es-un-agente-ia.html">Qué es un agente de IA y en qué se diferencia de un chatbot</a></h4></div></article><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="agente-extraer-datos-web.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-agente-extraer-datos-web.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="agente-extraer-datos-web.html">Montar un agente que extrae datos de webs</a></h4></div></article></div>
+</section>
+</div></main><footer class="w-full bg-surface-container-low border-t border-outline-variant mt-space-4xl"><div class="max-w-site-max-width mx-auto px-space-md py-space-3xl"><div class="grid grid-cols-1 md:grid-cols-3 gap-col-gap"><div class="space-y-space-sm"><span class="font-headline-md text-headline-md text-primary">El Telar</span><p class="font-body-sm text-body-sm text-on-surface-variant">Publicación independiente de tecnología y automatización con agentes. Contenidos verificados en producción, sin patrocinios opacos ni promesas vacías.</p></div><div><h3 class="font-kicker text-kicker uppercase tracking-wider text-on-surface mb-space-md">SECCIONES</h3><ul class="space-y-space-xs font-body-sm text-body-sm"><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html#guias">Archivo de Guías</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../empieza-aqui.html">Guía para Principiantes</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../sobre-nosotros.html">Manifiesto Editorial</a></li><li class="pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html#despacho">Boletín Semanal</a></li></ul></div><div><h3 class="font-kicker text-kicker uppercase tracking-wider text-on-surface mb-space-md">CONTACTO &amp; PRENSA</h3><div class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant"><p class="font-semibold text-on-surface">contacto@eltelar.es</p><p>Síguenos: <a class="hover:text-primary underline" href="https://www.instagram.com/eltelar_es/" rel="me noopener" target="_blank">Instagram</a> · <a class="hover:text-primary underline" href="https://www.threads.com/@eltelar_es" rel="me noopener" target="_blank">Threads</a> · <a class="hover:text-primary underline" href="https://x.com/eltelar_es" rel="me noopener" target="_blank">X</a></p></div></div></div></div><div class="border-t border-outline-variant py-space-md bg-surface-container-lowest"><div class="max-w-site-max-width mx-auto px-space-md flex flex-col md:flex-row items-center justify-between gap-space-sm text-caption font-caption text-on-surface-variant"><div>© 2026 El Telar. Todos los derechos reservados. Independencia editorial garantizada.</div><div class="flex items-center gap-space-md"><a class="hover:text-on-surface transition-colors" href="../privacidad.html">Privacidad</a><a class="hover:text-on-surface transition-colors" href="../terminos.html">Términos</a><a class="hover:text-on-surface transition-colors" href="../sobre-nosotros.html">Sobre nosotros</a><a class="hover:text-on-surface transition-colors" href="../contacto.html">Contacto</a></div></div></div></footer><script defer src="../js/copy-guide.js"></script><script defer src="../js/guide-interactions.js"></script><script defer src="../js/reading-progress.js"></script><script defer src="../js/search.js?v=7"></script><script defer src="../js/entrance.js"></script><script defer src="../js/cookie-consent.js?v=4"></script></body></html>
