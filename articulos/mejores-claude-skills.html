@@ -23,7 +23,7 @@
   "author": { "@type": "Person", "name": "Juan Becerril Castañón", "url": "https://eltelar.es/sobre-nosotros.html#autor" },
   "publisher": { "@type": "Organization", "name": "El Telar" },
   "datePublished": "2026-09-08",
-  "dateModified": "2026-09-08",
+  "dateModified": "2026-10-13",
   "mainEntityOfPage": "https://eltelar.es/articulos/mejores-claude-skills.html",
   "inLanguage": "es"
 }
@@ -408,6 +408,63 @@ ejemplos de formato correcto, qué evitar y por qué.</pre>
 <p class="font-body-sm text-body-sm text-on-surface mt-space-xs"><strong>Instalarlo (funciona en Claude Code, Cursor, Codex CLI y OpenCode):</strong></p><code class="block font-mono text-body-sm bg-primary text-on-primary px-space-sm py-space-xs mt-space-xxs overflow-x-auto">npx skills add tt-a1i/archify -g</code>
 <p class="font-body-sm text-body-sm text-on-surface mt-space-xs"><strong>Y luego pídeselo a tu asistente, por ejemplo:</strong></p><code class="block font-mono text-body-sm bg-primary text-on-primary px-space-sm py-space-xs mt-space-xxs overflow-x-auto">Usa Archify para hacer un esquema de mi viaje de 5 días por Portugal</code>
 <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Es gratis (licencia MIT); solo pagas el asistente de IA que ya uses. En su web hay una galería de ejemplos para ver qué sale antes de instalar nada.</p>
+</section>
+<section class="space-y-space-md">
+<h2 id="skills-animacion" class="font-headline-lg text-headline-lg text-primary">
+          5 skills para que tu web se mueva (del carrusel DISEÑO)
+        </h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Las cinco del carrusel de Instagram. Se instalan una vez y Claude Code las usa cuando hacen falta. Debajo de cada una tienes qué pedirle después.</p>
+<h3 class="font-headline-md text-headline-md text-primary tracking-tight">1. Three.js: escenas 3D</h3>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Cámara, luces, partículas y modelos 3D (GLTF) que puedes girar con el ratón.</p>
+<p class="font-body-sm text-body-sm mt-space-sm"><strong class="text-on-surface">Dónde conseguirlo:</strong> <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://github.com/CloudAI-X/threejs-skills">CloudAI-X/threejs-skills · repositorio ↗</a></p>
+<p class="font-body-sm text-body-sm text-on-surface mt-space-xs"><strong>Instalarla:</strong></p><code class="block font-mono text-body-sm bg-primary text-on-primary px-space-sm py-space-xs mt-space-xxs overflow-x-auto">npx skills add CloudAI-X/threejs-skills</code>
+<p class="font-body-sm text-body-sm text-on-surface mt-space-xs"><strong>Y luego pídele:</strong></p><code class="block font-mono text-body-sm bg-primary text-on-primary px-space-sm py-space-xs mt-space-xxs overflow-x-auto">Hazme una escena 3D con un modelo GLTF que pueda girar con el ratón</code>
+<h3 class="font-headline-md text-headline-md text-primary tracking-tight">2. GSAP: la skill oficial de GreenSock</h3>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Líneas de tiempo, animaciones al hacer scroll y textos que aparecen, en HTML, React, Vue o Svelte.</p>
+<p class="font-body-sm text-body-sm mt-space-sm"><strong class="text-on-surface">Dónde conseguirlo:</strong> <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://github.com/greensock/gsap-skills">greensock/gsap-skills · oficial de GreenSock ↗</a></p>
+<p class="font-body-sm text-body-sm text-on-surface mt-space-xs"><strong>Instalarla:</strong></p><code class="block font-mono text-body-sm bg-primary text-on-primary px-space-sm py-space-xs mt-space-xxs overflow-x-auto">npx skills add https://github.com/greensock/gsap-skills</code>
+<p class="font-body-sm text-body-sm text-on-surface mt-space-xs"><strong>Y luego pídele:</strong></p><code class="block font-mono text-body-sm bg-primary text-on-primary px-space-sm py-space-xs mt-space-xxs overflow-x-auto">Anima esta landing con GSAP: textos que aparecen y efectos al hacer scroll</code>
+<h3 class="font-headline-md text-headline-md text-primary tracking-tight">3. Design DNA: copia el estilo de una web</h3>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Le enseñas una web que te gusta y saca su «ADN»: colores, tipografía, maquetación y espaciado, listos para aplicar.</p>
+<p class="font-body-sm text-body-sm mt-space-sm"><strong class="text-on-surface">Dónde conseguirlo:</strong> <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://github.com/zanwei/design-dna">zanwei/design-dna · repositorio ↗</a></p>
+<p class="font-body-sm text-body-sm text-on-surface mt-space-xs"><strong>Instalarla:</strong></p><code class="block font-mono text-body-sm bg-primary text-on-primary px-space-sm py-space-xs mt-space-xxs overflow-x-auto">npx skills add zanwei/design-dna</code>
+<p class="font-body-sm text-body-sm text-on-surface mt-space-xs"><strong>Y luego pídele:</strong></p><code class="block font-mono text-body-sm bg-primary text-on-primary px-space-sm py-space-xs mt-space-xxs overflow-x-auto">Saca el Design DNA de [web que te gusta] y aplícalo a mi página</code>
+<h3 class="font-headline-md text-headline-md text-primary tracking-tight">4. Motion Design: piensa como un animador</h3>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Del equipo de LottieFiles. Antes de escribir código, Claude decide tiempos, curvas y coreografía.</p>
+<p class="font-body-sm text-body-sm mt-space-sm"><strong class="text-on-surface">Dónde conseguirlo:</strong> <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://github.com/LottieFiles/motion-design-skill">LottieFiles/motion-design-skill · oficial de LottieFiles ↗</a></p>
+<p class="font-body-sm text-body-sm text-on-surface mt-space-xs"><strong>Instalarla:</strong></p><code class="block font-mono text-body-sm bg-primary text-on-primary px-space-sm py-space-xs mt-space-xxs overflow-x-auto">npx skills add LottieFiles/motion-design-skill</code>
+<p class="font-body-sm text-body-sm text-on-surface mt-space-xs"><strong>Y luego pídele:</strong></p><code class="block font-mono text-body-sm bg-primary text-on-primary px-space-sm py-space-xs mt-space-xxs overflow-x-auto">Revisa las animaciones de mi web con principios de motion design</code>
+<h3 class="font-headline-md text-headline-md text-primary tracking-tight">5. Genjutsu: el toque final</h3>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Dirección creativa: le da a tu interfaz un estilo y una forma de moverse, para web, Android y Apple.</p>
+<p class="font-body-sm text-body-sm mt-space-sm"><strong class="text-on-surface">Dónde conseguirlo:</strong> <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://github.com/AThevon/genjutsu">AThevon/genjutsu · repositorio ↗</a></p>
+<p class="font-body-sm text-body-sm text-on-surface mt-space-xs"><strong>Instalarla:</strong></p><code class="block font-mono text-body-sm bg-primary text-on-primary px-space-sm py-space-xs mt-space-xxs overflow-x-auto">npx skills add https://genjutsu.athevon.dev -g</code>
+<p class="font-body-sm text-body-sm text-on-surface mt-space-xs"><strong>Y luego pídele:</strong></p><code class="block font-mono text-body-sm bg-primary text-on-primary px-space-sm py-space-xs mt-space-xxs overflow-x-auto">/genjutsu y describe la interfaz que quieres</code>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Todas son gratis; necesitas Claude Code (o otro agente compatible con skills) y Node.js para el comando <code>npx</code>.</p>
+</section>
+<section class="space-y-space-md">
+<h2 id="ahorrar-tokens" class="font-headline-lg text-headline-lg text-primary">
+          5 trucos para que Claude no se coma tus tokens
+        </h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Cada mensaje que Claude lee cuesta tokens: la conversación entera, las skills que tienes instaladas, las herramientas y tu CLAUDE.md. Si lo vigilas, el plan te dura más y Claude se equivoca menos. Los tres primeros trucos vienen con Claude Code; los dos últimos son skills gratuitas.</p>
+<h3 class="font-headline-md text-headline-md text-primary tracking-tight">1. /context: mira qué se está comiendo la memoria</h3>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Te dibuja la memoria de la conversación como un cuadro de colores: cuánto ocupan las instrucciones del sistema, las herramientas, las skills, tu CLAUDE.md y los mensajes, y cuánto queda libre. También te sugiere qué recortar.</p>
+<p class="font-body-sm text-body-sm text-on-surface mt-space-xs"><strong>Escríbelo en Claude Code:</strong></p><code class="block font-mono text-body-sm bg-primary text-on-primary px-space-sm py-space-xs mt-space-xxs overflow-x-auto">/context</code>
+<h3 class="font-headline-md text-headline-md text-primary tracking-tight">2. /compact: resume y libera espacio</h3>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Resume la conversación hasta ahora y sigue con ese resumen, sin empezar de cero. Puedes decirle en qué centrarse.</p>
+<p class="font-body-sm text-body-sm text-on-surface mt-space-xs"><strong>Por ejemplo:</strong></p><code class="block font-mono text-body-sm bg-primary text-on-primary px-space-sm py-space-xs mt-space-xxs overflow-x-auto">/compact céntrate en los cambios del formulario de login</code>
+<h3 class="font-headline-md text-headline-md text-primary tracking-tight">3. /rewind: vuelve atrás en vez de corregir</h3>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Si Claude tomó un camino equivocado, vuelves al punto de antes (la conversación, el código o los dos) en lugar de gastar diez mensajes arreglándolo. También funciona con /checkpoint o /undo.</p>
+<p class="font-body-sm text-body-sm text-on-surface mt-space-xs"><strong>Escríbelo en Claude Code:</strong></p><code class="block font-mono text-body-sm bg-primary text-on-primary px-space-sm py-space-xs mt-space-xxs overflow-x-auto">/rewind</code>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed"><strong class="text-on-surface">Extra: /clear.</strong> Cuando cambies de tarea, empieza una conversación nueva con la memoria vacía. La anterior la recuperas con /resume.</p>
+<h3 class="font-headline-md text-headline-md text-primary tracking-tight">4. Ponytail: menos código antes de escribirlo</h3>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Una skill que hace que el agente piense como «el programador más vago del equipo»: antes de escribir, comprueba si ya existe una librería o un patrón que lo resuelva, y escribe solo lo necesario sin quitar validación, errores ni seguridad. Tiene más de 160.000 estrellas en GitHub. Sus autores anuncian un 20 % menos de coste; en la <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://blog.jetbrains.com/ai/2026/07/ponytail-skill-claude-tested/">prueba independiente de JetBrains</a> salió alrededor de un 10 % menos.</p>
+<p class="font-body-sm text-body-sm mt-space-sm"><strong class="text-on-surface">Dónde conseguirlo:</strong> <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://github.com/DietrichGebert/ponytail">DietrichGebert/ponytail · repositorio oficial ↗</a></p>
+<p class="font-body-sm text-body-sm text-on-surface mt-space-xs"><strong>Instalarla en Claude Code:</strong></p><code class="block font-mono text-body-sm bg-primary text-on-primary px-space-sm py-space-xs mt-space-xxs overflow-x-auto">/plugin marketplace add DietrichGebert/ponytail<br>/plugin install ponytail@ponytail</code>
+<h3 class="font-headline-md text-headline-md text-primary tracking-tight">5. Caveman: Claude habla como un cavernícola</h3>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Hace que Claude responda con frases cortas, sin relleno ni cortesías, manteniendo el contenido técnico. Sus autores hablan de hasta un 65 % menos de tokens; el ahorro real depende de cómo trabajes. Tiene más de 110.000 estrellas y licencia Apache 2.0.</p>
+<p class="font-body-sm text-body-sm mt-space-sm"><strong class="text-on-surface">Dónde conseguirlo:</strong> <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://github.com/JuliusBrussee/caveman">JuliusBrussee/caveman · repositorio oficial ↗</a></p>
+<p class="font-body-sm text-body-sm text-on-surface mt-space-xs"><strong>Instalarla en Claude Code:</strong></p><code class="block font-mono text-body-sm bg-primary text-on-primary px-space-sm py-space-xs mt-space-xxs overflow-x-auto">claude plugin marketplace add JuliusBrussee/caveman &amp;&amp; claude plugin install caveman@caveman</code>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Si dejas de quererlo, «stop caveman» o «normal mode» lo apaga en la conversación.</p>
 </section>
 <section class="mb-space-2xl">
 <h2 class="font-headline-md text-headline-md text-primary mb-space-md">Preguntas frecuentes</h2>
