@@ -1,5 +1,116 @@
 [
   {
+    "slug": "2026-10-12-meta-muse-wonder-agentes",
+    "date": "2026-10-12",
+    "category": "Modelos",
+    "title": "Meta lanza Muse Wonder, sus modelos con memoria para agentes personales",
+    "dek": "Muse Wonder y Muse Wonder Full ya están disponibles para desarrolladores y suscriptores; la app Muse los recibirá «pronto».",
+    "tldr": "Meta ha presentado Muse Wonder, una nueva serie de modelos pensada para agentes de IA que recuerdan lo que les cuentas y siguen trabajando hasta cumplir un objetivo. Hoy solo llegan a desarrolladores y suscriptores de pago.",
+    "key_facts": [
+      {
+        "value": "2",
+        "label": "modelos: Muse Wonder y Muse Wonder Full"
+      },
+      {
+        "value": "3",
+        "label": "áreas de especialidad: derecho, finanzas y salud"
+      }
+    ],
+    "quote": {
+      "text": "most aligned model to date",
+      "source": "Meta, anuncio oficial (traducido: «el modelo más alineado hasta la fecha»)"
+    },
+    "body": [
+      "Meta anunció el 12 de octubre de 2026 Muse Wonder, una serie de modelos de IA que presenta como un paso hacia lo que llama «superinteligencia personal». Hay dos versiones: Muse Wonder y Muse Wonder Full, esta última la más capaz.",
+      "Muse Wonder está disponible ya a través de la API de modelos de Meta (la puerta por la que los desarrolladores usan el modelo en sus propias aplicaciones) y de Muse Code, su herramienta para programar. Muse Wonder Full, por ahora, solo para suscriptores de Muse Code. Meta dice que el modelo llegará «pronto» a la app Muse, primero para suscriptores.",
+      "Meta destaca dos funciones. La «Memoria activa» guarda el contexto importante entre conversaciones y recupera lo que sirve para la tarea actual. El «Foco activo» hace que el modelo siga trabajando hacia un objetivo difícil: prueba otros enfoques ante un bloqueo, pide aclaraciones y consulta contigo antes de acciones importantes. También habla de conocimiento especializado en derecho, finanzas y salud, y de programación de proyectos largos.",
+      "Meta afirma que logra resultados de vanguardia en pruebas de agentes, memoria y programación, pero el texto del anuncio no da cifras concretas; solo aparecen en un gráfico y un informe vinculados que conviene leer con cautela, porque los publica la propia empresa. Tampoco aclara si habrá versión gratuita ni en qué países estará disponible."
+    ],
+    "impact": [
+      "Si usas Meta AI o WhatsApp, de momento no cambia nada: el modelo aún no está en esas apps.",
+      "Los asistentes con memoria entre conversaciones serán la norma: conviene revisar qué recuerdan de ti y cómo borrarlo.",
+      "Una IA que actúa por su cuenta hacia un objetivo es útil, pero exige que le pidas confirmación antes de acciones importantes, como enviar dinero o mensajes."
+    ],
+    "sources": [
+      {
+        "name": "Meta, anuncio oficial de Muse Wonder",
+        "url": "https://research.meta.ai/blog/muse-wonder"
+      }
+    ],
+    "related": [
+      {
+        "title": "Qué es un agente de IA",
+        "url": "../articulos/que-es-un-agente-ia.html"
+      },
+      {
+        "title": "Ventana de contexto y memoria de la IA",
+        "url": "../articulos/ventana-contexto-memoria-ia.html"
+      }
+    ],
+    "photo": {
+      "alt": "Mark Zuckerberg, consejero delegado de Meta, durante una conferencia en 2018 (imagen de archivo)",
+      "author": "Anthony Quintano",
+      "license": "CC BY 2.0",
+      "url": "https://commons.wikimedia.org/w/index.php?curid=70827307"
+    },
+    "published": "2026-10-13"
+  },
+  {
+    "slug": "2026-10-12-anthropic-ia-pequena-autorreplicarse",
+    "date": "2026-10-12",
+    "category": "Seguridad",
+    "title": "Anthropic avisa: modelos de IA pequeños podrían copiarse solos en aparatos del hogar",
+    "dek": "Su equipo de seguridad calcula que estarían a «meses» de poder replicarse en dispositivos conectados, aunque las pruebas fueron en un entorno simplificado.",
+    "tldr": "Un informe del equipo rojo de Anthropic (el que ataca sus propios sistemas para hallar fallos) sugiere que modelos pequeños podrían pronto instalarse por su cuenta en dispositivos baratos conectados a internet. Los propios autores recuerdan que sus pruebas son un límite optimista.",
+    "key_facts": [
+      {
+        "value": "8 de 9",
+        "label": "tipos de hardware donde un modelo de 9B montó su servidor"
+      },
+      {
+        "value": "4 de 5",
+        "label": "pruebas en que GLM-5.2 se extendió a los 8 nodos"
+      },
+      {
+        "value": "92 %",
+        "label": "infecciones Mirai limpiadas en 14 días con aviso del ISP"
+      }
+    ],
+    "quote": {
+      "text": "Our experiments suggest that small AI models may be months away from being capable enough to self-replicate",
+      "source": "Anthropic, Frontier Red Team (traducido: «nuestros experimentos sugieren que los modelos de IA pequeños pueden estar a meses de ser capaces de autorreplicarse»)"
+    },
+    "body": [
+      "El equipo Frontier Red Team de Anthropic publicó el 12 de octubre de 2026 un estudio sobre si modelos de IA pequeños (de 30.000 millones de parámetros o menos) podrían copiarse solos en dispositivos conectados, como hornos inteligentes o reproductores Android TV de marca blanca. Su conclusión: pueden estar «a meses» de lograrlo.",
+      "En las pruebas, un modelo de 9.000 millones de parámetros consiguió poner en marcha su servidor de inferencia (el programa que hace funcionar el modelo) en 8 de 9 tipos de hardware. En una red simplificada de 8 emuladores Android, el modelo GLM-5.2 se extendió a todos los nodos en 4 de 5 intentos y a 7 de 8 en el quinto. Los modelos de 30B o menos completan muchos pasos sueltos, pero fallan al encadenarlos.",
+      "La velocidad sería baja: un modelo repartido entre 15 cajas Android TV de unos 55 dólares funcionó a 0,39 tokens por segundo, es decir, apenas unas palabras por minuto. Aun así, un replicador así sería difícil de apagar porque no tiene un punto central que desconectar, y podría descifrar dispositivos desconocidos, a diferencia del malware tradicional.",
+      "Los autores subrayan límites importantes: el paso de ataque fue deliberadamente trivial (puertos de depuración Android sin contraseña), así que los resultados son un máximo, y la estimación de «meses» se apoya en un índice general de capacidad que es solo un indicador aproximado. Tampoco probaron cómo reaccionaría una red de IA ante las defensas.",
+      "Como defensas proponen vigilar el tráfico de red anómalo, usar señuelos, que los proveedores de internet pongan en cuarentena a los abonados infectados (con aviso al cliente se limpió el 92 % de infecciones Mirai en 14 días, frente al 74 % sin aviso) y exigir estándares de seguridad por defecto más estrictos en dispositivos conectados."
+    ],
+    "impact": [
+      "No hay un peligro inmediato para ti: es una advertencia de investigación, no un ataque detectado.",
+      "Cambia la contraseña de fábrica de routers, cámaras y televisores conectados, y actualízalos siempre.",
+      "Si un aparato conectado ya no recibe actualizaciones, desconéctalo de internet o sustitúyelo."
+    ],
+    "sources": [
+      {
+        "name": "Anthropic, Frontier Red Team: informe sobre autorreplicación de IA",
+        "url": "https://www.anthropic.com/research/self-replicating-ai"
+      }
+    ],
+    "related": [
+      {
+        "title": "Cómo proteger tus datos con la IA",
+        "url": "../articulos/proteger-datos-ia.html"
+      },
+      {
+        "title": "Estafas con IA",
+        "url": "../articulos/estafas-con-ia.html"
+      }
+    ],
+    "published": "2026-10-13"
+  },
+  {
     "slug": "2026-10-08-anthropic-oss-scanner-codigo-abierto",
     "date": "2026-10-08",
     "category": "Seguridad",
