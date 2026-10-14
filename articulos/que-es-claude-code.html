@@ -532,6 +532,18 @@
 <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed"><strong class="text-on-surface">Lo honesto:</strong> <code>/insights</code> no está disponible en sesiones en la nube. Claude Code requiere un plan de pago de Claude o una cuenta de API.</p>
 <p class="font-body-sm text-body-sm mt-space-sm"><strong class="text-on-surface">Documentación:</strong> <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://code.claude.com/docs/en/commands">code.claude.com/docs/en/commands</a></p>
 </section>
+<section id="claude-md" class="space-y-space-md scroll-mt-24 bg-surface-container-low p-space-lg border-l-4 border-secondary">
+<span class="font-kicker text-kicker uppercase tracking-widest text-secondary">Del reel de Instagram</span>
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">/init y CLAUDE.md: que Claude se aprenda tu proyecto</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Claude Code no recuerda por sí solo cómo funciona tu proyecto de una sesión a otra. La solución es un archivo <code>CLAUDE.md</code> con las instrucciones esenciales, que Claude lee al empezar.</p>
+<h3 class="font-headline-sm text-headline-sm text-primary">Cómo crearlo</h3>
+<ol class="list-decimal pl-space-lg space-y-space-xs font-body-md text-body-md text-on-surface"><li>Abre Claude Code en la carpeta de tu proyecto.</li><li>Escribe <code>/init</code>. Según la documentación oficial, inicializa el proyecto con una guía <code>CLAUDE.md</code>: Claude revisa los archivos y escribe un primer borrador.</li><li>Revísalo y añade lo que solo tú sabes: reglas, carpetas que no deben tocarse, cómo ejecutar las pruebas, el idioma de los textos.</li><li>Usa <code>/memory</code> para editar tus archivos CLAUDE.md, activar o desactivar la memoria automática y ver qué ha guardado.</li></ol>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">La propia documentación recomienda, en la primera sesión en un repositorio, ejecutar <code>/init</code> y después afinar el resultado con <code>/memory</code>.</p>
+<h3 class="font-headline-sm text-headline-sm text-primary">Qué poner (y qué no)</h3>
+<ul class="list-disc pl-space-lg space-y-space-xs font-body-md text-body-md text-on-surface"><li>Sí: comandos para arrancar y probar, estructura del proyecto, convenciones y prohibiciones claras.</li><li>No: textos larguísimos ni información que cambia cada día.</li></ul>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed"><strong class="text-on-surface">Lo honesto:</strong> todo lo que pones en CLAUDE.md se carga en cada sesión y ocupa contexto. Cuanto más corto y concreto, mejor. Claude Code requiere un plan de pago o API.</p>
+<p class="font-body-sm text-body-sm mt-space-sm"><strong class="text-on-surface">Documentación:</strong> <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://code.claude.com/docs/en/commands">code.claude.com/docs/en/commands</a></p>
+</section>
 <section class="mb-space-2xl">
 <h2 class="font-headline-md text-headline-md text-primary mb-space-md tracking-tight">
           Preguntas frecuentes
@@ -631,6 +643,7 @@ La disponibilidad y condiciones de los planes cambian con el tiempo, así que co
 <a class="block text-secondary font-semibold hover:underline" href="#modo-plan">→ El modo plan</a>
 <a class="block text-secondary font-semibold hover:underline" href="#universal-modder">→ Universal Modder</a>
 <a class="block text-secondary font-semibold hover:underline" href="#comandos-secretos">→ 5 comandos poco conocidos</a>
+<a class="block text-secondary font-semibold hover:underline" href="#claude-md">→ /init y /memory de Claude Code</a>
 </nav>
 </div>
 <div class="bg-surface-container-low p-space-lg">
