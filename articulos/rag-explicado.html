@@ -23,7 +23,7 @@
   "author": {"@type": "Person", "name": "Juan Becerril Castañón", "url": "https://eltelar.es/sobre-nosotros.html#autor"},
   "publisher": { "@type": "Organization", "name": "El Telar", "url": "https://eltelar.es/", "logo": { "@type": "ImageObject", "url": "https://eltelar.es/img/icon-512.png", "width": 512, "height": 512 } },
   "datePublished": "2026-01-01",
-  "dateModified": "2026-10-05",
+  "dateModified": "2026-10-14",
   "mainEntityOfPage": "https://eltelar.es/articulos/rag-explicado.html",
   "inLanguage": "es"
 }
@@ -350,6 +350,16 @@
           Hay un tercer factor que rara vez se menciona en esta comparación entre RAG y ventana de contexto: la latencia. Procesar un documento entero de cientos de páginas en cada consulta tarda más en generar una respuesta que procesar solo los pocos fragmentos relevantes, porque el modelo tiene que "leer" mucho más texto antes de empezar a responder. Para un uso ocasional esa diferencia apenas se nota, pero en una aplicación con muchos usuarios simultáneos, la diferencia de velocidad puede ser determinante para que la experiencia se sienta fluida o lenta.
         </p>
 </section>
+<section id="anythingllm" class="space-y-space-md scroll-mt-24 bg-surface-container-low p-space-lg border-l-4 border-secondary">
+<span class="font-kicker text-kicker uppercase tracking-widest text-secondary">Del reel de Instagram</span>
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">AnythingLLM: RAG en tu ordenador sin programar</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Si te ha gustado la idea del RAG (que la IA responda a partir de tus documentos), <strong>AnythingLLM</strong> te permite probarlo sin programar. Es una aplicación gratuita y de código abierto (MIT) para chatear con tus documentos, que funciona en local por defecto.</p>
+<h3 class="font-headline-sm text-headline-sm text-primary">Cómo empezar</h3>
+<ol class="list-decimal pl-space-lg space-y-space-xs font-body-md text-body-md text-on-surface"><li>Descarga la app de escritorio desde <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://anythingllm.com/download">anythingllm.com</a> (Mac, Windows o Linux).</li><li>Elige el modelo: uno local o un proveedor en la nube con tu propia clave.</li><li>Crea un espacio de trabajo, por ejemplo «Contratos», y arrastra tus PDF, DOCX o TXT.</li><li>Pregunta. Las respuestas incluyen citas a las fuentes para que puedas comprobarlas.</li></ol>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Además ofrece agentes que pueden navegar, memorias, tareas programadas, compatibilidad con MCP y, en la versión Docker, varios usuarios y un widget de chat para tu web.</p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed"><strong class="text-on-surface">Lo honesto:</strong> con modelos locales pequeños la calidad baja y pueden equivocarse; revisa siempre la cita. Si usas un modelo en la nube, el contenido de tus documentos sale de tu ordenador y el uso se paga.</p>
+<p class="font-body-sm text-body-sm mt-space-sm"><strong class="text-on-surface">Enlace oficial:</strong> <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://github.com/Mintplex-Labs/anything-llm">github.com/Mintplex-Labs/anything-llm</a></p>
+</section>
 <section class="space-y-space-md">
 <h2 class="font-headline-lg text-headline-lg text-primary">
           Preguntas frecuentes
@@ -440,6 +450,7 @@ Sí, la mayoría de modelos de embeddings modernos manejan bien la búsqueda ent
 <a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-5">Herramientas y errores</a>
 <a class="block text-secondary font-semibold hover:underline" href="#montalo-tu">→ Móntalo en 10 minutos</a>
 <a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-5b">Evaluar si funciona bien</a>
+<a class="block text-secondary font-semibold hover:underline" href="#anythingllm">→ AnythingLLM</a>
 </nav>
 </div>
 

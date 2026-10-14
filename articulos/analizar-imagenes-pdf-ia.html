@@ -362,6 +362,17 @@
 <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed"><strong class="text-on-surface">Lo honesto:</strong> no tiene app para móvil. El pixelado debe cubrir el dato completo; y recuerda que todo lo que pegas en un chat de IA sale de tu ordenador, así que tapa lo privado antes, no después.</p>
 <p class="font-body-sm text-body-sm mt-space-sm"><strong class="text-on-surface">Código:</strong> <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://github.com/flameshot-org/flameshot">github.com/flameshot-org/flameshot</a></p>
 </section>
+<section id="markitdown" class="space-y-space-md scroll-mt-24 bg-surface-container-low p-space-lg border-l-4 border-secondary">
+<span class="font-kicker text-kicker uppercase tracking-widest text-secondary">Del reel de Instagram</span>
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">MarkItDown: prepara cualquier archivo para la IA</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Los modelos de lenguaje entienden mejor el texto estructurado que un PDF o un Excel en bruto. <strong>MarkItDown</strong> es una utilidad gratuita de Microsoft (MIT) que convierte archivos a Markdown, un formato de texto sencillo que conserva títulos, listas y tablas, y que además ocupa pocos tokens.</p>
+<h3 class="font-headline-sm text-headline-sm text-primary">Qué convierte</h3>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">PDF, PowerPoint, Word, Excel, imágenes (metadatos y OCR), audio (metadatos y transcripción), HTML, formatos de texto como CSV, JSON y XML, archivos ZIP, enlaces de YouTube y EPUB.</p>
+<h3 class="font-headline-sm text-headline-sm text-primary">Cómo usarlo</h3>
+<ol class="list-decimal pl-space-lg space-y-space-xs font-body-md text-body-md text-on-surface"><li>Instala Python (de la 3.10 a la 3.14) y, mejor, crea un entorno virtual.</li><li>Instala la herramienta: <code>pip install 'markitdown[all]'</code>.</li><li>Convierte un archivo: <code>markitdown informe.pdf -o informe.md</code>.</li><li>Pega o sube el resultado a tu asistente de IA.</li></ol>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed"><strong class="text-on-surface">Lo honesto:</strong> se usa desde la terminal, así que no es para todo el mundo. En documentos escaneados o con maquetación compleja, el resultado puede necesitar retoques. El propio proyecto avisa de que accede a los archivos con los permisos de tu usuario: no lo uses sobre archivos que no sean de confianza en entornos sensibles.</p>
+<p class="font-body-sm text-body-sm mt-space-sm"><strong class="text-on-surface">Enlace oficial:</strong> <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://github.com/microsoft/markitdown">github.com/microsoft/markitdown</a></p>
+</section>
 <section class="space-y-space-md">
 <h2 class="font-headline-lg text-headline-lg text-primary">
           Preguntas frecuentes
@@ -449,6 +460,7 @@ No. Anthropic documenta que el modelo no recibe ni analiza los metadatos de la i
 <a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-6">Cuándo usar OCR especializado</a>
 <a class="block text-secondary font-semibold hover:underline" href="#stirling-pdf">→ Stirling PDF</a>
 <a class="block text-secondary font-semibold hover:underline" href="#flameshot">→ Flameshot</a>
+<a class="block text-secondary font-semibold hover:underline" href="#markitdown">→ MarkItDown</a>
 </nav>
 </div>
 
