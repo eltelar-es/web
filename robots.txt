@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /tools/
 
 # Rastreador de Google AdSense: acceso completo para analizar las páginas.
 User-agent: Mediapartners-Google
