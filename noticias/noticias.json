@@ -53,7 +53,8 @@
       "license": "CC BY 2.0",
       "url": "https://commons.wikimedia.org/w/index.php?curid=70827307"
     },
-    "published": "2026-10-13"
+    "published": "2026-10-13",
+    "seo_title": "Meta lanza Muse Wonder, IA con memoria"
   },
   {
     "slug": "2026-10-12-anthropic-ia-pequena-autorreplicarse",
@@ -108,7 +109,8 @@
         "url": "../articulos/estafas-con-ia.html"
       }
     ],
-    "published": "2026-10-13"
+    "published": "2026-10-13",
+    "seo_title": "Anthropic: IA pequeña que podría copiarse sola"
   },
   {
     "slug": "2026-10-08-anthropic-oss-scanner-codigo-abierto",
@@ -167,7 +169,8 @@
         "url": "../articulos/prompt-injection-agentes-ia.html"
       }
     ],
-    "published": "2026-10-12"
+    "published": "2026-10-12",
+    "seo_title": "Anthropic regala un escáner de fallos con IA"
   },
   {
     "slug": "2026-10-08-usa-today-demanda-openai-250-millones",
@@ -214,7 +217,8 @@
         "url": "https://storage.courtlistener.com/recap/gov.uscourts.nysd.674652/gov.uscourts.nysd.674652.1.0_1.pdf"
       }
     ],
-    "published": "2026-10-12"
+    "published": "2026-10-12",
+    "seo_title": "USA Today demanda a OpenAI por 250 millones"
   },
   {
     "slug": "2026-10-09-claude-flujos-dinamicos-1000-agentes",
@@ -283,7 +287,8 @@
       "license": "CC0",
       "url": "https://commons.wikimedia.org/w/index.php?curid=37627490"
     },
-    "published": "2026-10-11"
+    "published": "2026-10-11",
+    "seo_title": "Claude ya lanza hasta 1.000 agentes a la vez"
   },
   {
     "slug": "2026-10-08-openai-red-iran-articulos-falsos",
@@ -343,7 +348,8 @@
       "license": "CC0",
       "url": "https://www.rawpixel.com/image/5925139/photo-image-paper-public-domain-black"
     },
-    "published": "2026-10-11"
+    "published": "2026-10-11",
+    "seo_title": "OpenAI cierra una red iraní de artículos falsos"
   },
   {
     "slug": "2026-10-09-berkeley-ia-persistencia",
@@ -403,7 +409,8 @@
       "license": "CC BY 2.0",
       "url": "https://commons.wikimedia.org/w/index.php?curid=6638057"
     },
-    "published": "2026-10-11"
+    "published": "2026-10-11",
+    "seo_title": "10 minutos con ChatGPT te hacen rendirte antes"
   },
   {
     "slug": "2026-10-09-anthropic-corta-internet-evaluaciones",
@@ -464,7 +471,9 @@
       "license": "CC0",
       "url": "https://wordpress.org/photos/photo/64767dd6fa/"
     },
-    "published": "2026-10-11"
+    "published": "2026-10-11",
+    "seo_title": "Anthropic corta internet a sus pruebas de Claude",
+    "seo_desc": "Sus modelos explotaron fallos en webs, enviaron formularios reales y esquivaron pagos. Anthropic desconecta de internet sus evaluaciones."
   },
   {
     "slug": "2026-10-08-anthropic-politica-uso-12-noviembre",
@@ -521,7 +530,8 @@
       "license": "CC BY 2.0",
       "url": "https://commons.wikimedia.org/w/index.php?curid=50979436"
     },
-    "published": "2026-10-11"
+    "published": "2026-10-11",
+    "seo_title": "Anthropic cambia su política de uso de Claude"
   },
   {
     "slug": "2026-10-08-gemini-gratis-solo-flash-lite",
@@ -574,7 +584,8 @@
       "license": "CC BY-SA 4.0",
       "url": "https://commons.wikimedia.org/w/index.php?curid=63205382"
     },
-    "published": "2026-10-08"
+    "published": "2026-10-08",
+    "seo_title": "Gemini gratis se queda solo con Flash-Lite"
   },
   {
     "slug": "2026-10-06-mistral-large-4",
@@ -636,7 +647,8 @@
       "license": "CC0",
       "url": "https://commons.wikimedia.org/w/index.php?curid=183903636"
     },
-    "published": "2026-10-07"
+    "published": "2026-10-07",
+    "seo_title": "Mistral Large 4: un modelo europeo gigante"
   },
   {
     "slug": "2026-10-05-iwf-imagenes-abuso-ia",
@@ -692,7 +704,8 @@
       "license": "CC0",
       "url": "https://stocksnap.io/photo/laptop-keyboard-QGU10TMNPE"
     },
-    "published": "2026-10-07"
+    "published": "2026-10-07",
+    "seo_title": "Se disparan las imágenes de abuso hechas con IA"
   },
   {
     "slug": "2026-10-05-reflection-beam-modelo-abierto",
@@ -752,7 +765,8 @@
       "license": "CC0",
       "url": "https://commons.wikimedia.org/w/index.php?curid=17460421"
     },
-    "published": "2026-10-06"
+    "published": "2026-10-06",
+    "seo_title": "Reflection Beam: modelo abierto de 501.000 M"
   },
   {
     "slug": "2026-10-05-meta-muse-spark-matematicas",
@@ -817,7 +831,9 @@
       "license": "CC0 1.0",
       "url": "https://www.rawpixel.com/image/5905126/photo-image-background-public-domain-black"
     },
-    "published": "2026-10-05"
+    "published": "2026-10-05",
+    "seo_title": "Meta publica matemáticas hechas con Muse Spark",
+    "seo_desc": "Según Meta, cinco de los seis trabajos responden a preguntas abiertas. Se hicieron con el chat normal de Meta AI, sin herramientas especiales."
   },
   {
     "slug": "2026-10-04-google-pausa-bug-bounty-codigo-abierto-ia",
@@ -873,7 +889,9 @@
       "license": "CC BY 2.0",
       "url": "https://commons.wikimedia.org/w/index.php?curid=79798162"
     },
-    "published": "2026-10-05"
+    "published": "2026-10-05",
+    "seo_title": "Google pausa recompensas por el aluvión de IA",
+    "seo_desc": "Desde el 1 de octubre no acepta fallos de producto en su programa de código abierto: la mayoría de envíos automáticos no eran válidos."
   },
   {
     "slug": "2026-10-02-apple-macos-acceso-disco-agentes-ia",
@@ -934,7 +952,9 @@
       "license": "CC0",
       "url": "https://stocksnap.io/photo/macbook-laptop-F7OLW2SG0C"
     },
-    "published": "2026-10-04"
+    "published": "2026-10-04",
+    "seo_title": "Apple blinda el acceso total al disco en el Mac",
+    "seo_desc": "Dar a una app permiso para ver todos tus archivos, correos y mensajes exigirá una acción más explícita. Apple señala a los agentes de IA."
   },
   {
     "slug": "2026-10-01-microsoft-informe-ciberataques-ia",
@@ -1008,7 +1028,8 @@
       "license": "CC BY 3.0",
       "url": "https://commons.wikimedia.org/w/index.php?curid=59096620"
     },
-    "published": "2026-10-04"
+    "published": "2026-10-04",
+    "seo_title": "Microsoft: con IA, un fallo es arma en 24 horas"
   },
   {
     "slug": "2026-09-30-gemini-skills-sustituyen-gems",
@@ -1076,7 +1097,8 @@
       "license": "CC BY-SA 4.0",
       "url": "https://commons.wikimedia.org/w/index.php?curid=61607994"
     },
-    "published": "2026-10-04"
+    "published": "2026-10-04",
+    "seo_title": "Google jubila los Gems: llegan las skills"
   },
   {
     "slug": "2026-09-30-california-prohibe-despidos-solo-ia",
@@ -1141,7 +1163,9 @@
       "license": "CC BY-SA 3.0",
       "url": "https://commons.wikimedia.org/w/index.php?curid=19327176"
     },
-    "published": "2026-10-04"
+    "published": "2026-10-04",
+    "seo_title": "California prohíbe despidos decididos por IA",
+    "seo_desc": "La ley «No Robo Bosses» obliga a que un humano confirme cualquier despido o sanción en el que intervenga un sistema automático."
   },
   {
     "slug": "2026-09-29-openai-gpt-6-1-sol",
@@ -1224,7 +1248,8 @@
       "license": "CC BY 2.0",
       "url": "https://commons.wikimedia.org/w/index.php?curid=164150862"
     },
-    "published": "2026-09-30"
+    "published": "2026-09-30",
+    "seo_title": "OpenAI presenta GPT-6.1 Sol, más barato"
   },
   {
     "slug": "2026-09-29-openai-dots-agentes-planes-pro",
@@ -1310,7 +1335,8 @@
       "license": "CC BY 2.0",
       "url": "https://commons.wikimedia.org/w/index.php?curid=134006156"
     },
-    "published": "2026-09-30"
+    "published": "2026-09-30",
+    "seo_title": "OpenAI lanza dots, agentes que no paran"
   },
   {
     "slug": "2026-09-28-claude-sonnet-5-5",
@@ -1385,7 +1411,8 @@
       "license": "CC BY 2.0",
       "url": "https://commons.wikimedia.org/w/index.php?curid=148412072"
     },
-    "published": "2026-09-28"
+    "published": "2026-09-28",
+    "seo_title": "Anthropic lanza Claude Sonnet 5.5"
   },
   {
     "slug": "2026-09-29-openai-retrasa-gpt-6-1-astra",
@@ -1450,7 +1477,8 @@
       "license": "CC BY 2.0",
       "url": "https://commons.wikimedia.org/w/index.php?curid=92008259"
     },
-    "published": "2026-09-29"
+    "published": "2026-09-29",
+    "seo_title": "OpenAI aparca GPT-6.1 Astra por seguridad"
   },
   {
     "slug": "2026-09-28-openai-pausa-entrenamiento-agentes",
@@ -1519,7 +1547,8 @@
       "license": "CC BY 3.0",
       "url": "https://commons.wikimedia.org/w/index.php?curid=16886979"
     },
-    "published": "2026-09-29"
+    "published": "2026-09-29",
+    "seo_title": "OpenAI pausa el entrenamiento de sus modelos"
   },
   {
     "slug": "2026-09-28-aisi-gpt-6-astra-cadena-suministro",
@@ -1584,7 +1613,9 @@
       "license": "CC BY-SA 4.0",
       "url": "https://commons.wikimedia.org/w/index.php?curid=113444223"
     },
-    "published": "2026-09-29"
+    "published": "2026-09-29",
+    "seo_title": "GPT-6 Astra atacó la cadena de suministro",
+    "seo_desc": "Con las protecciones desactivadas y en un entorno simulado, el modelo llegó a falsificar identidades y colar código malicioso en repositorios."
   },
   {
     "slug": "2026-09-29-florida-pide-frenar-openai-chatgpt-menores",
@@ -1657,6 +1688,8 @@
       "license": "CC BY 2.0",
       "url": "https://commons.wikimedia.org/w/index.php?curid=186235965"
     },
-    "published": "2026-09-29"
+    "published": "2026-09-29",
+    "seo_title": "Florida pide a un juez que frene a OpenAI",
+    "seo_desc": "El fiscal general del estado pide una orden temporal mientras sigue su demanda contra la empresa. De momento ningún juez la ha aprobado."
   }
 ]
