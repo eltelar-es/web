@@ -20,11 +20,7 @@
   "headline": "Cómo evitar que un agente de IA se coma tu factura",
   "description": "Un agente decide solo cuántas veces se llama y cada vuelta arrastra lo anterior. Los topes reales de OpenAI, Anthropic y Google, los dos errores 429 que piden lo contrario, y los frenos que solo viven en tu código.",
   "image": "https://eltelar.es/img/og/guia-limites-gasto-agentes-ia.jpg",
-  "author": {
-    "@type": "Person",
-    "name": "Juan Becerril Castañón",
-    "url": "https://eltelar.es/sobre-nosotros.html#autor"
-  },
+  "author": {"@type": "Organization", "name": "El Telar", "url": "https://eltelar.es/sobre-nosotros.html"},
   "publisher": {
     "@type": "Organization",
     "name": "El Telar"
@@ -193,6 +189,7 @@
           Existe además un tercer límite que no configuras tú: el límite mensual de uso que OpenAI asigna a cada organización según su nivel, independiente de los topes que pongas. Ese se identifica por <code class="font-mono text-[13px] bg-surface-container px-1">organization_usage_limit_exceeded</code> y no se arregla tocando tus ajustes — se arregla pidiendo que te lo suban. Merece la pena saber distinguirlo, porque la reacción instintiva ante un corte es ir a revisar la configuración propia, y en este caso ahí no hay nada que mirar.
         </p>
 </section>
+<figure data-inline-photo class="space-y-space-xs my-space-xl"><img class="w-full border border-outline-variant" src="../img/guias/foto-limites-gasto-agentes-ia.jpg" alt="Documentación de Claude sobre límites de gasto y de uso de la API por organización" width="1280" height="720" loading="lazy" decoding="async"/><figcaption class="font-caption text-caption text-on-surface-variant">Captura de pantalla: <a class="underline" href="https://docs.claude.com/en/api/rate-limits" rel="nofollow noopener" target="_blank">docs.claude.com · Rate limits</a>.</figcaption></figure>
 <section class="space-y-space-md">
 <h2 id="sec-3" class="font-headline-lg text-headline-lg text-primary">
         3. Qué te deja poner cada proveedor

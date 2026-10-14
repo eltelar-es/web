@@ -107,7 +107,13 @@
         "url": "../articulos/proteger-datos-ia.html"
       }
     ],
-    "published": "2026-10-14"
+    "published": "2026-10-14",
+    "photo": {
+      "alt": "Edificio 92 del campus de Microsoft en Redmond, con el logotipo de la empresa (imagen de archivo)",
+      "author": "Jiaqian AirplaneFan",
+      "license": "CC BY 3.0",
+      "url": "https://commons.wikimedia.org/w/index.php?curid=59096620"
+    }
   },
   {
     "slug": "2026-10-12-meta-muse-wonder-agentes",
@@ -220,7 +226,13 @@
       }
     ],
     "published": "2026-10-13",
-    "seo_title": "Anthropic: IA pequeña que podría copiarse sola"
+    "seo_title": "Anthropic: IA pequeña que podría copiarse sola",
+    "photo": {
+      "alt": "Robot aspirador sobre un suelo de madera, un ejemplo de aparato conectado del hogar (imagen de archivo)",
+      "author": "Smart Home Perfected",
+      "license": "CC BY 2.0",
+      "url": "https://commons.wikimedia.org/w/index.php?curid=145395247"
+    }
   },
   {
     "slug": "2026-10-08-anthropic-oss-scanner-codigo-abierto",
@@ -280,7 +292,13 @@
       }
     ],
     "published": "2026-10-12",
-    "seo_title": "Anthropic regala un escáner de fallos con IA"
+    "seo_title": "Anthropic regala un escáner de fallos con IA",
+    "photo": {
+      "alt": "Primer plano de código fuente de colores en una pantalla (imagen de archivo)",
+      "author": "rawpixel",
+      "license": "CC0",
+      "url": "https://www.rawpixel.com/image/3295877/free-photo-image-language-learning-code-technology-background-digital"
+    }
   },
   {
     "slug": "2026-10-08-usa-today-demanda-openai-250-millones",
@@ -328,7 +346,13 @@
       }
     ],
     "published": "2026-10-12",
-    "seo_title": "USA Today demanda a OpenAI por 250 millones"
+    "seo_title": "USA Today demanda a OpenAI por 250 millones",
+    "photo": {
+      "alt": "Máquina expendedora del periódico USA Today en una calle (imagen de archivo)",
+      "author": "Twzink",
+      "license": "CC0",
+      "url": "https://commons.wikimedia.org/w/index.php?curid=177764301"
+    }
   },
   {
     "slug": "2026-10-09-claude-flujos-dinamicos-1000-agentes",
