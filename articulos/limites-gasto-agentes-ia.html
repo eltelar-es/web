@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Límites de gasto para agentes de IA | El Telar</title>
+<meta name="description" content="Por qué un aviso de gasto no frena nada, qué tope deja poner cada proveedor y los cuatro límites que solo puedes poner tú en el código.">
+<link rel="canonical" href="https://eltelar.es/articulos/limites-gasto-agentes-ia.html"><link rel="icon" type="image/svg+xml" href="../img/favicon.svg?v=4"><link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32.png?v=4"><link rel="apple-touch-icon" href="../img/apple-touch-icon.png?v=4"><meta name="theme-color" content="#072417"><link rel="manifest" href="../manifest.json"><link rel="alternate" type="application/rss+xml" title="El Telar" href="../feed.xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Límites de gasto para agentes de IA | El Telar">
+<meta property="og:description" content="Un agente decide solo cuántas veces se llama y cada vuelta arrastra lo anterior. Los topes reales de OpenAI, Anthropic y Google, los dos errores 429 que piden lo contrario, y los frenos que solo viven en tu código.">
+<meta property="og:url" content="https://eltelar.es/articulos/limites-gasto-agentes-ia.html">
+<meta property="og:site_name" content="El Telar">
+<meta property="og:locale" content="es_ES"><meta property="og:image" content="https://eltelar.es/img/og/guia-limites-gasto-agentes-ia.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Límites de gasto para agentes de IA | El Telar">
+<meta name="twitter:description" content="Un agente decide solo cuántas veces se llama y cada vuelta arrastra lo anterior. Los topes reales de OpenAI, Anthropic y Google, los dos errores 429 que piden lo contrario, y los frenos que solo viven en tu código."><meta name="twitter:image" content="https://eltelar.es/img/og/guia-limites-gasto-agentes-ia.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Cómo evitar que un agente de IA se coma tu factura",
+  "description": "Un agente decide solo cuántas veces se llama y cada vuelta arrastra lo anterior. Los topes reales de OpenAI, Anthropic y Google, los dos errores 429 que piden lo contrario, y los frenos que solo viven en tu código.",
+  "image": "https://eltelar.es/img/og/guia-limites-gasto-agentes-ia.jpg",
+  "author": {
+    "@type": "Person",
+    "name": "Juan Becerril Castañón",
+    "url": "https://eltelar.es/sobre-nosotros.html#autor"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "El Telar"
+  },
+  "datePublished": "2026-10-14",
+  "dateModified": "2026-10-14",
+  "mainEntityOfPage": "https://eltelar.es/articulos/limites-gasto-agentes-ia.html",
+  "inLanguage": "es"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Me basta con poner un tope de gasto en el panel del proveedor?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Es el primer paso y el más importante, pero protege el mes, no la madrugada. Un tope mensual impide que un mal mes se convierta en uno catastrófico; no impide que un agente con un bucle queme el presupuesto entero de octubre en unas horas, porque el proveedor no sabe qué es «una ejecución» de tu agente ni cuándo debería haber terminado. Para eso hacen falta límites dentro de tu código: presupuesto de tokens por ejecución, máximo de pasos, tiempo máximo y un detector de acciones repetidas. El caso de Google es la excepción parcial, porque su límite de gasto sobre una ventana móvil de diez minutos sí pone techo a un arranque descontrolado, aunque no lo configuras tú."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Mi agente devuelve 429 y los reintentos no sirven de nada. ¿Qué miro?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Mira si la respuesta trae la cabecera retry-after. Si la trae, es un límite de ritmo y esperar funciona. Si no la trae, lo más probable es que hayas agotado el tope de gasto mensual de tu nivel: en Anthropic eso llega como 429 con el tipo rate_limit_error, igual que un límite de ritmo, y solo se distingue por error.details.error_code, que en ese caso vale enforced_spend_limit_reached. Ahí reintentar no sirve por diseño — el acceso vuelve a las 00:00 UTC del día 1 del mes siguiente, salvo que subas de nivel antes. Ojo también con que los SDK reintentan por su cuenta, así que puedes estar gastando intentos sin haber escrito tú ningún bucle. Y si lo que recibes es un 400 invalid_request_error cuyo mensaje empieza por «You have reached your specified API usage limits», entonces el límite es uno que configuraste tú y se quita desde la página de facturación."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Poner un max_tokens alto hace que gaste más?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No por sí solo, y conviene separar dos cosas que se confunden. Pagas por los tokens que el modelo genera de verdad, no por el máximo que le autorizas; y para los límites de ritmo, la documentación de Anthropic dice expresamente que max_tokens no entra en el cálculo del límite de tokens de salida por minuto, que se evalúa en tiempo real sobre lo realmente producido. Así que un max_tokens generoso no te penaliza ni en factura ni en límites. Lo que sí hace es seguir siendo un tope de seguridad útil: evita que una respuesta concreta se vaya a una longitud absurda, que es un caso distinto del que trata esta guía."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Si saco una segunda clave de API, ¿tengo el doble de margen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No, y es un intento habitual cuando empiezan los 429. En la API de Gemini la documentación es explícita: los límites se aplican por proyecto, no por clave. En Anthropic se aplican a nivel de organización, y los límites de la organización siguen mandando aunque la suma de los de tus espacios de trabajo dé más. Sacar claves nuevas sirve para separar presupuestos y para saber qué agente consume qué — que es una buena razón por sí misma — pero no para conseguir más capacidad. Si de verdad necesitas más, el camino es pedir una subida de nivel; y si lo que fallan son ráfagas, muchas veces el problema no es el límite sino que estás lanzando todas las llamadas a la vez."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué cifra pongo de tope la primera vez?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "El método que menos sustos da no empieza por elegir un número, sino por medirlo. Deja el agente haciendo la tarea completa unas cuantas veces con supervisión, apunta lo que cuesta una ejecución normal, multiplica por las ejecuciones que esperas en un mes y tendrás tu base. El tope va bastante por encima de esa base — porque algunos meses son peores — pero claramente por debajo de la cifra que te haría daño, y recordando que la documentación de OpenAI advierte de que el gasto registrado puede pasarse un poco del importe configurado. El aviso, alrededor de la mitad del tope. Y revísalo al cabo de un mes con datos reales, que valen más que cualquier estimación previa."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://eltelar.es/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Guías",
+      "item": "https://eltelar.es/index.html#guias"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Cómo evitar que un agente de IA se coma tu factura",
+      "item": "https://eltelar.es/articulos/limites-gasto-agentes-ia.html"
+    }
+  ]
+}
+</script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet"/></noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet"/></noscript>
+<style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><link rel="stylesheet" href="../css/tailwind.css"><link rel="stylesheet" href="../css/entrance.css?v=2"><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}(function(){var c=null;try{c=localStorage.getItem('eltelar-cookie-consent')}catch(e){}var g=c==='accepted'?'granted':'denied';gtag('consent','default',{ad_storage:g,ad_user_data:g,ad_personalization:g,analytics_storage:g,wait_for_update:500});window.adsbygoogle=window.adsbygoogle||[];if(g!=='granted'){window.adsbygoogle.requestNonPersonalizedAds=1;}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-4DPTKEG79N"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4DPTKEG79N');</script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8239907995939753" crossorigin="anonymous"></script></head><body class="bg-background font-body-md text-on-surface antialiased">
+<header class="w-full bg-surface-container-lowest border-b border-outline-variant"><div class="border-b border-outline-variant py-space-xxs px-space-md hidden md:block"><div class="max-w-site-max-width mx-auto flex items-center justify-between font-kicker text-kicker text-on-surface-variant uppercase tracking-wider"><span>EDICIÓN DIGITAL // ACTUALIZADO 2026 // EL TELAR &amp; AGENTES</span><span>MADRID · REMOTO</span><span>SIN HUMO · 100% PRODUCCIÓN</span></div></div><div class="max-w-site-max-width mx-auto px-space-md py-space-md sm:py-space-xl text-center"><p class="hidden sm:block font-kicker text-kicker uppercase tracking-widest text-on-surface-variant mb-space-xs">Publicación Independiente de Tecnología &amp; Agentes</p><a class="inline-block" href="../index.html"><div class="font-display text-display max-sm:text-[40px] max-sm:leading-none text-primary tracking-tight">El Telar</div></a><p class="hidden sm:block font-caption text-caption uppercase tracking-widest text-on-surface-variant mt-space-xs">EL BOLETÍN Y ARCHIVO PRÁCTICO DE INTELIGENCIA ARTIFICIAL Y AGENTES AUTÓNOMOS</p></div><div class="border-t border-b border-outline-variant"><div class="max-w-site-max-width mx-auto px-space-md flex items-center justify-between gap-space-sm h-14"><nav class="flex items-center gap-space-md sm:gap-space-lg h-full min-w-0 overflow-x-auto [scrollbar-width:none] whitespace-nowrap"><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../index.html#guias">GUÍAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../empieza-aqui.html">EMPIEZA AQUÍ</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../sobre-nosotros.html">SOBRE NOSOTROS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../noticias/index.html">NOTICIAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../herramientas/index.html">HERRAMIENTAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../prompts/index.html">PROMPTS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../contacto.html">CONTACTO</a></nav><div class="flex items-center gap-space-md"><button id="search-trigger" type="button" aria-label="Buscar en las guías" class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[20px]">search</span></button><a class="hidden sm:inline-block bg-primary-container text-surface px-space-md py-space-xs font-label-md text-label-md uppercase tracking-wider hover:bg-primary transition-colors" href="../index.html#despacho">SUSCRÍBETE GRATIS</a></div></div></div><div class="hidden md:block bg-surface-container-low border-b border-outline-variant py-space-xs px-space-md"><div class="max-w-site-max-width mx-auto text-center"><p class="font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">51 GUÍAS COMPLETAS EN EXPANSIÓN · ACTUALIZADO A MODELOS 2026 · PROBADO EN TERMINAL Y FLUJOS REALES · CERO HUMO NI TEORÍA VACÍA</p></div></div></header>
+<main class="w-full max-w-site-max-width mx-auto px-space-md py-space-xl"><div class="flex flex-col w-full">
+<nav class="w-full mb-space-lg">
+<ol class="flex flex-wrap items-center gap-space-xs font-kicker text-kicker text-on-surface-variant uppercase tracking-wider">
+<li><a class="hover:text-primary transition-colors" href="../index.html">Inicio</a></li>
+<li class="text-on-surface-variant">/</li>
+<li><a class="hover:text-primary transition-colors" href="../index.html#guias">Guías</a></li>
+<li class="text-on-surface-variant">/</li>
+<li class="text-primary font-bold truncate max-w-[280px] sm:max-w-md">Límites de gasto para agentes</li>
+</ol>
+</nav>
+<header class="w-full pb-space-xl mb-space-2xl">
+<div class="flex flex-wrap items-center gap-space-xs mb-space-md">
+<span class="bg-surface-container-high text-secondary px-space-sm py-1 font-kicker text-kicker uppercase tracking-widest">AGENTES // COSTES</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight max-w-editorial-max mb-space-md">
+          Cómo evitar que un agente de IA se coma tu factura
+        </h1>
+<p class="font-lead-paragraph text-lead-paragraph text-on-surface-variant max-w-editorial-max leading-relaxed mb-space-lg">
+          Un chat te cobra al ritmo que escribes. Un agente decide solo cuántas veces se llama, y cada vuelta arrastra todo lo anterior. Esta guía va de los frenos que existen de verdad — los del panel de tu proveedor y los que solo puedes poner tú en el código — y de por qué el aviso que creías que era un tope no lo es.
+        </p>
+<div class="bg-surface-container-lowest p-space-md flex flex-wrap items-center justify-between gap-y-3 shadow-sm">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 bg-primary text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">payments</span>
+</div>
+<div>
+<div class="font-label-md text-label-md text-on-surface font-semibold">Por la Redacción de El Telar</div><div class="font-caption text-caption text-on-surface-variant">Guías prácticas de IA y agentes, probadas en flujos de trabajo reales antes de publicarlas.</div>
+<button class="inline-flex items-center gap-1 mt-2 px-3 py-1.5 bg-surface-container text-primary font-label-md text-[12px] font-semibold uppercase tracking-wider hover:bg-surface-container-high transition-colors" id="copy-guide-btn" type="button"><span class="material-symbols-outlined text-[16px]">content_copy</span> Copiar guía para tu IA</button><span class="inline-flex items-center gap-1 ml-1"><button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" id="save-guide-btn" title="Guardar guía" type="button"><span class="material-symbols-outlined text-[16px]">bookmark_border</span></button><button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" id="copy-link-btn" title="Copiar enlace permanente" type="button"><span class="material-symbols-outlined text-[16px]">share</span></button></span>
+</div>
+</div>
+<div class="flex items-center gap-space-lg text-on-surface-variant font-caption text-caption uppercase tracking-wider">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">schedule</span> 19 min de lectura</span>
+</div>
+</div>
+</header>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-col-gap">
+<article class="lg:col-span-8 flex flex-col space-y-space-xl">
+<figure data-hero class="space-y-space-xs"><img class="w-full border border-outline-variant" src="../img/guias/hero-limites-gasto-agentes-ia.jpg" alt="Documentación de OpenAI sobre límites de gasto, con el aviso de que un tope duro devuelve error 429" width="1280" height="720" fetchpriority="high" decoding="async"/><figcaption class="font-caption text-caption text-on-surface-variant">Captura de pantalla: <a class="underline" href="https://developers.openai.com/api/docs/guides/spend-limits" rel="nofollow noopener" target="_blank">developers.openai.com</a>, consultada el 14 de octubre de 2026.</figcaption></figure>
+<div class="relative bg-surface-container-lowest p-space-lg shadow-sm">
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed text-justify">
+<span class="float-left font-display text-primary text-6xl leading-none pr-3 pt-1 font-normal">L</span>
+          a documentación de OpenAI resuelve en seis palabras la confusión que más dinero cuesta: <em>«Spend alerts do not enforce a cap»</em>. Los avisos de gasto no imponen ningún tope. Te mandan una notificación y el tráfico sigue corriendo exactamente igual que antes. Mucha gente configura uno, ve el número en el panel y se queda tranquila pensando que ha puesto un freno. Ha puesto un espejo retrovisor.
+        </p>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          La distinción importa poco mientras usas un chat, porque ahí el gasto va atado a tu velocidad de escritura. Importa mucho en cuanto montas <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="que-es-un-agente-ia.html">un agente</a>, porque un agente rompe ese vínculo: es él quien decide cuántas veces se llama. Esta guía recorre los dos sitios donde se ponen los frenos — el panel de cada proveedor y tu propio código — con la documentación de OpenAI, Anthropic y Google delante, y se detiene en un detalle que rompe más automatizaciones de lo que parece: hay dos errores 429 que se parecen mucho y que piden lo contrario el uno del otro.
+        </p>
+<section class="space-y-space-md">
+<h2 id="sec-1" class="font-headline-lg text-headline-lg text-primary">
+        1. Un agente no gasta como un chat
+      </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          En una conversación normal el coste tiene un regulador natural, y eres tú: escribes, esperas, lees, vuelves a escribir. Aunque no lo pienses, estás marcando el ritmo de gasto con las manos. Un agente funciona al revés. Le das un objetivo y él decide cuántos pasos da para llegar — mirar un archivo, llamar a una herramienta, releer lo que ha encontrado, volver a intentarlo. Entre un paso y el siguiente no hay ninguna persona.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Hasta ahí es solo autonomía. Lo que convierte la autonomía en un problema de factura es la segunda propiedad, y es puramente aritmética: <strong>cada paso vuelve a enviar todo lo anterior</strong>. Los modelos no recuerdan nada entre llamadas; lo que llamamos «memoria» de una conversación es que el historial entero viaja otra vez en cada petición. Así que el paso 10 de tu agente no cuesta lo que costó el paso 1: cuesta más, porque incluye los nueve anteriores. El gasto de una ejecución larga no crece en línea recta, crece como una escalera que se empina.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Ahí es donde un fallo pequeño se vuelve caro. Si la condición de parada está mal escrita y el agente repite el mismo paso, no estás pagando N veces lo mismo: cada repetición es más cara que la anterior porque lleva dentro todas las repeticiones previas. Y hay una versión especialmente desagradable de lo mismo, el reintento «inteligente»: cuando tu código vuelve a intentar un paso que falló y además mete el mensaje de error en el contexto para que el modelo lo arregle, cada reintento es más grande que el intento que fracasó. El mecanismo pensado para recuperarse de un fallo es el que multiplica su coste.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Una cautela antes de seguir, porque es un género que se ha puesto de moda: circulan por ahí cifras llamativas de facturas de cuatro y cinco dígitos provocadas por bucles de agentes. Casi todas salen de blogs de empresas que venden justamente la herramienta para evitarlo, y no he podido contrastarlas en ninguna fuente independiente, así que no las vas a leer aquí con números. El mecanismo sí es real y es el de los tres párrafos anteriores; no hace falta mala suerte para activarlo, basta con una condición de parada optimista.
+        </p>
+</section>
+<section class="space-y-space-md">
+<h2 id="sec-2" class="font-headline-lg text-headline-lg text-primary">
+        2. «Aviso» y «tope» no son la misma cosa
+      </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          OpenAI separa los dos controles de forma explícita en su documentación. Un <strong>aviso de gasto</strong> manda una notificación cuando el gasto llega a una cifra y no hace nada más: el tráfico de la API continúa. Un <strong>tope duro</strong> sí corta. Son complementarios, no alternativos — lo razonable es tener los dos, con el aviso bastante por debajo del tope, para enterarte antes de que te corten y no por el corte.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          El tope duro se puede poner a nivel de organización, de proyecto o de los dos a la vez. El de organización cubre el tráfico de todos los proyectos; el de proyecto solo lo que se factura a ese proyecto. Cuando salta, las peticiones afectadas devuelven un <strong>429</strong> con el código <code class="font-mono text-[13px] bg-surface-container px-1">organization_spend_limit_exceeded</code> o <code class="font-mono text-[13px] bg-surface-container px-1">project_spend_limit_exceeded</code>, según cuál de los dos hayas tocado.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Y hay una línea de letra pequeña que conviene leer dos veces, porque es la que decide dónde pones el número: <strong>la aplicación del tope no es instantánea</strong>, así que el gasto registrado puede superar ligeramente el importe configurado. Traducido a decisiones: el tope no se pone en la cifra que te arruinaría, se pone cómodamente por debajo. Si 500 € es el punto en el que tienes un problema serio, tu tope no es 500.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Existe además un tercer límite que no configuras tú: el límite mensual de uso que OpenAI asigna a cada organización según su nivel, independiente de los topes que pongas. Ese se identifica por <code class="font-mono text-[13px] bg-surface-container px-1">organization_usage_limit_exceeded</code> y no se arregla tocando tus ajustes — se arregla pidiendo que te lo suban. Merece la pena saber distinguirlo, porque la reacción instintiva ante un corte es ir a revisar la configuración propia, y en este caso ahí no hay nada que mirar.
+        </p>
+</section>
+<section class="space-y-space-md">
+<h2 id="sec-3" class="font-headline-lg text-headline-lg text-primary">
+        3. Qué te deja poner cada proveedor
+      </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Los tres grandes resuelven esto de manera bastante distinta, y conviene saberlo antes de elegir dónde montas algo que va a correr solo. Este es el resumen de lo que dice la documentación de cada uno a 14 de octubre de 2026:
+        </p>
+<div class="overflow-x-auto">
+<table class="w-full border-collapse font-body-sm text-body-sm">
+<thead class="bg-surface-container-high">
+<tr>
+<th class="text-left p-space-sm font-label-md text-label-md text-primary border-b border-outline-variant">Proveedor</th>
+<th class="text-left p-space-sm font-label-md text-label-md text-primary border-b border-outline-variant">Tope que puedes poner tú</th>
+<th class="text-left p-space-sm font-label-md text-label-md text-primary border-b border-outline-variant">Qué devuelve al llegar</th>
+</tr>
+</thead>
+<tbody class="text-on-surface-variant">
+<tr><td class="p-space-sm border-b border-outline-variant/40">OpenAI</td><td class="p-space-sm border-b border-outline-variant/40">Tope duro por organización y por proyecto, más avisos sin efecto sobre el tráfico</td><td class="p-space-sm border-b border-outline-variant/40">429 con <code class="font-mono text-[12px]">organization_spend_limit_exceeded</code> o <code class="font-mono text-[12px]">project_spend_limit_exceeded</code></td></tr>
+<tr><td class="p-space-sm border-b border-outline-variant/40">Anthropic</td><td class="p-space-sm border-b border-outline-variant/40">Un límite propio por debajo del tope de tu nivel, y límites de gasto y ritmo por espacio de trabajo</td><td class="p-space-sm border-b border-outline-variant/40">400 <code class="font-mono text-[12px]">invalid_request_error</code> si es el tuyo; 429 <code class="font-mono text-[12px]">enforced_spend_limit_reached</code> si es el del nivel</td></tr>
+<tr><td class="p-space-sm border-b border-outline-variant/40">Google (API de Gemini)</td><td class="p-space-sm border-b border-outline-variant/40">Ningún ajuste propio documentado; la plataforma aplica un límite de gasto por ventana móvil de 10 minutos</td><td class="p-space-sm border-b border-outline-variant/40">429 <code class="font-mono text-[12px]">RESOURCE_EXHAUSTED</code></td></tr>
+</tbody>
+</table>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          En <strong>Anthropic</strong> cada nivel trae un tope mensual de serie: 500 dólares en Start, 1.000 en Build y 200.000 en Scale, mientras que el nivel Custom no lleva tope y se negocia aparte. Encima de eso puedes fijar tu propio límite en la página de facturación, siempre por debajo del tope de tu nivel. Si trabajas con espacios de trabajo, se les pueden poner límites individuales de gasto y de ritmo, con dos reglas que conviene memorizar: al espacio de trabajo por defecto no se le puede poner límite, y los límites de la organización mandan siempre, aunque la suma de los de los espacios dé más.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          <strong>Google</strong> es el caso raro y el más interesante de los tres. No documenta ningún presupuesto que puedas configurar tú, pero aplica de oficio un límite de gasto sobre una ventana móvil de diez minutos — 10 dólares en el nivel 1, 50 en el 2 y 200 en el 3 — pensado explícitamente, dice la documentación, para protegerte de cargos inesperados. Es menos flexible y, para el caso concreto de un agente que se desboca a las tres de la mañana, bastante más protector que un tope mensual: diez minutos de bucle tienen un techo. Por encima quedan los topes de facturación de cada nivel, de 250, 2.000 y de 20.000 dólares en adelante.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          La lectura práctica de la tabla es que ninguno de los tres te protege de lo mismo. El tope mensual evita que un mes malo se convierta en un mes catastrófico, pero no impide que un agente queme el presupuesto entero de octubre en una madrugada. Para eso hacen falta los frenos de la sección 6.
+        </p>
+</section>
+<section class="space-y-space-md">
+<h2 id="sec-4" class="font-headline-lg text-headline-lg text-primary">
+        4. Dos errores 429 que parecen el mismo y piden lo contrario
+      </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Este es el detalle que más automatizaciones rompe, y es fácil de pasar por alto porque los dos errores comparten código HTTP y, en Anthropic, hasta el tipo de error: <code class="font-mono text-[13px] bg-surface-container px-1">rate_limit_error</code>. Uno significa «vas demasiado rápido, espera un momento». El otro significa «se acabó el presupuesto del mes». Reaccionar al segundo como si fuera el primero es tirar reintentos contra una puerta que no se va a abrir.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          La señal que los separa es la cabecera <code class="font-mono text-[13px] bg-surface-container px-1">retry-after</code>. Un 429 de ritmo la trae, y te dice exactamente cuántos segundos esperar. <strong>El 429 de tope de gasto no la trae</strong>, y no se arregla esperando unos segundos: según la documentación de Anthropic, el acceso vuelve a las 00:00 UTC del primer día del mes siguiente, salvo que pidas subir de nivel antes. Para distinguirlos en código hay que mirar <code class="font-mono text-[13px] bg-surface-container px-1">error.details.error_code</code>: si pone <code class="font-mono text-[13px] bg-surface-container px-1">enforced_spend_limit_reached</code>, no es un problema de ritmo.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Esto importa más de lo que parece porque <strong>los SDK oficiales reintentan solos</strong>. La documentación lo dice sin rodeos: los reintentos, incluidos los automáticos del SDK, fallan hasta que el acceso se restablece. Es decir, si no distingues los dos casos, tu agente se quedará dando vueltas contra un muro, consumiendo sus propios reintentos y su presupuesto de tiempo, hasta que alguien mire los registros.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Hay todavía un tercer caso, y este ni siquiera es un 429: si el límite que se alcanza es el que <em>tú</em> configuraste, Anthropic devuelve un <strong>400</strong> de tipo <code class="font-mono text-[13px] bg-surface-container px-1">invalid_request_error</code>, con un mensaje que empieza por «You have reached your specified API usage limits». Un 400 nunca se reintenta — es una petición que está mal, no una que llegó en mal momento. La regla general que sale de aquí cabe en una línea: <strong>antes de reintentar un 429, mira el código de error concreto</strong>, porque no todos los 429 hablan de velocidad.
+        </p>
+</section>
+<section class="space-y-space-md">
+<h2 id="sec-5" class="font-headline-lg text-headline-lg text-primary">
+        5. Reintentos: el freno que a veces es el acelerador
+      </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Para los 429 que sí son de ritmo, la receta está asentada y no tiene misterio: espera exponencial con un poco de aleatoriedad. Esperas 1 segundo, luego 2, luego 4, luego 8, y a cada espera le sumas un margen aleatorio pequeño. Lo aleatorio no es un adorno: sin él, todos los procesos que fallaron a la vez vuelven a la vez y se vuelven a tumbar entre ellos. Y si la respuesta trae <code class="font-mono text-[13px] bg-surface-container px-1">retry-after</code>, esa cifra manda por encima de tu cálculo.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Hay un detalle del funcionamiento interno que juega a tu favor y que conviene conocer: la API de Anthropic usa un algoritmo de cubo de fichas, de modo que tu capacidad <strong>se repone de forma continua</strong> en lugar de reiniciarse de golpe en intervalos fijos. Esperar un poco sirve de verdad; no estás aguardando a que den las en punto.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          En la dirección contraria hay dos sorpresas que explican la mayoría de los «pero si estoy por debajo de mi límite». La primera: los límites por minuto pueden aplicarse en ventanas más cortas — la propia documentación pone el ejemplo de que 60 peticiones por minuto se apliquen como 1 por segundo. Un agente que lanza sus veinte llamadas de golpe puede fallar aunque su media por minuto sea bajísima; la solución es repartirlas, no subir el límite. La segunda: existen límites de aceleración que saltan cuando el uso de una organización pega un salto brusco, aunque estés por debajo de los límites publicados. Si vas a multiplicar tu tráfico, súbelo poco a poco en vez de encender todo a la vez.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Por último, y enlazando con la sección 1: pon un techo al número total de reintentos <em>y</em> al tiempo total que se pueden pasar reintentando. Si además tu código añade el error al contexto para que el modelo corrija, limita cuántas veces hace eso. Tres intentos que arrastran los dos errores anteriores ya son una llamada sensiblemente más cara que la original, y a partir de cierto punto estás pagando cada vez más por un fallo que no va a dejar de serlo.
+        </p>
+</section>
+<section class="space-y-space-md">
+<h2 id="sec-6" class="font-headline-lg text-headline-lg text-primary">
+        6. Los frenos que solo puedes poner tú
+      </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Todo lo anterior vive en el panel del proveedor y protege el mes. Ninguno de esos controles sabe qué es «una ejecución» de tu agente, así que ninguno puede pararla. Eso solo lo puedes hacer tú, en el código, y son cuatro cosas bastante sencillas que casi nadie monta hasta que ya ha pagado por no tenerlas.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          <strong>Un presupuesto por ejecución.</strong> Lleva la cuenta de los tokens que vas gastando en la tarea y corta al llegar a un número. El detalle que lo hace funcionar: comprueba el presupuesto <em>antes</em> de cada llamada, no después. Comprobarlo después significa que siempre te pasas, y en la llamada más grande, que es la última.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          <strong>Un máximo de pasos.</strong> Un número fijo de iteraciones, por encima del cual el agente se para aunque crea que no ha terminado. «Se parará cuando acabe» no es un límite, es una esperanza. Mide cuántos pasos necesita tu tarea cuando va bien, multiplica por dos o tres, y ese es tu techo.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          <strong>Un reloj.</strong> Un tiempo máximo para la ejecución completa, no solo para cada petición. Los tiempos de espera por llamada no protegen de nada cuando el problema es que hay diez mil llamadas rápidas.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          <strong>Un detector de repetición.</strong> Si el agente ejecuta dos o tres veces seguidas la misma acción con los mismos argumentos, páralo. Los bucles reales casi nunca son creativos: son literalmente la misma llamada otra vez. Comparar la acción actual con las dos anteriores es media docena de líneas y ataja el caso más caro de todos.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          A esos cuatro añade dos costumbres de organización. Una: un interruptor de apagado — una variable que el agente consulta antes de cada paso y que tú puedas cambiar sin desplegar nada, para poder pararlo desde el móvil. Dos: <strong>una clave, proyecto o espacio de trabajo distinto por agente</strong>, para que el que se desboque no se coma el presupuesto de los demás y para que el corte te diga, por sí solo, cuál ha sido. Es justo para esto para lo que sirven los proyectos de OpenAI y los espacios de trabajo de Anthropic, recordando que el límite de la organización manda siempre por encima. Si quieres el contexto de qué sale caro y por qué, está en <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="cuanto-cuesta-usar-ia-api.html">cuánto cuesta de verdad usar la IA por API</a>; y si lo que te preocupa es que el agente haga algo irreversible y no solo caro, el repaso de <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="errores-automatizar-ia.html">los errores más comunes al automatizar con IA</a> cubre esa otra mitad.
+        </p>
+</section>
+<section class="space-y-space-md">
+<h2 id="sec-7" class="font-headline-lg text-headline-lg text-primary">
+        7. La caché cambia la aritmética
+      </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Un agente es el caso de libro para la caché de contexto, y la razón es la que vimos en la sección 1: en cada paso reenvía exactamente las mismas instrucciones de sistema y las mismas definiciones de herramientas. Ese prefijo es idéntico vuelta tras vuelta, así que es dinero que se paga muchas veces por el mismo texto.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Más allá del precio, la caché cambia también los límites de ritmo, y esto es menos conocido: en la mayoría de los modelos de Claude <strong>solo los tokens de entrada no cacheados cuentan para el límite de tokens de entrada por minuto</strong>. Los que se leen de caché no cuentan — la excepción documentada es Claude Haiku 3.5. El ejemplo que da la propia documentación: con un límite de 2 millones de tokens de entrada por minuto y un 80 % de aciertos de caché, puedes mover unos 10 millones de tokens totales por minuto, porque los 8 millones cacheados no suman.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Aquí hay una trampa contable que conviene conocer si vas a medir tu propio gasto: el campo <code class="font-mono text-[13px] bg-surface-container px-1">input_tokens</code> no son todos los tokens de entrada, sino solo los posteriores a tu último punto de caché. El total se calcula sumando los tres campos — los leídos de caché, los escritos en caché y ese <code class="font-mono text-[13px] bg-surface-container px-1">input_tokens</code>. Con un documento grande cacheado, el campo puede marcar 50 mientras la entrada real ronda los 200.000. Si construyes tu contador de presupuesto sobre el campo suelto, vas a creer que gastas una fracción de lo que gastas.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Un último apunte que ahorra una preocupación inútil: el parámetro <code class="font-mono text-[13px] bg-surface-container px-1">max_tokens</code> no cuenta para el límite de tokens de salida por minuto, que se mide sobre los tokens realmente generados. Ponerlo generoso no te penaliza en los límites de ritmo, y sigue siendo útil como tope de seguridad de una respuesta concreta.
+        </p>
+</section>
+<section class="space-y-space-md">
+<h2 id="sec-8" class="font-headline-lg text-headline-lg text-primary">
+        8. Lo que puedes vigilar sin montar nada
+      </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Antes de instalar ninguna herramienta de observabilidad, tienes información gratis en cada respuesta de la API. Anthropic devuelve cabeceras con el límite vigente, lo que te queda y cuándo se repone: <code class="font-mono text-[13px] bg-surface-container px-1">anthropic-ratelimit-requests-remaining</code>, las equivalentes de tokens de entrada y de salida, y las de reposición en formato RFC 3339. Guardarlas en tus registros cuesta una línea y convierte un «falla a veces» en un dato: si lo que queda baja a cero antes de acabar el minuto, ya sabes qué va a pasar y por qué.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Dos matices sobre esas cabeceras. Reflejan el límite <em>más restrictivo</em> que está actuando, que puede ser el del espacio de trabajo y no el de la organización; y la cabecera <code class="font-mono text-[13px] bg-surface-container px-1">anthropic-workspace-id</code> te dice contra qué espacio se ha contado la petición, que es justo lo que querrás saber cuando tengas varios agentes separados. Si prefieres leer los límites configurados en vez de deducirlos, hay una API de límites de ritmo que los devuelve, y la página de uso de la consola trae gráficas de tokens de entrada y salida y del porcentaje de aciertos de caché.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          En Gemini hay dos detalles que despistan si vienes de otro proveedor. El primero: <strong>los límites son por proyecto, no por clave</strong>, así que sacar una segunda clave no te da más margen — es un error que se comete a menudo cuando empiezan los 429. El segundo: el límite de peticiones por día se reinicia a medianoche del Pacífico, que no es tu medianoche; si tu proceso nocturno se queda sin cuota siempre a la misma hora rara, ahí tienes la explicación.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Todo esto son límites y contadores, no calidad. Que un agente no se pase de presupuesto no dice nada de si hace bien su trabajo, y las dos cosas se vigilan por separado: para la segunda, <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="evaluar-agente-ia.html">cómo saber si tu agente funciona de verdad</a>. Y si estás decidiendo cuántos agentes montar, conviene saber que repartir el trabajo entre varios multiplica también el contexto que cada uno arrastra — el cálculo está en <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="varios-agentes-ia-o-uno.html">varios agentes o uno solo</a>.
+        </p>
+</section>
+<section class="space-y-space-md">
+<h2 id="sec-9" class="font-headline-lg text-headline-lg text-primary">
+        9. La lista antes de dejarlo solo
+      </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Si vas a dejar un agente corriendo sin nadie delante, estas son las comprobaciones que cubren la mayor parte del riesgo económico. Ninguna lleva más de un rato:
+        </p>
+<ul class="space-y-space-xs font-body-md text-body-md text-on-surface-variant list-disc pl-space-lg leading-relaxed">
+<li>Un tope duro configurado, no solo un aviso — y puesto por debajo de la cifra que te dolería, porque la aplicación no es instantánea.</li>
+<li>Un aviso además del tope, en torno a la mitad, para enterarte antes del corte.</li>
+<li>Clave o proyecto propios para este agente, separados de lo demás.</li>
+<li>Presupuesto de tokens por ejecución, comprobado antes de cada llamada.</li>
+<li>Máximo de pasos y tiempo máximo de ejecución, los dos.</li>
+<li>Detector de acción repetida con los mismos argumentos.</li>
+<li>Reintentos con espera exponencial y aleatoriedad, con techo de intentos y de tiempo.</li>
+<li>El código comprueba el tipo de 429 antes de reintentar, y no reintenta nunca un 400.</li>
+<li>Las cabeceras de límite quedan guardadas en los registros.</li>
+<li>Un interruptor para pararlo sin desplegar.</li>
+</ul>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Una nota final sobre la caducidad de todo esto: los niveles, los topes y los códigos de error cambian cada pocos meses, y algunos han cambiado en el último año. Las cifras de esta guía son las que publicaban OpenAI, Anthropic y Google el 14 de octubre de 2026. Los mecanismos — avisos que no frenan, dos 429 distintos, el contexto que se acumula — son bastante más estables que los números, pero antes de confiarle dinero a una configuración, ábrele la página de documentación de tu proveedor y compruébalo.
+        </p>
+</section>
+<section class="space-y-space-md">
+<h2 id="sec-faq" class="font-headline-lg text-headline-lg text-primary">
+        Preguntas frecuentes
+      </h2>
+<div class="space-y-space-sm">
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Me basta con poner un tope de gasto en el panel del proveedor?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Es el primer paso y el más importante, pero protege el mes, no la madrugada. Un tope mensual impide que un mal mes se convierta en uno catastrófico; no impide que un agente con un bucle queme el presupuesto entero de octubre en unas horas, porque el proveedor no sabe qué es «una ejecución» de tu agente ni cuándo debería haber terminado. Para eso hacen falta límites dentro de tu código: presupuesto de tokens por ejecución, máximo de pasos, tiempo máximo y un detector de acciones repetidas. El caso de Google es la excepción parcial, porque su límite de gasto sobre una ventana móvil de diez minutos sí pone techo a un arranque descontrolado, aunque no lo configuras tú.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">Mi agente devuelve 429 y los reintentos no sirven de nada. ¿Qué miro?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Mira si la respuesta trae la cabecera retry-after. Si la trae, es un límite de ritmo y esperar funciona. Si no la trae, lo más probable es que hayas agotado el tope de gasto mensual de tu nivel: en Anthropic eso llega como 429 con el tipo rate_limit_error, igual que un límite de ritmo, y solo se distingue por error.details.error_code, que en ese caso vale enforced_spend_limit_reached. Ahí reintentar no sirve por diseño — el acceso vuelve a las 00:00 UTC del día 1 del mes siguiente, salvo que subas de nivel antes. Ojo también con que los SDK reintentan por su cuenta, así que puedes estar gastando intentos sin haber escrito tú ningún bucle. Y si lo que recibes es un 400 invalid_request_error cuyo mensaje empieza por «You have reached your specified API usage limits», entonces el límite es uno que configuraste tú y se quita desde la página de facturación.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Poner un max_tokens alto hace que gaste más?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+No por sí solo, y conviene separar dos cosas que se confunden. Pagas por los tokens que el modelo genera de verdad, no por el máximo que le autorizas; y para los límites de ritmo, la documentación de Anthropic dice expresamente que max_tokens no entra en el cálculo del límite de tokens de salida por minuto, que se evalúa en tiempo real sobre lo realmente producido. Así que un max_tokens generoso no te penaliza ni en factura ni en límites. Lo que sí hace es seguir siendo un tope de seguridad útil: evita que una respuesta concreta se vaya a una longitud absurda, que es un caso distinto del que trata esta guía.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">Si saco una segunda clave de API, ¿tengo el doble de margen?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+No, y es un intento habitual cuando empiezan los 429. En la API de Gemini la documentación es explícita: los límites se aplican por proyecto, no por clave. En Anthropic se aplican a nivel de organización, y los límites de la organización siguen mandando aunque la suma de los de tus espacios de trabajo dé más. Sacar claves nuevas sirve para separar presupuestos y para saber qué agente consume qué — que es una buena razón por sí misma — pero no para conseguir más capacidad. Si de verdad necesitas más, el camino es pedir una subida de nivel; y si lo que fallan son ráfagas, muchas veces el problema no es el límite sino que estás lanzando todas las llamadas a la vez.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Qué cifra pongo de tope la primera vez?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+El método que menos sustos da no empieza por elegir un número, sino por medirlo. Deja el agente haciendo la tarea completa unas cuantas veces con supervisión, apunta lo que cuesta una ejecución normal, multiplica por las ejecuciones que esperas en un mes y tendrás tu base. El tope va bastante por encima de esa base — porque algunos meses son peores — pero claramente por debajo de la cifra que te haría daño, y recordando que la documentación de OpenAI advierte de que el gasto registrado puede pasarse un poco del importe configurado. El aviso, alrededor de la mitad del tope. Y revísalo al cabo de un mes con datos reales, que valen más que cualquier estimación previa.
+</div>
+</div>
+</div>
+</section>
+</article>
+<aside class="lg:col-span-4 flex flex-col space-y-space-xl">
+<div class="bg-surface-container-lowest p-space-lg shadow-sm sticky top-space-md">
+<div class="flex items-center justify-between mb-space-sm pb-space-xs">
+<span class="font-kicker text-kicker uppercase tracking-widest text-primary font-bold">ÍNDICE DE LA GUÍA</span>
+<span class="material-symbols-outlined text-on-surface-variant text-base">format_list_bulleted</span>
+</div>
+<nav class="space-y-space-xs font-body-sm text-body-sm">
+<a class="block text-primary hover:text-secondary font-medium transition-colors" href="#sec-1">Un agente no gasta como un chat</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-2">Aviso y tope no son lo mismo</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-3">Qué deja poner cada proveedor</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-4">Dos 429 distintos</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-5">Reintentos</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-6">Los frenos de tu código</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-7">La caché cambia el cálculo</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-8">Qué vigilar sin montar nada</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-9">La lista final</a>
+</nav>
+</div>
+<div class="bg-surface-container-high p-space-md space-y-space-sm shadow-sm">
+<span class="font-kicker text-kicker uppercase tracking-widest text-primary font-bold">FICHA TÉCNICA</span>
+<dl class="space-y-space-xs font-caption text-caption">
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Categoría:</dt><dd class="font-semibold text-primary">Agentes</dd></div>
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Nivel técnico:</dt><dd class="font-semibold text-primary">Intermedio</dd></div>
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Fuentes citadas:</dt><dd class="font-semibold text-primary">Documentación de OpenAI (Spend limits), de Anthropic (Rate limits) y de Google (Gemini API rate limits), consultadas el 14 de octubre de 2026</dd></div>
+</dl>
+</div>
+</aside>
+</div>
+<section class="w-full mt-space-4xl pt-space-2xl bg-surface-container-lowest p-space-lg shadow-sm">
+<div class="mb-space-lg">
+<h3 class="font-headline-md text-headline-md text-primary">Continúa explorando el archivo</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-col-gap"><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="cuanto-cuesta-usar-ia-api.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/portadas/cuanto-cuesta-usar-ia-api.svg" alt="" width="1600" height="520" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="cuanto-cuesta-usar-ia-api.html">Cuánto cuesta de verdad usar la IA por API</a></h4></div></article><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="errores-automatizar-ia.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-errores-automatizar-ia.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="errores-automatizar-ia.html">Los errores más comunes al automatizar con IA</a></h4></div></article><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="evaluar-agente-ia.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-evaluar-agente-ia.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="evaluar-agente-ia.html">Cómo saber si tu agente de IA funciona de verdad</a></h4></div></article></div>
+</section>
+</div></main><footer class="w-full bg-surface-container-low border-t border-outline-variant mt-space-4xl"><div class="max-w-site-max-width mx-auto px-space-md py-space-3xl"><div class="grid grid-cols-1 md:grid-cols-3 gap-col-gap"><div class="space-y-space-sm"><span class="font-headline-md text-headline-md text-primary">El Telar</span><p class="font-body-sm text-body-sm text-on-surface-variant">Publicación independiente de tecnología y automatización con agentes. Contenidos verificados en producción, sin patrocinios opacos ni promesas vacías.</p></div><div><h3 class="font-kicker text-kicker uppercase tracking-wider text-on-surface mb-space-md">SECCIONES</h3><ul class="space-y-space-xs font-body-sm text-body-sm"><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html#guias">Archivo de Guías</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../empieza-aqui.html">Guía para Principiantes</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../sobre-nosotros.html">Manifiesto Editorial</a></li><li class="pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html#despacho">Boletín Semanal</a></li></ul></div><div><h3 class="font-kicker text-kicker uppercase tracking-wider text-on-surface mb-space-md">CONTACTO &amp; PRENSA</h3><div class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant"><p class="font-semibold text-on-surface">contacto@eltelar.es</p><p>Síguenos: <a class="hover:text-primary underline" href="https://www.instagram.com/eltelar_es/" rel="me noopener" target="_blank">Instagram</a> · <a class="hover:text-primary underline" href="https://www.threads.com/@eltelar_es" rel="me noopener" target="_blank">Threads</a> · <a class="hover:text-primary underline" href="https://x.com/eltelar_es" rel="me noopener" target="_blank">X</a></p></div></div></div></div><div class="border-t border-outline-variant py-space-md bg-surface-container-lowest"><div class="max-w-site-max-width mx-auto px-space-md flex flex-col md:flex-row items-center justify-between gap-space-sm text-caption font-caption text-on-surface-variant"><div>© 2026 El Telar. Todos los derechos reservados. Independencia editorial garantizada.</div><div class="flex flex-wrap items-center justify-center gap-space-md"><a class="hover:text-on-surface transition-colors" href="../privacidad.html">Privacidad</a><a class="hover:text-on-surface transition-colors" href="../terminos.html">Términos</a><a class="hover:text-on-surface transition-colors" href="../cookies.html">Cookies</a><a class="hover:text-on-surface transition-colors" href="../aviso-legal.html">Aviso legal</a><a class="hover:text-on-surface transition-colors" href="../sobre-nosotros.html">Sobre nosotros</a><a class="hover:text-on-surface transition-colors" href="../contacto.html">Contacto</a></div></div></div></footer><script defer src="../js/copy-guide.js"></script><script defer src="../js/guide-interactions.js"></script><script defer src="../js/reading-progress.js"></script><script defer src="../js/search.js?v=7"></script><script defer src="../js/entrance.js"></script><script defer src="../js/cookie-consent.js?v=4"></script></body></html>
