@@ -1,5 +1,115 @@
 [
   {
+    "slug": "2026-10-13-apple-homeview-sin-europa",
+    "date": "2026-10-13",
+    "category": "Herramientas",
+    "title": "Apple lanza HomeView, su pantalla con Siri AI, pero no la venderá en la UE",
+    "dek": "El nuevo centro del hogar de Apple cuesta 299 dólares en EE. UU. y sale el 13 de noviembre en ocho países; Siri AI aún no está disponible en la UE.",
+    "tldr": "Apple presentó HomeView, una pantalla de 7 pulgadas para casa que depende de Siri AI. Como esa función no está disponible en iOS en la Unión Europea, el aparato no se venderá allí por ahora y Apple no da fecha.",
+    "key_facts": [
+      {
+        "value": "299 $",
+        "label": "precio en EE. UU."
+      },
+      {
+        "value": "13 nov",
+        "label": "fecha de lanzamiento"
+      },
+      {
+        "value": "8",
+        "label": "países en el lanzamiento"
+      },
+      {
+        "value": "7\"",
+        "label": "pantalla Liquid Retina"
+      }
+    ],
+    "quote": {
+      "text": "working constructively with the EU in an attempt to find a path forward",
+      "source": "Apple, según MacRumors (traducido: «trabajando de forma constructiva con la UE para encontrar una solución»)"
+    },
+    "body": [
+      "Apple presentó el 13 de octubre de 2026 HomeView, un nuevo centro para el hogar inteligente con pantalla Liquid Retina de 7 pulgadas y Siri AI, su asistente renovado con inteligencia artificial. Cuesta 299 dólares en Estados Unidos, ya se puede reservar y llegará el 13 de noviembre a ocho países.",
+      "La compañía ha confirmado que HomeView no estará disponible en la Unión Europea. El motivo que da Apple es que Siri AI no está disponible actualmente en iOS en la región y el aparato lo necesita para funcionar.",
+      "Apple asegura que está «trabajando de forma constructiva con la UE para encontrar una solución», pero no ha dado ningún plazo para que llegue a los países miembros. Tampoco se ha detallado en la fuente consultada cuáles son los ocho países del lanzamiento.",
+      "Lo que aún no se sabe es cuándo podrá usarse Siri AI en iPhone y iPad dentro de la UE y, por tanto, si HomeView podrá venderse en España. De momento, no hay fecha."
+    ],
+    "impact": [
+      "Si vives en España, no podrás comprar HomeView de forma oficial en su lanzamiento.",
+      "Es un ejemplo claro de cómo la regulación europea está retrasando la llegada de funciones de IA de grandes empresas a los usuarios de la UE.",
+      "Si te planteas importarlo, ten en cuenta que depende de Siri AI en tu iPhone, que tampoco funciona en la UE: sin ella, no tendrías el producto completo."
+    ],
+    "sources": [
+      {
+        "name": "MacRumors, «Apple HomeView Won't Be Available in the European Union»",
+        "url": "https://www.macrumors.com/2026/10/13/apple-homeview-wont-be-available-in-eu/"
+      }
+    ],
+    "related": [
+      {
+        "title": "El AI Act explicado",
+        "url": "../articulos/ai-act-explicado.html"
+      }
+    ],
+    "photo": {
+      "alt": "Vista aérea de la sede de Apple, Apple Park, en Cupertino (imagen de archivo)",
+      "author": "Daniel L. Lu (user:dllu)",
+      "license": "CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/w/index.php?curid=108154658"
+    },
+    "published": "2026-10-14"
+  },
+  {
+    "slug": "2026-10-13-microsoft-1400-fallos-parches",
+    "date": "2026-10-13",
+    "category": "Seguridad",
+    "title": "Microsoft corrige más de 1.400 fallos en un mes, un récord empujado por la IA",
+    "dek": "Las actualizaciones de octubre tapan más de 1.400 vulnerabilidades en Windows y otros programas; Microsoft atribuye el aumento a los modelos de lenguaje.",
+    "tldr": "Microsoft publicó el 13 de octubre actualizaciones para más de 1.400 fallos de seguridad, un récord. La empresa atribuye el aumento a que la IA encuentra más errores. Conviene instalar las actualizaciones de Windows.",
+    "key_facts": [
+      {
+        "value": "1.400+",
+        "label": "fallos corregidos este mes"
+      },
+      {
+        "value": "78",
+        "label": "críticos, como mínimo"
+      },
+      {
+        "value": "1.261",
+        "label": "récord anterior en un año completo (2020)"
+      }
+    ],
+    "quote": {
+      "text": "Security leaders should focus on exploitable risk",
+      "source": "Tyler Reguly, Fortra, citado por Krebs on Security (traducido: «Los responsables de seguridad deben centrarse en el riesgo explotable»)"
+    },
+    "body": [
+      "Microsoft publicó el 13 de octubre de 2026 su paquete mensual de actualizaciones de seguridad con correcciones para más de 1.400 vulnerabilidades en Windows y otros programas, según el periodista especializado Brian Krebs. Supera el récord de septiembre, que ya rondaba las 1.000 correcciones y era unas diez veces lo habitual en un mes.",
+      "Al menos 78 de los fallos son «críticos»: se podrían aprovechar con poca o ninguna acción del usuario, y la mayoría permite a un atacante ejecutar sus propias órdenes en el equipo afectado. Uno de los fallos, en el Shell de Windows (CVE-2026-96951), se cataloga como «día cero», es decir, ya se aprovechaba antes del parche, y afecta a Windows 10 y 11 y a algunas versiones de Server.",
+      "Según Krebs, Microsoft atribuye al uso de modelos de lenguaje el gran volumen de errores descubiertos. Satnam Narang, de Tenable, explicó que la cifra de este mes supera con creces el récord de 2020 (1.261 CVE, los identificadores públicos de vulnerabilidades) y que ya se han superado los 4.000 en lo que va de año.",
+      "Los expertos avisan de que estos paquetes tan grandes tensan a los equipos de las empresas, que suelen probar cada actualización antes de instalarla. Fortra recomienda priorizar las 26 vulnerabilidades de Microsoft incluidas este año en el catálogo de fallos explotados de la agencia estadounidense CISA."
+    ],
+    "impact": [
+      "Instala las actualizaciones de Windows cuanto antes: es la medida más efectiva, y hay un fallo ya aprovechado por atacantes.",
+      "La IA también sirve para encontrar fallos antes que los delincuentes: se esperan más parches, y más grandes, en los próximos meses.",
+      "En una empresa o autónomo con equipos propios, prioriza los fallos ya explotados antes que intentar probarlo todo."
+    ],
+    "sources": [
+      {
+        "name": "Krebs on Security, «Microsoft Patches More Than 1,400 Security Flaws»",
+        "url": "https://krebsonsecurity.com/2026/10/microsoft-patches-more-than-1400-security-flaws/"
+      }
+    ],
+    "related": [
+      {
+        "title": "Proteger tus datos al usar IA",
+        "url": "../articulos/proteger-datos-ia.html"
+      }
+    ],
+    "published": "2026-10-14"
+  },
+  {
     "slug": "2026-10-12-meta-muse-wonder-agentes",
     "date": "2026-10-12",
     "category": "Modelos",
