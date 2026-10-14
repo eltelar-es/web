@@ -26,7 +26,7 @@
     "name": "El Telar"
   },
   "datePublished": "2026-09-28",
-  "dateModified": "2026-09-28",
+  "dateModified": "2026-10-14",
   "mainEntityOfPage": "https://eltelar.es/articulos/clonar-voz-transcribir-audio-ia.html",
   "inLanguage": "es"
 }
@@ -286,6 +286,49 @@
           Si vienes buscando montar algo más grande alrededor de esto —procesar audio automáticamente, meterlo en un flujo con otras herramientas— el paso siguiente natural es <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="analizar-imagenes-pdf-ia.html">analizar imágenes y PDFs con IA</a>, que cubre el resto de entradas que no son texto, y <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="video-ia-herramientas.html">las herramientas de vídeo con IA</a>, donde el audio sintético casi siempre acaba siendo la mitad del trabajo.
         </p>
 </section>
+<section id="handy" class="space-y-space-md scroll-mt-24 bg-surface-container-low p-space-lg border-l-4 border-secondary">
+<span class="font-kicker text-kicker uppercase tracking-widest text-secondary">Del reel de Instagram</span>
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Handy: dicta en cualquier app, gratis y sin internet</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed"><strong class="text-on-surface">Handy</strong> es una aplicación de escritorio gratuita y de código abierto (MIT) que convierte tu voz en texto en tu propio ordenador. Pulsas un atajo, hablas y el texto aparece en el campo donde estés escribiendo, sin enviar el audio a la nube.</p>
+<h3 class="font-headline-sm text-headline-sm text-primary">Cómo empezar</h3>
+<ol class="list-decimal pl-space-lg space-y-space-xs font-body-md text-body-md text-on-surface"><li>Descárgala desde <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://handy.computer">handy.computer</a> o la página de versiones de GitHub. Hay versión para Windows, macOS y Linux.</li><li>Elige un modelo: Whisper (Small, Medium, Turbo o Large, con aceleración por GPU si la tienes) o Parakeet V3, optimizado para procesador y con detección automática de idioma.</li><li>Configura el atajo de teclado. Puedes mantenerlo pulsado mientras hablas o pulsarlo una vez para empezar y otra para parar.</li><li>Habla y suelta: el texto se pega en la aplicación que tengas abierta.</li></ol>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Es muy útil para escribir prompts largos a una IA: hablando das más contexto en menos tiempo.</p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed"><strong class="text-on-surface">Lo honesto:</strong> no hay versión para móvil. La primera vez descarga el modelo, que ocupa espacio, y en ordenadores modestos conviene usar los modelos pequeños.</p>
+<p class="font-body-sm text-body-sm mt-space-sm"><strong class="text-on-surface">Código:</strong> <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://github.com/cjpais/Handy">github.com/cjpais/Handy</a></p>
+</section>
+<section id="voicestudio" class="space-y-space-md scroll-mt-24 bg-surface-container-low p-space-lg border-l-4 border-secondary">
+<span class="font-kicker text-kicker uppercase tracking-widest text-secondary">Del reel de Instagram</span>
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">VoiceStudio: clona tu voz en tu ordenador</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed"><strong class="text-on-surface">VoiceStudio</strong> es una alternativa de código abierto (AGPL-3.0) a ElevenLabs que funciona en tu propio ordenador: clonación y diseño de voces, doblaje de vídeos, dictado, transcripción, historias y audiolibros.</p>
+<h3 class="font-headline-sm text-headline-sm text-primary">Instalación</h3>
+<ol class="list-decimal pl-space-lg space-y-space-xs font-body-md text-body-md text-on-surface"><li>Descarga el instalador desde la página de versiones de GitHub: <code>.dmg</code> para Mac, <code>.exe</code> para Windows y <code>.AppImage</code> o <code>.deb</code> para Linux.</li><li>También hay instalador de un comando: en Mac y Linux, <code>curl -fsSL https://voicestudio.sh/install | sh</code>; en Windows, desde PowerShell, el comando que indica el README.</li><li>Abre la app, graba o sube una muestra de tu voz y escribe el texto que quieras generar.</li></ol>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Con tarjeta gráfica NVIDIA (Windows o Linux) o un Mac con Apple Silicon va acelerado. Sin gráfica dedicada también funciona, más lento, y necesita unos 5 GB libres.</p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed"><strong class="text-on-surface">Lo honesto:</strong> los servicios remotos son opcionales y la analítica de uso solo se activa con tu consentimiento. Clonar la voz de otra persona sin su permiso puede ser ilegal y es una de las bases de muchas estafas: úsalo con tu voz o con autorización.</p>
+<p class="font-body-sm text-body-sm mt-space-sm"><strong class="text-on-surface">Código:</strong> <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://github.com/debpalash/VoiceStudio">github.com/debpalash/VoiceStudio</a></p>
+</section>
+<section id="ebook2audiobook" class="space-y-space-md scroll-mt-24 bg-surface-container-low p-space-lg border-l-4 border-secondary">
+<span class="font-kicker text-kicker uppercase tracking-widest text-secondary">Del reel de Instagram</span>
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Convierte tus libros electrónicos en audiolibros</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed"><strong class="text-on-surface">ebook2audiobook</strong> es una herramienta gratuita y de código abierto (Apache-2.0) que transforma libros electrónicos en audiolibros con capítulos y metadatos, usando motores de síntesis de voz que funcionan en tu ordenador.</p>
+<h3 class="font-headline-sm text-headline-sm text-primary">Qué puede hacer</h3>
+<ul class="list-disc pl-space-lg space-y-space-xs font-body-md text-body-md text-on-surface"><li>Leer muchos formatos: epub, mobi, azw3, fb2, PDF, txt, rtf, doc, docx, html, odt e incluso imágenes, con OCR para páginas escaneadas.</li><li>Generar el audio en mp3, m4b, m4a, flac, wav y otros formatos.</li><li>Trabajar en 1158 idiomas, entre ellos el español.</li><li>Usar distintos motores de voz (XTTSv2, Bark, VITS, Tortoise…) y, si quieres, clonar tu propia voz a partir de un archivo.</li></ul>
+<h3 class="font-headline-sm text-headline-sm text-primary">Cómo empezar</h3>
+<ol class="list-decimal pl-space-lg space-y-space-xs font-body-md text-body-md text-on-surface"><li>Sigue las instrucciones del README para ejecutarlo en local, con Docker o en remoto.</li><li>Abre la interfaz web (Gradio) que se lanza en tu navegador.</li><li>Sube el libro, elige idioma y voz, y pulsa convertir.</li></ol>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">El proyecto indica un mínimo de 2 GB de RAM; con tarjeta gráfica va mucho más rápido.</p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed"><strong class="text-on-surface">Lo honesto:</strong> el propio autor advierte que es solo para libros sin DRM adquiridos legalmente. No clones voces de otras personas sin permiso. Libros largos pueden tardar horas en ordenadores modestos.</p>
+<p class="font-body-sm text-body-sm mt-space-sm"><strong class="text-on-surface">Repositorio:</strong> <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://github.com/DrewThomasson/ebook2audiobook">github.com/DrewThomasson/ebook2audiobook</a></p>
+</section>
+<section id="meetily" class="space-y-space-md scroll-mt-24 bg-surface-container-low p-space-lg border-l-4 border-secondary">
+<span class="font-kicker text-kicker uppercase tracking-widest text-secondary">Del reel de Instagram</span>
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Meetily: transcribe y resume reuniones sin subir el audio</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed"><strong class="text-on-surface">Meetily</strong> es un asistente de reuniones de código abierto (MIT) y gratuito que captura, transcribe y resume tus reuniones en tu propio ordenador, sin enviar el audio a servidores externos.</p>
+<h3 class="font-headline-sm text-headline-sm text-primary">Cómo usarlo</h3>
+<ol class="list-decimal pl-space-lg space-y-space-xs font-body-md text-body-md text-on-surface"><li>Descarga el instalador desde la página de versiones del repositorio (macOS y Windows; en Linux, el README explica cómo compilarlo).</li><li>Abre la app y elige el modelo de transcripción.</li><li>Empieza a grabar al inicio de la reunión, ya sea en Zoom, Meet, Teams o presencial: verás la transcripción en tiempo real.</li><li>Al terminar, genera el resumen. Puedes usar un modelo local con Ollama o un proveedor como Claude, Groq u OpenRouter con tu propia clave.</li></ol>
+<h3 class="font-headline-sm text-headline-sm text-primary">Ventajas</h3>
+<ul class="list-disc pl-space-lg space-y-space-xs font-body-md text-body-md text-on-surface"><li>Privacidad: la transcripción se procesa en tu equipo.</li><li>Coste: usa modelos abiertos en lugar de APIs caras, y funciona sin conexión.</li></ul>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed"><strong class="text-on-surface">Lo honesto:</strong> existe una versión PRO de pago con más precisión y exportaciones avanzadas. En Windows necesita un procesador x64 con AVX2. Si usas un proveedor en la nube para el resumen, el texto sí sale de tu ordenador. Y, sobre todo, informa a los participantes de que grabas: en muchos países es obligatorio.</p>
+<p class="font-body-sm text-body-sm mt-space-sm"><strong class="text-on-surface">Repositorio:</strong> <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://github.com/Zackriya-Solutions/meetily">github.com/Zackriya-Solutions/meetily</a></p>
+</section>
 <section class="space-y-space-md">
 <h2 class="font-headline-lg text-headline-lg text-primary">
           Preguntas frecuentes
@@ -359,6 +402,10 @@ La obligación de revelar deepfakes del artículo 50 se refiere a contenido que 
 <a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-4">Qué dice la ley</a>
 <a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-5">El fraude por voz</a>
 <a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-6">Música y conclusiones</a>
+<a class="block text-secondary font-semibold hover:underline" href="#handy">→ Handy</a>
+<a class="block text-secondary font-semibold hover:underline" href="#voicestudio">→ VoiceStudio</a>
+<a class="block text-secondary font-semibold hover:underline" href="#ebook2audiobook">→ ebook2audiobook</a>
+<a class="block text-secondary font-semibold hover:underline" href="#meetily">→ Meetily</a>
 </nav>
 </div>
 

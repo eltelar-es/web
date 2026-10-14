@@ -22,7 +22,7 @@
   "author": { "@type": "Organization", "name": "El Telar", "url": "https://eltelar.es/" },
   "publisher": { "@type": "Organization", "name": "El Telar", "url": "https://eltelar.es/", "logo": { "@type": "ImageObject", "url": "https://eltelar.es/img/icon-512.png", "width": 512, "height": 512 } },
   "datePublished": "2026-09-15",
-  "dateModified": "2026-09-28",
+  "dateModified": "2026-10-14",
   "mainEntityOfPage": "https://eltelar.es/articulos/curriculum-entrevistas-ia.html",
   "inLanguage": "es"
 }
@@ -387,6 +387,27 @@ Dame también una versión de seguimiento para enviar si en [días] no he recibi
 </div>
 </div>
 </section>
+<section id="resume-matcher" class="space-y-space-md scroll-mt-24 bg-surface-container-low p-space-lg border-l-4 border-secondary">
+<span class="font-kicker text-kicker uppercase tracking-widest text-secondary">Del reel de Instagram</span>
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Resume Matcher: adapta tu currículum a cada oferta</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Muchos currículums se descartan porque no se parecen a la oferta, aunque la persona encaje. <strong>Resume Matcher</strong> es una herramienta gratuita y de código abierto (Apache-2.0) que te ayuda a crear una versión adaptada de tu currículum para cada puesto.</p>
+<h3 class="font-headline-sm text-headline-sm text-primary">Cómo funciona</h3>
+<ol class="list-decimal pl-space-lg space-y-space-xs font-body-md text-body-md text-on-surface"><li>Instálalo siguiendo la guía oficial en <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://resumematcher.fyi">resumematcher.fyi</a>.</li><li>Sube tu currículum base en PDF o DOCX.</li><li>Pega la descripción de la oferta que te interesa.</li><li>Revisa las mejoras que propone la IA y quédate solo con las que sean ciertas.</li><li>Genera la carta de presentación y, si quieres, preparación para la entrevista.</li><li>Ajusta el diseño y exporta un PDF.</li></ol>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Puede usar modelos locales o servicios como Claude, ChatGPT o DeepSeek con tu propia clave.</p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed"><strong class="text-on-surface">Lo honesto:</strong> necesitas instalarlo, no es una web lista para usar. Si eliges un modelo de pago, cada uso cuesta (normalmente poco). Y lo más importante: la IA puede exagerar. Lee cada línea y no incluyas nada que no puedas defender en una entrevista.</p>
+<p class="font-body-sm text-body-sm mt-space-sm"><strong class="text-on-surface">Código:</strong> <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://github.com/srbhr/Resume-Matcher">github.com/srbhr/Resume-Matcher</a></p>
+</section>
+<section id="career-ops" class="space-y-space-md scroll-mt-24 bg-surface-container-low p-space-lg border-l-4 border-secondary">
+<span class="font-kicker text-kicker uppercase tracking-widest text-secondary">Del reel de Instagram</span>
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">career-ops: un agente que filtra ofertas por ti</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed"><strong class="text-on-surface">career-ops</strong> es un agente de búsqueda de empleo de código abierto (MIT) y gratuito para candidatos. Su idea es aplicar mejor a menos ofertas: pegas una oferta y te dice si merece la noche que vas a dedicarle.</p>
+<h3 class="font-headline-sm text-headline-sm text-primary">Cómo empezar</h3>
+<ol class="list-decimal pl-space-lg space-y-space-xs font-body-md text-body-md text-on-surface"><li>Instala Node.js y ejecuta <code>npx @santifer/career-ops init</code>.</li><li>Entra en la carpeta <code>career-ops</code> y abre tu agente de IA (por ejemplo, <code>claude</code>).</li><li>La primera vez te pide por chat tu CV, tu perfil y los puestos que buscas.</li><li>Pega la URL o el texto de una oferta.</li></ol>
+<h3 class="font-headline-sm text-headline-sm text-primary">Qué hace</h3>
+<ul class="list-disc pl-space-lg space-y-space-xs font-body-md text-body-md text-on-surface"><li>Comprueba que la oferta sigue publicada.</li><li>Puntúa el encaje con tu CV real y te aconseja no aplicar por debajo de 4 sobre 5 (puedes ignorarlo).</li><li>Genera un CV adaptado legible por los sistemas de selección, la carta de presentación y las respuestas a los formularios.</li><li>Prepara entrevistas, guiones de negociación salarial y seguimiento.</li></ul>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed"><strong class="text-on-surface">Lo honesto:</strong> necesitas un agente como Claude Code o Codex, con su propio coste (el proyecto también explica cómo usarlo con modelos locales gratuitos). Nunca envía candidaturas ni correos: tú revisas y pulsas Enviar. Tus datos se quedan en tu ordenador, salvo lo que se manda al proveedor de IA que elijas. Lee cada CV antes de usarlo.</p>
+<p class="font-body-sm text-body-sm mt-space-sm"><strong class="text-on-surface">Repositorio:</strong> <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://github.com/career-ops-hq/career-ops">github.com/career-ops-hq/career-ops</a></p>
+</section>
 <section class="space-y-space-md">
 <span class="font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">Preguntas frecuentes</span>
 <h2 class="font-headline-md text-headline-md text-primary">
@@ -481,6 +502,8 @@ Lo razonable es esperar al plazo que te dieron. Si no te dieron ninguno, una sem
 <li class="flex items-start gap-space-xs py-1"><span class="text-secondary font-mono font-bold">09.</span><a class="hover:text-primary transition-colors" href="#sec-oferta">Leer bien una oferta</a></li>
 <li class="flex items-start gap-space-xs py-1"><span class="text-secondary font-mono font-bold">10.</span><a class="hover:text-primary transition-colors" href="#sec-despues">Después de la entrevista</a></li>
 <li class="flex items-start gap-space-xs py-1"><span class="text-secondary font-mono font-bold">11.</span><a class="hover:text-primary transition-colors" href="#sec-espana">Datos que no deberías poner</a></li>
+<li class="flex items-start gap-space-xs py-1"><a class="text-secondary font-semibold hover:underline" href="#resume-matcher">→ Resume Matcher</a></li>
+<li class="flex items-start gap-space-xs py-1"><a class="text-secondary font-semibold hover:underline" href="#career-ops">→ career-ops</a></li>
 </ol>
 </div>
 <div class="bg-surface-container-low p-space-lg shadow-sm space-y-space-md">

@@ -23,7 +23,7 @@
   "author": { "@type": "Organization", "name": "El Telar", "url": "https://eltelar.es/" },
   "publisher": { "@type": "Organization", "name": "El Telar", "url": "https://eltelar.es/", "logo": { "@type": "ImageObject", "url": "https://eltelar.es/img/icon-512.png", "width": 512, "height": 512 } },
   "datePublished": "2026-09-08",
-  "dateModified": "2026-10-13",
+  "dateModified": "2026-10-14",
   "mainEntityOfPage": "https://eltelar.es/articulos/video-ia-herramientas.html",
   "inLanguage": "es"
 }
@@ -300,6 +300,27 @@
           Si trabajas con vídeo de forma habitual —canal propio, contenido para redes, material educativo— la recomendación práctica es sencilla: usa vídeo generado libremente para escenas de apoyo, transiciones o previsualización, y sé explícito con tu audiencia cuando un fragmento concreto es sintético en vez de grabado, especialmente si el contenido tiene apariencia documental o informativa. La confianza del público es más fácil de perder de golpe por una etiqueta que faltó que de recuperar después.
         </p>
 </section>
+<section id="supoclip" class="space-y-space-md scroll-mt-24 bg-surface-container-low p-space-lg border-l-4 border-secondary">
+<span class="font-kicker text-kicker uppercase tracking-widest text-secondary">Del reel de Instagram</span>
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">SupoClip: de un vídeo largo a clips verticales</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed"><strong class="text-on-surface">SupoClip</strong> es una herramienta de código abierto (AGPL-3.0) que se presenta como alternativa a OpusClip. Le das un vídeo largo, como un podcast, una charla o un directo, y encuentra los momentos con más potencial, los puntúa y los exporta como clips verticales 9:16.</p>
+<h3 class="font-headline-sm text-headline-sm text-primary">Qué hace</h3>
+<ul class="list-disc pl-space-lg space-y-space-xs font-body-md text-body-md text-on-surface"><li>Un modelo de IA (Gemini, GPT, Claude o un modelo local con Ollama) elige de 3 a 7 fragmentos a partir de la transcripción.</li><li>Cada clip recibe puntuaciones de gancho, interés, valor y facilidad para compartir.</li><li>Recorte vertical con detección de caras para mantener centrado a quien habla.</li><li>Subtítulos sincronizados palabra a palabra y un título de gancho al principio.</li><li>Editor integrado y exportación con ajustes para TikTok, Reels y Shorts, sin marcas de agua.</li></ul>
+<h3 class="font-headline-sm text-headline-sm text-primary">Formas de usarlo</h3>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Puedes usar su web alojada (<a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://www.supoclip.com">supoclip.com</a>), su app para iPhone o instalarlo en tu ordenador con Docker siguiendo el README.</p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed"><strong class="text-on-surface">Lo honesto:</strong> instalarlo tú es gratis y sin límites de uso, pero necesitas Docker, una clave de AssemblyAI para la transcripción y una clave de un proveedor de IA (o Ollama en local). Esas claves pueden tener coste. No hemos comprobado los precios de la versión alojada.</p>
+<p class="font-body-sm text-body-sm mt-space-sm"><strong class="text-on-surface">Código:</strong> <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://github.com/FujiwaraChoki/supoclip">github.com/FujiwaraChoki/supoclip</a></p>
+</section>
+<section id="shotcut" class="space-y-space-md scroll-mt-24 bg-surface-container-low p-space-lg border-l-4 border-secondary">
+<span class="font-kicker text-kicker uppercase tracking-widest text-secondary">Del reel de Instagram</span>
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Shotcut: el editor de vídeo gratis para montar lo que hace la IA</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Las herramientas de vídeo con IA generan clips sueltos, pero alguien tiene que montarlos. <strong>Shotcut</strong> es un editor de vídeo gratuito y de código abierto (GPL-3.0) para Windows, macOS y Linux.</p>
+<h3 class="font-headline-sm text-headline-sm text-primary">Primeros pasos</h3>
+<ol class="list-decimal pl-space-lg space-y-space-xs font-body-md text-body-md text-on-surface"><li>Descárgalo desde <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://shotcut.org">shotcut.org</a>.</li><li>Crea un proyecto y arrastra tus clips, imágenes y audio a la lista de reproducción.</li><li>Llévalos a la línea de tiempo: puedes usar varias pistas de vídeo y audio.</li><li>Corta con la herramienta de división, añade transiciones solapando clips y aplica filtros de texto, color o volumen.</li><li>Pulsa Exportar, elige un ajuste predefinido (por ejemplo, para web) y guarda el archivo.</li></ol>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Para reels verticales, configura el proyecto en 1080 × 1920 antes de empezar.</p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed"><strong class="text-on-surface">Lo honesto:</strong> tiene más opciones que las apps de móvil y la curva de aprendizaje es mayor; un tutorial corto ayuda mucho. No hay versión para móvil.</p>
+<p class="font-body-sm text-body-sm mt-space-sm"><strong class="text-on-surface">Código:</strong> <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://github.com/mltframework/shotcut">github.com/mltframework/shotcut</a></p>
+</section>
 </article>
 <aside class="lg:col-span-4 space-y-space-xl">
 <div class="bg-surface-container-lowest p-space-md border border-outline-variant text-center">
@@ -327,6 +348,8 @@
 <a class="block hover:text-primary transition-colors" href="#sec-5">Derechos y deepfakes</a>
 <a class="block hover:text-primary transition-colors" href="#hyperframes">HyperFrames: vídeo con código</a>
 <a class="block hover:text-primary transition-colors" href="#voicestudio">VoiceStudio: clonar voz y doblar</a>
+<a class="block text-secondary font-semibold hover:underline" href="#supoclip">→ SupoClip</a>
+<a class="block text-secondary font-semibold hover:underline" href="#shotcut">→ Shotcut</a>
 </nav>
 </div>
 

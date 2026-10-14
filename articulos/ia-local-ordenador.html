@@ -22,7 +22,7 @@
   "author": { "@type": "Organization", "name": "El Telar", "url": "https://eltelar.es/" },
   "publisher": { "@type": "Organization", "name": "El Telar", "url": "https://eltelar.es/", "logo": { "@type": "ImageObject", "url": "https://eltelar.es/img/icon-512.png", "width": 512, "height": 512 } },
   "datePublished": "2026-09-15",
-  "dateModified": "2026-10-11",
+  "dateModified": "2026-10-14",
   "mainEntityOfPage": "https://eltelar.es/articulos/ia-local-ordenador.html",
   "inLanguage": "es"
 }
@@ -415,6 +415,16 @@ Documento:
 <p class="font-body-sm text-body-sm text-on-surface mt-space-xs"><strong>En Mac (con Homebrew):</strong></p><code class="block font-mono text-body-sm bg-primary text-on-primary px-space-sm py-space-xs mt-space-xxs overflow-x-auto">xcode-select --install<br>brew install libomp git python<br>git clone https://github.com/JustVugg/colibri<br>cd colibri &amp;&amp; ./start-here.sh</code>
 <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Es gratis (Apache 2.0). Pide como mínimo 8 GB de RAM (mejor 16) y unos 22 GB libres en el disco para el modelo más pequeño. Ojo con las expectativas: al leer del disco va bastante más lento que Ollama con un modelo que cabe entero en memoria, así que para el día a día sigue siendo mejor la opción de Ollama que explicamos arriba. Colibri tiene sentido cuando quieres probar un modelo grande que no te cabría de ninguna otra forma.</p>
 </section>
+<section id="jan" class="space-y-space-md scroll-mt-24 bg-surface-container-low p-space-lg border-l-4 border-secondary">
+<span class="font-kicker text-kicker uppercase tracking-widest text-secondary">Del reel de Instagram</span>
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Jan: un chat de IA en tu ordenador, sin internet</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed"><strong class="text-on-surface">Jan</strong> es una aplicación gratuita y de código abierto (Apache 2.0) que se presenta como alternativa a ChatGPT funcionando en tu propio ordenador. Descargas modelos abiertos y chateas con ellos sin enviar nada a internet.</p>
+<h3 class="font-headline-sm text-headline-sm text-primary">Cómo empezar</h3>
+<ol class="list-decimal pl-space-lg space-y-space-xs font-body-md text-body-md text-on-surface"><li>Descarga Jan desde <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://jan.ai">jan.ai</a> o desde GitHub. Hay versión para Windows, macOS y Linux.</li><li>En la sección de modelos, descarga uno abierto de Hugging Face (Llama, Gemma, Qwen, gpt-oss…). Empieza por uno pequeño si tu ordenador tiene poca memoria.</li><li>Abre un chat nuevo y elige ese modelo. A partir de aquí funciona sin conexión.</li><li>Opcional: crea asistentes con instrucciones fijas para tareas que repites.</li></ol>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Jan también puede conectarse a modelos en la nube (OpenAI, Anthropic, Mistral, Groq…) con tu propia clave, ofrece un servidor local compatible con la API de OpenAI y admite MCP.</p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed"><strong class="text-on-surface">Lo honesto:</strong> los modelos que caben en un ordenador doméstico son útiles para resumir, redactar o traducir, pero no igualan a los grandes modelos de pago. Ocupan varios gigas y necesitan RAM: en equipos modestos irán lentos.</p>
+<p class="font-body-sm text-body-sm mt-space-sm"><strong class="text-on-surface">Código:</strong> <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://github.com/janhq/jan">github.com/janhq/jan</a></p>
+</section>
 <section class="space-y-space-md">
 <span class="font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">Preguntas frecuentes</span>
 <h2 class="font-headline-md text-headline-md text-primary">
@@ -499,6 +509,7 @@ No. Los modelos que caben en un ordenador personal tienen mucha menos capacidad.
 <li class="flex items-start gap-space-xs py-1"><span class="text-secondary font-mono font-bold">09.</span><a class="hover:text-primary transition-colors" href="#sec-problemas">Problemas habituales</a></li>
 <li class="flex items-start gap-space-xs py-1"><span class="text-secondary font-mono font-bold">10.</span><a class="hover:text-primary transition-colors" href="#sec-privado-ejemplo">Tres usos que sí compensan</a></li>
 <li class="flex items-start gap-space-xs py-1"><span class="text-secondary font-mono font-bold">11.</span><a class="hover:text-primary transition-colors" href="#sec-actualizar">Actualizar y liberar espacio</a></li>
+<li class="flex items-start gap-space-xs py-1"><a class="text-secondary font-semibold hover:underline" href="#jan">→ Jan</a></li>
 </ol>
 </div>
 <div class="bg-surface-container-low p-space-lg shadow-sm space-y-space-md">

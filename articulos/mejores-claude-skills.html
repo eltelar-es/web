@@ -23,7 +23,7 @@
   "author": { "@type": "Organization", "name": "El Telar", "url": "https://eltelar.es/" },
   "publisher": { "@type": "Organization", "name": "El Telar", "url": "https://eltelar.es/", "logo": { "@type": "ImageObject", "url": "https://eltelar.es/img/icon-512.png", "width": 512, "height": 512 } },
   "datePublished": "2026-09-08",
-  "dateModified": "2026-10-13",
+  "dateModified": "2026-10-14",
   "mainEntityOfPage": "https://eltelar.es/articulos/mejores-claude-skills.html",
   "inLanguage": "es"
 }
@@ -368,6 +368,85 @@ ejemplos de formato correcto, qué evitar y por qué.</pre>
 <li><strong class="text-on-surface">Documenta las tuyas propias:</strong> si el despacho o el equipo crea varias skills internas, un archivo README corto en la propia carpeta de skills, explicando qué hace cada una, ahorra confusión cuando se incorpora alguien nuevo al equipo.</li>
 </ol>
 </section>
+<section id="caveman" class="space-y-space-md scroll-mt-24 bg-surface-container-low p-space-lg border-l-4 border-secondary">
+<span class="font-kicker text-kicker uppercase tracking-widest text-secondary">Del reel de Instagram</span>
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Caveman: Claude habla como un cavernícola y gasta menos</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed"><strong class="text-on-surface">Caveman</strong> es una herramienta gratuita y de código abierto (Apache-2.0) para Claude Code y más de 30 agentes. Hace que el agente responda con frases cortas, al estilo cavernícola, sin tocar el código que escribe. En el ejemplo del proyecto, una explicación de 63 tokens se queda en 20 con el mismo arreglo.</p>
+<h3 class="font-headline-sm text-headline-sm text-primary">Cómo instalarlo</h3>
+<ol class="list-decimal pl-space-lg space-y-space-xs font-body-md text-body-md text-on-surface"><li>Necesitas Node.js 22.13 o superior.</li><li>En la terminal, ejecuta <code>npx @caveman-ai/cli@latest</code>. Detecta tus agentes, te enseña qué va a cambiar y confirmas con Enter.</li><li>Abre Claude Code como siempre: ya responde en modo cavernícola.</li><li>Con <code>caveman status</code> ves qué partes están activas y con <code>caveman off</code> apagas la que no quieras.</li></ol>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Además de responder corto, la versión 4 comprime registros, JSON y resultados de tests antes de que el modelo los lea, y tiene un modo que elige modelo y esfuerzo por ti (ese necesita una cuenta gratuita).</p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed"><strong class="text-on-surface">Lo honesto:</strong> el ahorro (un 33,2 % menos de tokens de entrada por sesión en sus pruebas, según sus autores) depende de cómo trabajes. Si te gustan las explicaciones detalladas, te parecerá demasiado seco; puedes apagarlo cuando quieras.</p>
+<p class="font-body-sm text-body-sm mt-space-sm"><strong class="text-on-surface">Repositorio:</strong> <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://github.com/JuliusBrussee/caveman">github.com/JuliusBrussee/caveman</a></p>
+</section>
+<section id="arena-100" class="space-y-space-md scroll-mt-24 bg-surface-container-low p-space-lg border-l-4 border-secondary">
+<span class="font-kicker text-kicker uppercase tracking-widest text-secondary">Del reel de Instagram</span>
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Arena: 100 Claudes compiten por tu respuesta</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed"><strong class="text-on-surface">Arena</strong> es una skill gratuita (MIT) para Claude Code pensada para cuando no te convence lo que te ha dado Claude. En vez de preguntar una y otra vez, <code>/arena</code> lanza 100 subagentes con exactamente la misma tarea, pero cada uno con una carta de estrategia distinta.</p>
+<h3 class="font-headline-sm text-headline-sm text-primary">Cómo funciona</h3>
+<ol class="list-decimal pl-space-lg space-y-space-xs font-body-md text-body-md text-on-surface"><li>Los agentes se emparejan. Cada uno ataca la solución del otro y defiende y mejora la suya.</li><li>Un juez puntúa cada duelo con una rúbrica escrita.</li><li>El perdedor queda fuera: 100, 50, 25, 13, 7, 4, 2 y 1.</li><li>Recibes la solución ganadora, los ataques que superó y cuántas rondas hicieron falta.</li></ol>
+<h3 class="font-headline-sm text-headline-sm text-primary">Instalación</h3>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Pega el enlace del repositorio en Claude Code y pídele que instale la skill, o usa <code>/plugin marketplace add Jakeschincariol/arena-skill</code> y <code>/plugin install arena-skill@arena-skill</code>. Los agentes trabajan dentro de una carpeta <code>.arena/</code> y no tocan tus archivos.</p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed"><strong class="text-on-surface">Lo honesto:</strong> es muy cara en tokens. Con 100 agentes son unas 595 llamadas al modelo, según el proyecto. Para el día a día, baja el número con <code>--agents 8</code> y guarda los 100 para decisiones importantes.</p>
+<p class="font-body-sm text-body-sm mt-space-sm"><strong class="text-on-surface">Repositorio:</strong> <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://github.com/Jakeschincariol/arena-skill">github.com/Jakeschincariol/arena-skill</a></p>
+</section>
+<section id="ponytail" class="space-y-space-md scroll-mt-24 bg-surface-container-low p-space-lg border-l-4 border-secondary">
+<span class="font-kicker text-kicker uppercase tracking-widest text-secondary">Del reel de Instagram</span>
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Ponytail: el Claude más vago escribe menos código</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed"><strong class="text-on-surface">Ponytail</strong> es una skill gratuita (licencia MIT) que mete en tu agente de IA al típico programador veterano que mira cincuenta líneas y las sustituye por una. Funciona en Claude Code y en unos 20 agentes más.</p>
+<h3 class="font-headline-sm text-headline-sm text-primary">Cómo trabaja</h3>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Antes de escribir código, recorre una escalera y se para en el primer escalón que sirve: ¿hace falta esto?, ¿ya existe en el proyecto?, ¿lo resuelve la biblioteca estándar?, ¿hay una función nativa de la plataforma?, ¿una dependencia ya instalada? Solo después escribe algo nuevo. En el ejemplo del proyecto, un selector de fechas pasa de 335 líneas a un archivo de 10 que usa el selector del navegador.</p>
+<h3 class="font-headline-sm text-headline-sm text-primary">Instalación y uso</h3>
+<ol class="list-decimal pl-space-lg space-y-space-xs font-body-md text-body-md text-on-surface"><li>Sigue las instrucciones de instalación para Claude Code del README.</li><li>Trabaja como siempre: la skill se aplica al programar.</li><li>Usa <code>/ponytail-review</code> para revisar un cambio y <code>/ponytail-audit</code> para revisar el proyecto entero por prioridad.</li></ol>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed"><strong class="text-on-surface">Lo honesto:</strong> las cifras (-53 % de código, -26 % de coste, 98 % de lógica delicada con test) salen del benchmark de sus autores con 39 tareas. La regla no es escribir menos a toda costa: nunca quita validación, seguridad ni accesibilidad.</p>
+<p class="font-body-sm text-body-sm mt-space-sm"><strong class="text-on-surface">Repositorio:</strong> <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://github.com/DietrichGebert/ponytail">github.com/DietrichGebert/ponytail</a></p>
+</section>
+<section id="impeccable" class="space-y-space-md scroll-mt-24 bg-surface-container-low p-space-lg border-l-4 border-secondary">
+<span class="font-kicker text-kicker uppercase tracking-widest text-secondary">Del reel de Instagram</span>
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Impeccable: Claude juzga el diseño de tu web</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Los modelos de IA han aprendido de las mismas plantillas y, sin guía, repiten los mismos tics: tipografía Inter para todo, degradados de morado a azul, tarjetas dentro de tarjetas o texto gris sobre fondos de color. <strong>Impeccable</strong> es una skill gratuita (Apache-2.0) que da a tu agente un vocabulario de diseño y 59 reglas automáticas para detectarlos.</p>
+<h3 class="font-headline-sm text-headline-sm text-primary">Cómo empezar</h3>
+<ol class="list-decimal pl-space-lg space-y-space-xs font-body-md text-body-md text-on-surface"><li>En la carpeta de tu proyecto, ejecuta <code>npx impeccable install</code>.</li><li>Dentro de Claude Code (u otro agente), lanza <code>/impeccable init</code>: hace unas preguntas y guarda en <code>PRODUCT.md</code> para quién es tu web y qué tono tiene.</li><li>Usa los comandos que necesites.</li></ol>
+<h3 class="font-headline-sm text-headline-sm text-primary">Los tres más útiles</h3>
+<ul class="list-disc pl-space-lg space-y-space-xs font-body-md text-body-md text-on-surface"><li><code>/impeccable critique</code>: revisión de diseño (jerarquía, claridad, impacto).</li><li><code>/impeccable audit</code>: comprobaciones técnicas de accesibilidad, rendimiento y adaptación a móvil.</li><li><code>/impeccable polish</code>: repaso final antes de publicar.</li></ul>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Hay 24 comandos en total, como <code>bolder</code>, <code>quieter</code> o <code>animate</code>.</p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed"><strong class="text-on-surface">Lo honesto:</strong> funciona sobre el código de tu web, así que necesitas un agente de programación y acceso a ese código. No sirve para webs hechas en constructores cerrados.</p>
+<p class="font-body-sm text-body-sm mt-space-sm"><strong class="text-on-surface">Repositorio:</strong> <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://github.com/pbakaus/impeccable">github.com/pbakaus/impeccable</a></p>
+</section>
+<section id="anatomy" class="space-y-space-md scroll-mt-24 bg-surface-container-low p-space-lg border-l-4 border-secondary">
+<span class="font-kicker text-kicker uppercase tracking-widest text-secondary">Del reel de Instagram</span>
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Anatomy: Claude dibuja cómo funciona cualquier cosa</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed"><strong class="text-on-surface">Anatomy</strong> es una skill gratuita (MIT) para Claude Code y otros agentes que convierte una idea técnica en una ilustración interactiva. En lugar de un diagrama de cajas, se inventa un objeto físico cuyo funcionamiento es el concepto: en el ejemplo del proyecto, una caché que evita repetir trabajo se convierte en una cerradura de pernos que solo gira cuando todos encajan.</p>
+<h3 class="font-headline-sm text-headline-sm text-primary">Instalación</h3>
+<ol class="list-decimal pl-space-lg space-y-space-xs font-body-md text-body-md text-on-surface"><li>Necesitas Node.js. En la terminal: <code>npx skills add wheresryan22/anatomy -g -a claude-code</code>.</li><li>En Claude Code, pide lo que quieras explicar: <code>/anatomy explica cómo funciona un limitador de peticiones, interactivo</code>.</li><li>Abre el HTML que genera en el navegador.</li></ol>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">No necesita claves de API ni instalar dependencias: usa solo módulos integrados de Node.</p>
+<h3 class="font-headline-sm text-headline-sm text-primary">Qué entrega</h3>
+<ul class="list-disc pl-space-lg space-y-space-xs font-body-md text-body-md text-on-surface"><li><strong>SVG</strong>: piezas isométricas sólidas con cuatro tonos de sombra, en una tarjeta con título, pista y lectura en vivo.</li><li><strong>SVG + WebGL</strong>: para fuego, agua, luz o vapor.</li><li><strong>3D</strong> (beta): piezas que giran o se doblan de verdad.</li></ul>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Sirve como página HTML, archivo SVG o componentes de React.</p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed"><strong class="text-on-surface">Lo honesto:</strong> está pensada para agentes de programación; en el chat normal de Claude no funciona igual. El modo 3D sigue en beta.</p>
+<p class="font-body-sm text-body-sm mt-space-sm"><strong class="text-on-surface">Repositorio:</strong> <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://github.com/wheresryan22/anatomy">github.com/wheresryan22/anatomy</a></p>
+</section>
+<section id="answer-me-with-html" class="space-y-space-md scroll-mt-24 bg-surface-container-low p-space-lg border-l-4 border-secondary">
+<span class="font-kicker text-kicker uppercase tracking-widest text-secondary">Del reel de Instagram</span>
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Answer me with HTML: respuestas en una página</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Cuando le haces a Claude una pregunta compleja, la respuesta suele ser un muro de texto. <strong>Answer me with HTML</strong> es una skill gratuita (MIT) que cambia el formato: el agente escribe un borrador breve y una herramienta incluida lo convierte en una página HTML con esquemas, tablas y diagramas.</p>
+<h3 class="font-headline-sm text-headline-sm text-primary">Instalación</h3>
+<ol class="list-decimal pl-space-lg space-y-space-xs font-body-md text-body-md text-on-surface"><li>Necesitas Node.js 20 o superior. No hay que ejecutar <code>npm install</code>.</li><li>En Claude Code: <code>/plugin marketplace add QingYunA/answer-me-with-html</code> y después <code>/plugin install answer-me-with-html@answer-me-with-html</code>.</li><li>También puedes pedirle a tu agente que lea el archivo INSTALL.md del repositorio y lo instale solo.</li></ol>
+<h3 class="font-headline-sm text-headline-sm text-primary">Cómo se usa</h3>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Pregunta como siempre: «Explícame cómo funciona el protocolo TCP», «¿Redis o Memcached para nuestra caché?». En unos instantes tienes la página lista para abrir en el navegador.</p>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Según las mediciones del proyecto, el modelo escribe unos 612 tokens frente a 4.893 cuando se le pide el HTML completo, y tarda 12 segundos en lugar de 31, porque el diseño y los diagramas los genera la herramienta.</p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed"><strong class="text-on-surface">Lo honesto:</strong> las cifras son del benchmark de sus autores. Está pensada para agentes de programación, no para el chat de claude.ai.</p>
+<p class="font-body-sm text-body-sm mt-space-sm"><strong class="text-on-surface">Repositorio:</strong> <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://github.com/QingYunA/answer-me-with-html">github.com/QingYunA/answer-me-with-html</a></p>
+</section>
+<section id="archify-esquema" class="space-y-space-md scroll-mt-24 bg-surface-container-low p-space-lg border-l-4 border-secondary">
+<span class="font-kicker text-kicker uppercase tracking-widest text-secondary">Del reel de Instagram</span>
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Archify: de una frase a un esquema interactivo</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed"><strong class="text-on-surface">Archify</strong> es una skill gratuita (MIT) para agentes como Claude Code, Codex, Cursor u OpenCode que convierte una idea, un plan o el código de un proyecto en un diagrama interactivo. No hace falta tener un repositorio: puedes empezar con una descripción.</p>
+<h3 class="font-headline-sm text-headline-sm text-primary">Cómo usarla</h3>
+<ol class="list-decimal pl-space-lg space-y-space-xs font-body-md text-body-md text-on-surface"><li>Instálala con <code>npx skills add tt-a1i/archify -g</code>.</li><li>Pídele a tu agente algo como: «Usa Archify para dibujar cómo funciona el proceso de pedidos de mi tienda: el cliente paga, se avisa al almacén y se envía».</li><li>Ajusta con frases: «añade la devolución», «resalta el camino cuando falla el pago», «cambia al tema claro».</li><li>Abre el HTML resultante: puedes tocar cada nodo para ver detalles y seguir caminos.</li></ol>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">El resultado es un archivo HTML autónomo. Puedes mandarlo a otra persona y lo abrirá en su navegador con todas las interacciones, sin instalar nada. En la galería del proyecto hay ejemplos, como un itinerario de cuatro días por Shanghái.</p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed"><strong class="text-on-surface">Lo honesto:</strong> funciona con agentes de programación; en el chat normal de Claude no se instala igual. Es mejor para procesos y sistemas que para dibujos libres.</p>
+<p class="font-body-sm text-body-sm mt-space-sm"><strong class="text-on-surface">Repositorio:</strong> <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://github.com/tt-a1i/archify">github.com/tt-a1i/archify</a></p>
+</section>
 </article>
 <aside class="lg:col-span-4 space-y-space-xl">
 <div class="bg-surface-container-lowest p-space-md border border-outline-variant text-center">
@@ -393,6 +472,13 @@ ejemplos de formato correcto, qué evitar y por qué.</pre>
 <a class="block hover:text-primary transition-colors" href="#sec-4">Instalaciones vs. utilidad real</a>
 <a class="block hover:text-primary transition-colors" href="#sec-5">Riesgos de seguridad</a>
 <a class="block hover:text-primary transition-colors" href="#sec-6">Mantener tu carpeta al día</a>
+<a class="block text-secondary font-semibold hover:underline" href="#caveman">→ Caveman</a>
+<a class="block text-secondary font-semibold hover:underline" href="#arena-100">→ Arena skill</a>
+<a class="block text-secondary font-semibold hover:underline" href="#ponytail">→ Ponytail</a>
+<a class="block text-secondary font-semibold hover:underline" href="#impeccable">→ Impeccable</a>
+<a class="block text-secondary font-semibold hover:underline" href="#anatomy">→ Anatomy</a>
+<a class="block text-secondary font-semibold hover:underline" href="#answer-me-with-html">→ Answer me with HTML</a>
+<a class="block text-secondary font-semibold hover:underline" href="#archify-esquema">→ Archify</a>
 </nav>
 </div>
 

@@ -23,7 +23,7 @@
   "author": { "@type": "Organization", "name": "El Telar", "url": "https://eltelar.es/" },
   "publisher": { "@type": "Organization", "name": "El Telar", "url": "https://eltelar.es/", "logo": { "@type": "ImageObject", "url": "https://eltelar.es/img/icon-512.png", "width": 512, "height": 512 } },
   "datePublished": "2026-01-01",
-  "dateModified": "2026-09-29",
+  "dateModified": "2026-10-14",
   "mainEntityOfPage": "https://eltelar.es/articulos/como-escribir-prompts.html",
   "inLanguage": "es"
 }
@@ -415,6 +415,28 @@ Actúa como especialista en {DISCIPLINA}. Tu objetivo es {OBJETIVO SIN AMBIGÜED
 </formato_salida></pre>
 </div>
 </section>
+<section id="curso-anthropic" class="space-y-space-md scroll-mt-24 bg-surface-container-low p-space-lg border-l-4 border-secondary">
+<span class="font-kicker text-kicker uppercase tracking-widest text-secondary">Del reel de Instagram</span>
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">El curso gratuito de prompts de Anthropic</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Si quieres ir más allá de esta guía, Anthropic, la empresa que desarrolla Claude, publica en GitHub su <strong>Prompt Engineering Interactive Tutorial</strong>, un curso gratuito para aprender a escribir prompts paso a paso.</p>
+<h3 class="font-headline-sm text-headline-sm text-primary">Qué incluye</h3>
+<ul class="list-disc pl-space-lg space-y-space-xs font-body-md text-body-md text-on-surface"><li><strong>Principiante:</strong> estructura básica de un prompt, ser claro y directo, y asignar un papel.</li><li><strong>Intermedio:</strong> separar datos e instrucciones, dar formato a la respuesta, pensar paso a paso y usar ejemplos.</li><li><strong>Avanzado:</strong> evitar alucinaciones y construir prompts complejos para casos reales.</li><li>Un apéndice con técnicas extra, como encadenar prompts.</li></ul>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Son 9 capítulos, cada uno con una lección, ejercicios y una zona de pruebas para ver cómo cambia la respuesta al modificar el prompt.</p>
+<h3 class="font-headline-sm text-headline-sm text-primary">Cómo seguirlo</h3>
+<ol class="list-decimal pl-space-lg space-y-space-xs font-body-md text-body-md text-on-surface"><li>Entra en el repositorio y empieza por el capítulo 1.</li><li>Para hacer los ejercicios en los cuadernos, necesitas una clave de API de Anthropic.</li><li>Si no programas, usa la versión en Google Sheets que enlaza el propio curso.</li></ol>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed"><strong class="text-on-surface">Lo honesto:</strong> está en inglés y se escribió con modelos antiguos (Claude 3 Haiku), aunque las técnicas siguen siendo válidas. El uso de la API se paga según consumo.</p>
+<p class="font-body-sm text-body-sm mt-space-sm"><strong class="text-on-surface">Repositorio:</strong> <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://github.com/anthropics/prompt-eng-interactive-tutorial">github.com/anthropics/prompt-eng-interactive-tutorial</a></p>
+</section>
+<section id="espanso" class="space-y-space-md scroll-mt-24 bg-surface-container-low p-space-lg border-l-4 border-secondary">
+<span class="font-kicker text-kicker uppercase tracking-widest text-secondary">Del reel de Instagram</span>
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Guarda tus prompts favoritos como atajos con Espanso</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Si has escrito un buen prompt, no lo vuelvas a teclear. <strong>Espanso</strong> es un expansor de texto gratuito y de código abierto (GPL-3.0): detecta cuando escribes una palabra clave y la sustituye por el texto que hayas definido, en cualquier programa del ordenador.</p>
+<h3 class="font-headline-sm text-headline-sm text-primary">Cómo empezar</h3>
+<ol class="list-decimal pl-space-lg space-y-space-xs font-body-md text-body-md text-on-surface"><li>Descárgalo desde <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://espanso.org">espanso.org</a>. Funciona en Windows, macOS y Linux.</li><li>Abre su archivo de configuración (<code>espanso edit</code> en la terminal, o desde el icono de la barra).</li><li>Añade tus atajos. Por ejemplo, un disparador <code>:resume</code> que se sustituye por «Resume este texto en 5 puntos, en español claro y sin jerga».</li><li>Guarda el archivo y prueba a escribir el atajo en el chat de tu IA.</li></ol>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">También sirve para tu dirección, tu firma, respuestas frecuentes a clientes, fechas automáticas o emojis. En <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://hub.espanso.org">hub.espanso.org</a> hay paquetes ya hechos.</p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed"><strong class="text-on-surface">Lo honesto:</strong> la configuración se hace editando archivos de texto, algo que al principio puede imponer si nunca lo has hecho. A cambio, todo funciona en local, sin rastreo y sin cuenta.</p>
+<p class="font-body-sm text-body-sm mt-space-sm"><strong class="text-on-surface">Código:</strong> <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://github.com/espanso/espanso">github.com/espanso/espanso</a></p>
+</section>
 <section class="space-y-space-md">
 <h2 id="sec-5b" class="font-headline-md text-headline-md text-primary tracking-tight">
           Errores comunes al escribir prompts (más allá de la ambigüedad)
@@ -518,6 +540,8 @@ Depende de cuántas veces vayas a reutilizarlo. Para una consulta puntual que so
 <a class="block text-on-surface-variant hover:text-primary transition-colors py-1" href="#sec-5b">Errores comunes al escribir prompts</a>
 <a class="block text-on-surface-variant hover:text-primary transition-colors py-1" href="#sec-5c">Cómo iterar sobre un resultado</a>
 <a class="block text-on-surface-variant hover:text-primary transition-colors py-1" href="#sec-5d">Guardar y reutilizar tus prompts</a>
+<a class="block text-secondary font-semibold hover:underline" href="#curso-anthropic">→ Curso de prompts de Anthropic</a>
+<a class="block text-secondary font-semibold hover:underline" href="#espanso">→ Espanso</a>
 </nav>
 </div>
 
