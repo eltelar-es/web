@@ -23,7 +23,7 @@
   "author": {"@type": "Person", "name": "Juan Becerril Castañón", "url": "https://eltelar.es/sobre-nosotros.html#autor"},
   "publisher": { "@type": "Organization", "name": "El Telar", "url": "https://eltelar.es/", "logo": { "@type": "ImageObject", "url": "https://eltelar.es/img/icon-512.png", "width": 512, "height": 512 } },
   "datePublished": "2026-09-07",
-  "dateModified": "2026-09-07",
+  "dateModified": "2026-10-14",
   "mainEntityOfPage": "https://eltelar.es/articulos/agente-api-datos-reales.html",
   "inLanguage": "es"
 }
@@ -398,6 +398,16 @@ if respuesta.stop_reason == "tool_use":
           Cuando ese catálogo de herramientas crece, escribir y mantener cada definición a mano dentro de tu propio código deja de escalar bien — ahí es exactamente donde entra <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="mcp-explicado.html">MCP</a>, que empaqueta grupos de herramientas relacionadas en un "servidor" reutilizable entre proyectos distintos, en vez de redefinir <code class="font-mono text-body-sm bg-surface-container-low px-1">obtener_tiempo</code> desde cero cada vez que empiezas algo nuevo. Y si lo que quieres es que ese agente corra solo, en un horario, sin que tú lo dispares cada vez, ese es el terreno de <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="automatizar-n8n-ia.html">n8n</a>, que tiene un nodo de "AI Agent" con este mismo mecanismo de herramientas integrado visualmente.
         </p>
 </section>
+<section id="umami" class="space-y-space-md scroll-mt-24 bg-surface-container-low p-space-lg border-l-4 border-secondary">
+<span class="font-kicker text-kicker uppercase tracking-widest text-secondary">Del reel de Instagram</span>
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Umami: analítica web sencilla y respetuosa</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Para que un agente de IA te ayude a mejorar tu web, primero necesitas datos reales de visitas. <strong>Umami</strong> es una plataforma de analítica de código abierto (MIT) centrada en la privacidad, con un panel sencillo.</p>
+<h3 class="font-headline-sm text-headline-sm text-primary">Cómo empezar</h3>
+<ol class="list-decimal pl-space-lg space-y-space-xs font-body-md text-body-md text-on-surface"><li>Crea una cuenta en <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://umami.is">umami.is</a> o instálalo en tu servidor.</li><li>Añade tu web y copia el pequeño fragmento de código que te da.</li><li>Pégalo en la cabecera de tu web (en la mayoría de gestores hay un campo para scripts).</li><li>En unos minutos verás visitas, páginas, procedencia, dispositivos y países.</li></ol>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Según su página de precios, el plan Hobby es gratuito: hasta 100.000 eventos al mes, 1 web y 6 meses de conservación de datos. El plan Pro (20 $ al mes) añade más eventos, hasta 20 webs, dos años de datos y acceso por API y MCP, útil si quieres que un agente de IA consulte tus estadísticas.</p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed"><strong class="text-on-surface">Lo honesto:</strong> el plan gratuito se queda corto si gestionas varias webs. Aunque Umami está diseñado pensando en la privacidad, las obligaciones legales dependen de tu país y de tu web: consúltalo con un profesional si tienes dudas.</p>
+<p class="font-body-sm text-body-sm mt-space-sm"><strong class="text-on-surface">Código:</strong> <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://github.com/umami-software/umami">github.com/umami-software/umami</a></p>
+</section>
 </article>
 <aside class="lg:col-span-4 space-y-space-xl">
 <div class="bg-surface-container-lowest p-space-md border border-outline-variant text-center">
@@ -424,6 +434,7 @@ if respuesta.stop_reason == "tool_use":
 <a class="block hover:text-primary transition-colors" href="#sec-3b">Otras APIs que puedes usar</a>
 <a class="block hover:text-primary transition-colors" href="#sec-4">Errores y riesgos</a>
 <a class="block hover:text-primary transition-colors" href="#sec-5">De aquí a un agente completo</a>
+<a class="block text-secondary font-semibold hover:underline" href="#umami">→ Umami</a>
 </nav>
 </div>
 
