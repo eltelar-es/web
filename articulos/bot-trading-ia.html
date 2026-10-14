@@ -316,25 +316,25 @@
         </p>
 <div class="space-y-space-sm">
 <div class="bg-surface-container-lowest p-space-md shadow-sm">
-<h4 class="font-label-md text-label-md text-primary font-bold mb-1">A. El stop-loss vive en el servidor del bróker, no en tu script</h4>
+<h3 class="font-label-md text-label-md text-primary font-bold mb-1">A. El stop-loss vive en el servidor del bróker, no en tu script</h3>
 <p class="font-body-sm text-body-sm text-on-surface-variant">
               Si tu conexión se cae, una orden condicional guardada solo en tu ordenador nunca llegará a ejecutarse. Envía la orden de protección directamente al motor del bróker.
             </p>
 </div>
 <div class="bg-surface-container-lowest p-space-md shadow-sm">
-<h4 class="font-label-md text-label-md text-primary font-bold mb-1">D. Confirma cada orden ejecutada contra el estado real de la cuenta</h4>
+<h3 class="font-label-md text-label-md text-primary font-bold mb-1">D. Confirma cada orden ejecutada contra el estado real de la cuenta</h3>
 <p class="font-body-sm text-body-sm text-on-surface-variant">
               No asumas que una orden se ejecutó solo porque el bróker respondió sin error. Consulta el saldo y las posiciones abiertas después de cada operación para confirmar que el estado real coincide con lo que tu script cree que pasó, antes de calcular la siguiente decisión sobre datos que podrían estar desincronizados.
             </p>
 </div>
 <div class="bg-surface-container-lowest p-space-md shadow-sm">
-<h4 class="font-label-md text-label-md text-primary font-bold mb-1">B. Límite de pérdida diaria</h4>
+<h3 class="font-label-md text-label-md text-primary font-bold mb-1">B. Límite de pérdida diaria</h3>
 <p class="font-body-sm text-body-sm text-on-surface-variant">
               Si la cartera cae más de un porcentaje fijo en 24 horas, el sistema se detiene solo y avisa, sin reiniciarse automáticamente.
             </p>
 </div>
 <div class="bg-surface-container-lowest p-space-md shadow-sm">
-<h4 class="font-label-md text-label-md text-primary font-bold mb-1">C. Un interruptor independiente</h4>
+<h3 class="font-label-md text-label-md text-primary font-bold mb-1">C. Un interruptor independiente</h3>
 <p class="font-body-sm text-body-sm text-on-surface-variant">
               Un proceso separado que solo consulta el saldo y puede revocar las claves de API si detecta un desvío anómalo, aunque el bot principal se cuelgue.
             </p>

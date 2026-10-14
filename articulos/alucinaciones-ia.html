@@ -146,7 +146,7 @@
 <div class="bg-surface-container-low border border-outline-variant p-space-lg space-y-space-md shadow-sm">
 <div class="flex items-center gap-space-xs border-b border-outline-variant pb-space-xs">
 <span class="material-symbols-outlined text-secondary text-[20px]">warning</span>
-<h3 class="font-kicker text-kicker uppercase tracking-widest text-primary">MAPA RÁPIDO DE RIESGO</h3>
+<h2 class="font-kicker text-kicker uppercase tracking-widest text-primary">MAPA RÁPIDO DE RIESGO</h2>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-space-md pt-space-xxs">
 <div class="bg-surface-container-lowest border-l-4 border-error p-space-sm space-y-space-xs">
@@ -183,25 +183,25 @@
         </h2>
 <div class="space-y-space-md">
 <div class="border border-outline-variant bg-surface-container-lowest p-space-md">
-<h4 class="font-headline-sm text-headline-sm text-primary">Librería fantasma</h4>
+<h3 class="font-headline-sm text-headline-sm text-primary">Librería fantasma</h3>
 <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
                 El modelo sugiere instalar un paquete que no existe en los registros oficiales. El riesgo real: alguien puede publicar después un paquete malicioso con ese mismo nombre, esperando a que otro lo instale sin comprobarlo.
               </p>
 </div>
 <div class="border border-outline-variant bg-surface-container-lowest p-space-md">
-<h4 class="font-headline-sm text-headline-sm text-primary">Citas y autoría falsas</h4>
+<h3 class="font-headline-sm text-headline-sm text-primary">Citas y autoría falsas</h3>
 <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
                 Al pedir referencias, el modelo puede combinar nombres reales de investigadores con títulos de artículos que no existen, con apariencia perfectamente creíble.
               </p>
 </div>
 <div class="border border-outline-variant bg-surface-container-lowest p-space-md">
-<h4 class="font-headline-sm text-headline-sm text-primary">Cálculo aritmético intermedio</h4>
+<h3 class="font-headline-sm text-headline-sm text-primary">Cálculo aritmético intermedio</h3>
 <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
                 Un modelo de lenguaje no tiene una calculadora interna. En promedios ponderados o cálculos con varios pasos, puede simular una operación con apariencia ordenada pero cifras incorrectas.
               </p>
 </div>
 <div class="border border-outline-variant bg-surface-container-lowest p-space-md">
-<h4 class="font-headline-sm text-headline-sm text-primary">Restricciones ignoradas en silencio</h4>
+<h3 class="font-headline-sm text-headline-sm text-primary">Restricciones ignoradas en silencio</h3>
 <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
                 Si le pides "solo empresas de la Unión Europea" y encuentra una fuera de ese criterio que le parece relevante, puede incluirla sin avisar de la excepción.
               </p>
@@ -281,10 +281,10 @@
 <figcaption class="font-caption text-caption text-on-surface-variant mt-space-xs">El filtro de una sola pregunta que aplican los protocolos de esta sección.</figcaption>
 </figure>
 <div class="border-t border-b border-outline-variant py-space-md space-y-space-xs">
-<h4 class="font-headline-sm text-headline-sm text-primary flex items-center gap-space-xs">
+<h3 class="font-headline-sm text-headline-sm text-primary flex items-center gap-space-xs">
 <span class="material-symbols-outlined text-secondary text-[20px]">door_open</span>
             1. Dale una salida honorable
-          </h4>
+          </h3>
 <p class="font-body-md text-body-md text-on-surface-variant">
             Por defecto, un modelo evita la respuesta vacía. Dale permiso explícito para no saber algo:
           </p>
@@ -293,55 +293,55 @@
 </div>
 </div>
 <div class="border-b border-outline-variant py-space-md space-y-space-xs">
-<h4 class="font-headline-sm text-headline-sm text-primary flex items-center gap-space-xs">
+<h3 class="font-headline-sm text-headline-sm text-primary flex items-center gap-space-xs">
 <span class="material-symbols-outlined text-secondary text-[20px]">sync_alt</span>
             2. Ancla la respuesta a un documento real (RAG)
-          </h4>
+          </h3>
 <p class="font-body-md text-body-md text-on-surface-variant">
             No preguntes por hechos recientes o privados a la memoria del modelo. Dale el documento original con citas de fragmentos literales; si no puede asociar una afirmación a un párrafo concreto, descarta esa afirmación.
           </p>
 </div>
 <div class="border-b border-outline-variant py-space-md space-y-space-xs">
-<h4 class="font-headline-sm text-headline-sm text-primary flex items-center gap-space-xs">
+<h3 class="font-headline-sm text-headline-sm text-primary flex items-center gap-space-xs">
 <span class="material-symbols-outlined text-secondary text-[20px]">terminal</span>
             3. Deja que el cálculo lo haga código, no el modelo
-          </h4>
+          </h3>
 <p class="font-body-md text-body-md text-on-surface-variant">
             Para cualquier tarea cuantitativa, pide que el modelo escriba y ejecute un script en vez de calcular "de memoria". El resultado debe venir de la ejecución, no de la predicción de texto.
           </p>
 </div>
 <div class="border-b border-outline-variant py-space-md space-y-space-xs">
-<h4 class="font-headline-sm text-headline-sm text-primary flex items-center gap-space-xs">
+<h3 class="font-headline-sm text-headline-sm text-primary flex items-center gap-space-xs">
 <span class="material-symbols-outlined text-secondary text-[20px]">travel_explore</span>
             4. Usa búsqueda web activada para hechos recientes
-          </h4>
+          </h3>
 <p class="font-body-md text-body-md text-on-surface-variant">
             Para preguntas sobre eventos recientes o información que cambia con frecuencia, usa un asistente con capacidad de búsqueda web activada en vez de fiarte de su conocimiento interno, que tiene una fecha de corte y no se actualiza solo. La combinación de búsqueda real más generación de texto reduce mucho el margen para inventar, porque el modelo tiene datos frescos delante en vez de tener que extrapolar de memoria.
           </p>
 </div>
 <div class="border-b border-outline-variant py-space-md space-y-space-xs">
-<h4 class="font-headline-sm text-headline-sm text-primary flex items-center gap-space-xs">
+<h3 class="font-headline-sm text-headline-sm text-primary flex items-center gap-space-xs">
 <span class="material-symbols-outlined text-secondary text-[20px]">compare_arrows</span>
             5. Pide una segunda opinión con otro modelo para datos críticos
-          </h4>
+          </h3>
 <p class="font-body-md text-body-md text-on-surface-variant">
             Para un dato de verdad importante, verificarlo con un segundo modelo distinto (o una segunda pregunta formulada de otra forma al mismo modelo) es una comprobación barata: si ambos coinciden en el mismo dato específico y verificable, la probabilidad de que ambos hayan inventado exactamente lo mismo es baja. Si difieren, es una señal clara de que hace falta verificación externa antes de dar el dato por bueno.
           </p>
 </div>
 <div class="border-b border-outline-variant py-space-md space-y-space-xs">
-<h4 class="font-headline-sm text-headline-sm text-primary flex items-center gap-space-xs">
+<h3 class="font-headline-sm text-headline-sm text-primary flex items-center gap-space-xs">
 <span class="material-symbols-outlined text-secondary text-[20px]">psychology_alt</span>
             6. No confundas que el modelo "se disculpe" con que haya corregido el dato
-          </h4>
+          </h3>
 <p class="font-body-md text-body-md text-on-surface-variant">
             Cuando señalas un error, el modelo casi siempre responde con una disculpa y una versión corregida — pero eso no garantiza que la nueva versión sea correcta, solo que suena más segura de sí misma. Es tan capaz de generar una segunda cifra igualmente inventada como de dar con el dato real, sobre todo si tu corrección fue una pregunta genérica ("¿seguro que es así?") en vez de aportar tú mismo el dato correcto o pedirle explícitamente que busque la fuente antes de corregir.
           </p>
 </div>
 <div class="py-space-md space-y-space-xs">
-<h4 class="font-headline-sm text-headline-sm text-primary flex items-center gap-space-xs">
+<h3 class="font-headline-sm text-headline-sm text-primary flex items-center gap-space-xs">
 <span class="material-symbols-outlined text-secondary text-[20px]">rule</span>
             7. Divide tareas largas en pasos verificables por separado
-          </h4>
+          </h3>
 <p class="font-body-md text-body-md text-on-surface-variant">
             Pedir un informe completo de una tirada (introducción, datos, análisis y conclusiones en un solo turno) da más superficie para que se cuele un dato inventado en algún punto intermedio sin que lo notes al leer el conjunto. Pedir cada bloque por separado y revisar cada uno antes de pasar al siguiente hace que cualquier error quede aislado y sea más fácil de detectar, en vez de diluido entre varios párrafos que parecen coherentes entre sí.
           </p>
@@ -459,7 +459,7 @@ No. La precaución debe escalar con dos factores: cuánto se aleja la tarea de u
 <div class="flex flex-col sm:flex-row items-start sm:items-center gap-space-md">
 <div class="w-16 h-16 rounded-full bg-primary flex items-center justify-center text-on-primary font-headline-md text-headline-md">ET</div>
 <div class="space-y-space-xxs">
-<h4 class="font-headline-sm text-headline-sm text-primary">Redacción El Telar</h4>
+<h3 class="font-headline-sm text-headline-sm text-primary">Redacción El Telar</h3>
 <p class="font-body-sm text-body-sm text-on-surface-variant">
               Mesa técnica centrada en auditoría de sistemas generativos y mitigación de riesgos operativos.
             </p>

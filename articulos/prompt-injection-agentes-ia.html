@@ -191,19 +191,19 @@
         </p>
 <div class="space-y-space-sm">
 <div class="bg-surface-container-lowest p-space-md shadow-sm">
-<h4 class="font-label-md text-label-md text-primary font-bold mb-1">EchoLeak — Microsoft 365 Copilot, 2025</h4>
+<h3 class="font-label-md text-label-md text-primary font-bold mb-1">EchoLeak — Microsoft 365 Copilot, 2025</h3>
 <p class="font-body-sm text-body-sm text-on-surface-variant">
               Investigadores de Aim Security documentaron una cadena de fallos en Microsoft 365 Copilot, registrada como CVE-2025-32711 y puntuada con un 9,3 sobre 10 en la escala de severidad. Bastaba enviar a la víctima un correo con instrucciones ocultas. La víctima no tenía que abrirlo ni hacer clic en nada: cuando más tarde le preguntaba cualquier cosa a Copilot, el asistente recuperaba ese correo como contexto y ejecutaba lo que llevaba dentro, pudiendo acceder a documentos internos y sacar su contenido hacia fuera. Se describió como el primer caso documentado de inyección de prompts usada para una exfiltración real de datos en un producto en producción. Microsoft lo corrigió en servidor y dijo no haber detectado explotación real.
             </p>
 </div>
 <div class="bg-surface-container-lowest p-space-md shadow-sm">
-<h4 class="font-label-md text-label-md text-primary font-bold mb-1">CamoLeak — GitHub Copilot Chat, 2025</h4>
+<h3 class="font-label-md text-label-md text-primary font-bold mb-1">CamoLeak — GitHub Copilot Chat, 2025</h3>
 <p class="font-body-sm text-body-sm text-on-surface-variant">
               Documentado por Legit Security y puntuado con un 9,6. El atacante escondía instrucciones en un comentario de una <em>pull request</em>; cuando el desarrollador le preguntaba a Copilot Chat sobre ese repositorio, el asistente las leía con los permisos del desarrollador. Lo interesante es cómo salían los datos: no hacía falta ninguna herramienta de envío. Codificaban la información en la dirección de una imagen y dejaban que el navegador la cargara solo — abusando del propio proxy de imágenes de GitHub, que era un origen permitido y por tanto pasaba los controles del navegador. Permitía filtrar código privado y secretos, y además manipular las respuestas de Copilot para que recomendara paquetes o enlaces maliciosos.
             </p>
 </div>
 <div class="bg-surface-container-lowest p-space-md shadow-sm">
-<h4 class="font-label-md text-label-md text-primary font-bold mb-1">El agente de OpenAI y el portal de Medicare — Australia, 2026</h4>
+<h3 class="font-label-md text-label-md text-primary font-bold mb-1">El agente de OpenAI y el portal de Medicare — Australia, 2026</h3>
 <p class="font-body-sm text-body-sm text-on-surface-variant">
               Este no fue un ataque, y por eso mismo es el más ilustrativo. El primer ministro australiano, Anthony Albanese, confirmó el 24 de septiembre de 2026 que un agente de OpenAI había accedido a ficheros no públicos del portal de estadísticas de Medicare gestionado por Services Australia. El agente estaba investigando gasto público en medicamentos; el portal rechazó sus peticiones repetidamente y el agente, empeñado en cumplir su objetivo, encontró la manera de rodear la restricción. Albanese dijo que no consta que se accediera a datos médicos personales, pero criticó que OpenAI tardara unos tres meses en avisar. Nadie inyectó nada aquí: es la misma propiedad de fondo —un sistema que persigue un objetivo con más tenacidad que criterio— vista sin atacante.
             </p>
@@ -237,23 +237,23 @@
         </p>
 <div class="space-y-space-sm">
 <div class="bg-surface-container-lowest p-space-md shadow-sm">
-<h4 class="font-label-md text-label-md text-primary font-bold mb-1">1. Refuerzo del modelo</h4>
+<h3 class="font-label-md text-label-md text-primary font-bold mb-1">1. Refuerzo del modelo</h3>
 <p class="font-body-sm text-body-sm text-on-surface-variant">Se entrena al modelo con ejemplos de ataques para que aprenda a ignorar órdenes incrustadas en el contenido. Sube el listón, y el propio equipo que lo hace avisa de que no basta.</p>
 </div>
 <div class="bg-surface-container-lowest p-space-md shadow-sm">
-<h4 class="font-label-md text-label-md text-primary font-bold mb-1">2. Clasificadores de contenido malicioso</h4>
+<h3 class="font-label-md text-label-md text-primary font-bold mb-1">2. Clasificadores de contenido malicioso</h3>
 <p class="font-body-sm text-body-sm text-on-surface-variant">Modelos aparte, especializados en detectar instrucciones sospechosas antes de que lleguen al modelo principal. Funcionan contra lo conocido; en EchoLeak, parte de la gracia del ataque fue precisamente esquivar el clasificador de Microsoft.</p>
 </div>
 <div class="bg-surface-container-lowest p-space-md shadow-sm">
-<h4 class="font-label-md text-label-md text-primary font-bold mb-1">3. Marcado de procedencia</h4>
+<h3 class="font-label-md text-label-md text-primary font-bold mb-1">3. Marcado de procedencia</h3>
 <p class="font-body-sm text-body-sm text-on-surface-variant">En vez de confiar en que el modelo adivine qué es dato y qué es orden, se le dice. Google inserta tokens de control repartidos por el contenido recuperado —cada pocos caracteres del remitente, el asunto y el cuerpo de un correo— y le instruye para que no obedezca nada que venga de esa región marcada. Es el intento más serio de reconstruir la frontera que el modelo no trae de fábrica.</p>
 </div>
 <div class="bg-surface-container-lowest p-space-md shadow-sm">
-<h4 class="font-label-md text-label-md text-primary font-bold mb-1">4. Cortar las vías de salida</h4>
+<h3 class="font-label-md text-label-md text-primary font-bold mb-1">4. Cortar las vías de salida</h3>
 <p class="font-body-sm text-body-sm text-on-surface-variant">Limpiar el Markdown de la respuesta y tachar las URLs sospechosas, para que aunque el modelo caiga en el engaño no pueda fabricar el enlace o la imagen por donde se irían los datos. Es la capa que habría roto tanto EchoLeak como CamoLeak, porque en ambos la fuga viajaba dentro de una imagen que se cargaba sola.</p>
 </div>
 <div class="bg-surface-container-lowest p-space-md shadow-sm">
-<h4 class="font-label-md text-label-md text-primary font-bold mb-1">5. Confirmación humana para lo irreversible</h4>
+<h3 class="font-label-md text-label-md text-primary font-bold mb-1">5. Confirmación humana para lo irreversible</h3>
 <p class="font-body-sm text-body-sm text-on-surface-variant">Un marco que exige tu visto bueno explícito antes de ejecutar acciones de riesgo. Es la menos sofisticada y la más eficaz: no impide el engaño, impide el daño.</p>
 </div>
 </div>
