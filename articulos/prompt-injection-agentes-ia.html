@@ -26,7 +26,7 @@
     "name": "El Telar"
   },
   "datePublished": "2026-09-25",
-  "dateModified": "2026-10-13",
+  "dateModified": "2026-10-14",
   "mainEntityOfPage": "https://eltelar.es/articulos/prompt-injection-agentes-ia.html",
   "inLanguage": "es"
 }
@@ -311,6 +311,18 @@
           Si al hacerla descubres que tu agente tiene más permisos de los que necesita, el siguiente paso natural es revisar cómo están conectadas tus herramientas: en <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="mcp-explicado.html">la guía de MCP</a> está la parte de credenciales y alcance, y en <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="errores-automatizar-ia.html">los errores comunes al automatizar con IA</a>, el patrón de dar acceso amplio «para que no falle» aparece como uno de los fallos más caros.
         </p>
 </section>
+<section id="strix" class="space-y-space-md scroll-mt-24 bg-surface-container-low p-space-lg border-l-4 border-secondary">
+<span class="font-kicker text-kicker uppercase tracking-widest text-secondary">Del reel de Instagram</span>
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Strix: agentes de IA que prueban la seguridad de tu aplicación</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Si has construido una web o una aplicación con IA, merece la pena comprobar su seguridad antes de que lo haga otro. <strong>Strix</strong> es una herramienta de código abierto (Apache-2.0) con agentes de IA que actúan como hackers: ejecutan tu código, buscan vulnerabilidades y las validan con pruebas de concepto reales.</p>
+<h3 class="font-headline-sm text-headline-sm text-primary">Requisitos</h3>
+<ul class="list-disc pl-space-lg space-y-space-xs font-body-md text-body-md text-on-surface"><li>Docker en marcha.</li><li>Una clave de API de un proveedor de IA compatible (OpenAI, Anthropic, Google, etc.).</li></ul>
+<h3 class="font-headline-sm text-headline-sm text-primary">Primeros pasos</h3>
+<ol class="list-decimal pl-space-lg space-y-space-xs font-body-md text-body-md text-on-surface"><li>Instala Strix con el comando que indica el README.</li><li>Configura tu proveedor de IA y tu clave en las variables de entorno.</li><li>Lanza un análisis sobre la carpeta de tu aplicación, por ejemplo <code>strix --target ./mi-app</code>.</li><li>Revisa los resultados en la carpeta <code>strix_runs</code>: vulnerabilidades encontradas, pruebas y propuestas de arreglo.</li></ol>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">También puede integrarse en GitHub Actions para analizar cada cambio antes de publicarlo.</p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed"><strong class="text-on-surface">Lo honesto:</strong> el análisis consume llamadas al modelo, que se pagan. Una herramienta automática no sustituye una auditoría profesional en sistemas críticos. Y lo más importante: úsala solo en aplicaciones propias o con autorización por escrito; probar sistemas ajenos sin permiso es ilegal.</p>
+<p class="font-body-sm text-body-sm mt-space-sm"><strong class="text-on-surface">Repositorio:</strong> <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://github.com/usestrix/strix">github.com/usestrix/strix</a></p>
+</section>
 <section class="space-y-space-md">
 <h2 class="font-headline-lg text-headline-lg text-primary">
           Preguntas frecuentes
@@ -384,6 +396,7 @@ Haz la prueba tú mismo, en un entorno de pruebas y sobre sistemas tuyos: coloca
 <a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-4">Las defensas que se usan</a>
 <a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-5">Qué puedes hacer tú</a>
 <a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-6">Pruébalo tú en media hora</a>
+<a class="block text-secondary font-semibold hover:underline" href="#strix">→ Strix</a>
 </nav>
 </div>
 

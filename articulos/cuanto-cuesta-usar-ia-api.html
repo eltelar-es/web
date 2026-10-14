@@ -25,7 +25,7 @@
     "name": "El Telar"
   },
   "datePublished": "2026-10-11",
-  "dateModified": "2026-10-11",
+  "dateModified": "2026-10-14",
   "mainEntityOfPage": "https://eltelar.es/articulos/cuanto-cuesta-usar-ia-api.html",
   "inLanguage": "es"
 }
@@ -339,6 +339,18 @@
         </p>
 <div class="bg-surface-container-low border-l-4 border-primary p-space-md"><p class="font-body-sm text-body-sm text-on-surface">Lo único que de verdad hay que llevarse de esta guía: mide los tokens de entrada de tu llamada típica antes de elegir modelo. Esa cifra, cruzada con los escalones de la tarifa, decide tu factura mucho más que el precio del titular.</p></div>
 </section>
+<section id="ccusage" class="space-y-space-md scroll-mt-24 bg-surface-container-low p-space-lg border-l-4 border-secondary">
+<span class="font-kicker text-kicker uppercase tracking-widest text-secondary">Del reel de Instagram</span>
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">ccusage: mira cuántos tokens gastas en Claude Code</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Si usas agentes de IA en la terminal, es fácil perder la cuenta de lo que consumes. <strong>ccusage</strong> es una herramienta gratuita de línea de comandos que lee los datos de uso que los agentes ya guardan en tu ordenador y los convierte en informes.</p>
+<h3 class="font-headline-sm text-headline-sm text-primary">Cómo usarla</h3>
+<ol class="list-decimal pl-space-lg space-y-space-xs font-body-md text-body-md text-on-surface"><li>Necesitas Node.js. En la terminal, ejecuta <code>npx ccusage@latest</code>; no hace falta instalar nada.</li><li>Elige el periodo: <code>ccusage daily</code>, <code>ccusage weekly</code>, <code>ccusage monthly</code> o <code>ccusage session</code>.</li><li>Para un solo agente, añade su nombre: por ejemplo, <code>ccusage claude daily</code> o <code>ccusage codex daily</code>.</li></ol>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Funciona con Claude Code, Codex, OpenCode, Gemini CLI, GitHub Copilot CLI y más de una docena de agentes. No hay que conectar cuentas: trabaja con los registros locales.</p>
+<h3 class="font-headline-sm text-headline-sm text-primary">Cómo interpretar los números</h3>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Los tokens son la medida real. El coste en dólares es útil si usas la API; si pagas una suscripción, tómalo como una estimación del valor de lo que consumes. Para ver tus límites del plan, usa el comando <code>/usage</code> dentro de Claude Code.</p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed"><strong class="text-on-surface">Lo honesto:</strong> solo ve el uso de este ordenador. Si trabajas en varios equipos o en la web, cada uno tiene sus propios registros.</p>
+<p class="font-body-sm text-body-sm mt-space-sm"><strong class="text-on-surface">Repositorio:</strong> <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://github.com/ccusage/ccusage">github.com/ccusage/ccusage</a></p>
+</section>
 <section class="space-y-space-md">
 <h2 class="font-headline-lg text-headline-lg text-primary">
         Preguntas frecuentes
@@ -407,6 +419,7 @@ Depende de qué pasa cuando el pequeño falla, y por eso es una cuenta que hay q
 <a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-6">Dónde se va el dinero</a>
 <a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-7">Cinco palancas</a>
 <a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-8">API o suscripción</a>
+<a class="block text-secondary font-semibold hover:underline" href="#ccusage">→ ccusage</a>
 </nav>
 </div>
 <div class="bg-surface-container-high p-space-md space-y-space-sm shadow-sm">

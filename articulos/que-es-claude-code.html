@@ -511,6 +511,27 @@
 <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed"><strong class="text-on-surface">Lo honesto:</strong> planificar consume algo de uso, pero suele ahorrar mucho más que corregir un cambio mal enfocado. Claude Code necesita un plan de pago de Claude o una cuenta de API.</p>
 <p class="font-body-sm text-body-sm mt-space-sm"><strong class="text-on-surface">Documentación:</strong> <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://code.claude.com/docs/en/common-workflows">code.claude.com/docs</a></p>
 </section>
+<section id="universal-modder" class="space-y-space-md scroll-mt-24 bg-surface-container-low p-space-lg border-l-4 border-secondary">
+<span class="font-kicker text-kicker uppercase tracking-widest text-secondary">Del reel de Instagram</span>
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Universal Modder: Claude Code crea mods de videojuegos</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Un buen ejemplo de lo que puede hacer un agente como Claude Code fuera de la programación habitual es <strong>Universal Modder</strong>, un paquete gratuito (MIT) de skills, herramientas y un servidor MCP para modificar casi cualquier juego de PC que tengas.</p>
+<h3 class="font-headline-sm text-headline-sm text-primary">Qué hace el agente</h3>
+<ol class="list-decimal pl-space-lg space-y-space-xs font-body-md text-body-md text-on-surface"><li>Encuentra el juego, identifica su motor y averigua si ya se ha modificado antes.</li><li>Lee el código real y construye el mod.</li><li>Genera arte, 3D y sonido.</li><li>Lo prueba con el juego en marcha, monta un vídeo y apunta lo aprendido.</li></ol>
+<h3 class="font-headline-sm text-headline-sm text-primary">Instalación en Claude Code</h3>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Ejecuta <code>/plugin marketplace add rehan-remade/universal-modder</code> y después <code>/plugin install universal-modder@universal-modder</code>. Necesitas también Git, Python 3.10 o superior y ffmpeg; Blender si quieres convertir modelos 3D en sprites.</p>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Prueba con una petición como: «Modifica Terraria: añade un lanzamisiles teledirigido y crea los sprites».</p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed"><strong class="text-on-surface">Lo honesto:</strong> para generar imágenes necesitas una clave de fal (servicio de pago) o un servidor ComfyUI local. Es un proyecto técnico: si algo falla, tendrás que leer errores. Úsalo solo con juegos que tengas y nunca en partidas online con sistemas antitrampas: la propia herramienta se niega a hacerlo, y modificar juegos online puede suponer la expulsión de tu cuenta.</p>
+<p class="font-body-sm text-body-sm mt-space-sm"><strong class="text-on-surface">Repositorio:</strong> <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://github.com/rehan-remade/universal-modder">github.com/rehan-remade/universal-modder</a></p>
+</section>
+<section id="comandos-secretos" class="space-y-space-md scroll-mt-24 bg-surface-container-low p-space-lg border-l-4 border-secondary">
+<span class="font-kicker text-kicker uppercase tracking-widest text-secondary">Del reel de Instagram</span>
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">5 comandos de Claude Code que casi nadie usa</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Claude Code tiene decenas de comandos integrados. Estos cinco aparecen en la documentación oficial y resuelven problemas muy comunes:</p>
+<ol class="list-decimal pl-space-lg space-y-space-xs font-body-md text-body-md text-on-surface"><li><code>/btw</code>: haz una pregunta lateral sobre la sesión sin añadirla a la conversación. Útil para dudas rápidas que no quieres que ocupen contexto. Sin pregunta, muestra la última que hiciste.</li><li><code>/branch</code>: crea una rama de la conversación en ese punto para probar otra dirección. La original se conserva y puedes volver a ella con <code>/resume</code>.</li><li><code>/recap</code>: genera al momento un resumen de la sesión en una línea, ideal cuando vuelves de una pausa.</li><li><code>/insights</code>: crea un informe HTML que analiza tus sesiones recientes en ese ordenador: en qué proyectos trabajas, cómo usas Claude Code, dónde fallan las cosas y qué funciones probar.</li><li><code>/export</code>: exporta la conversación como texto plano. Con un nombre de archivo la guarda directamente; sin él, te deja copiarla o guardarla.</li></ol>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed"><strong class="text-on-surface">Un uso práctico:</strong> antes de una decisión arriesgada, usa <code>/branch</code>; si la idea no funciona, vuelves a la conversación original con <code>/resume</code>. Ojo: <code>/branch</code> separa la conversación, no tus archivos; para deshacer cambios en el código está <code>/rewind</code>.</p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed"><strong class="text-on-surface">Lo honesto:</strong> <code>/insights</code> no está disponible en sesiones en la nube. Claude Code requiere un plan de pago de Claude o una cuenta de API.</p>
+<p class="font-body-sm text-body-sm mt-space-sm"><strong class="text-on-surface">Documentación:</strong> <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://code.claude.com/docs/en/commands">code.claude.com/docs/en/commands</a></p>
+</section>
 <section class="mb-space-2xl">
 <h2 class="font-headline-md text-headline-md text-primary mb-space-md tracking-tight">
           Preguntas frecuentes
@@ -608,6 +629,8 @@ La disponibilidad y condiciones de los planes cambian con el tiempo, así que co
             6. Suscripción frente a clave de API
           </a>
 <a class="block text-secondary font-semibold hover:underline" href="#modo-plan">→ El modo plan</a>
+<a class="block text-secondary font-semibold hover:underline" href="#universal-modder">→ Universal Modder</a>
+<a class="block text-secondary font-semibold hover:underline" href="#comandos-secretos">→ 5 comandos poco conocidos</a>
 </nav>
 </div>
 <div class="bg-surface-container-low p-space-lg">

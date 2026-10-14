@@ -26,7 +26,7 @@
     "name": "El Telar"
   },
   "datePublished": "2026-10-04",
-  "dateModified": "2026-10-04",
+  "dateModified": "2026-10-14",
   "mainEntityOfPage": "https://eltelar.es/articulos/asistente-personal-ia-memoria-notas.html",
   "inLanguage": "es"
 }
@@ -320,6 +320,18 @@
           Y si después de esa lista sigue teniendo sentido, móntalo en el orden de arriba: la instrucción fija primero, los archivos como fuente de la verdad, la memoria como comodidad y no como almacén, y la escritura y el correo al final. Lo que se obtiene no es un mayordomo digital, que es lo que se vende. Es algo más modesto y bastante más útil: un sitio donde tu contexto está escrito una sola vez y no tienes que volver a explicarlo.
         </p>
 </section>
+<section id="graphify" class="space-y-space-md scroll-mt-24 bg-surface-container-low p-space-lg border-l-4 border-secondary">
+<span class="font-kicker text-kicker uppercase tracking-widest text-secondary">Del reel de Instagram</span>
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">graphify: convierte tus carpetas en un mapa de conocimiento</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Si tu asistente de IA tiene que buscar entre cientos de archivos, pierde tiempo y contexto. <strong>graphify</strong> es una herramienta gratuita (Apache-2.0) que convierte un proyecto o una carpeta (código, documentos, PDF, imágenes y vídeos) en un grafo de conocimiento que puedes consultar.</p>
+<h3 class="font-headline-sm text-headline-sm text-primary">Instalación</h3>
+<ol class="list-decimal pl-space-lg space-y-space-xs font-body-md text-body-md text-on-surface"><li>Necesitas Python 3.10 o superior y uv (o pipx).</li><li>Instala la herramienta: <code>uv tool install graphifyy</code> (con dos letras y al final).</li><li>Regístrala en tu asistente: <code>graphify install</code>.</li><li>Dentro de tu asistente, en la carpeta que quieras, escribe <code>/graphify .</code></li></ol>
+<h3 class="font-headline-sm text-headline-sm text-primary">Qué obtienes</h3>
+<ul class="list-disc pl-space-lg space-y-space-xs font-body-md text-body-md text-on-surface"><li><code>graph.html</code>: el mapa interactivo para abrir en el navegador, con búsqueda y filtros.</li><li><code>GRAPH_REPORT.md</code>: conceptos clave, conexiones sorprendentes y preguntas sugeridas.</li><li><code>graph.json</code>: el grafo completo para consultarlo sin volver a leer los archivos.</li></ul>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Cada conexión está marcada como extraída directamente del archivo o deducida por la herramienta.</p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed"><strong class="text-on-surface">Lo honesto:</strong> el código se analiza en local sin IA, pero para documentos, PDF, imágenes y vídeo usa el modelo de tu asistente o una clave configurada, lo que consume uso. Existe una versión en la nube de pago que no necesitas.</p>
+<p class="font-body-sm text-body-sm mt-space-sm"><strong class="text-on-surface">Repositorio:</strong> <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://github.com/Graphify-Labs/graphify">github.com/Graphify-Labs/graphify</a></p>
+</section>
 <section class="space-y-space-md">
 <h2 class="font-headline-lg text-headline-lg text-primary">
         Preguntas frecuentes
@@ -388,6 +400,7 @@ El riesgo serio no es que el asistente se equivoque por su cuenta, es que obedez
 <a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-6">Obedece lo que lee</a>
 <a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-7">Qué sale de tu ordenador</a>
 <a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-8">Cuándo no merece la pena</a>
+<a class="block text-secondary font-semibold hover:underline" href="#graphify">→ graphify</a>
 </nav>
 </div>
 <div class="bg-surface-container-high p-space-md space-y-space-sm shadow-sm">

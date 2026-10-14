@@ -321,6 +321,16 @@
 <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed"><strong class="text-on-surface">Lo honesto:</strong> tiene más opciones que las apps de móvil y la curva de aprendizaje es mayor; un tutorial corto ayuda mucho. No hay versión para móvil.</p>
 <p class="font-body-sm text-body-sm mt-space-sm"><strong class="text-on-surface">Código:</strong> <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://github.com/mltframework/shotcut">github.com/mltframework/shotcut</a></p>
 </section>
+<section id="claude-animation-base" class="space-y-space-md scroll-mt-24 bg-surface-container-low p-space-lg border-l-4 border-secondary">
+<span class="font-kicker text-kicker uppercase tracking-widest text-secondary">Del reel de Instagram</span>
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Claude Animation Base: dibujos animados con Clawd</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">No todos los vídeos con IA necesitan un modelo de vídeo. <strong>Claude Animation Base</strong> es un kit gratuito (MIT) con código, instrucciones y recursos para que Claude anime un personaje con aspecto pintado a mano, usando p5.js y p5.brush. El personaje es Clawd, la mascota de Claude, e incluye hojas de modelo con sus emociones.</p>
+<h3 class="font-headline-sm text-headline-sm text-primary">Cómo hacer un vídeo</h3>
+<ol class="list-decimal pl-space-lg space-y-space-xs font-body-md text-body-md text-on-surface"><li>Instala Node.js, Google Chrome y ffmpeg.</li><li>Clona el repositorio y ábrelo en Claude Code (u otro agente de programación).</li><li>Pide algo como: «Lee ANIMATION_GUIDE.md y haz un vídeo de 15 segundos de Clawd intentando cazar una mariposa».</li><li>El modelo hace primero el storyboard, construye plano a plano, genera hojas de contacto para revisar su trabajo y guarda <code>out/video.mp4</code>.</li></ol>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Para ver la demo incluida, ejecuta <code>npm install</code> y <code>node render.mjs --clip --out=out/video.mp4</code>, o abre <code>studio.html</code> en Chrome.</p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed"><strong class="text-on-surface">Lo honesto:</strong> sin tarjeta gráfica dedicada, los rellenos de acuarela hacen que el render tarde segundos por fotograma; el autor recomienda pedir al modelo que los evite en gráficas integradas. Es un proyecto técnico, pensado para usar con agentes.</p>
+<p class="font-body-sm text-body-sm mt-space-sm"><strong class="text-on-surface">Repositorio:</strong> <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://github.com/JohnHeibel/ClaudeAnimationBase">github.com/JohnHeibel/ClaudeAnimationBase</a></p>
+</section>
 </article>
 <aside class="lg:col-span-4 space-y-space-xl">
 <div class="bg-surface-container-lowest p-space-md border border-outline-variant text-center">
@@ -350,6 +360,7 @@
 <a class="block hover:text-primary transition-colors" href="#voicestudio">VoiceStudio: clonar voz y doblar</a>
 <a class="block text-secondary font-semibold hover:underline" href="#supoclip">→ SupoClip</a>
 <a class="block text-secondary font-semibold hover:underline" href="#shotcut">→ Shotcut</a>
+<a class="block text-secondary font-semibold hover:underline" href="#claude-animation-base">→ Claude Animation Base</a>
 </nav>
 </div>
 
