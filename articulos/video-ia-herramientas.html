@@ -331,6 +331,28 @@
 <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed"><strong class="text-on-surface">Lo honesto:</strong> sin tarjeta gráfica dedicada, los rellenos de acuarela hacen que el render tarde segundos por fotograma; el autor recomienda pedir al modelo que los evite en gráficas integradas. Es un proyecto técnico, pensado para usar con agentes.</p>
 <p class="font-body-sm text-body-sm mt-space-sm"><strong class="text-on-surface">Repositorio:</strong> <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://github.com/JohnHeibel/ClaudeAnimationBase">github.com/JohnHeibel/ClaudeAnimationBase</a></p>
 </section>
+<section id="handbrake" class="space-y-space-md scroll-mt-24 bg-surface-container-low p-space-lg border-l-4 border-secondary">
+<span class="font-kicker text-kicker uppercase tracking-widest text-secondary">Del reel de Instagram</span>
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">HandBrake: comprime los vídeos antes de subirlos</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Muchas herramientas de vídeo con IA limitan el tamaño de los archivos que aceptas subir, y los vídeos del móvil pesan mucho. <strong>HandBrake</strong> es un conversor de vídeo gratuito y de código abierto para Windows, macOS y Linux que reduce el tamaño y convierte entre formatos.</p>
+<h3 class="font-headline-sm text-headline-sm text-primary">Cómo usarlo</h3>
+<ol class="list-decimal pl-space-lg space-y-space-xs font-body-md text-body-md text-on-surface"><li>Descárgalo desde <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://handbrake.fr">handbrake.fr</a>.</li><li>Arrastra tu vídeo a la ventana.</li><li>Elige un ajuste predefinido. «Fast 1080p30» es un buen punto de partida; para archivos más pequeños, prueba uno de 720p.</li><li>Escoge la carpeta de destino y pulsa Iniciar.</li><li>Compara el resultado con el original. Si notas pérdida de calidad, prueba un ajuste de mayor calidad.</li></ol>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">También sirve para convertir formatos poco compatibles a MP4 y para recortar la duración antes de subir un clip.</p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed"><strong class="text-on-surface">Lo honesto:</strong> la reducción depende mucho del vídeo original; en grabaciones de móvil suele ser grande, pero comprimir en exceso se nota. HandBrake no convierte vídeos con protección anticopia (DRM). No hay versión para móvil.</p>
+<p class="font-body-sm text-body-sm mt-space-sm"><strong class="text-on-surface">Código:</strong> <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://github.com/HandBrake/HandBrake">github.com/HandBrake/HandBrake</a></p>
+</section>
+<section id="lemo-opuscar" class="space-y-space-md scroll-mt-24 bg-surface-container-low p-space-lg border-l-4 border-secondary">
+<span class="font-kicker text-kicker uppercase tracking-widest text-secondary">Del reel de Instagram</span>
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Lemo-Opuscar: 43 estilos de cine hechos con código</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">¿Se puede hacer una película sin modelo de vídeo? <strong>Lemo-Opuscar</strong> es una skill gratuita (MIT) para Claude Code con 43 estilos de cine. Cada estilo incluye un prompt reutilizable y un cortometraje de ejemplo dirigido, dibujado, musicado y montado por un agente de IA que escribe código.</p>
+<h3 class="font-headline-sm text-headline-sm text-primary">Cómo se hacen las películas</h3>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Son páginas con canvas y WebGL renderizadas fotograma a fotograma, con música original creada a partir de librerías de sonidos gratuitas y narración con síntesis de voz. No hay modelo de generación de vídeo.</p>
+<h3 class="font-headline-sm text-headline-sm text-primary">Cómo usarla</h3>
+<ol class="list-decimal pl-space-lg space-y-space-xs font-body-md text-body-md text-on-surface"><li>Instala la skill en Claude Code con <code>claude plugin marketplace add lemomo-ai/lemo-opuscar</code> y <code>claude plugin install lemo-opuscar@lemolab</code>.</li><li>Mira la <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://lemomo-ai.github.io/lemo-opuscar/">galería</a> y elige un estilo.</li><li>Cuéntale a tu agente tu historia y pídele que dirija la película con ese estilo.</li></ol>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">El autor también publicó OPUSCAR 98, un recorrido de seis minutos y medio por los 98 ganadores del Óscar a mejor película, cada uno redibujado en un estilo.</p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed"><strong class="text-on-surface">Lo honesto:</strong> según el autor, los estilos están ajustados para Claude Opus 5.5 y otros modelos pueden no reproducirlos. Renderizar fotograma a fotograma lleva su tiempo.</p>
+<p class="font-body-sm text-body-sm mt-space-sm"><strong class="text-on-surface">Repositorio:</strong> <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://github.com/lemomo-ai/lemo-opuscar">github.com/lemomo-ai/lemo-opuscar</a></p>
+</section>
 </article>
 <aside class="lg:col-span-4 space-y-space-xl">
 <div class="bg-surface-container-lowest p-space-md border border-outline-variant text-center">
@@ -361,6 +383,8 @@
 <a class="block text-secondary font-semibold hover:underline" href="#supoclip">→ SupoClip</a>
 <a class="block text-secondary font-semibold hover:underline" href="#shotcut">→ Shotcut</a>
 <a class="block text-secondary font-semibold hover:underline" href="#claude-animation-base">→ Claude Animation Base</a>
+<a class="block text-secondary font-semibold hover:underline" href="#handbrake">→ HandBrake</a>
+<a class="block text-secondary font-semibold hover:underline" href="#lemo-opuscar">→ Lemo-Opuscar</a>
 </nav>
 </div>
 

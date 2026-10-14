@@ -23,7 +23,7 @@
   "author": { "@type": "Organization", "name": "El Telar", "url": "https://eltelar.es/" },
   "publisher": { "@type": "Organization", "name": "El Telar", "url": "https://eltelar.es/", "logo": { "@type": "ImageObject", "url": "https://eltelar.es/img/icon-512.png", "width": 512, "height": 512 } },
   "datePublished": "2026-01-01",
-  "dateModified": "2026-09-06",
+  "dateModified": "2026-10-14",
   "mainEntityOfPage": "https://eltelar.es/articulos/ia-gestionar-correo.html",
   "inLanguage": "es"
 }
@@ -341,6 +341,17 @@ Tono: [directo / cercano / formal]. No añadas frases de relleno."</pre>
           Un punto intermedio habitual: empezar con las herramientas nativas gratuitas durante el primer mes para validar que el hábito de revisar resúmenes en vez de correos sueltos funciona para ti, y solo después evaluar si necesitas algo más potente. Saltar directamente a la solución más compleja sin haber probado lo básico es un error común: se acaba invirtiendo tiempo en configurar reglas para un volumen de correo que ni siquiera tienes.
         </p>
 </section>
+<section id="listmonk" class="space-y-space-md scroll-mt-24 bg-surface-container-low p-space-lg border-l-4 border-secondary">
+<span class="font-kicker text-kicker uppercase tracking-widest text-secondary">Del reel de Instagram</span>
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">listmonk: tu newsletter en tu propio servidor</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Si ya escribes tus correos con ayuda de la IA, el siguiente gasto suele ser la plataforma de envío, que cobra más cuantos más suscriptores tienes. <strong>listmonk</strong> es un gestor de newsletters y listas de correo de código abierto (AGPL-3.0) que instalas en tu propio servidor.</p>
+<h3 class="font-headline-sm text-headline-sm text-primary">Qué ofrece</h3>
+<ul class="list-disc pl-space-lg space-y-space-xs font-body-md text-body-md text-on-surface"><li>Gestión de listas y suscriptores.</li><li>Campañas con plantillas y envío programado.</li><li>Estadísticas de cada campaña: rendimiento, rebotes y enlaces más pulsados.</li><li>Un único programa, rápido, que guarda los datos en PostgreSQL.</li></ul>
+<h3 class="font-headline-sm text-headline-sm text-primary">Cómo empezar</h3>
+<ol class="list-decimal pl-space-lg space-y-space-xs font-body-md text-body-md text-on-surface"><li>Prueba la demo en <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://demo.listmonk.app">demo.listmonk.app</a> para ver si te encaja.</li><li>En un servidor con Docker, descarga el <code>docker-compose.yml</code> del repositorio y ejecuta <code>docker compose up -d</code>.</li><li>Configura un servicio de envío SMTP (por ejemplo, el de tu proveedor de correo o uno especializado).</li><li>Importa tus suscriptores, crea tu primera campaña y envíate una prueba.</li></ol>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed"><strong class="text-on-surface">Lo honesto:</strong> necesitas conocimientos técnicos básicos, un servidor y un servicio SMTP, que pueden tener coste. Tú eres responsable de cumplir la normativa de protección de datos: envía solo a personas que hayan aceptado recibir tus correos.</p>
+<p class="font-body-sm text-body-sm mt-space-sm"><strong class="text-on-surface">Código:</strong> <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://github.com/knadh/listmonk">github.com/knadh/listmonk</a></p>
+</section>
 <section class="space-y-space-md">
 <h2 class="font-headline-lg text-headline-lg text-primary">
           Preguntas frecuentes
@@ -419,6 +430,7 @@ Si tu volumen es bajo (menos de veinte correos al día), el ahorro absoluto de t
 <a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-6">Cómo montarlo</a>
 <a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-6b">¿De verdad ahorra tiempo?</a>
 <a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-6c">El resultado realista</a>
+<a class="block text-secondary font-semibold hover:underline" href="#listmonk">→ listmonk</a>
 </nav>
 </div>
 
