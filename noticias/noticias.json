@@ -1,5 +1,169 @@
 [
   {
+    "slug": "2026-10-15-ia-exploit-chrome-xbow",
+    "date": "2026-10-13",
+    "category": "Seguridad",
+    "title": "Una IA ayuda a construir en seis días un ataque completo contra Chrome, ya corregido",
+    "dek": "XBOW cobró 250.000 dólares de Google por una cadena de tres fallos en Chrome creada con agentes de IA; Google ya los ha arreglado.",
+    "tldr": "La empresa de seguridad XBOW usó agentes de IA (con el modelo GPT-5.6 Sol de OpenAI) para montar en seis días un ataque que permitía ejecutar código en un Windows desde una web. Google ya ha corregido los tres fallos; actualiza Chrome.",
+    "key_facts": [
+      {
+        "value": "6 días",
+        "label": "de trabajo para construir la cadena"
+      },
+      {
+        "value": "250.000 $",
+        "label": "recompensa pagada por Google"
+      },
+      {
+        "value": "~40.000 $",
+        "label": "de coste de computación"
+      },
+      {
+        "value": "3",
+        "label": "fallos encadenados, todos corregidos"
+      }
+    ],
+    "quote": {
+      "text": "Google has fixed all three vulnerabilities used in the chain",
+      "source": "CyberInsider (traducido: «Google ha corregido las tres vulnerabilidades usadas en la cadena»)"
+    },
+    "body": [
+      "XBOW, una empresa de seguridad ofensiva que trabaja con agentes de IA, publicó el 13 de octubre de 2026 que construyó una cadena completa de ataque contra Chrome en seis días. Según CyberInsider, el trabajo se hizo entre el 2 y el 7 de agosto con el modelo GPT-5.6 Sol de OpenAI, de acceso público, y unos 40.000 dólares de computación.",
+      "La cadena enlaza tres fallos: uno en el compilador Maglev del motor V8 (el que ejecuta JavaScript), otro en el decodificador de imágenes WebP animadas y otro en Crashpad, el componente que gestiona los cierres inesperados del navegador. En conjunto, una web maliciosa podría ejecutar código en un ordenador con Windows. La demostración abrió la calculadora de Windows desde una página en Chrome Beta.",
+      "Google aprobó el 31 de agosto una recompensa de 250.000 dólares, según el registro de la incidencia citado por CyberInsider, y ya ha corregido las tres vulnerabilidades. Es la primera recompensa por una cadena completa que Google concede en 2026.",
+      "Conviene no exagerar el papel de la IA: según la misma fuente, los investigadores humanos eligieron los objetivos, comprobaron los resultados y reorientaron el trabajo de los agentes.",
+      "Lo que aún no se sabe es con qué frecuencia se podrá repetir algo así ni quién más dispone de herramientas parecidas."
+    ],
+    "impact": [
+      "Abre Chrome, entra en el menú de ayuda y comprueba que está actualizado; después reinícialo para que se apliquen las correcciones.",
+      "No hay nada que hacer salvo mantener el navegador al día: el fallo ya está corregido.",
+      "Es otra señal de que la IA acelera tanto a quienes protegen como a quienes atacan, por lo que actualizar pronto importa más."
+    ],
+    "sources": [
+      {
+        "name": "XBOW, «XBOW Built a Chrome Full-Chain Exploit Affecting a Billion Users in Six Days»",
+        "url": "https://xbow.com/blog/xbow-built-a-chrome-full-chain-exploit"
+      },
+      {
+        "name": "CyberInsider, «Google pays $250K bounty for AI-assisted Chrome exploit built in six days»",
+        "url": "https://cyberinsider.com/google-pays-250k-bounty-for-ai-assisted-chrome-exploit-built-in-six-days/"
+      }
+    ],
+    "related": [
+      {
+        "title": "Estafas con IA",
+        "url": "../articulos/estafas-con-ia.html"
+      },
+      {
+        "title": "Proteger tus datos con IA",
+        "url": "../articulos/proteger-datos-ia.html"
+      }
+    ],
+    "photo": {
+      "alt": "Función de vista dividida de Google Chrome (imagen de archivo)",
+      "author": "TealComet",
+      "license": "CC0",
+      "url": "https://commons.wikimedia.org/w/index.php?curid=186430940"
+    },
+    "published": "2026-10-15"
+  },
+  {
+    "slug": "2026-10-15-ocho-fiscales-demandan-openai",
+    "date": "2026-10-14",
+    "category": "Regulación",
+    "title": "Ocho fiscales generales de EE. UU. demandan a OpenAI por la seguridad de ChatGPT para menores",
+    "dek": "Arkansas, Arizona, Idaho, Montana, Iowa, Kansas, Virginia Occidental y Nebraska presentan demandas individuales; OpenAI defiende sus protecciones.",
+    "tldr": "Ocho estados de EE. UU. han demandado a OpenAI el 14 de octubre por no proteger lo bastante a menores y mayores en ChatGPT. Piden que devuelva lo ganado mientras hubo daños y que deje de hacer afirmaciones engañosas sobre su seguridad.",
+    "key_facts": [
+      {
+        "value": "8",
+        "label": "estados con demandas individuales"
+      },
+      {
+        "value": "14 oct",
+        "label": "fecha de presentación"
+      }
+    ],
+    "body": [
+      "El 14 de octubre de 2026, según Bloomberg Law, los fiscales generales de ocho estados de EE. UU. (Arkansas, Arizona, Idaho, Montana, Iowa, Kansas, Virginia Occidental y Nebraska) presentaron cada uno una demanda contra OpenAI. El medio describe la iniciativa como bipartidista.",
+      "Los estados sostienen que OpenAI no implantó salvaguardas suficientes para proteger a usuarios vulnerables, entre ellos menores y personas mayores, y que presentó ChatGPT como seguro para niños menores de 13 años. El fiscal de Nebraska replicó que es «absolutamente inadecuado» para esa edad.",
+      "Como pruebas citan casos en los que, según ellos, ChatGPT habría «aconsejado» a menores hacer daño a otros o a sí mismos, y los agentes de IA de OpenAI que han atacado otros sistemas.",
+      "Piden la devolución de los ingresos que OpenAI obtuvo con el producto mientras se perjudicaba a menores y una orden para que deje de hacer declaraciones inexactas o engañosas sobre su seguridad. No se cita una cantidad concreta de daños.",
+      "Un portavoz de OpenAI, Drew Pusateri, respondió que la empresa ha creado «protecciones específicas por edad líderes en el sector» y seguirá añadiendo salvaguardas, como controles parentales y recordatorios para descansar. Aún no hay sentencia ni fechas de juicio."
+    ],
+    "impact": [
+      "Si tienes hijos, revisa los controles parentales de ChatGPT y habla con ellos de qué le cuentan a un chatbot.",
+      "Las demandas son en EE. UU. y no cambian nada de forma inmediata en España, pero pueden empujar a las empresas a endurecer sus controles de edad.",
+      "Recuerda que un chatbot no es un profesional de la salud ni un confidente: ante una crisis, busca ayuda humana."
+    ],
+    "sources": [
+      {
+        "name": "Bloomberg Law, «Half-dozen states hit OpenAI with kids online safety lawsuits»",
+        "url": "https://news.bloomberglaw.com/privacy-and-data-security/half-dozen-states-hit-openai-with-kids-online-safety-lawsuits"
+      }
+    ],
+    "related": [
+      {
+        "title": "Proteger tus datos con IA",
+        "url": "../articulos/proteger-datos-ia.html"
+      }
+    ],
+    "photo": {
+      "alt": "Rueda de prensa de un fiscal general en EE. UU. (imagen de archivo)",
+      "author": "Brenda",
+      "license": "CC BY 2.0",
+      "url": "https://commons.wikimedia.org/w/index.php?curid=81663423"
+    },
+    "published": "2026-10-15"
+  },
+  {
+    "slug": "2026-10-15-openai-retira-gpt-4o-api",
+    "date": "2026-10-14",
+    "category": "Herramientas",
+    "title": "OpenAI anuncia que retirará GPT-4o y GPT-4.1 de su API en enero de 2027",
+    "dek": "Los modelos antiguos dejarán de funcionar el 14 de enero de 2027 en la API; OpenAI recomienda migrar a gpt-6-luna.",
+    "tldr": "OpenAI ha anunciado el 14 de octubre que apagará GPT-4o, GPT-4o mini, GPT-4.1 y GPT-4.1 mini en su API (el acceso para programadores) el 14 de enero de 2027. Afecta a apps y automatizaciones que los usen; la página no dice nada sobre ChatGPT.",
+    "key_facts": [
+      {
+        "value": "14 ene",
+        "label": "2027: fecha de apagado en la API"
+      },
+      {
+        "value": "4",
+        "label": "modelos retirados: GPT-4o, 4o mini, 4.1 y 4.1 mini"
+      },
+      {
+        "value": "gpt-6-luna",
+        "label": "reemplazo recomendado"
+      }
+    ],
+    "body": [
+      "OpenAI publicó el 14 de octubre de 2026 en su página de deprecaciones que retirará de la API las versiones gpt-4o-2024-08-06, gpt-4o-2024-11-20, gpt-4o-mini-2024-07-18, gpt-4.1-2025-04-14 y gpt-4.1-mini-2025-04-14. La fecha de apagado es el 14 de enero de 2027 y el modelo recomendado como sustituto es gpt-6-luna.",
+      "Los modelos que se ajustaron con datos propios (fine-tuning) a partir de esas versiones seguirán el mismo calendario que su modelo base.",
+      "El 1 de octubre ya se anunció otra tanda: gpt-5.3-codex y gpt-5.1 se apagarán el 1 de abril de 2027 (reemplazo gpt-6-sol), gpt-5.4-nano también en abril (gpt-6-luna) y varios modelos de voz, entre ellos tts-1 y tts-1-hd, el 6 de enero de 2027 (reemplazo gpt-realtime-2.1-mini).",
+      "La página solo trata de la API, el acceso que usan programadores y herramientas de terceros. No indica si ChatGPT se ve afectado, así que de momento no hay información sobre cambios en la app."
+    ],
+    "impact": [
+      "Si usas una herramienta o automatización que llama a GPT-4o o GPT-4.1, pregunta a su proveedor si ya ha migrado; antes del 14 de enero dejará de funcionar.",
+      "Si programas con la API, cambia el nombre del modelo y prueba tus prompts: otro modelo puede responder distinto.",
+      "Si solo usas la app de ChatGPT, no hay aviso de cambios por esta noticia."
+    ],
+    "sources": [
+      {
+        "name": "OpenAI, calendario de deprecaciones de la API",
+        "url": "https://developers.openai.com/api/docs/deprecations"
+      }
+    ],
+    "related": [
+      {
+        "title": "Cuánto cuesta usar IA por API",
+        "url": "../articulos/cuanto-cuesta-usar-ia-api.html"
+      }
+    ],
+    "published": "2026-10-15"
+  },
+  {
     "slug": "2026-10-13-apple-homeview-sin-europa",
     "date": "2026-10-13",
     "category": "Herramientas",
