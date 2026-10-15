@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Agente de voz para el teléfono de tu negocio | El Telar</title>
+<meta name="description" content="Qué aguanta hoy un agente de voz al teléfono: el presupuesto de latencia, los silencios, qué obliga a decir el AI Act y cuándo conviene no montarlo.">
+<link rel="canonical" href="https://eltelar.es/articulos/agente-voz-telefono-negocio.html"><link rel="icon" type="image/svg+xml" href="../img/favicon.svg?v=4"><link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32.png?v=4"><link rel="apple-touch-icon" href="../img/apple-touch-icon.png?v=4"><meta name="theme-color" content="#072417"><link rel="manifest" href="../manifest.json"><link rel="alternate" type="application/rss+xml" title="El Telar" href="../feed.xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Agente de voz para el teléfono de tu negocio | El Telar">
+<meta property="og:description" content="Una conversación por voz no perdona los dos segundos que un chat sí perdona. El reparto real de la latencia, por qué el problema difícil es saber cuándo has terminado de hablar, y lo que el artículo 50 del AI Act te obliga a decir desde agosto de 2026.">
+<meta property="og:url" content="https://eltelar.es/articulos/agente-voz-telefono-negocio.html">
+<meta property="og:site_name" content="El Telar">
+<meta property="og:locale" content="es_ES"><meta property="og:image" content="https://eltelar.es/img/og/guia-agente-voz-telefono-negocio.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Agente de voz para el teléfono de tu negocio | El Telar">
+<meta name="twitter:description" content="Una conversación por voz no perdona los dos segundos que un chat sí perdona. El reparto real de la latencia, por qué el problema difícil es saber cuándo has terminado de hablar, y lo que el artículo 50 del AI Act te obliga a decir desde agosto de 2026."><meta name="twitter:image" content="https://eltelar.es/img/og/guia-agente-voz-telefono-negocio.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Montar un agente de voz que atienda el teléfono de tu negocio",
+  "description": "Una conversación por voz no perdona los dos segundos que un chat sí perdona. El reparto real de la latencia, por qué el problema difícil es saber cuándo has terminado de hablar, y lo que el artículo 50 del AI Act te obliga a decir desde agosto de 2026.",
+  "image": "https://eltelar.es/img/og/guia-agente-voz-telefono-negocio.jpg",
+  "author": {
+    "@type": "Person",
+    "name": "Juan Becerril Castañón",
+    "url": "https://eltelar.es/sobre-nosotros.html#autor"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "El Telar"
+  },
+  "datePublished": "2026-10-15",
+  "dateModified": "2026-10-15",
+  "mainEntityOfPage": "https://eltelar.es/articulos/agente-voz-telefono-negocio.html",
+  "inLanguage": "es"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Tengo que avisar de que es una IA si se nota muchísimo que lo es?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "El artículo 50.1 del AI Act deja fuera del deber de informar los casos en que la interacción con una IA resulta «obvia» para una persona razonablemente informada, atenta y perspicaz, teniendo en cuenta las circunstancias y el contexto de uso. El problema de apoyarse en esa excepción al teléfono es que la calidad de las voces sintéticas es justo lo que está cambiando: lo que hoy se nota puede no notarse con el siguiente modelo, y entonces el que incumple eres tú sin haber tocado nada. Además, varios despachos que han analizado las directrices que la Comisión Europea publicó en julio de 2026 señalan que la excepción debe interpretarse de forma restrictiva. Decirlo cuesta una frase de dos segundos al principio de la llamada; no decirlo te deja defendiendo que tu voz sintética era evidente. La proporción entre coste y riesgo es bastante clara."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Voz a voz o cascada? Dime cuál monto.",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Si es tu primer agente de voz y atiende a clientes, cascada. No por latencia —voz a voz suele ir por delante— sino porque entre el reconocimiento y la síntesis queda un texto que puedes registrar, revisar y usar para arreglar lo que falle; con un modelo de voz a voz ese punto intermedio no existe y depurar por qué dijo algo raro es mucho más incómodo. La cascada además sale bastante más barata cuando el volumen sube, y te deja cambiar una pieza sin tirar el resto. Voz a voz compensa cuando la naturalidad de la conversación es el producto en sí y aceptas ver menos de lo que pasa dentro. Ninguna de las dos arregla un guion malo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo grabar las llamadas para mejorar el agente?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Grabar no es automáticamente ilegal, pero no es gratis: tratas datos personales, así que necesitas una base jurídica, informar de la grabación y de para qué la usas, y guardar solo el tiempo que haga falta. Si además vas a usar esas grabaciones para entrenar o ajustar un modelo, eso es una finalidad distinta de «atender tu llamada» y hay que decirlo aparte, no colarlo en la misma frase. Dos cosas prácticas: comprueba qué hace tu proveedor con el audio por defecto —algunos lo conservan salvo que lo desactives— y evita que el agente pida en voz alta datos que luego queden grabados sin necesidad, como un número de tarjeta completo. La guía sobre proteger tus datos al conectar la IA entra en esto con más detalle."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Mi agente contesta rápido pero a veces se inventa un precio. ¿Eso se arregla con un modelo mejor?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Casi nunca. Un modelo mejor reduce la frecuencia, no el tipo de fallo, y al teléfono un dato inventado es peor que en un chat porque la persona no puede releerlo ni comprobarlo: se lo apunta y cuelga. Lo que lo arregla es quitarle al modelo la posibilidad de contestar de memoria: los precios, horarios y disponibilidad salen de una consulta a tu sistema en el momento, no del prompt, y si la consulta falla el agente lo dice y pasa la llamada, en vez de rellenar el hueco. Es exactamente el planteamiento de la guía sobre montar un bot que no invente respuestas, y vale igual cuando el canal es la voz."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://eltelar.es/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Guías",
+      "item": "https://eltelar.es/index.html#guias"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Montar un agente de voz que atienda el teléfono de tu negocio",
+      "item": "https://eltelar.es/articulos/agente-voz-telefono-negocio.html"
+    }
+  ]
+}
+</script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet"/></noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet"/></noscript>
+<style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><link rel="stylesheet" href="../css/tailwind.css"><link rel="stylesheet" href="../css/entrance.css?v=2"><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}(function(){var c=null;try{c=localStorage.getItem('eltelar-cookie-consent')}catch(e){}var g=c==='accepted'?'granted':'denied';gtag('consent','default',{ad_storage:g,ad_user_data:g,ad_personalization:g,analytics_storage:g,wait_for_update:500});window.adsbygoogle=window.adsbygoogle||[];if(g!=='granted'){window.adsbygoogle.requestNonPersonalizedAds=1;}})();</script><script>window.addEventListener("load",function(){setTimeout(function(){var s=document.createElement("script");s.async=true;s.src="https://www.googletagmanager.com/gtag/js?id=G-4DPTKEG79N";document.head.appendChild(s);},800);});</script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4DPTKEG79N');</script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8239907995939753" crossorigin="anonymous"></script></head><body class="bg-background font-body-md text-on-surface antialiased">
+<header class="w-full bg-surface-container-lowest border-b border-outline-variant"><div class="border-b border-outline-variant py-space-xxs px-space-md hidden md:block"><div class="max-w-site-max-width mx-auto flex items-center justify-between font-kicker text-kicker text-on-surface-variant uppercase tracking-wider"><span>EDICIÓN DIGITAL // ACTUALIZADO 2026 // EL TELAR &amp; AGENTES</span><span>MADRID · REMOTO</span><span>SIN HUMO · 100% PRODUCCIÓN</span></div></div><div class="max-w-site-max-width mx-auto px-space-md py-space-md sm:py-space-xl text-center"><p class="hidden sm:block font-kicker text-kicker uppercase tracking-widest text-on-surface-variant mb-space-xs">Publicación Independiente de Tecnología &amp; Agentes</p><a class="inline-block" href="../index.html"><div class="font-display text-display max-sm:text-[40px] max-sm:leading-none text-primary tracking-tight">El Telar</div></a><p class="hidden sm:block font-caption text-caption uppercase tracking-widest text-on-surface-variant mt-space-xs">EL BOLETÍN Y ARCHIVO PRÁCTICO DE INTELIGENCIA ARTIFICIAL Y AGENTES AUTÓNOMOS</p></div><div class="border-t border-b border-outline-variant"><div class="max-w-site-max-width mx-auto px-space-md flex items-center justify-between gap-space-sm h-14"><nav class="flex items-center gap-space-md sm:gap-space-lg h-full min-w-0 overflow-x-auto [scrollbar-width:none] whitespace-nowrap"><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../index.html#guias">GUÍAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../empieza-aqui.html">EMPIEZA AQUÍ</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../sobre-nosotros.html">SOBRE NOSOTROS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../noticias/index.html">NOTICIAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../herramientas/index.html">HERRAMIENTAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../prompts/index.html">PROMPTS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../contacto.html">CONTACTO</a></nav><div class="flex items-center gap-space-md"><button id="search-trigger" type="button" aria-label="Buscar en las guías" class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[20px]">search</span></button><a class="hidden sm:inline-block bg-primary-container text-surface px-space-md py-space-xs font-label-md text-label-md uppercase tracking-wider hover:bg-primary transition-colors" href="../index.html#despacho">SUSCRÍBETE GRATIS</a></div></div></div><div class="hidden md:block bg-surface-container-low border-b border-outline-variant py-space-xs px-space-md"><div class="max-w-site-max-width mx-auto text-center"><p class="font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">52 GUÍAS COMPLETAS EN EXPANSIÓN · ACTUALIZADO A MODELOS 2026 · PROBADO EN TERMINAL Y FLUJOS REALES · CERO HUMO NI TEORÍA VACÍA</p></div></div></header>
+<main class="w-full max-w-site-max-width mx-auto px-space-md py-space-xl"><div class="flex flex-col w-full">
+<nav class="w-full mb-space-lg">
+<ol class="flex flex-wrap items-center gap-space-xs font-kicker text-kicker text-on-surface-variant uppercase tracking-wider">
+<li><a class="hover:text-primary transition-colors" href="../index.html">Inicio</a></li>
+<li class="text-on-surface-variant">/</li>
+<li><a class="hover:text-primary transition-colors" href="../index.html#guias">Guías</a></li>
+<li class="text-on-surface-variant">/</li>
+<li class="text-primary font-bold truncate max-w-[280px] sm:max-w-md">Agente de voz al teléfono</li>
+</ol>
+</nav>
+<header class="w-full pb-space-xl mb-space-2xl">
+<div class="flex flex-wrap items-center gap-space-xs mb-space-md">
+<span class="bg-surface-container-high text-secondary px-space-sm py-1 font-kicker text-kicker uppercase tracking-widest">AGENTES // VOZ</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight max-w-editorial-max mb-space-md">
+          Montar un agente de voz que atienda el teléfono de tu negocio
+        </h1>
+<p class="font-lead-paragraph text-lead-paragraph text-on-surface-variant max-w-editorial-max leading-relaxed mb-space-lg">
+          Por escrito, dos segundos de espera no se notan. Por teléfono, dos segundos de silencio son una persona preguntando «¿hola?». Esta guía va de lo que de verdad decide si un agente de voz aguanta una llamada real: cómo se reparte el tiempo, por qué el problema difícil no es entender las palabras sino saber cuándo has terminado de decirlas, y qué estás obligado a avisar desde agosto de 2026.
+        </p>
+<div class="bg-surface-container-lowest p-space-md flex flex-wrap items-center justify-between gap-y-3 shadow-sm">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 bg-primary text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">graphic_eq</span>
+</div>
+<div>
+<div class="font-label-md text-label-md text-on-surface font-semibold">Por la Redacción de El Telar</div><div class="font-caption text-caption text-on-surface-variant">Guías prácticas de IA y agentes, probadas en flujos de trabajo reales antes de publicarlas.</div>
+<button class="inline-flex items-center gap-1 mt-2 px-3 py-1.5 bg-surface-container text-primary font-label-md text-[12px] font-semibold uppercase tracking-wider hover:bg-surface-container-high transition-colors" id="copy-guide-btn" type="button"><span class="material-symbols-outlined text-[16px]">content_copy</span> Copiar guía para tu IA</button><span class="inline-flex items-center gap-1 ml-1"><button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" id="save-guide-btn" title="Guardar guía" type="button"><span class="material-symbols-outlined text-[16px]">bookmark_border</span></button><button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" id="copy-link-btn" title="Copiar enlace permanente" type="button"><span class="material-symbols-outlined text-[16px]">share</span></button></span>
+</div>
+</div>
+<div class="flex items-center gap-space-lg text-on-surface-variant font-caption text-caption uppercase tracking-wider">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">schedule</span> 17 min de lectura</span>
+</div>
+</div>
+</header>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-col-gap">
+<article class="lg:col-span-8 flex flex-col space-y-space-xl">
+<figure data-hero class="space-y-space-xs"><img class="w-full border border-outline-variant" src="../img/guias/hero-agente-voz-telefono-negocio.jpg" alt="Artículo 50 del AI Act: obligación de informar a las personas de que están interactuando con un sistema de IA, en vigor desde el 2 de agosto de 2026" width="1280" height="720" fetchpriority="high" decoding="async"/><figcaption class="font-caption text-caption text-on-surface-variant">Captura de pantalla: <a class="underline" href="https://artificialintelligenceact.eu/article/50/" rel="nofollow noopener" target="_blank">artificialintelligenceact.eu</a>, consultada el 15 de octubre de 2026.</figcaption></figure>
+<div class="relative bg-surface-container-lowest p-space-lg shadow-sm">
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed text-justify">
+<span class="float-left font-display text-primary text-6xl leading-none pr-3 pt-1 font-normal">H</span>
+          ay una pregunta que conviene hacerse antes de montar nada: ¿por qué un asistente que responde de maravilla por escrito resulta insoportable por teléfono? La respuesta no tiene que ver con lo listo que sea el modelo. Tiene que ver con que una conversación hablada es un mecanismo con reloj. En un chat, el silencio mientras la otra parte escribe es normal y no significa nada. En una llamada, el silencio significa algo — que te toca hablar, que no te han oído, que se ha cortado — y la persona reacciona a esa señal antes de que tu agente haya terminado de pensar.
+        </p>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Esta guía no repite lo que ya cuenta la de <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="clonar-voz-transcribir-audio-ia.html">clonar voz, transcribir y generar audio con IA</a>, que es donde están las herramientas de transcripción y síntesis una a una y lo que la ley dice sobre usar la voz de alguien. Aquí el asunto es otro: juntar esas piezas en algo que descuelga un teléfono real, aguanta a una persona que interrumpe, y no cuelga dejando a un cliente peor que si no hubiera llamado.
+        </p>
+<section class="space-y-space-md">
+<h2 id="sec-1" class="font-headline-lg text-headline-lg text-primary">
+        1. El teléfono es el caso difícil, no el fácil
+      </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Mucha gente llega al agente de voz pensando que es un chatbot con altavoz. Es al revés: todo lo que un chat te perdona, una llamada te lo cobra. Por escrito puedes tardar tres segundos, corregirte a mitad de respuesta, mandar un párrafo largo y confiar en que la persona lo relea. Por voz no existe ninguna de esas tres cosas. El mensaje se consume a la velocidad a la que se pronuncia, no se puede releer, y cualquier pausa se interpreta como un turno de palabra.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Hay tres diferencias que condicionan todo el diseño. La primera es que <strong>el turno se negocia en tiempo real</strong>: las personas se solapan, se interrumpen y terminan las frases de otros, y un sistema que no sepa gestionarlo resulta agresivo o lento, nunca natural. La segunda es que <strong>no hay forma de revisar</strong>: un dato mal dicho se queda como lo oyó quien llamaba, y ese es el motivo de que las invenciones duelan más aquí que en ningún otro canal. La tercera es que <strong>no hay botón de atrás</strong>: si el agente se pierde, la persona no reformula la pregunta como haría escribiendo, cuelga.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          De ahí sale la única recomendación que vale para todos los casos: empieza por el tipo de llamada más acotado que tengas, no por «que atienda todo». Confirmar una cita, dar un horario, tomar un recado con nombre y teléfono y pasarlo por correo son tareas con un final claro y poco que inventar. «Atención al cliente» no es una tarea, es una categoría.
+        </p>
+</section>
+<section class="space-y-space-md">
+<h2 id="sec-2" class="font-headline-lg text-headline-lg text-primary">
+        2. Las dos formas de montarlo
+      </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Hoy hay dos arquitecturas, y la elección entre ellas condiciona más cosas de las que parece.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          La <strong>cascada</strong> encadena tres piezas distintas: un reconocedor convierte el audio en texto (STT), un modelo de lenguaje decide qué responder, y un sintetizador convierte esa respuesta en audio (TTS). Es como se han montado casi todos los agentes de voz que están en producción. La <strong>voz a voz</strong> usa un solo modelo que recibe audio y devuelve audio, sin pasar por texto por el medio.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          La tentación es elegir por latencia, y por latencia gana la voz a voz: las estimaciones que publican las consultoras especializadas en el sector sitúan un turno completo de voz a voz en torno a los 300–700 ms, frente a los 600–1.200 ms de una cascada bien montada. Pero la latencia es la razón menos importante para decidir, y conviene saber por qué.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          En una cascada, entre el reconocimiento y la síntesis queda <strong>un texto</strong>. Ese texto es un punto de inspección: lo puedes registrar, revisarlo cuando un cliente se queje, medir sobre él, filtrarlo antes de que se pronuncie, y cambiar una pieza sin tocar las otras. En voz a voz ese punto no existe, y cuando el agente diga algo raro tendrás que depurar escuchando audio. Las mismas fuentes coinciden además en que la cascada sale bastante más barata cuando el volumen sube. La contrapartida honesta de la cascada es que cada pieza añade su retardo y que los errores se arrastran: lo que el reconocedor entendió mal, el modelo lo da por bueno.
+        </p>
+<div class="bg-surface-container-low p-space-md border-l-4 border-primary">
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+<strong>Si es tu primer agente de voz y atiende clientes, monta la cascada.</strong> No por latencia, sino porque vas a necesitar ver qué pasó dentro mucho más de lo que crees. La voz a voz compensa cuando la naturalidad de la conversación <em>es</em> el producto y aceptas tener menos visibilidad.
+        </p>
+</div>
+</section>
+<section class="space-y-space-md">
+<h2 id="sec-3" class="font-headline-lg text-headline-lg text-primary">
+        3. El presupuesto de latencia, repartido
+      </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          La cifra que se repite como objetivo es <strong>por debajo de 800 ms</strong> desde que la persona termina de hablar hasta que empieza a sonar la respuesta, y por debajo de 500 ms para que la conversación se sienta realmente fluida. Son estimaciones de consultoras y proveedores del sector, no un estándar publicado, así que tómalas como lo que son: un orden de magnitud sobre el que la mayoría coincide, no una medida oficial.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Lo útil es ver cómo se reparte ese presupuesto en una cascada, porque enseña dónde se puede recortar y dónde no:
+        </p>
+<ul class="space-y-space-xs font-body-md text-body-md text-on-surface-variant leading-relaxed list-disc pl-space-lg">
+<li><strong>Reconocimiento (STT):</strong> del orden de 150–300 ms cuando va en continuo. Importa poco que suene a mucho, porque transcribe <em>mientras</em> la persona habla; lo que cuenta al final es solo el último tramo.</li>
+<li><strong>El modelo:</strong> lo que queda, entre 200 y 700 ms. Y aquí lo que mides no es cuánto tarda en responder, sino cuánto tarda en empezar a responder — el tiempo hasta el primer token.</li>
+<li><strong>Síntesis (TTS):</strong> 100–400 ms hasta el primer fragmento de audio. Igual que antes: lo que importa es cuándo empieza a sonar, no cuánto dura.</li>
+</ul>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          De esa aritmética salen tres consecuencias prácticas. Que <strong>todo tiene que ir en streaming</strong>: si esperas a tener la frase entera antes de sintetizarla, has perdido la carrera antes de empezar. Que <strong>el modelo más capaz no suele ser el adecuado</strong>, porque en voz pesa más empezar pronto que razonar mejor, y un modelo pequeño que arranca en 200 ms gana a uno excelente que arranca en 900. Y que si tu agente tiene que consultar algo —una base de datos, tu agenda, un sistema de reservas— esa consulta compite por el mismo presupuesto: conviene lanzarla en cuanto se intuye la intención, y tener preparada una muletilla honesta («déjame que lo mire un momento») para los casos en los que no llegue a tiempo.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Una advertencia sobre cómo medir: mide el <strong>percentil 95, no la media</strong>. La media la arreglan las llamadas fáciles. Quien cuelga es siempre el del percentil malo.
+        </p>
+</section>
+<section class="space-y-space-md">
+<h2 id="sec-4" class="font-headline-lg text-headline-lg text-primary">
+        4. El problema difícil: saber cuándo has terminado de hablar
+      </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Si tuviera que señalar la pieza que hunde más agentes de voz, no sería el reconocimiento ni la síntesis. Sería decidir en qué momento te ha tocado hablar. En la jerga se llama <em>endpointing</em> o detección de fin de turno, y es un problema genuinamente difícil porque la señal que lo delata —el silencio— significa cosas distintas según el momento.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Piensa en alguien dictando un número de teléfono: «seis seis siete… (pausa) …cuatro dos uno». Esa pausa de medio segundo no es el final del turno, es alguien recordando. Si tu agente espera 400 ms de silencio para empezar a hablar, le va a cortar en mitad del número. Si espera 1.500 ms para no cortarle nunca, entonces cada respuesta normal llega con segundo y medio de retraso y la conversación se vuelve pastosa. No hay un número que resuelva los dos casos a la vez, y por eso los sistemas serios no usan solo el silencio: combinan la duración de la pausa con si la frase parece terminada, y ajustan la espera según lo que se acaba de preguntar — más paciencia después de pedir un número o una dirección, menos después de una pregunta de sí o no.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          El reverso es la <strong>interrupción</strong>: que la persona pueda cortar al agente mientras habla y que el agente se calle de inmediato. Parece un detalle y es justo lo que separa una conversación de un contestador. Exige dos cosas que conviene comprobar antes de elegir proveedor: que el sistema siga escuchando mientras habla, y que al cortarse sepa qué parte de su mensaje llegó a sonar realmente — si da por dicho algo que la persona no oyó, el resto de la llamada se construye sobre un malentendido.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Si vas a probar herramientas, estas dos cosas son las que hay que probar. Las demos siempre se graban con alguien que habla despacio, por turnos y sin ruido de fondo. Tus clientes llamarán desde la calle.
+        </p>
+</section>
+<section class="space-y-space-md">
+<h2 id="sec-5" class="font-headline-lg text-headline-lg text-primary">
+        5. Lo que añade el teléfono por su cuenta
+      </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Hasta aquí todo valdría para un agente de voz dentro de una web. El teléfono añade su propia factura, y es de las cosas que nadie menciona hasta que el prototipo pasa a producción.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          La red telefónica tradicional transporta la voz con una calidad muy inferior a la de un micrófono de ordenador: menos banda de frecuencias y audio comprimido para que ocupe poco. Eso no es un detalle estético, degrada el reconocimiento — y lo degrada justo donde más duele, en los números, las letras sueltas y los apellidos poco comunes. Un reconocedor que en tus pruebas por el portátil funcionaba impecable puede empeorar de forma apreciable por teléfono sin que hayas cambiado nada. Si vas a trabajar en español con nombres propios españoles, pruébalo por una llamada real desde el principio, no por el micro del ordenador.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Súmale que el transporte de la llamada también consume parte del presupuesto de tiempo del que hablábamos antes, y que hay dos cosas que ningún modelo arregla: las llamadas se caen, y a veces quien descuelga al otro lado es un buzón de voz. Merece la pena decidir desde el principio qué pasa en ambos casos, porque si no lo decides tú, el comportamiento por defecto suele ser el peor posible — un agente hablándole a un contestador durante dos minutos, o una llamada que se corta sin que quede rastro de lo que la persona pedía.
+        </p>
+</section>
+<section class="space-y-space-md">
+<h2 id="sec-6" class="font-headline-lg text-headline-lg text-primary">
+        6. Lo que estás obligado a decir, y cuándo
+      </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Aquí no hay margen de interpretación y conviene tenerlo claro antes de escribir el guion. El <strong>artículo 50 del Reglamento Europeo de Inteligencia Artificial</strong> obliga a que los sistemas de IA pensados para interactuar directamente con personas estén diseñados de forma que esas personas <strong>sepan que están hablando con una IA</strong>, salvo que resulte obvio para alguien razonablemente informado, atento y perspicaz. Un agente que atiende tu teléfono entra de lleno en ese supuesto.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          El apartado 5 del mismo artículo añade el detalle que define el guion: la información debe darse de forma <strong>clara y distinguible, y como muy tarde en el momento de la primera interacción</strong>. Traducido a una llamada: al principio, no al final, y no enterrado en una frase larga. Esas obligaciones de transparencia se aplican <strong>desde el 2 de agosto de 2026</strong>, según el calendario del propio reglamento. Si quieres el contexto completo de la norma —qué es riesgo limitado, qué sanciones hay y a quién le toca cada obligación—, está en la guía sobre <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="ai-act-explicado.html">el AI Act explicado</a>.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          En la práctica, esto es una frase al descolgar. Algo del tipo «le atiende el asistente virtual de [negocio]; si prefiere hablar con una persona, dígamelo en cualquier momento» cumple las dos cosas a la vez: avisa de lo que es y abre la puerta de salida. No hace falta que sea solemne ni que suene a aviso legal; hace falta que esté al principio y que se entienda.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Y una cautela sobre la excepción del «es obvio»: apoyarse en ella es frágil, porque lo que hoy se nota puede dejar de notarse con el siguiente modelo de voz, y entonces pasas a incumplir sin haber tocado nada. Varios análisis jurídicos de las directrices que la Comisión Europea publicó en julio de 2026 señalan además que esa excepción debe interpretarse de forma restrictiva. Cuesta dos segundos decirlo.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Aparte queda la grabación de las llamadas, que es un asunto distinto y se rige por la normativa de protección de datos: si grabas, necesitas una base jurídica, tienes que informar de que grabas y para qué, y usar las grabaciones para ajustar un modelo es una finalidad distinta de atender la llamada, que se informa aparte. Comprueba también qué hace tu proveedor con el audio por defecto. Ese terreno lo cubre la guía sobre <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="proteger-datos-ia.html">cómo proteger tus datos al conectar la IA</a>.
+        </p>
+</section>
+<section class="space-y-space-md">
+<h2 id="sec-7" class="font-headline-lg text-headline-lg text-primary">
+        7. Que no se invente nada: el guion no es un prompt
+      </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Un dato inventado por escrito es molesto. Dicho por teléfono es otra cosa: quien llama lo apunta y cuelga convencido. No puede releerlo, no puede comprobarlo y no tiene a quién preguntarle. Por eso la regla que ya vale para cualquier asistente vale aquí con más motivo — y es, palabra por palabra, el planteamiento de la guía sobre <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="bot-atencion-cliente-ia.html">montar un bot de atención al cliente que no invente respuestas</a>.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Lo esencial cabe en una frase: <strong>los datos que cambian no van en el prompt</strong>. Precios, horarios, disponibilidad y estado de un pedido se consultan a tu sistema en el momento de la llamada. Un precio metido en las instrucciones del agente es un precio que seguirá diciendo seis meses después de que lo hayas cambiado, y nadie se dará cuenta hasta que un cliente se presente a pagar lo que le dijeron por teléfono.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Y hace falta decidir qué pasa cuando la consulta falla o no hay respuesta. La opción correcta es casi siempre la aburrida: que lo diga y pase la llamada. Un agente que rellena el hueco con algo plausible es peor que uno que admite que no lo sabe, porque el primero hace daño en silencio. En el guion esto se traduce en dar una salida explícita para no saber — si no se la das, el modelo encontrará algo que decir, que es exactamente lo que hacen los modelos de lenguaje.
+        </p>
+</section>
+<section class="space-y-space-md">
+<h2 id="sec-8" class="font-headline-lg text-headline-lg text-primary">
+        8. El traspaso a una persona
+      </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Un agente de voz sin una salida clara hacia un humano no es un agente, es una trampa. Y conviene diseñar esa salida como parte del sistema, no como el plan B que se improvisa cuando ya hay quejas.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Tres cosas que marcan la diferencia. Que haya <strong>disparadores explícitos</strong>, y que uno de ellos sea simplemente pedirlo: si alguien dice «quiero hablar con una persona», ese es el final de la conversación con el agente, sin insistir ni pedir que explique por qué. Que se pase <strong>el contexto con la llamada</strong>: quien reciba la llamada tiene que ver qué se ha hablado ya, porque obligar a repetirlo todo desde el principio hace que la gente prefiera no haber llamado nunca al número. Y que esté decidido <strong>qué pasa cuando no hay nadie</strong> — a las once de la noche no hay a quién pasar la llamada, y «tomo el recado, le llamamos mañana antes de las doce» es una respuesta honesta; dejar que el agente siga intentándolo no lo es.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Un detalle de redacción que vale la pena: el traspaso no debería sonar a fracaso. «Le paso con un compañero que lo ve mejor que yo» funciona mejor que «no puedo ayudarle con eso», y describe la realidad igual de bien.
+        </p>
+</section>
+<section class="space-y-space-md">
+<h2 id="sec-9" class="font-headline-lg text-headline-lg text-primary">
+        9. Qué medir — y cuándo no montarlo
+      </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          El error de medición más común es mirar cuántas llamadas atendió el agente sin pasarlas a nadie, y llamar a eso éxito. No lo es: una llamada que el agente «resolvió» y que termina con la persona llamando otra vez media hora después es un fallo contado como acierto. Vale más vigilar cuatro cosas: la latencia en percentil 95, cuánta gente vuelve a llamar por lo mismo poco después, en qué punto exacto se pide hablar con una persona —ahí está la lista de lo que hay que arreglar, ordenada por frecuencia— y cuántas llamadas se cortan sin que nadie cuelgue a propósito. La guía sobre <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="evaluar-agente-ia.html">cómo evaluar un agente de IA</a> desarrolla el método; lo específico de la voz son esos cuatro números y escuchar llamadas reales todas las semanas, que es aburrido y no tiene sustituto.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Y conviene cerrar por donde casi nadie cierra: los casos en los que esto no se monta. Si el volumen de llamadas es bajo, el agente cuesta más de mantener de lo que ahorra — mantener un guion, revisar llamadas y corregir desvíos es trabajo recurrente, no una instalación. Si lo que se maneja en esas llamadas es delicado —salud, dinero de alguien, situaciones en las que la persona puede estar nerviosa o en apuros—, el listón de fiabilidad sube a un sitio donde esto todavía no llega cómodamente. Y si la llamada termina casi siempre en una persona de todas formas, lo que necesitas no es un agente que hable: es que la información llegue ordenada a quien la va a atender.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          La prueba que mejor funciona antes de decidir es llamar tú mismo a tu número doce veces seguidas, desde la calle, con prisa y pidiendo cosas raras. Si al final de las doce no te has desesperado ninguna vez, está listo para que lo llamen tus clientes.
+        </p>
+</section>
+<section class="space-y-space-md">
+<h2 id="sec-faq" class="font-headline-lg text-headline-lg text-primary">
+        Preguntas frecuentes
+      </h2>
+<div class="space-y-space-sm">
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Tengo que avisar de que es una IA si se nota muchísimo que lo es?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+El artículo 50.1 del AI Act deja fuera del deber de informar los casos en que la interacción con una IA resulta «obvia» para una persona razonablemente informada, atenta y perspicaz, teniendo en cuenta las circunstancias y el contexto de uso. El problema de apoyarse en esa excepción al teléfono es que la calidad de las voces sintéticas es justo lo que está cambiando: lo que hoy se nota puede no notarse con el siguiente modelo, y entonces el que incumple eres tú sin haber tocado nada. Además, varios despachos que han analizado las directrices que la Comisión Europea publicó en julio de 2026 señalan que la excepción debe interpretarse de forma restrictiva. Decirlo cuesta una frase de dos segundos al principio de la llamada; no decirlo te deja defendiendo que tu voz sintética era evidente. La proporción entre coste y riesgo es bastante clara.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Voz a voz o cascada? Dime cuál monto.</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Si es tu primer agente de voz y atiende a clientes, cascada. No por latencia —voz a voz suele ir por delante— sino porque entre el reconocimiento y la síntesis queda un texto que puedes registrar, revisar y usar para arreglar lo que falle; con un modelo de voz a voz ese punto intermedio no existe y depurar por qué dijo algo raro es mucho más incómodo. La cascada además sale bastante más barata cuando el volumen sube, y te deja cambiar una pieza sin tirar el resto. Voz a voz compensa cuando la naturalidad de la conversación es el producto en sí y aceptas ver menos de lo que pasa dentro. Ninguna de las dos arregla un guion malo.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Puedo grabar las llamadas para mejorar el agente?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Grabar no es automáticamente ilegal, pero no es gratis: tratas datos personales, así que necesitas una base jurídica, informar de la grabación y de para qué la usas, y guardar solo el tiempo que haga falta. Si además vas a usar esas grabaciones para entrenar o ajustar un modelo, eso es una finalidad distinta de «atender tu llamada» y hay que decirlo aparte, no colarlo en la misma frase. Dos cosas prácticas: comprueba qué hace tu proveedor con el audio por defecto —algunos lo conservan salvo que lo desactives— y evita que el agente pida en voz alta datos que luego queden grabados sin necesidad, como un número de tarjeta completo. La guía sobre proteger tus datos al conectar la IA entra en esto con más detalle.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">Mi agente contesta rápido pero a veces se inventa un precio. ¿Eso se arregla con un modelo mejor?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Casi nunca. Un modelo mejor reduce la frecuencia, no el tipo de fallo, y al teléfono un dato inventado es peor que en un chat porque la persona no puede releerlo ni comprobarlo: se lo apunta y cuelga. Lo que lo arregla es quitarle al modelo la posibilidad de contestar de memoria: los precios, horarios y disponibilidad salen de una consulta a tu sistema en el momento, no del prompt, y si la consulta falla el agente lo dice y pasa la llamada, en vez de rellenar el hueco. Es exactamente el planteamiento de la guía sobre montar un bot que no invente respuestas, y vale igual cuando el canal es la voz.
+</div>
+</div>
+</div>
+</section>
+</article>
+<aside class="lg:col-span-4 flex flex-col space-y-space-xl">
+<div class="bg-surface-container-lowest p-space-lg shadow-sm sticky top-space-md">
+<div class="flex items-center justify-between mb-space-sm pb-space-xs">
+<span class="font-kicker text-kicker uppercase tracking-widest text-primary font-bold">ÍNDICE DE LA GUÍA</span>
+<span class="material-symbols-outlined text-on-surface-variant text-base">format_list_bulleted</span>
+</div>
+<nav class="space-y-space-xs font-body-sm text-body-sm">
+<a class="block text-primary hover:text-secondary font-medium transition-colors" href="#sec-1">El teléfono es el caso difícil</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-2">Cascada o voz a voz</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-3">El presupuesto de latencia</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-4">Saber cuándo has terminado</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-5">Lo que añade el teléfono</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-6">Lo que obliga la ley</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-7">Que no se invente nada</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-8">El traspaso a una persona</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-9">Qué medir y cuándo no</a>
+</nav>
+</div>
+<div class="bg-surface-container-high p-space-md space-y-space-sm shadow-sm">
+<span class="font-kicker text-kicker uppercase tracking-widest text-primary font-bold">FICHA TÉCNICA</span>
+<dl class="space-y-space-xs font-caption text-caption">
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Categoría:</dt><dd class="font-semibold text-primary">Agentes</dd></div>
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Nivel técnico:</dt><dd class="font-semibold text-primary">Intermedio</dd></div>
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Fuentes citadas:</dt><dd class="font-semibold text-primary">Texto del artículo 50 del Reglamento Europeo de IA y su calendario de aplicación, consultados el 15 de octubre de 2026; estimaciones de latencia de consultoras especializadas en agentes de voz</dd></div>
+</dl>
+</div>
+</aside>
+</div>
+<section class="w-full mt-space-4xl pt-space-2xl bg-surface-container-lowest p-space-lg shadow-sm">
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-space-xl gap-space-xs">
+<h3 class="font-headline-md text-headline-md text-primary">Continúa explorando el archivo</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-col-gap"><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="clonar-voz-transcribir-audio-ia.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/portadas/clonar-voz-transcribir-audio-ia.svg" alt="" width="1600" height="520" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="clonar-voz-transcribir-audio-ia.html">Clonar voz, transcribir y generar audio con IA</a></h4></div></article><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="bot-atencion-cliente-ia.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/portadas/bot-atencion-cliente-ia.svg" alt="" width="1600" height="520" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="bot-atencion-cliente-ia.html">Un bot de atención al cliente que no invente respuestas</a></h4></div></article><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="ai-act-explicado.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/portadas/ai-act-explicado.svg" alt="" width="1600" height="520" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="ai-act-explicado.html">AI Act: qué obliga la ley europea de IA</a></h4></div></article></div>
+</section>
+</div></main><footer class="w-full bg-surface-container-low border-t border-outline-variant mt-space-4xl"><div class="max-w-site-max-width mx-auto px-space-md py-space-3xl"><div class="grid grid-cols-1 md:grid-cols-3 gap-col-gap"><div class="space-y-space-sm"><span class="font-headline-md text-headline-md text-primary">El Telar</span><p class="font-body-sm text-body-sm text-on-surface-variant">Publicación independiente de tecnología y automatización con agentes. Contenidos verificados en producción, sin patrocinios opacos ni promesas vacías.</p></div><div><h3 class="font-kicker text-kicker uppercase tracking-wider text-on-surface mb-space-md">SECCIONES</h3><ul class="space-y-space-xs font-body-sm text-body-sm"><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html#guias">Archivo de Guías</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../empieza-aqui.html">Guía para Principiantes</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../sobre-nosotros.html">Manifiesto Editorial</a></li><li class="pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html#despacho">Boletín Semanal</a></li></ul></div><div><h3 class="font-kicker text-kicker uppercase tracking-wider text-on-surface mb-space-md">CONTACTO &amp; PRENSA</h3><div class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant"><p class="font-semibold text-on-surface">contacto@eltelar.es</p><p>Síguenos: <a class="hover:text-primary underline" href="https://www.instagram.com/eltelar_es/" rel="me noopener" target="_blank">Instagram</a> · <a class="hover:text-primary underline" href="https://www.threads.com/@eltelar_es" rel="me noopener" target="_blank">Threads</a> · <a class="hover:text-primary underline" href="https://x.com/eltelar_es" rel="me noopener" target="_blank">X</a></p></div></div></div></div><div class="border-t border-outline-variant py-space-md bg-surface-container-lowest"><div class="max-w-site-max-width mx-auto px-space-md flex flex-col md:flex-row items-center justify-between gap-space-sm text-caption font-caption text-on-surface-variant"><div>© 2026 El Telar. Todos los derechos reservados. Independencia editorial garantizada.</div><div class="flex flex-wrap items-center justify-center gap-space-md"><a class="hover:text-on-surface transition-colors" href="../privacidad.html">Privacidad</a><a class="hover:text-on-surface transition-colors" href="../terminos.html">Términos</a><a class="hover:text-on-surface transition-colors" href="../cookies.html">Cookies</a><a class="hover:text-on-surface transition-colors" href="../aviso-legal.html">Aviso legal</a><a class="hover:text-on-surface transition-colors" href="../sobre-nosotros.html">Sobre nosotros</a><a class="hover:text-on-surface transition-colors" href="../contacto.html">Contacto</a></div></div></div></footer><script defer src="../js/copy-guide.js"></script><script defer src="../js/guide-interactions.js"></script><script defer src="../js/reading-progress.js"></script><script defer src="../js/search.js?v=7"></script><script defer src="../js/entrance.js"></script><script defer src="../js/cookie-consent.js?v=4"></script></body></html>
