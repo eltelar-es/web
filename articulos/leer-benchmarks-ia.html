@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Leer un benchmark de IA sin que te engañen | El Telar</title>
+<meta name="description" content="Un 90 % en un examen no es un 90 % en tu trabajo. Cómo se construyen los benchmarks de IA, por qué OpenAI jubiló el suyo y qué mirar antes de creerte una tabla.">
+<link rel="canonical" href="https://eltelar.es/articulos/leer-benchmarks-ia.html"><link rel="icon" type="image/svg+xml" href="../img/favicon.svg?v=4"><link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32.png?v=4"><link rel="apple-touch-icon" href="../img/apple-touch-icon.png?v=4"><meta name="theme-color" content="#072417"><link rel="manifest" href="../manifest.json"><link rel="alternate" type="application/rss+xml" title="El Telar" href="../feed.xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Leer un benchmark de IA sin que te engañen | El Telar">
+<meta property="og:description" content="A principios de 2026 OpenAI dejó de publicar la nota del examen de programación que ella misma había creado. Qué mide de verdad un benchmark, por qué se estropean y las seis preguntas que convierten una tabla de resultados en información útil.">
+<meta property="og:url" content="https://eltelar.es/articulos/leer-benchmarks-ia.html">
+<meta property="og:site_name" content="El Telar">
+<meta property="og:locale" content="es_ES"><meta property="og:image" content="https://eltelar.es/img/og/guia-leer-benchmarks-ia.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Leer un benchmark de IA sin que te engañen | El Telar">
+<meta name="twitter:description" content="A principios de 2026 OpenAI dejó de publicar la nota del examen de programación que ella misma había creado. Qué mide de verdad un benchmark, por qué se estropean y las seis preguntas que convierten una tabla de resultados en información útil."><meta name="twitter:image" content="https://eltelar.es/img/og/guia-leer-benchmarks-ia.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Cómo leer un benchmark de IA sin que te engañen",
+  "description": "A principios de 2026 OpenAI dejó de publicar la nota del examen de programación que ella misma había creado. Qué mide de verdad un benchmark, por qué se estropean y las seis preguntas que convierten una tabla de resultados en información útil.",
+  "image": "https://eltelar.es/img/og/guia-leer-benchmarks-ia.jpg",
+  "author": {
+    "@type": "Person",
+    "name": "Juan Becerril Castañón",
+    "url": "https://eltelar.es/sobre-nosotros.html#autor"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "El Telar"
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "mainEntityOfPage": "https://eltelar.es/articulos/leer-benchmarks-ia.html",
+  "inLanguage": "es"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Entonces los benchmarks no sirven para nada?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sirven, pero para menos de lo que parece. Son útiles para descartar: si un modelo saca resultados muy bajos en razonamiento o en código, no va a sorprenderte luego para bien. Donde dejan de servir es en el tramo alto, que es justo donde se usan para vender. Cuando cuatro modelos están separados por dos o tres puntos en una tabla, esa diferencia está dentro del margen de ruido de la propia medición, depende del andamiaje con el que se ejecutó la prueba y no predice cuál funcionará mejor con tus documentos y tus clientes. La lectura sana es tratarlos como un filtro grueso de la lista de candidatos, y decidir entre los finalistas con tus propios casos."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Si un modelo saca un 90 % en un examen, ¿acertará 9 de cada 10 veces en mi trabajo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No, y conviene tenerlo muy claro porque es el error más caro. Ese 90 % es el porcentaje de aciertos sobre un conjunto concreto de preguntas, con un formato concreto y una forma concreta de corregir. Tu trabajo no está en ese conjunto. Las preguntas de un benchmark suelen tener una respuesta única y comprobable automáticamente; lo que tú le pides normalmente no la tiene, llega con contexto incompleto y se juzga por criterios que no has escrito en ninguna parte. Además, la mayoría de estas pruebas miden un intento aislado, mientras que tu uso real encadena varios pasos, y los fallos se acumulan. El número de la tabla es el techo en condiciones de laboratorio, no una previsión de tu tasa de acierto."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Me puedo fiar de los rankings por votación de usuarios?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Son un dato más, con sus propios sesgos. El trabajo académico «The Leaderboard Illusion» (arXiv 2504.20879, con versión en NeurIPS 2025) documenta tres problemas en Chatbot Arena: hay proveedores que prueban varias variantes en privado y publican solo la mejor nota, los modelos cerrados reciben bastante más tráfico de comparación que los abiertos, y dos copias idénticas del mismo modelo llegaron a separarse 17 puntos solo por ruido estadístico. Añade que la votación mide preferencia humana —qué respuesta gusta más al leerla—, que no es lo mismo que si la respuesta es correcta: un texto bien escrito y seguro de sí mismo gana votos aunque contenga un error. Úsalo para hacerte una idea del tono y la soltura, no para decidir precisión."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuántos casos necesito para montar mi propia evaluación?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Menos de los que crees. Entre 20 y 50 casos reales sacados de tu propio trabajo ya te separan los modelos mejor que cualquier tabla pública, porque miden exactamente lo que vas a pedirles. Lo importante no es la cantidad sino de dónde salen: cosas que te han pasado de verdad, con sus datos incompletos y sus peticiones mal escritas, incluidos los casos raros que te dieron problemas. Guarda para cada uno qué respuesta considerarías aceptable, y vuelve a pasarlos cuando cambies de modelo o de proveedor. La guía sobre evaluar un agente de IA explica cómo montarlo sin convertirlo en un proyecto en sí mismo."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://eltelar.es/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Guías",
+      "item": "https://eltelar.es/index.html#guias"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Cómo leer un benchmark de IA sin que te engañen",
+      "item": "https://eltelar.es/articulos/leer-benchmarks-ia.html"
+    }
+  ]
+}
+</script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet"/></noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet"/></noscript>
+<style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><link rel="stylesheet" href="../css/tailwind.css"><link rel="stylesheet" href="../css/entrance.css?v=2"><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}(function(){var c=null;try{c=localStorage.getItem('eltelar-cookie-consent')}catch(e){}var g=c==='accepted'?'granted':'denied';gtag('consent','default',{ad_storage:g,ad_user_data:g,ad_personalization:g,analytics_storage:g,wait_for_update:500});window.adsbygoogle=window.adsbygoogle||[];if(g!=='granted'){window.adsbygoogle.requestNonPersonalizedAds=1;}})();</script><script>window.addEventListener("load",function(){setTimeout(function(){var s=document.createElement("script");s.async=true;s.src="https://www.googletagmanager.com/gtag/js?id=G-4DPTKEG79N";document.head.appendChild(s);},800);});</script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4DPTKEG79N');</script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8239907995939753" crossorigin="anonymous"></script></head><body class="bg-background font-body-md text-on-surface antialiased">
+<header class="w-full bg-surface-container-lowest border-b border-outline-variant"><div class="border-b border-outline-variant py-space-xxs px-space-md hidden md:block"><div class="max-w-site-max-width mx-auto flex items-center justify-between font-kicker text-kicker text-on-surface-variant uppercase tracking-wider"><span>EDICIÓN DIGITAL // ACTUALIZADO 2026 // EL TELAR &amp; AGENTES</span><span>MADRID · REMOTO</span><span>SIN HUMO · 100% PRODUCCIÓN</span></div></div><div class="max-w-site-max-width mx-auto px-space-md py-space-md sm:py-space-xl text-center"><p class="hidden sm:block font-kicker text-kicker uppercase tracking-widest text-on-surface-variant mb-space-xs">Publicación Independiente de Tecnología &amp; Agentes</p><a class="inline-block" href="../index.html"><div class="font-display text-display max-sm:text-[40px] max-sm:leading-none text-primary tracking-tight">El Telar</div></a><p class="hidden sm:block font-caption text-caption uppercase tracking-widest text-on-surface-variant mt-space-xs">EL BOLETÍN Y ARCHIVO PRÁCTICO DE INTELIGENCIA ARTIFICIAL Y AGENTES AUTÓNOMOS</p></div><div class="border-t border-b border-outline-variant"><div class="max-w-site-max-width mx-auto px-space-md flex items-center justify-between gap-space-sm h-14"><nav class="flex items-center gap-space-md sm:gap-space-lg h-full min-w-0 overflow-x-auto [scrollbar-width:none] whitespace-nowrap"><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../index.html#guias">GUÍAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../empieza-aqui.html">EMPIEZA AQUÍ</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../sobre-nosotros.html">SOBRE NOSOTROS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../noticias/index.html">NOTICIAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../herramientas/index.html">HERRAMIENTAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../prompts/index.html">PROMPTS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../contacto.html">CONTACTO</a></nav><div class="flex items-center gap-space-md"><button id="search-trigger" type="button" aria-label="Buscar en las guías" class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[20px]">search</span></button><a class="hidden sm:inline-block bg-primary-container text-surface px-space-md py-space-xs font-label-md text-label-md uppercase tracking-wider hover:bg-primary transition-colors" href="../index.html#despacho">SUSCRÍBETE GRATIS</a></div></div></div><div class="hidden md:block bg-surface-container-low border-b border-outline-variant py-space-xs px-space-md"><div class="max-w-site-max-width mx-auto text-center"><p class="font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">53 GUÍAS COMPLETAS EN EXPANSIÓN · ACTUALIZADO A MODELOS 2026 · PROBADO EN TERMINAL Y FLUJOS REALES · CERO HUMO NI TEORÍA VACÍA</p></div></div></header>
+<main class="w-full max-w-site-max-width mx-auto px-space-md py-space-xl"><div class="flex flex-col w-full">
+<nav class="w-full mb-space-lg">
+<ol class="flex flex-wrap items-center gap-space-xs font-kicker text-kicker text-on-surface-variant uppercase tracking-wider">
+<li><a class="hover:text-primary transition-colors" href="../index.html">Inicio</a></li>
+<li class="text-on-surface-variant">/</li>
+<li><a class="hover:text-primary transition-colors" href="../index.html#guias">Guías</a></li>
+<li class="text-on-surface-variant">/</li>
+<li class="text-primary font-bold truncate max-w-[280px] sm:max-w-md">Leer un benchmark de IA</li>
+</ol>
+</nav>
+<header class="w-full pb-space-xl mb-space-2xl">
+<div class="flex flex-wrap items-center gap-space-xs mb-space-md">
+<span class="bg-surface-container-high text-secondary px-space-sm py-1 font-kicker text-kicker uppercase tracking-widest">ELEGIR HERRAMIENTA // EVALUACIÓN</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight max-w-editorial-max mb-space-md">
+          Cómo leer un benchmark de IA sin que te engañen
+        </h1>
+<p class="font-lead-paragraph text-lead-paragraph text-on-surface-variant max-w-editorial-max leading-relaxed mb-space-lg">
+          Cada lanzamiento llega con una tabla de porcentajes que parece zanjar la discusión. Esta guía va de lo que hay detrás de esos números: quién pone el examen, quién lo corrige, por qué se estropean con el tiempo y qué seis preguntas hay que hacerle a una tabla antes de dejar que decida por ti.
+        </p>
+<div class="bg-surface-container-lowest p-space-md flex flex-wrap items-center justify-between gap-y-3 shadow-sm">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 bg-primary text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">leaderboard</span>
+</div>
+<div>
+<div class="font-label-md text-label-md text-on-surface font-semibold">Por la Redacción de El Telar</div><div class="font-caption text-caption text-on-surface-variant">Guías prácticas de IA y agentes, probadas en flujos de trabajo reales antes de publicarlas.</div>
+<button class="inline-flex items-center gap-1 mt-2 px-3 py-1.5 bg-surface-container text-primary font-label-md text-[12px] font-semibold uppercase tracking-wider hover:bg-surface-container-high transition-colors" id="copy-guide-btn" type="button"><span class="material-symbols-outlined text-[16px]">content_copy</span>Copiar guía</button>
+</div>
+</div>
+<div class="flex items-center gap-space-lg text-on-surface-variant font-caption text-caption uppercase tracking-wider">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">schedule</span> 19 min de lectura</span>
+</div>
+</div>
+</header>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-col-gap">
+<article class="lg:col-span-8 flex flex-col space-y-space-xl">
+<figure data-hero class="space-y-space-xs"><img class="w-full border border-outline-variant" src="../img/guias/hero-leer-benchmarks-ia.jpg" alt="Resumen del artículo académico «The Leaderboard Illusion», que documenta pruebas privadas no declaradas y asimetrías de datos en el ranking Chatbot Arena" width="1280" height="720" fetchpriority="high" decoding="async"/><figcaption class="font-caption text-caption text-on-surface-variant">Captura de pantalla: <a class="underline" href="https://arxiv.org/abs/2504.20879" rel="nofollow noopener" target="_blank">arxiv.org</a>, consultada el 16 de octubre de 2026.</figcaption></figure>
+<div class="relative bg-surface-container-lowest p-space-lg shadow-sm">
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed text-justify">
+<span class="float-left font-display text-primary text-6xl leading-none pr-3 pt-1 font-normal">H</span>
+          ay un gesto que repetimos todos cuando sale un modelo nuevo: bajar hasta la tabla de resultados y mirar quién gana. Es un atajo razonable — alguien ha medido, hay números, parece que la discusión está zanjada. El problema es que esa tabla no es lo que parece. No es un termómetro: es un examen, y como todo examen tiene a alguien que elige las preguntas, alguien que decide cómo se corrigen y alguien a quien le conviene el resultado. Normalmente las tres personas trabajan en la misma empresa.
+        </p>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Esta guía no va de qué modelo es mejor — eso lo tratamos en <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="chatgpt-claude-gemini.html">la comparativa de ChatGPT, Claude y Gemini</a>. Va de aprender a leer la tabla: qué mide de verdad, por qué un examen se estropea con el tiempo, cómo se puede trabajar un ranking sin mentir en ningún dato, y qué puedes hacer en cinco minutos para que esos números te sirvan de algo. Todos los casos que aparecen aquí son públicos y verificables, y están citados.
+        </p>
+<section class="space-y-space-md">
+<h2 id="sec-1" class="font-headline-lg text-headline-lg text-primary">
+        1. Qué es exactamente un benchmark (y qué no mide nunca)
+      </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Un benchmark son dos cosas: un conjunto fijo de tareas con solución conocida, y una forma automática de decidir si la respuesta es correcta. Nada más. El porcentaje que ves es la proporción de esas tareas que el modelo resolvió según ese corrector automático.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          De esa definición salen las tres limitaciones que explican casi todo lo demás. La primera: las tareas tienen que poder corregirse solas, así que se eligen las que tienen una respuesta única y comprobable — una opción correcta entre cuatro, un test que pasa o no pasa, un número exacto. Lo que tú le pides a la IA casi nunca es así. «Resume esta reunión y dime qué tengo que hacer» no tiene una respuesta correcta que una máquina pueda verificar, y por eso no hay un benchmark que lo mida bien.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          La segunda: el conjunto es <strong>fijo y público</strong>. Es lo que permite comparar modelos entre sí, y es también lo que lo arruina a medio plazo, porque un examen que lleva años publicado en internet acaba dentro de los datos de entrenamiento de los modelos que luego se examinan con él. Volvemos a esto en el apartado 3, que es el corazón del asunto.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Y la tercera, la que más dinero cuesta ignorar: un benchmark mide <em>un intento aislado</em> sobre una tarea bien definida. Tu uso real encadena pasos —buscar, leer, decidir, escribir, comprobar— y los fallos se multiplican por el camino. Un modelo con un 95 % por paso no te da un 95 % al final de una cadena de diez pasos. Por eso un agente que debería funcionar sobre el papel se cae en producción, algo que vemos de cerca en <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="errores-automatizar-ia.html">los errores típicos al automatizar con IA</a>.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Dicho de otra forma: el número de la tabla es el techo en condiciones de laboratorio. Nunca es una previsión de tu tasa de acierto.
+        </p>
+</section>
+<section class="space-y-space-md">
+<h2 id="sec-2" class="font-headline-lg text-headline-lg text-primary">
+        2. El caso que lo resume todo: OpenAI jubila su propio examen
+      </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Si solo te llevas un ejemplo de esta guía, que sea este, porque no viene de un crítico del sector sino de la empresa que más se beneficiaba del número.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          SWE-bench es el examen de referencia para medir si una IA sabe programar. Se construyó en 2023 a partir de incidencias reales de GitHub —2.294 tareas sacadas de doce repositorios públicos de Python, filtradas desde unas 90.000 <em>pull requests</em>— y se corrige solo: el parche que propone el modelo se acepta si hace pasar unos tests que antes fallaban, sin que ninguna persona lea el código. En agosto de 2024 OpenAI publicó, junto a los autores originales, una versión depurada llamada <strong>SWE-bench Verified</strong>: 93 desarrolladores de Python revisaron a mano 1.699 tareas tomadas al azar y se quedaron con las <strong>500</strong> que consideraron limpias. El motivo de la limpieza ya es revelador — había tests tan específicos que rechazaban soluciones correctas, y enunciados que no explicaban lo suficiente como para poder resolverlos.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Durante año y medio, esos 500 problemas fueron la cifra que abría todas las presentaciones de modelos de código. Y a principios de 2026 OpenAI anunció que <strong>dejaba de publicarla</strong> y recomendaba al resto del sector hacer lo mismo. Dio dos razones.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          La primera es que el examen seguía mal corregido pese al repaso. Auditaron 138 problemas que su modelo o3 no resolvía de forma consistente y encontraron defectos materiales en el <strong>59,4 %</strong> de ellos: en torno a un 35,5 % imponían por test un detalle de implementación concreto —es decir, exigían que el arreglo estuviera escrito de una manera determinada, no que funcionara—, y cerca de un 18,8 % comprobaban funcionalidad que el enunciado nunca había pedido. Traducido: más de la mitad de los «fallos» del modelo no eran fallos del modelo.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          La segunda razón es peor, y es la del apartado siguiente: contaminación. Según lo que recogieron varios medios del anuncio, los modelos de frontera eran ya capaces de reproducir casi palabra por palabra el parche humano original de algunas de esas tareas, con muy poca insistencia. Un modelo que puede recitar la solución no está demostrando que sabe programar: está demostrando que ha visto el examen.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Dos cautelas de método antes de seguir, porque esta guía trata de eso. La entrada original de OpenAI no es accesible sin más desde fuera, así que los porcentajes de la auditoría proceden de la cobertura de terceros y del propio aviso público de la empresa a los desarrolladores; y la fecha exacta del anuncio baila entre fuentes, por eso aquí leerás «a principios de 2026» y no un día concreto. Lo que sí está confirmado por varias fuentes independientes es lo esencial: la empresa retiró la métrica y pidió que se dejara de reportar.
+        </p>
+</section>
+<section class="space-y-space-md">
+<h2 id="sec-3" class="font-headline-lg text-headline-lg text-primary">
+        3. Contaminación: cuando el modelo ya ha visto el examen
+      </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Este es el fallo de fondo de todo el sistema, y no hace falta mala fe para que ocurra. Los modelos se entrenan con enormes cantidades de texto de internet. Los benchmarks están publicados en internet. Con el tiempo, el examen acaba dentro del material de estudio, y nadie tiene por qué haber hecho trampa para que pase.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          El experimento que mejor lo enseña es de 2024. Un equipo de Scale AI construyó <strong>GSM1k</strong>, un conjunto de problemas de matemáticas de primaria escrito desde cero por personas, diseñado para igualar la dificultad de GSM8K —un examen clásico y muy usado— pero sin haber estado nunca publicado. Luego pasó los dos exámenes a los mismos modelos. Si las notas midieran capacidad, deberían parecerse. Varias familias de modelos, en particular Mistral y Phi, cayeron alrededor de <strong>10 puntos</strong> en el examen nuevo (alguna fuente eleva el peor caso a 13). Los modelos de frontera de entonces —GPT-4, Gemini 1.5, Llama 3— se quedaron por debajo de 3 puntos de diferencia.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          El detalle que convierte eso en una señal y no en una casualidad: los autores encontraron una relación positiva entre la probabilidad de que un modelo generara por su cuenta texto del examen viejo y lo mucho que empeoraba en el nuevo. Cuanto más «se sabía» GSM8K, más caía al cambiarle las preguntas. Conviene decir también lo que el propio trabajo admite: es evidencia de comportamiento, no una prueba directa de memorización — el conjunto nuevo podría ser algo más difícil en alguna dimensión que no se midió.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          En programación el problema está medido con todavía más crudeza. Un análisis de SWE-bench publicado en octubre de 2024 encontró que más del <strong>94 %</strong> de las incidencias usadas se habían creado antes de las fechas de corte de conocimiento de los modelos evaluados; que en un <strong>32,67 %</strong> de los parches dados por buenos la solución aparecía directamente en el texto de la incidencia o en sus comentarios; y que un <strong>31,08 %</strong> pasaban gracias a tests demasiado débiles. El mismo trabajo señalaba que esos problemas alcanzaban también a las versiones Lite y Verified.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          La regla práctica que sale de aquí es sencilla y te sirve siempre: <strong>desconfía de cualquier nota alta en un examen más antiguo que el modelo</strong>. No porque alguien haga trampa, sino porque el examen ya no mide lo que medía el primer día. Y cuanto más famoso sea el benchmark, antes le pasa.
+        </p>
+</section>
+<section class="space-y-space-md">
+<h2 id="sec-4" class="font-headline-lg text-headline-lg text-primary">
+        4. El examen también puede estar mal
+      </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Damos por hecho que las preguntas son correctas y que la respuesta marcada como buena es la buena. Con frecuencia no lo es.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          MMLU ha sido durante años el examen de cultura general del sector: miles de preguntas tipo test repartidas en 57 materias, y la cifra que casi todos los fabricantes incluían en sus lanzamientos. En un trabajo presentado en NAACL 2025 («Are We Done with MMLU?», arXiv 2406.04127), catorce personas con conocimiento experto reanotaron a mano <strong>5.700</strong> preguntas de todos los bloques. Encontraron errores en el <strong>6,49 %</strong> del total: enunciados ambiguos, opciones correctas marcadas como incorrectas, preguntas sin respuesta válida entre las ofrecidas. El reparto no es uniforme, y ahí está lo llamativo — en el bloque de virología los errores llegaban al <strong>57 %</strong> de las preguntas analizadas.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Lo importante viene después. Al volver a evaluar los modelos sobre la versión corregida, <strong>cambió el orden de la clasificación</strong>. Es decir: parte de lo que durante años leímos como «este modelo es mejor que aquel» era en realidad «este modelo acierta mejor las preguntas mal puestas».
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          De aquí sale la segunda regla práctica: cuando dos modelos están separados por dos o tres puntos en una tabla, <strong>esa diferencia no significa nada</strong>. Está dentro del margen de error del propio examen, antes incluso de contar la variabilidad de la ejecución. Una tabla de resultados solo distingue de verdad entre categorías gruesas — muy flojo, correcto, muy bueno —, y no entre el primero y el tercero.
+        </p>
+</section>
+<section class="space-y-space-md">
+<h2 id="sec-5" class="font-headline-lg text-headline-lg text-primary">
+        5. El ranking se puede trabajar sin mentir en ningún dato
+      </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Frente a los exámenes cerrados existe la otra gran familia de clasificaciones: las de votación humana, donde una persona ve dos respuestas anónimas a la misma pregunta y elige la que prefiere. Chatbot Arena es la más conocida y durante un tiempo se consideró la medida más difícil de manipular, precisamente porque las preguntas las ponen los usuarios y no hay un conjunto fijo que memorizar.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          El trabajo «The Leaderboard Illusion» (arXiv 2504.20879, con versión publicada en NeurIPS 2025) —el de la imagen que abre esta guía— describe tres mecanismos por los que esa clasificación acaba distorsionada sin que nadie falsee un solo número.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          El primero es la <strong>prueba privada con publicación selectiva</strong>. Algunos proveedores pueden evaluar varias versiones de su modelo antes de hacerlo público y quedarse solo con la nota que más les gusta. El caso extremo que documentan los autores: <strong>27 variantes privadas</strong> probadas por Meta en las semanas previas al lanzamiento de Llama 4. Publicar la mejor de 27 tiradas no es mentir, pero tampoco es el resultado que obtendrías tú.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          El segundo es el <strong>ruido</strong>, y es el dato que más incomoda. Los autores enviaron a la arena dos copias idénticas del mismo modelo, Aya-Vision-8B, y las dos puntuaciones acabaron separadas por <strong>17 puntos</strong>. Mismo modelo, mismos pesos, diferencia debida solo a la aleatoriedad de qué preguntas le tocaron y quién votó. Cualquier diferencia menor que esa, entre dos modelos distintos, es indistinguible del azar.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          El tercero es la <strong>asimetría de datos</strong>. Según las estimaciones del artículo, Google y OpenAI habían recibido en torno al 19,2 % y al 20,4 % de todos los datos de la arena, mientras que 83 modelos de pesos abiertos se repartían un 29,7 % conjunto. Eso importa porque ese tráfico es información sobre cómo se comportan los votantes, y los autores calculan que incluso una cantidad limitada de datos adicionales puede traducirse en mejoras relativas de hasta el <strong>112 %</strong> en la distribución de la arena — ajustarse al examen, otra vez, en lugar de mejorar en general.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Las cautelas, que aquí también tocan: ni los organizadores de la arena ni Google, Meta u OpenAI respondieron a las peticiones de comentario de la prensa que cubrió el trabajo, y el recuento de variantes por proveedor se apoya en parte en autoidentificación, así que conviene leerlo como lo que es — un análisis externo bien documentado, no una auditoría con acceso a los registros. Los propios autores enmarcan el problema como estructural y de reglas del juego, no como una acusación de fraude.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Hay además un límite de fondo en este tipo de ranking, independiente de todo lo anterior: la votación mide <em>preferencia</em>, no corrección. Una respuesta larga, bien estructurada y escrita con seguridad gana votos aunque contenga un error que el votante no está en condiciones de detectar. Es el mismo mecanismo que hace que las <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="alucinaciones-ia.html">alucinaciones</a> resulten convincentes.
+        </p>
+</section>
+<section class="space-y-space-md">
+<h2 id="sec-6" class="font-headline-lg text-headline-lg text-primary">
+        6. La misma cifra, el mismo modelo, números distintos
+      </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Supongamos un examen limpio, sin contaminar y bien corregido. Todavía queda un motivo por el que dos tablas pueden darte números distintos del mismo modelo: lo que rodea al modelo cuando hace el examen.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          A ese envoltorio se le llama <em>andamiaje</em> o <em>arnés</em>: las herramientas que se le dejan usar, cuántas veces puede ejecutar y corregir su propio trabajo, cuánto contexto se le pasa, qué instrucciones lleva de partida. En las pruebas de programación el andamiaje pesa tanto como el modelo — el mismo modelo con un arnés que le deja ejecutar los tests y reintentar saca un resultado muy distinto del que saca contestando a ciegas.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          De ahí salen las preguntas que casi nunca se responden en la tabla. ¿El número es de un solo intento, o del mejor de varios? ¿Cuánto cómputo se le dio por tarea? Un resultado que mejora porque se le dejó pensar diez veces más tiempo es una mejora real, pero no es la misma mejora, y a ti te llega en forma de factura — por eso conviene cruzar cualquier tabla con <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="cuanto-cuesta-usar-ia-api.html">lo que cuesta de verdad usar la IA por API</a>.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Y hay una asimetría que conviene tener presente: el fabricante elige el andamiaje con el que publica su cifra, y lo ajusta hasta que sale bien. Tú vas a usar el modelo con el tuyo, que será peor. No es trampa; es que estáis midiendo cosas distintas.
+        </p>
+</section>
+<section class="space-y-space-md">
+<h2 id="sec-7" class="font-headline-lg text-headline-lg text-primary">
+        7. Las seis preguntas que convierten una tabla en información
+      </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Esto es lo operativo. Cuando te encuentres una tabla de resultados, en un anuncio o en un hilo, estas seis preguntas te colocan en el sitio correcto en menos de cinco minutos.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          <strong>1. ¿Quién ha hecho la medición?</strong> Si la cifra la publica quien vende el modelo, es una cifra de parte: no inválida, pero sí elegida. Busca si algún evaluador independiente ha medido lo mismo, y compara. Cuando solo existe el número del fabricante, trátalo como una afirmación pendiente de confirmar.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          <strong>2. ¿Qué antigüedad tiene el examen?</strong> Si el benchmark es más viejo que el modelo —y casi siempre lo es—, cuenta con que una parte de la nota es reconocimiento y no capacidad. Los exámenes que se renuevan o mantienen preguntas privadas envejecen mejor.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          <strong>3. ¿Cuánta distancia hay entre el primero y el tercero?</strong> Si son dos o tres puntos, la tabla no está diciendo nada: ya has visto que el margen de error de las propias preguntas y el ruido de la ejecución se comen esa diferencia. Trátalos como empatados y decide por otra cosa — precio, latencia, privacidad, en qué idioma trabajas.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          <strong>4. ¿Con qué andamiaje y cuántos intentos?</strong> Un intento o el mejor de varios no es lo mismo. Si no lo dice, asume lo más favorable al que publica.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          <strong>5. ¿Está saturado el examen?</strong> Cuando todos los modelos superan el 90 %, el benchmark ha dejado de discriminar: lo que queda por encima de esa línea es en buena medida ruido y errores de las preguntas. Un examen saturado solo sirve ya para detectar a los muy malos.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          <strong>6. ¿Se parece en algo a lo que tú haces?</strong> La más importante y la que menos se hace. Un resultado excelente resolviendo incidencias de repositorios de Python no te dice nada sobre redactar respuestas a clientes en español, leer facturas escaneadas o resumir actas. Si ninguna tarea del examen se parece a la tuya, la tabla entera es información sobre otra persona.
+        </p>
+</section>
+<section class="space-y-space-md">
+<h2 id="sec-8" class="font-headline-lg text-headline-lg text-primary">
+        8. El único examen que te importa de verdad es el tuyo
+      </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Todo lo anterior lleva al mismo sitio: ninguna tabla pública puede responder a tu pregunta, porque tu pregunta no es «¿qué modelo es mejor?» sino «¿cuál funciona mejor con mis cosas?». Y esa sí se puede medir, con mucho menos trabajo del que parece.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Coge entre 20 y 50 casos reales de tu propio trabajo — correos que has tenido que contestar, documentos que has tenido que resumir, consultas que te han hecho tus clientes. Reales, con sus datos incompletos y su redacción torcida, incluyendo los que te dieron problemas. Para cada uno, escribe en una línea qué considerarías una respuesta aceptable. Eso ya es una evaluación, y es más informativa para ti que cualquier clasificación pública, porque mide exactamente lo que vas a pedirle.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Tres cosas que marcan la diferencia al montarlo. Guarda los casos en un sitio estable y vuelve a pasarlos cada vez que cambies de modelo o de versión, porque los proveedores actualizan por debajo sin avisar y un flujo que funcionaba puede degradarse sin que toques nada. Incluye a propósito los casos raros y los que deberían fallar, que es donde se ven las diferencias — en lo fácil hoy acierta todo el mundo. Y no te fíes de una sola pasada: ejecuta cada caso un par de veces, porque el mismo modelo con la misma pregunta no siempre responde igual.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Si lo que vas a evaluar no es un modelo suelto sino un agente que encadena pasos y usa herramientas, el planteamiento cambia bastante y lo desarrollamos en <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="evaluar-agente-ia.html">cómo evaluar un agente de IA</a>. Y si el problema que quieres atajar es que se invente datos, la palanca no es elegir mejor modelo sino <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="grounding-evitar-alucinaciones.html">atar las respuestas a una fuente</a>.
+        </p>
+</section>
+<section class="space-y-space-md">
+<h2 id="sec-9" class="font-headline-lg text-headline-lg text-primary">
+        9. Dónde mirar hoy, y un ejemplo de esta misma semana
+      </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Para contrastar cifras de fabricante hay evaluadores independientes que miden por su cuenta y publican método: Artificial Analysis y Epoch AI entre los que siguen capacidad y coste, LMArena para la preferencia humana —con las reservas del apartado 5— y Vals AI para pruebas por sectores. Ninguno es la verdad, pero que un número aparezca medido por alguien que no vende el modelo cambia bastante su valor.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Y un ejemplo recién salido, para que esto no se quede en teoría. El <strong>15 de octubre de 2026</strong> NVIDIA publicó <strong>Nemotron 3.5 Super VL</strong>, un modelo multimodal abierto de 120.000 millones de parámetros totales y unos 12.000 millones activos por token, con ventana de contexto de hasta un millón de tokens y licencia OpenMDW-1.1. En su tarjeta oficial publica, entre otros resultados, un <strong>71,10 en SWE-bench Verified</strong>, un 89,52 en GPQA-Diamond y un 60,67 en Terminal-Bench 2.1.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Fíjate en lo que acabas de leer. Es un modelo presentado meses <em>después</em> de que OpenAI anunciara que SWE-bench Verified ya no refleja capacidad real y pidiera dejar de reportarlo — y la cifra sigue ahí, en primera línea, porque es la que la gente sabe leer. No es un engaño de NVIDIA: es el sector entero arrastrando una unidad de medida que sus propios creadores han dado por agotada, simplemente porque todavía no hay un recambio con el mismo reconocimiento.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Esa es, al final, la conclusión práctica de toda la guía. Los benchmarks no mienten: miden bien una cosa muy concreta que casi nunca es la tuya, y se deterioran en cuanto se vuelven importantes. Sirven para descartar candidatos y para detectar a los muy flojos. Para todo lo demás —para decidir qué vas a usar tú, con tus documentos y tus clientes— hacen falta veinte casos propios y una tarde. Si mantienes el escepticismo que aplicarías a cualquier anuncio, una tabla de resultados vuelve a ser lo que debería haber sido siempre: un punto de partida, no un veredicto.
+        </p>
+</section>
+<section class="space-y-space-md">
+<h2 id="sec-faq" class="font-headline-lg text-headline-lg text-primary">
+        Preguntas frecuentes
+      </h2>
+<div class="space-y-space-sm">
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Entonces los benchmarks no sirven para nada?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Sirven, pero para menos de lo que parece. Son útiles para descartar: si un modelo saca resultados muy bajos en razonamiento o en código, no va a sorprenderte luego para bien. Donde dejan de servir es en el tramo alto, que es justo donde se usan para vender. Cuando cuatro modelos están separados por dos o tres puntos en una tabla, esa diferencia está dentro del margen de ruido de la propia medición, depende del andamiaje con el que se ejecutó la prueba y no predice cuál funcionará mejor con tus documentos y tus clientes. La lectura sana es tratarlos como un filtro grueso de la lista de candidatos, y decidir entre los finalistas con tus propios casos.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">Si un modelo saca un 90 % en un examen, ¿acertará 9 de cada 10 veces en mi trabajo?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+No, y conviene tenerlo muy claro porque es el error más caro. Ese 90 % es el porcentaje de aciertos sobre un conjunto concreto de preguntas, con un formato concreto y una forma concreta de corregir. Tu trabajo no está en ese conjunto. Las preguntas de un benchmark suelen tener una respuesta única y comprobable automáticamente; lo que tú le pides normalmente no la tiene, llega con contexto incompleto y se juzga por criterios que no has escrito en ninguna parte. Además, la mayoría de estas pruebas miden un intento aislado, mientras que tu uso real encadena varios pasos, y los fallos se acumulan. El número de la tabla es el techo en condiciones de laboratorio, no una previsión de tu tasa de acierto.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Me puedo fiar de los rankings por votación de usuarios?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Son un dato más, con sus propios sesgos. El trabajo académico «The Leaderboard Illusion» (arXiv 2504.20879, con versión en NeurIPS 2025) documenta tres problemas en Chatbot Arena: hay proveedores que prueban varias variantes en privado y publican solo la mejor nota, los modelos cerrados reciben bastante más tráfico de comparación que los abiertos, y dos copias idénticas del mismo modelo llegaron a separarse 17 puntos solo por ruido estadístico. Añade que la votación mide preferencia humana —qué respuesta gusta más al leerla—, que no es lo mismo que si la respuesta es correcta: un texto bien escrito y seguro de sí mismo gana votos aunque contenga un error. Úsalo para hacerte una idea del tono y la soltura, no para decidir precisión.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Cuántos casos necesito para montar mi propia evaluación?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Menos de los que crees. Entre 20 y 50 casos reales sacados de tu propio trabajo ya te separan los modelos mejor que cualquier tabla pública, porque miden exactamente lo que vas a pedirles. Lo importante no es la cantidad sino de dónde salen: cosas que te han pasado de verdad, con sus datos incompletos y sus peticiones mal escritas, incluidos los casos raros que te dieron problemas. Guarda para cada uno qué respuesta considerarías aceptable, y vuelve a pasarlos cuando cambies de modelo o de proveedor. La guía sobre evaluar un agente de IA explica cómo montarlo sin convertirlo en un proyecto en sí mismo.
+</div>
+</div>
+</div>
+</section>
+</article>
+<aside class="lg:col-span-4 flex flex-col space-y-space-xl">
+<div class="bg-surface-container-lowest p-space-lg shadow-sm sticky top-space-md">
+<div class="flex items-center justify-between mb-space-sm pb-space-xs">
+<span class="font-kicker text-kicker uppercase tracking-widest text-primary font-bold">ÍNDICE DE LA GUÍA</span>
+<span class="material-symbols-outlined text-on-surface-variant text-base">format_list_bulleted</span>
+</div>
+<nav class="space-y-space-xs font-body-sm text-body-sm">
+<a class="block text-primary hover:text-secondary font-medium transition-colors" href="#sec-1">Qué mide y qué no</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-2">OpenAI jubila su examen</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-3">Contaminación</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-4">El examen mal puesto</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-5">Trabajar el ranking</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-6">El andamiaje importa</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-7">Las seis preguntas</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-8">Tu propio examen</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-9">Dónde mirar hoy</a>
+</nav>
+</div>
+<div class="bg-surface-container-high p-space-md space-y-space-sm shadow-sm">
+<span class="font-kicker text-kicker uppercase tracking-widest text-primary font-bold">FICHA TÉCNICA</span>
+<dl class="space-y-space-xs font-caption text-caption">
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Categoría:</dt><dd class="font-semibold text-primary">Elegir herramienta</dd></div>
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Nivel técnico:</dt><dd class="font-semibold text-primary">Básico</dd></div>
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Fuentes citadas:</dt><dd class="font-semibold text-primary">«The Leaderboard Illusion» (arXiv 2504.20879, NeurIPS 2025); «Are We Done with MMLU?» (arXiv 2406.04127, NAACL 2025); el estudio GSM1k de Scale AI (arXiv 2405.00332); análisis de contaminación de SWE-bench (octubre de 2024); cobertura de la retirada de SWE-bench Verified por OpenAI; tarjeta oficial de NVIDIA Nemotron 3.5 Super VL en Hugging Face. Todas consultadas el 16 de octubre de 2026</dd></div>
+</dl>
+</div>
+</aside>
+</div>
+<section class="w-full mt-space-4xl pt-space-2xl bg-surface-container-lowest p-space-lg shadow-sm">
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-space-xl gap-space-xs">
+<h3 class="font-headline-md text-headline-md text-primary">Continúa explorando el archivo</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-col-gap"><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="chatgpt-claude-gemini.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/portadas/chatgpt-claude-gemini.svg" alt="" width="1600" height="520" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="chatgpt-claude-gemini.html">ChatGPT, Claude o Gemini: cuál elegir</a></h4></div></article><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="evaluar-agente-ia.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/portadas/evaluar-agente-ia.svg" alt="" width="1600" height="520" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="evaluar-agente-ia.html">Cómo evaluar un agente de IA</a></h4></div></article><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="alucinaciones-ia.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/portadas/alucinaciones-ia.svg" alt="" width="1600" height="520" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="alucinaciones-ia.html">Por qué la IA se inventa cosas</a></h4></div></article></div>
+</section>
+</div></main><footer class="w-full bg-surface-container-low border-t border-outline-variant mt-space-4xl"><div class="max-w-site-max-width mx-auto px-space-md py-space-3xl"><div class="grid grid-cols-1 md:grid-cols-3 gap-col-gap"><div class="space-y-space-sm"><span class="font-headline-md text-headline-md text-primary">El Telar</span><p class="font-body-sm text-body-sm text-on-surface-variant">Publicación independiente de tecnología y automatización con agentes. Contenidos verificados en producción, sin patrocinios opacos ni promesas vacías.</p></div><div><h3 class="font-kicker text-kicker uppercase tracking-wider text-on-surface mb-space-md">SECCIONES</h3><ul class="space-y-space-xs font-body-sm text-body-sm"><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html#guias">Archivo de Guías</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../empieza-aqui.html">Guía para Principiantes</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../sobre-nosotros.html">Manifiesto Editorial</a></li><li class="pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html#despacho">Boletín Semanal</a></li></ul></div><div><h3 class="font-kicker text-kicker uppercase tracking-wider text-on-surface mb-space-md">CONTACTO &amp; PRENSA</h3><div class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant"><p class="font-semibold text-on-surface">contacto@eltelar.es</p><p>Síguenos: <a class="hover:text-primary underline" href="https://www.instagram.com/eltelar_es/" rel="me noopener" target="_blank">Instagram</a> · <a class="hover:text-primary underline" href="https://www.threads.com/@eltelar_es" rel="me noopener" target="_blank">Threads</a> · <a class="hover:text-primary underline" href="https://x.com/eltelar_es" rel="me noopener" target="_blank">X</a></p></div></div></div></div><div class="border-t border-outline-variant py-space-md bg-surface-container-lowest"><div class="max-w-site-max-width mx-auto px-space-md flex flex-col md:flex-row items-center justify-between gap-space-sm text-caption font-caption text-on-surface-variant"><div>© 2026 El Telar. Todos los derechos reservados. Independencia editorial garantizada.</div><div class="flex flex-wrap items-center justify-center gap-space-md"><a class="hover:text-on-surface transition-colors" href="../privacidad.html">Privacidad</a><a class="hover:text-on-surface transition-colors" href="../terminos.html">Términos</a><a class="hover:text-on-surface transition-colors" href="../cookies.html">Cookies</a><a class="hover:text-on-surface transition-colors" href="../aviso-legal.html">Aviso legal</a><a class="hover:text-on-surface transition-colors" href="../sobre-nosotros.html">Sobre nosotros</a><a class="hover:text-on-surface transition-colors" href="../contacto.html">Contacto</a></div></div></div></footer><script defer src="../js/copy-guide.js"></script><script defer src="../js/guide-interactions.js"></script><script defer src="../js/reading-progress.js"></script><script defer src="../js/search.js?v=7"></script><script defer src="../js/entrance.js"></script><script defer src="../js/cookie-consent.js?v=4"></script></body></html>
