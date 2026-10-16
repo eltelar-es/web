@@ -23,7 +23,7 @@
   "author": {"@type": "Person", "name": "Juan Becerril Castañón", "url": "https://eltelar.es/sobre-nosotros.html#autor"},
   "publisher": { "@type": "Organization", "name": "El Telar", "url": "https://eltelar.es/", "logo": { "@type": "ImageObject", "url": "https://eltelar.es/img/icon-512.png", "width": 512, "height": 512 } },
   "datePublished": "2026-01-01",
-  "dateModified": "2026-10-16",
+  "dateModified": "2026-10-17",
   "mainEntityOfPage": "https://eltelar.es/articulos/chatgpt-claude-gemini.html",
   "inLanguage": "es"
 }
@@ -181,7 +181,7 @@
 <span class="font-kicker text-kicker text-secondary bg-secondary-fixed px-2 py-0.5">VERSATILIDAD</span>
 </div>
 <p class="font-body-md text-body-md text-on-surface-variant">
-              Buen razonamiento matemático con los modelos de "pensamiento" (o-series), el ecosistema de consumo más maduro, voz natural y muchos conectores.
+              Muy buen razonamiento matemático con sus modelos GPT-6, el ecosistema de consumo más maduro, voz natural y muchos conectores.
             </p>
 </div>
 <div class="bg-surface-container-lowest p-space-md">
@@ -223,8 +223,7 @@
           2. ChatGPT: razonamiento y versatilidad de consumo
         </h2>
 <p class="font-body-lg text-body-lg text-on-surface leading-relaxed">
-          Los modelos con cómputo de razonamiento en tiempo de inferencia (la serie o) dedican ciclos a deliberar y ramificar hipótesis antes de responder, lo que ayuda en problemas de lógica formal, optimización o depuración de algoritmos complejos, a cambio de más tiempo de espera. El modelo de propósito general (GPT-4o y similares) es el más veloz y multimodal, con el ecosistema de conectores más amplio.
-        </p>
+          Hoy la familia de OpenAI se reparte en GPT-6 Astra, su modelo más potente, y GPT-6.1 Sol, una versión que la propia empresa dice que se acerca a Astra en programación y en manejar un ordenador por mucho menos precio. Estos modelos dedican tiempo a deliberar antes de responder, lo que ayuda en problemas de lógica formal, optimización o depuración de algoritmos complejos, a cambio de más espera. Sol está disponible en los planes de pago, en ChatGPT Work y en Codex, no en el chat de siempre, y el ecosistema de conectores sigue siendo el más amplio.</p>
 <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
           En tareas de código continuado, es habitual que estos modelos añadan comentarios no solicitados o acorten fragmentos con marcadores tipo <code class="bg-surface-container px-1 text-caption">// resto de tu lógica aquí</code>, lo que puede romper diffs limpios en Git si no revisas el resultado.
         </p>
@@ -442,7 +441,7 @@ Los modelos ligeros de cada laboratorio no son una versión "peor" en todos los 
 </section>
 <section class="space-y-space-md">
 <h2 id="sec-4c" class="font-headline-lg text-headline-lg text-primary">
-          Actualización: ¿y GPT-6 Astra, supera a Claude Fable 5.1?
+          Actualización de octubre: GPT-6 Astra, Claude Opus 5.5 y GPT-6.1 Sol, ¿quién va por delante?
         </h2>
 <p class="font-body-lg text-body-lg text-on-surface leading-relaxed">
           OpenAI lanzó GPT-6 Astra el 3 de septiembre de 2026 acompañado de una tanda de benchmarks propios que, según su comparativa, sitúan al modelo por delante del mejor modelo de Anthropic disponible en ese momento, Claude Fable 5.1: 97,6% frente a 87,8% en FrontierMath Tier 4 (problemas matemáticos de investigación), 41,4% frente a 31,4% en AutomationBench (tareas de automatización de varios pasos) y 95,9% frente a 84,3% en BenchCAD (diseño e ingeniería asistida). En ExploitBench (encontrar y explotar vulnerabilidades de seguridad en un entorno controlado), Astra marcó 100% frente al 70% de Claude Opus 5.
@@ -457,6 +456,14 @@ Los modelos ligeros de cada laboratorio no son una versión "peor" en todos los 
 </div>
 <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
           El patrón se repite con cada lanzamiento grande de cualquiera de los tres laboratorios: un anuncio con benchmarks propios que muestran una ventaja clara, seguido semanas después por evaluaciones independientes que matizan esa ventaja en tareas reales, fuera del entorno controlado del benchmark. En esta web no aceptamos pagos de ningún laboratorio y no vamos a coronar un ganador el mismo día del anuncio basándonos solo en la cifra que el propio fabricante decidió publicar. Si tu decisión depende de esta comparativa concreta, la recomendación sigue siendo la misma que para el resto de esta guía: prueba ambos modelos con tu tarea real antes de migrar nada, y espera a que aparezcan evaluaciones independientes antes de tratar cualquier benchmark de lanzamiento como la última palabra. Para leer esas cifras con criterio, tenemos una guía entera sobre <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="leer-benchmarks-ia.html">cómo leer un benchmark de IA sin que te engañen</a>.</p>
+<h3 class="font-headline-sm text-headline-sm text-primary">Lo que ha cambiado desde entonces</h3>
+<ul class="list-disc pl-space-lg space-y-space-xs font-body-md text-body-md text-on-surface">
+<li><strong>Claude Opus 5.5 (22 de septiembre).</strong> Anthropic lo presenta como el primer modelo de su familia 5.5, con un rendimiento similar al de Fable 5.1 en la mayoría de tareas y un coste de ejecución un 40 % menor que Opus 5. En su API cuesta 4 dólares por millón de tokens de entrada y 20 de salida, frente a 5 y 25 de Opus 5. <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" href="https://www.anthropic.com/claude-opus-5-5" target="_blank" rel="noopener">Anuncio oficial ↗</a></li>
+<li><strong>Su propia tabla no lo gana todo.</strong> Anthropic publica que Opus 5.5 saca un 66,4 % en Terminal-Bench 4.0 (programación en terminal) frente al 57,9 % de GPT-6 Astra, pero que Astra va por delante en AutomationBench (41,4 % frente a 40,0 %) y en Terminal-Bench-Science (64,6 % frente a 58,7 %). Otra vez son cifras del propio laboratorio.</li>
+<li><strong>GPT-6.1 Sol (29 de septiembre).</strong> OpenAI asegura que se acerca a Astra y que su API cuesta cinco veces menos. La tabla de Anthropic no incluye este Sol, solo uno anterior, así que no existe todavía una comparación directa y fiable entre Opus 5.5 y GPT-6.1 Sol. <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" href="https://openai.com/index/introducing-gpt-6-1-sol/" target="_blank" rel="noopener">Anuncio de OpenAI ↗</a></li>
+<li><strong>GPT-6.1 Astra, aparcado.</strong> OpenAI frenó su lanzamiento previsto para octubre por no superar su propio listón de seguridad; no hay fecha nueva. <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" href="../noticias/2026-09-29-openai-retrasa-gpt-6-1-astra.html">Lee la noticia</a></li>
+</ul>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">En la práctica: para programar a diario compara Opus 5.5 y Sonnet 5.5 con Sol en tus propios archivos; para el chat de siempre, mira primero qué modelo te da tu plan. Si el precio por token manda, compara las tarifas oficiales de API el día que decidas, porque cambian con frecuencia.</p>
 </section>
 <section class="bg-surface-container-low p-space-lg space-y-space-md" id="matrix-calculator">
 <div>
@@ -516,7 +523,7 @@ Los modelos ligeros de cada laboratorio no son una versión "peor" en todos los 
 <li><a class="hover:text-primary transition-colors flex items-center justify-between py-1" href="#sec-3d">Pensar en el precio real</a></li>
 <li><a class="hover:text-primary transition-colors flex items-center justify-between py-1" href="#sec-4">4. Matriz comparativa</a></li>
 <li><a class="hover:text-primary transition-colors flex items-center justify-between py-1" href="#sec-4b">Migrar un prompt entre modelos</a></li>
-<li><a class="hover:text-primary transition-colors flex items-center justify-between py-1" href="#sec-4c">GPT-6 Astra vs. Fable 5.1</a></li>
+<li><a class="hover:text-primary transition-colors flex items-center justify-between py-1" href="#sec-4c">Astra, Opus 5.5 y Sol</a></li>
 </ul>
 </div>
 

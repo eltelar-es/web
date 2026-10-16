@@ -54,7 +54,8 @@
       "license": "CC BY 2.0",
       "url": "https://commons.wikimedia.org/w/index.php?curid=72122204"
     },
-    "published": "2026-10-16"
+    "published": "2026-10-16",
+    "seo_title": "Meta publica Muse Spark Open, modelo abierto"
   },
   {
     "slug": "2026-10-16-github-ai-scan-pull-requests",
@@ -106,7 +107,8 @@
       "license": "CC0 1.0",
       "url": "https://stocksnap.io/photo/coding-programming-MJZPCHLERD"
     },
-    "published": "2026-10-16"
+    "published": "2026-10-16",
+    "seo_title": "GitHub AI Scan revisa la seguridad en cada PR"
   },
   {
     "slug": "2026-10-15-ia-exploit-chrome-xbow",
@@ -175,7 +177,8 @@
       "license": "CC0",
       "url": "https://commons.wikimedia.org/w/index.php?curid=186430940"
     },
-    "published": "2026-10-15"
+    "published": "2026-10-15",
+    "seo_title": "Una IA construye en 6 días un ataque a Chrome"
   },
   {
     "slug": "2026-10-15-ocho-fiscales-demandan-openai",
@@ -224,7 +227,8 @@
       "license": "CC BY 2.0",
       "url": "https://commons.wikimedia.org/w/index.php?curid=81663423"
     },
-    "published": "2026-10-15"
+    "published": "2026-10-15",
+    "seo_title": "Ocho fiscales de EE. UU. demandan a OpenAI"
   },
   {
     "slug": "2026-10-15-openai-retira-gpt-4o-api",
@@ -270,7 +274,8 @@
         "url": "../articulos/cuanto-cuesta-usar-ia-api.html"
       }
     ],
-    "published": "2026-10-15"
+    "published": "2026-10-15",
+    "seo_title": "OpenAI retirará GPT-4o y GPT-4.1 de su API"
   },
   {
     "slug": "2026-10-13-apple-homeview-sin-europa",
@@ -330,7 +335,8 @@
       "license": "CC BY-SA 4.0",
       "url": "https://commons.wikimedia.org/w/index.php?curid=108154658"
     },
-    "published": "2026-10-14"
+    "published": "2026-10-14",
+    "seo_title": "Apple HomeView llega sin la UE"
   },
   {
     "slug": "2026-10-13-microsoft-1400-fallos-parches",
@@ -386,7 +392,8 @@
       "author": "Jiaqian AirplaneFan",
       "license": "CC BY 3.0",
       "url": "https://commons.wikimedia.org/w/index.php?curid=59096620"
-    }
+    },
+    "seo_title": "Microsoft corrige más de 1.400 fallos en un mes"
   },
   {
     "slug": "2026-10-12-meta-muse-wonder-agentes",
