@@ -1,5 +1,114 @@
 [
   {
+    "slug": "2026-10-16-meta-muse-spark-open",
+    "date": "2026-10-15",
+    "category": "Modelos",
+    "title": "Meta publica Muse Spark Open, un modelo abierto de 816.000 millones de parámetros",
+    "dek": "Los pesos están en Hugging Face y varias nubes, con licencia que permite uso comercial limitado y ejecución en dos Mac Studio con chip M5 Ultra.",
+    "tldr": "Meta ha liberado los pesos de Muse Spark Open, un modelo multimodal pensado para programar y trabajar como agente. Meta lo presenta como el modelo abierto estadounidense más capaz hasta la fecha, aunque es una afirmación de la propia empresa.",
+    "key_facts": [
+      {
+        "value": "816 mil M",
+        "label": "parámetros totales (42.000 M activos)"
+      },
+      {
+        "value": "1 M",
+        "label": "tokens de contexto"
+      },
+      {
+        "value": "2",
+        "label": "Mac Studio M5 Ultra bastan para ejecutarlo"
+      }
+    ],
+    "quote": {
+      "text": "the most capable US open-weight model to date",
+      "source": "Meta, anuncio oficial (traducido: «el modelo abierto estadounidense más capaz hasta la fecha»)"
+    },
+    "body": [
+      "Meta anunció el 15 de octubre de 2026 Muse Spark Open, un modelo de «pesos abiertos»: la empresa publica los archivos del modelo para que cualquiera con el equipo adecuado pueda descargarlo y ejecutarlo por su cuenta, aunque no es lo mismo que código abierto en sentido estricto. Meta lo describe como nativamente multimodal (entiende varios tipos de contenido, no solo texto) y orientado a programación y tareas de agente.",
+      "Es un modelo de «mezcla de expertos»: tiene 816.000 millones de parámetros en total, pero solo activa 42.000 millones en cada respuesta, lo que reduce el coste de usarlo. Admite un contexto de 1 millón de tokens, es decir, puede manejar textos o proyectos de código muy largos de una vez.",
+      "Meta asegura que puede ejecutarse en dos Apple Mac Studio con chip M5 Ultra usando el marco MLX, y que cada uno puede dedicar hasta 512 GB de memoria unificada a la GPU. También cita optimizaciones para chips de AMD, Apple, Intel y NVIDIA.",
+      "Los pesos se pueden descargar desde Hugging Face, Amazon SageMaker AI, Google Cloud Model Garden y Microsoft Foundry Models. Quien no quiera montar su propio equipo puede usarlo por API en Baseten, Fireworks AI, Groq, Modal, Nebius, OpenRouter y Together AI.",
+      "La licencia es la «Muse Model License», con condiciones comerciales limitadas, según Meta, que permite a muchos desarrolladores usarlo gratis. El anuncio no detalla aquí qué límites concretos tiene, y la etiqueta de «más capaz» no está verificada por terceros."
+    ],
+    "impact": [
+      "Si no programas, no notarás nada directo: es un modelo para desarrolladores y empresas, no una app nueva.",
+      "Que haya modelos abiertos potentes abarata y diversifica los servicios de IA, y permite usarlos sin enviar tus datos a un tercero.",
+      "Ejecutarlo en casa exige un equipo de varios miles de euros; para la mayoría será más realista probarlo a través de una API."
+    ],
+    "sources": [
+      {
+        "name": "Meta, anuncio oficial de Muse Spark Open",
+        "url": "https://research.meta.ai/blog/muse-spark-open"
+      }
+    ],
+    "related": [
+      {
+        "title": "IA en local en tu ordenador",
+        "url": "../articulos/ia-local-ordenador.html"
+      }
+    ],
+    "photo": {
+      "alt": "Mark Zuckerberg, consejero delegado de Meta, en un acto en 2012 (imagen de archivo)",
+      "author": "JD Lasica from Pleasanton, CA, US",
+      "license": "CC BY 2.0",
+      "url": "https://commons.wikimedia.org/w/index.php?curid=72122204"
+    },
+    "published": "2026-10-16"
+  },
+  {
+    "slug": "2026-10-16-github-ai-scan-pull-requests",
+    "date": "2026-10-15",
+    "category": "Herramientas",
+    "title": "GitHub activa AI Scan: revisión de seguridad con IA en cada pull request",
+    "dek": "La herramienta ya está disponible para todos y cubre lenguajes que CodeQL no analiza, como PHP, Bash, Terraform o Dockerfiles.",
+    "tldr": "GitHub ha lanzado AI Scan, que revisa con IA los cambios de código propuestos (pull requests) en busca de vulnerabilidades. Sus avisos son orientativos y no bloquean nada.",
+    "key_facts": [
+      {
+        "value": "0",
+        "label": "licencias de Copilot necesarias"
+      },
+      {
+        "value": "6+",
+        "label": "lenguajes y marcos nuevos cubiertos"
+      }
+    ],
+    "quote": {
+      "text": "AI Scan findings are advisory.",
+      "source": "GitHub, anuncio oficial (traducido: «Los hallazgos de AI Scan son orientativos»)"
+    },
+    "body": [
+      "GitHub anunció el 15 de octubre de 2026 la disponibilidad general de AI Scan para pull requests, las propuestas de cambio que los desarrolladores envían antes de incorporar código a un proyecto. Complementa a CodeQL, el analizador de seguridad de GitHub, en lenguajes y marcos que este no cubre: PHP, Shell/Bash, Terraform (HCL), Dockerfiles, JSP de Java y Blazor de C#, entre otros.",
+      "Se ejecuta automáticamente en las pull requests cuando el escaneo de código y el ajuste de AI Scan del repositorio están activados. Los avisos aparecen en las pestañas de conversación y de archivos modificados con una etiqueta «AI», y pueden incluir una explicación del riesgo y una corrección sugerida.",
+      "Los resultados son orientativos: no hacen fallar la comprobación de escaneo ni bloquean la fusión del código. Tampoco se ejecuta en pull requests procedentes de forks ni en las de Dependabot.",
+      "Está disponible en repositorios públicos. En repositorios privados e internos de organizaciones requiere GitHub Code Security o GitHub Advanced Security, y no hace falta licencia de Copilot. Consume «créditos de IA de Code Security», y los administradores pueden fijar presupuestos. GitHub no da precios ni cifras de acierto."
+    ],
+    "impact": [
+      "Si mantienes un proyecto público en GitHub, puedes activarlo para tener una segunda revisión de seguridad sin coste de licencia adicional anunciado.",
+      "Trata los avisos como pistas: la IA puede equivocarse, y GitHub no publica datos de precisión.",
+      "En equipos con repositorios privados, revisa el presupuesto de créditos antes de activarlo en todo."
+    ],
+    "sources": [
+      {
+        "name": "GitHub Changelog, AI Scan para pull requests, disponibilidad general",
+        "url": "https://github.blog/changelog/2026-10-15-ai-scan-for-pull-requests-generally-available/"
+      }
+    ],
+    "related": [
+      {
+        "title": "Elegir IA para programar",
+        "url": "../articulos/elegir-ia-para-programar.html"
+      }
+    ],
+    "photo": {
+      "alt": "Pantalla de ordenador con código de programación (imagen de archivo)",
+      "author": "Tirza van Dijk",
+      "license": "CC0 1.0",
+      "url": "https://stocksnap.io/photo/coding-programming-MJZPCHLERD"
+    },
+    "published": "2026-10-16"
+  },
+  {
     "slug": "2026-10-15-ia-exploit-chrome-xbow",
     "date": "2026-10-13",
     "category": "Seguridad",
