@@ -19,10 +19,10 @@
   "headline": "Traducir con IA: cuál usar y cuándo no fiarte",
   "description": "DeepL frente a ChatGPT, Claude o Gemini para traducir: cuándo gana cada uno, y los tres tipos de documento donde una traducción automática puede salir muy cara. Con plantilla de prompt para traducir con matices.",
   "image": "https://eltelar.es/img/og/guia-traducir-con-ia.jpg",
-  "author": {"@type": "Person", "name": "Juan Becerril Castañón", "url": "https://eltelar.es/sobre-nosotros.html#autor"},
+  "author": {"@type": "Organization", "name": "El Telar", "url": "https://eltelar.es/"},
   "publisher": { "@type": "Organization", "name": "El Telar", "url": "https://eltelar.es/", "logo": { "@type": "ImageObject", "url": "https://eltelar.es/img/icon-512.png", "width": 512, "height": 512 } },
   "datePublished": "2026-09-15",
-  "dateModified": "2026-10-14",
+  "dateModified": "2026-10-17",
   "mainEntityOfPage": "https://eltelar.es/articulos/traducir-con-ia.html",
   "inLanguage": "es"
 }
@@ -32,10 +32,79 @@
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    { "@type": "Question", "name": "¿DeepL es mejor que ChatGPT para traducir?", "acceptedAnswer": { "@type": "Answer", "text": "Para una traducción rápida de un texto largo en los idiomas europeos que mejor cubre, DeepL suele sonar más natural con menos esfuerzo. La ventaja de un chat de IA como ChatGPT, Claude o Gemini es que puedes pedirle que explique por qué eligió una expresión concreta, que adapte el registro (formal/informal) o que señale los matices que no tienen traducción literal — algo que DeepL no ofrece." } },
-    { "@type": "Question", "name": "¿Puedo fiarme de una traducción automática para un contrato o documento legal?", "acceptedAnswer": { "@type": "Answer", "text": "No sin revisión de alguien cualificado. Un error de matiz en una cláusula legal puede cambiar una obligación entera, y ni DeepL ni un chat de IA garantizan precisión jurídica — están entrenados para sonar naturales, no para preservar significado legal exacto. Úsalos como primer borrador rápido, nunca como versión final de un documento vinculante." } },
-    { "@type": "Question", "name": "¿Por qué un chiste o un juego de palabras se traduce mal casi siempre?", "acceptedAnswer": { "@type": "Answer", "text": "Porque el humor basado en el propio idioma (un doble sentido, una rima, un juego con el sonido de las palabras) depende de una estructura que casi nunca existe igual en otro idioma. Una traducción literal pierde la gracia; una IA que entiende esto puede proponer un chiste equivalente en el idioma de destino, pero eso ya no es traducir, es reescribir — y conviene saber cuál de las dos cosas necesitas." } }
-  , {"@type":"Question","name":"¿Sirve la IA para una traducción jurada u oficial?","acceptedAnswer":{"@type":"Answer","text":"No. En España las traducciones juradas solo las pueden firmar traductores-intérpretes jurados nombrados por el Ministerio de Asuntos Exteriores. La IA es útil para entender el documento antes y revisar nombres y fechas después."}}, {"@type":"Question","name":"¿Cómo traduzco un PDF sin perder el formato?","acceptedAnswer":{"@type":"Answer","text":"Usa la opción de traducir documentos de DeepL o Google Translate, que devuelven el archivo con la maquetación casi intacta. Si el PDF es un escaneo, revisa antes el texto reconocido, porque sus errores pasan a la traducción."}}, {"@type":"Question","name":"¿Es seguro pegar documentos de trabajo en un traductor gratuito?","acceptedAnswer":{"@type":"Answer","text":"Depende del contenido. Las versiones gratuitas pueden guardar lo que pegas. Quita datos personales y confidenciales, usa la herramienta que haya aprobado tu empresa o un modelo local si el texto es sensible."}}]
+    {
+      "@type": "Question",
+      "name": "¿DeepL es mejor que ChatGPT para traducir?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Para una traducción rápida de un texto largo en los idiomas europeos que mejor cubre, DeepL suele sonar más natural con menos esfuerzo. La ventaja de un chat de IA como ChatGPT, Claude o Gemini es que puedes pedirle que explique por qué eligió una expresión concreta, que adapte el registro (formal/informal) o que señale los matices que no tienen traducción literal — algo que DeepL no ofrece."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo fiarme de una traducción automática para un contrato o documento legal?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No sin revisión de alguien cualificado. Un error de matiz en una cláusula legal puede cambiar una obligación entera, y ni DeepL ni un chat de IA garantizan precisión jurídica — están entrenados para sonar naturales, no para preservar significado legal exacto. Úsalos como primer borrador rápido, nunca como versión final de un documento vinculante."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Por qué un chiste o un juego de palabras se traduce mal casi siempre?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Porque el humor basado en el propio idioma (un doble sentido, una rima, un juego con el sonido de las palabras) depende de una estructura que casi nunca existe igual en otro idioma. Una traducción literal pierde la gracia; una IA que entiende esto puede proponer un chiste equivalente en el idioma de destino, pero eso ya no es traducir, es reescribir — y conviene saber cuál de las dos cosas necesitas."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Sirve la IA para una traducción jurada u oficial?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. En España las traducciones juradas solo las pueden firmar traductores-intérpretes jurados nombrados por el Ministerio de Asuntos Exteriores. La IA es útil para entender el documento antes y revisar nombres y fechas después."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cómo traduzco un PDF sin perder el formato?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Usa la opción de traducir documentos de DeepL o Google Translate, que devuelven el archivo con la maquetación casi intacta. Si el PDF es un escaneo, revisa antes el texto reconocido, porque sus errores pasan a la traducción."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Es seguro pegar documentos de trabajo en un traductor gratuito?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Depende del contenido. Las versiones gratuitas pueden guardar lo que pegas. Quita datos personales y confidenciales, usa la herramienta que haya aprobado tu empresa o un modelo local si el texto es sensible."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuántos caracteres puedo traducir gratis con DeepL?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Según la página de planes de DeepL, el plan gratuito incluye 50.000 caracteres al mes y 1 traducción de archivo al mes de hasta 5 MB; el plan Individual (7,49 euros al mes con pago anual) sube a 300.000 caracteres y 3 archivos de hasta 30 MB. Son datos de octubre de 2026 y DeepL los cambia, así que confírmalos en deepl.com/pro."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo traducir un vídeo o un podcast con IA?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí, en tres pasos: transcribir (por ejemplo con Buzz, que funciona en tu ordenador con Whisper), traducir el texto por bloques y subtitular o doblar. Revisa la transcripción antes de traducir porque puede contener frases inventadas. Detalles en la guía de voz y audio con IA."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Dónde empiezo si quiero traducir mi web?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Traduce primero un solo bloque con un glosario y una instrucción de registro, y pide al chat que marque lo que cambia por mercado (moneda, fechas, tallas). Luego pasa el resultado por un hablante nativo. Es el flujo de los apartados 7 y 8 de esta guía."
+      }
+    }
+  ]
 }
 </script>
 <script type="application/ld+json">
@@ -51,7 +120,7 @@
 </script>
 <link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet"/></noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet"/></noscript>
 <style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><link rel="stylesheet" href="../css/tailwind.css"><link rel="stylesheet" href="../css/entrance.css?v=2"><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}(function(){var c=null;try{c=localStorage.getItem('eltelar-cookie-consent')}catch(e){}var g=c==='accepted'?'granted':'denied';gtag('consent','default',{ad_storage:g,ad_user_data:g,ad_personalization:g,analytics_storage:g,wait_for_update:500});window.adsbygoogle=window.adsbygoogle||[];if(g!=='granted'){window.adsbygoogle.requestNonPersonalizedAds=1;}})();</script><script>window.addEventListener("load",function(){setTimeout(function(){var s=document.createElement("script");s.async=true;s.src="https://www.googletagmanager.com/gtag/js?id=G-4DPTKEG79N";document.head.appendChild(s);},800);});</script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4DPTKEG79N');</script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8239907995939753" crossorigin="anonymous"></script></head><body class="bg-background font-body-md text-on-surface antialiased">
-<header class="w-full bg-surface-container-lowest border-b border-outline-variant"><div class="border-b border-outline-variant py-space-xxs px-space-md hidden md:block"><div class="max-w-site-max-width mx-auto flex items-center justify-between font-kicker text-kicker text-on-surface-variant uppercase tracking-wider"><span>EDICIÓN DIGITAL // ACTUALIZADO 2026 // EL TELAR &amp; AGENTES</span><span>MADRID · REMOTO</span><span>SIN HUMO · 100% PRODUCCIÓN</span></div></div><div class="max-w-site-max-width mx-auto px-space-md py-space-md sm:py-space-xl text-center"><p class="hidden sm:block font-kicker text-kicker uppercase tracking-widest text-on-surface-variant mb-space-xs">Publicación Independiente de Tecnología &amp; Agentes</p><a class="inline-block" href="../index.html"><div class="font-display text-display max-sm:text-[40px] max-sm:leading-none text-primary tracking-tight">El Telar</div></a><p class="hidden sm:block font-caption text-caption uppercase tracking-widest text-on-surface-variant mt-space-xs">EL BOLETÍN Y ARCHIVO PRÁCTICO DE INTELIGENCIA ARTIFICIAL Y AGENTES AUTÓNOMOS</p></div><div class="border-t border-b border-outline-variant"><div class="max-w-site-max-width mx-auto px-space-md flex items-center justify-between gap-space-sm h-14"><nav class="flex items-center gap-space-md sm:gap-space-lg h-full min-w-0 overflow-x-auto [scrollbar-width:none] whitespace-nowrap"><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../index.html#guias">GUÍAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../empieza-aqui.html">EMPIEZA AQUÍ</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../sobre-nosotros.html">SOBRE NOSOTROS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../noticias/index.html">NOTICIAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../herramientas/index.html">HERRAMIENTAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../prompts/index.html">PROMPTS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../contacto.html">CONTACTO</a></nav><div class="flex items-center gap-space-md"><button id="search-trigger" type="button" aria-label="Buscar en las guías" class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[20px]">search</span></button><a class="hidden sm:inline-block bg-primary-container text-surface px-space-md py-space-xs font-label-md text-label-md uppercase tracking-wider hover:bg-primary transition-colors" href="../index.html#despacho">SUSCRÍBETE GRATIS</a></div></div></div><div class="hidden md:block bg-surface-container-low border-b border-outline-variant py-space-xs px-space-md"><div class="max-w-site-max-width mx-auto text-center"><p class="font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">53 GUÍAS COMPLETAS EN EXPANSIÓN · ACTUALIZADO A MODELOS 2026 · PROBADO EN TERMINAL Y FLUJOS REALES · CERO HUMO NI TEORÍA VACÍA</p></div></div></header>
+<header class="w-full bg-surface-container-lowest border-b border-outline-variant"><div class="border-b border-outline-variant py-space-xxs px-space-md hidden md:block"><div class="max-w-site-max-width mx-auto flex items-center justify-between font-kicker text-kicker text-on-surface-variant uppercase tracking-wider"><span>EDICIÓN DIGITAL // ACTUALIZADO 2026 // EL TELAR &amp; AGENTES</span><span>MADRID · REMOTO</span><span>SIN HUMO · 100% PRODUCCIÓN</span></div></div><div class="max-w-site-max-width mx-auto px-space-md py-space-md sm:py-space-xl text-center"><p class="hidden sm:block font-kicker text-kicker uppercase tracking-widest text-on-surface-variant mb-space-xs">Publicación Independiente de Tecnología &amp; Agentes</p><a class="inline-block" href="../index.html"><div class="font-display text-display max-sm:text-[40px] max-sm:leading-none text-primary tracking-tight">El Telar</div></a><p class="hidden sm:block font-caption text-caption uppercase tracking-widest text-on-surface-variant mt-space-xs">EL BOLETÍN Y ARCHIVO PRÁCTICO DE INTELIGENCIA ARTIFICIAL Y AGENTES AUTÓNOMOS</p></div><div class="border-t border-b border-outline-variant"><div class="max-w-site-max-width mx-auto px-space-md flex items-center justify-between gap-space-sm h-14"><nav class="flex items-center gap-space-md sm:gap-space-lg h-full min-w-0 overflow-x-auto [scrollbar-width:none] whitespace-nowrap"><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../index.html#guias">GUÍAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../empieza-aqui.html">EMPIEZA AQUÍ</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../sobre-nosotros.html">SOBRE NOSOTROS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../noticias/index.html">NOTICIAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../herramientas/index.html">HERRAMIENTAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../prompts/index.html">PROMPTS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../contacto.html">CONTACTO</a></nav><div class="flex items-center gap-space-md"><button id="search-trigger" type="button" aria-label="Buscar en las guías" class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[20px]">search</span></button><a class="hidden sm:inline-block bg-primary-container text-surface px-space-md py-space-xs font-label-md text-label-md uppercase tracking-wider hover:bg-primary transition-colors" href="../index.html#despacho">SUSCRÍBETE GRATIS</a></div></div></div><div class="hidden md:block bg-surface-container-low border-b border-outline-variant py-space-xs px-space-md"><div class="max-w-site-max-width mx-auto text-center"><p class="font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">56 GUÍAS COMPLETAS EN EXPANSIÓN · ACTUALIZADO A MODELOS 2026 · PROBADO EN TERMINAL Y FLUJOS REALES · CERO HUMO NI TEORÍA VACÍA</p></div></div></header>
 <main class="w-full max-w-site-max-width mx-auto px-space-md py-space-xl"><div class="flex flex-col w-full">
 <nav class="w-full mb-space-lg">
 <ol class="flex flex-wrap items-center gap-space-xs font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">
@@ -109,7 +178,22 @@
         </h2>
 <p class="font-body-md text-body-md text-on-surface leading-relaxed">
           DeepL está especializado únicamente en traducción, y para los idiomas europeos que mejor cubre suele producir un resultado más natural con menos esfuerzo que pedírselo a un chat general — pegas el texto, eliges el idioma de destino, y listo. La contrapartida es que no puedes pedirle explicaciones: no sabes por qué eligió una expresión concreta, ni puedes pedirle que ajuste el tono o el registro sin reescribir tú el resultado a mano.
-        </p>
+        </p><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Antes de elegir plan, mira lo que incluye cada uno. Esto es lo que publica DeepL en su <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="https://www.deepl.com/en/pro" target="_blank" rel="noopener nofollow">página de planes</a> (consultada el 17 de octubre de 2026, precios en euros con IVA y facturación anual; cambian con frecuencia):</p>
+<div class="overflow-x-auto">
+<table class="w-full text-left font-body-sm text-body-sm border border-outline-variant">
+<thead class="bg-surface-container-low">
+<tr><th class="p-space-sm border-b border-outline-variant">Plan</th><th class="p-space-sm border-b border-outline-variant">Precio</th><th class="p-space-sm border-b border-outline-variant">Texto al mes</th><th class="p-space-sm border-b border-outline-variant">Archivos al mes</th><th class="p-space-sm border-b border-outline-variant">Tamaño máx. de archivo</th><th class="p-space-sm border-b border-outline-variant">Glosarios</th></tr>
+</thead>
+<tbody>
+<tr><td class="p-space-sm border-b border-outline-variant align-top font-semibold text-primary">Gratuito</td><td class="p-space-sm border-b border-outline-variant align-top text-on-surface-variant">0 €</td><td class="p-space-sm border-b border-outline-variant align-top text-on-surface-variant">50.000 caracteres</td><td class="p-space-sm border-b border-outline-variant align-top text-on-surface-variant">1</td><td class="p-space-sm border-b border-outline-variant align-top text-on-surface-variant">5 MB</td><td class="p-space-sm border-b border-outline-variant align-top text-on-surface-variant">1 (5 entradas por par de idiomas)</td></tr>
+<tr><td class="p-space-sm border-b border-outline-variant align-top font-semibold text-primary">Individual</td><td class="p-space-sm border-b border-outline-variant align-top text-on-surface-variant">7,49 €/mes</td><td class="p-space-sm border-b border-outline-variant align-top text-on-surface-variant">300.000 caracteres</td><td class="p-space-sm border-b border-outline-variant align-top text-on-surface-variant">3</td><td class="p-space-sm border-b border-outline-variant align-top text-on-surface-variant">30 MB</td><td class="p-space-sm border-b border-outline-variant align-top text-on-surface-variant">1 (5 entradas por par de idiomas)</td></tr>
+<tr><td class="p-space-sm border-b border-outline-variant align-top font-semibold text-primary">Team</td><td class="p-space-sm border-b border-outline-variant align-top text-on-surface-variant">24,99 €/usuario/mes</td><td class="p-space-sm border-b border-outline-variant align-top text-on-surface-variant">1.000.000 por usuario</td><td class="p-space-sm border-b border-outline-variant align-top text-on-surface-variant">20 (con traducción en bloque)</td><td class="p-space-sm border-b border-outline-variant align-top text-on-surface-variant">30 MB</td><td class="p-space-sm border-b border-outline-variant align-top text-on-surface-variant">5 (1.000 entradas por par)</td></tr>
+<tr><td class="p-space-sm border-b border-outline-variant align-top font-semibold text-primary">Business</td><td class="p-space-sm border-b border-outline-variant align-top text-on-surface-variant">49,99 €/usuario/mes</td><td class="p-space-sm border-b border-outline-variant align-top text-on-surface-variant">Ilimitado (uso razonable)</td><td class="p-space-sm border-b border-outline-variant align-top text-on-surface-variant">100</td><td class="p-space-sm border-b border-outline-variant align-top text-on-surface-variant">100 MB</td><td class="p-space-sm border-b border-outline-variant align-top text-on-surface-variant">Ilimitados (uso razonable)</td></tr>
+</tbody>
+</table>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">DeepL asegura que nunca usa el contenido de los suscriptores de pago para entrenar sus modelos; en la página no queda claro qué ocurre con el plan gratuito, así que no pegues ahí nada confidencial. Cada herramienta y plan cambia sus condiciones: úsalo como orientación y comprueba el día que contrates.</p>
+
 </section>
 <section class="space-y-space-md">
 <span class="font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">Opción 2</span>
@@ -274,7 +358,7 @@ Texto:
           En un manual, una web o un contrato, el mismo término tiene que traducirse igual en todas partes. Si en la página 2 "cliente" es <em>customer</em> y en la página 9 es <em>client</em>, el lector duda de si hablan de lo mismo. Los traductores automáticos no garantizan esa coherencia entre bloques, porque cada fragmento se traduce casi por separado.
         </p>
 <p class="font-body-md text-body-md text-on-surface leading-relaxed">
-          La solución profesional se llama glosario: una lista corta de términos con su traducción obligatoria. DeepL permite guardar glosarios en algunos de sus planes; en un chat basta con ponerlo al principio de cada petición.
+          La solución profesional se llama glosario: una lista corta de términos con su traducción obligatoria. DeepL permite guardar glosarios en todos sus planes, aunque en el gratuito y el Individual solo uno de 5 entradas por par de idiomas (según su página de planes); en un chat basta con ponerlo al principio de cada petición.
         </p>
 <div class="bg-surface-container-lowest p-space-lg space-y-space-md" id="prompt-glosario">
 <div class="flex items-center justify-between flex-wrap gap-space-xs">
@@ -386,6 +470,13 @@ Texto:
 <li class="font-body-md text-body-md text-on-surface leading-relaxed"><strong class="text-primary">Revisión humana según el riesgo.</strong> Un email interno no la necesita; una web que va a leer un cliente, sí; un contrato, siempre.</li>
 </ol>
 </section>
+<section class="space-y-space-md">
+<span class="font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">Audio y vídeo</span>
+<h2 id="sec-audio" class="font-headline-md text-headline-md text-primary tracking-tight scroll-mt-24">12. Traducir un audio o un vídeo, no solo un texto</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">El flujo más fiable tiene tres pasos separados, porque cada uno falla de forma distinta: transcribir, traducir el texto y, solo si hace falta, volver a generar la voz.</p>
+<ol class="list-decimal pl-space-lg space-y-space-xs font-body-md text-body-md text-on-surface"><li><strong>Transcribe en local.</strong> Buzz (MIT) transcribe y traduce audio y vídeo en tu ordenador con Whisper y exporta a SRT; Handy (MIT) sirve para dictar. Las dos están explicadas, con sus limitaciones, en la guía de <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="clonar-voz-transcribir-audio-ia.html">voz, transcripción y audio con IA</a>.</li><li><strong>Revisa la transcripción antes de traducirla.</strong> Los modelos de transcripción pueden inventar frases en los silencios, y ese texto inventado pasaría intacto a la traducción.</li><li><strong>Traduce por bloques con glosario</strong>, como en los apartados anteriores, y vuelve a comprobar números y nombres propios.</li><li><strong>Subtitula o dobla.</strong> Subtitular es lo más seguro. Doblar con una voz sintética tiene sus propios riesgos de consentimiento y etiquetado, que explicamos en la guía de voz; VoiceStudio, por ejemplo, dice en su README que dobla vídeos con la voz sincronizada y admite 646 idiomas, y tienes sus pasos en las <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="video-ia-herramientas.html#voicestudio">herramientas de vídeo con IA</a>.</li></ol>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Si publicas un doblaje con voz sintética que suena a una persona real, recuerda que el artículo 50 del Reglamento de IA, aplicable desde el 2 de agosto de 2026, pide avisar de que es artificial. Lo contamos en la <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="ai-act-explicado.html">guía del AI Act</a>.</p>
+</section>
 <section id="kiss-translator" class="space-y-space-md scroll-mt-24 bg-surface-container-low p-space-lg border-l-4 border-secondary">
 <span class="font-kicker text-kicker uppercase tracking-widest text-secondary">Del reel de Instagram</span>
 <h2 class="font-headline-md text-headline-md text-primary tracking-tight">KISS Translator: traduce webs y vídeos en bilingüe</h2>
@@ -395,7 +486,7 @@ Texto:
 <h3 class="font-headline-sm text-headline-sm text-primary">Cómo empezar</h3>
 <ol class="list-decimal pl-space-lg space-y-space-xs font-body-md text-body-md text-on-surface"><li>Instálala desde la tienda de extensiones de Chrome, Edge o Firefox (los enlaces están en el repositorio).</li><li>Elige el idioma de destino (español) y un servicio de traducción.</li><li>Si quieres usar un modelo de IA de pago, añade tu clave en los ajustes.</li><li>Abre una web en otro idioma y activa la traducción.</li></ol>
 <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed"><strong class="text-on-surface">Lo honesto:</strong> la documentación principal está en chino, aunque hay versión en inglés. Las funciones nuevas solo están en las extensiones de Chrome, Edge y Firefox. Los servicios de IA en la nube se pagan con tu clave.</p>
-<p class="font-body-sm text-body-sm mt-space-sm"><strong class="text-on-surface">Repositorio:</strong> <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://github.com/fishjar/kiss-translator">github.com/fishjar/kiss-translator</a></p>
+<p class="font-body-sm text-body-sm mt-space-sm"><strong class="text-on-surface">Repositorio:</strong> <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://github.com/fishjar/kiss-translator">github.com/fishjar/kiss-translator</a> (licencia GPL-3.0, más de 12.000 estrellas a 17 de octubre de 2026)</p>
 </section>
 <section class="space-y-space-md">
 <span class="font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">Preguntas frecuentes</span>
@@ -457,6 +548,33 @@ Usa la opción de traducir documentos de DeepL o Google Translate, que devuelven
 Depende del contenido. Las versiones gratuitas pueden guardar lo que pegas. Quita datos personales y confidenciales, usa la herramienta que haya aprobado tu empresa o un modelo local si el texto es sensible.
 </div>
 </div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Cuántos caracteres puedo traducir gratis con DeepL?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Según la página de planes de DeepL, el plan gratuito incluye 50.000 caracteres al mes y 1 traducción de archivo al mes de hasta 5 MB; el plan Individual (7,49 euros al mes con pago anual) sube a 300.000 caracteres y 3 archivos de hasta 30 MB. Son datos de octubre de 2026 y DeepL los cambia, así que confírmalos en deepl.com/pro.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Puedo traducir un vídeo o un podcast con IA?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Sí, en tres pasos: transcribir (por ejemplo con Buzz, que funciona en tu ordenador con Whisper), traducir el texto por bloques y subtitular o doblar. Revisa la transcripción antes de traducir porque puede contener frases inventadas. Detalles en la guía de <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="clonar-voz-transcribir-audio-ia.html">voz y audio con IA</a>.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Dónde empiezo si quiero traducir mi web?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Traduce primero un solo bloque con un glosario y una instrucción de registro, y pide al chat que marque lo que cambia por mercado (moneda, fechas, tallas). Luego pasa el resultado por un hablante nativo. Es el flujo de los apartados 7 y 8 de esta guía.
+</div>
+</div>
 </div>
 </section>
 <footer class="bg-surface-container-lowest p-space-lg shadow-sm mt-space-xl">
@@ -491,6 +609,7 @@ Depende del contenido. Las versiones gratuitas pueden guardar lo que pegas. Quit
 <li class="flex items-start gap-space-xs py-1"><span class="text-secondary font-mono font-bold">09.</span><a class="hover:text-primary transition-colors" href="#sec-oficial">Traducciones juradas</a></li>
 <li class="flex items-start gap-space-xs py-1"><span class="text-secondary font-mono font-bold">10.</span><a class="hover:text-primary transition-colors" href="#sec-privacidad">Qué no deberías pegar</a></li>
 <li class="flex items-start gap-space-xs py-1"><span class="text-secondary font-mono font-bold">11.</span><a class="hover:text-primary transition-colors" href="#sec-flujo">Flujo en 5 pasos</a></li>
+<li class="flex items-start gap-space-xs py-1"><span class="text-secondary font-mono font-bold">12.</span><a class="hover:text-primary transition-colors" href="#sec-audio">Audio y vídeo</a></li>
 <li class="flex items-start gap-space-xs py-1"><a class="text-secondary font-semibold hover:underline" href="#kiss-translator">→ KISS Translator</a></li>
 </ol>
 </div>

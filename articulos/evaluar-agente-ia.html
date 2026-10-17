@@ -20,13 +20,13 @@
   "headline": "Cómo saber si tu agente de IA funciona de verdad",
   "description": "Cómo montar un conjunto de pruebas que tu agente no haya visto, qué medir en cada tipo de sistema y los tres sesgos que inflan tus resultados cuando usas una IA para corregir a otra.",
   "image": "https://eltelar.es/img/og/guia-evaluar-agente-ia.jpg",
-  "author": {"@type": "Person", "name": "Juan Becerril Castañón", "url": "https://eltelar.es/sobre-nosotros.html#autor"},
+  "author": {"@type": "Organization", "name": "El Telar", "url": "https://eltelar.es/"},
   "publisher": {
     "@type": "Organization",
     "name": "El Telar"
   },
   "datePublished": "2026-10-07",
-  "dateModified": "2026-10-16",
+  "dateModified": "2026-10-17",
   "mainEntityOfPage": "https://eltelar.es/articulos/evaluar-agente-ia.html",
   "inLanguage": "es"
 }
@@ -75,6 +75,22 @@
         "@type": "Answer",
         "text": "Empieza con la hoja de cálculo: entrada, respuesta esperada, respuesta obtenida y una columna de bien/mal. Resuelve el 90% del problema y la entiende todo el equipo, que importa más de lo que parece. Las plataformas específicas — promptfoo, Langfuse y otras, varias con versión de código abierto — aportan tres cosas que la hoja no hace: repetir cada caso varias veces para ver si el resultado es estable, guardar el histórico para comparar entre versiones, y avisarte cuando algo que funcionaba deja de hacerlo. Da el salto cuando pasar el conjunto a mano te dé pereza, porque es justo entonces cuando dejarás de hacerlo."
       }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuántas veces debo repetir cada caso?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Para tareas donde la respuesta puede variar, tres pasadas por caso es un mínimo razonable para ver si el resultado es estable; si una tarea es crítica, repite más. Es una pauta práctica nuestra: lo importante es que el mismo caso con el mismo resultado esperado no alterne entre acierto y fallo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué hago con los casos en que el modelo acierta unas veces y falla otras?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Trátalos como un fallo hasta entender por qué. Suelen indicar una instrucción ambigua, un documento contradictorio o un caso en el límite de lo que el modelo maneja. Baja la variabilidad con instrucciones más cerradas y comprobaciones automáticas, y si no basta, mándalos a una persona."
+      }
     }
   ]
 }
@@ -107,7 +123,7 @@
 </script>
 <link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet"/></noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet"/></noscript>
 <style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><link rel="stylesheet" href="../css/tailwind.css"><link rel="stylesheet" href="../css/entrance.css?v=2"><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}(function(){var c=null;try{c=localStorage.getItem('eltelar-cookie-consent')}catch(e){}var g=c==='accepted'?'granted':'denied';gtag('consent','default',{ad_storage:g,ad_user_data:g,ad_personalization:g,analytics_storage:g,wait_for_update:500});window.adsbygoogle=window.adsbygoogle||[];if(g!=='granted'){window.adsbygoogle.requestNonPersonalizedAds=1;}})();</script><script>window.addEventListener("load",function(){setTimeout(function(){var s=document.createElement("script");s.async=true;s.src="https://www.googletagmanager.com/gtag/js?id=G-4DPTKEG79N";document.head.appendChild(s);},800);});</script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4DPTKEG79N');</script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8239907995939753" crossorigin="anonymous"></script></head><body class="bg-background font-body-md text-on-surface antialiased">
-<header class="w-full bg-surface-container-lowest border-b border-outline-variant"><div class="border-b border-outline-variant py-space-xxs px-space-md hidden md:block"><div class="max-w-site-max-width mx-auto flex items-center justify-between font-kicker text-kicker text-on-surface-variant uppercase tracking-wider"><span>EDICIÓN DIGITAL // ACTUALIZADO 2026 // EL TELAR &amp; AGENTES</span><span>MADRID · REMOTO</span><span>SIN HUMO · 100% PRODUCCIÓN</span></div></div><div class="max-w-site-max-width mx-auto px-space-md py-space-md sm:py-space-xl text-center"><p class="hidden sm:block font-kicker text-kicker uppercase tracking-widest text-on-surface-variant mb-space-xs">Publicación Independiente de Tecnología &amp; Agentes</p><a class="inline-block" href="../index.html"><div class="font-display text-display max-sm:text-[40px] max-sm:leading-none text-primary tracking-tight">El Telar</div></a><p class="hidden sm:block font-caption text-caption uppercase tracking-widest text-on-surface-variant mt-space-xs">EL BOLETÍN Y ARCHIVO PRÁCTICO DE INTELIGENCIA ARTIFICIAL Y AGENTES AUTÓNOMOS</p></div><div class="border-t border-b border-outline-variant"><div class="max-w-site-max-width mx-auto px-space-md flex items-center justify-between gap-space-sm h-14"><nav class="flex items-center gap-space-md sm:gap-space-lg h-full min-w-0 overflow-x-auto [scrollbar-width:none] whitespace-nowrap"><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../index.html#guias">GUÍAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../empieza-aqui.html">EMPIEZA AQUÍ</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../sobre-nosotros.html">SOBRE NOSOTROS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../noticias/index.html">NOTICIAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../herramientas/index.html">HERRAMIENTAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../prompts/index.html">PROMPTS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../contacto.html">CONTACTO</a></nav><div class="flex items-center gap-space-md"><button id="search-trigger" type="button" aria-label="Buscar en las guías" class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[20px]">search</span></button><a class="hidden sm:inline-block bg-primary-container text-surface px-space-md py-space-xs font-label-md text-label-md uppercase tracking-wider hover:bg-primary transition-colors" href="../index.html#despacho">SUSCRÍBETE GRATIS</a></div></div></div><div class="hidden md:block bg-surface-container-low border-b border-outline-variant py-space-xs px-space-md"><div class="max-w-site-max-width mx-auto text-center"><p class="font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">53 GUÍAS COMPLETAS EN EXPANSIÓN · ACTUALIZADO A MODELOS 2026 · PROBADO EN TERMINAL Y FLUJOS REALES · CERO HUMO NI TEORÍA VACÍA</p></div></div></header>
+<header class="w-full bg-surface-container-lowest border-b border-outline-variant"><div class="border-b border-outline-variant py-space-xxs px-space-md hidden md:block"><div class="max-w-site-max-width mx-auto flex items-center justify-between font-kicker text-kicker text-on-surface-variant uppercase tracking-wider"><span>EDICIÓN DIGITAL // ACTUALIZADO 2026 // EL TELAR &amp; AGENTES</span><span>MADRID · REMOTO</span><span>SIN HUMO · 100% PRODUCCIÓN</span></div></div><div class="max-w-site-max-width mx-auto px-space-md py-space-md sm:py-space-xl text-center"><p class="hidden sm:block font-kicker text-kicker uppercase tracking-widest text-on-surface-variant mb-space-xs">Publicación Independiente de Tecnología &amp; Agentes</p><a class="inline-block" href="../index.html"><div class="font-display text-display max-sm:text-[40px] max-sm:leading-none text-primary tracking-tight">El Telar</div></a><p class="hidden sm:block font-caption text-caption uppercase tracking-widest text-on-surface-variant mt-space-xs">EL BOLETÍN Y ARCHIVO PRÁCTICO DE INTELIGENCIA ARTIFICIAL Y AGENTES AUTÓNOMOS</p></div><div class="border-t border-b border-outline-variant"><div class="max-w-site-max-width mx-auto px-space-md flex items-center justify-between gap-space-sm h-14"><nav class="flex items-center gap-space-md sm:gap-space-lg h-full min-w-0 overflow-x-auto [scrollbar-width:none] whitespace-nowrap"><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../index.html#guias">GUÍAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../empieza-aqui.html">EMPIEZA AQUÍ</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../sobre-nosotros.html">SOBRE NOSOTROS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../noticias/index.html">NOTICIAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../herramientas/index.html">HERRAMIENTAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../prompts/index.html">PROMPTS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../contacto.html">CONTACTO</a></nav><div class="flex items-center gap-space-md"><button id="search-trigger" type="button" aria-label="Buscar en las guías" class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[20px]">search</span></button><a class="hidden sm:inline-block bg-primary-container text-surface px-space-md py-space-xs font-label-md text-label-md uppercase tracking-wider hover:bg-primary transition-colors" href="../index.html#despacho">SUSCRÍBETE GRATIS</a></div></div></div><div class="hidden md:block bg-surface-container-low border-b border-outline-variant py-space-xs px-space-md"><div class="max-w-site-max-width mx-auto text-center"><p class="font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">56 GUÍAS COMPLETAS EN EXPANSIÓN · ACTUALIZADO A MODELOS 2026 · PROBADO EN TERMINAL Y FLUJOS REALES · CERO HUMO NI TEORÍA VACÍA</p></div></div></header>
 <main class="w-full max-w-site-max-width mx-auto px-space-md py-space-xl"><div class="flex flex-col w-full">
 <nav class="w-full mb-space-lg">
 <ol class="flex flex-wrap items-center gap-space-xs font-kicker text-kicker text-on-surface-variant uppercase tracking-wider">
@@ -153,7 +169,7 @@
         </p>
 </div>
 <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
-          La nota sube, la capacidad no. Los laboratorios lo saben y lo intentan medir: OpenAI describió para GPT-3 un filtro de solapamiento de 13 palabras seguidas entre el examen y los datos de entrenamiento, y para GPT-4 lo subió a 40. Aun así, el método falla en cuanto alguien reformula la pregunta. La comprobación que de verdad funciona es otra, y es la que te interesa a ti: <strong>construir un examen nuevo, de dificultad parecida, y comparar</strong>. Si el modelo puntúa mucho mejor en el viejo que en el gemelo recién escrito, la diferencia es memoria, no habilidad. De ahí sale la única idea importante de esta guía, y conviene decirla antes que nada: el único examen que mide algo es el que tu sistema no ha visto nunca. Si lo has publicado, si se lo has enseñado al modelo mientras ajustabas el <em>prompt</em>, o si lo escribiste imaginando lo que el agente haría, ya no mide. Esta guía va de montar ese examen, pasarlo con cierta disciplina y leerlo sin engañarte.
+          La nota sube, la capacidad no. Los laboratorios lo saben y lo intentan medir: OpenAI describió para GPT-3 un filtro de solapamiento de 13 palabras seguidas entre el examen y los datos de entrenamiento, y para GPT-4 lo cambió por otro método: buscar coincidencias de fragmentos de 50 caracteres. Aun así, el método falla en cuanto alguien reformula la pregunta. La comprobación que de verdad funciona es otra, y es la que te interesa a ti: <strong>construir un examen nuevo, de dificultad parecida, y comparar</strong>. Si el modelo puntúa mucho mejor en el viejo que en el gemelo recién escrito, la diferencia es memoria, no habilidad. De ahí sale la única idea importante de esta guía, y conviene decirla antes que nada: el único examen que mide algo es el que tu sistema no ha visto nunca. Si lo has publicado, si se lo has enseñado al modelo mientras ajustabas el <em>prompt</em>, o si lo escribiste imaginando lo que el agente haría, ya no mide. Esta guía va de montar ese examen, pasarlo con cierta disciplina y leerlo sin engañarte.
         </p>
 <section class="space-y-space-md">
 <h2 id="sec-1" class="font-headline-lg text-headline-lg text-primary">
@@ -292,6 +308,56 @@
         </p>
 </section>
 <section class="space-y-space-md">
+<h2 id="sec-10" class="font-headline-lg text-headline-lg text-primary">
+Un ejemplo con números: por qué el porcentaje engaña
+</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Un clasificador de correos urgentes ante 200 mensajes, de los cuales 10 son urgentes de verdad. El sistema marca 20 como urgentes: acierta 8 y falla 12 (no urgentes marcados como urgentes). Se le escapan 2 urgentes.</p>
+<div class="w-full overflow-x-auto bg-surface-container-lowest p-space-md shadow-sm">
+<table class="w-full text-left font-body-sm text-body-sm border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-primary font-kicker text-kicker uppercase"><th class="p-space-xs">Medida</th><th class="p-space-xs">Cálculo</th><th class="p-space-xs">Resultado</th></tr>
+</thead>
+<tbody class="divide-y divide-surface-container">
+<tr><td class="p-space-xs font-semibold text-primary">Aciertos globales</td><td class="p-space-xs text-on-surface-variant">(8 urgentes bien + 178 no urgentes bien) / 200</td><td class="p-space-xs text-on-surface-variant">93 %</td></tr>
+<tr><td class="p-space-xs font-semibold text-primary">Urgentes detectados</td><td class="p-space-xs text-on-surface-variant">8 de 10</td><td class="p-space-xs text-on-surface-variant">80 %</td></tr>
+<tr><td class="p-space-xs font-semibold text-primary">Avisos de urgente que eran ciertos</td><td class="p-space-xs text-on-surface-variant">8 de 20</td><td class="p-space-xs text-on-surface-variant">40 %</td></tr>
+</tbody>
+</table>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Un 93 % suena bien, pero deja pasar 2 de cada 10 urgentes y hace perder el tiempo con 12 falsas alarmas. Un sistema que respondiera siempre «no urgente» tendría un 95 % de aciertos globales y detectaría cero urgentes. Por eso la guía insiste en medir los dos errores por separado. Los números del ejemplo son ilustrativos, no de un sistema real.</p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Hoja mínima para empezar: una fila por caso y estas columnas.</p>
+<div class="w-full overflow-x-auto bg-surface-container-lowest p-space-md shadow-sm">
+<table class="w-full text-left font-body-sm text-body-sm border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-primary font-kicker text-kicker uppercase"><th class="p-space-xs">Columna</th><th class="p-space-xs">Para qué sirve</th></tr>
+</thead>
+<tbody class="divide-y divide-surface-container">
+<tr><td class="p-space-xs font-semibold text-primary">Id y fuente del caso</td><td class="p-space-xs text-on-surface-variant">Saber si es real o inventado, y de qué fecha</td></tr>
+<tr><td class="p-space-xs font-semibold text-primary">Entrada</td><td class="p-space-xs text-on-surface-variant">Exactamente lo que recibe el agente</td></tr>
+<tr><td class="p-space-xs font-semibold text-primary">Resultado esperado</td><td class="p-space-xs text-on-surface-variant">Escrito por alguien que no ajustó el prompt</td></tr>
+<tr><td class="p-space-xs font-semibold text-primary">Categoría de fallo si falla</td><td class="p-space-xs text-on-surface-variant">Molesta / cuesta dinero / acción irreversible</td></tr>
+<tr><td class="p-space-xs font-semibold text-primary">Resultado obtenido (3 pasadas)</td><td class="p-space-xs text-on-surface-variant">Ver si es estable, no solo si acertó una vez</td></tr>
+<tr><td class="p-space-xs font-semibold text-primary">Versión del modelo y fecha</td><td class="p-space-xs text-on-surface-variant">Poder comparar contra la vez anterior</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="space-y-space-md">
+<h2 id="sec-11" class="font-headline-lg text-headline-lg text-primary">
+Qué ha cambiado en 2026
+</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Tres novedades de este otoño que afectan a cómo evalúas:</p>
+<ul class="space-y-space-xs font-body-md text-body-md text-on-surface-variant list-disc pl-space-lg"><li>Las puntuaciones de agentes las publican sus fabricantes. Anthropic indica para Claude Sonnet 5.5 un 80,1 % en OSWorld 2.1, en su versión parcial (frente a 57,0 % de Sonnet 5), una prueba de manejo de ordenador (<a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" href="https://www.anthropic.com/claude-sonnet-5-5" target="_blank" rel="noopener">anuncio de Anthropic</a>; contexto en <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" href="../noticias/2026-09-28-claude-sonnet-5-5.html">nuestra noticia</a>). Son cifras del fabricante en su prueba; que mejore en esa tabla no garantiza que mejore con tus documentos. Cómo leer estas tablas: <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" href="leer-benchmarks-ia.html">guía de benchmarks</a> y <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" href="agentes-navegador-ordenador.html">agentes que usan el ordenador</a>.</li><li>Los modelos se retiran con fecha. OpenAI ha publicado que apagará varias versiones de GPT-4o y GPT-4.1 el 14 de enero de 2027 (<a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" href="https://developers.openai.com/api/docs/deprecations" target="_blank" rel="noopener">página de deprecaciones</a>). Es la razón de peso para tener una prueba de regresión lista: cuando cambies de versión, pasa el conjunto entero.</li><li>Los agentes pueden coordinar a otros agentes. Si montas algo así (por ejemplo, con los flujos dinámicos en beta de Claude Managed Agents), el resultado final no te dice qué subagente falló: puntúa y registra cada uno. Más en <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" href="../noticias/2026-10-09-claude-flujos-dinamicos-1000-agentes.html">la noticia</a>.</li></ul>
+</section>
+<section class="space-y-space-md">
+<h2 id="sec-12" class="font-headline-lg text-headline-lg text-primary">
+Reglas de decisión: cuándo pasa de prueba a producción
+</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Reglas que usamos antes de dar luz verde, escritas para que las adaptes. Son criterios editoriales nuestros, no un estándar:</p>
+<ol class="list-decimal pl-space-lg space-y-space-xs font-body-md text-body-md text-on-surface"><li>Cero acciones irreversibles incorrectas en el conjunto congelado. Si hay una, no se despliega, sin importar el porcentaje.</li><li>Todos los casos sin respuesta posible acaban en "no lo sé" o en traspaso a una persona.</li><li>Ningún tipo de caso (por ejemplo, documentos escaneados) por debajo del mínimo que hayas fijado antes de mirar los resultados.</li><li>Tres pasadas por caso con el mismo resultado en la inmensa mayoría; si el resultado cambia entre pasadas, trátalo como fallo hasta entenderlo.</li><li>Una semana de supervisión humana completa tras el lanzamiento, con la prueba de regresión programada.</li></ol>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Fija los umbrales antes de ver los resultados; si los pones después, estarás justificando lo que ya sale.</p>
+</section>
+<section class="space-y-space-md">
 <h2 id="sec-faq" class="font-headline-lg text-headline-lg text-primary">
         Preguntas frecuentes
       </h2>
@@ -341,6 +407,25 @@ Casi siempre es una de tres. La versión del modelo ha cambiado: los proveedores
 Empieza con la hoja de cálculo: entrada, respuesta esperada, respuesta obtenida y una columna de bien/mal. Resuelve el 90% del problema y la entiende todo el equipo, que importa más de lo que parece. Las plataformas específicas — promptfoo, Langfuse y otras, varias con versión de código abierto — aportan tres cosas que la hoja no hace: repetir cada caso varias veces para ver si el resultado es estable, guardar el histórico para comparar entre versiones, y avisarte cuando algo que funcionaba deja de hacerlo. Da el salto cuando pasar el conjunto a mano te dé pereza, porque es justo entonces cuando dejarás de hacerlo.
 </div>
 </div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Cuántas veces debo repetir cada caso?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Para tareas donde la respuesta puede variar, tres pasadas por caso es un mínimo razonable para ver si el resultado es estable; si una tarea es crítica, repite más. Es una pauta práctica nuestra: lo importante es que el mismo caso con el mismo resultado esperado no alterne entre acierto y fallo.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Qué hago con los casos en que el modelo acierta unas veces y falla otras?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Trátalos como un fallo hasta entender por qué. Suelen indicar una instrucción ambigua, un documento contradictorio o un caso en el límite de lo que el modelo maneja. Baja la variabilidad con instrucciones más cerradas y comprobaciones automáticas, y si no basta, mándalos a una persona.
+</div>
+</div>
+
 </div>
 </section>
 </article>
@@ -360,6 +445,9 @@ Empieza con la hoja de cálculo: entrada, respuesta esperada, respuesta obtenida
 <a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-7">Lo que no cabe en el %</a>
 <a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-8">Ya en producción</a>
 <a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-9">Cuándo no hace falta</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-10">Ejemplo con números</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-11">Qué ha cambiado en 2026</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-12">Reglas de decisión</a>
 </nav>
 </div>
 <div class="bg-surface-container-high p-space-md space-y-space-sm shadow-sm">
@@ -367,7 +455,7 @@ Empieza con la hoja de cálculo: entrada, respuesta esperada, respuesta obtenida
 <dl class="space-y-space-xs font-caption text-caption">
 <div class="flex justify-between py-1"><dt class="text-on-surface-variant">Categoría:</dt><dd class="font-semibold text-primary">Agentes</dd></div>
 <div class="flex justify-between py-1"><dt class="text-on-surface-variant">Nivel técnico:</dt><dd class="font-semibold text-primary">Intermedio</dd></div>
-<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Fuentes citadas:</dt><dd class="font-semibold text-primary">Investigación sobre contaminación de benchmarks (MMLU-CF, arXiv 2310.18018), encuesta sobre LLM-as-a-judge (arXiv 2412.05579), sesgo de autopreferencia (arXiv 2410.21819)</dd></div>
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Fuentes citadas:</dt><dd class="font-semibold text-primary">Investigación sobre contaminación de benchmarks (arXiv 2310.18018; MMLU-CF, arXiv 2412.15194; muestras reformuladas, arXiv 2311.04850; informe técnico de GPT-4, arXiv 2303.08774), encuesta sobre LLM-as-a-judge (arXiv 2412.05579), sesgo de autopreferencia (arXiv 2410.21819)</dd></div>
 </dl>
 </div>
 </aside>

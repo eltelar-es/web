@@ -44,7 +44,7 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500;1,6..72,600&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500;1,6..72,600&amp;display=swap" rel="stylesheet"/></noscript>
 <link rel="stylesheet" href="css/tailwind.css">
-<link rel="stylesheet" href="css/entrance.css?v=2"><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}(function(){var c=null;try{c=localStorage.getItem('eltelar-cookie-consent')}catch(e){}var g=c==='accepted'?'granted':'denied';gtag('consent','default',{ad_storage:g,ad_user_data:g,ad_personalization:g,analytics_storage:g,wait_for_update:500});window.adsbygoogle=window.adsbygoogle||[];if(g!=='granted'){window.adsbygoogle.requestNonPersonalizedAds=1;}})();</script><script>window.addEventListener("load",function(){setTimeout(function(){var s=document.createElement("script");s.async=true;s.src="https://www.googletagmanager.com/gtag/js?id=G-4DPTKEG79N";document.head.appendChild(s);},800);});</script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4DPTKEG79N');</script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8239907995939753" crossorigin="anonymous"></script><style id="telar-polish">
+<link rel="stylesheet" href="css/entrance.css?v=3"><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}(function(){var c=null;try{c=localStorage.getItem('eltelar-cookie-consent')}catch(e){}var g=c==='accepted'?'granted':'denied';gtag('consent','default',{ad_storage:g,ad_user_data:g,ad_personalization:g,analytics_storage:g,wait_for_update:500});window.adsbygoogle=window.adsbygoogle||[];if(g!=='granted'){window.adsbygoogle.requestNonPersonalizedAds=1;}})();</script><script>window.addEventListener("load",function(){setTimeout(function(){var s=document.createElement("script");s.async=true;s.src="https://www.googletagmanager.com/gtag/js?id=G-4DPTKEG79N";document.head.appendChild(s);},800);});</script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4DPTKEG79N');</script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8239907995939753" crossorigin="anonymous"></script><style id="telar-polish">
 .guide-card{position:relative;background:#fff;border:1px solid rgba(7,36,23,.10);padding:0 1.5rem 1.5rem;overflow:hidden;transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s,border-color .25s}.guide-card .guide-thumb{margin:0 -1.5rem 1.5rem}.guide-card .guide-thumb img{height:7rem}main .guide-card:hover{border-color:rgba(7,36,23,.18);box-shadow:0 1px 2px rgba(7,36,23,.05),0 18px 36px -20px rgba(7,36,23,.35)}.guide-card::before{z-index:1}#guide-grid{column-gap:1.5rem;row-gap:1.5rem}
 .guide-card::before{content:"";position:absolute;left:0;top:-1px;height:3px;width:44px;background:var(--topic);transition:width .35s cubic-bezier(.2,.7,.2,1)}
 .guide-card:hover::before{width:100%}
@@ -65,7 +65,7 @@ mark.pd-ph{background:#ffddbb;color:#682c00;padding:0 .2em;border-radius:2px;fon
 <div class="max-w-[1240px] mx-auto px-4 sm:px-8 py-2 flex flex-col sm:flex-row items-center justify-between text-[11px] tracking-widest text-charcoal-muted uppercase font-medium gap-1 sm:gap-4">
 <div class="flex items-center gap-2">
 <span class="w-1.5 h-1.5 rounded-full bg-emerald-racing"></span>
-<span>Edición Digital // Actualizado 2026 // El Telar &amp; Agentes</span>
+<span id="edicion-hoy">Edición Digital // Actualizado 2026 // El Telar &amp; Agentes</span>
 </div>
 <div class="hidden sm:flex items-center gap-4 text-[11px] tracking-widest">
 <span>Madrid · Remoto</span>
@@ -115,7 +115,7 @@ mark.pd-ph{background:#ffddbb;color:#682c00;padding:0 .2em;border-radius:2px;fon
 <section class="border-b border-border-rule bg-[#f1f3fe] py-2.5">
 <div class="max-w-[1240px] mx-auto px-4 sm:px-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-1 text-xs tracking-wider text-charcoal-muted font-sans uppercase">
 <span class="flex items-center gap-1.5 text-charcoal-main font-medium">
-<span class="font-serif text-sm italic font-semibold text-emerald-racing">52</span> guías completas en expansión
+<span class="font-serif text-sm italic font-semibold text-emerald-racing"><!--GN-->56<!--/GN--></span> guías completas en expansión
         </span>
 <span class="text-border-rule hidden sm:inline">·</span>
 <span class="hidden sm:flex items-center gap-1.5">
@@ -131,6 +131,7 @@ mark.pd-ph{background:#ffddbb;color:#682c00;padding:0 .2em;border-radius:2px;fon
 </div>
 </section>
 <!-- HERO SECTION / EDITORIAL COVER STORY -->
+<div class="border-b border-border-rule bg-emerald-racing"><div class="max-w-[1240px] mx-auto"><!--ULTIMA:START--><a class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 px-5 py-3.5 bg-emerald-racing text-parchment hover:bg-emerald-accent transition-colors" href="noticias/2026-10-16-meta-muse-spark-open.html"><span class="inline-flex items-center gap-1.5 text-[10px] font-bold tracking-[0.18em] uppercase text-gold-accent shrink-0"><span class="w-1.5 h-1.5 rounded-full bg-gold-accent animate-pulse"></span>Última hora</span><span class="font-serif italic text-sm sm:text-base flex-1">Meta publica Muse Spark Open, un modelo abierto de 816.000 millones de parámetros</span><span class="material-symbols-outlined text-[18px] shrink-0">arrow_forward</span></a><!--ULTIMA:END--></div></div>
 <section class="max-w-[1240px] mx-auto px-4 sm:px-8 pt-12 pb-14 sm:pt-16 sm:pb-16 border-b border-border-rule">
 <div class="max-w-4xl mx-auto text-center">
 <!-- Eyebrow -->
@@ -143,7 +144,7 @@ mark.pd-ph{background:#ffddbb;color:#682c00;padding:0 .2em;border-radius:2px;fon
 </div>
 <!-- Grand Editorial Headline -->
 <h2 class="font-serif text-4xl sm:text-6xl lg:text-[68px] leading-[1.12] text-charcoal-main font-normal tracking-tight mb-7" style="--d:0.22s">
-          Aprende a usar <span class="italic font-medium text-emerald-racing">agentes de IA</span> sin perder semanas probando.
+          Aprende a usar <span id="rot-word" class="rot-word italic font-medium text-emerald-racing" aria-hidden="true">agentes de IA</span><span class="sr-only">agentes de IA</span> sin perder semanas probando.
         </h2>
 <!-- Subheading -->
 <p class="appear appear--soft font-serif text-lg sm:text-2xl text-charcoal-body/90 leading-relaxed max-w-2xl mx-auto mb-9 italic" style="--d:0.5s">
@@ -163,6 +164,7 @@ mark.pd-ph{background:#ffddbb;color:#682c00;padding:0 .2em;border-radius:2px;fon
 </section>
 <!-- RADAR SECTION: LIVE-STYLE MODEL COMPARISON PANEL, UNIQUE TO THIS ARCHIVE -->
 <!-- PROMPTS TEASER SECTION -->
+<section class="max-w-[1240px] mx-auto px-4 sm:px-8 py-14 border-b border-border-rule" id="elige-camino"><div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-6 border-b-2 border-charcoal-main mb-8"><div><div class="flex items-center gap-2 text-[11px] font-bold tracking-[0.2em] text-amber-editorial uppercase mb-2"><span>00 // Elige tu camino</span></div><h3 class="font-serif text-3xl sm:text-4xl text-charcoal-main font-medium tracking-tight">¿Qué quieres conseguir hoy?</h3></div><p class="text-xs sm:text-sm text-charcoal-muted max-w-md font-serif italic sm:text-right"><!--STATS:START-->56 guías, 33 noticias, 7 herramientas y un prompt para cada tarea. Todo gratis y sin registro.<!--STATS:END--></p></div><div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-border-rule border border-border-rule"><a class="group bg-parchment p-6 hover:bg-parchment-soft transition-colors flex flex-col gap-3" href="articulos/automatizar-tareas-agentes-ia.html"><span class="material-symbols-outlined text-[26px] text-emerald-racing">schedule</span><span class="font-serif text-xl text-charcoal-main leading-snug group-hover:text-emerald-racing">Quiero ahorrar tiempo</span><span class="font-sans text-xs text-charcoal-muted leading-relaxed">Automatiza tareas repetidas con agentes de IA, paso a paso.</span><span class="mt-auto inline-flex items-center gap-1 text-[11px] font-bold tracking-[0.18em] uppercase text-emerald-racing">Empezar<span class="material-symbols-outlined text-[15px]">arrow_forward</span></span></a><a class="group bg-parchment p-6 hover:bg-parchment-soft transition-colors flex flex-col gap-3" href="articulos/que-es-claude-code.html"><span class="material-symbols-outlined text-[26px] text-emerald-racing">terminal</span><span class="font-serif text-xl text-charcoal-main leading-snug group-hover:text-emerald-racing">Quiero programar con IA</span><span class="font-sans text-xs text-charcoal-muted leading-relaxed">Qué es Claude Code y cómo empezar aunque no seas programador.</span><span class="mt-auto inline-flex items-center gap-1 text-[11px] font-bold tracking-[0.18em] uppercase text-emerald-racing">Empezar<span class="material-symbols-outlined text-[15px]">arrow_forward</span></span></a><a class="group bg-parchment p-6 hover:bg-parchment-soft transition-colors flex flex-col gap-3" href="articulos/estafas-con-ia.html"><span class="material-symbols-outlined text-[26px] text-emerald-racing">shield</span><span class="font-serif text-xl text-charcoal-main leading-snug group-hover:text-emerald-racing">Quiero protegerme</span><span class="font-sans text-xs text-charcoal-muted leading-relaxed">Estafas con IA y cómo cuidar tus datos y los de tu familia.</span><span class="mt-auto inline-flex items-center gap-1 text-[11px] font-bold tracking-[0.18em] uppercase text-emerald-racing">Empezar<span class="material-symbols-outlined text-[15px]">arrow_forward</span></span></a><a class="group bg-parchment p-6 hover:bg-parchment-soft transition-colors flex flex-col gap-3" href="herramientas/que-ia-usar.html"><span class="material-symbols-outlined text-[26px] text-emerald-racing">balance</span><span class="font-serif text-xl text-charcoal-main leading-snug group-hover:text-emerald-racing">Quiero elegir qué IA pagar</span><span class="font-sans text-xs text-charcoal-muted leading-relaxed">Un test de 4 preguntas y la comparativa al día de los tres grandes.</span><span class="mt-auto inline-flex items-center gap-1 text-[11px] font-bold tracking-[0.18em] uppercase text-emerald-racing">Empezar<span class="material-symbols-outlined text-[15px]">arrow_forward</span></span></a></div></section>
 <section class="bg-[#f1f3fe] border-b border-border-rule" id="prompts-teaser"><div class="max-w-[1240px] mx-auto px-4 sm:px-8 py-14"><div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-6 border-b-2 border-charcoal-main mb-8"><div><div class="text-[11px] font-bold tracking-[0.2em] text-amber-editorial uppercase mb-2">01 // Prompts para el día a día</div><h3 class="font-serif text-3xl sm:text-4xl text-charcoal-main font-medium tracking-tight">Copia, pega y resuelve</h3></div><p class="text-xs sm:text-sm text-charcoal-muted max-w-md font-serif italic sm:text-right">Un prompt para cada cosa que tienes que hacer: contratos, reclamaciones, emails, currículum, menús. Cambia lo que va entre [corchetes] y listo.</p></div><div id="prompt-del-dia" class="pd-card relative overflow-hidden bg-emerald-racing text-[#f9f9ff] mb-8"><div aria-hidden="true" class="pd-ring"></div><div class="relative grid grid-cols-1 lg:grid-cols-5"><div class="lg:col-span-2 p-6 sm:p-8 flex flex-col justify-between gap-6"><div><div class="flex items-center gap-2 text-[11px] font-bold tracking-[0.22em] uppercase text-gold-accent mb-3"><span class="pd-dot"></span><span>Prompt del día</span><span class="text-[#aeceb9]" id="pd-date"></span></div><h4 class="font-serif text-3xl sm:text-[34px] leading-tight font-medium mb-3"><a id="pd-link" class="hover:underline decoration-gold-accent underline-offset-4" href="prompts/dinero-consumo.html#entender-contrato"><span id="pd-title">Entender un contrato antes de firmarlo</span></a></h4><p id="pd-when" class="font-sans text-sm leading-relaxed text-[#caead4]">Te pasan un contrato de alquiler, trabajo, gimnasio o cualquier servicio y no quieres firmar a ciegas.</p></div><div class="flex flex-wrap items-center gap-3"><button type="button" id="pd-copy" class="inline-flex items-center gap-1.5 px-4 py-2 bg-gold-accent text-emerald-racing text-xs font-bold uppercase tracking-widest hover:bg-[#ffddbb] transition-colors"><span class="material-symbols-outlined text-[16px]">content_copy</span><span>Copiar prompt</span></button><a id="pd-more" class="text-xs font-semibold uppercase tracking-widest text-[#aeceb9] hover:text-[#f9f9ff]" href="prompts/dinero-consumo.html#entender-contrato">Ver cómo usarlo →</a></div></div><div class="lg:col-span-3 bg-[#f9f9ff] text-charcoal-main p-6 sm:p-8 border-l-4 border-gold-accent"><div class="text-[11px] font-bold tracking-[0.2em] uppercase text-amber-editorial mb-3"><span id="pd-cat">Dinero y trámites</span> · rellena lo resaltado</div><pre id="pd-prompt" class="font-sans text-[14px] leading-relaxed whitespace-pre-wrap max-h-[260px] overflow-hidden pd-fade">Te voy a pegar un contrato de <mark class="pd-ph">[tipo: alquiler / trabajo / servicio / otro]</mark>. Yo soy <mark class="pd-ph">[la parte que firma: inquilino / trabajador / cliente]</mark>.
 
 1. Resúmelo en lenguaje sencillo: qué me obligo a hacer, qué recibo, cuánto dura, cuánto cuesta en total y cómo se cancela.
@@ -223,7 +225,7 @@ Contrato:
 </dl>
 </a>
 </div>
-<!--ULTIMA:START--><a class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 px-5 py-3.5 bg-emerald-racing text-parchment hover:bg-emerald-accent transition-colors" href="noticias/2026-10-16-meta-muse-spark-open.html"><span class="inline-flex items-center gap-1.5 text-[10px] font-bold tracking-[0.18em] uppercase text-gold-accent shrink-0"><span class="w-1.5 h-1.5 rounded-full bg-gold-accent animate-pulse"></span>Última hora</span><span class="font-serif italic text-sm sm:text-base flex-1">Meta publica Muse Spark Open, un modelo abierto de 816.000 millones de parámetros</span><span class="material-symbols-outlined text-[18px] shrink-0">arrow_forward</span></a><!--ULTIMA:END-->
+
 </section>
 <!-- ARCHIVE SECTION: GUIDES IN A 3-COLUMN NEWSPAPER BROADSHEET FORMAT -->
 <section class="max-w-[1240px] mx-auto px-4 sm:px-8 py-16 scroll-mt-[120px] sm:scroll-mt-16" id="guias">
@@ -1462,6 +1464,75 @@ Contrato:
 <span class="text-charcoal-muted font-serif italic text-xs">Ref. #53</span>
 </div>
 </article>
+<article data-cat="Seguridad y privacidad" class="guide-card flex flex-col justify-between group border-t border-border-rule pt-8 pb-10" style="--topic:#ba1a1a" data-icon="lock"><a class="guide-thumb block mb-5 overflow-hidden" href="articulos/privacidad-chats-ia.html" tabindex="-1" aria-hidden="true"><img src="img/portadas/privacidad-chats-ia.svg" alt="" width="1600" height="520" loading="lazy" decoding="async" class="w-full h-24 object-cover object-right transition-transform duration-500 group-hover:scale-105"/></a>
+<div>
+<div class="flex items-center justify-between text-[11px] font-sans uppercase tracking-widest mb-3 text-charcoal-muted">
+<span class="guide-topic font-semibold pb-0.5 inline-flex items-center gap-1"><span class="material-symbols-outlined text-[15px]" aria-hidden="true">lock</span>Privacidad</span>
+<span class="font-serif italic text-xs">17 min de lectura</span>
+</div>
+<a class="block group-hover:text-emerald-racing transition-colors" href="articulos/privacidad-chats-ia.html">
+<h4 class="font-serif text-2xl sm:text-[23px] leading-snug font-medium text-charcoal-main mb-3 group-hover:text-emerald-racing">
+                Qué guarda tu chat de IA y cómo limitarlo
+              </h4>
+</a>
+<p class="font-sans text-sm text-charcoal-muted leading-relaxed mb-6 font-normal">
+              Entrenamiento, retención, revisión humana y memoria no son lo mismo, y apagar uno no apaga los demás. Compara qué guardan ChatGPT, Claude y Gemini a octubre de 2026 y termina con una rutina de diez minutos.
+            </p>
+</div>
+<div class="pt-3 border-t border-border-subtle flex items-center justify-between text-xs font-semibold tracking-wider uppercase">
+<a class="inline-flex items-center gap-1.5 text-emerald-racing hover:text-charcoal-main transition-colors" href="articulos/privacidad-chats-ia.html">
+<span>Leer artículo</span>
+<span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+</a>
+<span class="text-charcoal-muted font-serif italic text-xs">Ref. #54</span>
+</div>
+</article>
+<article data-cat="Trabajo, estudio y dinero" class="guide-card flex flex-col justify-between group border-t border-border-rule pt-8 pb-10" style="--topic:#673d00" data-icon="storefront"><a class="guide-thumb block mb-5 overflow-hidden" href="articulos/ia-autonomos-pymes-espana.html" tabindex="-1" aria-hidden="true"><img src="img/portadas/ia-autonomos-pymes-espana.svg" alt="" width="1600" height="520" loading="lazy" decoding="async" class="w-full h-24 object-cover object-right transition-transform duration-500 group-hover:scale-105"/></a>
+<div>
+<div class="flex items-center justify-between text-[11px] font-sans uppercase tracking-widest mb-3 text-charcoal-muted">
+<span class="guide-topic font-semibold pb-0.5 inline-flex items-center gap-1"><span class="material-symbols-outlined text-[15px]" aria-hidden="true">storefront</span>Productividad</span>
+<span class="font-serif italic text-xs">15 min de lectura</span>
+</div>
+<a class="block group-hover:text-emerald-racing transition-colors" href="articulos/ia-autonomos-pymes-espana.html">
+<h4 class="font-serif text-2xl sm:text-[23px] leading-snug font-medium text-charcoal-main mb-3 group-hover:text-emerald-racing">
+                IA para autónomos y pymes en España: facturas, clientes y RGPD
+              </h4>
+</a>
+<p class="font-sans text-sm text-charcoal-muted leading-relaxed mb-6 font-normal">
+              Qué datos de clientes no pegar, qué cuenta usar, qué cambia con la factura electrónica y Verifactu y qué pide el AI Act a un negocio pequeño. Incluye una política de IA de una página y un plan de 30 días.
+            </p>
+</div>
+<div class="pt-3 border-t border-border-subtle flex items-center justify-between text-xs font-semibold tracking-wider uppercase">
+<a class="inline-flex items-center gap-1.5 text-emerald-racing hover:text-charcoal-main transition-colors" href="articulos/ia-autonomos-pymes-espana.html">
+<span>Leer artículo</span>
+<span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+</a>
+<span class="text-charcoal-muted font-serif italic text-xs">Ref. #55</span>
+</div>
+</article>
+<article data-cat="Seguridad y privacidad" class="guide-card flex flex-col justify-between group border-t border-border-rule pt-8 pb-10" style="--topic:#ba1a1a" data-icon="shield_person"><a class="guide-thumb block mb-5 overflow-hidden" href="articulos/ia-menores-controles-parentales.html" tabindex="-1" aria-hidden="true"><img src="img/portadas/ia-menores-controles-parentales.svg" alt="" width="1600" height="520" loading="lazy" decoding="async" class="w-full h-24 object-cover object-right transition-transform duration-500 group-hover:scale-105"/></a>
+<div>
+<div class="flex items-center justify-between text-[11px] font-sans uppercase tracking-widest mb-3 text-charcoal-muted">
+<span class="guide-topic font-semibold pb-0.5 inline-flex items-center gap-1"><span class="material-symbols-outlined text-[15px]" aria-hidden="true">shield_person</span>Privacidad</span>
+<span class="font-serif italic text-xs">15 min de lectura</span>
+</div>
+<a class="block group-hover:text-emerald-racing transition-colors" href="articulos/ia-menores-controles-parentales.html">
+<h4 class="font-serif text-2xl sm:text-[23px] leading-snug font-medium text-charcoal-main mb-3 group-hover:text-emerald-racing">
+                IA y menores: controles parentales y reglas en casa
+              </h4>
+</a>
+<p class="font-sans text-sm text-charcoal-muted leading-relaxed mb-6 font-normal">
+              Edades mínimas, controles parentales de ChatGPT y Gemini, el límite de 18 años de Claude y lo que ningún control puede hacer. Termina con un acuerdo familiar de una página y los recursos públicos en España.
+            </p>
+</div>
+<div class="pt-3 border-t border-border-subtle flex items-center justify-between text-xs font-semibold tracking-wider uppercase">
+<a class="inline-flex items-center gap-1.5 text-emerald-racing hover:text-charcoal-main transition-colors" href="articulos/ia-menores-controles-parentales.html">
+<span>Leer artículo</span>
+<span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+</a>
+<span class="text-charcoal-muted font-serif italic text-xs">Ref. #56</span>
+</div>
+</article>
 </div>
 <div id="guide-more-wrap" class="text-center mt-6"><button id="guide-more" type="button" class="guide-chip px-5 py-3 border text-[12px] font-semibold uppercase tracking-widest" aria-controls="guide-grid" aria-expanded="false">Ver las 53 guías</button></div><style>@media (max-width:767px){#guide-grid:not(.is-open) > article:nth-of-type(n+10){display:none}}@media (min-width:768px){#guide-more-wrap{display:none}}</style><script>(function(){var g=document.getElementById("guide-grid"),b=document.getElementById("guide-more");if(!g||!b)return;b.textContent="Ver las "+g.querySelectorAll(":scope > article").length+" guías";function open(){g.classList.add("is-open");b.setAttribute("aria-expanded","true");b.parentNode.style.display="none";}b.addEventListener("click",open);var f=document.getElementById("guide-filters");if(f)f.addEventListener("click",function(e){if(e.target.closest("[data-filter]"))open();});if(location.hash&&location.hash!=="#guias")open();})();</script><style>.guide-chip{border-color:#c2c8c2;color:#424843;background:transparent}.guide-chip:hover{border-color:#072417;color:#072417}.guide-chip[aria-pressed="true"]{background:#072417;border-color:#072417;color:#f9f9ff}</style>
 <script>(function(){var bar=document.getElementById('guide-filters');if(!bar)return;var cards=[].slice.call(document.querySelectorAll('#guide-grid [data-cat]'));bar.addEventListener('click',function(e){var b=e.target.closest('[data-filter]');if(!b)return;var f=b.getAttribute('data-filter');[].forEach.call(bar.children,function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});cards.forEach(function(c){c.classList.toggle('hidden',!!f&&c.getAttribute('data-cat')!==f);});});})();</script>
@@ -1647,4 +1718,27 @@ fetch('js/prompt-del-dia.json').then(function(r){return r.json();}).then(functio
 document.getElementById('pd-copy').addEventListener('click',function(){var b=this,l=b.lastChild;
  navigator.clipboard.writeText(document.getElementById('pd-prompt').innerText).then(function(){l.textContent='¡Copiado!';setTimeout(function(){l.textContent='Copiar prompt';},1600);});});
 })();
-</script></body></html>
+</script><script>
+(function(){
+  try{
+    var d=new Date(),dias=['domingo','lunes','martes','miércoles','jueves','viernes','sábado'],mes=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+    var e=document.getElementById('edicion-hoy');
+    if(e)e.textContent='Edición del '+dias[d.getDay()]+' '+d.getDate()+' de '+mes[d.getMonth()]+' de '+d.getFullYear();
+  }catch(_){}
+  var w=document.getElementById('rot-word');
+  if(!w||(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches))return;
+  var words=['agentes de IA','Claude Code','prompts','la IA local','ChatGPT'],i=0,t=null;
+  function swap(){
+    if(document.hidden)return;
+    w.classList.add('rot-out');
+    setTimeout(function(){
+      i=(i+1)%words.length;w.textContent=words[i];
+      w.classList.remove('rot-out');w.classList.add('rot-in');
+      setTimeout(function(){w.classList.remove('rot-in');},40);
+    },380);
+  }
+  function start(){t=setInterval(swap,2600);}
+  if(document.readyState==='complete')setTimeout(start,2200);else addEventListener('load',function(){setTimeout(start,2200);});
+})();
+</script>
+</body></html>

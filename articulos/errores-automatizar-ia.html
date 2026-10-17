@@ -20,10 +20,10 @@
   "headline": "Los errores más comunes al automatizar tareas con IA",
   "description": "Los fallos más habituales al empezar a automatizar con agentes de IA, y cómo evitarlos antes de que cuesten tiempo o dinero.",
   "image": "https://eltelar.es/img/og/guia-errores-automatizar-ia.jpg",
-  "author": {"@type": "Person", "name": "Juan Becerril Castañón", "url": "https://eltelar.es/sobre-nosotros.html#autor"},
+  "author": {"@type": "Organization", "name": "El Telar", "url": "https://eltelar.es/"},
   "publisher": { "@type": "Organization", "name": "El Telar", "url": "https://eltelar.es/", "logo": { "@type": "ImageObject", "url": "https://eltelar.es/img/icon-512.png", "width": 512, "height": 512 } },
   "datePublished": "2026-01-01",
-  "dateModified": "2026-09-06",
+  "dateModified": "2026-10-17",
   "mainEntityOfPage": "https://eltelar.es/articulos/errores-automatizar-ia.html",
   "inLanguage": "es"
 }
@@ -81,6 +81,22 @@
         "@type": "Answer",
         "text": "Una señal razonable: cuando ya has pasado al menos una vez por las tres fases descritas en esta guía con un caso completo, de principio a fin, sin sorpresas graves. Con ese ciclo ya recorrido una vez, el mismo criterio se traslada a proyectos más ambiciosos: las fases son las mismas, solo cambia el tamaño de lo que hay en juego."
       }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué hago si el proveedor retira el modelo que usa mi automatización?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Los proveedores avisan con meses de margen (OpenAI, por ejemplo, publica fecha de apagado y modelo sustituto). Cambia a la versión recomendada en un entorno de pruebas, pasa tu muestra de casos reales y compara con la referencia manual antes de tocar producción. Si no registraste esa referencia (error 9), este es el momento de empezar."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Con qué frecuencia debería revisar una automatización que lleva meses funcionando?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Como mínimo una vez al mes, con una muestra pequeña (unos diez resultados al azar), y siempre que cambie algo aguas arriba: el proveedor del dato, el formato, el modelo o quien la mantiene. Es una pauta práctica nuestra, no una norma."
+      }
     }
   ]
 }
@@ -113,7 +129,7 @@
 </script>
 <link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet"/></noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet"/></noscript>
 <style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><link rel="stylesheet" href="../css/tailwind.css"><link rel="stylesheet" href="../css/entrance.css?v=2"><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}(function(){var c=null;try{c=localStorage.getItem('eltelar-cookie-consent')}catch(e){}var g=c==='accepted'?'granted':'denied';gtag('consent','default',{ad_storage:g,ad_user_data:g,ad_personalization:g,analytics_storage:g,wait_for_update:500});window.adsbygoogle=window.adsbygoogle||[];if(g!=='granted'){window.adsbygoogle.requestNonPersonalizedAds=1;}})();</script><script>window.addEventListener("load",function(){setTimeout(function(){var s=document.createElement("script");s.async=true;s.src="https://www.googletagmanager.com/gtag/js?id=G-4DPTKEG79N";document.head.appendChild(s);},800);});</script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4DPTKEG79N');</script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8239907995939753" crossorigin="anonymous"></script></head><body class="bg-background font-body-md text-on-surface antialiased">
-<header class="w-full bg-surface-container-lowest border-b border-outline-variant"><div class="border-b border-outline-variant py-space-xxs px-space-md hidden md:block"><div class="max-w-site-max-width mx-auto flex items-center justify-between font-kicker text-kicker text-on-surface-variant uppercase tracking-wider"><span>EDICIÓN DIGITAL // ACTUALIZADO 2026 // EL TELAR &amp; AGENTES</span><span>MADRID · REMOTO</span><span>SIN HUMO · 100% PRODUCCIÓN</span></div></div><div class="max-w-site-max-width mx-auto px-space-md py-space-md sm:py-space-xl text-center"><p class="hidden sm:block font-kicker text-kicker uppercase tracking-widest text-on-surface-variant mb-space-xs">Publicación Independiente de Tecnología &amp; Agentes</p><a class="inline-block" href="../index.html"><div class="font-display text-display max-sm:text-[40px] max-sm:leading-none text-primary tracking-tight">El Telar</div></a><p class="hidden sm:block font-caption text-caption uppercase tracking-widest text-on-surface-variant mt-space-xs">EL BOLETÍN Y ARCHIVO PRÁCTICO DE INTELIGENCIA ARTIFICIAL Y AGENTES AUTÓNOMOS</p></div><div class="border-t border-b border-outline-variant"><div class="max-w-site-max-width mx-auto px-space-md flex items-center justify-between gap-space-sm h-14"><nav class="flex items-center gap-space-md sm:gap-space-lg h-full min-w-0 overflow-x-auto [scrollbar-width:none] whitespace-nowrap"><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../index.html#guias">GUÍAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../empieza-aqui.html">EMPIEZA AQUÍ</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../sobre-nosotros.html">SOBRE NOSOTROS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../noticias/index.html">NOTICIAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../herramientas/index.html">HERRAMIENTAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../prompts/index.html">PROMPTS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../contacto.html">CONTACTO</a></nav><div class="flex items-center gap-space-md"><button id="search-trigger" type="button" aria-label="Buscar en las guías" class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[20px]">search</span></button><a class="hidden sm:inline-block bg-primary-container text-surface px-space-md py-space-xs font-label-md text-label-md uppercase tracking-wider hover:bg-primary transition-colors" href="../index.html#despacho">SUSCRÍBETE GRATIS</a></div></div></div><div class="hidden md:block bg-surface-container-low border-b border-outline-variant py-space-xs px-space-md"><div class="max-w-site-max-width mx-auto text-center"><p class="font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">53 GUÍAS COMPLETAS EN EXPANSIÓN · ACTUALIZADO A MODELOS 2026 · PROBADO EN TERMINAL Y FLUJOS REALES · CERO HUMO NI TEORÍA VACÍA</p></div></div></header>
+<header class="w-full bg-surface-container-lowest border-b border-outline-variant"><div class="border-b border-outline-variant py-space-xxs px-space-md hidden md:block"><div class="max-w-site-max-width mx-auto flex items-center justify-between font-kicker text-kicker text-on-surface-variant uppercase tracking-wider"><span>EDICIÓN DIGITAL // ACTUALIZADO 2026 // EL TELAR &amp; AGENTES</span><span>MADRID · REMOTO</span><span>SIN HUMO · 100% PRODUCCIÓN</span></div></div><div class="max-w-site-max-width mx-auto px-space-md py-space-md sm:py-space-xl text-center"><p class="hidden sm:block font-kicker text-kicker uppercase tracking-widest text-on-surface-variant mb-space-xs">Publicación Independiente de Tecnología &amp; Agentes</p><a class="inline-block" href="../index.html"><div class="font-display text-display max-sm:text-[40px] max-sm:leading-none text-primary tracking-tight">El Telar</div></a><p class="hidden sm:block font-caption text-caption uppercase tracking-widest text-on-surface-variant mt-space-xs">EL BOLETÍN Y ARCHIVO PRÁCTICO DE INTELIGENCIA ARTIFICIAL Y AGENTES AUTÓNOMOS</p></div><div class="border-t border-b border-outline-variant"><div class="max-w-site-max-width mx-auto px-space-md flex items-center justify-between gap-space-sm h-14"><nav class="flex items-center gap-space-md sm:gap-space-lg h-full min-w-0 overflow-x-auto [scrollbar-width:none] whitespace-nowrap"><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../index.html#guias">GUÍAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../empieza-aqui.html">EMPIEZA AQUÍ</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../sobre-nosotros.html">SOBRE NOSOTROS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../noticias/index.html">NOTICIAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../herramientas/index.html">HERRAMIENTAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../prompts/index.html">PROMPTS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../contacto.html">CONTACTO</a></nav><div class="flex items-center gap-space-md"><button id="search-trigger" type="button" aria-label="Buscar en las guías" class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[20px]">search</span></button><a class="hidden sm:inline-block bg-primary-container text-surface px-space-md py-space-xs font-label-md text-label-md uppercase tracking-wider hover:bg-primary transition-colors" href="../index.html#despacho">SUSCRÍBETE GRATIS</a></div></div></div><div class="hidden md:block bg-surface-container-low border-b border-outline-variant py-space-xs px-space-md"><div class="max-w-site-max-width mx-auto text-center"><p class="font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">56 GUÍAS COMPLETAS EN EXPANSIÓN · ACTUALIZADO A MODELOS 2026 · PROBADO EN TERMINAL Y FLUJOS REALES · CERO HUMO NI TEORÍA VACÍA</p></div></div></header>
 <main class="w-full max-w-site-max-width mx-auto px-space-md py-space-xl"><div class="flex flex-col w-full">
 <nav class="w-full mb-space-lg">
 <ol class="flex flex-wrap items-center gap-space-xs font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">
@@ -165,7 +181,7 @@
 <h2 class="font-kicker text-kicker uppercase tracking-widest text-secondary font-bold">NO ERES TÚ SOLO</h2>
 </div>
 <p class="font-body-md text-body-md text-on-surface leading-relaxed">
-          Análisis de firmas como Gartner y RAND Corporation sitúan la mayoría de proyectos de IA empresariales sin entregar el valor prometido, y la causa casi nunca es que "la IA no funcione" — casi siempre es falta de claridad sobre qué problema concreto se quería resolver antes de automatizarlo. Esta lista cubre las versiones a pequeña escala de esos mismos errores.
+          Un informe de RAND Corporation de 2024, basado en entrevistas a profesionales, recoge que "según algunas estimaciones" más del 80 % de los proyectos de IA fracasan, y señala como causa más frecuente que los implicados no entienden o no comunican bien qué problema hay que resolver (<a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" href="https://www.rand.org/pubs/research_reports/RRA2680-1.html" target="_blank" rel="noopener">informe de RAND</a>). Es una estimación, no una medición exacta, pero coincide con lo que vemos: la causa casi nunca es que "la IA no funcione" — casi siempre es falta de claridad sobre qué problema concreto se quería resolver antes de automatizarlo. Esta lista cubre las versiones a pequeña escala de esos mismos errores.
         </p>
 </div>
 <section class="space-y-space-lg">
@@ -348,6 +364,48 @@
         </p>
 </section>
 <section class="space-y-space-md">
+<h2 id="sec-6" class="font-headline-lg text-headline-lg text-primary">
+Qué ha cambiado en 2026 y por qué estos errores pesan más
+</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Los nueve errores son los mismos de siempre, pero tres cambios recientes los hacen más caros. Nos hemos limitado a hechos publicados por los propios fabricantes; los enlaces van al documento original.</p>
+<div class="w-full overflow-x-auto bg-surface-container-lowest p-space-md shadow-sm">
+<table class="w-full text-left font-body-sm text-body-sm border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-primary font-kicker text-kicker uppercase"><th class="p-space-xs">Cambio</th><th class="p-space-xs">Qué ocurre</th><th class="p-space-xs">Error que agrava</th><th class="p-space-xs">Qué hacer</th></tr>
+</thead>
+<tbody class="divide-y divide-surface-container">
+<tr><td class="p-space-xs font-semibold text-primary">Agentes que lanzan agentes</td><td class="p-space-xs text-on-surface-variant">Los agentes ya pueden lanzar otros agentes. Anthropic documenta, en beta, "flujos dinámicos" en Claude Managed Agents: el agente escribe un programa que arranca agentes en segundo plano. Límites de la documentación: 64 hilos a la vez, 1.000 agentes por ejecución y 24 horas de vida por defecto.</td><td class="p-space-xs text-on-surface-variant">4 (pedir demasiado a la vez) y 5 (sin rastro)</td><td class="p-space-xs text-on-surface-variant">Antes de activar algo así, fija presupuesto y exige un registro por agente. Más contexto en <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" href="../noticias/2026-10-09-claude-flujos-dinamicos-1000-agentes.html">la noticia</a> y en la <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" href="https://platform.claude.com/docs/en/managed-agents/workflow-runs" target="_blank" rel="noopener">documentación oficial</a>.</td></tr>
+<tr><td class="p-space-xs font-semibold text-primary">Modelos que se retiran</td><td class="p-space-xs text-on-surface-variant">Los modelos se retiran. OpenAI publicó el 14 de octubre de 2026 que apagará de su API varias versiones de GPT-4o y GPT-4.1 el 14 de enero de 2027 (sustituto recomendado: gpt-6-luna), y otras el 1 de abril de 2027.</td><td class="p-space-xs text-on-surface-variant">3 ("si funciona hoy, funcionará siempre")</td><td class="p-space-xs text-on-surface-variant">Anota qué versión exacta usa cada automatización, mira la página de deprecaciones cada mes y, al cambiar de modelo, repite tu muestra de 10 resultados. Calendario en <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" href="https://developers.openai.com/api/docs/deprecations" target="_blank" rel="noopener">la página oficial de OpenAI</a>.</td></tr>
+<tr><td class="p-space-xs font-semibold text-primary">El sistema vigila a los agentes</td><td class="p-space-xs text-on-surface-variant">Los sistemas operativos empiezan a vigilar a los agentes. Apple avisó el 2 de octubre de que endurecerá el permiso "Acceso total al disco" en macOS por el riesgo de los agentes de IA (no ha detallado los nuevos controles ni la fecha).</td><td class="p-space-xs text-on-surface-variant">6 (accesos más amplios de lo necesario)</td><td class="p-space-xs text-on-surface-variant">Si un asistente te pide acceso total al disco, pregúntate si la tarea lo necesita de verdad. Fuente: <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" href="https://developer.apple.com/news/?id=p6zjojqw" target="_blank" rel="noopener">aviso de Apple</a>.</td></tr>
+</tbody>
+</table>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Si tu automatización lee contenido de terceros (correos, webs, tickets), añade además el riesgo descrito en <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" href="prompt-injection-agentes-ia.html">la guía de prompt injection</a>: ningún texto externo debe poder cambiar las reglas del agente.</p>
+</section>
+<section class="space-y-space-md">
+<h2 id="sec-7" class="font-headline-lg text-headline-lg text-primary">
+Ficha de una página para cada automatización
+</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Copia esta tabla en una hoja de cálculo y rellénala antes de activar cualquier automatización. Si no puedes rellenar una fila, todavía no está lista.</p>
+<div class="w-full overflow-x-auto bg-surface-container-lowest p-space-md shadow-sm">
+<table class="w-full text-left font-body-sm text-body-sm border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-primary font-kicker text-kicker uppercase"><th class="p-space-xs">Campo</th><th class="p-space-xs">Qué escribes</th><th class="p-space-xs">Ejemplo</th></tr>
+</thead>
+<tbody class="divide-y divide-surface-container">
+<tr><td class="p-space-xs font-semibold text-primary">Tarea y dueño</td><td class="p-space-xs text-on-surface-variant">Una frase y una persona responsable</td><td class="p-space-xs text-on-surface-variant">Clasificar facturas entrantes; responsable: administración</td></tr>
+<tr><td class="p-space-xs font-semibold text-primary">Versión del modelo</td><td class="p-space-xs text-on-surface-variant">El identificador exacto, no "el último"</td><td class="p-space-xs text-on-surface-variant">El que figure en tu panel de la API</td></tr>
+<tr><td class="p-space-xs font-semibold text-primary">Acceso concedido</td><td class="p-space-xs text-on-surface-variant">Qué puede leer y qué puede escribir</td><td class="p-space-xs text-on-surface-variant">Lee la carpeta "Facturas"; no puede borrar</td></tr>
+<tr><td class="p-space-xs font-semibold text-primary">Referencia manual</td><td class="p-space-xs text-on-surface-variant">Tiempo, errores y quejas antes de automatizar</td><td class="p-space-xs text-on-surface-variant">20 facturas/día, 1 error cada 50</td></tr>
+<tr><td class="p-space-xs font-semibold text-primary">Revisión activa</td><td class="p-space-xs text-on-surface-variant">Cuántos días y quién revisa el 100 %</td><td class="p-space-xs text-on-surface-variant">10 días laborables, administración</td></tr>
+<tr><td class="p-space-xs font-semibold text-primary">Aviso de fallo</td><td class="p-space-xs text-on-surface-variant">Dónde llega la alerta si no corre</td><td class="p-space-xs text-on-surface-variant">Correo al responsable si no hay ejecución en 24 h</td></tr>
+<tr><td class="p-space-xs font-semibold text-primary">Fecha de reevaluación</td><td class="p-space-xs text-on-surface-variant">Cuándo se vuelve a mirar una muestra</td><td class="p-space-xs text-on-surface-variant">Cada mes: 10 resultados al azar</td></tr>
+</tbody>
+</table>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Con esa ficha, los errores 1, 2, 3, 5, 6, 7 y 9 quedan cubiertos por escrito. Los errores 4 y 8 dependen del diseño del flujo: pasos pequeños con comprobación entre ellos y validación de los datos numéricos. Para medir el punto 9 con método, tienes la guía para <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" href="evaluar-agente-ia.html">evaluar un agente</a>; para acotar el gasto de lo que corre solo, <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" href="limites-gasto-agentes-ia.html">cómo evitar que un agente se coma tu factura</a>.</p>
+</section>
+<section class="space-y-space-md">
 <h2 class="font-headline-lg text-headline-lg text-primary">
           Preguntas frecuentes
         </h2>
@@ -405,6 +463,25 @@ El acceso mínimo (error 6) y la supervisión activa al principio (error 2). El 
 Una señal razonable: cuando ya has pasado al menos una vez por las tres fases descritas en esta guía con un caso completo, de principio a fin, sin sorpresas graves. Con ese ciclo ya recorrido una vez, el mismo criterio se traslada a proyectos más ambiciosos: las fases son las mismas, solo cambia el tamaño de lo que hay en juego.
 </div>
 </div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Qué hago si el proveedor retira el modelo que usa mi automatización?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Los proveedores avisan con meses de margen (OpenAI, por ejemplo, publica fecha de apagado y modelo sustituto). Cambia a la versión recomendada en un entorno de pruebas, pasa tu muestra de casos reales y compara con la referencia manual antes de tocar producción. Si no registraste esa referencia (error 9), este es el momento de empezar.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Con qué frecuencia debería revisar una automatización que lleva meses funcionando?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Como mínimo una vez al mes, con una muestra pequeña (unos diez resultados al azar), y siempre que cambie algo aguas arriba: el proveedor del dato, el formato, el modelo o quien la mantiene. Es una pauta práctica nuestra, no una norma.
+</div>
+</div>
+
 </section>
 <div class="bg-surface-container-low p-space-lg flex flex-col sm:flex-row items-start sm:items-center gap-space-md">
 <div class="w-16 h-16 bg-primary text-on-primary flex items-center justify-center font-display text-headline-md shrink-0">ET</div>
@@ -428,6 +505,8 @@ Una señal razonable: cuando ya has pasado al menos una vez por las tres fases d
 <a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-3">Señales de alerta</a>
 <a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-4">Las tres fases</a>
 <a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-5">Por qué son tan comunes</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-6">Qué ha cambiado en 2026</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-7">Ficha de una página</a>
 </nav>
 </div>
 

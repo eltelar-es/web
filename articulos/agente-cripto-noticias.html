@@ -20,10 +20,10 @@
   "headline": "El agente que vigila cripto y te resume las noticias",
   "description": "Cómo montar un agente que consulta precios de criptomonedas en vivo y noticias recientes, los cruza y te avisa solo cuando de verdad importa, con una demo de precios en directo.",
   "image": "https://eltelar.es/img/og/guia-agente-cripto-noticias.jpg",
-  "author": {"@type": "Person", "name": "Juan Becerril Castañón", "url": "https://eltelar.es/sobre-nosotros.html#autor"},
+  "author": {"@type": "Organization", "name": "El Telar", "url": "https://eltelar.es/sobre-nosotros.html"},
   "publisher": { "@type": "Organization", "name": "El Telar", "url": "https://eltelar.es/", "logo": { "@type": "ImageObject", "url": "https://eltelar.es/img/icon-512.png", "width": 512, "height": 512 } },
   "datePublished": "2026-09-07",
-  "dateModified": "2026-09-07",
+  "dateModified": "2026-10-17",
   "mainEntityOfPage": "https://eltelar.es/articulos/agente-cripto-noticias.html",
   "inLanguage": "es"
 }
@@ -47,7 +47,7 @@
       "name": "¿CoinGecko es de fiar para datos de precios en producción?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Es una de las fuentes agregadas más usadas del sector, con una capa gratuita sin clave para consultas básicas. Para volumen alto o para un producto comercial serio conviene revisar su plan de pago con garantías de disponibilidad, pero para aprender o para un uso personal la capa gratuita es más que suficiente."
+        "text": "Es una de las fuentes agregadas más usadas del sector, con un plan gratuito (Demo) y un acceso sin clave solo para pruebas. Para volumen alto o para un producto comercial serio conviene revisar su plan de pago con garantías de disponibilidad, pero para aprender o para un uso personal basta el plan Demo gratuito, con su clave (el acceso sin clave está pensado solo para pruebas puntuales)."
       }
     },
     {
@@ -72,6 +72,22 @@
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Depende del uso: para una alerta personal, cada 15-30 minutos es más que suficiente y evita gastar cuota de API sin necesidad. Consultar cada pocos segundos solo tiene sentido para trading automatizado de alta frecuencia, un terreno con riesgos y exigencias regulatorias muy distintos a los de esta guía."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Necesito una clave de CoinGecko aunque la API sea gratuita?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Para una prueba suelta no, pero para un agente que consulta cada pocos minutos sí es lo recomendable. Según la documentación oficial, el acceso sin clave comparte un límite bajo por IP y no está pensado para sondeos programados. El plan Demo es gratuito, se pide una clave en la web de CoinGecko y se envía en la cabecera x-cg-demo-api-key."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuántas llamadas gasta un agente que consulta cada 30 minutos?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Unas 48 al día y alrededor de 1.440 al mes si haces una sola llamada por ciclo, muy por debajo de los 10.000 créditos mensuales que su página de precios indica para el plan Demo. Agrupa varias monedas en una misma llamada para no multiplicar el consumo."
       }
     }
   ]
@@ -105,7 +121,7 @@
 </script>
 <link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet"/></noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet"/></noscript>
 <style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><link rel="stylesheet" href="../css/tailwind.css"><link rel="stylesheet" href="../css/entrance.css?v=2"><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}(function(){var c=null;try{c=localStorage.getItem('eltelar-cookie-consent')}catch(e){}var g=c==='accepted'?'granted':'denied';gtag('consent','default',{ad_storage:g,ad_user_data:g,ad_personalization:g,analytics_storage:g,wait_for_update:500});window.adsbygoogle=window.adsbygoogle||[];if(g!=='granted'){window.adsbygoogle.requestNonPersonalizedAds=1;}})();</script><script>window.addEventListener("load",function(){setTimeout(function(){var s=document.createElement("script");s.async=true;s.src="https://www.googletagmanager.com/gtag/js?id=G-4DPTKEG79N";document.head.appendChild(s);},800);});</script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4DPTKEG79N');</script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8239907995939753" crossorigin="anonymous"></script></head><body class="bg-background font-body-md text-on-surface antialiased">
-<header class="w-full bg-surface-container-lowest border-b border-outline-variant"><div class="border-b border-outline-variant py-space-xxs px-space-md hidden md:block"><div class="max-w-site-max-width mx-auto flex items-center justify-between font-kicker text-kicker text-on-surface-variant uppercase tracking-wider"><span>EDICIÓN DIGITAL // ACTUALIZADO 2026 // EL TELAR &amp; AGENTES</span><span>MADRID · REMOTO</span><span>SIN HUMO · 100% PRODUCCIÓN</span></div></div><div class="max-w-site-max-width mx-auto px-space-md py-space-md sm:py-space-xl text-center"><p class="hidden sm:block font-kicker text-kicker uppercase tracking-widest text-on-surface-variant mb-space-xs">Publicación Independiente de Tecnología &amp; Agentes</p><a class="inline-block" href="../index.html"><div class="font-display text-display max-sm:text-[40px] max-sm:leading-none text-primary tracking-tight">El Telar</div></a><p class="hidden sm:block font-caption text-caption uppercase tracking-widest text-on-surface-variant mt-space-xs">EL BOLETÍN Y ARCHIVO PRÁCTICO DE INTELIGENCIA ARTIFICIAL Y AGENTES AUTÓNOMOS</p></div><div class="border-t border-b border-outline-variant"><div class="max-w-site-max-width mx-auto px-space-md flex items-center justify-between gap-space-sm h-14"><nav class="flex items-center gap-space-md sm:gap-space-lg h-full min-w-0 overflow-x-auto [scrollbar-width:none] whitespace-nowrap"><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../index.html#guias">GUÍAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../empieza-aqui.html">EMPIEZA AQUÍ</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../sobre-nosotros.html">SOBRE NOSOTROS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../noticias/index.html">NOTICIAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../herramientas/index.html">HERRAMIENTAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../prompts/index.html">PROMPTS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../contacto.html">CONTACTO</a></nav><div class="flex items-center gap-space-md"><button id="search-trigger" type="button" aria-label="Buscar en las guías" class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[20px]">search</span></button><a class="hidden sm:inline-block bg-primary-container text-surface px-space-md py-space-xs font-label-md text-label-md uppercase tracking-wider hover:bg-primary transition-colors" href="../index.html#despacho">SUSCRÍBETE GRATIS</a></div></div></div><div class="hidden md:block bg-surface-container-low border-b border-outline-variant py-space-xs px-space-md"><div class="max-w-site-max-width mx-auto text-center"><p class="font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">53 GUÍAS COMPLETAS EN EXPANSIÓN · ACTUALIZADO A MODELOS 2026 · PROBADO EN TERMINAL Y FLUJOS REALES · CERO HUMO NI TEORÍA VACÍA</p></div></div></header>
+<header class="w-full bg-surface-container-lowest border-b border-outline-variant"><div class="border-b border-outline-variant py-space-xxs px-space-md hidden md:block"><div class="max-w-site-max-width mx-auto flex items-center justify-between font-kicker text-kicker text-on-surface-variant uppercase tracking-wider"><span>EDICIÓN DIGITAL // ACTUALIZADO 2026 // EL TELAR &amp; AGENTES</span><span>MADRID · REMOTO</span><span>SIN HUMO · 100% PRODUCCIÓN</span></div></div><div class="max-w-site-max-width mx-auto px-space-md py-space-md sm:py-space-xl text-center"><p class="hidden sm:block font-kicker text-kicker uppercase tracking-widest text-on-surface-variant mb-space-xs">Publicación Independiente de Tecnología &amp; Agentes</p><a class="inline-block" href="../index.html"><div class="font-display text-display max-sm:text-[40px] max-sm:leading-none text-primary tracking-tight">El Telar</div></a><p class="hidden sm:block font-caption text-caption uppercase tracking-widest text-on-surface-variant mt-space-xs">EL BOLETÍN Y ARCHIVO PRÁCTICO DE INTELIGENCIA ARTIFICIAL Y AGENTES AUTÓNOMOS</p></div><div class="border-t border-b border-outline-variant"><div class="max-w-site-max-width mx-auto px-space-md flex items-center justify-between gap-space-sm h-14"><nav class="flex items-center gap-space-md sm:gap-space-lg h-full min-w-0 overflow-x-auto [scrollbar-width:none] whitespace-nowrap"><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../index.html#guias">GUÍAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../empieza-aqui.html">EMPIEZA AQUÍ</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../sobre-nosotros.html">SOBRE NOSOTROS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../noticias/index.html">NOTICIAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../herramientas/index.html">HERRAMIENTAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../prompts/index.html">PROMPTS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../contacto.html">CONTACTO</a></nav><div class="flex items-center gap-space-md"><button id="search-trigger" type="button" aria-label="Buscar en las guías" class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[20px]">search</span></button><a class="hidden sm:inline-block bg-primary-container text-surface px-space-md py-space-xs font-label-md text-label-md uppercase tracking-wider hover:bg-primary transition-colors" href="../index.html#despacho">SUSCRÍBETE GRATIS</a></div></div></div><div class="hidden md:block bg-surface-container-low border-b border-outline-variant py-space-xs px-space-md"><div class="max-w-site-max-width mx-auto text-center"><p class="font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">56 GUÍAS COMPLETAS EN EXPANSIÓN · ACTUALIZADO A MODELOS 2026 · PROBADO EN TERMINAL Y FLUJOS REALES · CERO HUMO NI TEORÍA VACÍA</p></div></div></header>
 <main class="w-full max-w-site-max-width mx-auto px-space-md py-space-xl"><div class="flex flex-col w-full">
 <nav class="w-full mb-space-lg">
 <ol class="flex flex-wrap items-center gap-space-xs font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">
@@ -149,7 +165,7 @@
 <section id="demo" class="space-y-space-md">
 <h2 class="font-headline-md text-headline-md text-primary tracking-tight">Precios en vivo, ahora mismo</h2>
 <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
-          Esta caja consulta en directo la API gratuita de <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="https://www.coingecko.com" target="_blank" rel="noopener">CoinGecko</a>, sin clave. Pulsa para ver el precio real de este instante.
+          Esta caja consulta en directo la API gratuita de <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="https://www.coingecko.com" target="_blank" rel="noopener">CoinGecko</a>, sin clave: vale para una consulta suelta como esta, pero no para un agente que se ejecuta solo (lo explicamos más abajo). Pulsa para ver el precio real de este instante.
         </p>
 <div class="bg-surface-container-high p-space-lg border border-outline-variant">
 <button id="crypto-btn" type="button" class="px-space-lg py-space-sm bg-primary text-on-primary font-label-md text-label-md uppercase tracking-wider hover:bg-primary-container transition-colors mb-space-md">Actualizar precios</button>
@@ -256,14 +272,17 @@ enviar a Telegram / correo / Slack</pre>
 <section id="sec-3" class="space-y-space-md">
 <h2 class="font-headline-md text-headline-md text-primary tracking-tight">La misma lógica en código, si lo prefieres</h2>
 <div class="bg-[#0b0d12] text-surface p-space-md my-space-md overflow-x-auto">
-<pre class="font-mono text-body-sm leading-relaxed">import requests
+<pre class="font-mono text-body-sm leading-relaxed">import os, requests
 
 UMBRAL = 5.0  # porcentaje
+# Clave gratuita del plan Demo (cabecera oficial: x-cg-demo-api-key)
+CABECERAS = {"x-cg-demo-api-key": os.environ["COINGECKO_API_KEY"]}
 
 def revisar_cripto(moneda="bitcoin"):
     precio = requests.get(
         "https://api.coingecko.com/api/v3/simple/price",
-        params={"ids": moneda, "vs_currencies": "usd", "include_24hr_change": "true"}
+        params={"ids": moneda, "vs_currencies": "usd", "include_24hr_change": "true"},
+        headers=CABECERAS, timeout=15
     ).json()[moneda]
 
     if abs(precio["usd_24h_change"]) < UMBRAL:
@@ -271,7 +290,8 @@ def revisar_cripto(moneda="bitcoin"):
 
     noticias = requests.get(
         "https://hn.algolia.com/api/v1/search",
-        params={"query": moneda, "tags": "story", "hitsPerPage": 3}
+        params={"query": moneda, "tags": "story", "hitsPerPage": 3},
+        timeout=15
     ).json()["hits"]
 
     return {"precio": precio, "noticias": [n["title"] for n in noticias]}</pre>
@@ -288,7 +308,7 @@ def revisar_cripto(moneda="bitcoin"):
 <div class="space-y-space-sm">
 <div class="bg-surface-container-lowest p-space-md shadow-sm">
 <h3 class="font-headline-sm text-headline-sm text-primary mb-1">Olvidar los límites de peticiones al vigilar varios activos a la vez</h3>
-<p class="font-body-sm text-body-sm text-on-surface-variant">La capa gratuita de CoinGecko tiene un límite de peticiones por minuto. Si el agente vigila muchas criptomonedas distintas en el mismo ciclo, conviene agrupar la consulta en una sola llamada con varios identificadores (como en el ejemplo de la demo de esta guía) en vez de una petición separada por cada activo, que agota la cuota mucho antes.</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">La capa gratuita de CoinGecko tiene un límite de peticiones por minuto, y el acceso sin clave es todavía más estricto (detalle en la sección «Qué límites tiene CoinGecko hoy»). Si el agente vigila muchas criptomonedas distintas en el mismo ciclo, conviene agrupar la consulta en una sola llamada con varios identificadores (como en el ejemplo de la demo de esta guía) en vez de una petición separada por cada activo, que agota la cuota mucho antes.</p>
 </div>
 <div class="bg-surface-container-lowest p-space-md shadow-sm">
 <h3 class="font-headline-sm text-headline-sm text-primary mb-1">Confundir un resumen con un consejo de inversión</h3>
@@ -312,6 +332,35 @@ def revisar_cripto(moneda="bitcoin"):
 </div>
 </div>
 </section>
+<section id="limites-coingecko" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Qué límites tiene CoinGecko hoy (y por qué necesitas una clave)</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+Esto cambia con el tiempo, así que lo comprobamos en la documentación oficial el 17 de octubre de 2026. CoinGecko ofrece ahora dos puertas de entrada gratuitas, y no sirven para lo mismo:
+</p>
+<div class="overflow-x-auto"><table class="w-full text-left border-collapse"><thead><tr class="border-b-2 border-outline"><th class="py-space-sm pr-space-md font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">Acceso</th><th class="py-space-sm pr-space-md font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">Límite publicado</th><th class="py-space-sm pr-space-md font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">Para qué sirve</th></tr></thead><tbody class="font-body-sm text-body-sm text-on-surface-variant"><tr class="border-b border-outline-variant"><td class="py-space-sm pr-space-md font-semibold text-on-surface">Sin clave ("keyless")</td><td class="py-space-sm pr-space-md ">Compartido por IP, unas 10-30 llamadas por minuto según la carga del servidor</td><td class="py-space-sm pr-space-md ">Probar una consulta o una demo. La propia documentación advierte de que <strong>no es adecuado para producción ni para sondeos programados</strong></td></tr><tr class="border-b border-outline-variant"><td class="py-space-sm pr-space-md font-semibold text-on-surface">Plan Demo (gratis, con clave)</td><td class="py-space-sm pr-space-md ">100 llamadas por minuto y 10.000 créditos al mes, según su página de precios</td><td class="py-space-sm pr-space-md ">Un agente personal que consulta cada 30 minutos</td></tr><tr><td class="py-space-sm pr-space-md font-semibold text-on-surface">Planes de pago</td><td class="py-space-sm pr-space-md ">Basic desde 35 $/mes (29 $/mes con pago anual); Analyst 129 $/mes</td><td class="py-space-sm pr-space-md ">Productos comerciales o volumen alto</td></tr></tbody></table></div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+Haz la cuenta de tu caso: consultar una vez cada 30 minutos son 48 llamadas al día, unas 1.440 al mes, muy por debajo de las 10.000 del plan Demo. Si vigilas diez monedas en una única llamada (el parámetro <code class="font-mono text-body-sm bg-surface-container-low px-1">ids</code> acepta varias separadas por comas), el coste sigue siendo una llamada por ciclo. Registra la clave en tu cuenta de CoinGecko y guárdala como variable de entorno o como credencial de n8n; nunca la pegues dentro del flujo ni en un repositorio.
+</p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+Un detalle que conviene saber: según la documentación, todas las peticiones cuentan para el límite por minuto, también las que fallan. Si recibes un error 429 ("demasiadas peticiones"), espera y reintenta con una pausa creciente en vez de insistir en bucle. Fuentes: <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="https://docs.coingecko.com/docs/keyless-public-api" rel="nofollow noopener" target="_blank">documentación del acceso sin clave</a>, <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="https://www.coingecko.com/en/api/pricing" rel="nofollow noopener" target="_blank">página de precios de la API</a> y <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="https://docs.coingecko.com/demo/reference/authentication" rel="nofollow noopener" target="_blank">autenticación del plan Demo</a>. Las cifras de límites por minuto del plan Demo aparecen con valores distintos en distintas páginas de CoinGecko; si tu agente va justo, mide tú mismo en lugar de fiarte de un número.
+</p>
+</section>
+<section id="afinar-alertas" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Cómo afinar el agente después de la primera semana</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+Una vez que el agente corre, el trabajo es calibrarlo. Una rutina sencilla que funciona:
+</p>
+<ol class="list-decimal pl-space-lg space-y-space-xs font-body-md text-body-md text-on-surface"><li><strong>Guarda cada disparo</strong> (fecha, moneda, variación, titulares encontrados) en una hoja de cálculo o en una tabla de n8n.</li><li><strong>Marca cada alerta</strong> como "útil" o "ruido" durante dos semanas. Si más de la mitad es ruido, sube el umbral o exige que haya noticia relacionada.</li><li><strong>Prueba una segunda condición</strong>: además de la variación en 24 horas, compara con la variación de la última hora para distinguir un movimiento sostenido de un pico puntual.</li><li><strong>Limita las alertas</strong>: como máximo una por moneda cada varias horas, para que un día volátil no te inunde el móvil.</li><li><strong>Pon un tope de gasto</strong> al nodo de IA si usas un modelo de pago; en nuestra guía de <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="limites-gasto-agentes-ia.html">límites de gasto para agentes</a> tienes cómo hacerlo.</li></ol>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+Y recuerda que las noticias que el agente trae son texto de terceros: un titular puede contener instrucciones disfrazadas dirigidas al modelo. Trata ese contenido como datos, no como órdenes, según lo explicado en la guía de <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="prompt-injection-agentes-ia.html">prompt injection en agentes</a>.
+</p>
+</section>
+<section id="marco-legal-cripto" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Una nota sobre regulación en España</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+El agente de esta guía solo lee información pública, así que no necesita autorización de ningún supervisor. Otra cosa son las plataformas donde compras: según el régimen europeo de criptoactivos (MiCA), solo pueden prestar servicios en España las que cuentan con autorización. La CNMV comunicó que el periodo transitorio para las entidades que ya operaban terminaba el 1 de julio de 2026 y recomienda comprobar en los registros de ESMA y de la CNMV si tu proveedor está autorizado antes de depositar dinero. Esta referencia procede de la prensa económica y de despachos jurídicos que citan el documento de preguntas y respuestas de la CNMV; para decidir, consulta el registro oficial en <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="https://www.cnmv.es/" rel="nofollow noopener" target="_blank">cnmv.es</a>.
+</p>
+</section>
 </article>
 <aside class="lg:col-span-4 space-y-space-xl">
 <div class="bg-surface-container-lowest p-space-md border border-outline-variant text-center">
@@ -320,8 +369,8 @@ def revisar_cripto(moneda="bitcoin"):
 </div>
 <span class="font-kicker text-kicker uppercase tracking-widest text-primary block mb-space-xxs">FICHA TÉCNICA</span>
 <dl class="space-y-space-xs font-body-sm text-body-sm text-left pt-space-sm border-t border-outline-variant">
-<div class="flex justify-between py-1"><dt class="text-on-surface-variant">API de precios:</dt><dd class="font-semibold text-primary">CoinGecko (gratis)</dd></div>
-<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Clave necesaria:</dt><dd class="font-semibold text-primary">No</dd></div>
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">API de precios:</dt><dd class="font-semibold text-primary">CoinGecko (plan Demo gratis)</dd></div>
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Clave necesaria:</dt><dd class="font-semibold text-primary">Sí, gratuita (para uso programado)</dd></div>
 <div class="flex justify-between py-1"><dt class="text-on-surface-variant">Nivel técnico:</dt><dd class="font-semibold text-secondary">Principiante / Intermedio</dd></div>
 </dl>
 </div>
@@ -337,6 +386,9 @@ def revisar_cripto(moneda="bitcoin"):
 <a class="block hover:text-primary transition-colors" href="#sec-2">Montado con n8n</a>
 <a class="block hover:text-primary transition-colors" href="#sec-3">La lógica en código</a>
 <a class="block hover:text-primary transition-colors" href="#sec-4">Riesgos a evitar</a>
+<a class="block hover:text-primary transition-colors" href="#limites-coingecko">Límites de CoinGecko</a>
+<a class="block hover:text-primary transition-colors" href="#afinar-alertas">Afinar las alertas</a>
+<a class="block hover:text-primary transition-colors" href="#marco-legal-cripto">Nota legal</a>
 </nav>
 </div>
 
@@ -360,7 +412,7 @@ No, y desconfía de cualquier herramienta que lo prometa. Este agente resume inf
 <span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
 </button>
 <div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
-Es una de las fuentes agregadas más usadas del sector, con una capa gratuita sin clave para consultas básicas. Para volumen alto o para un producto comercial serio conviene revisar su plan de pago con garantías de disponibilidad, pero para aprender o para un uso personal la capa gratuita es más que suficiente.
+Es una de las fuentes agregadas más usadas del sector, con un plan gratuito (Demo) y un acceso sin clave solo para pruebas. Para volumen alto o para un producto comercial serio conviene revisar su plan de pago con garantías de disponibilidad, pero para aprender o para un uso personal basta el plan Demo gratuito, con su clave (el acceso sin clave está pensado solo para pruebas puntuales).
 </div>
 </div>
 <div class="border border-outline-variant bg-surface-container-lowest">
@@ -390,6 +442,26 @@ Sí, todo el flujo de esta guía se puede construir con nodos HTTP Request y un 
 Depende del uso: para una alerta personal, cada 15-30 minutos es más que suficiente y evita gastar cuota de API sin necesidad. Consultar cada pocos segundos solo tiene sentido para trading automatizado de alta frecuencia, un terreno con riesgos y exigencias regulatorias muy distintos a los de esta guía.
 </div>
 </div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Necesito una clave de CoinGecko aunque la API sea gratuita?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Para una prueba suelta no, pero para un agente que consulta cada pocos minutos sí es lo recomendable. Según la documentación oficial, el acceso sin clave comparte un límite bajo por IP y no está pensado para sondeos programados. El plan Demo es gratuito, se pide una clave en la web de CoinGecko y se envía en la cabecera x-cg-demo-api-key.
+</div>
+</div>
+
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Cuántas llamadas gasta un agente que consulta cada 30 minutos?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Unas 48 al día y alrededor de 1.440 al mes si haces una sola llamada por ciclo, muy por debajo de los 10.000 créditos mensuales que su página de precios indica para el plan Demo. Agrupa varias monedas en una misma llamada para no multiplicar el consumo.
+</div>
+</div>
+
 </div>
 </section>
 <div class="bg-surface-container-low p-space-lg mb-space-2xl flex flex-col sm:flex-row items-start sm:items-center gap-space-md shadow-sm">

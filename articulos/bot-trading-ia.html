@@ -20,10 +20,10 @@
   "headline": "Cómo se construye un bot de trading con IA (sin ser programador)",
   "description": "Arquitectura, gestión de riesgos y límites reales de automatizar trading con ayuda de IA: por qué la IA no predice el mercado, pero sí ejecuta con disciplina.",
   "image": "https://eltelar.es/img/og/guia-bot-trading-ia.jpg",
-  "author": {"@type": "Person", "name": "Juan Becerril Castañón", "url": "https://eltelar.es/sobre-nosotros.html#autor"},
+  "author": {"@type": "Organization", "name": "El Telar", "url": "https://eltelar.es/"},
   "publisher": { "@type": "Organization", "name": "El Telar", "url": "https://eltelar.es/", "logo": { "@type": "ImageObject", "url": "https://eltelar.es/img/icon-512.png", "width": 512, "height": 512 } },
   "datePublished": "2026-01-01",
-  "dateModified": "2026-10-14",
+  "dateModified": "2026-10-17",
   "mainEntityOfPage": "https://eltelar.es/articulos/bot-trading-ia.html",
   "inLanguage": "es"
 }
@@ -65,6 +65,22 @@
         "@type": "Answer",
         "text": "Esta guía no da cifras concretas porque depende enteramente de tu situación financiera personal, algo que ninguna guía genérica puede evaluar por ti. Lo que sí es una práctica extendida y razonable es empezar con una cantidad cuya pérdida total no afecte a tus finanzas esenciales, y aumentar la exposición de forma gradual solo después de acumular un historial real (no solo simulado) que respalde la confianza en el sistema."
       }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puede un agente de IA operar por mí de forma autónoma?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Técnicamente se puede conectar a la API de un bróker, y proyectos de código abierto como TradingAgents (Apache-2.0) simulan un equipo de agentes que debate una decisión. Sus propios autores lo presentan como herramienta de investigación. Nuestra recomendación editorial es no darle permiso de ejecución sobre dinero real: si lo pruebas, que sea con una cuenta de simulación, límites de pérdida fijos y claves sin permiso de retirada."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Esto es asesoramiento financiero?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Esta guía describe cómo se construye y se prueba un sistema, no qué comprar ni cuándo. Ninguna parte debe tomarse como recomendación de inversión; operar con dinero real puede hacerte perder todo lo invertido."
+      }
     }
   ]
 }
@@ -97,7 +113,7 @@
 </script>
 <link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet"/></noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet"/></noscript>
 <style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><link rel="stylesheet" href="../css/tailwind.css"><link rel="stylesheet" href="../css/entrance.css?v=2"><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}(function(){var c=null;try{c=localStorage.getItem('eltelar-cookie-consent')}catch(e){}var g=c==='accepted'?'granted':'denied';gtag('consent','default',{ad_storage:g,ad_user_data:g,ad_personalization:g,analytics_storage:g,wait_for_update:500});window.adsbygoogle=window.adsbygoogle||[];if(g!=='granted'){window.adsbygoogle.requestNonPersonalizedAds=1;}})();</script><script>window.addEventListener("load",function(){setTimeout(function(){var s=document.createElement("script");s.async=true;s.src="https://www.googletagmanager.com/gtag/js?id=G-4DPTKEG79N";document.head.appendChild(s);},800);});</script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4DPTKEG79N');</script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8239907995939753" crossorigin="anonymous"></script></head><body class="bg-background font-body-md text-on-surface antialiased">
-<header class="w-full bg-surface-container-lowest border-b border-outline-variant"><div class="border-b border-outline-variant py-space-xxs px-space-md hidden md:block"><div class="max-w-site-max-width mx-auto flex items-center justify-between font-kicker text-kicker text-on-surface-variant uppercase tracking-wider"><span>EDICIÓN DIGITAL // ACTUALIZADO 2026 // EL TELAR &amp; AGENTES</span><span>MADRID · REMOTO</span><span>SIN HUMO · 100% PRODUCCIÓN</span></div></div><div class="max-w-site-max-width mx-auto px-space-md py-space-md sm:py-space-xl text-center"><p class="hidden sm:block font-kicker text-kicker uppercase tracking-widest text-on-surface-variant mb-space-xs">Publicación Independiente de Tecnología &amp; Agentes</p><a class="inline-block" href="../index.html"><div class="font-display text-display max-sm:text-[40px] max-sm:leading-none text-primary tracking-tight">El Telar</div></a><p class="hidden sm:block font-caption text-caption uppercase tracking-widest text-on-surface-variant mt-space-xs">EL BOLETÍN Y ARCHIVO PRÁCTICO DE INTELIGENCIA ARTIFICIAL Y AGENTES AUTÓNOMOS</p></div><div class="border-t border-b border-outline-variant"><div class="max-w-site-max-width mx-auto px-space-md flex items-center justify-between gap-space-sm h-14"><nav class="flex items-center gap-space-md sm:gap-space-lg h-full min-w-0 overflow-x-auto [scrollbar-width:none] whitespace-nowrap"><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../index.html#guias">GUÍAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../empieza-aqui.html">EMPIEZA AQUÍ</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../sobre-nosotros.html">SOBRE NOSOTROS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../noticias/index.html">NOTICIAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../herramientas/index.html">HERRAMIENTAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../prompts/index.html">PROMPTS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../contacto.html">CONTACTO</a></nav><div class="flex items-center gap-space-md"><button id="search-trigger" type="button" aria-label="Buscar en las guías" class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[20px]">search</span></button><a class="hidden sm:inline-block bg-primary-container text-surface px-space-md py-space-xs font-label-md text-label-md uppercase tracking-wider hover:bg-primary transition-colors" href="../index.html#despacho">SUSCRÍBETE GRATIS</a></div></div></div><div class="hidden md:block bg-surface-container-low border-b border-outline-variant py-space-xs px-space-md"><div class="max-w-site-max-width mx-auto text-center"><p class="font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">53 GUÍAS COMPLETAS EN EXPANSIÓN · ACTUALIZADO A MODELOS 2026 · PROBADO EN TERMINAL Y FLUJOS REALES · CERO HUMO NI TEORÍA VACÍA</p></div></div></header>
+<header class="w-full bg-surface-container-lowest border-b border-outline-variant"><div class="border-b border-outline-variant py-space-xxs px-space-md hidden md:block"><div class="max-w-site-max-width mx-auto flex items-center justify-between font-kicker text-kicker text-on-surface-variant uppercase tracking-wider"><span>EDICIÓN DIGITAL // ACTUALIZADO 2026 // EL TELAR &amp; AGENTES</span><span>MADRID · REMOTO</span><span>SIN HUMO · 100% PRODUCCIÓN</span></div></div><div class="max-w-site-max-width mx-auto px-space-md py-space-md sm:py-space-xl text-center"><p class="hidden sm:block font-kicker text-kicker uppercase tracking-widest text-on-surface-variant mb-space-xs">Publicación Independiente de Tecnología &amp; Agentes</p><a class="inline-block" href="../index.html"><div class="font-display text-display max-sm:text-[40px] max-sm:leading-none text-primary tracking-tight">El Telar</div></a><p class="hidden sm:block font-caption text-caption uppercase tracking-widest text-on-surface-variant mt-space-xs">EL BOLETÍN Y ARCHIVO PRÁCTICO DE INTELIGENCIA ARTIFICIAL Y AGENTES AUTÓNOMOS</p></div><div class="border-t border-b border-outline-variant"><div class="max-w-site-max-width mx-auto px-space-md flex items-center justify-between gap-space-sm h-14"><nav class="flex items-center gap-space-md sm:gap-space-lg h-full min-w-0 overflow-x-auto [scrollbar-width:none] whitespace-nowrap"><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../index.html#guias">GUÍAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../empieza-aqui.html">EMPIEZA AQUÍ</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../sobre-nosotros.html">SOBRE NOSOTROS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../noticias/index.html">NOTICIAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../herramientas/index.html">HERRAMIENTAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../prompts/index.html">PROMPTS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../contacto.html">CONTACTO</a></nav><div class="flex items-center gap-space-md"><button id="search-trigger" type="button" aria-label="Buscar en las guías" class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[20px]">search</span></button><a class="hidden sm:inline-block bg-primary-container text-surface px-space-md py-space-xs font-label-md text-label-md uppercase tracking-wider hover:bg-primary transition-colors" href="../index.html#despacho">SUSCRÍBETE GRATIS</a></div></div></div><div class="hidden md:block bg-surface-container-low border-b border-outline-variant py-space-xs px-space-md"><div class="max-w-site-max-width mx-auto text-center"><p class="font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">56 GUÍAS COMPLETAS EN EXPANSIÓN · ACTUALIZADO A MODELOS 2026 · PROBADO EN TERMINAL Y FLUJOS REALES · CERO HUMO NI TEORÍA VACÍA</p></div></div></header>
 <main class="w-full max-w-site-max-width mx-auto px-space-md py-space-xl"><div class="flex flex-col w-full">
 <nav class="w-full mb-space-lg">
 <ol class="flex flex-wrap items-center gap-space-xs font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">
@@ -280,7 +296,7 @@
 <li>La estrategia tiene más de 10-15 parámetros ajustados a mano sobre los mismos datos</li>
 </ul>
 <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
-          Como referencia de cuánto se suele degradar un sistema al pasar de backtest a mercado real: estudios sobre el tema encuentran de media un 26% menos de rendimiento fuera de la muestra de datos usada para diseñar la estrategia, y una caída adicional de 30-50% al añadir slippage y comisiones reales de ejecución. Si tu backtest no sobrevive aplicando esos descuentos de forma conservadora antes de arriesgar nada, no lo despliegues.
+          Como referencia de cuánto se degrada una señal fuera de los datos con los que se descubrió: McLean y Pontiff analizaron 97 variables que la literatura académica había asociado a rentabilidades superiores y encontraron que sus rendimientos eran un 26 % menores fuera de la muestra original y un 58 % menores tras publicarse el estudio (<a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" href="https://doi.org/10.1111/jofi.12365" target="_blank" rel="noopener">Journal of Finance, 2016</a>). Es un resultado sobre estrategias académicas en bolsa, no una tabla de descuentos para tu bot, pero deja clara la idea: lo que brilla en el histórico casi nunca se mantiene entero. Aplica además tus propias comisiones y deslizamiento, y si el backtest no sobrevive a una versión pesimista de esos costes, no lo despliegues.
         </p>
 </section>
 <section class="space-y-space-md">
@@ -422,6 +438,46 @@
 <p class="font-body-sm text-body-sm mt-space-sm"><strong class="text-on-surface">Repositorio:</strong> <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://github.com/TauricResearch/TradingAgents">github.com/TauricResearch/TradingAgents</a></p>
 </section>
 <section class="space-y-space-md">
+<span class="font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">Fase II-D</span>
+<h2 id="sec-4c" class="font-headline-md text-headline-md text-primary">
+Qué te dice (y qué no) un paper trading: el ejemplo de Alpaca
+</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Un ejemplo concreto de los límites de una simulación. La documentación de Alpaca, un bróker con API pensada para programadores, explica que su paper trading es gratuito, que cada cuenta de papel tiene sus propias claves de API y que simula las órdenes con cotizaciones en tiempo real. También lista lo que no modela: no calcula el deslizamiento causado por la latencia, no comprueba que el tamaño de la orden quepa en la liquidez disponible, ni simula dividendos ni comisiones regulatorias; además, en torno al 10 % de las ejecuciones se simulan como parciales. Las cuentas de solo papel reciben datos de mercado del IEX únicamente. Fuente: <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" href="https://docs.alpaca.markets/docs/trading/paper-trading/" target="_blank" rel="noopener">documentación de paper trading de Alpaca</a>. Moraleja: un buen resultado en papel es condición necesaria, no prueba suficiente.</p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">No hemos comprobado si Alpaca ofrece cuentas reales a residentes en España; consulta siempre las condiciones del bróker y su autorización antes de abrir nada.</p>
+</section>
+<section class="space-y-space-md">
+<span class="font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">Fase II-E</span>
+<h2 id="sec-2e" class="font-headline-md text-headline-md text-primary">
+Leer la tabla de resultados sin engañarte
+</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Cuando tu script imprima la tabla de resultados, esto es lo que significa cada cifra y cómo se suele malinterpretar:</p>
+<div class="w-full overflow-x-auto bg-surface-container-lowest p-space-md shadow-sm">
+<table class="w-full text-left font-body-sm text-body-sm border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-primary font-kicker text-kicker uppercase"><th class="p-space-xs">Cifra</th><th class="p-space-xs">Qué mide</th><th class="p-space-xs">Cómo engaña</th></tr>
+</thead>
+<tbody class="divide-y divide-surface-container">
+<tr><td class="p-space-xs font-semibold text-primary">Retorno neto</td><td class="p-space-xs text-on-surface-variant">Ganancia o pérdida tras restar comisiones</td><td class="p-space-xs text-on-surface-variant">Un buen número en un solo periodo puede ser suerte de régimen de mercado</td></tr>
+<tr><td class="p-space-xs font-semibold text-primary">Máxima caída (drawdown)</td><td class="p-space-xs text-on-surface-variant">La mayor bajada desde un máximo hasta el mínimo siguiente</td><td class="p-space-xs text-on-surface-variant">Si solo la miras en el histórico, subestimas la peor caída futura</td></tr>
+<tr><td class="p-space-xs font-semibold text-primary">Tasa de acierto</td><td class="p-space-xs text-on-surface-variant">Porcentaje de operaciones ganadoras</td><td class="p-space-xs text-on-surface-variant">Se puede acertar el 80 % de las veces y perder dinero si las pérdidas son mucho mayores que las ganancias</td></tr>
+<tr><td class="p-space-xs font-semibold text-primary">Número de operaciones</td><td class="p-space-xs text-on-surface-variant">Cuántas muestras respaldan el resultado</td><td class="p-space-xs text-on-surface-variant">Con 15 operaciones casi cualquier resultado es compatible con el azar</td></tr>
+<tr><td class="p-space-xs font-semibold text-primary">Resultado fuera de muestra</td><td class="p-space-xs text-on-surface-variant">Lo que hace la estrategia con datos que no usaste para diseñarla</td><td class="p-space-xs text-on-surface-variant">Si lo "reservas" y luego retocas la estrategia mirándolo, deja de ser fuera de muestra</td></tr>
+</tbody>
+</table>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Una práctica sencilla: reserva el último tramo de tus datos (por ejemplo, el último año) y no lo mires hasta que la estrategia esté cerrada. Se calcula una sola vez. Si el resultado cae mucho respecto al tramo de diseño, tienes sobreajuste.</p>
+</section>
+<section class="space-y-space-md">
+<span class="font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">Fase IV-B</span>
+<h2 id="sec-4d" class="font-headline-md text-headline-md text-primary">
+Ofertas de "bots milagro" y agentes con acceso a tu cuenta
+</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Si te ofrecen un "bot de IA" ya hecho, antes de nada comprueba quién lo vende. La CNMV, en su decálogo de recomendaciones al inversor, aconseja verificar que la entidad esté autorizada y no figure en sus advertencias, y desconfiar de la urgencia y de las rentabilidades desproporcionadas (<a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" href="https://www.cnmv.es/DocPortal/Publicaciones/Guias/DecalogoCNMV.pdf" target="_blank" rel="noopener">decálogo de la CNMV (PDF)</a>). Señales que, en la práctica, deberían bastarte para descartar la oferta:</p>
+<ul class="space-y-space-xs font-body-md text-body-md text-on-surface-variant list-disc pl-space-lg"><li>Rentabilidad garantizada o "sin riesgo". Ninguna estrategia legítima la puede prometer.</li><li>Te piden que ingreses dinero en una plataforma propia o que des acceso a tu cuenta, en lugar de que el código corra en tu equipo con claves limitadas.</li><li>Capturas de beneficios sin cuenta verificable, o "testimonios" con rostros generados por IA.</li><li>Presión para decidir hoy, o comisiones por "desbloquear" ganancias.</li></ul>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Tienes más patrones de fraude en <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" href="estafas-con-ia.html">la guía de estafas con IA</a>.</p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Si construyes tú el sistema, otro riesgo propio de 2026: no conectes un agente que lee noticias, redes o correos con permiso para enviar órdenes. Un texto externo puede contener instrucciones disfrazadas de dato (véase <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" href="prompt-injection-agentes-ia.html">prompt injection</a>). Mantén la separación de esta guía: la IA ayuda a escribir y revisar reglas; la ejecución la hace código determinista con límites fijos. Para el análisis de noticias sin capacidad de operar, mira <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" href="agente-cripto-noticias.html">el agente que vigila cripto y resume noticias</a>.</p>
+</section>
+<section class="space-y-space-md">
 <span class="font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">Fase VI</span>
 <h2 class="font-headline-md text-headline-md text-primary">
           Preguntas frecuentes
@@ -463,6 +519,25 @@ Es un enfoque más frágil que el descrito en esta guía. Un modelo de lenguaje 
 Esta guía no da cifras concretas porque depende enteramente de tu situación financiera personal, algo que ninguna guía genérica puede evaluar por ti. Lo que sí es una práctica extendida y razonable es empezar con una cantidad cuya pérdida total no afecte a tus finanzas esenciales, y aumentar la exposición de forma gradual solo después de acumular un historial real (no solo simulado) que respalde la confianza en el sistema.
 </div>
 </div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Puede un agente de IA operar por mí de forma autónoma?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Técnicamente se puede conectar a la API de un bróker, y proyectos de código abierto como TradingAgents (Apache-2.0) simulan un equipo de agentes que debate una decisión. Sus propios autores lo presentan como herramienta de investigación. Nuestra recomendación editorial es no darle permiso de ejecución sobre dinero real: si lo pruebas, que sea con una cuenta de simulación, límites de pérdida fijos y claves sin permiso de retirada.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Esto es asesoramiento financiero?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+No. Esta guía describe cómo se construye y se prueba un sistema, no qué comprar ni cuándo. Ninguna parte debe tomarse como recomendación de inversión; operar con dinero real puede hacerte perder todo lo invertido.
+</div>
+</div>
+
 </div>
 </section>
 <footer class="bg-surface-container-lowest p-space-lg shadow-sm mt-space-xl">
@@ -519,6 +594,18 @@ Esta guía no da cifras concretas porque depende enteramente de tu situación fi
 </li>
 <li class="flex items-start gap-space-xs py-1"><a class="text-secondary font-semibold hover:underline" href="#aurelio">→ Aurelio</a></li>
 <li class="flex items-start gap-space-xs py-1"><a class="text-secondary font-semibold hover:underline" href="#tradingagents">→ TradingAgents</a></li>
+<li class="flex items-start gap-space-xs py-1">
+<span class="text-secondary font-mono font-bold">+</span>
+<a class="hover:text-primary transition-colors" href="#sec-2e">Leer la tabla de resultados</a>
+</li>
+<li class="flex items-start gap-space-xs py-1">
+<span class="text-secondary font-mono font-bold">+</span>
+<a class="hover:text-primary transition-colors" href="#sec-4c">Qué te dice un paper trading</a>
+</li>
+<li class="flex items-start gap-space-xs py-1">
+<span class="text-secondary font-mono font-bold">+</span>
+<a class="hover:text-primary transition-colors" href="#sec-4d">Bots milagro y agentes con acceso</a>
+</li>
 </ol>
 </div>
 <div class="bg-surface-container-low p-space-lg shadow-sm space-y-space-md">

@@ -20,10 +20,10 @@
   "headline": "Las mejores Claude Skills de 2026: la lista que necesitas",
   "description": "Qué es una Skill de Claude, cómo instalar una en dos minutos y cuáles merecen realmente un hueco en tu carpeta de skills, con filtro por categoría.",
   "image": "https://eltelar.es/img/og/guia-mejores-claude-skills.jpg",
-  "author": {"@type": "Person", "name": "Juan Becerril Castañón", "url": "https://eltelar.es/sobre-nosotros.html#autor"},
+  "author": {"@type": "Organization", "name": "El Telar", "url": "https://eltelar.es/sobre-nosotros.html"},
   "publisher": { "@type": "Organization", "name": "El Telar", "url": "https://eltelar.es/", "logo": { "@type": "ImageObject", "url": "https://eltelar.es/img/icon-512.png", "width": 512, "height": 512 } },
   "datePublished": "2026-09-08",
-  "dateModified": "2026-10-14",
+  "dateModified": "2026-10-17",
   "mainEntityOfPage": "https://eltelar.es/articulos/mejores-claude-skills.html",
   "inLanguage": "es"
 }
@@ -73,6 +73,22 @@
         "@type": "Answer",
         "text": "El formato del archivo es el mismo en los tres, pero dónde las colocas y cómo se activan varía: en Claude Code viven en una carpeta local del proyecto o de tu usuario, en Claude.ai se suben o activan desde la propia interfaz, y en la API se envían como parte de la configuración de la llamada."
       }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo compartir una skill con mi equipo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Depende de dónde la uses. En Claude Code, guardándola en .claude/skills/ del repositorio o empaquetándola como plugin. En la API, las skills subidas son accesibles para todo el workspace. En claude.ai son individuales: cada persona tiene que subirla por su cuenta, y no hay gestión centralizada por parte de los administradores. Según la documentación oficial, las skills no se sincronizan entre estas superficies."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuántas skills puedo tener instaladas sin que Claude se líe?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No hay un tope oficial documentado, pero cada skill añade su nombre y su descripción al contexto (unos 100 tokens por skill, según la documentación de la API), así que el coste de tener muchas es pequeño; el problema real es que las descripciones se solapen. Mantén pocas y con descripciones que digan con claridad cuándo usarlas."
+      }
     }
   ]
 }
@@ -105,7 +121,7 @@
 </script>
 <link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet"/></noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet"/></noscript>
 <style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><link rel="stylesheet" href="../css/tailwind.css"><link rel="stylesheet" href="../css/entrance.css?v=2"><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}(function(){var c=null;try{c=localStorage.getItem('eltelar-cookie-consent')}catch(e){}var g=c==='accepted'?'granted':'denied';gtag('consent','default',{ad_storage:g,ad_user_data:g,ad_personalization:g,analytics_storage:g,wait_for_update:500});window.adsbygoogle=window.adsbygoogle||[];if(g!=='granted'){window.adsbygoogle.requestNonPersonalizedAds=1;}})();</script><script>window.addEventListener("load",function(){setTimeout(function(){var s=document.createElement("script");s.async=true;s.src="https://www.googletagmanager.com/gtag/js?id=G-4DPTKEG79N";document.head.appendChild(s);},800);});</script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4DPTKEG79N');</script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8239907995939753" crossorigin="anonymous"></script></head><body class="bg-background font-body-md text-on-surface antialiased">
-<header class="w-full bg-surface-container-lowest border-b border-outline-variant"><div class="border-b border-outline-variant py-space-xxs px-space-md hidden md:block"><div class="max-w-site-max-width mx-auto flex items-center justify-between font-kicker text-kicker text-on-surface-variant uppercase tracking-wider"><span>EDICIÓN DIGITAL // ACTUALIZADO 2026 // EL TELAR &amp; AGENTES</span><span>MADRID · REMOTO</span><span>SIN HUMO · 100% PRODUCCIÓN</span></div></div><div class="max-w-site-max-width mx-auto px-space-md py-space-md sm:py-space-xl text-center"><p class="hidden sm:block font-kicker text-kicker uppercase tracking-widest text-on-surface-variant mb-space-xs">Publicación Independiente de Tecnología &amp; Agentes</p><a class="inline-block" href="../index.html"><div class="font-display text-display max-sm:text-[40px] max-sm:leading-none text-primary tracking-tight">El Telar</div></a><p class="hidden sm:block font-caption text-caption uppercase tracking-widest text-on-surface-variant mt-space-xs">EL BOLETÍN Y ARCHIVO PRÁCTICO DE INTELIGENCIA ARTIFICIAL Y AGENTES AUTÓNOMOS</p></div><div class="border-t border-b border-outline-variant"><div class="max-w-site-max-width mx-auto px-space-md flex items-center justify-between gap-space-sm h-14"><nav class="flex items-center gap-space-md sm:gap-space-lg h-full min-w-0 overflow-x-auto [scrollbar-width:none] whitespace-nowrap"><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../index.html#guias">GUÍAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../empieza-aqui.html">EMPIEZA AQUÍ</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../sobre-nosotros.html">SOBRE NOSOTROS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../noticias/index.html">NOTICIAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../herramientas/index.html">HERRAMIENTAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../prompts/index.html">PROMPTS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../contacto.html">CONTACTO</a></nav><div class="flex items-center gap-space-md"><button id="search-trigger" type="button" aria-label="Buscar en las guías" class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[20px]">search</span></button><a class="hidden sm:inline-block bg-primary-container text-surface px-space-md py-space-xs font-label-md text-label-md uppercase tracking-wider hover:bg-primary transition-colors" href="../index.html#despacho">SUSCRÍBETE GRATIS</a></div></div></div><div class="hidden md:block bg-surface-container-low border-b border-outline-variant py-space-xs px-space-md"><div class="max-w-site-max-width mx-auto text-center"><p class="font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">53 GUÍAS COMPLETAS EN EXPANSIÓN · ACTUALIZADO A MODELOS 2026 · PROBADO EN TERMINAL Y FLUJOS REALES · CERO HUMO NI TEORÍA VACÍA</p></div></div></header>
+<header class="w-full bg-surface-container-lowest border-b border-outline-variant"><div class="border-b border-outline-variant py-space-xxs px-space-md hidden md:block"><div class="max-w-site-max-width mx-auto flex items-center justify-between font-kicker text-kicker text-on-surface-variant uppercase tracking-wider"><span>EDICIÓN DIGITAL // ACTUALIZADO 2026 // EL TELAR &amp; AGENTES</span><span>MADRID · REMOTO</span><span>SIN HUMO · 100% PRODUCCIÓN</span></div></div><div class="max-w-site-max-width mx-auto px-space-md py-space-md sm:py-space-xl text-center"><p class="hidden sm:block font-kicker text-kicker uppercase tracking-widest text-on-surface-variant mb-space-xs">Publicación Independiente de Tecnología &amp; Agentes</p><a class="inline-block" href="../index.html"><div class="font-display text-display max-sm:text-[40px] max-sm:leading-none text-primary tracking-tight">El Telar</div></a><p class="hidden sm:block font-caption text-caption uppercase tracking-widest text-on-surface-variant mt-space-xs">EL BOLETÍN Y ARCHIVO PRÁCTICO DE INTELIGENCIA ARTIFICIAL Y AGENTES AUTÓNOMOS</p></div><div class="border-t border-b border-outline-variant"><div class="max-w-site-max-width mx-auto px-space-md flex items-center justify-between gap-space-sm h-14"><nav class="flex items-center gap-space-md sm:gap-space-lg h-full min-w-0 overflow-x-auto [scrollbar-width:none] whitespace-nowrap"><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../index.html#guias">GUÍAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../empieza-aqui.html">EMPIEZA AQUÍ</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../sobre-nosotros.html">SOBRE NOSOTROS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../noticias/index.html">NOTICIAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../herramientas/index.html">HERRAMIENTAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../prompts/index.html">PROMPTS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../contacto.html">CONTACTO</a></nav><div class="flex items-center gap-space-md"><button id="search-trigger" type="button" aria-label="Buscar en las guías" class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[20px]">search</span></button><a class="hidden sm:inline-block bg-primary-container text-surface px-space-md py-space-xs font-label-md text-label-md uppercase tracking-wider hover:bg-primary transition-colors" href="../index.html#despacho">SUSCRÍBETE GRATIS</a></div></div></div><div class="hidden md:block bg-surface-container-low border-b border-outline-variant py-space-xs px-space-md"><div class="max-w-site-max-width mx-auto text-center"><p class="font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">56 GUÍAS COMPLETAS EN EXPANSIÓN · ACTUALIZADO A MODELOS 2026 · PROBADO EN TERMINAL Y FLUJOS REALES · CERO HUMO NI TEORÍA VACÍA</p></div></div></header>
 <main class="w-full max-w-site-max-width mx-auto px-space-md py-space-xl"><div class="flex flex-col w-full">
 <nav class="w-full mb-space-lg">
 <ol class="flex flex-wrap items-center gap-space-xs font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">
@@ -122,7 +138,7 @@
 <header class="space-y-space-md border-b border-outline-variant pb-space-xl">
 <span class="bg-surface-container-high text-secondary border border-outline-variant px-space-xs py-space-xxs font-kicker text-kicker uppercase tracking-widest inline-block">HERRAMIENTAS // RANKING</span>
 <h1 class="font-headline-lg text-headline-lg text-primary tracking-tight leading-tight">Las mejores Claude Skills de 2026: la lista que necesitas</h1>
-<p class="font-lead-paragraph text-lead-paragraph text-on-surface-variant leading-relaxed">El repositorio oficial de Anthropic pasó de cero a más de 175.000 estrellas en un año. Qué es exactamente una Skill, cómo instalar una en dos minutos, y cuáles de las miles que existen merecen de verdad un hueco en tu carpeta.</p>
+<p class="font-lead-paragraph text-lead-paragraph text-on-surface-variant leading-relaxed">El repositorio oficial de Anthropic pasó de cero a más de 180.000 estrellas en un año. Qué es exactamente una Skill, cómo instalar una en dos minutos, y cuáles de las miles que existen merecen de verdad un hueco en tu carpeta.</p>
 <div class="pt-space-sm border-t border-outline-variant flex flex-wrap items-center justify-between gap-space-sm font-label-md text-label-md text-on-surface-variant">
 <span class="font-semibold text-on-surface">Por la Redacción de El Telar</span>
 <button class="inline-flex items-center gap-1 mt-2 px-3 py-1.5 bg-surface-container text-primary font-label-md text-[12px] font-semibold uppercase tracking-wider hover:bg-surface-container-high transition-colors" id="copy-guide-btn" type="button"><span class="material-symbols-outlined text-[16px]">content_copy</span> Copiar guía para tu IA</button><span class="inline-flex items-center gap-1 ml-1"><button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" id="save-guide-btn" title="Guardar guía" type="button"><span class="material-symbols-outlined text-[16px]">bookmark_border</span></button><button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" id="copy-link-btn" title="Copiar enlace permanente" type="button"><span class="material-symbols-outlined text-[16px]">share</span></button></span>
@@ -134,7 +150,7 @@
 </header>
 <section class="prose max-w-editorial-max-width space-y-space-md">
 <p class="font-body-lg text-body-lg text-on-surface leading-relaxed">
-<span class="float-left text-primary font-display text-[68px] leading-[0.8] pr-3 pt-1 font-normal select-none">H</span>ace poco más de un año, "Skill" era una palabra que solo usaban unos pocos usuarios avanzados de Claude Code. Hoy, el repositorio público de Anthropic en GitHub —<a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="https://github.com/anthropics/skills" target="_blank" rel="noopener">anthropics/skills</a>— acumula más de 175.000 estrellas, y los directorios comunitarios ya catalogan más de 12.000 skills creadas por terceros. Es, con diferencia, el estándar que más rápido ha crecido en todo el ecosistema de Claude en 2026.
+<span class="float-left text-primary font-display text-[68px] leading-[0.8] pr-3 pt-1 font-normal select-none">H</span>ace poco más de un año, "Skill" era una palabra que solo usaban unos pocos usuarios avanzados de Claude Code. Hoy, el repositorio público de Anthropic en GitHub —<a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="https://github.com/anthropics/skills" target="_blank" rel="noopener">anthropics/skills</a>— acumula más de 180.000 estrellas (181.596 el 17 de octubre de 2026, según la API de GitHub), y los directorios comunitarios dicen catalogar más de 12.000 skills creadas por terceros (cifra de esos directorios, que no hemos podido contrastar). Es, con diferencia, el estándar que más rápido ha crecido en todo el ecosistema de Claude en 2026.
         </p>
 <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
           El problema de un crecimiento así de rápido es el ruido: con miles de skills disponibles, encontrar las tres o cuatro que de verdad cambian tu flujo de trabajo, en vez de ser una curiosidad que instalas y olvidas, se ha vuelto su propio reto. Esta guía filtra ese ruido: qué es exactamente una Skill, cómo se instala de verdad, y un listado por categoría de las que tienen tracción real, no solo la que más marketing tiene.
@@ -145,7 +161,7 @@
 </section>
 <figure class="my-space-lg">
 <img class="w-full border border-outline-variant" src="../img/guias/anthropic-skills-repo.jpg" alt="Página de GitHub del repositorio anthropics/skills, con 175.200 estrellas, 20.700 forks y 17 colaboradores, mostrando su README y estadísticas del proyecto." loading="lazy" width="1280" height="800"/>
-<figcaption class="font-caption text-caption text-on-surface-variant mt-space-xs">El repositorio oficial <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="https://github.com/anthropics/skills" target="_blank" rel="noopener">anthropics/skills</a> en GitHub: la fuente que mantiene Anthropic, con más de 175.000 estrellas.</figcaption>
+<figcaption class="font-caption text-caption text-on-surface-variant mt-space-xs">El repositorio oficial <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="https://github.com/anthropics/skills" target="_blank" rel="noopener">anthropics/skills</a> en GitHub: la fuente que mantiene Anthropic, con más de 175.000 estrellas cuando se hizo la captura; el 17 de octubre de 2026 superaba las 181.000.</figcaption>
 </figure>
 <section id="las-5-del-reel" class="space-y-space-md scroll-mt-24 bg-surface-container-low p-space-lg border-l-4 border-secondary">
 <span class="font-kicker text-kicker uppercase tracking-widest text-secondary">Del reel de Instagram</span>
@@ -234,7 +250,7 @@ ejemplos de formato correcto, qué evitar y por qué.</pre>
           El campo <code class="font-mono text-body-sm bg-surface-container-low px-1">description</code> del encabezado importa más de lo que parece: es el único fragmento que Claude ve siempre, para todas las skills instaladas, al decidir cuál activar. Una descripción vaga ("ayuda con documentos") compite mal contra una específica ("genera archivos .docx con formato corporativo a partir de una plantilla"). Cuanto más preciso el <code class="font-mono text-body-sm bg-surface-container-low px-1">description</code>, menos confusión cuando tienes diez o veinte skills instaladas a la vez.
         </p>
 <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
-          Para instalar skills de terceros publicadas en GitHub, el patrón habitual es clonar o copiar esa carpeta concreta dentro de <code class="font-mono text-body-sm bg-surface-container-low px-1">~/.claude/skills/</code>. No hay un instalador único ni una tienda oficial centralizada todavía — la distribución sigue siendo, en gran medida, copiar archivos, lo cual es también la razón por la que la sección de seguridad más abajo importa tanto.
+          Para instalar skills de terceros publicadas en GitHub, el patrón habitual es clonar o copiar esa carpeta concreta dentro de <code class="font-mono text-body-sm bg-surface-container-low px-1">~/.claude/skills/</code>. No hay una tienda única y revisada: la distribución se reparte entre copiar carpetas, los <em>marketplaces</em> de plugins de Claude Code (<code>/plugin marketplace add</code>, como se ve en las secciones del reel) y comandos como <code>npx skills add</code>. En todos los casos instalas instrucciones que alguien ha escrito, que es la razón por la que la sección de seguridad más abajo importa tanto.
         </p>
 <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
           Una skill puede ser tan corta como diez líneas o tan larga como varios cientos, e incluso incluir archivos adicionales junto al <code class="font-mono text-body-sm bg-surface-container-low px-1">SKILL.md</code> —plantillas, scripts auxiliares, ejemplos de referencia— que la propia skill indica cuándo consultar. Eso permite algo que un simple prompt guardado no puede: una skill de generación de documentos puede incluir la plantilla real de la empresa como archivo adjunto, y las instrucciones le dicen a Claude exactamente cuándo abrirla y cómo rellenarla, en vez de intentar describir el formato entero en texto.
@@ -368,6 +384,54 @@ ejemplos de formato correcto, qué evitar y por qué.</pre>
 <li><strong class="text-on-surface">Documenta las tuyas propias:</strong> si el despacho o el equipo crea varias skills internas, un archivo README corto en la propia carpeta de skills, explicando qué hace cada una, ahorra confusión cuando se incorpora alguien nuevo al equipo.</li>
 </ol>
 </section>
+<section class="space-y-space-md">
+<h2 id="sec-7" class="font-headline-md text-headline-md text-primary tracking-tight">
+          Lo que dicen hoy los documentos oficiales (y qué ha cambiado)
+        </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Revisado el 17 de octubre de 2026 contra la <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="https://code.claude.com/docs/en/skills" target="_blank" rel="noopener">documentación de Claude Code</a> y la <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview" target="_blank" rel="noopener">de Agent Skills</a>. Varias cosas que se daban por supuestas conviene matizarlas:
+        </p>
+<ul class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant">
+<li><strong>Es un estándar abierto.</strong> Las skills de Claude Code siguen el estándar Agent Skills (agentskills.io), compartido con otras herramientas; por eso hay skills que funcionan en Claude Code, Codex o Cursor. Claude Code acepta más campos de cabecera que el estándar; en claude.ai y en la API, solo los seis estándar (<code>name</code>, <code>description</code>, <code>license</code>, <code>compatibility</code>, <code>metadata</code> y <code>allowed-tools</code>), y otros campos dan error de validación.</li>
+<li><strong>Dónde viven.</strong> En Claude Code: <code>~/.claude/skills/</code> (personales), <code>.claude/skills/</code> en el repositorio (de proyecto) o dentro de un plugin. Si dos skills tienen el mismo nombre, la de empresa gana a la personal y la personal a la de proyecto.</li>
+<li><strong>Cuánto ocupan.</strong> Según la documentación de la API, solo el nombre y la descripción de cada skill entran siempre en el contexto, unos 100 tokens por skill; el cuerpo se carga solo cuando se activa. En Claude Code, la descripción se trunca en 1.536 caracteres en el listado y conviene que <code>SKILL.md</code> no pase de unas 500 líneas. En claude.ai y la API, la descripción admite hasta 1.024 caracteres y el nombre, 64.</li>
+<li><strong>Cabeceras útiles que quizá no conocías.</strong> <code>disable-model-invocation: true</code> hace que la skill solo se active si tú la llamas con <code>/nombre</code>; <code>allowed-tools</code> preaprueba herramientas durante ese turno; <code>context: fork</code> la ejecuta en un subagente.</li>
+<li><strong>No se sincronizan entre superficies.</strong> Una skill subida a claude.ai no está en la API, ni en Claude Code. En claude.ai es individual (no se comparte con la organización) y requiere plan Pro, Max, Team o Enterprise con la ejecución de código activada; en la API es de todo el workspace; en Claude Code se comparte con el repositorio o como plugin.</li>
+<li><strong>Las de documentos.</strong> Word, PowerPoint, Excel y PDF vienen ya incluidas en claude.ai y en la API; en Claude Code no están preinstaladas, y por eso se instalan desde el repositorio como en el reel. El README del repositorio aclara que estas cuatro son «source-available», no código abierto.</li>
+<li><strong>Google ha seguido el mismo camino.</strong> El 30 de septiembre anunció «skills» para Gemini y Workspace, que sustituyen a los Gems (<a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="../noticias/2026-09-30-gemini-skills-sustituyen-gems.html">noticia</a>). Es un concepto parecido —instrucciones reutilizables—, aunque el formato no es el mismo.</li>
+</ul>
+<h3 class="font-headline-sm text-headline-sm text-primary font-medium">Novedades del repositorio oficial</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          A fecha de 17 de octubre el directorio <code>skills/</code> del repositorio incluye, además de las ya citadas (documentos, <code>frontend-design</code>, <code>canvas-design</code>, <code>brand-guidelines</code>, <code>theme-factory</code>, <code>mcp-builder</code>, <code>skill-creator</code>, <code>webapp-testing</code>, <code>algorithmic-art</code>, <code>web-artifacts-builder</code>), estas: <code>claude-api</code> (referencia actualizada de la API y los SDK), <code>doc-coauthoring</code>, <code>internal-comms</code> y <code>slack-gif-creator</code>. También hay una <code>academy-guide</code> y una <code>discernment-nudge</code>, de las que no damos más detalle porque no las hemos probado. La licencia general es Apache 2.0 salvo las cuatro de documentos.
+        </p>
+<h3 class="font-headline-sm text-headline-sm text-primary font-medium">Una skill propia completa, para copiar y adaptar</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Ejemplo de una skill para convertir notas de reunión en un acta con acuerdos y responsables. Guárdala como <code>~/.claude/skills/acta-reunion/SKILL.md</code>:
+        </p>
+<pre class="font-mono text-body-sm leading-relaxed bg-surface-container-low p-space-md overflow-x-auto"><code>---
+name: acta-reunion
+description: Convierte notas sueltas de una reunión en un acta con acuerdos, responsables y fechas. Úsala cuando el usuario pegue notas o una transcripción de una reunión y pida un acta, un resumen de acuerdos o la lista de tareas.
+---
+
+# Acta de reunión
+
+1. Lee las notas completas antes de escribir nada.
+2. Escribe: fecha y asistentes (solo si aparecen), tema, acuerdos, tareas pendientes.
+3. Cada tarea lleva responsable y fecha. Si falta uno de los dos, escribe «sin asignar» o «sin fecha»; no los inventes.
+4. Al final, lista las dudas que las notas no resuelven.
+5. Español de España, frases cortas, sin adornos.</code></pre>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Fíjate en la descripción: dice qué hace y cuándo usarla, y la regla 3 evita el fallo más habitual de estos resúmenes, que es inventar un responsable. Pruébala con tres actas reales y ajusta cada vez que se equivoque; una skill se mejora corrigiendo sus fallos concretos.
+        </p>
+<h3 class="font-headline-sm text-headline-sm text-primary font-medium">Antes de instalar una skill de terceros: cinco comprobaciones</h3>
+<ul class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant">
+<li>Lee el <code>SKILL.md</code> entero y todos los archivos que trae; la documentación oficial pide auditar scripts, imágenes y recursos, no solo la descripción.</li>
+<li>Busca llamadas de red o instrucciones de enviar datos fuera. Una skill que descarga contenido externo puede cambiar de comportamiento sin que cambies tú nada.</li>
+<li>Mira la licencia y la fecha de la última actualización del repositorio (los que figuran sin licencia en GitHub no dicen qué puedes hacer con ellos).</li>
+<li>Instálala primero en un proyecto de prueba, no en tu carpeta personal.</li>
+<li>Comprueba que no solapa con otra que ya tienes; si dos descripciones compiten, Claude puede elegir la equivocada.</li>
+</ul>
+</section>
 <section id="caveman" class="space-y-space-md scroll-mt-24 bg-surface-container-low p-space-lg border-l-4 border-secondary">
 <span class="font-kicker text-kicker uppercase tracking-widest text-secondary">Del reel de Instagram</span>
 <h2 class="font-headline-md text-headline-md text-primary tracking-tight">Caveman: Claude habla como un cavernícola y gasta menos</h2>
@@ -499,7 +563,7 @@ ejemplos de formato correcto, qué evitar y por qué.</pre>
 </div>
 <span class="font-kicker text-kicker uppercase tracking-widest text-primary block mb-space-xxs">FICHA TÉCNICA</span>
 <dl class="space-y-space-xs font-body-sm text-body-sm text-left pt-space-sm border-t border-outline-variant">
-<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Repositorio oficial:</dt><dd class="font-semibold text-primary">175.000+ estrellas</dd></div>
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Repositorio oficial:</dt><dd class="font-semibold text-primary">180.000+ estrellas</dd></div>
 <div class="flex justify-between py-1"><dt class="text-on-surface-variant">Coste:</dt><dd class="font-semibold text-primary">Gratis</dd></div>
 <div class="flex justify-between py-1"><dt class="text-on-surface-variant">Nivel técnico:</dt><dd class="font-semibold text-secondary">Principiante</dd></div>
 </dl>
@@ -516,6 +580,7 @@ ejemplos de formato correcto, qué evitar y por qué.</pre>
 <a class="block hover:text-primary transition-colors" href="#sec-4">Instalaciones vs. utilidad real</a>
 <a class="block hover:text-primary transition-colors" href="#sec-5">Riesgos de seguridad</a>
 <a class="block hover:text-primary transition-colors" href="#sec-6">Mantener tu carpeta al día</a>
+<a class="block hover:text-primary transition-colors" href="#sec-7">Lo que dicen los docs oficiales</a>
 <a class="block text-secondary font-semibold hover:underline" href="#caveman">→ Caveman</a>
 <a class="block text-secondary font-semibold hover:underline" href="#arena-100">→ Arena skill</a>
 <a class="block text-secondary font-semibold hover:underline" href="#ponytail">→ Ponytail</a>
@@ -681,6 +746,24 @@ Con la misma cautela que instalar cualquier paquete de código de un desconocido
 El formato del archivo es el mismo en los tres, pero dónde las colocas y cómo se activan varía: en Claude Code viven en una carpeta local del proyecto o de tu usuario, en Claude.ai se suben o activan desde la propia interfaz, y en la API se envían como parte de la configuración de la llamada.
 </div>
 </div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Puedo compartir una skill con mi equipo?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Depende de dónde la uses. En Claude Code, guardándola en <code>.claude/skills/</code> del repositorio o empaquetándola como plugin. En la API, las skills subidas son accesibles para todo el workspace. En claude.ai son individuales: cada persona tiene que subirla por su cuenta, y no hay gestión centralizada por parte de los administradores. Según la documentación oficial, las skills no se sincronizan entre estas superficies.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Cuántas skills puedo tener instaladas sin que Claude se líe?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+No hay un tope oficial documentado, pero cada skill añade su nombre y su descripción al contexto (unos 100 tokens por skill, según la documentación de la API), así que el coste de tener muchas es pequeño; el problema real es que las descripciones se solapen. Mantén pocas y con descripciones que digan con claridad cuándo usarlas.
+</div>
+</div>
 </div>
 </section>
 <div class="bg-surface-container-low p-space-lg mb-space-2xl flex flex-col sm:flex-row items-start sm:items-center gap-space-md shadow-sm">
@@ -690,7 +773,7 @@ El formato del archivo es el mismo en los tres, pero dónde las colocas y cómo 
 <div class="space-y-1">
 <div class="font-headline-sm text-headline-sm text-primary">Redacción El Telar</div>
 <p class="font-body-sm text-body-sm text-on-surface-variant">
-            Ninguna skill de esta lista ha pagado por aparecer. La cifra de estrellas del repositorio oficial se verificó directamente en la API de GitHub antes de publicar esta guía.
+            Ninguna skill de esta lista ha pagado por aparecer. Las cifras de estrellas y las licencias de los repositorios se volvieron a verificar en la API de GitHub el 17 de octubre de 2026.
           </p>
 </div>
 </div>

@@ -20,13 +20,13 @@
   "headline": "Cómo analizar imágenes y PDFs con IA: qué funciona y qué no",
   "description": "Cómo procesa la IA una imagen o un PDF por dentro, qué límites publica cada herramienta, cuánto cuesta de verdad y en qué casos concretos se equivoca.",
   "image": "https://eltelar.es/img/og/guia-analizar-imagenes-pdf-ia.jpg",
-  "author": {"@type": "Person", "name": "Juan Becerril Castañón", "url": "https://eltelar.es/sobre-nosotros.html#autor"},
+  "author": {"@type": "Organization", "name": "El Telar", "url": "https://eltelar.es/"},
   "publisher": {
     "@type": "Organization",
     "name": "El Telar"
   },
   "datePublished": "2026-09-24",
-  "dateModified": "2026-10-14",
+  "dateModified": "2026-10-17",
   "mainEntityOfPage": "https://eltelar.es/articulos/analizar-imagenes-pdf-ia.html",
   "inLanguage": "es"
 }
@@ -84,6 +84,30 @@
         "@type": "Answer",
         "text": "No. Anthropic documenta que el modelo no recibe ni analiza los metadatos de la imagen, así que el EXIF (fecha, cámara, coordenadas GPS) no le llega. Si necesitas ese dato, extráelo con una herramienta de metadatos y pásaselo como texto."
       }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puede Claude generar o editar imágenes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. La documentación de Anthropic es explícita: Claude es un modelo de comprensión de imágenes; puede interpretarlas y analizarlas, pero no generarlas ni editarlas. Si necesitas crear imágenes, mira nuestra guía de generación de imágenes con IA."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuántas imágenes puedo subir de una vez?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "En claude.ai, 20 por mensaje (hasta 10 MB cada una). En la API de Anthropic, hasta 600 por petición, o 100 si el modelo tiene una ventana de contexto de 200.000 tokens, con un tamaño máximo por imagen más estricto cuando pasas de 20. En Gemini, el límite de PDF es de 50 MB o 1.000 páginas. Los límites se mueven: confírmalos en la documentación el día que los necesites."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Se guardan o se usan para entrenar las imágenes que subo por la API?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Según la documentación de Anthropic para su API, las imágenes subidas son efímeras: no se almacenan más allá de la petición y se borran tras procesarse, y Anthropic indica que no las usa para entrenar sus modelos. Eso se refiere a la API; en las aplicaciones de consumo de cualquier proveedor revisa los ajustes de privacidad de tu cuenta. Más en cómo proteger tus datos al usar IA."
+      }
     }
   ]
 }
@@ -116,7 +140,7 @@
 </script>
 <link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet"/></noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet"/></noscript>
 <style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><link rel="stylesheet" href="../css/tailwind.css"><link rel="stylesheet" href="../css/entrance.css?v=2"><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}(function(){var c=null;try{c=localStorage.getItem('eltelar-cookie-consent')}catch(e){}var g=c==='accepted'?'granted':'denied';gtag('consent','default',{ad_storage:g,ad_user_data:g,ad_personalization:g,analytics_storage:g,wait_for_update:500});window.adsbygoogle=window.adsbygoogle||[];if(g!=='granted'){window.adsbygoogle.requestNonPersonalizedAds=1;}})();</script><script>window.addEventListener("load",function(){setTimeout(function(){var s=document.createElement("script");s.async=true;s.src="https://www.googletagmanager.com/gtag/js?id=G-4DPTKEG79N";document.head.appendChild(s);},800);});</script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4DPTKEG79N');</script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8239907995939753" crossorigin="anonymous"></script></head><body class="bg-background font-body-md text-on-surface antialiased">
-<header class="w-full bg-surface-container-lowest border-b border-outline-variant"><div class="border-b border-outline-variant py-space-xxs px-space-md hidden md:block"><div class="max-w-site-max-width mx-auto flex items-center justify-between font-kicker text-kicker text-on-surface-variant uppercase tracking-wider"><span>EDICIÓN DIGITAL // ACTUALIZADO 2026 // EL TELAR &amp; AGENTES</span><span>MADRID · REMOTO</span><span>SIN HUMO · 100% PRODUCCIÓN</span></div></div><div class="max-w-site-max-width mx-auto px-space-md py-space-md sm:py-space-xl text-center"><p class="hidden sm:block font-kicker text-kicker uppercase tracking-widest text-on-surface-variant mb-space-xs">Publicación Independiente de Tecnología &amp; Agentes</p><a class="inline-block" href="../index.html"><div class="font-display text-display max-sm:text-[40px] max-sm:leading-none text-primary tracking-tight">El Telar</div></a><p class="hidden sm:block font-caption text-caption uppercase tracking-widest text-on-surface-variant mt-space-xs">EL BOLETÍN Y ARCHIVO PRÁCTICO DE INTELIGENCIA ARTIFICIAL Y AGENTES AUTÓNOMOS</p></div><div class="border-t border-b border-outline-variant"><div class="max-w-site-max-width mx-auto px-space-md flex items-center justify-between gap-space-sm h-14"><nav class="flex items-center gap-space-md sm:gap-space-lg h-full min-w-0 overflow-x-auto [scrollbar-width:none] whitespace-nowrap"><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../index.html#guias">GUÍAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../empieza-aqui.html">EMPIEZA AQUÍ</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../sobre-nosotros.html">SOBRE NOSOTROS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../noticias/index.html">NOTICIAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../herramientas/index.html">HERRAMIENTAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../prompts/index.html">PROMPTS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../contacto.html">CONTACTO</a></nav><div class="flex items-center gap-space-md"><button id="search-trigger" type="button" aria-label="Buscar en las guías" class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[20px]">search</span></button><a class="hidden sm:inline-block bg-primary-container text-surface px-space-md py-space-xs font-label-md text-label-md uppercase tracking-wider hover:bg-primary transition-colors" href="../index.html#despacho">SUSCRÍBETE GRATIS</a></div></div></div><div class="hidden md:block bg-surface-container-low border-b border-outline-variant py-space-xs px-space-md"><div class="max-w-site-max-width mx-auto text-center"><p class="font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">53 GUÍAS COMPLETAS EN EXPANSIÓN · ACTUALIZADO A MODELOS 2026 · PROBADO EN TERMINAL Y FLUJOS REALES · CERO HUMO NI TEORÍA VACÍA</p></div></div></header>
+<header class="w-full bg-surface-container-lowest border-b border-outline-variant"><div class="border-b border-outline-variant py-space-xxs px-space-md hidden md:block"><div class="max-w-site-max-width mx-auto flex items-center justify-between font-kicker text-kicker text-on-surface-variant uppercase tracking-wider"><span>EDICIÓN DIGITAL // ACTUALIZADO 2026 // EL TELAR &amp; AGENTES</span><span>MADRID · REMOTO</span><span>SIN HUMO · 100% PRODUCCIÓN</span></div></div><div class="max-w-site-max-width mx-auto px-space-md py-space-md sm:py-space-xl text-center"><p class="hidden sm:block font-kicker text-kicker uppercase tracking-widest text-on-surface-variant mb-space-xs">Publicación Independiente de Tecnología &amp; Agentes</p><a class="inline-block" href="../index.html"><div class="font-display text-display max-sm:text-[40px] max-sm:leading-none text-primary tracking-tight">El Telar</div></a><p class="hidden sm:block font-caption text-caption uppercase tracking-widest text-on-surface-variant mt-space-xs">EL BOLETÍN Y ARCHIVO PRÁCTICO DE INTELIGENCIA ARTIFICIAL Y AGENTES AUTÓNOMOS</p></div><div class="border-t border-b border-outline-variant"><div class="max-w-site-max-width mx-auto px-space-md flex items-center justify-between gap-space-sm h-14"><nav class="flex items-center gap-space-md sm:gap-space-lg h-full min-w-0 overflow-x-auto [scrollbar-width:none] whitespace-nowrap"><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../index.html#guias">GUÍAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../empieza-aqui.html">EMPIEZA AQUÍ</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../sobre-nosotros.html">SOBRE NOSOTROS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../noticias/index.html">NOTICIAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../herramientas/index.html">HERRAMIENTAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../prompts/index.html">PROMPTS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../contacto.html">CONTACTO</a></nav><div class="flex items-center gap-space-md"><button id="search-trigger" type="button" aria-label="Buscar en las guías" class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[20px]">search</span></button><a class="hidden sm:inline-block bg-primary-container text-surface px-space-md py-space-xs font-label-md text-label-md uppercase tracking-wider hover:bg-primary transition-colors" href="../index.html#despacho">SUSCRÍBETE GRATIS</a></div></div></div><div class="hidden md:block bg-surface-container-low border-b border-outline-variant py-space-xs px-space-md"><div class="max-w-site-max-width mx-auto text-center"><p class="font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">56 GUÍAS COMPLETAS EN EXPANSIÓN · ACTUALIZADO A MODELOS 2026 · PROBADO EN TERMINAL Y FLUJOS REALES · CERO HUMO NI TEORÍA VACÍA</p></div></div></header>
 <main class="w-full max-w-site-max-width mx-auto px-space-md py-space-xl"><div class="flex flex-col w-full">
 <nav class="w-full mb-space-lg">
 <ol class="flex flex-wrap items-center gap-space-xs font-kicker text-kicker text-on-surface-variant uppercase tracking-wider">
@@ -217,19 +241,18 @@
 <div class="bg-surface-container-lowest p-space-md shadow-sm">
 <span class="font-kicker text-kicker uppercase text-secondary mb-1 block">CLAUDE (API)</span>
 <p class="font-body-sm text-body-sm text-on-surface-variant">
-              32 MB por petición, contando todo lo que mandes junto. Hasta 600 páginas por petición, que bajan a 100 si el modelo tiene una ventana de contexto menor de un millón de tokens. Cada imagen, hasta 10 MB y 8000×8000 px. En claude.ai, 20 imágenes por mensaje. Formatos: JPEG, PNG, GIF y WebP — las animaciones no se admiten, solo se usa el primer fotograma.
+              32 MB por petición, contando todo lo que mandes junto. Hasta 600 páginas por petición, que bajan a 100 si el modelo tiene una ventana de contexto menor de un millón de tokens. Cada imagen, hasta 10 MB y 8000×8000 px. En claude.ai, 20 imágenes por mensaje y hasta 10 MB cada una. En la API, hasta 600 imágenes por petición (100 si el modelo tiene una ventana de contexto de 200.000 tokens), pero si mandas más de 20 en una misma petición se aplica un límite de tamaño por imagen más estricto: lo seguro es reducirlas a 2.000 px de lado. Formatos: JPEG, PNG, GIF y WebP — las animaciones no se admiten, solo se usa el primer fotograma.
             </p>
 </div>
 <div class="bg-surface-container-lowest p-space-md shadow-sm">
 <span class="font-kicker text-kicker uppercase text-secondary mb-1 block">GEMINI (API)</span>
 <p class="font-body-sm text-body-sm text-on-surface-variant">
-              Hasta 50 MB o 1.000 páginas por documento. Google publica además una cifra útil para calcular: cada página de documento equivale a 258 tokens. Las páginas grandes se reescalan a un máximo de 3072×3072 px y las pequeñas se amplían hasta 768×768, conservando la proporción.
+              Hasta 50 MB o 1.000 páginas por documento. Google publica además una cifra útil para calcular: cada página de documento equivale a 258 tokens. Las páginas grandes se reescalan a un máximo de 3072×3072 px y las pequeñas se amplían hasta 768×768, conservando la proporción. En los modelos Gemini 3, el texto nativo de un PDF no se factura y las imágenes de las páginas cuentan como imagen; los archivos subidos con la Files API se guardan 48 horas.
             </p>
 </div>
 </div>
-<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
-          Con ChatGPT la cosa es menos clara, y conviene decirlo tal cual: OpenAI no publica un límite oficial de páginas por PDF. El techo real acaba siendo el presupuesto de tokens del archivo y de la conversación, no un número redondo que puedas consultar. Si estás decidiendo dónde montar un proceso serio de documentos, esa opacidad es en sí misma un dato: no puedes dimensionar contra una cifra que nadie publica.
-        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Con ChatGPT los números son otros y están en su centro de ayuda: según la <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="https://help.openai.com/en/articles/8555545-file-uploads-faq" target="_blank" rel="noopener nofollow">FAQ de subida de archivos de OpenAI</a>, cada archivo puede pesar hasta 512 MB, los documentos de texto se limitan a 2 millones de tokens, las imágenes a 20 MB, y los usuarios gratuitos pueden subir 3 archivos al día (OpenAI avisa de que los límites pueden bajar en horas punta). No hemos encontrado un tope de páginas por PDF, así que el techo real vuelve a ser el presupuesto de tokens del archivo y de la conversación. La página de OpenAI nos bloquea la lectura automática, por lo que estas cifras las hemos tomado del resultado del buscador; compruébalas en la propia página.</p>
+
 <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
           Y una advertencia que vale para las tres: estos números se mueven. La tabla de arriba es la foto del momento en que se escribió esta guía. Si vas a construir algo encima, ábrete la documentación del fabricante el mismo día y compruébalo — es literalmente un minuto, y te ahorra descubrirlo en producción.
         </p>
@@ -242,6 +265,20 @@
 <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
           Una imagen de 1000×1000 px son 36×36 parches: 1.296 tokens visuales, según la propia tabla de la documentación. Es decir, una captura cuadrada modesta te cuesta aproximadamente lo mismo que unas mil palabras de texto. Y un PDF, recuerda, es una imagen por página <em>más</em> el texto extraído: Anthropic calcula entre 1.500 y 3.000 tokens por página según la densidad del contenido.
         </p>
+<div class="overflow-x-auto">
+<table class="w-full text-left font-body-sm text-body-sm border border-outline-variant">
+<thead class="bg-surface-container-low">
+<tr><th class="p-space-sm border-b border-outline-variant">Tamaño de la imagen</th><th class="p-space-sm border-b border-outline-variant">Modelos anteriores (máx. 1.568 px)</th><th class="p-space-sm border-b border-outline-variant">Modelos 4.7 y posteriores (máx. 2.576 px)</th></tr>
+</thead>
+<tbody>
+<tr><td class="p-space-sm border-b border-outline-variant align-top font-semibold text-primary">200×200 px</td><td class="p-space-sm border-b border-outline-variant align-top text-on-surface-variant">64 tokens</td><td class="p-space-sm border-b border-outline-variant align-top text-on-surface-variant">64 tokens</td></tr>
+<tr><td class="p-space-sm border-b border-outline-variant align-top font-semibold text-primary">1000×1000 px</td><td class="p-space-sm border-b border-outline-variant align-top text-on-surface-variant">1.296 tokens</td><td class="p-space-sm border-b border-outline-variant align-top text-on-surface-variant">1.296 tokens</td></tr>
+<tr><td class="p-space-sm border-b border-outline-variant align-top font-semibold text-primary">1920×1080 px</td><td class="p-space-sm border-b border-outline-variant align-top text-on-surface-variant">1.560 tokens (se reduce a 1456×819)</td><td class="p-space-sm border-b border-outline-variant align-top text-on-surface-variant">2.691 tokens (no se reduce)</td></tr>
+<tr><td class="p-space-sm border-b border-outline-variant align-top font-semibold text-primary">3840×2160 px (4K)</td><td class="p-space-sm border-b border-outline-variant align-top text-on-surface-variant">1.560 tokens (se reduce)</td><td class="p-space-sm border-b border-outline-variant align-top text-on-surface-variant">4.784 tokens (se reduce a 2576×1449)</td></tr>
+</tbody>
+</table>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Valores de la <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="https://platform.claude.com/docs/en/build-with-claude/vision" target="_blank" rel="noopener nofollow">documentación de visión de Anthropic</a>, consultada el 17 de octubre de 2026. Con la tarifa de entrada de un modelo concreto puedes calcular el coste por imagen; nuestra <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="../herramientas/calculadora-coste-api.html">calculadora de coste de API</a> te ayuda a hacerlo.</p>
 <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
           Hay un segundo factor. Los modelos recientes de Anthropic trabajan en una resolución mayor —hasta 2576 px de lado largo y 4.784 tokens visuales, frente a 1568 px y 1.568 tokens en los anteriores— y la documentación avisa de que eso puede multiplicar por tres el coste en tokens de la misma imagen. Más fidelidad para documentos densos, sí, pero se paga.
         </p>
@@ -324,7 +361,7 @@
 </div>
 </div>
 <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
-          Una nota aparte sobre los documentos que subes. Un PDF de trabajo suele llevar nombres, cuentas, direcciones o datos de clientes, y al subirlo sales de tu ordenador. Antes de convertirlo en rutina, revisa qué política de retención tiene la herramienta concreta que usas y si el plan que tienes contratado entrena con lo que envías; lo desarrollamos en la guía sobre <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="proteger-datos-ia.html">cómo proteger tus datos al usar IA</a>.
+          Una nota aparte sobre los documentos que subes. Un PDF de trabajo suele llevar nombres, cuentas, direcciones o datos de clientes, y al subirlo sales de tu ordenador. Según la documentación de la API de Anthropic, las imágenes que envías no se almacenan más allá de la petición y no se usan para entrenar modelos; en las apps de consumo de cualquier empresa eso depende de tus ajustes. Antes de convertirlo en rutina, revisa qué política de retención tiene la herramienta concreta que usas y si el plan que tienes contratado entrena con lo que envías; lo desarrollamos en la guía sobre <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="proteger-datos-ia.html">cómo proteger tus datos al usar IA</a>.
         </p>
 </section>
 <section id="sec-6" class="space-y-space-lg">
@@ -372,6 +409,21 @@
 <ol class="list-decimal pl-space-lg space-y-space-xs font-body-md text-body-md text-on-surface"><li>Instala Python (de la 3.10 a la 3.14) y, mejor, crea un entorno virtual.</li><li>Instala la herramienta: <code>pip install 'markitdown[all]'</code>.</li><li>Convierte un archivo: <code>markitdown informe.pdf -o informe.md</code>.</li><li>Pega o sube el resultado a tu asistente de IA.</li></ol>
 <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed"><strong class="text-on-surface">Lo honesto:</strong> se usa desde la terminal, así que no es para todo el mundo. En documentos escaneados o con maquetación compleja, el resultado puede necesitar retoques. El propio proyecto avisa de que accede a los archivos con los permisos de tu usuario: no lo uses sobre archivos que no sean de confianza en entornos sensibles.</p>
 <p class="font-body-sm text-body-sm mt-space-sm"><strong class="text-on-surface">Enlace oficial:</strong> <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://github.com/microsoft/markitdown">github.com/microsoft/markitdown</a></p>
+</section>
+<section class="space-y-space-md">
+<h2 id="ejemplo-factura" class="font-headline-md text-headline-md text-primary tracking-tight scroll-mt-24">Ejemplo práctico: sacar los datos de una factura sin fiarte a ciegas</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Es el caso de uso más común y donde más duele equivocarse. Esta plantilla aplica lo anterior: archivo primero, cita literal antes de la cifra y una comprobación que puedas verificar tú.</p>
+<div class="bg-[#0b0d12] text-surface p-space-md my-space-md overflow-x-auto"><pre class="font-mono text-body-sm leading-relaxed whitespace-pre-wrap">[sube aquí la factura]
+
+De esta factura, extrae en una tabla: proveedor, NIF, fecha, número de factura,
+base imponible, IVA (tipo e importe) y total.
+Reglas:
+1. Para cada dato, copia entre comillas la línea literal de la factura de la que lo sacas.
+2. Si un dato no se lee con claridad, escribe "ILEGIBLE"; no lo adivines.
+3. Comprueba que base + IVA = total y dime si no cuadra.
+4. No inventes ningún campo que no aparezca.</pre></div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Después, mira dos cosas: que las citas literales coinciden con lo que ves en la factura, y que la suma cuadra. Si procesas cientos, automatiza la suma y revisa a mano solo las que fallen. Si el documento es un contrato, lee antes <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="revisar-contratos-ia.html">revisar contratos con IA</a>; para entender por qué inventa datos, <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="alucinaciones-ia.html">alucinaciones de la IA</a> y <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="grounding-evitar-alucinaciones.html">grounding</a>.</p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Y si ya sabes cuánto te va a costar el lote, repasa <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="cuanto-cuesta-usar-ia-api.html">cuánto cuesta usar IA por API</a>.</p>
 </section>
 <section class="space-y-space-md">
 <h2 class="font-headline-lg text-headline-lg text-primary">
@@ -431,6 +483,33 @@ No sin comprobarlos, y menos si la factura es un escaneo. Un buen hábito es ped
 No. Anthropic documenta que el modelo no recibe ni analiza los metadatos de la imagen, así que el EXIF —fecha, cámara, coordenadas GPS— no le llega. Si ves una fecha en la respuesta, o la ha leído impresa dentro de la propia imagen, o se la está inventando. Cuando necesites ese dato, extráelo con una herramienta de metadatos y pásaselo como texto.
 </div>
 </div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Puede Claude generar o editar imágenes?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+No. La documentación de Anthropic es explícita: Claude es un modelo de comprensión de imágenes; puede interpretarlas y analizarlas, pero no generarlas ni editarlas. Si necesitas crear imágenes, mira nuestra guía de <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="generar-imagenes-ia.html">generación de imágenes con IA</a>.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Cuántas imágenes puedo subir de una vez?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+En claude.ai, 20 por mensaje (hasta 10 MB cada una). En la API de Anthropic, hasta 600 por petición, o 100 si el modelo tiene una ventana de contexto de 200.000 tokens, con un tamaño máximo por imagen más estricto cuando pasas de 20. En Gemini, el límite de PDF es de 50 MB o 1.000 páginas. Los límites se mueven: confírmalos en la documentación el día que los necesites.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Se guardan o se usan para entrenar las imágenes que subo por la API?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Según la documentación de Anthropic para su API, las imágenes subidas son efímeras: no se almacenan más allá de la petición y se borran tras procesarse, y Anthropic indica que no las usa para entrenar sus modelos. Eso se refiere a la API; en las aplicaciones de consumo de cualquier proveedor revisa los ajustes de privacidad de tu cuenta. Más en <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="proteger-datos-ia.html">cómo proteger tus datos al usar IA</a>.
+</div>
+</div>
 </section>
 <section class="space-y-space-md">
 <h2 class="font-headline-lg text-headline-lg text-primary">En resumen</h2>
@@ -458,6 +537,7 @@ No. Anthropic documenta que el modelo no recibe ni analiza los metadatos de la i
 <a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-4">Dónde falla</a>
 <a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-5">Cómo pedirlo bien</a>
 <a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-6">Cuándo usar OCR especializado</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#ejemplo-factura">Ejemplo práctico: una factura</a>
 <a class="block text-secondary font-semibold hover:underline" href="#stirling-pdf">→ Stirling PDF</a>
 <a class="block text-secondary font-semibold hover:underline" href="#flameshot">→ Flameshot</a>
 <a class="block text-secondary font-semibold hover:underline" href="#markitdown">→ MarkItDown</a>

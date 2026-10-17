@@ -20,10 +20,10 @@
   "headline": "Cómo darle a un agente de IA acceso a datos reales y gratis",
   "description": "Tutorial práctico con código funcional: conecta un modelo de IA a una API pública real y gratuita, con una demo en vivo que puedes probar ahora mismo.",
   "image": "https://eltelar.es/img/og/guia-agente-api-datos-reales.jpg",
-  "author": {"@type": "Person", "name": "Juan Becerril Castañón", "url": "https://eltelar.es/sobre-nosotros.html#autor"},
+  "author": {"@type": "Organization", "name": "El Telar", "url": "https://eltelar.es/sobre-nosotros.html"},
   "publisher": { "@type": "Organization", "name": "El Telar", "url": "https://eltelar.es/", "logo": { "@type": "ImageObject", "url": "https://eltelar.es/img/icon-512.png", "width": 512, "height": 512 } },
   "datePublished": "2026-09-07",
-  "dateModified": "2026-10-14",
+  "dateModified": "2026-10-17",
   "mainEntityOfPage": "https://eltelar.es/articulos/agente-api-datos-reales.html",
   "inLanguage": "es"
 }
@@ -47,7 +47,7 @@
       "name": "¿Necesito una clave de API para hacer esto?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Para el ejemplo de esta guía (Open-Meteo), no: es una de las pocas APIs públicas serias que no exige registro ni clave para uso no comercial. Para conectar el modelo de IA sí necesitas una clave del proveedor (Anthropic, OpenAI o Google), pero eso es aparte de la API de datos en sí."
+        "text": "Para el ejemplo de esta guía (Open-Meteo), no: es una de las pocas APIs públicas serias que no exige registro ni clave para uso no comercial (su plan gratuito está limitado a 600 llamadas por minuto y 10.000 al día, y para un producto comercial hay que contratar un plan de pago). Para conectar el modelo de IA sí necesitas una clave del proveedor (Anthropic, OpenAI o Google), pero eso es aparte de la API de datos en sí."
       }
     },
     {
@@ -79,7 +79,7 @@
       "name": "¿Cuánto cuesta ejecutar algo así en producción?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "La llamada a Open-Meteo es gratis. Lo que sí cuesta es la llamada al modelo de IA (normalmente dos llamadas por cada consulta: una para que decida usar la herramienta y otra para que redacte la respuesta final con el resultado), facturada por tokens según el proveedor que elijas. Para un volumen bajo o medio, el coste suele ser de céntimos al mes."
+        "text": "La llamada a Open-Meteo es gratis. Lo que sí cuesta es la llamada al modelo de IA (normalmente dos llamadas por cada consulta: una para que decida usar la herramienta y otra para que redacte la respuesta final con el resultado), facturada por tokens según el proveedor que elijas. Para un volumen bajo o medio, el coste suele ser de céntimos al mes; en la sección «Cuánto cuesta cada consulta» tienes cómo calcularlo con los precios actuales."
       }
     },
     {
@@ -88,6 +88,22 @@
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Sí, el patrón de código es exactamente el mismo; la única diferencia es que dentro de tu función guardas la clave en una variable de entorno en tu propio servidor, nunca en el código que compartes ni en el navegador del usuario, y la añades a la petición HTTP hacia esa API en vez de hacia Open-Meteo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo usar la demo de Open-Meteo en una web con anuncios o suscripciones?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No con el plan gratuito: las condiciones de Open-Meteo reservan la API gratuita para uso no comercial y consideran comercial una aplicación con suscripciones o anuncios. Para ese caso tiene planes de pago; consulta sus condiciones actuales antes de publicar."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué modelo conviene usar para llamar a herramientas?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Para empezar, uno intermedio como Claude Sonnet 5.5 (identificador claude-sonnet-5-5). Si tu tarea es simple y de mucho volumen, prueba Haiku 5.5, que Anthropic describe como el más rápido y barato. Haz una prueba con tus propios casos antes de elegir: la diferencia de precio es grande y la calidad necesaria depende de la tarea."
       }
     }
   ]
@@ -121,7 +137,7 @@
 </script>
 <link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet"/></noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet"/></noscript>
 <style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><link rel="stylesheet" href="../css/tailwind.css"><link rel="stylesheet" href="../css/entrance.css?v=2"><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}(function(){var c=null;try{c=localStorage.getItem('eltelar-cookie-consent')}catch(e){}var g=c==='accepted'?'granted':'denied';gtag('consent','default',{ad_storage:g,ad_user_data:g,ad_personalization:g,analytics_storage:g,wait_for_update:500});window.adsbygoogle=window.adsbygoogle||[];if(g!=='granted'){window.adsbygoogle.requestNonPersonalizedAds=1;}})();</script><script>window.addEventListener("load",function(){setTimeout(function(){var s=document.createElement("script");s.async=true;s.src="https://www.googletagmanager.com/gtag/js?id=G-4DPTKEG79N";document.head.appendChild(s);},800);});</script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4DPTKEG79N');</script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8239907995939753" crossorigin="anonymous"></script></head><body class="bg-background font-body-md text-on-surface antialiased">
-<header class="w-full bg-surface-container-lowest border-b border-outline-variant"><div class="border-b border-outline-variant py-space-xxs px-space-md hidden md:block"><div class="max-w-site-max-width mx-auto flex items-center justify-between font-kicker text-kicker text-on-surface-variant uppercase tracking-wider"><span>EDICIÓN DIGITAL // ACTUALIZADO 2026 // EL TELAR &amp; AGENTES</span><span>MADRID · REMOTO</span><span>SIN HUMO · 100% PRODUCCIÓN</span></div></div><div class="max-w-site-max-width mx-auto px-space-md py-space-md sm:py-space-xl text-center"><p class="hidden sm:block font-kicker text-kicker uppercase tracking-widest text-on-surface-variant mb-space-xs">Publicación Independiente de Tecnología &amp; Agentes</p><a class="inline-block" href="../index.html"><div class="font-display text-display max-sm:text-[40px] max-sm:leading-none text-primary tracking-tight">El Telar</div></a><p class="hidden sm:block font-caption text-caption uppercase tracking-widest text-on-surface-variant mt-space-xs">EL BOLETÍN Y ARCHIVO PRÁCTICO DE INTELIGENCIA ARTIFICIAL Y AGENTES AUTÓNOMOS</p></div><div class="border-t border-b border-outline-variant"><div class="max-w-site-max-width mx-auto px-space-md flex items-center justify-between gap-space-sm h-14"><nav class="flex items-center gap-space-md sm:gap-space-lg h-full min-w-0 overflow-x-auto [scrollbar-width:none] whitespace-nowrap"><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../index.html#guias">GUÍAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../empieza-aqui.html">EMPIEZA AQUÍ</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../sobre-nosotros.html">SOBRE NOSOTROS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../noticias/index.html">NOTICIAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../herramientas/index.html">HERRAMIENTAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../prompts/index.html">PROMPTS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../contacto.html">CONTACTO</a></nav><div class="flex items-center gap-space-md"><button id="search-trigger" type="button" aria-label="Buscar en las guías" class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[20px]">search</span></button><a class="hidden sm:inline-block bg-primary-container text-surface px-space-md py-space-xs font-label-md text-label-md uppercase tracking-wider hover:bg-primary transition-colors" href="../index.html#despacho">SUSCRÍBETE GRATIS</a></div></div></div><div class="hidden md:block bg-surface-container-low border-b border-outline-variant py-space-xs px-space-md"><div class="max-w-site-max-width mx-auto text-center"><p class="font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">53 GUÍAS COMPLETAS EN EXPANSIÓN · ACTUALIZADO A MODELOS 2026 · PROBADO EN TERMINAL Y FLUJOS REALES · CERO HUMO NI TEORÍA VACÍA</p></div></div></header>
+<header class="w-full bg-surface-container-lowest border-b border-outline-variant"><div class="border-b border-outline-variant py-space-xxs px-space-md hidden md:block"><div class="max-w-site-max-width mx-auto flex items-center justify-between font-kicker text-kicker text-on-surface-variant uppercase tracking-wider"><span>EDICIÓN DIGITAL // ACTUALIZADO 2026 // EL TELAR &amp; AGENTES</span><span>MADRID · REMOTO</span><span>SIN HUMO · 100% PRODUCCIÓN</span></div></div><div class="max-w-site-max-width mx-auto px-space-md py-space-md sm:py-space-xl text-center"><p class="hidden sm:block font-kicker text-kicker uppercase tracking-widest text-on-surface-variant mb-space-xs">Publicación Independiente de Tecnología &amp; Agentes</p><a class="inline-block" href="../index.html"><div class="font-display text-display max-sm:text-[40px] max-sm:leading-none text-primary tracking-tight">El Telar</div></a><p class="hidden sm:block font-caption text-caption uppercase tracking-widest text-on-surface-variant mt-space-xs">EL BOLETÍN Y ARCHIVO PRÁCTICO DE INTELIGENCIA ARTIFICIAL Y AGENTES AUTÓNOMOS</p></div><div class="border-t border-b border-outline-variant"><div class="max-w-site-max-width mx-auto px-space-md flex items-center justify-between gap-space-sm h-14"><nav class="flex items-center gap-space-md sm:gap-space-lg h-full min-w-0 overflow-x-auto [scrollbar-width:none] whitespace-nowrap"><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../index.html#guias">GUÍAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../empieza-aqui.html">EMPIEZA AQUÍ</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../sobre-nosotros.html">SOBRE NOSOTROS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../noticias/index.html">NOTICIAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../herramientas/index.html">HERRAMIENTAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../prompts/index.html">PROMPTS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../contacto.html">CONTACTO</a></nav><div class="flex items-center gap-space-md"><button id="search-trigger" type="button" aria-label="Buscar en las guías" class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[20px]">search</span></button><a class="hidden sm:inline-block bg-primary-container text-surface px-space-md py-space-xs font-label-md text-label-md uppercase tracking-wider hover:bg-primary transition-colors" href="../index.html#despacho">SUSCRÍBETE GRATIS</a></div></div></div><div class="hidden md:block bg-surface-container-low border-b border-outline-variant py-space-xs px-space-md"><div class="max-w-site-max-width mx-auto text-center"><p class="font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">56 GUÍAS COMPLETAS EN EXPANSIÓN · ACTUALIZADO A MODELOS 2026 · PROBADO EN TERMINAL Y FLUJOS REALES · CERO HUMO NI TEORÍA VACÍA</p></div></div></header>
 <main class="w-full max-w-site-max-width mx-auto px-space-md py-space-xl"><div class="flex flex-col w-full">
 <nav class="w-full mb-space-lg">
 <ol class="flex flex-wrap items-center gap-space-xs font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">
@@ -156,7 +172,7 @@
           Esto es lo que separa un chatbot de un agente de verdad, y es exactamente el mecanismo detrás de <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="mcp-explicado.html">MCP</a>, de los plugins de ChatGPT y de cualquier "agente" comercial que consulta precios, el clima o tu calendario. Se llama <em>tool use</em> (uso de herramientas) o <em>function calling</em> (llamada a funciones), y en el fondo es más simple de lo que suena.
         </p>
 <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
-          Esta guía usa un ejemplo concreto y gratuito de principio a fin: una API pública del tiempo (Open-Meteo) que no exige clave ni registro. Al final de la sección 2 tienes una demo real e interactiva, funcionando en esta misma página, seguida del código exacto que la conecta a un modelo de IA. Cópialo, cámbialo de API y tendrás tu primer agente con datos reales en un rato.
+          Esta guía usa un ejemplo concreto y gratuito de principio a fin: una API pública del tiempo (Open-Meteo) que no exige clave ni registro para uso no comercial. Al final de la sección 2 tienes una demo real e interactiva, funcionando en esta misma página, seguida del código exacto que la conecta a un modelo de IA. Cópialo, cámbialo de API y tendrás tu primer agente con datos reales en un rato.
         </p>
 </section>
 <figure class="my-space-lg">
@@ -288,7 +304,7 @@ def obtener_tiempo(ciudad):
 
 mensajes = [{"role": "user", "content": "¿Qué tiempo hace en Lima?"}]
 respuesta = client.messages.create(
-    model="claude-sonnet-5", max_tokens=1024,
+    model="claude-sonnet-5-5", max_tokens=1024,
     tools=herramientas, messages=mensajes
 )
 
@@ -304,7 +320,7 @@ if respuesta.stop_reason == "tool_use":
     }]})
 
     final = client.messages.create(
-        model="claude-sonnet-5", max_tokens=1024,
+        model="claude-sonnet-5-5", max_tokens=1024,
         tools=herramientas, messages=mensajes
     )
     print(final.content[0].text)</pre>
@@ -313,7 +329,7 @@ if respuesta.stop_reason == "tool_use":
           Nota las dos llamadas al modelo: la primera para que decida si necesita la herramienta, la segunda para que redacte la respuesta ya con el dato real en la mano. Eso es exactamente lo que separaba las cajas "1" y "3" de la demo de arriba — aquí es el propio modelo, no una función de JavaScript escrita a mano, quien decide llamar a <code class="font-mono text-body-sm bg-surface-container-low px-1">obtener_tiempo</code>.
         </p>
 <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
-          El mismo patrón funciona con ChatGPT (el campo se llama <code class="font-mono text-body-sm bg-surface-container-low px-1">tools</code> también, con <code class="font-mono text-body-sm bg-surface-container-low px-1">function</code> anidado) y con Gemini (<code class="font-mono text-body-sm bg-surface-container-low px-1">function_declarations</code>). Cambia el nombre exacto de un par de campos en el JSON; la idea de fondo —describir la herramienta, dejar que decida, ejecutar tú, devolver el resultado— es idéntica en los tres.
+          El mismo patrón funciona con ChatGPT y con Gemini. Según sus guías oficiales de llamada a funciones (revisadas el 17 de octubre de 2026), en la API de Respuestas de OpenAI y en la API de Interacciones de Gemini cada herramienta es un objeto <code class="font-mono text-body-sm bg-surface-container-low px-1">{"type": "function", "name": …, "description": …, "parameters": …}</code> en la lista <code class="font-mono text-body-sm bg-surface-container-low px-1">tools</code>, y el resultado se devuelve como un elemento aparte (en OpenAI, <code class="font-mono text-body-sm bg-surface-container-low px-1">function_call_output</code> con el <code class="font-mono text-body-sm bg-surface-container-low px-1">call_id</code> de la llamada). Cambia el nombre exacto de unos cuantos campos; la idea de fondo —describir la herramienta, dejar que decida, ejecutar tú, devolver el resultado— es idéntica en los tres.
         </p>
 <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
           Un detalle que sorprende la primera vez: el <code class="font-mono text-body-sm bg-surface-container-low px-1">input_schema</code> de la herramienta no es solo documentación decorativa para el modelo, es una restricción real. Si defines <code class="font-mono text-body-sm bg-surface-container-low px-1">ciudad</code> como <code class="font-mono text-body-sm bg-surface-container-low px-1">string</code> obligatorio, el modelo no puede llamar a la función sin ese dato — como mucho, si el usuario no lo mencionó, el modelo te pedirá que lo aclares antes de intentar la llamada. Cuanto más preciso sea ese esquema (tipos correctos, campos obligatorios bien marcados, una descripción que deje claro qué formato espera cada parámetro), menos errores de "argumento inválido" tendrás que manejar en tu propio código más adelante.
@@ -404,9 +420,59 @@ if respuesta.stop_reason == "tool_use":
 <p class="font-body-md text-body-md text-on-surface leading-relaxed">Para que un agente de IA te ayude a mejorar tu web, primero necesitas datos reales de visitas. <strong>Umami</strong> es una plataforma de analítica de código abierto (MIT) centrada en la privacidad, con un panel sencillo.</p>
 <h3 class="font-headline-sm text-headline-sm text-primary">Cómo empezar</h3>
 <ol class="list-decimal pl-space-lg space-y-space-xs font-body-md text-body-md text-on-surface"><li>Crea una cuenta en <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://umami.is">umami.is</a> o instálalo en tu servidor.</li><li>Añade tu web y copia el pequeño fragmento de código que te da.</li><li>Pégalo en la cabecera de tu web (en la mayoría de gestores hay un campo para scripts).</li><li>En unos minutos verás visitas, páginas, procedencia, dispositivos y países.</li></ol>
-<p class="font-body-md text-body-md text-on-surface leading-relaxed">Según su página de precios, el plan Hobby es gratuito: hasta 100.000 eventos al mes, 1 web y 6 meses de conservación de datos. El plan Pro (20 $ al mes) añade más eventos, hasta 20 webs, dos años de datos y acceso por API y MCP, útil si quieres que un agente de IA consulte tus estadísticas.</p>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Según su página de precios, el plan Hobby es gratuito: hasta 100.000 eventos al mes, 1 web y 6 meses de conservación de datos. El plan Pro (20 $ al mes) incluye un millón de eventos al mes, hasta 20 webs, dos años de datos y acceso por API y MCP, útil si quieres que un agente de IA consulte tus estadísticas.</p>
 <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed"><strong class="text-on-surface">Lo honesto:</strong> el plan gratuito se queda corto si gestionas varias webs. Aunque Umami está diseñado pensando en la privacidad, las obligaciones legales dependen de tu país y de tu web: consúltalo con un profesional si tienes dudas.</p>
 <p class="font-body-sm text-body-sm mt-space-sm"><strong class="text-on-surface">Código:</strong> <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://github.com/umami-software/umami">github.com/umami-software/umami</a></p>
+</section>
+<section id="que-ha-cambiado" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Qué ha cambiado desde la primera versión de esta guía</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+Las ideas de fondo no han cambiado, pero los detalles que rodean al código sí. Esto es lo que hemos comprobado el 17 de octubre de 2026:
+</p>
+<div class="overflow-x-auto"><table class="w-full text-left border-collapse"><thead><tr class="border-b-2 border-outline"><th class="py-space-sm pr-space-md font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">Tema</th><th class="py-space-sm pr-space-md font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">Estado actual</th><th class="py-space-sm pr-space-md font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">Fuente</th></tr></thead><tbody class="font-body-sm text-body-sm text-on-surface-variant"><tr class="border-b border-outline-variant"><td class="py-space-sm pr-space-md font-semibold text-on-surface">Modelo en el ejemplo</td><td class="py-space-sm pr-space-md ">Usamos <code class="font-mono text-body-sm bg-surface-container-low px-1">claude-sonnet-5-5</code> (Claude Sonnet 5.5, 2 $ por millón de tokens de entrada y 10 $ de salida). Haiku 5.5 es la opción barata para tareas simples</td><td class="py-space-sm pr-space-md "><a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="https://platform.claude.com/docs/en/about-claude/models/overview" rel="nofollow noopener" target="_blank">Modelos de Claude</a></td></tr><tr class="border-b border-outline-variant"><td class="py-space-sm pr-space-md font-semibold text-on-surface">Herramientas en OpenAI y Gemini</td><td class="py-space-sm pr-space-md ">Definición plana con <code class="font-mono text-body-sm bg-surface-container-low px-1">type: function</code>; ya no se usa <code class="font-mono text-body-sm bg-surface-container-low px-1">function_declarations</code> en las guías actuales de Gemini</td><td class="py-space-sm pr-space-md "><a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="https://developers.openai.com/api/docs/guides/function-calling" rel="nofollow noopener" target="_blank">OpenAI</a> · <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="https://ai.google.dev/gemini-api/docs/function-calling" rel="nofollow noopener" target="_blank">Gemini</a></td></tr><tr class="border-b border-outline-variant"><td class="py-space-sm pr-space-md font-semibold text-on-surface">Open-Meteo gratis</td><td class="py-space-sm pr-space-md ">Solo uso no comercial; 600 llamadas/min, 5.000/hora, 10.000/día, 300.000/mes</td><td class="py-space-sm pr-space-md "><a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="https://open-meteo.com/en/terms" rel="nofollow noopener" target="_blank">Condiciones de Open-Meteo</a></td></tr><tr><td class="py-space-sm pr-space-md font-semibold text-on-surface">Gemini gratis</td><td class="py-space-sm pr-space-md ">Desde el 9 de octubre solo queda gratis Flash-Lite; no montes tu demo sobre otro modelo gratuito de Gemini</td><td class="py-space-sm pr-space-md "><a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="../noticias/2026-10-08-gemini-gratis-solo-flash-lite.html">Nuestra noticia</a></td></tr></tbody></table></div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+Si tu código antiguo usaba un identificador de modelo anterior, no hace falta reescribir la lógica: basta con cambiar la cadena del modelo. Anthropic indica que Sonnet 5.5 no se retirará antes del 28 de septiembre de 2027, así que tienes margen, pero conviene revisar la <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="https://platform.claude.com/docs/en/about-claude/model-deprecations" rel="nofollow noopener" target="_blank">página de retiradas de modelos</a> cada cierto tiempo.
+</p>
+</section>
+<section id="herramienta-con-bucle" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Un bucle completo: varias herramientas y errores devueltos al modelo</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+El ejemplo de arriba hace una sola llamada a la herramienta. Un agente real repite el ciclo hasta que el modelo deja de pedir herramientas, y cuando una falla le devuelve el error en lugar de romper el programa. Con la API de Claude, el resultado de una herramienta fallida se marca con <code class="font-mono text-body-sm bg-surface-container-low px-1">is_error</code>:
+</p>
+<div class="bg-[#0b0d12] text-surface p-space-md my-space-md overflow-x-auto">
+<pre class="font-mono text-body-sm leading-relaxed">HERRAMIENTAS = {"obtener_tiempo": obtener_tiempo}   # nombre -> función
+
+while respuesta.stop_reason == "tool_use":
+    mensajes.append({"role": "assistant", "content": respuesta.content})
+    resultados = []
+    for bloque in respuesta.content:
+        if bloque.type != "tool_use":
+            continue
+        try:
+            salida = HERRAMIENTAS[bloque.name](**bloque.input)
+            resultados.append({"type": "tool_result", "tool_use_id": bloque.id,
+                               "content": str(salida)})
+        except Exception as e:   # API caída, ciudad inexistente, etc.
+            resultados.append({"type": "tool_result", "tool_use_id": bloque.id,
+                               "content": f"Error: {e}", "is_error": True})
+    mensajes.append({"role": "user", "content": resultados})
+    respuesta = client.messages.create(model="claude-sonnet-5-5", max_tokens=1024,
+                                       tools=herramientas, messages=mensajes)
+
+print(respuesta.content[0].text)</pre>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+Tres detalles que evitan sustos. Primero, el diccionario <code class="font-mono text-body-sm bg-surface-container-low px-1">HERRAMIENTAS</code> es una lista blanca: el modelo solo puede ejecutar lo que tú has registrado. Segundo, pon un tope de vueltas (por ejemplo, diez) para que un modelo confundido no entre en un bucle que te cueste dinero. Tercero, ante un error devuelve un mensaje claro: un modelo que lee «Error: no se encontró la ciudad» suele pedirte otra ciudad, en lugar de inventarse la temperatura.
+</p>
+</section>
+<section id="cuanto-cuesta-consulta" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Cuánto cuesta cada consulta</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+La API del tiempo es gratis; lo que se factura es el modelo, por tokens. Cada pregunta del ejemplo genera dos llamadas (decidir y redactar). Puedes estimar el coste con una fórmula sencilla: <em>tokens de entrada × precio de entrada + tokens de salida × precio de salida</em>, dividido entre un millón. Con los precios publicados en la página de modelos de Anthropic (Sonnet 5.5: 2 $ de entrada y 10 $ de salida por millón de tokens; Haiku 5.5: desde 0,10 $ y 0,50 $), una consulta corta con una herramienta suele quedarse en fracciones de céntimo, pero el número real depende de la longitud de tu descripción de herramientas y de las respuestas. Mídelo: la respuesta de la API incluye el recuento de tokens usados. Para presupuestos y topes, mira nuestra guía de <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="cuanto-cuesta-usar-ia-api.html">cuánto cuesta usar IA por API</a> y la de <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="limites-gasto-agentes-ia.html">límites de gasto para agentes</a>.
+</p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+Si tu agente consulta cada vez la misma ciudad, guarda el resultado unos minutos (una caché sencilla) y evitarás llamadas repetidas tanto a Open-Meteo como al modelo. Para ver el mismo patrón aplicado a otras fuentes, tienes los casos de <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="agente-cripto-noticias.html">precios de criptomonedas</a> y de <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="ia-datos-abiertos-gobierno.html">datos oficiales abiertos</a>.
+</p>
 </section>
 </article>
 <aside class="lg:col-span-4 space-y-space-xl">
@@ -435,6 +501,9 @@ if respuesta.stop_reason == "tool_use":
 <a class="block hover:text-primary transition-colors" href="#sec-4">Errores y riesgos</a>
 <a class="block hover:text-primary transition-colors" href="#sec-5">De aquí a un agente completo</a>
 <a class="block text-secondary font-semibold hover:underline" href="#umami">→ Umami</a>
+<a class="block hover:text-primary transition-colors" href="#que-ha-cambiado">Qué ha cambiado</a>
+<a class="block hover:text-primary transition-colors" href="#herramienta-con-bucle">Bucle con varias herramientas</a>
+<a class="block hover:text-primary transition-colors" href="#cuanto-cuesta-consulta">Cuánto cuesta</a>
 </nav>
 </div>
 
@@ -458,7 +527,7 @@ Porque un modelo de lenguaje solo sabe lo que había en sus datos de entrenamien
 <span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
 </button>
 <div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
-Para el ejemplo de esta guía (Open-Meteo), no: es una de las pocas APIs públicas serias que no exige registro ni clave para uso no comercial. Para conectar el modelo de IA sí necesitas una clave del proveedor (Anthropic, OpenAI o Google), pero eso es aparte de la API de datos en sí.
+Para el ejemplo de esta guía (Open-Meteo), no: es una de las pocas APIs públicas serias que no exige registro ni clave para uso no comercial (su plan gratuito está limitado a 600 llamadas por minuto y 10.000 al día, y para un producto comercial hay que contratar un plan de pago). Para conectar el modelo de IA sí necesitas una clave del proveedor (Anthropic, OpenAI o Google), pero eso es aparte de la API de datos en sí.
 </div>
 </div>
 <div class="border border-outline-variant bg-surface-container-lowest">
@@ -494,7 +563,7 @@ Tu código debe capturar ese error y devolvérselo al modelo como parte del resu
 <span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
 </button>
 <div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
-La llamada a Open-Meteo es gratis. Lo que sí cuesta es la llamada al modelo de IA (normalmente dos llamadas por cada consulta: una para que decida usar la herramienta y otra para que redacte la respuesta final con el resultado), facturada por tokens según el proveedor que elijas. Para un volumen bajo o medio, el coste suele ser de céntimos al mes.
+La llamada a Open-Meteo es gratis. Lo que sí cuesta es la llamada al modelo de IA (normalmente dos llamadas por cada consulta: una para que decida usar la herramienta y otra para que redacte la respuesta final con el resultado), facturada por tokens según el proveedor que elijas. Para un volumen bajo o medio, el coste suele ser de céntimos al mes; en la sección «Cuánto cuesta cada consulta» tienes cómo calcularlo con los precios actuales.
 </div>
 </div>
 <div class="border border-outline-variant bg-surface-container-lowest">
@@ -506,6 +575,26 @@ La llamada a Open-Meteo es gratis. Lo que sí cuesta es la llamada al modelo de 
 Sí, el patrón de código es exactamente el mismo; la única diferencia es que dentro de tu función guardas la clave en una variable de entorno en tu propio servidor, nunca en el código que compartes ni en el navegador del usuario, y la añades a la petición HTTP hacia esa API en vez de hacia Open-Meteo.
 </div>
 </div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Puedo usar la demo de Open-Meteo en una web con anuncios o suscripciones?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+No con el plan gratuito: las condiciones de Open-Meteo reservan la API gratuita para uso no comercial y consideran comercial una aplicación con suscripciones o anuncios. Para ese caso tiene planes de pago; consulta sus condiciones actuales antes de publicar.
+</div>
+</div>
+
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Qué modelo conviene usar para llamar a herramientas?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Para empezar, uno intermedio como Claude Sonnet 5.5 (identificador claude-sonnet-5-5). Si tu tarea es simple y de mucho volumen, prueba Haiku 5.5, que Anthropic describe como el más rápido y barato. Haz una prueba con tus propios casos antes de elegir: la diferencia de precio es grande y la calidad necesaria depende de la tarea.
+</div>
+</div>
+
 </div>
 </section>
 <div class="bg-surface-container-low p-space-lg mb-space-2xl flex flex-col sm:flex-row items-start sm:items-center gap-space-md shadow-sm">

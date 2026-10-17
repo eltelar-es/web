@@ -20,10 +20,24 @@
   "headline": "Qué es Claude Code y cómo empezar a usarlo sin saber programar",
   "description": "Guía paso a paso para configurar la herramienta agéntica de Anthropic en tu terminal, automatizar tareas reales y evitar los errores típicos del primer día.",
   "image": "https://eltelar.es/img/og/guia-que-es-claude-code.jpg",
-  "author": {"@type": "Person", "name": "Juan Becerril Castañón", "url": "https://eltelar.es/sobre-nosotros.html#autor"},
-  "publisher": { "@type": "Organization", "name": "El Telar", "url": "https://eltelar.es/", "logo": { "@type": "ImageObject", "url": "https://eltelar.es/img/icon-512.png", "width": 512, "height": 512 } },
+  "author": {
+    "@type": "Organization",
+    "name": "El Telar",
+    "url": "https://eltelar.es/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "El Telar",
+    "url": "https://eltelar.es/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://eltelar.es/img/icon-512.png",
+      "width": 512,
+      "height": 512
+    }
+  },
   "datePublished": "2026-01-01",
-  "dateModified": "2026-10-14",
+  "dateModified": "2026-10-17",
   "mainEntityOfPage": "https://eltelar.es/articulos/que-es-claude-code.html",
   "inLanguage": "es"
 }
@@ -47,7 +61,7 @@
       "name": "¿Qué pasa si le pido algo y el resultado no es el esperado?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Como con cualquier asistente de IA, puedes pedirle que ajuste el resultado en la misma conversación en vez de empezar de cero: dile específicamente qué está mal, y el agente iterará sobre el trabajo ya hecho. Si te preocupa que haya modificado algo antes de tiempo, recuerda que por defecto pide confirmación antes de escribir o borrar archivos, así que siempre tienes la oportunidad de revisar el plan antes de que se ejecute."
+        "text": "Como con cualquier asistente de IA, puedes pedirle que ajuste el resultado en la misma conversación en vez de empezar de cero: dile específicamente qué está mal, y el agente iterará sobre el trabajo ya hecho. Si te preocupa que haya modificado algo antes de tiempo, usa el modo Manual (Shift+Tab hasta «manual mode on»), en el que pide confirmación antes de editar archivos o ejecutar comandos, y recuerda que /rewind permite volver a un punto anterior del código y de la conversación."
       }
     },
     {
@@ -55,7 +69,7 @@
       "name": "¿Es seguro dejarlo trabajar en una carpeta con archivos importantes?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Con el flag interactivo activado (el comportamiento por defecto), no debería modificar ni borrar nada sin tu confirmación explícita, lo que reduce mucho el riesgo. Aun así, para la primera vez que pruebes una tarea nueva, es buena práctica trabajar sobre una copia de la carpeta o sobre un directorio de prueba sin datos críticos, como recomienda la lista de comprobación de esta guía, hasta que confíes en cómo se comporta con ese tipo de tarea concreta."
+        "text": "En modo Manual (o en modo Plan, que ni siquiera edita), no modifica nada sin tu confirmación explícita. Ojo: en las versiones recientes la terminal arranca en modo auto, en el que un clasificador decide por ti, así que para tareas delicadas cambia a Manual con Shift+Tab. Aun así, para la primera vez que pruebes una tarea nueva, es buena práctica trabajar sobre una copia de la carpeta o sobre un directorio de prueba sin datos críticos, como recomienda la lista de comprobación de esta guía, hasta que confíes en cómo se comporta con ese tipo de tarea concreta."
       }
     },
     {
@@ -87,7 +101,31 @@
       "name": "¿Hay una versión de prueba gratuita antes de comprometerme con un plan?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "La disponibilidad y condiciones de los planes cambian con el tiempo, así que consulta siempre la página oficial de precios de Anthropic antes de decidir — es la única fuente que refleja las condiciones vigentes en el momento en que lo pruebes."
+        "text": "El plan gratuito de claude.ai no incluye Claude Code, según la documentación oficial: necesitas Pro, Max, Team, Enterprise o una cuenta de la Consola con créditos. Las condiciones y promociones cambian, así que consulta la página oficial de precios (claude.com/pricing) antes de decidir."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Funciona en Windows sin instalar WSL?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. Hoy hay instalación nativa en Windows con una línea de PowerShell (o CMD) y no hace falta ser administrador. WSL sigue siendo una opción, y es la que permite usar el aislamiento (sandbox) de comandos; en Windows nativo, la propia documentación indica que esa función no está disponible. Se recomienda instalar Git for Windows."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cómo mantengo Claude Code actualizado?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Con el instalador oficial se actualiza solo en segundo plano. Puedes forzarlo con claude update. Si lo instalaste con Homebrew o WinGet, tienes que actualizar tú (brew upgrade claude-code o winget upgrade Anthropic.ClaudeCode). Con claude doctor ves el estado de la instalación."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Se puede impedir que lea mis archivos con contraseñas?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí, con reglas deny de tipo Read en .claude/settings.json, como Read(./.env). Un archivo .claudeignore no funciona: la documentación oficial indica que no tiene efecto. Detalles en la sección «Cómo impedir que Claude lea tus secretos»."
       }
     }
   ]
@@ -121,7 +159,7 @@
 </script>
 <link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet"/></noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet"/></noscript>
 <style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><link rel="stylesheet" href="../css/tailwind.css"><link rel="stylesheet" href="../css/entrance.css?v=2"><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}(function(){var c=null;try{c=localStorage.getItem('eltelar-cookie-consent')}catch(e){}var g=c==='accepted'?'granted':'denied';gtag('consent','default',{ad_storage:g,ad_user_data:g,ad_personalization:g,analytics_storage:g,wait_for_update:500});window.adsbygoogle=window.adsbygoogle||[];if(g!=='granted'){window.adsbygoogle.requestNonPersonalizedAds=1;}})();</script><script>window.addEventListener("load",function(){setTimeout(function(){var s=document.createElement("script");s.async=true;s.src="https://www.googletagmanager.com/gtag/js?id=G-4DPTKEG79N";document.head.appendChild(s);},800);});</script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4DPTKEG79N');</script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8239907995939753" crossorigin="anonymous"></script></head><body class="bg-background font-body-md text-on-surface antialiased">
-<header class="w-full bg-surface-container-lowest border-b border-outline-variant"><div class="border-b border-outline-variant py-space-xxs px-space-md hidden md:block"><div class="max-w-site-max-width mx-auto flex items-center justify-between font-kicker text-kicker text-on-surface-variant uppercase tracking-wider"><span>EDICIÓN DIGITAL // ACTUALIZADO 2026 // EL TELAR &amp; AGENTES</span><span>MADRID · REMOTO</span><span>SIN HUMO · 100% PRODUCCIÓN</span></div></div><div class="max-w-site-max-width mx-auto px-space-md py-space-md sm:py-space-xl text-center"><p class="hidden sm:block font-kicker text-kicker uppercase tracking-widest text-on-surface-variant mb-space-xs">Publicación Independiente de Tecnología &amp; Agentes</p><a class="inline-block" href="../index.html"><div class="font-display text-display max-sm:text-[40px] max-sm:leading-none text-primary tracking-tight">El Telar</div></a><p class="hidden sm:block font-caption text-caption uppercase tracking-widest text-on-surface-variant mt-space-xs">EL BOLETÍN Y ARCHIVO PRÁCTICO DE INTELIGENCIA ARTIFICIAL Y AGENTES AUTÓNOMOS</p></div><div class="border-t border-b border-outline-variant"><div class="max-w-site-max-width mx-auto px-space-md flex items-center justify-between gap-space-sm h-14"><nav class="flex items-center gap-space-md sm:gap-space-lg h-full min-w-0 overflow-x-auto [scrollbar-width:none] whitespace-nowrap"><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../index.html#guias">GUÍAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../empieza-aqui.html">EMPIEZA AQUÍ</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../sobre-nosotros.html">SOBRE NOSOTROS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../noticias/index.html">NOTICIAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../herramientas/index.html">HERRAMIENTAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../prompts/index.html">PROMPTS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../contacto.html">CONTACTO</a></nav><div class="flex items-center gap-space-md"><button id="search-trigger" type="button" aria-label="Buscar en las guías" class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[20px]">search</span></button><a class="hidden sm:inline-block bg-primary-container text-surface px-space-md py-space-xs font-label-md text-label-md uppercase tracking-wider hover:bg-primary transition-colors" href="../index.html#despacho">SUSCRÍBETE GRATIS</a></div></div></div><div class="hidden md:block bg-surface-container-low border-b border-outline-variant py-space-xs px-space-md"><div class="max-w-site-max-width mx-auto text-center"><p class="font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">53 GUÍAS COMPLETAS EN EXPANSIÓN · ACTUALIZADO A MODELOS 2026 · PROBADO EN TERMINAL Y FLUJOS REALES · CERO HUMO NI TEORÍA VACÍA</p></div></div></header>
+<header class="w-full bg-surface-container-lowest border-b border-outline-variant"><div class="border-b border-outline-variant py-space-xxs px-space-md hidden md:block"><div class="max-w-site-max-width mx-auto flex items-center justify-between font-kicker text-kicker text-on-surface-variant uppercase tracking-wider"><span>EDICIÓN DIGITAL // ACTUALIZADO 2026 // EL TELAR &amp; AGENTES</span><span>MADRID · REMOTO</span><span>SIN HUMO · 100% PRODUCCIÓN</span></div></div><div class="max-w-site-max-width mx-auto px-space-md py-space-md sm:py-space-xl text-center"><p class="hidden sm:block font-kicker text-kicker uppercase tracking-widest text-on-surface-variant mb-space-xs">Publicación Independiente de Tecnología &amp; Agentes</p><a class="inline-block" href="../index.html"><div class="font-display text-display max-sm:text-[40px] max-sm:leading-none text-primary tracking-tight">El Telar</div></a><p class="hidden sm:block font-caption text-caption uppercase tracking-widest text-on-surface-variant mt-space-xs">EL BOLETÍN Y ARCHIVO PRÁCTICO DE INTELIGENCIA ARTIFICIAL Y AGENTES AUTÓNOMOS</p></div><div class="border-t border-b border-outline-variant"><div class="max-w-site-max-width mx-auto px-space-md flex items-center justify-between gap-space-sm h-14"><nav class="flex items-center gap-space-md sm:gap-space-lg h-full min-w-0 overflow-x-auto [scrollbar-width:none] whitespace-nowrap"><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../index.html#guias">GUÍAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../empieza-aqui.html">EMPIEZA AQUÍ</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../sobre-nosotros.html">SOBRE NOSOTROS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../noticias/index.html">NOTICIAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../herramientas/index.html">HERRAMIENTAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../prompts/index.html">PROMPTS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../contacto.html">CONTACTO</a></nav><div class="flex items-center gap-space-md"><button id="search-trigger" type="button" aria-label="Buscar en las guías" class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[20px]">search</span></button><a class="hidden sm:inline-block bg-primary-container text-surface px-space-md py-space-xs font-label-md text-label-md uppercase tracking-wider hover:bg-primary transition-colors" href="../index.html#despacho">SUSCRÍBETE GRATIS</a></div></div></div><div class="hidden md:block bg-surface-container-low border-b border-outline-variant py-space-xs px-space-md"><div class="max-w-site-max-width mx-auto text-center"><p class="font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">56 GUÍAS COMPLETAS EN EXPANSIÓN · ACTUALIZADO A MODELOS 2026 · PROBADO EN TERMINAL Y FLUJOS REALES · CERO HUMO NI TEORÍA VACÍA</p></div></div></header>
 <main class="w-full max-w-site-max-width mx-auto px-space-md py-space-xl"><div class="flex flex-col w-full">
 <div class="fixed top-0 left-0 w-full h-1 z-50 bg-surface-container-high pointer-events-none">
 <div class="h-full bg-primary transition-all duration-75 w-0" id="scroll-progress"></div>
@@ -160,7 +198,7 @@
           14 min de lectura
         </span>
 <span class="text-on-surface-variant">·</span>
-<time datetime="2026-02-18">Actualizado en 2026</time>
+<time datetime="2026-10-17">Revisado el 17 de octubre de 2026</time>
 <span class="text-on-surface-variant">·</span>
 <span class="inline-flex items-center px-1.5 py-0.5 bg-surface-container font-kicker text-[10px] uppercase tracking-wider text-primary">
           Verificado en entorno real
@@ -198,7 +236,7 @@
 </li>
 <li class="flex items-start gap-space-xs">
 <span class="text-secondary font-bold select-none">02.</span>
-<span>Instalación guiada sin dependencias complejas en macOS, Windows (WSL) y Linux.</span>
+<span>Instalación con el instalador oficial en macOS, Linux y Windows (nativo o WSL), y cómo funcionan hoy los modos de permisos.</span>
 </li>
 <li class="flex items-start gap-space-xs">
 <span class="text-secondary font-bold select-none">03.</span>
@@ -221,7 +259,7 @@
           Este intercambio manual introduce una fricción insoportable para quienes no conocen la sintaxis exacta de su consola. Un agente de terminal como <strong class="font-semibold text-primary">Claude Code</strong> opera bajo un paradigma completamente opuesto: el ciclo reflexivo <code class="bg-surface-container px-1.5 py-0.5 text-body-sm font-mono">Observe-Plan-Act</code>.
         </p>
 <p class="font-body-lg text-body-lg text-on-surface leading-relaxed mb-space-md">
-          La consecuencia práctica de este ciclo es que el agente no necesita que le expliques la solución técnica, solo el resultado que quieres conseguir. Si tú mismo no sabes qué comando de terminal resolvería tu problema, no hay ningún paso previo que tengas que investigar antes de pedirlo: describes el objetivo en tus propias palabras, y es el agente quien decide qué comandos ejecutar para llegar ahí, mostrándote cada paso antes de aplicarlo si el cambio afecta a tus archivos. Esa combinación — no necesitar saber la solución técnica de antemano, pero mantener visibilidad y control sobre cada paso — es lo que hace razonable delegar tareas reales desde el primer día, no solo experimentos de prueba.</p>
+          La consecuencia práctica de este ciclo es que el agente no necesita que le expliques la solución técnica, solo el resultado que quieres conseguir. Si tú mismo no sabes qué comando de terminal resolvería tu problema, no hay ningún paso previo que tengas que investigar antes de pedirlo: describes el objetivo en tus propias palabras, y es el agente quien decide qué comandos ejecutar para llegar ahí, pidiéndote permiso antes de cambiar tus archivos mientras uses el modo Manual (más abajo te explicamos cómo elegir modo). Esa combinación — no necesitar saber la solución técnica de antemano, pero mantener visibilidad y control sobre cada paso — es lo que hace razonable delegar tareas reales desde el primer día, no solo experimentos de prueba.</p>
 <div class="my-space-xl p-space-md bg-surface-container-lowest">
 <div class="font-kicker text-kicker uppercase text-on-surface-variant tracking-wider mb-space-sm text-center">
             DIAGRAMA 1.0 // CICLO DE EJECUCIÓN AUTÓNOMA EN CLAUDE CODE
@@ -263,7 +301,7 @@
 <span class="font-kicker text-kicker uppercase tracking-widest text-secondary font-bold">NOTA DE PRODUCCIÓN // ARQUITECTURA</span>
 </div>
 <p class="font-body-md text-body-md text-on-surface leading-relaxed">
-            Claude Code no es una extensión pasiva de tu editor. Funciona como un binario conectado al Model Context Protocol de Anthropic, trabajando en tu terminal nativa con permisos estrictos de lectura y escritura otorgados bajo tu supervisión explícita.
+            Claude Code no es una extensión pasiva de tu editor. Es un programa que se ejecuta en tu terminal, lee tus archivos y lanza comandos con los permisos que tú le concedes; además puede conectarse a herramientas externas mediante MCP (lo explicamos en <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" href="mcp-explicado.html">MCP explicado</a>). Cuánto te pregunta antes de actuar depende del modo de permisos que tengas activo (más abajo).
           </p>
 </aside>
 <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
@@ -275,12 +313,12 @@
           2. Instalación en 3 minutos (incluso si jamás has abierto la consola)
         </h2>
 <p class="font-body-lg text-body-lg text-on-surface leading-relaxed mb-space-md">
-          El mayor obstáculo psicológico para profesionales no técnicos es la ventana negra de la terminal. Sin embargo, no precisas configurar entornos virtuales complejos en Python ni compilar dependencias en C++. Si tu ordenador cuenta con Node.js instalado, el despliegue requiere exactamente dos instrucciones.
+          El mayor obstáculo psicológico para profesionales no técnicos es la ventana negra de la terminal. Sin embargo, no precisas configurar entornos virtuales complejos en Python ni compilar dependencias en C++. Hoy el método recomendado por Anthropic es un instalador oficial de una sola línea que no necesita Node.js: copias, pegas y listo.
         </p>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-space-md mb-space-md">
 <div class="bg-surface-container-low p-space-sm">
 <span class="font-kicker text-kicker uppercase text-secondary block mb-1">macOS</span>
-<p class="font-body-sm text-body-sm text-on-surface-variant">Terminal nativa. Sin pasos extra: los comandos de abajo funcionan tal cual.</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Terminal nativa (la app Terminal). Vale el comando de macOS, Linux y WSL de abajo.</p>
 </div>
 <div class="bg-surface-container-low p-space-sm">
 <span class="font-kicker text-kicker uppercase text-secondary block mb-1">Linux</span>
@@ -288,7 +326,7 @@
 </div>
 <div class="bg-surface-container-low p-space-sm">
 <span class="font-kicker text-kicker uppercase text-secondary block mb-1">Windows</span>
-<p class="font-body-sm text-body-sm text-on-surface-variant">Instala primero WSL (<code class="font-mono text-[11px] bg-surface-container px-1">wsl --install</code> en PowerShell como administrador, y reinicia). Después, los mismos comandos funcionan dentro de esa terminal Linux.</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Puedes instalarlo directamente en Windows con la línea de PowerShell de abajo (no hace falta WSL ni ser administrador), o dentro de WSL con el comando de Linux. Se recomienda tener Git for Windows instalado.</p>
 </div>
 </div>
 <div class="my-space-lg bg-inverse-surface text-inverse-on-surface p-space-md">
@@ -304,22 +342,26 @@
 <span id="copy-btn-text">COPIAR COMANDOS</span>
 </button>
 </div>
-<pre class="font-mono text-body-sm leading-relaxed overflow-x-auto py-space-xs"><span class="text-inverse-primary"># 1. Instalar el paquete de Claude Code globalmente en tu sistema</span>
-<span class="text-surface">npm install -g @anthropic-ai/claude-code</span>
+<pre class="font-mono text-body-sm leading-relaxed overflow-x-auto py-space-xs"><span class="text-inverse-primary"># 1. macOS, Linux o WSL: instalador oficial</span>
+<span class="text-surface">curl -fsSL https://claude.ai/install.sh | bash</span>
 
-<span class="text-inverse-primary"># 2. Iniciar sesión vinculando tu cuenta de Anthropic</span>
-<span class="text-surface">claude login</span>
+<span class="text-inverse-primary"># 1b. Windows (PowerShell): instalador oficial</span>
+<span class="text-surface">irm https://claude.ai/install.ps1 | iex</span>
 
-<span class="text-inverse-primary"># 3. Lanzar el entorno agéntico dentro de cualquier carpeta</span>
-<span class="text-secondary-container">claude</span></pre>
+<span class="text-inverse-primary"># 2. Abre una terminal nueva y comprueba que se instaló</span>
+<span class="text-surface">claude --version</span>
+
+<span class="text-inverse-primary"># 3. Entra en una carpeta de prueba y lanza Claude Code (la primera vez te pide iniciar sesión)</span>
+<span class="text-secondary-container">cd ruta/a/tu/carpeta
+claude</span></pre>
 </div>
 <p class="font-body-lg text-body-lg text-on-surface leading-relaxed mb-space-md">
-          Al escribir <code class="bg-surface-container px-1.5 py-0.5 text-body-sm font-mono">claude login</code>, se abrirá tu navegador para autorizar la sesión con tu cuenta de Anthropic (Consola estándar o Claude Pro/Team, según tu plan).
+          La primera vez que ejecutes <code class="bg-surface-container px-1.5 py-0.5 text-body-sm font-mono">claude</code> se abrirá tu navegador para iniciar sesión. Según la documentación oficial, necesitas un plan Pro, Max, Team o Enterprise, una cuenta de la Consola de Anthropic (API con créditos prepagados) o acceso por un proveedor en la nube compatible: <strong>el plan gratuito de claude.ai no incluye Claude Code</strong>. Para cambiar de cuenta más tarde, escribe <code class="bg-surface-container px-1.5 py-0.5 text-body-sm font-mono">/login</code> dentro de la sesión. El instalador oficial se actualiza solo en segundo plano; si lo instalas con Homebrew (<code class="bg-surface-container px-1.5 py-0.5 text-body-sm font-mono">brew install --cask claude-code</code>) o WinGet (<code class="bg-surface-container px-1.5 py-0.5 text-body-sm font-mono">winget install Anthropic.ClaudeCode</code>), actualizas tú. También existe la vía npm (<code class="bg-surface-container px-1.5 py-0.5 text-body-sm font-mono">npm install -g @anthropic-ai/claude-code</code>), que exige Node.js 22 o superior.
         </p>
 <div class="bg-surface-container-low p-space-md my-space-md">
 <h3 class="font-kicker text-kicker uppercase tracking-wider text-primary mb-space-xs">¿QUÉ VES AL INGRESAR POR PRIMERA VEZ?</h3>
 <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-            La interfaz reemplaza el prompt tradicional de Bash por una línea de entrada interactiva enriquecida. Claude Code indexa en segundos los nombres de los ficheros del directorio activo, calcula el árbol de dependencias y muestra un resumen de contexto.
+            Verás una línea de entrada y, encima, la versión, el modelo activo y la carpeta de trabajo. Claude Code no «indexa» tu proyecto de antemano: lee los archivos que necesita según se lo vas pidiendo, así que puedes empezar con una pregunta tan simple como «¿qué hace este proyecto?». Escribe <code class="font-mono text-[11px] bg-surface-container px-1">/help</code> para ver los comandos y <code class="font-mono text-[11px] bg-surface-container px-1">/resume</code> para retomar una conversación anterior.
           </p>
 </div>
 <figure class="my-space-lg">
@@ -329,7 +371,7 @@
 <div class="bg-surface-container-low p-space-md my-space-md">
 <h3 class="font-kicker text-kicker uppercase tracking-wider text-primary mb-space-xs">Si algo falla en la instalación</h3>
 <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-            El error más común es que <code class="font-mono text-[11px] bg-surface-container px-1">npm</code> no esté disponible porque Node.js no está instalado. Comprueba con <code class="font-mono text-[11px] bg-surface-container px-1">node -v</code> antes del primer paso; si no devuelve un número de versión, instala Node.js desde su web oficial antes de continuar. El segundo error más común en Windows es intentar ejecutar los comandos directamente en PowerShell en vez de dentro de la terminal de WSL — los comandos de esta guía están pensados para un entorno tipo Linux, no para PowerShell nativo. Si `claude login` no abre el navegador automáticamente, copia el enlace que aparece impreso en la terminal y pégalo tú mismo en cualquier navegador para completar la autorización manualmente.
+            Si tras instalar la terminal dice que <code class="font-mono text-[11px] bg-surface-container px-1">claude</code> no se encuentra, cierra la terminal, abre una nueva y vuelve a probar <code class="font-mono text-[11px] bg-surface-container px-1">claude --version</code>: casi siempre es que la carpeta de instalación aún no está en el PATH. En Windows, el fallo típico es mezclar terminales: la línea que empieza por <code class="font-mono text-[11px] bg-surface-container px-1">irm</code> es solo para PowerShell (el prompt empieza por «PS»), y si ves «'irm' no se reconoce» estás en CMD. Si algo sigue fallando, ejecuta <code class="font-mono text-[11px] bg-surface-container px-1">claude doctor</code>, que muestra un diagnóstico de la instalación sin abrir sesión, o consulta la <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://code.claude.com/docs/en/troubleshoot-install">guía oficial de problemas de instalación</a>. Si el navegador no se abre al iniciar sesión, copia el enlace que aparece en la terminal y pégalo tú mismo en el navegador.
           </p>
 </div>
 </section>
@@ -352,7 +394,7 @@
 <div class="bg-surface-container-lowest p-space-lg hover:shadow-md transition-shadow">
 <div class="flex items-center justify-between mb-space-xs">
 <span class="font-kicker text-kicker uppercase tracking-wider text-secondary font-bold">CASO DE USO 01 // GESTIÓN DOCUMENTAL</span>
-<span class="font-caption text-caption text-on-surface-variant">Tiempo de ahorro: ~45 min</span>
+<span class="font-caption text-caption text-on-surface-variant">Ahorro orientativo (estimación nuestra): ~45 min</span>
 </div>
 <h3 class="font-headline-sm text-headline-sm text-primary mb-space-xs">
               Auditoría y normalización de carpetas de notas o contratos
@@ -367,7 +409,7 @@
 <div class="bg-surface-container-lowest p-space-lg hover:shadow-md transition-shadow">
 <div class="flex items-center justify-between mb-space-xs">
 <span class="font-kicker text-kicker uppercase tracking-wider text-secondary font-bold">CASO DE USO 02 // ANÁLISIS DE DATOS</span>
-<span class="font-caption text-caption text-on-surface-variant">Tiempo de ahorro: ~90 min</span>
+<span class="font-caption text-caption text-on-surface-variant">Ahorro orientativo (estimación nuestra): ~90 min</span>
 </div>
 <h3 class="font-headline-sm text-headline-sm text-primary mb-space-xs">
               Depuración de hojas de cálculo rotas y discrepancias numéricas
@@ -382,7 +424,7 @@
 <div class="bg-surface-container-lowest p-space-lg hover:shadow-md transition-shadow">
 <div class="flex items-center justify-between mb-space-xs">
 <span class="font-kicker text-kicker uppercase tracking-wider text-secondary font-bold">CASO DE USO 03 // INFRAESTRUCTURA PERSONAL</span>
-<span class="font-caption text-caption text-on-surface-variant">Tiempo de ahorro: ~120 min</span>
+<span class="font-caption text-caption text-on-surface-variant">Ahorro orientativo (estimación nuestra): ~120 min</span>
 </div>
 <h3 class="font-headline-sm text-headline-sm text-primary mb-space-xs">
               Diagnóstico de errores locales y configuración de entornos
@@ -397,22 +439,22 @@
 <div class="bg-surface-container-lowest p-space-lg hover:shadow-md transition-shadow">
 <div class="flex items-center justify-between mb-space-xs">
 <span class="font-kicker text-kicker uppercase tracking-wider text-secondary font-bold">CASO DE USO 04 // DOCUMENTACIÓN</span>
-<span class="font-caption text-caption text-on-surface-variant">Tiempo de ahorro: ~60 min</span>
+<span class="font-caption text-caption text-on-surface-variant">Ahorro orientativo (estimación nuestra): ~60 min</span>
 </div>
 <h3 class="font-headline-sm text-headline-sm text-primary mb-space-xs">
               Redactar un resumen ejecutivo a partir de varios documentos dispersos
             </h3>
 <p class="font-body-md text-body-md text-on-surface-variant mb-space-sm leading-relaxed">
-              Si tienes actas de reunión, un informe en PDF y una hoja de cálculo con cifras, todos relacionados con el mismo proyecto, el agente puede leer los tres a la vez y redactar un resumen que cruce la información sin que tengas que copiar nada manualmente entre archivos.
+              Si tienes actas de reunión, un informe en PDF y una hoja de cálculo exportada a CSV con cifras, todos relacionados con el mismo proyecto, el agente puede leer los tres a la vez y redactar un resumen que cruce la información sin que tengas que copiar nada manualmente entre archivos.
             </p>
 <div class="bg-surface-container-low p-space-sm font-mono text-body-sm text-primary">
-<span class="text-on-surface-variant select-none">&gt; </span>claude "Lee las actas en /reuniones, el informe informe_q3.pdf y las cifras de presupuesto.xlsx, y redacta un resumen.md de una página cruzando decisiones tomadas con el estado real del presupuesto."
+<span class="text-on-surface-variant select-none">&gt; </span>claude "Lee las actas en /reuniones, el informe informe_q3.pdf y las cifras de presupuesto.csv, y redacta un resumen.md de una página cruzando decisiones tomadas con el estado real del presupuesto."
             </div>
 </div>
 </div>
 </section>
 <section class="mb-space-2xl">
-<figure data-inline-photo class="space-y-space-xs my-space-xl"><img class="w-full border border-outline-variant" src="../img/guias/foto-que-es-claude-code.jpg" alt="Documentación oficial de Claude Code" width="1280" height="720" loading="lazy" decoding="async"/><figcaption class="font-caption text-caption text-on-surface-variant">Captura de pantalla: <a class="underline" href="https://docs.anthropic.com/en/docs/claude-code/overview" rel="nofollow noopener" target="_blank">docs.anthropic.com/en/docs/claude-code/overview</a>.</figcaption></figure>
+<figure data-inline-photo class="space-y-space-xs my-space-xl"><img class="w-full border border-outline-variant" src="../img/guias/foto-que-es-claude-code.jpg" alt="Documentación oficial de Claude Code" width="1280" height="720" loading="lazy" decoding="async"/><figcaption class="font-caption text-caption text-on-surface-variant">Captura de pantalla: <a class="underline" href="https://code.claude.com/docs/en/overview" rel="nofollow noopener" target="_blank">code.claude.com/docs/en/overview</a>.</figcaption></figure>
 <h2 id="sec-4" class="font-headline-md text-headline-md text-primary mb-space-md tracking-tight">
           4. Los 3 límites que nadie te cuenta (y cómo no quemar tu cuota)
         </h2>
@@ -422,23 +464,23 @@
 <div class="grid grid-cols-1 md:grid-cols-3 gap-space-md my-space-lg">
 <div class="p-space-md bg-surface-container-low">
 <span class="font-headline-md text-secondary font-bold select-none block mb-1">01</span>
-<h3 class="font-label-md text-label-md text-primary uppercase font-bold mb-space-xs">Usa .claudeignore</h3>
+<h3 class="font-label-md text-label-md text-primary uppercase font-bold mb-space-xs">Bloquea lo sensible</h3>
 <p class="font-body-sm text-body-sm text-on-surface-variant">
-              Crea un archivo <code class="font-mono text-[11px] bg-surface-container px-1">.claudeignore</code> en la raíz y excluye carpetas masivas como <code class="font-mono text-[11px]">node_modules</code>, <code class="font-mono text-[11px]">.git</code> o binarios pesados.
+              Un archivo <code class="font-mono text-[11px] bg-surface-container px-1">.claudeignore</code> no funciona: la documentación oficial dice que no tiene efecto. Para que Claude no lea <code class="font-mono text-[11px]">.env</code> o una carpeta de secretos, añade reglas <code class="font-mono text-[11px]">Read</code> en <code class="font-mono text-[11px]">permissions.deny</code> (ver recuadro de abajo).
             </p>
 </div>
 <div class="p-space-md bg-surface-container-low">
 <span class="font-headline-md text-secondary font-bold select-none block mb-1">02</span>
-<h3 class="font-label-md text-label-md text-primary uppercase font-bold mb-space-xs">Permiso de escritura</h3>
+<h3 class="font-label-md text-label-md text-primary uppercase font-bold mb-space-xs">Modo de permisos</h3>
 <p class="font-body-sm text-body-sm text-on-surface-variant">
-              Por defecto, Claude Code pide confirmación antes de escribir o borrar archivos. <strong>Nunca desactives el flag interactivo</strong> hasta haber verificado el plan.
+              En terminal y VS Code, las versiones recientes arrancan en modo <strong>auto</strong> (un clasificador revisa las acciones en lugar de preguntarte cada vez). Si prefieres aprobar tú, pulsa <code class="font-mono text-[11px] bg-surface-container px-1">Shift+Tab</code> hasta ver «manual mode on». Detalles en la sección «Modos de permisos».
             </p>
 </div>
 <div class="p-space-md bg-surface-container-low">
 <span class="font-headline-md text-secondary font-bold select-none block mb-1">03</span>
 <h3 class="font-label-md text-label-md text-primary uppercase font-bold mb-space-xs">Context Compaction</h3>
 <p class="font-body-sm text-body-sm text-on-surface-variant">
-              Si llevas 20 minutos encadenando preguntas, escribe <code class="font-mono text-[11px] bg-surface-container px-1">/compact</code> para condensar el historial y purgar redundancias.
+              Si llevas 20 minutos encadenando preguntas, escribe <code class="font-mono text-[11px] bg-surface-container px-1">/compact</code> para condensar el historial. Con <code class="font-mono text-[11px] bg-surface-container px-1">/clear</code> empiezas de cero al cambiar de tema y con <code class="font-mono text-[11px] bg-surface-container px-1">/usage</code> ves cuánto llevas gastado.
             </p>
 </div>
 </div>
@@ -448,6 +490,10 @@
 <div class="flex gap-space-sm"><dt class="font-mono text-primary font-bold w-24 shrink-0">/clear</dt><dd class="text-on-surface-variant">Empieza una conversación nueva, sin arrastrar contexto de la anterior.</dd></div>
 <div class="flex gap-space-sm"><dt class="font-mono text-primary font-bold w-24 shrink-0">/compact</dt><dd class="text-on-surface-variant">Resume la conversación actual para liberar espacio de contexto sin perder el hilo.</dd></div>
 <div class="flex gap-space-sm"><dt class="font-mono text-primary font-bold w-24 shrink-0">/help</dt><dd class="text-on-surface-variant">Lista todos los comandos disponibles en tu versión instalada.</dd></div>
+<div class="flex gap-space-sm"><dt class="font-mono text-primary font-bold w-24 shrink-0">/usage</dt><dd class="text-on-surface-variant">Muestra el coste de la sesión y, con plan de suscripción, cuánto llevas de tu límite de uso.</dd></div>
+<div class="flex gap-space-sm"><dt class="font-mono text-primary font-bold w-24 shrink-0">/context</dt><dd class="text-on-surface-variant">Dibuja cuánto contexto llevas ocupado y qué lo consume.</dd></div>
+<div class="flex gap-space-sm"><dt class="font-mono text-primary font-bold w-24 shrink-0">/model</dt><dd class="text-on-surface-variant">Cambia de modelo a mitad de sesión.</dd></div>
+<div class="flex gap-space-sm"><dt class="font-mono text-primary font-bold w-24 shrink-0">/rewind</dt><dd class="text-on-surface-variant">Vuelve a un punto anterior de la conversación y/o del código.</dd></div>
 <div class="flex gap-space-sm"><dt class="font-mono text-primary font-bold w-24 shrink-0">Esc</dt><dd class="text-on-surface-variant">Interrumpe al agente a media tarea si ves que va por mal camino.</dd></div>
 </dl>
 </div>
@@ -463,17 +509,19 @@
           Un CLAUDE.md útil no necesita ser largo: unas pocas líneas indicando qué carpetas evitar, qué formato de salida prefieres para los informes, o convenciones propias de tu forma de organizar archivos ya ahorra tener que repetir esas mismas instrucciones sesión tras sesión. No lo trates como documentación formal para otras personas, trátalo como una nota rápida para ti mismo: cuanto más concreto y corto, más probable que lo mantengas actualizado con el tiempo. Si trabajas en varios proyectos distintos, cada uno puede tener su propio CLAUDE.md con reglas específicas de ese proyecto en concreto.</p>
 <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
           Una forma práctica de empezar sin pensar demasiado en la estructura: la primera vez que corrijas al agente por algo que ya deberías haber especificado ("no, los informes van siempre en tabla, no en prosa"), añade esa misma corrección al CLAUDE.md del proyecto en ese momento, en vez de solo corregirlo en la conversación actual. Con el tiempo, el archivo se convierte en un resumen vivo de las convenciones de ese proyecto, construido a partir de correcciones reales en vez de una lista teórica escrita de antemano sin saber qué haría falta.</p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Un límite práctico que da la propia documentación: apunta a menos de unas 200 líneas por archivo CLAUDE.md, porque los más largos consumen contexto y se siguen peor. Claude también puede guardar notas por su cuenta (la «memoria automática»); la gestionas con <code class="bg-surface-container px-1.5 py-0.5 text-body-sm font-mono">/memory</code>. Fuente: <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://code.claude.com/docs/en/memory">code.claude.com/docs/en/memory</a>.</p>
 </section>
 <section class="mb-space-2xl">
 <h2 id="sec-6" class="font-headline-md text-headline-md text-primary mb-space-md tracking-tight">
           6. Suscripción frente a clave de API: qué opción conviene según tu uso
         </h2>
 <p class="font-body-lg text-body-lg text-on-surface leading-relaxed mb-space-md">
-          Al ejecutar <code class="bg-surface-container px-1.5 py-0.5 text-body-sm font-mono">claude login</code> puedes vincular una cuenta de suscripción (Claude Pro o Claude Max) o una clave de API de la Consola de Anthropic con facturación por uso. La diferencia práctica: la suscripción tiene un coste mensual fijo con un límite de uso incluido, mientras que la clave de API cobra por cada token procesado, sin límite mensual fijo pero con la posibilidad de fijar un tope de gasto manual.</p>
+          Al iniciar sesión puedes vincular una cuenta de suscripción (Claude Pro, Max, Team o Enterprise) o una cuenta de la Consola de Anthropic (API) con créditos prepagados y facturación por uso. La diferencia práctica: la suscripción tiene un coste mensual fijo con un límite de uso incluido, mientras que la clave de API cobra por cada token procesado, sin límite mensual fijo pero con la posibilidad de fijar límites de gasto por espacio de trabajo en la Consola. Los precios de los planes cambian: míralos siempre en <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://claude.com/pricing">claude.com/pricing</a>.</p>
 <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
           Para un uso diario moderado y predecible (unas pocas horas de trabajo por día), la suscripción suele salir más barata y más simple de controlar, porque sabes de antemano cuánto vas a pagar ese mes. La clave de API tiene sentido cuando tu uso es muy variable o esporádico, o cuando quieres integrar Claude Code en un flujo automatizado propio donde necesitas control fino sobre el gasto por tarea concreta. Si empiezas y no sabes cuál de los dos patrones describe mejor tu caso, la suscripción es la opción más simple para probar sin sorpresas en la primera factura.</p>
 <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
-          Puedes cambiar de una opción a otra más adelante sin perder tu configuración local (el CLAUDE.md del proyecto, el archivo .claudeignore, tus preferencias) — la elección inicial no es una decisión permanente, es solo el punto de partida más razonable dado lo que sabes de tu propio patrón de uso en este momento.</p>
+          Puedes cambiar de una opción a otra más adelante sin perder tu configuración local (el CLAUDE.md del proyecto, tus reglas de permisos, tus preferencias) — la elección inicial no es una decisión permanente, es solo el punto de partida más razonable dado lo que sabes de tu propio patrón de uso en este momento.</p>
 </section>
 <section class="bg-surface-container-lowest p-space-lg mb-space-2xl">
 <h3 class="font-kicker text-kicker uppercase tracking-wider text-primary mb-space-md flex items-center gap-2">
@@ -483,11 +531,11 @@
 <div class="space-y-space-sm font-body-sm text-body-sm">
 <label class="flex items-center gap-space-sm cursor-pointer select-none">
 <input checked="" class="w-4 h-4 accent-primary rounded-none" type="checkbox"/>
-<span class="text-on-surface">Node.js (v18.0 o superior) verificado en la consola mediante <code class="font-mono text-[12px]">node -v</code></span>
+<span class="text-on-surface">Instalación comprobada: <code class="font-mono text-[12px]">claude --version</code> devuelve un número de versión</span>
 </label>
 <label class="flex items-center gap-space-sm cursor-pointer select-none">
 <input checked="" class="w-4 h-4 accent-primary rounded-none" type="checkbox"/>
-<span class="text-on-surface">Clave de API de Anthropic generada con límite de gasto mensual prefijado</span>
+<span class="text-on-surface">Acceso confirmado: plan de pago de Claude o cuenta de la Consola (el plan gratuito no vale); si usas API, límite de gasto fijado</span>
 </label>
 <label class="flex items-center gap-space-sm cursor-pointer select-none">
 <input class="w-4 h-4 accent-primary rounded-none" type="checkbox"/>
@@ -495,7 +543,7 @@
 </label>
 <label class="flex items-center gap-space-sm cursor-pointer select-none">
 <input class="w-4 h-4 accent-primary rounded-none" type="checkbox"/>
-<span class="text-on-surface">Archivo <code class="font-mono text-[12px]">.claudeignore</code> configurado con exclusión de backups</span>
+<span class="text-on-surface">Reglas <code class="font-mono text-[12px]">permissions.deny</code> para <code class="font-mono text-[12px]">.env</code> y carpetas de secretos, y modo de permisos elegido a propósito (<code class="font-mono text-[12px]">Shift+Tab</code>)</span>
 </label>
 </div>
 </section>
@@ -544,6 +592,46 @@
 <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed"><strong class="text-on-surface">Lo honesto:</strong> todo lo que pones en CLAUDE.md se carga en cada sesión y ocupa contexto. Cuanto más corto y concreto, mejor. Claude Code requiere un plan de pago o API.</p>
 <p class="font-body-sm text-body-sm mt-space-sm"><strong class="text-on-surface">Documentación:</strong> <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://code.claude.com/docs/en/commands">code.claude.com/docs/en/commands</a></p>
 </section>
+<section id="modos-permisos" class="mb-space-2xl space-y-space-md scroll-mt-24">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Modos de permisos: cuánto te pregunta Claude antes de actuar</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Un «modo de permisos» decide qué puede hacer Claude Code sin pedirte confirmación. Esto ha cambiado respecto a las primeras versiones: según la documentación oficial, desde la versión 2.1.283 el modo con el que arrancan por defecto las sesiones de terminal y de VS Code es <strong>auto</strong>, en el que un segundo modelo (un «clasificador») revisa las acciones en lugar de preguntarte cada vez. Si quieres aprobar tú cada paso, tienes que elegir el modo Manual.</p>
+<div class="overflow-x-auto"><table class="w-full text-left font-body-sm text-body-sm border border-outline-variant"><thead class="bg-surface-container-low"><tr><th class="p-space-sm border-b border-outline-variant">Modo</th><th class="p-space-sm border-b border-outline-variant">Qué hace sin preguntarte</th><th class="p-space-sm border-b border-outline-variant">Cuándo usarlo</th></tr></thead><tbody><tr><td class="p-space-sm border-b border-outline-variant align-top font-semibold text-primary">Manual (<code>default</code>)</td><td class="p-space-sm border-b border-outline-variant align-top">Solo leer archivos.</td><td class="p-space-sm border-b border-outline-variant align-top">Trabajo delicado, proyectos que no conoces, tu primer día.</td></tr><tr><td class="p-space-sm border-b border-outline-variant align-top font-semibold text-primary">Aceptar ediciones (<code>acceptEdits</code>)</td><td class="p-space-sm border-b border-outline-variant align-top">Leer, editar archivos y comandos simples como <code>mkdir</code>, <code>mv</code> o <code>cp</code>.</td><td class="p-space-sm border-b border-outline-variant align-top">Cuando revisas el resultado después.</td></tr><tr><td class="p-space-sm border-b border-outline-variant align-top font-semibold text-primary">Plan (<code>plan</code>)</td><td class="p-space-sm border-b border-outline-variant align-top">Leer y explorar; no edita tu código hasta que apruebes un plan.</td><td class="p-space-sm border-b border-outline-variant align-top">Antes de cambios grandes (ver sección «El modo plan»).</td></tr><tr><td class="p-space-sm border-b border-outline-variant align-top font-semibold text-primary">Auto (<code>auto</code>)</td><td class="p-space-sm border-b border-outline-variant align-top">Casi todo, con comprobaciones de seguridad en segundo plano.</td><td class="p-space-sm border-b border-outline-variant align-top">Tareas largas cuando ya confías en el entorno.</td></tr><tr><td class="p-space-sm border-b border-outline-variant align-top font-semibold text-primary">Saltar permisos (<code>bypassPermissions</code>)</td><td class="p-space-sm border-b border-outline-variant align-top">Todo.</td><td class="p-space-sm border-b border-outline-variant align-top">Solo en contenedores o máquinas virtuales aisladas; no en tu ordenador personal.</td></tr></tbody></table></div>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Para cambiar de modo en plena sesión pulsa <code>Shift+Tab</code>: la barra de estado muestra «manual mode on», «accept edits on», «plan mode on» o «auto mode on». Para arrancar siempre en un modo concreto puedes usar, por ejemplo, <code>claude --permission-mode manual</code>.</p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed"><strong>Lo honesto:</strong> nuestra recomendación para el primer día es Manual o Plan sobre una carpeta de prueba, aunque pierdas comodidad. Las reglas de bloqueo (<code>deny</code>) valen en todos los modos, incluso en el más permisivo.</p>
+<p class="font-body-sm text-body-sm mt-space-sm"><strong class="text-on-surface">Fuente oficial:</strong> <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://code.claude.com/docs/en/permission-modes">code.claude.com/docs/en/permission-modes</a></p>
+</section>
+<section id="proteger-archivos" class="mb-space-2xl space-y-space-md scroll-mt-24">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Cómo impedir que Claude lea tus secretos</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Aunque no haya un <code>.claudeignore</code>, sí puedes bloquear rutas. Crea (o edita) el archivo <code>.claude/settings.json</code> dentro de tu proyecto con reglas <code>deny</code> de tipo <code>Read</code>:</p>
+<pre class="bg-surface-container-low p-space-md overflow-x-auto font-mono text-body-sm text-on-surface"><code>{
+  &quot;permissions&quot;: {
+    &quot;deny&quot;: [
+      &quot;Read(./.env)&quot;,
+      &quot;Read(./secrets/**)&quot;
+    ]
+  }
+}</code></pre>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Las reglas de bloqueo se evalúan antes que las de permiso y no se pueden saltar con una regla <code>allow</code>. Los patrones usan la misma sintaxis que <code>.gitignore</code>. Para más protección contra instrucciones ocultas en páginas o documentos, lee también <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" href="prompt-injection-agentes-ia.html">Prompt injection en agentes de IA</a>.</p>
+<p class="font-body-sm text-body-sm mt-space-sm"><strong class="text-on-surface">Fuente oficial:</strong> <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://code.claude.com/docs/en/permissions">code.claude.com/docs/en/permissions</a></p>
+</section>
+<section id="modelos-coste" class="mb-space-2xl space-y-space-md scroll-mt-24">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Qué modelo elegir y cuánto cuesta (octubre de 2026)</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Dentro de Claude Code cambias de modelo con <code>/model</code>. Para que te hagas una idea de la escala, estos son los precios de lista de la API de Anthropic por millón de tokens; con una suscripción Pro o Max no pagas por token, sino que consumes el límite de uso de tu plan:</p>
+<div class="overflow-x-auto"><table class="w-full text-left font-body-sm text-body-sm border border-outline-variant"><thead class="bg-surface-container-low"><tr><th class="p-space-sm border-b border-outline-variant">Modelo</th><th class="p-space-sm border-b border-outline-variant">Entrada / salida (por millón de tokens)</th><th class="p-space-sm border-b border-outline-variant">Para qué lo recomienda Anthropic</th></tr></thead><tbody><tr><td class="p-space-sm border-b border-outline-variant align-top font-semibold text-primary">Claude Fable 5.1</td><td class="p-space-sm border-b border-outline-variant align-top">10 $ / 50 $</td><td class="p-space-sm border-b border-outline-variant align-top">Razonamiento exigente y trabajo agéntico largo.</td></tr><tr><td class="p-space-sm border-b border-outline-variant align-top font-semibold text-primary">Claude Opus 5.5</td><td class="p-space-sm border-b border-outline-variant align-top">4 $ / 20 $</td><td class="p-space-sm border-b border-outline-variant align-top">Programación agéntica larga y trabajo de conocimiento.</td></tr><tr><td class="p-space-sm border-b border-outline-variant align-top font-semibold text-primary">Claude Sonnet 5.5</td><td class="p-space-sm border-b border-outline-variant align-top">2 $ / 10 $</td><td class="p-space-sm border-b border-outline-variant align-top">La mejor combinación de velocidad e inteligencia.</td></tr><tr><td class="p-space-sm border-b border-outline-variant align-top font-semibold text-primary">Claude Haiku 5.5</td><td class="p-space-sm border-b border-outline-variant align-top">desde 0,10 $ / desde 0,50 $</td><td class="p-space-sm border-b border-outline-variant align-top">Tareas de alto volumen y baja latencia.</td></tr></tbody></table></div>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Los cuatro tienen una ventana de contexto de 1 millón de tokens según la tabla oficial. La documentación de costes de Claude Code aconseja usar un modelo más modesto para tareas rutinarias y reservar el más potente para lo complicado, y borrar la conversación (<code>/clear</code>) entre tareas que no tienen relación. Para cuantificar el gasto con tu caso, usa nuestra <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" href="../herramientas/calculadora-coste-api.html">calculadora de coste de API</a> y lee <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" href="limites-gasto-agentes-ia.html">cómo poner límites de gasto a un agente</a>. Sobre el último de la gama intermedia: <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" href="../noticias/2026-09-28-claude-sonnet-5-5.html">Anthropic lanza Claude Sonnet 5.5</a>.</p>
+<p class="font-body-sm text-body-sm mt-space-sm"><strong class="text-on-surface">Fuente oficial:</strong> <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/about-claude/models/overview">Resumen de modelos</a> · <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://code.claude.com/docs/en/costs">Gestión de costes en Claude Code</a></p>
+</section>
+<section id="subagentes-flujos" class="mb-space-2xl space-y-space-md scroll-mt-24">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Subagentes y flujos dinámicos: cuando una tarea es demasiado grande</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Un <strong>subagente</strong> es un ayudante con su propia ventana de contexto: Claude le delega una tarea (por ejemplo, buscar en muchos archivos) y solo te devuelve el resumen, de modo que tu conversación principal no se llena de ruido. Los subagentes se definen como archivos Markdown en <code>.claude/agents/</code> y cada uno gasta su propio uso, que cuenta contra tus límites.</p>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Para tareas aún mayores existen los <strong>flujos dinámicos</strong>: Claude escribe un script que coordina muchos subagentes en segundo plano. Según la documentación, el límite por defecto es de 16 agentes a la vez y 1.000 en total por ejecución, y un solo flujo puede gastar bastante más que hacer la misma tarea charlando. Pruébalos primero con un trozo pequeño (una carpeta, no todo el repositorio). El comando incluido <code>/deep-research</code> es un ejemplo: investiga una pregunta en varias fuentes y devuelve un informe con citas. Más contexto en nuestra guía <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" href="varios-agentes-ia-o-uno.html">¿Varios agentes de IA o uno solo?</a> y en la noticia <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" href="../noticias/2026-10-09-claude-flujos-dinamicos-1000-agentes.html">Claude ya puede escribir su propio flujo de trabajo y lanzar hasta 1.000 agentes</a>.</p>
+<p class="font-body-sm text-body-sm mt-space-sm"><strong class="text-on-surface">Fuente oficial:</strong> <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://code.claude.com/docs/en/sub-agents">Subagentes</a> · <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://code.claude.com/docs/en/workflows">Flujos dinámicos</a></p>
+</section>
+<section id="fuera-de-la-terminal" class="mb-space-2xl space-y-space-md scroll-mt-24">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Si la terminal no te convence: otras formas de usar Claude Code</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">La documentación oficial recoge más sitios donde usar Claude Code además de la terminal: una <strong>app de escritorio</strong> (macOS, Windows y Linux), la <strong>web</strong> (claude.ai/code), extensiones para <strong>VS Code</strong> y <strong>JetBrains</strong>, <strong>Slack</strong> y automatización en CI/CD con GitHub Actions y GitLab. Anthropic ofrece además un curso gratuito, «Claude Code 101», en su Academy. Si programas con ayuda de IA y dudas entre herramientas, mira <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" href="elegir-ia-para-programar.html">cuál elegir para programar</a>; y para ampliar lo que sabe hacer, <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" href="mejores-claude-skills.html">las mejores Claude Skills</a>.</p>
+<p class="font-body-sm text-body-sm mt-space-sm"><strong class="text-on-surface">Fuente oficial:</strong> <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://code.claude.com/docs/en/quickstart">Quickstart oficial</a></p>
+</section>
 <section class="mb-space-2xl">
 <h2 class="font-headline-md text-headline-md text-primary mb-space-md tracking-tight">
           Preguntas frecuentes
@@ -564,7 +652,7 @@ Sí, para el uso básico: abrir la aplicación de terminal de tu sistema, pegar 
 <span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
 </button>
 <div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
-Como con cualquier asistente de IA, puedes pedirle que ajuste el resultado en la misma conversación en vez de empezar de cero: dile específicamente qué está mal, y el agente iterará sobre el trabajo ya hecho. Si te preocupa que haya modificado algo antes de tiempo, recuerda que por defecto pide confirmación antes de escribir o borrar archivos, así que siempre tienes la oportunidad de revisar el plan antes de que se ejecute.
+Como con cualquier asistente de IA, puedes pedirle que ajuste el resultado en la misma conversación en vez de empezar de cero: dile específicamente qué está mal, y el agente iterará sobre el trabajo ya hecho. Si te preocupa que haya modificado algo antes de tiempo, usa el modo Manual (<code>Shift+Tab</code> hasta «manual mode on»), en el que pide confirmación antes de editar archivos o ejecutar comandos, y recuerda que <code>/rewind</code> permite volver a un punto anterior del código y de la conversación.
 </div>
 </div>
 <div class="border border-outline-variant bg-surface-container-lowest">
@@ -573,7 +661,7 @@ Como con cualquier asistente de IA, puedes pedirle que ajuste el resultado en la
 <span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
 </button>
 <div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
-Con el flag interactivo activado (el comportamiento por defecto), no debería modificar ni borrar nada sin tu confirmación explícita, lo que reduce mucho el riesgo. Aun así, para la primera vez que pruebes una tarea nueva, es buena práctica trabajar sobre una copia de la carpeta o sobre un directorio de prueba sin datos críticos, como recomienda la lista de comprobación de esta guía, hasta que confíes en cómo se comporta con ese tipo de tarea concreta.
+En modo Manual (o en modo Plan, que ni siquiera edita), no modifica nada sin tu confirmación explícita. Ojo: en las versiones recientes la terminal arranca en modo auto, en el que un clasificador decide por ti, así que para tareas delicadas cambia a Manual con <code>Shift+Tab</code>. Aun así, para la primera vez que pruebes una tarea nueva, es buena práctica trabajar sobre una copia de la carpeta o sobre un directorio de prueba sin datos críticos, como recomienda la lista de comprobación de esta guía, hasta que confíes en cómo se comporta con ese tipo de tarea concreta.
 </div>
 </div>
 <div class="border border-outline-variant bg-surface-container-lowest">
@@ -609,7 +697,34 @@ Sí, y de hecho tres de los cuatro casos de uso de esta guía no son de programa
 <span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
 </button>
 <div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
-La disponibilidad y condiciones de los planes cambian con el tiempo, así que consulta siempre la página oficial de precios de Anthropic antes de decidir — es la única fuente que refleja las condiciones vigentes en el momento en que lo pruebes.
+El plan gratuito de claude.ai no incluye Claude Code, según la documentación oficial: necesitas Pro, Max, Team, Enterprise o una cuenta de la Consola con créditos. Las condiciones y promociones cambian, así que consulta la página oficial de precios (claude.com/pricing) antes de decidir.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Funciona en Windows sin instalar WSL?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Sí. Hoy hay instalación nativa en Windows con una línea de PowerShell (o CMD) y no hace falta ser administrador. WSL sigue siendo una opción, y es la que permite usar el aislamiento (sandbox) de comandos; en Windows nativo, la propia documentación indica que esa función no está disponible. Se recomienda instalar Git for Windows.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Cómo mantengo Claude Code actualizado?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Con el instalador oficial se actualiza solo en segundo plano. Puedes forzarlo con <code>claude update</code>. Si lo instalaste con Homebrew o WinGet, tienes que actualizar tú (<code>brew upgrade claude-code</code> o <code>winget upgrade Anthropic.ClaudeCode</code>). Con <code>claude doctor</code> ves el estado de la instalación.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Se puede impedir que lea mis archivos con contraseñas?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Sí, con reglas <code>deny</code> de tipo <code>Read</code> en <code>.claude/settings.json</code>, como <code>Read(./.env)</code>. Un archivo <code>.claudeignore</code> no funciona: la documentación oficial indica que no tiene efecto. Detalles en la sección «Cómo impedir que Claude lea tus secretos».
 </div>
 </div>
 </div>
@@ -644,6 +759,11 @@ La disponibilidad y condiciones de los planes cambian con el tiempo, así que co
 <a class="block text-secondary font-semibold hover:underline" href="#universal-modder">→ Universal Modder</a>
 <a class="block text-secondary font-semibold hover:underline" href="#comandos-secretos">→ 5 comandos poco conocidos</a>
 <a class="block text-secondary font-semibold hover:underline" href="#claude-md">→ /init y /memory de Claude Code</a>
+<a class="block py-1 text-on-surface-variant hover:text-primary transition-colors" href="#modos-permisos">→ Modos de permisos</a>
+<a class="block py-1 text-on-surface-variant hover:text-primary transition-colors" href="#proteger-archivos">→ Proteger tus secretos</a>
+<a class="block py-1 text-on-surface-variant hover:text-primary transition-colors" href="#modelos-coste">→ Modelos y coste</a>
+<a class="block py-1 text-on-surface-variant hover:text-primary transition-colors" href="#subagentes-flujos">→ Subagentes y flujos</a>
+<a class="block py-1 text-on-surface-variant hover:text-primary transition-colors" href="#fuera-de-la-terminal">→ Fuera de la terminal</a>
 </nav>
 </div>
 <div class="bg-surface-container-low p-space-lg">
@@ -722,7 +842,7 @@ La disponibilidad y condiciones de los planes cambian con el tiempo, así que co
       const copyBtn = document.getElementById('copy-code-btn');
       if (copyBtn) {
         copyBtn.addEventListener('click', function() {
-          const codeToCopy = `npm install -g @anthropic-ai/claude-code\nclaude login\nclaude`;
+          const codeToCopy = `curl -fsSL https://claude.ai/install.sh | bash\nclaude --version\ncd ruta/a/tu/carpeta\nclaude`;
           navigator.clipboard.writeText(codeToCopy).then(function() {
             const btnText = document.getElementById('copy-btn-text');
             if (btnText) {

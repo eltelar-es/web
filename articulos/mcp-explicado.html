@@ -20,10 +20,24 @@
   "headline": "MCP explicado: cómo conectar la IA con tus propias herramientas",
   "description": "El Model Context Protocol sin jerga: qué es, cómo funciona su arquitectura Host/Cliente/Servidor y cómo configurar tu primer servidor MCP local.",
   "image": "https://eltelar.es/img/og/guia-mcp-explicado.jpg",
-  "author": {"@type": "Person", "name": "Juan Becerril Castañón", "url": "https://eltelar.es/sobre-nosotros.html#autor"},
-  "publisher": { "@type": "Organization", "name": "El Telar", "url": "https://eltelar.es/", "logo": { "@type": "ImageObject", "url": "https://eltelar.es/img/icon-512.png", "width": 512, "height": 512 } },
+  "author": {
+    "@type": "Organization",
+    "name": "El Telar",
+    "url": "https://eltelar.es/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "El Telar",
+    "url": "https://eltelar.es/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://eltelar.es/img/icon-512.png",
+      "width": 512,
+      "height": 512
+    }
+  },
   "datePublished": "2026-01-01",
-  "dateModified": "2026-09-06",
+  "dateModified": "2026-10-17",
   "mainEntityOfPage": "https://eltelar.es/articulos/mcp-explicado.html",
   "inLanguage": "es"
 }
@@ -47,7 +61,7 @@
       "name": "¿Necesito saber programar para usar un servidor MCP ya existente?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Para usar uno ya publicado (como los ejemplos de filesystem o SQLite de esta guía), no: es copiar un bloque de configuración con la ruta correcta y reiniciar la aplicación, como se muestra en la sección anterior. Programar hace falta solo si quieres construir un servidor propio para conectar un sistema interno sin equivalente público."
+        "text": "Para usar uno ya publicado (como los ejemplos de filesystem o Git de esta guía), no: es copiar un bloque de configuración con la ruta correcta y reiniciar la aplicación, como se muestra en la sección anterior. Programar hace falta solo si quieres construir un servidor propio para conectar un sistema interno sin equivalente público."
       }
     },
     {
@@ -55,7 +69,7 @@
       "name": "¿Un servidor MCP puede acceder a internet, o solo a mi máquina local?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Depende del servidor concreto: algunos, como el de filesystem o SQLite de esta guía, solo operan sobre tu disco local. Otros están diseñados explícitamente para hacer peticiones a servicios remotos (una API meteorológica, un CRM en la nube). La especificación en sí no impone ese límite; lo impone el propósito del servidor concreto que elijas instalar, así que conviene revisar qué hace cada uno antes de darle acceso a datos sensibles."
+        "text": "Depende del servidor concreto: algunos, como el de filesystem o el de Git de esta guía, solo operan sobre tu disco local. Otros están diseñados explícitamente para hacer peticiones a servicios remotos (una API meteorológica, un CRM en la nube). La especificación en sí no impone ese límite; lo impone el propósito del servidor concreto que elijas instalar, así que conviene revisar qué hace cada uno antes de darle acceso a datos sensibles."
       }
     },
     {
@@ -64,6 +78,30 @@
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "El cliente MCP del host es responsable de diferenciarlas (normalmente prefijando el nombre del servidor), pero en la práctica, tener dos servidores con funciones muy solapadas activos a la vez aumenta la posibilidad de que el modelo elija la herramienta equivocada para una tarea. Si no necesitas ambos a la vez, es más seguro desactivar el que no estés usando activamente en ese momento."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Quién controla MCP ahora que no es solo de Anthropic?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Desde el 9 de diciembre de 2025 el protocolo forma parte de la Agentic AI Foundation, un fondo de la Linux Foundation que cofundaron Anthropic, Block y OpenAI, con apoyo de Google, Microsoft, AWS, Cloudflare y Bloomberg. Anthropic indicó en su anuncio que el modelo de gobernanza del protocolo seguía igual."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Los servidores de GitHub, Slack o SQLite de las guías antiguas siguen funcionando?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Pueden seguir funcionando, pero los de referencia de esos servicios están archivados en el repositorio oficial y no reciben cambios. Busca en el registro oficial (registry.modelcontextprotocol.io) o en la documentación de la propia empresa si ofrece un servidor mantenido, como hace GitHub con github/github-mcp-server."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Es mejor un servidor MCP o la herramienta de línea de comandos?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Depende. Para servicios con una herramienta de terminal conocida (como GitHub con gh), la documentación de costes de Claude Code señala que la herramienta suele gastar menos contexto. MCP gana cuando necesitas una conexión autorizada y estándar que funcione en varias aplicaciones de IA a la vez."
       }
     }
   ]
@@ -97,7 +135,7 @@
 </script>
 <link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet"/></noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet"/></noscript>
 <style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><link rel="stylesheet" href="../css/tailwind.css"><link rel="stylesheet" href="../css/entrance.css?v=2"><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}(function(){var c=null;try{c=localStorage.getItem('eltelar-cookie-consent')}catch(e){}var g=c==='accepted'?'granted':'denied';gtag('consent','default',{ad_storage:g,ad_user_data:g,ad_personalization:g,analytics_storage:g,wait_for_update:500});window.adsbygoogle=window.adsbygoogle||[];if(g!=='granted'){window.adsbygoogle.requestNonPersonalizedAds=1;}})();</script><script>window.addEventListener("load",function(){setTimeout(function(){var s=document.createElement("script");s.async=true;s.src="https://www.googletagmanager.com/gtag/js?id=G-4DPTKEG79N";document.head.appendChild(s);},800);});</script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4DPTKEG79N');</script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8239907995939753" crossorigin="anonymous"></script></head><body class="bg-background font-body-md text-on-surface antialiased">
-<header class="w-full bg-surface-container-lowest border-b border-outline-variant"><div class="border-b border-outline-variant py-space-xxs px-space-md hidden md:block"><div class="max-w-site-max-width mx-auto flex items-center justify-between font-kicker text-kicker text-on-surface-variant uppercase tracking-wider"><span>EDICIÓN DIGITAL // ACTUALIZADO 2026 // EL TELAR &amp; AGENTES</span><span>MADRID · REMOTO</span><span>SIN HUMO · 100% PRODUCCIÓN</span></div></div><div class="max-w-site-max-width mx-auto px-space-md py-space-md sm:py-space-xl text-center"><p class="hidden sm:block font-kicker text-kicker uppercase tracking-widest text-on-surface-variant mb-space-xs">Publicación Independiente de Tecnología &amp; Agentes</p><a class="inline-block" href="../index.html"><div class="font-display text-display max-sm:text-[40px] max-sm:leading-none text-primary tracking-tight">El Telar</div></a><p class="hidden sm:block font-caption text-caption uppercase tracking-widest text-on-surface-variant mt-space-xs">EL BOLETÍN Y ARCHIVO PRÁCTICO DE INTELIGENCIA ARTIFICIAL Y AGENTES AUTÓNOMOS</p></div><div class="border-t border-b border-outline-variant"><div class="max-w-site-max-width mx-auto px-space-md flex items-center justify-between gap-space-sm h-14"><nav class="flex items-center gap-space-md sm:gap-space-lg h-full min-w-0 overflow-x-auto [scrollbar-width:none] whitespace-nowrap"><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../index.html#guias">GUÍAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../empieza-aqui.html">EMPIEZA AQUÍ</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../sobre-nosotros.html">SOBRE NOSOTROS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../noticias/index.html">NOTICIAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../herramientas/index.html">HERRAMIENTAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../prompts/index.html">PROMPTS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../contacto.html">CONTACTO</a></nav><div class="flex items-center gap-space-md"><button id="search-trigger" type="button" aria-label="Buscar en las guías" class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[20px]">search</span></button><a class="hidden sm:inline-block bg-primary-container text-surface px-space-md py-space-xs font-label-md text-label-md uppercase tracking-wider hover:bg-primary transition-colors" href="../index.html#despacho">SUSCRÍBETE GRATIS</a></div></div></div><div class="hidden md:block bg-surface-container-low border-b border-outline-variant py-space-xs px-space-md"><div class="max-w-site-max-width mx-auto text-center"><p class="font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">53 GUÍAS COMPLETAS EN EXPANSIÓN · ACTUALIZADO A MODELOS 2026 · PROBADO EN TERMINAL Y FLUJOS REALES · CERO HUMO NI TEORÍA VACÍA</p></div></div></header>
+<header class="w-full bg-surface-container-lowest border-b border-outline-variant"><div class="border-b border-outline-variant py-space-xxs px-space-md hidden md:block"><div class="max-w-site-max-width mx-auto flex items-center justify-between font-kicker text-kicker text-on-surface-variant uppercase tracking-wider"><span>EDICIÓN DIGITAL // ACTUALIZADO 2026 // EL TELAR &amp; AGENTES</span><span>MADRID · REMOTO</span><span>SIN HUMO · 100% PRODUCCIÓN</span></div></div><div class="max-w-site-max-width mx-auto px-space-md py-space-md sm:py-space-xl text-center"><p class="hidden sm:block font-kicker text-kicker uppercase tracking-widest text-on-surface-variant mb-space-xs">Publicación Independiente de Tecnología &amp; Agentes</p><a class="inline-block" href="../index.html"><div class="font-display text-display max-sm:text-[40px] max-sm:leading-none text-primary tracking-tight">El Telar</div></a><p class="hidden sm:block font-caption text-caption uppercase tracking-widest text-on-surface-variant mt-space-xs">EL BOLETÍN Y ARCHIVO PRÁCTICO DE INTELIGENCIA ARTIFICIAL Y AGENTES AUTÓNOMOS</p></div><div class="border-t border-b border-outline-variant"><div class="max-w-site-max-width mx-auto px-space-md flex items-center justify-between gap-space-sm h-14"><nav class="flex items-center gap-space-md sm:gap-space-lg h-full min-w-0 overflow-x-auto [scrollbar-width:none] whitespace-nowrap"><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../index.html#guias">GUÍAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../empieza-aqui.html">EMPIEZA AQUÍ</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../sobre-nosotros.html">SOBRE NOSOTROS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../noticias/index.html">NOTICIAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../herramientas/index.html">HERRAMIENTAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../prompts/index.html">PROMPTS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../contacto.html">CONTACTO</a></nav><div class="flex items-center gap-space-md"><button id="search-trigger" type="button" aria-label="Buscar en las guías" class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[20px]">search</span></button><a class="hidden sm:inline-block bg-primary-container text-surface px-space-md py-space-xs font-label-md text-label-md uppercase tracking-wider hover:bg-primary transition-colors" href="../index.html#despacho">SUSCRÍBETE GRATIS</a></div></div></div><div class="hidden md:block bg-surface-container-low border-b border-outline-variant py-space-xs px-space-md"><div class="max-w-site-max-width mx-auto text-center"><p class="font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">56 GUÍAS COMPLETAS EN EXPANSIÓN · ACTUALIZADO A MODELOS 2026 · PROBADO EN TERMINAL Y FLUJOS REALES · CERO HUMO NI TEORÍA VACÍA</p></div></div></header>
 <main class="w-full max-w-site-max-width mx-auto px-space-md py-space-xl"><div class="flex flex-col w-full">
 <nav aria-label="Ruta de navegación" class="w-full mb-space-lg">
 <ol class="flex flex-wrap items-center gap-space-xs font-caption text-caption text-on-surface-variant">
@@ -148,7 +186,7 @@
 <span class="float-left text-display font-display text-primary leading-none pr-space-sm pt-1 select-none">H</span>asta hace poco, conectar un modelo de lenguaje con una base de datos local, un repositorio Git privado o el sistema de archivos implicaba un pantano técnico: cada desarrollador terminaba escribiendo adaptadores a medida que se rompían al cambiar de proveedor de IA.
         </p>
 <p class="font-body-lg text-body-lg text-on-surface leading-relaxed">
-          El <strong>Model Context Protocol (MCP)</strong>, creado por Anthropic y liberado como estándar abierto, actúa como el <em class="font-headline-sm italic text-primary">USB-C de la inteligencia artificial</em>. Su idea central: desacoplar a los clientes de IA (aplicaciones de escritorio, terminales, agentes) de los servidores de datos mediante una especificación formal común.
+          El <strong>Model Context Protocol (MCP)</strong>, creado por Anthropic y publicado como estándar abierto, actúa como el <em class="font-headline-sm italic text-primary">USB-C de la inteligencia artificial</em>. Desde diciembre de 2025 vive en la Agentic AI Foundation, un fondo de la Linux Foundation cofundado por Anthropic, Block y OpenAI; Anthropic aseguró al anunciarlo que la gobernanza del protocolo no cambiaba. Su idea central: desacoplar a los clientes de IA (aplicaciones de escritorio, terminales, agentes) de los servidores de datos mediante una especificación formal común.
         </p>
 <p class="font-body-md text-body-md text-on-surface leading-relaxed">
           La comparación con USB-C no es solo publicitaria: antes de ese estándar físico, cada fabricante de portátiles y periféricos tenía su propio conector, y conectar dos dispositivos de marcas distintas exigía un adaptador específico para cada combinación. MCP resuelve el mismo problema mismo en software: sin él, conectar un modelo de OpenAI con una base de datos exige un código distinto al que conectaría un modelo de Anthropic con esa misma base de datos, aunque la tarea de fondo (leer una tabla, ejecutar una consulta) sea idéntica en ambos casos.</p>
@@ -198,7 +236,7 @@
 │   │                 CLIENTE MCP INTEGRADO                   │  │
 │   └──────────────────────────┬─────────────────────────────┘  │
 └──────────────────────────────┼────────────────────────────────┘
-                               │  JSON-RPC 2.0 (stdio / SSE)
+                               │  JSON-RPC 2.0 (stdio / HTTP)
                                ▼
 ┌───────────────────────────────────────────────────────────────┐
 │             SERVIDORES MCP LOCALES / REMOTOS                    │
@@ -207,7 +245,7 @@
 │  └────────┬─────────┘  └────────┬─────────┘  └──────┬───────┘  │
 └───────────┼─────────────────────┼───────────────────┼──────────┘
             ▼                     ▼                   ▼
-      Carpeta local          Postgres/SQLite      Servicio remoto
+      Carpeta local          Git / bases de datos      Servicio remoto
           </pre>
 </div>
 <p class="font-body-md text-body-md text-on-surface leading-relaxed">
@@ -265,7 +303,7 @@
           MCP frente a la llamada a funciones de toda la vida
         </h2>
 <p class="font-body-md text-body-md text-on-surface leading-relaxed">
-          Antes de MCP ya existía la "llamada a funciones" (function calling): describes una función en el prompt o en la configuración de la API, y el modelo decide cuándo invocarla. La diferencia de fondo no es técnica sino de propiedad: con function calling, tú escribes y mantienes la definición de cada función dentro de tu propio código, acoplada a la API concreta del proveedor de modelo que uses. Con MCP, la definición vive en el servidor, la mantiene quien construye ese servidor (a menudo el propio fabricante de la herramienta que expone, como GitHub o Slack), y cualquier cliente compatible la reutiliza sin reescribirla.</p>
+          Antes de MCP ya existía la "llamada a funciones" (function calling): describes una función en el prompt o en la configuración de la API, y el modelo decide cuándo invocarla. La diferencia de fondo no es técnica sino de propiedad: con function calling, tú escribes y mantienes la definición de cada función dentro de tu propio código, acoplada a la API concreta del proveedor de modelo que uses. Con MCP, la definición vive en el servidor, la mantiene quien construye ese servidor (a menudo el propio fabricante de la herramienta que expone, como GitHub), y cualquier cliente compatible la reutiliza sin reescribirla.</p>
 <p class="font-body-md text-body-md text-on-surface leading-relaxed">
           En la práctica, esto significa que si mañana cambias de aplicación host (por ejemplo, de un editor de código a otro que también soporte MCP), no tienes que volver a escribir la integración con tu base de datos o tu sistema de archivos: el servidor MCP que ya configuraste sigue funcionando igual, porque la especificación es la misma independientemente del cliente que la consuma.</p>
 <p class="font-body-md text-body-md text-on-surface leading-relaxed">
@@ -275,24 +313,24 @@
 <h2 id="sec-2c" class="font-headline-md text-headline-md text-primary">
           Servidores MCP que ya existen y no necesitas construir
         </h2>
-<p class="font-body-md text-body-md text-on-surface leading-relaxed">
-          Antes de plantearte escribir un servidor MCP propio, merece la pena revisar si ya existe uno mantenido por la comunidad o por el propio fabricante del servicio que quieres conectar. El ecosistema ha crecido rápido desde el lanzamiento del protocolo, y ya cubre buena parte de las herramientas de trabajo habituales:</p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Antes de plantearte escribir un servidor MCP propio, merece la pena revisar si ya existe uno mantenido por el propio fabricante del servicio o por la comunidad. Ojo con las listas antiguas: el repositorio oficial <code>modelcontextprotocol/servers</code> conserva hoy solo unos pocos <em>servidores de referencia</em> (Everything, Fetch, Filesystem, Git, Memory, Sequential Thinking y Time), pensados como ejemplos educativos y no como soluciones listas para producción según su propio README. Los servidores que muchas guías citaban (GitHub, GitLab, Slack, Google Drive, Google Maps, Puppeteer, PostgreSQL, SQLite, Redis, Sentry…) están <strong>archivados</strong> en un repositorio aparte (<code>servers-archived</code>); algunos tienen sucesor mantenido por otro equipo, como el servidor oficial de GitHub (<code>github/github-mcp-server</code>, licencia MIT) o el de Brave Search. Para buscar servidores vivos, el proyecto mantiene un <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://registry.modelcontextprotocol.io/">registro oficial</a>. Estos son los de referencia más útiles para empezar:</p>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-space-md my-space-lg">
 <div class="bg-surface-container-lowest p-space-md shadow-sm">
-<span class="font-label-md text-label-md font-bold text-primary block mb-1">GitHub</span>
-<p class="font-body-sm text-body-sm text-on-surface-variant">Lee y gestiona issues, pull requests y repositorios directamente desde una conversación con el modelo.</p>
+<span class="font-label-md text-label-md font-bold text-primary block mb-1">Filesystem</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Lee, busca, crea y mueve archivos dentro de las carpetas que le permitas. Es el servidor de referencia de esta guía.</p>
 </div>
 <div class="bg-surface-container-lowest p-space-md shadow-sm">
-<span class="font-label-md text-label-md font-bold text-primary block mb-1">Slack</span>
-<p class="font-body-sm text-body-sm text-on-surface-variant">Lee canales e hilos, y puede publicar mensajes con tu autorización previa en cada acción.</p>
+<span class="font-label-md text-label-md font-bold text-primary block mb-1">Git</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Lee y busca en el historial de un repositorio; en fase temprana según su README y con herramientas que también escriben (<code>git_add</code>, <code>git_commit</code>).</p>
 </div>
 <div class="bg-surface-container-lowest p-space-md shadow-sm">
-<span class="font-label-md text-label-md font-bold text-primary block mb-1">Puppeteer / Playwright</span>
-<p class="font-body-sm text-body-sm text-on-surface-variant">Da al modelo control de un navegador real: navegar, hacer clic, rellenar formularios y leer el contenido de una página.</p>
+<span class="font-label-md text-label-md font-bold text-primary block mb-1">Fetch</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Descarga una página web y la convierte a texto para que el modelo la lea. Úsalo sabiendo que el texto de una web puede contener instrucciones ocultas (ver reglas de seguridad).</p>
 </div>
 <div class="bg-surface-container-lowest p-space-md shadow-sm">
-<span class="font-label-md text-label-md font-bold text-primary block mb-1">Google Drive / Google Maps</span>
-<p class="font-body-sm text-body-sm text-on-surface-variant">Consulta documentos compartidos o datos de geolocalización sin salir de la conversación.</p>
+<span class="font-label-md text-label-md font-bold text-primary block mb-1">Memory</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Guarda datos entre conversaciones en un grafo de conocimiento local, para que el modelo recuerde hechos sobre ti o tu proyecto.</p>
 </div>
 </div>
 <p class="font-body-md text-body-md text-on-surface leading-relaxed">
@@ -335,10 +373,10 @@
           </pre>
 </div>
 <p class="font-body-md text-body-md text-on-surface leading-relaxed">
-          Tras guardar y reiniciar la aplicación, el modelo tendrá acceso a herramientas como leer y listar archivos, circunscritas exclusivamente a esa carpeta.
+          Tras guardar y reiniciar la aplicación del todo (salir y volver a abrir), el modelo tendrá acceso a herramientas como leer y listar archivos, circunscritas exclusivamente a esa carpeta. Con Claude Desktop, el archivo se abre desde Ajustes > Desarrollador > «Edit Config» y vive en <code>~/Library/Application Support/Claude/claude_desktop_config.json</code> en macOS o en <code>%APPDATA%\Claude\claude_desktop_config.json</code> en Windows; este ejemplo necesita Node.js instalado (comprueba con <code>node --version</code>). Los registros de errores están en <code>~/Library/Logs/Claude</code> (macOS) o <code>%APPDATA%\Claude\logs</code> (Windows).
         </p>
 <p class="font-body-md text-body-md text-on-surface leading-relaxed">
-          El mismo mecanismo sirve para una base de datos. Añadiendo un segundo servidor a la lista, el modelo también puede consultar (en solo lectura) una base SQLite local:
+          El mismo mecanismo sirve para otros servidores. Por ejemplo, añadiendo el servidor de Git (necesita la herramienta <code>uv</code> instalada, que aporta el comando <code>uvx</code>), el modelo puede leer el historial de un repositorio local. Antes se solía enseñar aquí un servidor de SQLite, pero ese servidor está archivado, así que ya no lo recomendamos:
         </p>
 <div class="bg-surface-container-high p-space-md overflow-hidden shadow-sm">
 <div class="flex items-center justify-between pb-space-xs mb-space-xs text-on-surface-variant font-kicker text-kicker uppercase tracking-wider">
@@ -347,12 +385,12 @@
 <pre class="font-mono text-xs text-on-surface overflow-x-auto leading-relaxed p-space-xs bg-surface-container-lowest select-all">{
   "mcpServers": {
     "archivos-locales": { "...": "..." },
-    "base-datos-local": {
+    "git-local": {
       "command": "uvx",
       "args": [
-        "mcp-server-sqlite",
-        "--db-path",
-        "/ruta/a/tu/base.db"
+        "mcp-server-git",
+        "--repository",
+        "/ruta/a/tu/repositorio"
       ]
     }
   }
@@ -360,7 +398,7 @@
           </pre>
 </div>
 <p class="font-body-md text-body-md text-on-surface leading-relaxed">
-          Con ambos activos, puedes pedirle al modelo cosas como "busca en la base de datos los pedidos de este mes y cruízalos con las facturas de la carpeta de trabajo", y hará las dos consultas él mismo.
+          Con ambos activos, puedes pedirle al modelo cosas como "revisa los últimos cambios del repositorio y resume en un archivo de la carpeta de trabajo qué se tocó esta semana", y hará las dos operaciones él mismo, pidiéndote aprobación para cada acción.
         </p>
 <p class="font-body-md text-body-md text-on-surface leading-relaxed">
           Si algo no aparece tras reiniciar la aplicación, el primer sitio donde mirar es el registro de arranque del propio host: la mayoría de aplicaciones compatibles con MCP muestran ahí si un servidor falló al iniciarse, normalmente por una ruta que no existe, un comando (<code>npx</code> o <code>uvx</code> en los ejemplos de esta guía) que no está instalado en tu sistema, o un permiso de archivo insuficiente. Casi todos los problemas de la primera configuración se resuelven verificando esos tres puntos antes de sospechar del propio protocolo.</p>
@@ -405,7 +443,7 @@
 </li>
 </ul>
 <p class="font-body-md text-body-md text-on-surface leading-relaxed mt-space-md">
-          Estas cinco reglas comparten un mismo principio de fondo: dar al modelo el mínimo permiso necesario para la tarea concreta, no el máximo permiso disponible por comodidad. Es el mismo principio de "mínimo privilegio" que ya se aplica en cualquier sistema que gestiona credenciales o accesos, aplicado ahora a un nuevo tipo de actor (un modelo de lenguaje) que ejecuta acciones por tu cuenta.</p>
+          Para profundizar en este último riesgo, que es el más sutil, tienes la guía <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" href="prompt-injection-agentes-ia.html">Prompt injection en agentes de IA</a>. Estas cinco reglas comparten un mismo principio de fondo: dar al modelo el mínimo permiso necesario para la tarea concreta, no el máximo permiso disponible por comodidad. Es el mismo principio de "mínimo privilegio" que ya se aplica en cualquier sistema que gestiona credenciales o accesos, aplicado ahora a un nuevo tipo de actor (un modelo de lenguaje) que ejecuta acciones por tu cuenta.</p>
 </section>
 <section class="bg-surface-container-low p-space-lg mb-space-2xl">
 <h3 class="font-kicker text-kicker uppercase tracking-wider text-primary mb-space-md flex items-center gap-2">
@@ -436,7 +474,30 @@
 <p class="font-body-md text-body-md text-on-surface leading-relaxed">
           Si tu aplicación de IA favorita todavía no lo soporta, no es necesariamente un fallo del producto: soportar MCP añade una superficie de configuración adicional, y algunos productos priorizan primero una experiencia más simple y cerrada antes de abrir esa puerta a servidores de terceros. Vigila la documentación oficial o el registro de cambios de la aplicación de forma periódica, en vez de asumir que si no lo tiene hoy, nunca lo tendrá.</p>
 <p class="font-body-md text-body-md text-on-surface leading-relaxed">
-          Una señal indirecta útil: si la aplicación ya soporta "herramientas" o "plugins" personalizados de algún tipo, es más probable que añada soporte a MCP con el tiempo, porque la infraestructura interna para exponer capacidades al modelo ya existe — MCP se convierte entonces en una capa de estandarización sobre algo que el producto ya sabía hacer de forma propietaria.</p>
+          Según la documentación del propio protocolo, lo soportan asistentes como Claude y ChatGPT y herramientas de desarrollo como Visual Studio Code y Cursor, entre otras. Una señal indirecta útil: si la aplicación ya soporta "herramientas" o "plugins" personalizados de algún tipo, es más probable que añada soporte a MCP con el tiempo, porque la infraestructura interna para exponer capacidades al modelo ya existe — MCP se convierte entonces en una capa de estandarización sobre algo que el producto ya sabía hacer de forma propietaria.</p>
+</section>
+<section id="mcp-2026" class="mb-space-2xl space-y-space-md scroll-mt-24">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Qué ha cambiado en MCP en 2026</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">La versión vigente de la especificación lleva fecha <strong>2026-07-28</strong>. Para ti, que solo conectas servidores, lo importante es qué cambia por debajo y por qué te da igual al principio:</p>
+<ul class="list-disc pl-space-lg space-y-space-xs font-body-md text-body-md text-on-surface"><li><strong>Peticiones autocontenidas:</strong> según la especificación, cada petición lleva su propia versión del protocolo y las capacidades del cliente, en vez de depender de una sesión abierta con un «saludo» inicial. Es más fácil de escalar y de poner detrás de un servicio web.</li><li><strong>Dos transportes estándar:</strong> <code>stdio</code> (el cliente arranca el servidor como un proceso en tu máquina, como en esta guía) y <code>Streamable HTTP</code> (servidores remotos). El antiguo transporte SSE aparece como obsoleto en la documentación de Claude Code, que recomienda HTTP.</li><li><strong>Extensiones opcionales:</strong> la especificación define <em>Tasks</em> (operaciones largas en segundo plano), <em>MCP Apps</em> (interfaces como gráficos o formularios dentro de la conversación) y <em>Skills over MCP</em> (instrucciones para agentes servidas por MCP). Solo funcionan si cliente y servidor las soportan.</li></ul>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Si quieres entender qué es una skill y en qué se diferencia de un servidor MCP, la regla corta es: una skill son instrucciones que el modelo lee; un servidor MCP es una conexión que le permite hacer cosas en otro sistema. Tienes ejemplos en <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" href="mejores-claude-skills.html">las mejores Claude Skills</a>.</p>
+<p class="font-body-sm text-body-sm mt-space-sm"><strong class="text-on-surface">Fuente oficial:</strong> <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://modelcontextprotocol.io/specification/latest">Especificación MCP</a> · <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://www.anthropic.com/news/donating-the-model-context-protocol-and-establishing-of-the-agentic-ai-foundation">Anuncio de Anthropic (9-dic-2025)</a></p>
+</section>
+<section id="mcp-remotos-claude-code" class="mb-space-2xl space-y-space-md scroll-mt-24">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Servidores remotos y MCP en Claude Code</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">No todos los servidores corren en tu ordenador. Los servicios en la nube (un gestor de tareas, un CRM) publican un servidor <strong>remoto</strong> al que te conectas por una dirección web y, normalmente, autorizas con tu cuenta. En <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" href="que-es-claude-code.html">Claude Code</a> se añaden desde la terminal:</p>
+<pre class="bg-surface-container-low p-space-md overflow-x-auto font-mono text-body-sm text-on-surface"><code># Servidor remoto (HTTP)
+claude mcp add --transport http nombre https://ejemplo.com/mcp
+
+# Servidor local (stdio): lo que va tras -- es el comando que lo arranca
+claude mcp add --transport stdio nombre -- npx -y paquete-del-servidor
+
+# Ver, inspeccionar y quitar
+claude mcp list
+claude mcp remove nombre</code></pre>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Dentro de una sesión, <code>/mcp</code> muestra el estado de cada servidor y permite autenticar los que usan OAuth. Hay tres ámbitos: <em>local</em> (solo tú, solo ese proyecto; el predeterminado), <em>project</em> (se guarda en un archivo <code>.mcp.json</code> que compartes con tu equipo) y <em>user</em> (todos tus proyectos). Claude Code te pide aprobación antes de usar los servidores de un <code>.mcp.json</code> que no has escrito tú, y con motivo: un servidor es código que se ejecuta con tus permisos.</p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed"><strong>Coste de tener muchos conectados:</strong> cada servidor aporta herramientas que ocupan espacio en el contexto del modelo. La documentación de costes de Claude Code recomienda desactivar los que no uses (<code>/mcp</code>) y ver qué ocupa espacio con <code>/context</code>; añade que, para servicios con herramienta de línea de comandos (como <code>gh</code> para GitHub), usarla suele gastar menos contexto que un servidor MCP. Más sobre contexto en <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" href="ventana-contexto-memoria-ia.html">ventana de contexto y memoria</a>.</p>
+<p class="font-body-sm text-body-sm mt-space-sm"><strong class="text-on-surface">Fuente oficial:</strong> <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://code.claude.com/docs/en/mcp">MCP en Claude Code</a> · <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://code.claude.com/docs/en/costs">Costes en Claude Code</a></p>
 </section>
 <section class="mb-space-2xl space-y-space-md">
 <h2 class="font-headline-md text-headline-md text-primary">
@@ -458,7 +519,7 @@ No. Aunque Anthropic creó y publicó el protocolo, es una especificación abier
 <span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
 </button>
 <div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
-Para usar uno ya publicado (como los ejemplos de filesystem o SQLite de esta guía), no: es copiar un bloque de configuración con la ruta correcta y reiniciar la aplicación, como se muestra en la sección anterior. Programar hace falta solo si quieres construir un servidor propio para conectar un sistema interno sin equivalente público.
+Para usar uno ya publicado (como los ejemplos de filesystem o Git de esta guía), no: es copiar un bloque de configuración con la ruta correcta y reiniciar la aplicación, como se muestra en la sección anterior. Programar hace falta solo si quieres construir un servidor propio para conectar un sistema interno sin equivalente público.
 </div>
 </div>
 <div class="border border-outline-variant bg-surface-container-lowest">
@@ -467,7 +528,7 @@ Para usar uno ya publicado (como los ejemplos de filesystem o SQLite de esta gu�
 <span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
 </button>
 <div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
-Depende del servidor concreto: algunos, como el de filesystem o SQLite de esta guía, solo operan sobre tu disco local. Otros están diseñados explícitamente para hacer peticiones a servicios remotos (una API meteorológica, un CRM en la nube). La especificación en sí no impone ese límite; lo impone el propósito del servidor concreto que elijas instalar, así que conviene revisar qué hace cada uno antes de darle acceso a datos sensibles.
+Depende del servidor concreto: algunos, como el de filesystem o el de Git de esta guía, solo operan sobre tu disco local. Otros están diseñados explícitamente para hacer peticiones a servicios remotos (una API meteorológica, un CRM en la nube). La especificación en sí no impone ese límite; lo impone el propósito del servidor concreto que elijas instalar, así que conviene revisar qué hace cada uno antes de darle acceso a datos sensibles.
 </div>
 </div>
 <div class="border border-outline-variant bg-surface-container-lowest">
@@ -479,6 +540,33 @@ Depende del servidor concreto: algunos, como el de filesystem o SQLite de esta g
 El cliente MCP del host es responsable de diferenciarlas (normalmente prefijando el nombre del servidor), pero en la práctica, tener dos servidores con funciones muy solapadas activos a la vez aumenta la posibilidad de que el modelo elija la herramienta equivocada para una tarea. Si no necesitas ambos a la vez, es más seguro desactivar el que no estés usando activamente en ese momento.
 </div>
 </div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Quién controla MCP ahora que no es solo de Anthropic?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Desde el 9 de diciembre de 2025 el protocolo forma parte de la Agentic AI Foundation, un fondo de la Linux Foundation que cofundaron Anthropic, Block y OpenAI, con apoyo de Google, Microsoft, AWS, Cloudflare y Bloomberg. Anthropic indicó en su anuncio que el modelo de gobernanza del protocolo seguía igual.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Los servidores de GitHub, Slack o SQLite de las guías antiguas siguen funcionando?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Pueden seguir funcionando, pero los de referencia de esos servicios están archivados en el repositorio oficial y no reciben cambios. Busca en el registro oficial (registry.modelcontextprotocol.io) o en la documentación de la propia empresa si ofrece un servidor mantenido, como hace GitHub con <code>github/github-mcp-server</code>.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Es mejor un servidor MCP o la herramienta de línea de comandos?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Depende. Para servicios con una herramienta de terminal conocida (como GitHub con <code>gh</code>), la documentación de costes de Claude Code señala que la herramienta suele gastar menos contexto. MCP gana cuando necesitas una conexión autorizada y estándar que funcione en varias aplicaciones de IA a la vez.
+</div>
+</div>
 </div>
 </section>
 <section class="mb-space-2xl space-y-space-md">
@@ -486,7 +574,7 @@ El cliente MCP del host es responsable de diferenciarlas (normalmente prefijando
           De la configuración de prueba a un uso diario fiable
         </h2>
 <p class="font-body-md text-body-md text-on-surface leading-relaxed">
-          Los dos servidores configurados en esta guía (filesystem y SQLite) son un punto de partida deliberadamente sencillo, elegido porque no requieren ninguna cuenta externa ni clave de API para probarlos. Una vez que entiendes el patrón — un bloque de configuración por servidor, un comando y una lista de argumentos —, añadir un tercer servidor de la lista de la sección anterior (GitHub, Slack, un navegador con Playwright) es exactamente el mismo procedimiento, solo cambia qué credenciales o rutas le pasas.</p>
+          Los dos servidores configurados en esta guía (filesystem y Git) son un punto de partida deliberadamente sencillo, elegido porque no requieren ninguna cuenta externa ni clave de API para probarlos. Una vez que entiendes el patrón — un bloque de configuración por servidor, un comando y una lista de argumentos —, añadir un tercer servidor de la lista de la sección anterior (Fetch, Memory o el servidor oficial de un servicio como GitHub) es exactamente el mismo procedimiento, solo cambia qué credenciales o rutas le pasas.</p>
 <p class="font-body-md text-body-md text-on-surface leading-relaxed">
           El salto de "lo tengo configurado y funciona en una prueba" a "lo uso todos los días con confianza" pasa casi siempre por las reglas de seguridad de la sección anterior: aislar rutas, limitar permisos de escritura y revisar el origen de cada servidor de terceros. Un MCP bien configurado no es solo el que funciona, es el que sigue funcionando de forma segura seis meses después, cuando ya no recuerdas exactamente qué permisos le diste el primer día.</p>
 <p class="font-body-md text-body-md text-on-surface leading-relaxed">
@@ -508,6 +596,8 @@ El cliente MCP del host es responsable de diferenciarlas (normalmente prefijando
 <a class="block py-1 text-on-surface-variant hover:text-primary transition-colors" href="#sec-4">4. Reglas de oro y seguridad</a>
 <a class="block py-1 text-on-surface-variant hover:text-primary transition-colors" href="#sec-4b">¿Tu herramienta ya soporta MCP?</a>
 <a class="block py-1 text-on-surface-variant hover:text-primary transition-colors" href="#sec-4c">De la prueba a un uso diario fiable</a>
+<a class="block py-1 text-on-surface-variant hover:text-primary transition-colors" href="#mcp-2026">→ Qué ha cambiado en 2026</a>
+<a class="block py-1 text-on-surface-variant hover:text-primary transition-colors" href="#mcp-remotos-claude-code">→ Remotos y Claude Code</a>
 </nav>
 </div>
 <div class="bg-surface-container-low p-space-md space-y-space-sm shadow-sm">
@@ -517,15 +607,15 @@ El cliente MCP del host es responsable de diferenciarlas (normalmente prefijando
 <dl class="space-y-space-xs font-caption text-caption">
 <div class="flex justify-between py-1">
 <dt class="text-on-surface-variant">Creador</dt>
-<dd class="font-semibold text-on-surface">Anthropic</dd>
+<dd class="font-semibold text-on-surface">Anthropic (hoy bajo la Linux Foundation)</dd>
 </div>
 <div class="flex justify-between py-1">
 <dt class="text-on-surface-variant">Licencia</dt>
-<dd class="font-semibold text-on-surface">MIT (código abierto)</dd>
+<dd class="font-semibold text-on-surface">Apache-2.0 (antes MIT)</dd>
 </div>
 <div class="flex justify-between py-1">
 <dt class="text-on-surface-variant">Transporte</dt>
-<dd class="font-semibold text-on-surface">JSON-RPC 2.0 (stdio/SSE)</dd>
+<dd class="font-semibold text-on-surface">JSON-RPC 2.0 (stdio / HTTP)</dd>
 </div>
 </dl>
 </div>

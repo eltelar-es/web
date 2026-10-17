@@ -20,13 +20,17 @@
   "headline": "Cuándo usar varios agentes de IA en vez de uno",
   "description": "Repartir una tarea entre varios agentes multiplica el coste por quince y casi nunca compensa. Qué midieron Anthropic, Cognition y Berkeley, y cuándo dividir sí sale a cuenta.",
   "image": "https://eltelar.es/img/og/guia-varios-agentes-ia-o-uno.jpg",
-  "author": {"@type": "Person", "name": "Juan Becerril Castañón", "url": "https://eltelar.es/sobre-nosotros.html#autor"},
+  "author": {
+    "@type": "Organization",
+    "name": "El Telar",
+    "url": "https://eltelar.es/"
+  },
   "publisher": {
     "@type": "Organization",
     "name": "El Telar"
   },
   "datePublished": "2026-09-27",
-  "dateModified": "2026-10-13",
+  "dateModified": "2026-10-17",
   "mainEntityOfPage": "https://eltelar.es/articulos/varios-agentes-ia-o-uno.html",
   "inLanguage": "es"
 }
@@ -39,50 +43,66 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Si Anthropic mejor\u00f3 un 90,2% dividiendo, \u00bfpor qu\u00e9 lo normal es no dividir?",
+      "name": "Si Anthropic mejoró un 90,2% dividiendo, ¿por qué dices que lo normal es no dividir?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Porque esa cifra es de su evaluaci\u00f3n interna de investigaci\u00f3n, que es justo el tipo de tarea donde dividir funciona: muchas b\u00fasquedas independientes, sin escritura compartida. En el mismo documento dicen que su arquitectura no encaja en la mayor\u00eda de tareas de programaci\u00f3n ni donde los agentes necesitan compartir contexto. Y midieron que consume unas 15 veces m\u00e1s tokens que una conversaci\u00f3n, con el consumo explicando por s\u00ed solo el 80% de la varianza de rendimiento en BrowseComp. La mejora es real, pero es real para su caso y comprada en buena parte con presupuesto."
+        "text": "Porque esa cifra es de su evaluación interna de investigación, que es justo el tipo de tarea donde dividir funciona: muchas búsquedas independientes, sin escritura compartida. En el mismo documento dicen que los dominios en los que todos los agentes necesitan compartir el mismo contexto, o con muchas dependencias entre ellos, no encajan hoy en un sistema multiagente, y ponen la programación como ejemplo porque tiene menos partes realmente paralelizables que la investigación. Y midieron que consume unas 15 veces más tokens que una conversación, con el consumo explicando por sí solo el 80% de la varianza de rendimiento en BrowseComp. La mejora es real, pero es real para su caso y comprada en buena parte con presupuesto."
       }
     },
     {
       "@type": "Question",
-      "name": "\u00bfUn agente con muchas herramientas ya cuenta como sistema multiagente?",
+      "name": "¿Un agente con muchas herramientas ya cuenta como sistema multiagente?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "No, y la distinci\u00f3n importa porque evita montar complejidad que no necesitas. Un agente con diez herramientas sigue teniendo un \u00fanico hilo de decisi\u00f3n: ve todo lo que ha pasado y decide el siguiente paso con esa informaci\u00f3n completa. Un sistema multiagente tiene varios hilos que deciden por separado y luego hay que casar lo que hicieron. Los fallos de los que habla esta gu\u00eda aparecen solo en el segundo caso."
+        "text": "No, y la distinción importa porque evita montar complejidad que no necesitas. Un agente con diez herramientas sigue teniendo un único hilo de decisión: ve todo lo que ha pasado y decide el siguiente paso con esa información completa. Un sistema multiagente tiene varios hilos que deciden por separado y luego hay que casar lo que hicieron. Los fallos de los que habla esta guía aparecen solo en el segundo caso."
       }
     },
     {
       "@type": "Question",
-      "name": "\u00bfPor qu\u00e9 no puedo pasarle a cada subagente un resumen de lo que hacen los dem\u00e1s?",
+      "name": "¿Por qué no puedo simplemente pasarle a cada subagente un resumen de lo que hacen los demás?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Porque un resumen pierde justo lo que hac\u00eda falta. El primero de los dos principios de Cognition es compartir la traza completa, no mensajes sueltos: las decisiones que causan el conflicto suelen ser impl\u00edcitas \u2014un estilo, un criterio de nombrado, una interpretaci\u00f3n de la instrucci\u00f3n\u2014 y no aparecen en ning\u00fan resumen porque nadie las formul\u00f3 como decisiones. Y si acabas pasando la traza entera a todos, ya no est\u00e1s ahorrando contexto: est\u00e1s pagando cinco veces por el mismo contexto."
+        "text": "Porque un resumen pierde justo lo que hacía falta. El primero de los dos principios de Cognition es compartir la traza completa, no mensajes sueltos: las decisiones que causan el conflicto suelen ser implícitas —un estilo, un criterio de nombrado, una interpretación de la instrucción— y no aparecen en ningún resumen porque nadie las formuló como decisiones. Y si acabas pasando la traza entera a todos, ya no estás ahorrando contexto: estás pagando cinco veces por el mismo contexto."
       }
     },
     {
       "@type": "Question",
-      "name": "\u00bfCu\u00e1ntos subagentes son demasiados?",
+      "name": "¿Cuántos subagentes son demasiados?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "El sistema de Anthropic lanza entre dos y cinco seg\u00fan la complejidad de la tarea, y ese rango es una referencia razonable para empezar. Pero la pregunta \u00fatil no es cu\u00e1ntos caben, sino cu\u00e1ntas partes verdaderamente independientes tiene tu tarea. Si solo hay tres bloques que no dependen entre s\u00ed, lanzar ocho subagentes no reparte mejor: solapa el trabajo, multiplica la factura y aumenta las posibilidades de que dos devuelvan cosas incompatibles."
+        "text": "Según Anthropic, su orquestador lanza entre tres y cinco subagentes en paralelo; para comparaciones directas bastan de dos a cuatro, y una investigación compleja puede usar más de diez. Para empezar, el rango bajo es una referencia razonable. Pero la pregunta útil no es cuántos caben, sino cuántas partes verdaderamente independientes tiene tu tarea. Si solo hay tres bloques que no dependen entre sí, lanzar ocho subagentes no reparte mejor: solapa el trabajo, multiplica la factura y aumenta las posibilidades de que dos devuelvan cosas incompatibles."
       }
     },
     {
       "@type": "Question",
-      "name": "\u00bfLos marcos de trabajo tipo CrewAI o AutoGen resuelven estos problemas?",
+      "name": "¿Los marcos de trabajo tipo CrewAI o AutoGen resuelven estos problemas?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Facilitan montar el sistema, que no es lo mismo que evitar que falle. El estudio de Berkeley analiz\u00f3 precisamente siete marcos populares y encontr\u00f3 tasas de fallo del 41% al 86,7%, con la conclusi\u00f3n de que el origen est\u00e1 en el dise\u00f1o del sistema y en c\u00f3mo interact\u00faan los agentes, no en el modelo. Un marco te ahorra c\u00f3digo, pero las decisiones que deciden si el sistema aguanta \u2014qui\u00e9n escribe, qu\u00e9 sabe cada uno, qui\u00e9n verifica\u2014 las sigues tomando t\u00fa."
+        "text": "Facilitan montar el sistema, que no es lo mismo que evitar que falle. El estudio de Berkeley analizó precisamente siete marcos populares y encontró tasas de fallo del 41% al 86,7%, con la conclusión de que el origen está en el diseño del sistema y en cómo interactúan los agentes, no en el modelo. Un marco te ahorra código, pero las decisiones que deciden si el sistema aguanta —quién escribe, qué sabe cada uno, quién verifica— las sigues tomando tú."
       }
     },
     {
       "@type": "Question",
-      "name": "\u00bfC\u00f3mo s\u00e9 si mi problema es de contexto lleno o de otra cosa?",
+      "name": "¿Cómo sé si mi problema es de contexto lleno o de otra cosa?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Mira en qu\u00e9 momento empeora. Si las primeras respuestas son buenas y la calidad cae seg\u00fan se alarga la sesi\u00f3n o seg\u00fan acumula resultados de herramientas, es contexto, y repartir lecturas entre subagentes con ventanas limpias ayuda. Si se equivoca desde el primer intento, con la ventana casi vac\u00eda, el problema es el encargo, las herramientas o el modelo \u2014 y dividir solo replicar\u00e1 ese mismo error en paralelo."
+        "text": "Mira en qué momento empeora. Si las primeras respuestas son buenas y la calidad cae según se alarga la sesión o según acumula resultados de herramientas, es contexto, y repartir lecturas entre subagentes con ventanas limpias ayuda. Si se equivoca desde el primer intento, con la ventana casi vacía, el problema es el encargo, las herramientas o el modelo — y dividir solo replicará ese mismo error en paralelo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué diferencia hay entre subagentes, equipos de agentes y flujos dinámicos?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Los subagentes son ayudantes que devuelven un resumen a la sesión principal. Los equipos de agentes son varias sesiones que se hablan entre sí (experimental, desactivado por defecto, más caro). Los flujos dinámicos son un script que Claude escribe para coordinar muchos subagentes y que puedes volver a ejecutar. Cuanto más abajo en la lista, más gasto y más cosas que supervisar."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Ha cambiado de opinión Cognition sobre los multiagentes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Matizó su postura. En abril de 2026 publicó «Multi-Agents: What's Actually Working», donde describe una clase más estrecha que sí funciona: los agentes extra aportan análisis o revisión, pero los cambios los hace un solo hilo. Sigue desaconsejando varios agentes escribiendo código a la vez."
       }
     }
   ]
@@ -94,15 +114,30 @@
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://eltelar.es/" },
-    { "@type": "ListItem", "position": 2, "name": "Gu\u00edas", "item": "https://eltelar.es/index.html#guias" },
-    { "@type": "ListItem", "position": 3, "name": "Cu\u00e1ndo usar varios agentes de IA en vez de uno", "item": "https://eltelar.es/articulos/varios-agentes-ia-o-uno.html" }
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://eltelar.es/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Guías",
+      "item": "https://eltelar.es/index.html#guias"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Cuándo usar varios agentes de IA en vez de uno",
+      "item": "https://eltelar.es/articulos/varios-agentes-ia-o-uno.html"
+    }
   ]
 }
 </script>
 <link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet"/></noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet"/></noscript>
 <style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><link rel="stylesheet" href="../css/tailwind.css"><link rel="stylesheet" href="../css/entrance.css?v=2"><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}(function(){var c=null;try{c=localStorage.getItem('eltelar-cookie-consent')}catch(e){}var g=c==='accepted'?'granted':'denied';gtag('consent','default',{ad_storage:g,ad_user_data:g,ad_personalization:g,analytics_storage:g,wait_for_update:500});window.adsbygoogle=window.adsbygoogle||[];if(g!=='granted'){window.adsbygoogle.requestNonPersonalizedAds=1;}})();</script><script>window.addEventListener("load",function(){setTimeout(function(){var s=document.createElement("script");s.async=true;s.src="https://www.googletagmanager.com/gtag/js?id=G-4DPTKEG79N";document.head.appendChild(s);},800);});</script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4DPTKEG79N');</script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8239907995939753" crossorigin="anonymous"></script></head><body class="bg-background font-body-md text-on-surface antialiased">
-<header class="w-full bg-surface-container-lowest border-b border-outline-variant"><div class="border-b border-outline-variant py-space-xxs px-space-md hidden md:block"><div class="max-w-site-max-width mx-auto flex items-center justify-between font-kicker text-kicker text-on-surface-variant uppercase tracking-wider"><span>EDICIÓN DIGITAL // ACTUALIZADO 2026 // EL TELAR &amp; AGENTES</span><span>MADRID · REMOTO</span><span>SIN HUMO · 100% PRODUCCIÓN</span></div></div><div class="max-w-site-max-width mx-auto px-space-md py-space-md sm:py-space-xl text-center"><p class="hidden sm:block font-kicker text-kicker uppercase tracking-widest text-on-surface-variant mb-space-xs">Publicación Independiente de Tecnología &amp; Agentes</p><a class="inline-block" href="../index.html"><div class="font-display text-display max-sm:text-[40px] max-sm:leading-none text-primary tracking-tight">El Telar</div></a><p class="hidden sm:block font-caption text-caption uppercase tracking-widest text-on-surface-variant mt-space-xs">EL BOLETÍN Y ARCHIVO PRÁCTICO DE INTELIGENCIA ARTIFICIAL Y AGENTES AUTÓNOMOS</p></div><div class="border-t border-b border-outline-variant"><div class="max-w-site-max-width mx-auto px-space-md flex items-center justify-between gap-space-sm h-14"><nav class="flex items-center gap-space-md sm:gap-space-lg h-full min-w-0 overflow-x-auto [scrollbar-width:none] whitespace-nowrap"><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../index.html#guias">GUÍAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../empieza-aqui.html">EMPIEZA AQUÍ</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../sobre-nosotros.html">SOBRE NOSOTROS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../noticias/index.html">NOTICIAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../herramientas/index.html">HERRAMIENTAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../prompts/index.html">PROMPTS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../contacto.html">CONTACTO</a></nav><div class="flex items-center gap-space-md"><button id="search-trigger" type="button" aria-label="Buscar en las guías" class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[20px]">search</span></button><a class="hidden sm:inline-block bg-primary-container text-surface px-space-md py-space-xs font-label-md text-label-md uppercase tracking-wider hover:bg-primary transition-colors" href="../index.html#despacho">SUSCRÍBETE GRATIS</a></div></div></div><div class="hidden md:block bg-surface-container-low border-b border-outline-variant py-space-xs px-space-md"><div class="max-w-site-max-width mx-auto text-center"><p class="font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">53 GUÍAS COMPLETAS EN EXPANSIÓN · ACTUALIZADO A MODELOS 2026 · PROBADO EN TERMINAL Y FLUJOS REALES · CERO HUMO NI TEORÍA VACÍA</p></div></div></header>
+<header class="w-full bg-surface-container-lowest border-b border-outline-variant"><div class="border-b border-outline-variant py-space-xxs px-space-md hidden md:block"><div class="max-w-site-max-width mx-auto flex items-center justify-between font-kicker text-kicker text-on-surface-variant uppercase tracking-wider"><span>EDICIÓN DIGITAL // ACTUALIZADO 2026 // EL TELAR &amp; AGENTES</span><span>MADRID · REMOTO</span><span>SIN HUMO · 100% PRODUCCIÓN</span></div></div><div class="max-w-site-max-width mx-auto px-space-md py-space-md sm:py-space-xl text-center"><p class="hidden sm:block font-kicker text-kicker uppercase tracking-widest text-on-surface-variant mb-space-xs">Publicación Independiente de Tecnología &amp; Agentes</p><a class="inline-block" href="../index.html"><div class="font-display text-display max-sm:text-[40px] max-sm:leading-none text-primary tracking-tight">El Telar</div></a><p class="hidden sm:block font-caption text-caption uppercase tracking-widest text-on-surface-variant mt-space-xs">EL BOLETÍN Y ARCHIVO PRÁCTICO DE INTELIGENCIA ARTIFICIAL Y AGENTES AUTÓNOMOS</p></div><div class="border-t border-b border-outline-variant"><div class="max-w-site-max-width mx-auto px-space-md flex items-center justify-between gap-space-sm h-14"><nav class="flex items-center gap-space-md sm:gap-space-lg h-full min-w-0 overflow-x-auto [scrollbar-width:none] whitespace-nowrap"><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../index.html#guias">GUÍAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../empieza-aqui.html">EMPIEZA AQUÍ</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../sobre-nosotros.html">SOBRE NOSOTROS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../noticias/index.html">NOTICIAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../herramientas/index.html">HERRAMIENTAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../prompts/index.html">PROMPTS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../contacto.html">CONTACTO</a></nav><div class="flex items-center gap-space-md"><button id="search-trigger" type="button" aria-label="Buscar en las guías" class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[20px]">search</span></button><a class="hidden sm:inline-block bg-primary-container text-surface px-space-md py-space-xs font-label-md text-label-md uppercase tracking-wider hover:bg-primary transition-colors" href="../index.html#despacho">SUSCRÍBETE GRATIS</a></div></div></div><div class="hidden md:block bg-surface-container-low border-b border-outline-variant py-space-xs px-space-md"><div class="max-w-site-max-width mx-auto text-center"><p class="font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">56 GUÍAS COMPLETAS EN EXPANSIÓN · ACTUALIZADO A MODELOS 2026 · PROBADO EN TERMINAL Y FLUJOS REALES · CERO HUMO NI TEORÍA VACÍA</p></div></div></header>
 <main class="w-full max-w-site-max-width mx-auto px-space-md py-space-xl"><div class="flex flex-col w-full">
 <nav class="w-full mb-space-lg">
 <ol class="flex flex-wrap items-center gap-space-xs font-kicker text-kicker text-on-surface-variant uppercase tracking-wider">
@@ -171,7 +206,7 @@
 <section id="sec-2" class="space-y-space-lg">
 <h2 class="font-headline-lg text-headline-lg text-primary">El caso a favor: lo que midió Anthropic</h2>
 <p class="font-body-md text-body-md text-on-surface leading-relaxed">
-          El argumento más sólido a favor de dividir viene de Anthropic, que publicó cómo construyó el sistema de investigación que hay detrás de la función de <em>Research</em> de Claude. Es un diseño de <strong>orquestador y trabajadores</strong>: un agente principal planifica, lanza entre dos y cinco subagentes que trabajan en paralelo sobre partes distintas del problema, y luego sintetiza lo que devuelven.
+          El argumento más sólido a favor de dividir viene de Anthropic, que publicó cómo construyó el sistema de investigación que hay detrás de la función de <em>Research</em> de Claude. Es un diseño de <strong>orquestador y trabajadores</strong>: un agente principal planifica, lanza entre tres y cinco subagentes que trabajan en paralelo sobre partes distintas del problema, y luego sintetiza lo que devuelven.
         </p>
 <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
           El número que se cita en todas partes es real y viene de su propia evaluación interna de investigación: el sistema multiagente —con Claude Opus 4 de agente principal y Claude Sonnet 4 de subagentes— superó al Opus 4 en solitario <strong>en un 90,2%</strong>. Es una mejora enorme, y explica buena parte del entusiasmo del sector.
@@ -187,7 +222,7 @@
           Hay una segunda ventaja, esta sí estructural y no comprable con dinero: <strong>cada subagente tiene su propia ventana de contexto</strong>. Si una investigación exige leer cuarenta documentos, un solo agente los va metiendo todos en la misma ventana y llega al final arrastrando un montón de ruido; cinco subagentes leen ocho cada uno y devuelven solo la conclusión. Esto conecta directamente con lo que explicamos en <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="ventana-contexto-memoria-ia.html">la guía de ventana de contexto</a>: el problema no es solo que quepa, es que la precisión se degrada mucho antes de llegar al límite. Repartir lecturas entre ventanas limpias es una forma legítima de esquivar esa degradación.
         </p>
 <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
-          Y ahora el matiz que el propio documento de Anthropic se encarga de dejar por escrito, y que conviene leer despacio antes de copiar su arquitectura: dicen explícitamente que este diseño <strong>no encaja</strong> en la mayoría de tareas de programación, porque tienen pocas partes de verdad paralelizables, ni en dominios donde todos los agentes necesitan compartir el mismo contexto o donde hay muchas dependencias entre ellos. Añaden que los agentes todavía no se coordinan ni se delegan trabajo bien entre sí en tiempo real. O sea: el equipo que publica el 90,2% está diciendo, en la misma página, que su arquitectura sirve para un tipo de tarea muy concreto.
+          Y ahora el matiz que el propio documento de Anthropic se encarga de dejar por escrito, y que conviene leer despacio antes de copiar su arquitectura: dicen que los dominios donde todos los agentes necesitan compartir el mismo contexto, o con muchas dependencias entre ellos, <strong>no encajan</strong> hoy en un sistema multiagente, y ponen la programación como ejemplo: la mayoría de las tareas de código tienen menos partes realmente paralelizables que la investigación. Añaden que los agentes todavía no se coordinan ni se delegan trabajo bien entre sí en tiempo real. O sea: el equipo que publica el 90,2% está diciendo, en la misma página, que su arquitectura sirve para un tipo de tarea muy concreto.
         </p>
 </section>
 <section id="sec-3" class="space-y-space-lg">
@@ -208,14 +243,14 @@
           Fíjate en lo incómodo del fallo: no hay ningún error que puedas encontrar leyendo el registro de ninguno de los dos subagentes. El fallo solo existe en la unión. Por eso este tipo de sistemas son tan difíciles de depurar y por eso, cuando fallan, tienden a fallar en silencio en vez de dar un error. Es un pariente cercano de los problemas que recogemos en <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="errores-automatizar-ia.html">errores comunes al automatizar con IA</a>: lo que se rompe casi nunca es la pieza, es la costura.
         </p>
 <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
-          Merece la pena decir que el autor, Walden Yan, ha matizado su postura después: en un artículo posterior reconoce que sí han encontrado configuraciones que funcionan. Pero no son las que promete el <em>marketing</em> del sector, y comparten todas la misma propiedad, que vale la pena retener porque es la conclusión práctica de toda esta guía: <strong>un bucle principal que lleva el estado, subagentes sin estado propio y con un encargo estrecho, y la escritura en un único hilo</strong>. En cuanto intentas que dos agentes sean iguales y compartan memoria, la coherencia se cae.
+          Merece la pena decir que el autor, Walden Yan, ha matizado su postura después: en <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://cognition.com/blog/multi-agents-working">«Multi-Agents: What's Actually Working»</a> (22 de abril de 2026) reconoce que sí han encontrado configuraciones que funcionan, por ejemplo un agente revisor que parte de un contexto limpio y solo ve el cambio a revisar, o un modelo que consulta a otro más potente cuando se atasca, siempre con una sola vía de escritura. Pero no son las que promete el <em>marketing</em> del sector, y comparten todas la misma propiedad, que vale la pena retener porque es la conclusión práctica de toda esta guía: <strong>un bucle principal que lleva el estado, subagentes sin estado propio y con un encargo estrecho, y la escritura en un único hilo</strong>. En cuanto intentas que dos agentes sean iguales y compartan memoria, la coherencia se cae.
         </p>
 </section>
 <section id="sec-4" class="space-y-space-lg">
 <figure data-inline-photo class="space-y-space-xs my-space-xl"><img class="w-full border border-outline-variant" src="../img/guias/foto-varios-agentes-ia-o-uno.jpg" alt="Web de CrewAI, framework para coordinar varios agentes" width="1280" height="720" loading="lazy" decoding="async"/><figcaption class="font-caption text-caption text-on-surface-variant">Captura de pantalla: <a class="underline" href="https://www.crewai.com/" rel="nofollow noopener" target="_blank">crewai.com</a>.</figcaption></figure>
 <h2 class="font-headline-lg text-headline-lg text-primary">Lo que dicen los números de fallos</h2>
 <p class="font-body-md text-body-md text-on-surface leading-relaxed">
-          Entre la anécdota de un equipo y la promesa de otro, hay un trabajo académico que intentó medir esto en frío. Un grupo de la Universidad de California en Berkeley —Mert Cemri y otros, con Matei Zaharia, Joseph Gonzalez e Ion Stoica entre los firmantes— publicó <em>Why Do Multi-Agent LLM Systems Fail?</em>, que analiza ejecuciones reales de siete marcos de trabajo multiagente populares. Sea cual sea el reparto que elijas, la forma de comprobarlo es la misma y conviene montarla antes: medir cada agente por separado, porque un porcentaje global no te dice cuál de ellos rompió la cadena — <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="evaluar-agente-ia.html">cómo evaluar un agente, paso a paso</a>.
+          Entre la anécdota de un equipo y la promesa de otro, hay un trabajo académico que intentó medir esto en frío. Un grupo de la Universidad de California en Berkeley —Mert Cemri y otros, con Matei Zaharia, Joseph Gonzalez e Ion Stoica entre los firmantes— publicó <em>Why Do Multi-Agent LLM Systems Fail?</em>, que analiza ejecuciones reales de siete marcos de trabajo multiagente populares (con modelos de 2025 como GPT-4o y Claude 3.7 Sonnet, así que las cifras absolutas de hoy serán otras; lo valioso es la clasificación de fallos). Sea cual sea el reparto que elijas, la forma de comprobarlo es la misma y conviene montarla antes: medir cada agente por separado, porque un porcentaje global no te dice cuál de ellos rompió la cadena — <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="evaluar-agente-ia.html">cómo evaluar un agente, paso a paso</a>.
         </p>
 <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
           De ahí sale MAST, una taxonomía de <strong>14 modos de fallo</strong> agrupados en tres familias: problemas de diseño del sistema, desalineación entre agentes, y fallos de verificación de la tarea. La construyeron anotando trazas a mano con acuerdo alto entre anotadores (kappa de 0,88) y la ampliaron después a un conjunto de más de 1.600 trazas anotadas.
@@ -224,7 +259,7 @@
           El dato que conviene tener en la cabeza antes de montar nada: en esos siete marcos, las <strong>tasas de fallo van del 41% al 86,7%</strong>. Y la conclusión de los autores es la misma que la de Cognition, dicha con otras palabras: los fallos vienen del diseño del sistema y de cómo interactúan los agentes, no de las limitaciones del modelo — así que no se arreglan cambiando a un modelo mejor ni retocando el prompt. Piden rediseños estructurales.
         </p>
 <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
-          A ese trabajo le faltaba la comparación más directa de todas —equipo contra agente solo, misma tarea, mismo modelo— y en octubre de 2026 Vals AI la publicó sobre Vibe Code Bench, que mide construir aplicaciones web completas a partir de una especificación: 50 aplicaciones, con GPT 6 Sol y Claude Opus 5.5, cada uno solo y en equipo, a esfuerzo de razonamiento medio y máximo. El equipo costó entre <strong>1,8 y 5,1 veces más</strong>, y de las cuatro comparaciones <strong>solo una resultó estadísticamente significativa</strong>: Sol a esfuerzo medio mejoró 7,3 puntos (p = 0,005). Las otras tres se movieron entre −0,3 y +3,4 puntos con valores p de 0,16 a 0,81, que es otra forma de decir ruido. El hallazgo más útil para decidir no es el coste: es que para Sol <strong>subir el esfuerzo de razonamiento rindió más que añadir compañeros</strong>, y para Opus 5.5 ninguna de las dos cosas cambió nada medible. Antes de repartir el trabajo entre agentes, merece la pena probar el mismo agente pensando más. Los autores avisan de los límites de su propio trabajo: un solo benchmark de aplicaciones web y una única ejecución por configuración.
+          A ese trabajo le faltaba la comparación más directa de todas —equipo contra agente solo, misma tarea, mismo modelo— y en octubre de 2026 Vals AI la publicó (<a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://www.vals.ai/blogs/multi-agent-vibe-code-bench">«Do Agent Teams Pay Off?»</a>) sobre Vibe Code Bench, que mide construir aplicaciones web completas a partir de una especificación: 50 aplicaciones, con GPT 6 Sol y Claude Opus 5.5, cada uno solo y en equipo, a esfuerzo de razonamiento medio y máximo. El equipo costó entre <strong>1,8 y 5,1 veces más</strong>, y de las cuatro comparaciones <strong>solo una resultó estadísticamente significativa</strong>: Sol a esfuerzo medio mejoró 7,3 puntos (p = 0,005). Las otras tres se movieron entre −0,3 y +3,4 puntos con valores p de 0,16 a 0,81, que es otra forma de decir ruido. El hallazgo más útil para decidir no es el coste: es que para Sol <strong>subir el esfuerzo de razonamiento rindió más que añadir compañeros</strong>, y para Opus 5.5 ninguna de las dos cosas cambió nada medible. Antes de repartir el trabajo entre agentes, merece la pena probar el mismo agente pensando más. El equipo de Opus 5.5 a esfuerzo máximo sacó la mejor nota del estudio (93,2 %), pero costó unas 30 veces más que el agente solo a esfuerzo medio y su ventaja sobre este no fue significativa. Los propios autores concluyen que ninguna de las dos opciones es una elección por defecto clara y avisan de los límites de su trabajo: un solo benchmark de aplicaciones web, una única ejecución por configuración y arneses distintos para cada modelo.
         </p>
 <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
           Hay una cuarta cosa que casi nunca entra en estas discusiones y que conviene no olvidar: cada subagente que añades es otra superficie por la que te pueden colar instrucciones. Si uno de ellos lee una página web o un correo, lo que venga ahí dentro puede acabar dirigiendo al orquestador. Lo explicamos entero en <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="prompt-injection-agentes-ia.html">la guía de inyección de prompts</a>, pero el resumen aplicado aquí es corto: multiplicar agentes multiplica puertas de entrada, y el que las cruza suele ser el que más permisos tiene.
@@ -267,6 +302,15 @@
           Y el consejo más útil de todos es el más aburrido: empieza por un agente. Móntalo, úsalo de verdad una temporada y apunta dónde se atasca. Si lo que te frena resulta ser la ventana de contexto llena de cosas que ya no hacen falta, o el reloj porque hay que leer muchas fuentes independientes, entonces dividir te va a servir. Si lo que te frena es que se equivoca o que no entiende bien lo que quieres, añadir agentes solo te dará el mismo error repartido entre cinco sitios y más caro. Para ese camino de entrada, <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="automatizar-tareas-agentes-ia.html">automatizar tareas repetitivas con agentes</a> es el punto de partida razonable.
         </p>
 </section>
+<section id="sec-7" class="space-y-space-lg">
+<h2 class="font-headline-lg text-headline-lg text-primary">Cómo se traduce esto en Claude Code (y qué es nuevo en 2026)</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Las herramientas actuales ya traen estos patrones preparados. Aplicarlos con criterio es lo que cambia el resultado. Según la documentación de Claude Code, hay cuatro niveles, de menos a más complejidad:</p>
+<div class="overflow-x-auto"><table class="w-full text-left font-body-sm text-body-sm border border-outline-variant"><thead class="bg-surface-container-low"><tr><th class="p-space-sm border-b border-outline-variant">Nivel</th><th class="p-space-sm border-b border-outline-variant">Qué es</th><th class="p-space-sm border-b border-outline-variant">Cuándo tiene sentido</th></tr></thead><tbody><tr><td class="p-space-sm border-b border-outline-variant align-top font-semibold text-primary">Un agente con herramientas</td><td class="p-space-sm border-b border-outline-variant align-top">La sesión normal, con un solo hilo de decisión.</td><td class="p-space-sm border-b border-outline-variant align-top">El punto de partida para casi todo.</td></tr><tr><td class="p-space-sm border-b border-outline-variant align-top font-semibold text-primary">Subagentes</td><td class="p-space-sm border-b border-outline-variant align-top">Ayudantes con su propia ventana de contexto; solo te devuelven un resumen. Cada uno gasta su propio uso.</td><td class="p-space-sm border-b border-outline-variant align-top">Tareas de lectura que llenarían tu conversación: buscar, revisar, ejecutar tests.</td></tr><tr><td class="p-space-sm border-b border-outline-variant align-top font-semibold text-primary">Equipos de agentes</td><td class="p-space-sm border-b border-outline-variant align-top">Varias sesiones de Claude Code que se comunican entre sí. Son <strong>experimentales y vienen desactivados</strong>; usan bastantes más tokens que una sesión.</td><td class="p-space-sm border-b border-outline-variant align-top">Investigación y revisión en paralelo. La documentación recomienda empezar con 3-5 compañeros y evitar que dos editen el mismo archivo.</td></tr><tr><td class="p-space-sm border-b border-outline-variant align-top font-semibold text-primary">Flujos dinámicos</td><td class="p-space-sm border-b border-outline-variant align-top">Claude escribe un script que lanza y coordina muchos subagentes en segundo plano. Hasta 16 agentes a la vez por defecto y 1.000 en total por ejecución.</td><td class="p-space-sm border-b border-outline-variant align-top">Auditorías de muchos archivos, migraciones grandes o investigaciones con fuentes que contrastar. Prueba primero con un trozo pequeño.</td></tr></tbody></table></div>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Fíjate en que encaja con las reglas de arriba: la documentación aconseja equipos para investigación y revisión, que son tareas de lectura, y advierte de que para tareas secuenciales o con ediciones en el mismo archivo es mejor una sola sesión o subagentes. También avisa del coste: un flujo grande muestra un aviso cuando programa más de 25 agentes o proyecta más de 1,5 millones de tokens. Detalles de uso en <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" href="que-es-claude-code.html#subagentes-flujos">la guía de Claude Code</a>.</p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">En el lado de desarrolladores, Anthropic activó el 9 de octubre los flujos dinámicos en Claude Managed Agents (en beta): hasta 1.000 agentes por ejecución, 64 hilos a la vez y 24 horas por defecto de duración máxima, según su documentación. Lo contamos en <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" href="../noticias/2026-10-09-claude-flujos-dinamicos-1000-agentes.html">la noticia sobre los flujos dinámicos</a>. La cifra de Anthropic en esa prueba (66 de 70 fallos hallados frente a 14-27 con un agente) es, de nuevo, un caso de lectura paralela, no de escritura.</p>
+<aside class="bg-surface-container-low p-space-md relative"><div class="absolute left-0 top-0 bottom-0 w-1 bg-secondary"></div><div class="flex items-center gap-2 mb-space-xs"><span class="font-kicker text-kicker uppercase tracking-widest text-secondary font-bold">RESUMEN</span></div><p class="font-body-md text-body-md text-on-surface leading-relaxed">El patrón que sobrevive a los datos es el mismo con cualquier herramienta: lectura en paralelo, escritura en un solo sitio, un verificador al final y el coste medido antes de escalar.</p></aside>
+<p class="font-body-sm text-body-sm mt-space-sm"><strong class="text-on-surface">Fuente oficial:</strong> <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://code.claude.com/docs/en/agent-teams">Equipos de agentes</a> · <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://code.claude.com/docs/en/workflows">Flujos dinámicos</a> · <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://platform.claude.com/docs/en/managed-agents/workflow-runs">Managed Agents: workflow runs</a></p>
+</section>
 <section class="space-y-space-md">
 <h2 class="font-headline-lg text-headline-lg text-primary">
           Preguntas frecuentes
@@ -277,7 +321,7 @@
 <span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
 </button>
 <div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
-Porque esa cifra es de su evaluación interna de investigación, que es justo el tipo de tarea donde dividir funciona: muchas búsquedas independientes, sin escritura compartida. En el mismo documento dicen que su arquitectura no encaja en la mayoría de tareas de programación ni donde los agentes necesitan compartir contexto. Y midieron que consume unas 15 veces más tokens que una conversación, con el consumo explicando por sí solo el 80% de la varianza de rendimiento en BrowseComp. La mejora es real, pero es real para su caso y comprada en buena parte con presupuesto.
+Porque esa cifra es de su evaluación interna de investigación, que es justo el tipo de tarea donde dividir funciona: muchas búsquedas independientes, sin escritura compartida. En el mismo documento dicen que los dominios en los que todos los agentes necesitan compartir el mismo contexto, o con muchas dependencias entre ellos, no encajan hoy en un sistema multiagente, y ponen la programación como ejemplo porque tiene menos partes realmente paralelizables que la investigación. Y midieron que consume unas 15 veces más tokens que una conversación, con el consumo explicando por sí solo el 80% de la varianza de rendimiento en BrowseComp. La mejora es real, pero es real para su caso y comprada en buena parte con presupuesto.
 </div>
 </div>
 <div class="border border-outline-variant bg-surface-container-lowest">
@@ -304,7 +348,7 @@ Porque un resumen pierde justo lo que hacía falta. El primero de los dos princi
 <span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
 </button>
 <div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
-El sistema de Anthropic lanza entre dos y cinco según la complejidad de la tarea, y ese rango es una referencia razonable para empezar. Pero la pregunta útil no es cuántos caben, sino cuántas partes verdaderamente independientes tiene tu tarea. Si solo hay tres bloques que no dependen entre sí, lanzar ocho subagentes no reparte mejor: solapa el trabajo, multiplica la factura y aumenta las posibilidades de que dos devuelvan cosas incompatibles.
+Según Anthropic, su orquestador lanza entre tres y cinco subagentes en paralelo; para comparaciones directas bastan de dos a cuatro, y una investigación compleja puede usar más de diez. Para empezar, el rango bajo es una referencia razonable. Pero la pregunta útil no es cuántos caben, sino cuántas partes verdaderamente independientes tiene tu tarea. Si solo hay tres bloques que no dependen entre sí, lanzar ocho subagentes no reparte mejor: solapa el trabajo, multiplica la factura y aumenta las posibilidades de que dos devuelvan cosas incompatibles.
 </div>
 </div>
 <div class="border border-outline-variant bg-surface-container-lowest">
@@ -324,6 +368,24 @@ Facilitan montar el sistema, que no es lo mismo que evitar que falle. El estudio
 <div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
 Mira en qué momento empeora. Si las primeras respuestas son buenas y la calidad cae según se alarga la sesión o según acumula resultados de herramientas, es contexto, y repartir lecturas entre subagentes con ventanas limpias ayuda. Si se equivoca desde el primer intento, con la ventana casi vacía, el problema es el encargo, las herramientas o el modelo — y dividir solo replicará ese mismo error en paralelo.
 </div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Qué diferencia hay entre subagentes, equipos de agentes y flujos dinámicos?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Los subagentes son ayudantes que devuelven un resumen a la sesión principal. Los equipos de agentes son varias sesiones que se hablan entre sí (experimental, desactivado por defecto, más caro). Los flujos dinámicos son un script que Claude escribe para coordinar muchos subagentes y que puedes volver a ejecutar. Cuanto más abajo en la lista, más gasto y más cosas que supervisar.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Ha cambiado de opinión Cognition sobre los multiagentes?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Matizó su postura. En abril de 2026 publicó «Multi-Agents: What's Actually Working», donde describe una clase más estrecha que sí funciona: los agentes extra aportan análisis o revisión, pero los cambios los hace un solo hilo. Sigue desaconsejando varios agentes escribiendo código a la vez.
+</div>
+</div>
 </div>
 </section>
 </article>
@@ -340,6 +402,7 @@ Mira en qué momento empeora. Si las primeras respuestas son buenas y la calidad
 <a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-4">Los números de fallos</a>
 <a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-5">Cuándo sí y cuándo no</a>
 <a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-6">Cómo montarlo</a>
+<a class="block py-1 text-on-surface-variant hover:text-primary transition-colors" href="#sec-7">Cómo se traduce en Claude Code</a>
 </nav>
 </div>
 
@@ -348,7 +411,7 @@ Mira en qué momento empeora. Si las primeras respuestas son buenas y la calidad
 <dl class="space-y-space-xs font-caption text-caption">
 <div class="flex justify-between py-1"><dt class="text-on-surface-variant">Categoría:</dt><dd class="font-semibold text-primary">Conceptos</dd></div>
 <div class="flex justify-between py-1"><dt class="text-on-surface-variant">Nivel técnico:</dt><dd class="font-semibold text-primary">Intermedio</dd></div>
-<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Fuentes citadas:</dt><dd class="font-semibold text-primary">Anthropic, Cognition, UC Berkeley</dd></div>
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Fuentes citadas:</dt><dd class="font-semibold text-primary">Anthropic, Cognition, UC Berkeley, Vals AI</dd></div>
 </dl>
 </div>
 </aside>
