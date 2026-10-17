@@ -69,7 +69,13 @@
         "title": "Qué guarda tu chat de IA y cómo limitarlo",
         "url": "../articulos/privacidad-chats-ia.html"
       }
-    ]
+    ],
+    "photo": {
+      "alt": "Entrada de los estudios de The Walt Disney Company en Burbank, California (imagen de archivo)",
+      "author": "Coolcaesar",
+      "license": "CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/w/index.php?curid=52572750"
+    }
   },
   {
     "slug": "2026-10-17-meta-terminos-rastrear-webs",
@@ -134,7 +140,13 @@
         "title": "Cómo proteger tus datos cuando usas IA",
         "url": "../articulos/proteger-datos-ia.html"
       }
-    ]
+    ],
+    "photo": {
+      "alt": "Un móvil con la pantalla de inicio de sesión de Facebook junto a fichas de «social media» (imagen de archivo)",
+      "author": "Wilfred Iven",
+      "license": "CC0",
+      "url": "https://stocksnap.io/photo/facebook-socialmedia-WBWKY1FQ2I"
+    }
   },
   {
     "slug": "2026-10-17-google-universal-cart",
@@ -189,7 +201,13 @@
         "url": "../articulos/mejores-asistentes-ia-no-programadores.html"
       }
     ],
-    "published": "2026-10-17"
+    "published": "2026-10-17",
+    "photo": {
+      "alt": "Una persona compra por internet con un portátil y una tarjeta en la mano (imagen de archivo)",
+      "author": "Shixart1985",
+      "license": "CC BY 2.0",
+      "url": "https://commons.wikimedia.org/w/index.php?curid=196345341"
+    }
   },
   {
     "slug": "2026-10-17-apple-app-store-nudify",
@@ -239,7 +257,13 @@
         "url": "../articulos/estafas-con-ia.html"
       }
     ],
-    "published": "2026-10-17"
+    "published": "2026-10-17",
+    "photo": {
+      "alt": "Logotipo de Apple iluminado en la fachada de una tienda de San Francisco (imagen de archivo)",
+      "author": "Angelo DeSantis from Berkeley, US",
+      "license": "CC BY 2.0",
+      "url": "https://commons.wikimedia.org/w/index.php?curid=28572606"
+    }
   },
   {
     "slug": "2026-10-16-meta-muse-spark-open",
@@ -517,7 +541,13 @@
       }
     ],
     "published": "2026-10-15",
-    "seo_title": "OpenAI retirará GPT-4o y GPT-4.1 de su API"
+    "seo_title": "OpenAI retirará GPT-4o y GPT-4.1 de su API",
+    "photo": {
+      "alt": "Una lupa sobre la web de OpenAI en la pantalla de un ordenador (imagen de archivo)",
+      "author": "Jernej Furman from Slovenia",
+      "license": "CC BY 2.0",
+      "url": "https://commons.wikimedia.org/w/index.php?curid=134006159"
+    }
   },
   {
     "slug": "2026-10-13-apple-homeview-sin-europa",
