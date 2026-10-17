@@ -258,3 +258,8 @@ main pre code{overflow-wrap:normal;word-break:normal}
 .rd-logo--googlegemini::after{background:linear-gradient(135deg,#4285f4 0%,#9b72cb 55%,#d96570 100%);-webkit-mask-size:84%;mask-size:84%}
 /* Gemini: logo oficial en color (PNG) */
 .rd-logo--googlegemini::after{background:url(/img/logos/gemini-icon.png) center/80% no-repeat;-webkit-mask:none;mask:none}
+/* Claude y ChatGPT: cuadrado de color con logo blanco (como antes); Gemini: logo en color sobre blanco */
+.rd-logo--claude{background:#d97757!important;border-color:#d97757}
+.rd-logo--claude::after{background:#fff}
+.rd-logo--openai{background:#0f0f0f!important;border-color:#0f0f0f}
+.rd-logo--openai::after{background:#fff}
