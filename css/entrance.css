@@ -153,3 +153,21 @@ nav a[href]:not([class*="border-b-2"]):hover::after {
   .hero-cta{flex-direction:column}
   .hero-cta__main{width:100%;justify-content:center}
 }
+
+/* Banda de regalo bajo el hero */
+.gift-band{background:#072417;color:#f4f6f2;border-bottom:2px solid #fd8a42}
+.gift-band__in{max-width:1240px;margin:0 auto;padding:30px 16px;display:grid;gap:18px 40px;grid-template-columns:1fr;align-items:center}
+@media(min-width:900px){.gift-band__in{grid-template-columns:1.2fr 1fr;padding:34px 32px}.gift-band__stats{grid-column:1/-1}}
+.gift-band__tag{display:inline-block;font:700 10.5px/1 Inter,system-ui,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#fd8a42;margin-bottom:10px}
+.gift-band h2{font:500 28px/1.2 Newsreader,Georgia,serif;margin:0 0 8px;color:#fff}
+.gift-band p{margin:0;font:400 14.5px/1.5 Inter,system-ui,sans-serif;color:#c9d6ce}
+.gift-band__form{display:flex;gap:8px;flex-wrap:wrap}
+.gift-band__form input[type=email]{flex:1 1 220px;padding:14px 16px;border:1px solid #3b5a49;background:#0c3321;color:#fff;font:400 15px Inter,system-ui,sans-serif;border-radius:2px}
+.gift-band__form input[type=email]::placeholder{color:#8fa89a}
+.gift-band__form input[type=email]:focus{outline:2px solid #fd8a42;outline-offset:1px}
+.gift-band__form button{padding:14px 22px;background:#fd8a42;color:#072417;font:700 12px/1 Inter,system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;border:0;border-radius:2px;cursor:pointer;transition:background .2s,transform .2s}
+.gift-band__form button:hover{background:#ffa266;transform:translateY(-1px)}
+.gift-band__form button:disabled{opacity:.6;cursor:wait}
+.gift-band__ok{padding:12px 14px;border:1px solid #fd8a42;font:500 13.5px/1.4 Inter,system-ui,sans-serif;color:#fff}
+.gift-band__stats{list-style:none;margin:6px 0 0;padding:14px 0 0;border-top:1px solid #20412f;display:flex;flex-wrap:wrap;gap:6px 28px;font:500 12.5px Inter,system-ui,sans-serif;color:#9fb3a5}
+.gift-band__stats b{color:#fff;font:600 17px Newsreader,Georgia,serif;margin-right:4px}
