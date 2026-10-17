@@ -7,3 +7,5 @@ __pycache__/
 
 !descargas/**/*.zip
 !descargas/*.zip
+!pack-*/*.zip
+!pack-*/skills/*.zip
