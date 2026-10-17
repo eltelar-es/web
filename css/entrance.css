@@ -250,3 +250,9 @@ main pre code{overflow-wrap:normal;word-break:normal}
   header > div:nth-child(2) h1{font-size:clamp(56px,7vw,80px)!important;line-height:1.02}
   header > div:nth-child(2) > p{margin-top:6px!important}
 }
+/* Logos de marca con sus colores reales sobre fondo claro */
+.rd-logo{background:#fff!important;border:1px solid #d6dad5}
+.rd-logo::after{background:#0f0f0f}
+.rd-logo--claude::after{background:#d97757}
+.rd-logo--openai::after{background:#0f0f0f}
+.rd-logo--googlegemini::after{background:linear-gradient(135deg,#4285f4 0%,#9b72cb 55%,#d96570 100%);-webkit-mask-size:84%;mask-size:84%}
