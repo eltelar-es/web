@@ -215,3 +215,21 @@ main pre code{overflow-wrap:normal;word-break:normal}
 .gift-band__chips li{display:inline-flex;align-items:center;gap:6px;padding:7px 11px;border:1px solid #2d4d3b;background:#0c3321;color:#e6efe9;font:500 12.5px Inter,system-ui,sans-serif;border-radius:2px}
 .gift-band__chips i{font-size:16px;color:#fd8a42}
 .gift-band__chips .more{border-style:dashed;color:#fd8a42;font-weight:600}
+
+/* Herramientas en portada */
+.tl-grid{display:grid;gap:14px;grid-template-columns:1fr}
+@media(min-width:640px){.tl-grid{grid-template-columns:1fr 1fr}}
+@media(min-width:1000px){.tl-grid{grid-template-columns:repeat(3,1fr)}}
+.tl-card{position:relative;display:flex;flex-direction:column;gap:8px;padding:22px;background:#f1f3fe;border:1px solid #c2c8c2;overflow:hidden;transition:transform .2s,box-shadow .2s,border-color .2s}
+.tl-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:#fd8a42;transform:scaleY(0);transform-origin:top;transition:transform .25s}
+.tl-card:hover{transform:translateY(-3px);border-color:#072417;box-shadow:0 12px 26px rgba(7,36,23,.12)}
+.tl-card:hover::before{transform:scaleY(1)}
+.tl-card__ico{width:44px;height:44px;display:grid;place-items:center;background:#072417;color:#fd8a42;border-radius:10px}
+.tl-card__ico i{font-size:24px}
+.tl-card__tag{font:700 10.5px/1 Inter,system-ui,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#9b4500;margin-top:6px}
+.tl-card__t{font:500 21px/1.2 Newsreader,Georgia,serif;color:#181c23}
+.tl-card__d{font:400 13.5px/1.5 Inter,system-ui,sans-serif;color:#5b645e;flex:1}
+.tl-card__go{display:inline-flex;align-items:center;gap:6px;font:700 11px Inter,system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#072417;margin-top:6px}
+.tl-card__go i{font-size:16px;transition:transform .2s}
+.tl-card:hover .tl-card__go i{transform:translateX(4px)}
+@media(prefers-reduced-motion:reduce){.tl-card,.tl-card::before,.tl-card__go i{transition:none}}
