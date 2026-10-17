@@ -2,6 +2,7 @@
 // data-ok points at the element shown on success; failures are reported under the form
 // instead of pretending the message went through.
 (function () {
+  var NETWORK = 'No hemos podido conectar. Si estás en España y hay partido, algunos operadores bloquean temporalmente parte de internet: inténtalo de nuevo en un rato o escríbenos a contacto@eltelar.es';
   var FALLBACK = 'No se pudo enviar. Inténtalo de nuevo o escríbenos a contacto@eltelar.es';
 
   function showError(form, text) {
@@ -25,7 +26,9 @@
       data.set('page', location.pathname);
       if (button) button.disabled = true;
 
-      fetch('https://forms.eltelar.es/api/form', { method: 'POST', body: data })
+      var ctrl = window.AbortController ? new AbortController() : null;
+      var timer = ctrl ? setTimeout(function () { ctrl.abort(); }, 12000) : null;
+      fetch('https://forms.eltelar.es/api/form', { method: 'POST', body: data, signal: ctrl ? ctrl.signal : undefined })
         .then(function (res) {
           return res.json().catch(function () { return {}; }).then(function (body) {
             if (!res.ok || !body.ok) {
@@ -43,9 +46,11 @@
         })
         .catch(function (err) {
           var text = err && err.message;
-          showError(form, text === 'Revisa la dirección de correo.' ? text : FALLBACK);
+          if (err && (err.name === 'AbortError' || err.name === 'TypeError')) text = NETWORK;
+          showError(form, text === 'Revisa la dirección de correo.' || text === NETWORK ? text : FALLBACK);
         })
         .finally(function () {
+          if (timer) clearTimeout(timer);
           if (button) button.disabled = false;
         });
     });
