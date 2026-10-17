@@ -171,3 +171,7 @@ nav a[href]:not([class*="border-b-2"]):hover::after {
 .gift-band__ok{padding:12px 14px;border:1px solid #fd8a42;font:500 13.5px/1.4 Inter,system-ui,sans-serif;color:#fff}
 .gift-band__stats{list-style:none;margin:6px 0 0;padding:14px 0 0;border-top:1px solid #20412f;display:flex;flex-wrap:wrap;gap:6px 28px;font:500 12.5px Inter,system-ui,sans-serif;color:#9fb3a5}
 .gift-band__stats b{color:#fff;font:600 17px Newsreader,Georgia,serif;margin-right:4px}
+/* Código largo no desborda en móvil */
+main code{overflow-wrap:anywhere;word-break:break-word}
+main pre{max-width:100%;overflow-x:auto}
+main pre code{overflow-wrap:normal;word-break:normal}
