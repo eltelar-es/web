@@ -1,5 +1,110 @@
 [
   {
+    "slug": "2026-10-17-google-universal-cart",
+    "date": "2026-10-15",
+    "category": "Herramientas",
+    "title": "Google lanza en EE. UU. Universal Cart: un carrito único en Búsqueda y Gemini",
+    "dek": "Permite guardar productos de varias tiendas, seguir bajadas de precio y pagar con Google Pay, de momento solo en Estados Unidos.",
+    "tldr": "Google ha empezado a desplegar en EE. UU. Universal Cart, un carrito de la compra compartido entre la Búsqueda (incluido el Modo IA) y la app de Gemini. Por ahora no hay fecha para España ni para la UE.",
+    "key_facts": [
+      {
+        "value": "60 mil M",
+        "label": "fichas de producto en el Shopping Graph de Google"
+      },
+      {
+        "value": "15 oct",
+        "label": "inicio del despliegue en EE. UU."
+      }
+    ],
+    "quote": {
+      "text": "they will remain the seller of record",
+      "source": "Google, anuncio oficial (traducido: «seguirán siendo el vendedor oficial»)"
+    },
+    "body": [
+      "Google anunció el 15 de octubre de 2026 que Universal Cart se despliega en Estados Unidos dentro de la Búsqueda de Google y de la app de Gemini. Es un carrito de la compra único: guardas productos desde un sitio y los ves al volver desde el otro, incluido el Modo IA de la Búsqueda.",
+      "Según Google, el carrito vigila los productos guardados y avisa de bajadas de precio y de reposiciones de stock. Para ello usa el Shopping Graph, su base de datos de productos, que según la compañía supera los 60.000 millones de fichas.",
+      "En el pago, Google Wallet ayuda a comparar las ventajas de tus tarjetas y a elegir con cuál pagar, y el carrito muestra códigos promocionales relevantes. En algunas tiendas puedes pagar con Google Pay en unos toques sin salir del carrito; en otras, los artículos se envían al carrito de la tienda para terminar la compra allí.",
+      "Entre los comercios citados están Nike, Sephora, Target, Ulta Beauty, Walmart, Wayfair y muchos vendedores de Shopify. Google subraya que cada comercio sigue siendo el vendedor y se encarga de confirmaciones y atención al cliente. The Next Web añade que el pago funciona sobre el Universal Commerce Protocol, un estándar abierto, y que la hoja de ruta de Google menciona Canadá, Australia y el Reino Unido, pero no la UE.",
+      "Lo que Google no ha dicho es si la función llegará a Europa ni cuándo. De momento, desde España no podrás usarla."
+    ],
+    "impact": [
+      "Si compras en EE. UU., podrás juntar productos de varias tiendas y seguir su precio en un solo sitio.",
+      "Desde España no está disponible: no hay fecha para la UE.",
+      "Antes de pagar, comprueba quién es el vendedor: sigue siendo la tienda, no Google, quien gestiona devoluciones y atención."
+    ],
+    "sources": [
+      {
+        "name": "Google, anuncio oficial de Universal Cart",
+        "url": "https://blog.google/products-and-platforms/products/shopping/universal-cart-launch/"
+      },
+      {
+        "name": "The Next Web",
+        "url": "https://thenextweb.com/news/google-universal-cart-us-only-eu"
+      },
+      {
+        "name": "Digital Commerce 360",
+        "url": "https://www.digitalcommerce360.com/2026/10/16/google-universal-cart-launch-features/"
+      }
+    ],
+    "related": [
+      {
+        "title": "Cómo comparar herramientas de IA",
+        "url": "../articulos/mejores-asistentes-ia-no-programadores.html"
+      }
+    ],
+    "published": "2026-10-17"
+  },
+  {
+    "slug": "2026-10-17-apple-app-store-nudify",
+    "date": "2026-10-16",
+    "category": "Seguridad",
+    "title": "Apple endurece el App Store contra apps de «desnudar» con IA y funciones ocultas",
+    "dek": "Las nuevas normas de revisión prohíben esconder funciones tras la aprobación y citan las imágenes íntimas sin consentimiento.",
+    "tldr": "Apple ha actualizado sus normas para desarrolladores: una app no puede ocultar funciones que se activen después de ser aprobada, algo que 9to5Mac vincula con las apps de «desnudar» con IA.",
+    "key_facts": [
+      {
+        "value": "2.5.19",
+        "label": "nueva norma contra funciones ocultas"
+      },
+      {
+        "value": "16 oct",
+        "label": "fecha de la actualización según 9to5Mac"
+      }
+    ],
+    "quote": {
+      "text": "Don't include any hidden, dormant, or undocumented features in your app",
+      "source": "Apple, normas de revisión del App Store (traducido: «No incluyas funciones ocultas, latentes o sin documentar en tu app»)"
+    },
+    "body": [
+      "Según 9to5Mac, Apple actualizó el 16 de octubre de 2026 las normas de revisión del App Store. Los cambios apuntan a las apps de «desnudar» (nudify), que usan IA para generar imágenes íntimas falsas de personas reales, y a las apps que parecen inofensivas al ser revisadas pero activan funciones dañinas después.",
+      "La nueva sección 2.5.19 dice que las apps no deben incluir funciones ocultas, latentes o sin documentar, y que intentar esconderlas, por ejemplo con ofuscación del código, es motivo de retirada de la app y de cierre de la cuenta de desarrollador.",
+      "En la sección 1.2, sobre apps donde los usuarios crean o comparten contenido, las normas citan las imágenes íntimas sin consentimiento entre los riesgos que hay que abordar. 9to5Mac añade que quien no ponga salvaguardas o no corrija infracciones tras un aviso puede incumplir el código de conducta de desarrolladores.",
+      "Según el mismo medio, también se retirarán las apps que faciliten la trata de personas o la explotación infantil. Apple no ha detallado cuántas apps afecta ni cómo reforzará la revisión."
+    ],
+    "impact": [
+      "Es una barrera más contra apps que generan desnudos falsos, aunque ninguna revisión es infalible.",
+      "Si descargas apps de IA, desconfía de las que piden permisos que no encajan con lo que prometen.",
+      "Si ves una app que genere imágenes íntimas de otras personas, puedes denunciarla desde su ficha en el App Store."
+    ],
+    "sources": [
+      {
+        "name": "Apple, normas de revisión del App Store",
+        "url": "https://developer.apple.com/app-store/review/guidelines/"
+      },
+      {
+        "name": "9to5Mac",
+        "url": "https://9to5mac.com/2026/10/16/apples-new-app-store-rules-crack-down-on-ai-nudification-and-bait-and-switch-apps/"
+      }
+    ],
+    "related": [
+      {
+        "title": "Estafas con IA",
+        "url": "../articulos/estafas-con-ia.html"
+      }
+    ],
+    "published": "2026-10-17"
+  },
+  {
     "slug": "2026-10-16-meta-muse-spark-open",
     "date": "2026-10-15",
     "category": "Modelos",
