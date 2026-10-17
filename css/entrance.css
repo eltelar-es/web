@@ -175,3 +175,28 @@ nav a[href]:not([class*="border-b-2"]):hover::after {
 main code{overflow-wrap:anywhere;word-break:break-word}
 main pre{max-width:100%;overflow-x:auto}
 main pre code{overflow-wrap:normal;word-break:normal}
+
+/* Noticias de la portada: una destacada con foto grande + dos laterales */
+.nw-grid{display:grid;gap:16px;grid-template-columns:1fr}
+@media(min-width:900px){.nw-grid{grid-template-columns:1.5fr 1fr}}
+.nw-feature{position:relative;display:block;overflow:hidden;min-height:340px;background:#072417}
+.nw-feature img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.nw-feature:hover img{transform:scale(1.04)}
+.nw-feature::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,36,23,0) 15%,rgba(7,36,23,.92) 100%)}
+.nw-feature__txt{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:26px;display:flex;flex-direction:column;gap:10px;color:#fff}
+.nw-feature__title{font:500 clamp(24px,3vw,34px)/1.15 Newsreader,Georgia,serif}
+.nw-tag{font:700 10.5px/1 Inter,system-ui,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#fd8a42}
+.nw-tag--dark{color:#9b4500}
+.nw-more{display:inline-flex;align-items:center;gap:6px;font:700 11px Inter,system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#fff}
+.nw-more .material-symbols-outlined{font-size:16px;transition:transform .2s}
+.nw-feature:hover .nw-more .material-symbols-outlined{transform:translateX(4px)}
+.nw-col{display:grid;gap:16px;grid-template-rows:1fr 1fr}
+.nw-side{display:grid;grid-template-columns:132px 1fr;background:#f1f3fe;border:1px solid #c2c8c2;overflow:hidden;transition:border-color .2s,transform .2s,box-shadow .2s}
+.nw-side:hover{border-color:#072417;transform:translateY(-2px);box-shadow:0 10px 24px rgba(7,36,23,.1)}
+.nw-side img{width:100%;height:100%;min-height:130px;object-fit:cover}
+.nw-side__txt{display:flex;flex-direction:column;gap:8px;padding:16px 18px;justify-content:center}
+.nw-side__title{font:500 19px/1.25 Newsreader,Georgia,serif;color:#181c23}
+.nw-side:hover .nw-side__title{color:#072417}
+@media(max-width:520px){.nw-side{grid-template-columns:104px 1fr}.nw-feature{min-height:300px}.nw-side__title{font-size:17px}}
+@media(prefers-reduced-motion:reduce){.nw-feature img,.nw-side{transition:none}}
+.nw-feature .nw-tag{text-shadow:0 1px 8px rgba(0,0,0,.6)}
