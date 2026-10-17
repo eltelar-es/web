@@ -7,3 +7,7 @@ User-agent: Mediapartners-Google
 Allow: /
 
 Sitemap: https://eltelar.es/sitemap.xml
+
+User-agent: *
+Disallow: /pack-el-telar.html
+Disallow: /descargas/
