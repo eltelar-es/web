@@ -256,3 +256,5 @@ main pre code{overflow-wrap:normal;word-break:normal}
 .rd-logo--claude::after{background:#d97757}
 .rd-logo--openai::after{background:#0f0f0f}
 .rd-logo--googlegemini::after{background:linear-gradient(135deg,#4285f4 0%,#9b72cb 55%,#d96570 100%);-webkit-mask-size:84%;mask-size:84%}
+/* Gemini: logo oficial en color (PNG) */
+.rd-logo--googlegemini::after{background:url(/img/logos/gemini-icon.png) center/80% no-repeat;-webkit-mask:none;mask:none}
