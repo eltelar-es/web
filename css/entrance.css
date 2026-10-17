@@ -200,3 +200,18 @@ main pre code{overflow-wrap:normal;word-break:normal}
 @media(max-width:520px){.nw-side{grid-template-columns:104px 1fr}.nw-feature{min-height:300px}.nw-side__title{font-size:17px}}
 @media(prefers-reduced-motion:reduce){.nw-feature img,.nw-side{transition:none}}
 .nw-feature .nw-tag{text-shadow:0 1px 8px rgba(0,0,0,.6)}
+
+/* Radar con logos */
+.rd-brand{display:inline-flex;align-items:center;gap:12px;font:700 12px/1 Inter,system-ui,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#072417}
+.rd-logo{width:38px;height:38px;border-radius:10px;display:inline-block;position:relative;flex:none}
+.rd-logo::after{content:"";position:absolute;inset:0;background:#fff;-webkit-mask:var(--l) center/58% no-repeat;mask:var(--l) center/58% no-repeat}
+.rd-logo--claude{background:#d97757}
+.rd-logo--openai{background:#0f0f0f}
+.rd-logo--googlegemini{background:linear-gradient(135deg,#4285f4,#9b72cb 55%,#d96570)}
+#radar a.group{transition:background .2s,transform .2s}
+#radar a.group:hover{transform:translateY(-2px)}
+/* Banda de regalo: qué incluye */
+.gift-band__chips{list-style:none;margin:14px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.gift-band__chips li{display:inline-flex;align-items:center;gap:6px;padding:7px 11px;border:1px solid #2d4d3b;background:#0c3321;color:#e6efe9;font:500 12.5px Inter,system-ui,sans-serif;border-radius:2px}
+.gift-band__chips i{font-size:16px;color:#fd8a42}
+.gift-band__chips .more{border-style:dashed;color:#fd8a42;font-weight:600}
