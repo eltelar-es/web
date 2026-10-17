@@ -1,5 +1,142 @@
 [
   {
+    "slug": "2026-10-17-character-ai-bancarrota-disney",
+    "date": "2026-10-12",
+    "published": "2026-10-17",
+    "category": "Empresas",
+    "title": "Character.AI se declara en bancarrota y Disney puja 20 millones por su tecnología",
+    "seo_title": "Character.AI, en bancarrota: Disney puja 20 M",
+    "dek": "Pierde 8 millones al mes, declara activos de 50 a 100 millones y busca comprador antes de diciembre. La app sigue funcionando — y sigue cobrando.",
+    "tldr": "Character Technologies, la empresa detrás de Character.AI, se acogió al Capítulo 11 el 12 de octubre en el juzgado de quiebras de Delaware. Disney es el primer pujador, con 20 millones de dólares por una licencia de parte de su tecnología, y cualquiera puede superar esa oferta en una subasta que se cerrará entre finales de noviembre y principios de diciembre.",
+    "key_facts": [
+      {
+        "value": "20 M$",
+        "label": "puja inicial de Disney por una licencia no exclusiva"
+      },
+      {
+        "value": "8 M$",
+        "label": "pérdidas al mes, según Reuters"
+      },
+      {
+        "value": "163 M",
+        "label": "usuarios actuales y pasados, según el expediente"
+      },
+      {
+        "value": "50-100 M$",
+        "label": "activos declarados ante el juzgado"
+      }
+    ],
+    "quote": {
+      "text": "significant legal, regulatory, and operational headwinds",
+      "source": "Colin Adams, consejero delegado, en su declaración ante el juzgado (traducido: «importantes vientos en contra legales, regulatorios y operativos»)"
+    },
+    "body": [
+      "Character Technologies Inc., la empresa que opera Character.AI, presentó el 12 de octubre de 2026 una solicitud de Capítulo 11 —el procedimiento estadounidense de reestructuración bajo supervisión judicial— en el juzgado de quiebras del distrito de Delaware, con número de caso 26-11603. La noticia se conoció al día siguiente. En el expediente declara activos de entre 50 y 100 millones de dólares.",
+      "La operación se plantea como una venta con un pujador de referencia: Disney Worldwide Services ha puesto 20 millones de dólares por una licencia perpetua y no exclusiva de parte de la propiedad intelectual y de ciertas reclamaciones. Esa figura, el «stalking horse» del artículo 363 de la ley de quiebras, no es una compra cerrada: fija el precio mínimo que otro candidato tiene que superar en la subasta. La empresa espera cerrar el proceso entre finales de noviembre y principios de diciembre de 2026.",
+      "Sobre las causas, el consejero delegado Colin Adams firmó la declaración de primer día alegando «importantes vientos en contra legales, regulatorios y operativos» y defendiendo la venta judicial como la mejor vía para preservar valor. Reuters cifra las pérdidas en 8 millones de dólares al mes. El contexto legal pesa: la compañía arrastra demandas por los efectos psicológicos del servicio, entre ellas una reclamación del fiscal general de Kentucky y un pleito en Pensilvania, y a principios de 2026 ya había pactado con Google el acuerdo de varias demandas presentadas por familias.",
+      "Para quien la usa, el mensaje de la empresa es que la plataforma sigue en marcha «con interrupciones mínimas» — y que las suscripciones se siguen cobrando. El matiz importa: la propia compañía avisa de que solo habrá liquidación si la venta no acaba en un comprador que mantenga la plataforma abierta. Los escritos no son del todo coherentes entre sí: uno habla de «actividades de liquidación» y otro de «salir con éxito del Capítulo 11».",
+      "Queda sin aclarar lo que más afecta al usuario: qué pasa con las conversaciones. Los expedientes no dicen si los datos y los chats forman parte de algún activo en venta. Lo único que consta es la petición de pago a proveedores críticos, donde la empresa argumenta que sin ellos «corre el riesgo de perder todos los datos, el código y la propiedad intelectual»; en esa lista hay almacenamiento en la nube y servicios de seguridad de la plataforma. Un detalle revelador del lugar que ocupa el usuario en el procedimiento: en una nota al pie, la empresa cifra en unos 163 millones los usuarios actuales y pasados y sostiene que no cree que sean acreedores a los que haya que notificar individualmente, porque escribirles «tendría un coste prohibitivo»; avisará por su blog, por la propia plataforma y por la web del agente de reclamaciones."
+    ],
+    "impact": [
+      "Si usas Character.AI, hoy sigue funcionando y te sigue cobrando. Nada garantiza que siga abierta: depende de que aparezca un comprador que quiera mantener la plataforma, no solo licenciar la tecnología.",
+      "Tus conversaciones son un activo dentro de un proceso de venta y los escritos no dicen qué va a pasar con ellas. Descarga lo que te importe y borra lo que no quieras que viaje con los activos.",
+      "Es el primer servicio grande de IA conversacional que entra en bancarrota. Sirve de aviso general: un chatbot al que le cuentas cosas no es un servicio permanente, por mucho que lo pagues."
+    ],
+    "sources": [
+      {
+        "name": "Forbes",
+        "url": "https://www.forbes.com/sites/siladityaray/2026/10/13/characterai-files-for-bankruptcy-disney-bids-20-million-after-copyright-dispute/"
+      },
+      {
+        "name": "Computerworld",
+        "url": "https://www.computerworld.com/article/4236464/ai-bot-company-character-ai-seeks-bankruptcy-protection.html"
+      },
+      {
+        "name": "PPC Land (análisis de los escritos judiciales)",
+        "url": "https://ppc.land/character-ai-says-its-163-million-users-are-not-bankruptcy-creditors/"
+      },
+      {
+        "name": "CNBC",
+        "url": "https://www.cnbc.com/2026/10/13/character-ai-chapter-11-disney-bid.html"
+      }
+    ],
+    "related": [
+      {
+        "title": "IA y menores: controles parentales que sí sirven",
+        "url": "../articulos/ia-menores-controles-parentales.html"
+      },
+      {
+        "title": "Qué guarda tu chat de IA y cómo limitarlo",
+        "url": "../articulos/privacidad-chats-ia.html"
+      }
+    ]
+  },
+  {
+    "slug": "2026-10-17-meta-terminos-rastrear-webs",
+    "date": "2026-10-16",
+    "published": "2026-10-17",
+    "category": "Regulación",
+    "title": "Los nuevos términos de Meta le permiten rastrear la web de tu negocio para entrenar su IA",
+    "seo_title": "Meta podrá rastrear la web de tu negocio",
+    "dek": "Entran en vigor el 30 de octubre, no se pueden rechazar por separado y Meta responde que «es falso» que cambie algo. Qué dice el texto y qué puedes hacer.",
+    "tldr": "Los términos comerciales de Meta que entran en vigor el 30 de octubre autorizan a la empresa a usar rastreadores en las webs asociadas a tus productos o servicios y a entrenar sus productos con lo que recoja. Meta dice que en la práctica no cambia nada; los juristas que han leído el texto para Nieman Lab lo interpretan de otra manera.",
+    "key_facts": [
+      {
+        "value": "30 oct",
+        "label": "entrada en vigor de los nuevos términos comerciales"
+      },
+      {
+        "value": "3",
+        "label": "juristas que revisaron el texto para Nieman Lab"
+      }
+    ],
+    "quote": {
+      "text": "This is false. There's no change to how Meta uses web crawlers.",
+      "source": "Andy Stone, comunicación de Meta, en X (traducido: «Es falso. No hay ningún cambio en cómo usa Meta los rastreadores»)"
+    },
+    "body": [
+      "Los términos comerciales de Meta —los que acepta cualquiera que use sus productos con fines comerciales, de Facebook e Instagram a WhatsApp y Messenger— cambian el 30 de octubre de 2026. El párrafo nuevo autoriza a Meta a usar «software automatizado (como rastreadores web, bots, robots, arañas, crawlers y agentes de usuario)» para acceder a las webs cubiertas, a «extraer actualizaciones periódicamente» de ellas y a usar «cualquier contenido de esos dominios, páginas web o URL para proporcionar, desarrollar, mejorar, investigar y entrenar» sus productos, entre los que el propio texto incluye «AI at Meta».",
+      "La parte que decide el alcance es también la más vaga: la cláusula se aplica a los sitios «asociados a tus productos o servicios», y los términos no definen qué significa eso. El mismo párrafo permite además a Meta «crear credenciales de prueba para acceder, indexar, almacenar en caché, analizar, recopilar, recuperar o rastrear los dominios» en cuestión. El texto no explica qué son esas credenciales. James Grimmelmann, de la facultad de Derecho de Cornell, resumió a Nieman Lab lo que técnicamente permitirían: «registrarse como un usuario falso». Meta no quiso aclarar si servirían para pasar muros de pago.",
+      "No hay rechazo parcial. Según los propios términos, seguir usando los productos de empresa después del aviso cuenta como aceptación, y la única salida que el texto ofrece a quien no esté de acuerdo es «dejar de acceder o usar nuestros Productos» con fines comerciales. El texto de los términos no menciona robots.txt en ningún momento.",
+      "Meta rechaza la lectura. Andy Stone, de su equipo de comunicación, escribió en X que «es falso» y que «no hay ningún cambio en cómo usa Meta los rastreadores», y añadió que la actualización «está pensada para asegurarnos de que podemos extraer información precisa sobre los productos en venta». Un portavoz dijo a Nieman Lab que los propietarios de contenido «pueden seguir gestionando cómo se accede a su contenido usando robots.txt». Ahí está la tensión de fondo de esta noticia: la garantía llega por declaración a la prensa, no por el contrato, que es el documento que vincula.",
+      "Los tres juristas consultados por Nieman Lab no coinciden con Meta en lo que el texto habilita. Matt Topic, del despacho Loevy & Loevy, lo dejó así: «No está claro si un tribunal lo haría cumplir, pero los editores deberían dar por hecho que sería exigible». Grimmelmann señaló que para los medios la cláusula «representa claramente un permiso a Meta para entrenar IA con cualquier contenido de sus sitios», y que la alternativa es confiar en que Meta no vaya a ejercer todo lo que el texto dice.",
+      "Conviene no confundir las cosas: esto es la lectura de una cláusula contractual, no una prueba de que Meta esté rastreando nada nuevo. Lo que cambia el 30 de octubre no es necesariamente el comportamiento de sus rastreadores, sino lo que Meta quedaría autorizada a alegar si alguien le reclama por haberlo hecho. Es una diferencia jurídica, y es justo la que importa cuando el contrato dice una cosa y el portavoz otra."
+    ],
+    "impact": [
+      "Si anuncias en Meta o usas sus herramientas de empresa, esto te afecta aunque no seas un medio: la cláusula habla de las webs asociadas a tus productos o servicios, y no define cuáles son.",
+      "No existe un «no, gracias» parcial. Seguir usando las herramientas de empresa después del 30 de octubre equivale a aceptar los términos nuevos completos.",
+      "Lo único accionable hoy sin salir de Meta es tu robots.txt: Meta dice por la prensa que lo respeta, pero el contrato no lo nombra. Déjalo configurado y guarda una copia fechada de cómo estaba, por si algún día hay que demostrarlo."
+    ],
+    "sources": [
+      {
+        "name": "Nieman Lab (informe original)",
+        "url": "https://www.niemanlab.org/2026/10/metas-new-commercial-terms-will-allow-the-scraping-of-news-sites-legal-experts-say/"
+      },
+      {
+        "name": "PPC Land (texto de la cláusula y respuesta de Meta)",
+        "url": "https://ppc.land/metas-new-terms-let-it-crawl-business-websites-to-train-ai-from-oct-30/"
+      },
+      {
+        "name": "Media Copilot",
+        "url": "https://mediacopilot.ai/meta-commercial-terms-scraping-news/"
+      }
+    ],
+    "related": [
+      {
+        "title": "IA para autónomos y pymes en España",
+        "url": "../articulos/ia-autonomos-pymes-espana.html"
+      },
+      {
+        "title": "Agentes que extraen datos de webs: límites legales",
+        "url": "../articulos/agente-extraer-datos-web.html"
+      },
+      {
+        "title": "Cómo proteger tus datos cuando usas IA",
+        "url": "../articulos/proteger-datos-ia.html"
+      }
+    ]
+  },
+  {
     "slug": "2026-10-17-google-universal-cart",
     "date": "2026-10-15",
     "category": "Herramientas",

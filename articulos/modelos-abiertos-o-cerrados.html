@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Modelos de IA abiertos o cerrados: cuál elegir | El Telar</title>
+<meta name="description" content="Pesos abiertos no es código abierto. Qué permite cada licencia, por qué un modelo descargado no lo puede retirar nadie, qué exime de verdad el AI Act y cómo decidir en diez minutos.">
+<link rel="canonical" href="https://eltelar.es/articulos/modelos-abiertos-o-cerrados.html"><link rel="icon" type="image/svg+xml" href="../img/favicon.svg?v=4"><link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32.png?v=4"><link rel="apple-touch-icon" href="../img/apple-touch-icon.png?v=4"><meta name="theme-color" content="#072417"><link rel="manifest" href="../manifest.json"><link rel="alternate" type="application/rss+xml" title="El Telar" href="../feed.xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Modelos abiertos o cerrados: cuándo te conviene cada uno | El Telar">
+<meta property="og:description" content="Un modelo que tienes descargado no lo puede apagar nadie: ni OpenAI con GPT-4o, ni Google cambiando de planes. Qué permite cada licencia, qué cuesta operar lo abierto, de qué exime el artículo 53 del AI Act y seis preguntas para decidir.">
+<meta property="og:url" content="https://eltelar.es/articulos/modelos-abiertos-o-cerrados.html">
+<meta property="og:site_name" content="El Telar">
+<meta property="og:locale" content="es_ES"><meta property="og:image" content="https://eltelar.es/img/og/guia-modelos-abiertos-o-cerrados.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Modelos abiertos o cerrados: cuándo te conviene cada uno | El Telar">
+<meta name="twitter:description" content="Un modelo que tienes descargado no lo puede apagar nadie: ni OpenAI con GPT-4o, ni Google cambiando de planes. Qué permite cada licencia, qué cuesta operar lo abierto, de qué exime el artículo 53 del AI Act y seis preguntas para decidir."><meta name="twitter:image" content="https://eltelar.es/img/og/guia-modelos-abiertos-o-cerrados.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Modelos abiertos o cerrados: cuándo te conviene cada uno",
+  "description": "Un modelo que tienes descargado no lo puede apagar nadie: ni OpenAI con GPT-4o, ni Google cambiando de planes. Qué permite cada licencia, qué cuesta operar lo abierto, de qué exime el artículo 53 del AI Act y seis preguntas para decidir.",
+  "image": "https://eltelar.es/img/og/guia-modelos-abiertos-o-cerrados.jpg",
+  "author": {"@type": "Person", "name": "Juan Becerril Castañón", "url": "https://eltelar.es/sobre-nosotros.html#autor"},
+  "publisher": {
+    "@type": "Organization",
+    "name": "El Telar"
+  },
+  "datePublished": "2026-10-17",
+  "dateModified": "2026-10-17",
+  "mainEntityOfPage": "https://eltelar.es/articulos/modelos-abiertos-o-cerrados.html",
+  "inLanguage": "es"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Un modelo de pesos abiertos es lo mismo que un modelo de código abierto?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No, y la diferencia es práctica, no semántica. «Pesos abiertos» significa que puedes descargar y ejecutar el modelo. «Código abierto», en el sentido estricto que defiende la Open Source Initiative, exige además información suficiente sobre los datos de entrenamiento para que un tercero pueda reconstruir algo equivalente, y una licencia aprobada por ellos. Casi todos los modelos que la prensa llama «open source» son, en realidad, de pesos abiertos. Lo que decide qué puedes hacer no es la etiqueta: es el archivo de licencia de esa versión concreta."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo usar un modelo abierto en mi negocio sin pagar nada?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "De licencia, con Apache 2.0 o MIT, sí. Pero «gratis» solo se refiere a la licencia. Si lo pones en producción pagarás GPU o alquiler de GPU, el tiempo de quien lo mantenga y las guardias cuando falle. A volumen bajo o irregular, una API cerrada suele salir más barata en coste total que montar lo propio. Compara coste por tarea terminada, no precio por millón de tokens."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Correr el modelo en mi ordenador me pone en regla con la protección de datos?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No por sí solo. Elimina un destinatario de los datos, que es mucho y simplifica la conversación con el responsable de protección de datos, pero sigues necesitando base jurídica para tratarlos y sigues respondiendo de lo que el modelo produzca. Y aparece un riesgo nuevo que antes no tenías: un equipo con datos sensibles dentro es un objeto que se puede perder o robar."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Si publico un modelo abierto en Europa, ¿me libro del AI Act?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Solo de dos obligaciones de las cuatro del artículo 53: la documentación técnica y la información para quien lo integre. La política de cumplimiento del derecho de autor y el resumen detallado de los datos de entrenamiento siguen siendo obligatorios. Y la exención no se aplica en absoluto a los modelos clasificados como de riesgo sistémico: pasado ese umbral de cómputo, abrir los pesos no te quita ninguna obligación."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué pasa con la cláusula de los 700 millones de usuarios de Llama?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Si los productos tuyos o de tus empresas vinculadas superaban los 700 millones de usuarios activos mensuales en el mes previo al lanzamiento de esa versión, tienes que pedir a Meta una licencia aparte que concede a su discreción. Para un autónomo o una pyme es una cláusula teórica. Importa por lo que indica —que no es una licencia libre, sino un contrato con condiciones del proveedor— y porque deja de ser teórica si tu producto lo va a revender o integrar una empresa muy grande."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Tengo que elegir uno de los dos para todo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No, y normalmente es mala idea. El montaje que mejor aguanta usa un modelo abierto pequeño en local para lo sensible y para el trabajo repetitivo de clasificar y extraer, que es casi todo el volumen, y un modelo cerrado grande por API para lo difícil y poco frecuente. Reparte por sensibilidad del dato y por dificultad de la tarea, no por bando."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://eltelar.es/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Guías",
+      "item": "https://eltelar.es/index.html#guias"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Modelos abiertos o cerrados: cuándo te conviene cada uno",
+      "item": "https://eltelar.es/articulos/modelos-abiertos-o-cerrados.html"
+    }
+  ]
+}
+</script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet"/></noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,lightbulb,lock,lock_clock,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,warning,work,workspace_premium&amp;display=swap" rel="stylesheet"/></noscript>
+<style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><link rel="stylesheet" href="../css/tailwind.css"><link rel="stylesheet" href="../css/entrance.css?v=2"><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}(function(){var c=null;try{c=localStorage.getItem('eltelar-cookie-consent')}catch(e){}var g=c==='accepted'?'granted':'denied';gtag('consent','default',{ad_storage:g,ad_user_data:g,ad_personalization:g,analytics_storage:g,wait_for_update:500});window.adsbygoogle=window.adsbygoogle||[];if(g!=='granted'){window.adsbygoogle.requestNonPersonalizedAds=1;}})();</script><script>window.addEventListener("load",function(){setTimeout(function(){var s=document.createElement("script");s.async=true;s.src="https://www.googletagmanager.com/gtag/js?id=G-4DPTKEG79N";document.head.appendChild(s);},800);});</script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4DPTKEG79N');</script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8239907995939753" crossorigin="anonymous"></script></head><body class="bg-background font-body-md text-on-surface antialiased">
+<header class="w-full bg-surface-container-lowest border-b border-outline-variant"><div class="border-b border-outline-variant py-space-xxs px-space-md hidden md:block"><div class="max-w-site-max-width mx-auto flex items-center justify-between font-kicker text-kicker text-on-surface-variant uppercase tracking-wider"><span>EDICIÓN DIGITAL // ACTUALIZADO 2026 // EL TELAR &amp; AGENTES</span><span>MADRID · REMOTO</span><span>SIN HUMO · 100% PRODUCCIÓN</span></div></div><div class="max-w-site-max-width mx-auto px-space-md py-space-md sm:py-space-xl text-center"><p class="hidden sm:block font-kicker text-kicker uppercase tracking-widest text-on-surface-variant mb-space-xs">Publicación Independiente de Tecnología &amp; Agentes</p><a class="inline-block" href="../index.html"><div class="font-display text-display max-sm:text-[40px] max-sm:leading-none text-primary tracking-tight">El Telar</div></a><p class="hidden sm:block font-caption text-caption uppercase tracking-widest text-on-surface-variant mt-space-xs">EL BOLETÍN Y ARCHIVO PRÁCTICO DE INTELIGENCIA ARTIFICIAL Y AGENTES AUTÓNOMOS</p></div><div class="border-t border-b border-outline-variant"><div class="max-w-site-max-width mx-auto px-space-md flex items-center justify-between gap-space-sm h-14"><nav class="flex items-center gap-space-md sm:gap-space-lg h-full min-w-0 overflow-x-auto [scrollbar-width:none] whitespace-nowrap"><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../index.html#guias">GUÍAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../empieza-aqui.html">EMPIEZA AQUÍ</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../sobre-nosotros.html">SOBRE NOSOTROS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../noticias/index.html">NOTICIAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../herramientas/index.html">HERRAMIENTAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../prompts/index.html">PROMPTS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../contacto.html">CONTACTO</a></nav><div class="flex items-center gap-space-md"><button id="search-trigger" type="button" aria-label="Buscar en las guías" class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[20px]">search</span></button><a class="hidden sm:inline-block bg-primary-container text-surface px-space-md py-space-xs font-label-md text-label-md uppercase tracking-wider hover:bg-primary transition-colors" href="../index.html#despacho">SUSCRÍBETE GRATIS</a></div></div></div><div class="hidden md:block bg-surface-container-low border-b border-outline-variant py-space-xs px-space-md"><div class="max-w-site-max-width mx-auto text-center"><p class="font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">57 GUÍAS COMPLETAS EN EXPANSIÓN · ACTUALIZADO A MODELOS 2026 · PROBADO EN TERMINAL Y FLUJOS REALES · CERO HUMO NI TEORÍA VACÍA</p></div></div></header>
+<main class="w-full max-w-site-max-width mx-auto px-space-md py-space-xl"><div class="flex flex-col w-full">
+<nav class="w-full mb-space-lg">
+<ol class="flex flex-wrap items-center gap-space-xs font-kicker text-kicker text-on-surface-variant uppercase tracking-wider">
+<li><a class="hover:text-primary transition-colors" href="../index.html">Inicio</a></li>
+<li class="text-on-surface-variant">/</li>
+<li><a class="hover:text-primary transition-colors" href="../index.html#guias">Guías</a></li>
+<li class="text-on-surface-variant">/</li>
+<li class="text-primary font-bold truncate max-w-[280px] sm:max-w-md">Modelos abiertos o cerrados</li>
+</ol>
+</nav>
+<header class="w-full pb-space-xl mb-space-2xl">
+<div class="flex flex-wrap items-center gap-space-xs mb-space-md">
+<span class="bg-surface-container-high text-secondary px-space-sm py-1 font-kicker text-kicker uppercase tracking-widest">ELEGIR HERRAMIENTA // LICENCIAS</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight max-w-editorial-max mb-space-md">
+          Modelos abiertos o cerrados: cuándo te conviene cada uno
+        </h1>
+<p class="font-lead-paragraph text-lead-paragraph text-on-surface-variant max-w-editorial-max leading-relaxed mb-space-lg">
+          Casi nadie lee la licencia del modelo que usa, y es el documento que decide qué puedes hacer con él. Esta guía va de lo que «abierto» significa de verdad, de por qué un modelo descargado no lo puede retirar nadie, de lo que cuesta operarlo cuando ya no hay factura de API, y de las seis preguntas que resuelven la decisión en diez minutos.
+        </p>
+<div class="bg-surface-container-lowest p-space-md flex flex-wrap items-center justify-between gap-y-3 shadow-sm">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 bg-primary text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">lock_open</span>
+</div>
+<div>
+<div class="font-label-md text-label-md text-on-surface font-semibold">Por la Redacción de El Telar</div><div class="font-caption text-caption text-on-surface-variant">Guías prácticas de IA y agentes, probadas en flujos de trabajo reales antes de publicarlas.</div>
+<button class="inline-flex items-center gap-1 mt-2 px-3 py-1.5 bg-surface-container text-primary font-label-md text-[12px] font-semibold uppercase tracking-wider hover:bg-surface-container-high transition-colors" id="copy-guide-btn" type="button"><span class="material-symbols-outlined text-[16px]">content_copy</span>Copiar guía</button>
+</div>
+</div>
+<div class="flex items-center gap-space-lg text-on-surface-variant font-caption text-caption uppercase tracking-wider">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">schedule</span> 12 min de lectura</span>
+</div>
+</div>
+</header>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-col-gap">
+<article class="lg:col-span-8 flex flex-col space-y-space-xl">
+<section id="sec-1" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight mb-space-md">1. «Abierto» casi nunca significa lo que parece</h2>
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed">Cuando un laboratorio anuncia un modelo «abierto», lo normal es que esté publicando una cosa: los <strong>pesos</strong>, el archivo de varios gigabytes con los números que el entrenamiento dejó dentro de la red. Con eso puedes descargarlo, ejecutarlo en tu máquina y ajustarlo. No es poco. Pero no es lo mismo que software libre, y la diferencia tiene consecuencias prácticas.</p>
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed">En un modelo hay al menos cuatro cosas que podrían abrirse, y casi nunca se abren todas:</p>
+<ul class="list-disc pl-space-lg space-y-space-xs font-body-md text-body-md text-on-surface">
+<li><strong>Los pesos.</strong> Lo que se publica en el 95 % de los casos. Permite ejecutar y ajustar.</li>
+<li><strong>El código de inferencia y de entrenamiento.</strong> Se publica a menudo, y suele ser lo menos problemático.</li>
+<li><strong>Los datos de entrenamiento.</strong> Casi nunca, y es la pieza que decide si alguien de fuera puede auditar o reproducir el modelo.</li>
+<li><strong>La licencia.</strong> El documento que dice qué puedes hacer con todo lo anterior. Es lo que la gente no lee.</li>
+</ul>
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed">La Open Source Initiative, que es quien lleva décadas decidiendo qué licencias merecen llamarse «open source», publicó su definición de IA abierta precisamente porque los pesos sueltos no le bastaban: para ellos hace falta además información suficiente sobre los datos de entrenamiento para que un tercero pueda reconstruir un modelo equivalente. Por eso el sector ha adoptado un término intermedio más honesto: <strong>«pesos abiertos»</strong> (<em>open weights</em>), o «código disponible». Si lees «modelo open source» en una nota de prensa, dalo por «pesos abiertos» hasta que compruebes la licencia.</p>
+<div class="bg-surface-container-low border-l-4 border-secondary p-space-md">
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">La pregunta útil no es «¿es abierto?», que casi siempre tiene respuesta de marketing. Es <strong>«¿qué me deja hacer esta licencia concreta, en esta versión concreta, con el uso concreto que yo tengo?»</strong>. Es la única formulación que se puede responder leyendo un archivo.</p>
+</div>
+</section>
+
+<section id="sec-2" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight mb-space-md">2. Lee la licencia antes que la tabla de resultados</h2>
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed">Las licencias de modelos se agrupan, a efectos prácticos, en tres cajones.</p>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-space-xs">Permisivas de verdad (Apache 2.0, MIT)</h3>
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed">Son licencias de software reconocidas por la Open Source Initiative, con décadas de jurisprudencia detrás. Permiten uso comercial, modificación y redistribución sin pedir permiso ni avisar. Apache 2.0 añade además una cesión expresa de patentes, que es la razón por la que los departamentos legales la prefieren a MIT. Si un modelo sale con Apache 2.0, la parte legal deja de ser un problema y pasa a ser un trámite.</p>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-space-xs">Licencias de comunidad (el caso Llama)</h3>
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed">Aquí está la trampa que más veces se pisa. La licencia de comunidad de Llama permite muchas cosas, pero incluye una cláusula que conviene conocer: si los productos o servicios tuyos o de tus empresas vinculadas superaban los <strong>700 millones de usuarios activos mensuales</strong> en el mes anterior a la fecha de lanzamiento de esa versión, tienes que pedirle a Meta una licencia aparte, que Meta concede o deniega a su discreción. Lleva también una política de uso aceptable que prohíbe determinadas aplicaciones.</p>
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed">Para un autónomo o una pyme española, los 700 millones de usuarios son una cláusula teórica — no la vas a tocar. Pero el detalle importa por lo que revela: no es una licencia de software libre, es un contrato con un proveedor que se reserva decisiones. Si tu plan es que un cliente grande integre tu producto, o que una multinacional lo revenda, la cláusula deja de ser teórica y se convierte en una pregunta para su departamento legal, no para ti.</p>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-space-xs">Licencias con condiciones propias</h3>
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed">Varios laboratorios europeos y chinos han usado licencias a medida, algunas con umbrales de facturación, restricciones de uso o condiciones distintas según el tamaño del modelo. Y lo más incómodo: <strong>las condiciones cambian entre versiones del mismo modelo</strong>. Un laboratorio puede sacar una versión con licencia restrictiva y la siguiente con Apache 2.0, o al contrario.</p>
+<div class="bg-surface-container-low border-l-4 border-primary p-space-md">
+<p class="font-body-md text-body-md text-on-surface leading-relaxed"><strong>La regla práctica, y no hay atajo:</strong> abre el archivo <code class="font-mono text-body-sm bg-surface-container-low px-1">LICENSE</code> del repositorio de <em>esa</em> versión del modelo que vas a usar, y léelo. No el blog del lanzamiento, no el resumen de un medio, no esta guía. Guarda una copia fechada. Si tu uso es comercial y la licencia no es Apache 2.0 ni MIT, que lo vea alguien de legal antes de construir encima.</p>
+</div>
+</section>
+
+<section id="sec-3" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight mb-space-md">3. Lo que de verdad compras: que nadie pueda apagar tu modelo</h2>
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed">De todas las razones para preferir pesos abiertos, esta es la que más dinero ahorra y la que menos se menciona en los debates ideológicos: <strong>un modelo que tienes descargado no lo puede retirar nadie</strong>.</p>
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed">No es un riesgo hipotético. El 14 de octubre de 2026 OpenAI anunció que apagará GPT-4o, GPT-4o mini, GPT-4.1 y GPT-4.1 mini en su API el <strong>14 de enero de 2027</strong>: tres meses de aviso para modelos que han sido la base de miles de aplicaciones, y los ajustes con datos propios hechos sobre esas versiones se van con el modelo base. Lo contamos entonces en <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="../noticias/2026-10-15-openai-retira-gpt-4o-api.html">la noticia de la retirada</a>. Y no hace falta que apaguen nada para que te cambie el suelo: en octubre Google dejó a las cuentas de Gemini sin suscripción con un único modelo disponible, el más pequeño de la familia, como explicamos en <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="../noticias/2026-10-08-gemini-gratis-solo-flash-lite.html">este cambio de planes</a>.</p>
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed">Los proveedores suelen manejar plazos de aviso de unos seis meses para los modelos de disponibilidad general y de unos tres para variantes especializadas, y se reservan plazos más cortos por motivos de seguridad o cumplimiento. Son plazos razonables. Pero el punto es otro: <strong>el calendario no es tuyo</strong>. Con pesos abiertos, el modelo que validaste sigue dando exactamente la misma respuesta en 2029 si tú quieres, porque está en tu disco. Eso es reproducibilidad, y para cualquier cosa auditable —un informe que hay que poder repetir, una clasificación que alguien puede recurrir— vale más que unos puntos de benchmark.</p>
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed">El coste de esa tranquilidad es que la mejora también se para: el modelo de tu disco no se vuelve más listo solo. Quien va con un proveedor cerrado paga el riesgo de las migraciones y a cambio hereda cada salto de capacidad sin tocar nada.</p>
+</section>
+
+<section id="sec-4" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight mb-space-md">4. El dato que no sale de casa (y lo que eso no resuelve)</h2>
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed">El segundo argumento sólido es la residencia del dato. Si el modelo corre en tu máquina o en un servidor que controlas, el texto que le pasas no viaja a un tercero. Para historiales médicos, expedientes laborales, nóminas o documentación de clientes, eso cambia la conversación con el responsable de protección de datos: deja de haber una transferencia a un encargado del tratamiento. Cómo montarlo paso a paso está en <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="ia-local-ordenador.html">la guía de IA local en tu ordenador</a>, con la parte de RAM, cuantización y qué modelo cabe en cada equipo.</p>
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed">Lo que conviene no exagerar: <strong>ejecutar el modelo en local no te pone en regla por sí solo</strong>. Sigues necesitando base jurídica para tratar esos datos, sigues respondiendo de lo que el modelo produce, y si el resultado se usa para decidir sobre personas, las obligaciones no desaparecen porque el cálculo ocurra en tu sótano. Lo que desaparece es un destinatario, no el deber. Y añades un riesgo nuevo: un portátil con datos sensibles y modelos descargados es un objeto que se pierde y se roba. Las implicaciones las desarrollamos en <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="proteger-datos-ia.html">cómo proteger tus datos cuando usas IA</a>.</p>
+</section>
+
+<section id="sec-5" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight mb-space-md">5. Lo que pierdes: el techo, y la factura que no viene en la factura</h2>
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed">Dos cosas, y las dos se subestiman.</p>
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed"><strong>El techo de capacidad.</strong> La distancia entre el mejor modelo abierto y el mejor modelo cerrado se ha estrechado mucho y sigue estrechándose, pero en las tareas más duras —razonamiento largo, agentes que encadenan decenas de pasos sin supervisión— los de arriba siguen siendo cerrados. La trampa aquí es creerse la tabla: antes de dar por buena una comparación, pásala por <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="leer-benchmarks-ia.html">las preguntas que hay que hacerle a un benchmark</a>. Lo único que decide de verdad es tu propio examen con tus propios casos, y montarlo está en <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="evaluar-agente-ia.html">cómo evaluar un agente</a>.</p>
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed"><strong>La factura que no viene en la factura.</strong> Un modelo abierto es gratis de licencia y carísimo de operar si lo pones en producción. Pagas GPU o alquiler de GPU, pagas que alguien lo mantenga actualizado, pagas la cola de peticiones cuando se sature, pagas las guardias cuando se caiga a las tres de la mañana. Esa partida no aparece en ninguna comparativa de precios porque no se factura: se paga en horas de alguien. La aritmética honesta es comparar <em>coste por tarea terminada</em>, no precio por millón de tokens, y para eso tenemos <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="cuanto-cuesta-usar-ia-api.html">cuánto cuesta de verdad usar la IA por API</a> y la <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="../herramientas/calculadora-coste-api.html">calculadora de coste</a>.</p>
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed">Hay un tercer punto menos obvio: los modelos cerrados vienen con una capa de filtrado y de moderación ya puesta. Los abiertos, bastantes de ellos, vienen con mucho menos, y hay versiones derivadas a las que se les ha quitado a propósito. Si vas a poner un modelo abierto delante de clientes, ese filtro lo tienes que construir tú — y es exactamente el problema que trata <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="bot-atencion-cliente-ia.html">montar un bot que no invente respuestas</a>.</p>
+</section>
+
+<section id="sec-6" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight mb-space-md">6. Lo que cambia en Europa: el artículo 53 del AI Act</h2>
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed">Si publicas un modelo —no si solo lo usas— el Reglamento europeo de IA te trata distinto según cómo lo licencies, y conviene saber hasta dónde llega el trato distinto, porque se exagera en las dos direcciones.</p>
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed">El artículo 53 impone cuatro obligaciones a quien pone un modelo de propósito general en el mercado: (a) documentación técnica, (b) información para quien lo integre en su producto, (c) una política de cumplimiento del derecho de autor de la UE, y (d) un resumen suficientemente detallado de los contenidos usados para entrenarlo. El apartado 2 exime de <strong>(a) y (b), y solo de esas dos</strong>, a los modelos publicados con una licencia libre y de código abierto que permita acceso, uso, modificación y distribución, y cuyos parámetros —pesos incluidos—, arquitectura e información de uso sean públicos.</p>
+<div class="bg-surface-container-low border-l-4 border-secondary p-space-md">
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Las dos consecuencias que la gente se salta: la política de copyright <strong>(c)</strong> y el resumen de los datos de entrenamiento <strong>(d)</strong> <strong>siguen aplicando</strong> aunque el modelo sea abierto. Y el propio apartado cierra con una frase que vacía la exención para los modelos más grandes: «esta excepción no se aplicará a los modelos de IA de uso general con riesgos sistémicos». Es decir, pasado el umbral de cómputo que fija la norma, abrir los pesos no te quita ninguna obligación — te las deja todas. El umbral y el resto del reglamento, en <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="ai-act-explicado.html">nuestra guía del AI Act</a>.</p>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed">Para quien solo consume modelos, la lectura práctica es la inversa y más útil: el resumen de datos de entrenamiento del apartado (d) es información pública que puedes exigir y leer antes de elegir. Es, hoy, la vía más fiable para saber con qué se entrenó algo que vas a usar.</p>
+</section>
+
+<section id="sec-7" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight mb-space-md">7. Cómo decidir en diez minutos</h2>
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed">Seis preguntas, en este orden. La primera que te dé un «sí» claro decide, y las siguientes solo matizan.</p>
+<ol class="list-decimal pl-space-lg space-y-space-sm font-body-md text-body-md text-on-surface">
+<li><strong>¿El dato puede salir de tu organización?</strong> Si la respuesta es no por contrato, por normativa o por sentido común, el modelo va donde esté el dato. Abierto, y en infraestructura tuya.</li>
+<li><strong>¿Necesitas poder repetir exactamente el mismo resultado dentro de dos años?</strong> Si lo que produces es auditable o recurrible, pesos abiertos y versión congelada.</li>
+<li><strong>¿Tu caso está en el tramo difícil?</strong> Si el trabajo es razonamiento largo o un agente autónomo encadenando muchos pasos, empieza por el mejor modelo cerrado que puedas pagar. Vuelve a esta pregunta en seis meses: cambia rápido.</li>
+<li><strong>¿Tienes a alguien que pueda operarlo?</strong> Sin una persona que sepa mantener GPU, versiones y colas, un modelo abierto en producción es una deuda, no un ahorro. Y «alguien» no significa «el informático a ratos».</li>
+<li><strong>¿Cuánto volumen tienes?</strong> A volumen bajo e irregular, la API casi siempre gana. Con mucho volumen constante y predecible, el hardware propio empieza a tener sentido, y la frontera se calcula, no se intuye.</li>
+<li><strong>¿Lo vas a redistribuir?</strong> Si el modelo va dentro de un producto que vendes o entregas a un cliente, la licencia pasa a ser el factor principal. Aquí Apache 2.0 vale más que cinco puntos de benchmark.</li>
+</ol>
+<div class="overflow-x-auto">
+<table class="w-full border-collapse font-body-sm text-body-sm">
+<thead><tr class="bg-surface-container-high text-left"><th class="p-space-sm border border-outline-variant font-semibold text-primary">Si tu prioridad es…</th><th class="p-space-sm border border-outline-variant font-semibold text-primary">Elige</th><th class="p-space-sm border border-outline-variant font-semibold text-primary">Y asume</th></tr></thead>
+<tbody>
+<tr><td class="p-space-sm border border-outline-variant">Que el dato no salga</td><td class="p-space-sm border border-outline-variant">Pesos abiertos, en tu infraestructura</td><td class="p-space-sm border border-outline-variant">Operarlo tú, y seguir cumpliendo igual</td></tr>
+<tr><td class="p-space-sm border border-outline-variant">Reproducir resultados años después</td><td class="p-space-sm border border-outline-variant">Pesos abiertos, versión congelada</td><td class="p-space-sm border border-outline-variant">Quedarte sin las mejoras</td></tr>
+<tr><td class="p-space-sm border border-outline-variant">Máxima capacidad hoy</td><td class="p-space-sm border border-outline-variant">El mejor cerrado que puedas pagar</td><td class="p-space-sm border border-outline-variant">Migrar cuando lo retiren</td></tr>
+<tr><td class="p-space-sm border border-outline-variant">Empezar sin equipo técnico</td><td class="p-space-sm border border-outline-variant">API cerrada</td><td class="p-space-sm border border-outline-variant">Dependencia de su calendario y sus precios</td></tr>
+<tr><td class="p-space-sm border border-outline-variant">Meterlo en un producto que vendes</td><td class="p-space-sm border border-outline-variant">Apache 2.0 o MIT, sin excepciones</td><td class="p-space-sm border border-outline-variant">Renunciar a modelos mejores con licencia peor</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<section id="sec-8" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight mb-space-md">8. La respuesta más frecuente es «los dos»</h2>
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed">Planteado como bando —equipo abierto contra equipo cerrado— el debate no ayuda a decidir nada. En la práctica, los montajes que aguantan reparten por sensibilidad y por dificultad:</p>
+<ul class="list-disc pl-space-lg space-y-space-xs font-body-md text-body-md text-on-surface">
+<li>Un modelo abierto pequeño, local, para lo que toca datos sensibles y para el trabajo repetitivo de clasificar, extraer y etiquetar, que es la mayor parte del volumen y casi nunca necesita el mejor modelo del mundo.</li>
+<li>Un modelo cerrado grande, por API, para lo difícil y lo poco frecuente: el razonamiento largo, el caso raro, lo que se atasca.</li>
+<li>Y una pieza en medio que decide a dónde va cada petición. Es la misma lógica de reparto por dificultad que explicamos en <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="cuanto-cuesta-usar-ia-api.html">la guía de costes</a>, y es lo que hace que la factura baje sin que baje la calidad.</li>
+</ul>
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed">Esta decisión, además, no es la primera que deberías tomar. Antes de preguntarte abierto o cerrado, conviene saber si tu problema se arregla escribiendo mejores instrucciones, conectando tus documentos o ajustando el modelo — tres palancas con coste muy distinto, ordenadas en <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="fine-tuning-prompting-rag.html">fine-tuning, prompting o RAG</a>. Elegir el tipo de modelo antes de haber contestado eso es optimizar la parte que menos influye.</p>
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed">Y guarda la decisión por escrito con su fecha y su motivo. En este mercado, el modelo correcto de hace seis meses es con frecuencia la respuesta equivocada hoy, y sin saber por qué elegiste lo que elegiste no hay manera de revisarlo con cabeza.</p>
+</section>
+
+<section id="faq" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight mb-space-md">Preguntas frecuentes</h2>
+<div class="space-y-space-sm">
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector(&#x27;.faq-icon&#x27;); c.classList.toggle(&#x27;hidden&#x27;); i.textContent = c.classList.contains(&#x27;hidden&#x27;) ? &#x27;add&#x27; : &#x27;remove&#x27;;">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Un modelo de pesos abiertos es lo mismo que un modelo de código abierto?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="hidden px-space-md pb-space-md">
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">No, y la diferencia es práctica, no semántica. «Pesos abiertos» significa que puedes descargar y ejecutar el modelo. «Código abierto», en el sentido estricto que defiende la Open Source Initiative, exige además información suficiente sobre los datos de entrenamiento para que un tercero pueda reconstruir algo equivalente, y una licencia aprobada por ellos. Casi todos los modelos que la prensa llama «open source» son, en realidad, de pesos abiertos. Lo que decide qué puedes hacer no es la etiqueta: es el archivo de licencia de esa versión concreta.</p>
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector(&#x27;.faq-icon&#x27;); c.classList.toggle(&#x27;hidden&#x27;); i.textContent = c.classList.contains(&#x27;hidden&#x27;) ? &#x27;add&#x27; : &#x27;remove&#x27;;">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Puedo usar un modelo abierto en mi negocio sin pagar nada?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="hidden px-space-md pb-space-md">
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">De licencia, con Apache 2.0 o MIT, sí. Pero «gratis» solo se refiere a la licencia. Si lo pones en producción pagarás GPU o alquiler de GPU, el tiempo de quien lo mantenga y las guardias cuando falle. A volumen bajo o irregular, una API cerrada suele salir más barata en coste total que montar lo propio. Compara coste por tarea terminada, no precio por millón de tokens.</p>
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector(&#x27;.faq-icon&#x27;); c.classList.toggle(&#x27;hidden&#x27;); i.textContent = c.classList.contains(&#x27;hidden&#x27;) ? &#x27;add&#x27; : &#x27;remove&#x27;;">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Correr el modelo en mi ordenador me pone en regla con la protección de datos?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="hidden px-space-md pb-space-md">
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">No por sí solo. Elimina un destinatario de los datos, que es mucho y simplifica la conversación con el responsable de protección de datos, pero sigues necesitando base jurídica para tratarlos y sigues respondiendo de lo que el modelo produzca. Y aparece un riesgo nuevo que antes no tenías: un equipo con datos sensibles dentro es un objeto que se puede perder o robar.</p>
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector(&#x27;.faq-icon&#x27;); c.classList.toggle(&#x27;hidden&#x27;); i.textContent = c.classList.contains(&#x27;hidden&#x27;) ? &#x27;add&#x27; : &#x27;remove&#x27;;">
+<span class="font-headline-sm text-[18px] text-primary font-medium">Si publico un modelo abierto en Europa, ¿me libro del AI Act?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="hidden px-space-md pb-space-md">
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Solo de dos obligaciones de las cuatro del artículo 53: la documentación técnica y la información para quien lo integre. La política de cumplimiento del derecho de autor y el resumen detallado de los datos de entrenamiento siguen siendo obligatorios. Y la exención no se aplica en absoluto a los modelos clasificados como de riesgo sistémico: pasado ese umbral de cómputo, abrir los pesos no te quita ninguna obligación.</p>
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector(&#x27;.faq-icon&#x27;); c.classList.toggle(&#x27;hidden&#x27;); i.textContent = c.classList.contains(&#x27;hidden&#x27;) ? &#x27;add&#x27; : &#x27;remove&#x27;;">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Qué pasa con la cláusula de los 700 millones de usuarios de Llama?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="hidden px-space-md pb-space-md">
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Si los productos tuyos o de tus empresas vinculadas superaban los 700 millones de usuarios activos mensuales en el mes previo al lanzamiento de esa versión, tienes que pedir a Meta una licencia aparte que concede a su discreción. Para un autónomo o una pyme es una cláusula teórica. Importa por lo que indica —que no es una licencia libre, sino un contrato con condiciones del proveedor— y porque deja de ser teórica si tu producto lo va a revender o integrar una empresa muy grande.</p>
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector(&#x27;.faq-icon&#x27;); c.classList.toggle(&#x27;hidden&#x27;); i.textContent = c.classList.contains(&#x27;hidden&#x27;) ? &#x27;add&#x27; : &#x27;remove&#x27;;">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Tengo que elegir uno de los dos para todo?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="hidden px-space-md pb-space-md">
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">No, y normalmente es mala idea. El montaje que mejor aguanta usa un modelo abierto pequeño en local para lo sensible y para el trabajo repetitivo de clasificar y extraer, que es casi todo el volumen, y un modelo cerrado grande por API para lo difícil y poco frecuente. Reparte por sensibilidad del dato y por dificultad de la tarea, no por bando.</p>
+</div>
+</div>
+</div>
+</section>
+</article>
+<aside class="lg:col-span-4 flex flex-col space-y-space-xl">
+<div class="bg-surface-container-lowest p-space-lg shadow-sm sticky top-space-md">
+<div class="flex items-center justify-between mb-space-sm pb-space-xs">
+<span class="font-kicker text-kicker uppercase tracking-widest text-primary font-bold">ÍNDICE DE LA GUÍA</span>
+<span class="material-symbols-outlined text-on-surface-variant text-base">format_list_bulleted</span>
+</div>
+<nav class="space-y-space-xs font-body-sm text-body-sm">
+<a class="block text-primary hover:text-secondary font-medium transition-colors" href="#sec-1">Qué significa «abierto»</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-2">Leer la licencia</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-3">Que nadie lo apague</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-4">El dato en casa</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-5">Lo que pierdes</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-6">El AI Act</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-7">Decidir en 10 minutos</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-8">La respuesta es «los dos»</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#faq">Preguntas frecuentes</a>
+</nav>
+</div>
+<div class="bg-surface-container-high p-space-md space-y-space-sm shadow-sm">
+<span class="font-kicker text-kicker uppercase tracking-widest text-primary font-bold">FICHA TÉCNICA</span>
+<dl class="space-y-space-xs font-caption text-caption">
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Categoría:</dt><dd class="font-semibold text-primary">Elegir herramienta</dd></div>
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Nivel técnico:</dt><dd class="font-semibold text-primary">Intermedio</dd></div>
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Fuentes citadas:</dt><dd class="font-semibold text-primary">Reglamento (UE) 2024/1689 de IA, artículo 53 (texto oficial del AI Act Service Desk de la Comisión Europea); la definición de IA de código abierto de la Open Source Initiative; la licencia de comunidad de Llama de Meta; Apache License 2.0; y nuestra propia cobertura de la retirada de GPT-4o de la API y del cambio de planes de Gemini.</dd></div>
+</dl>
+</div>
+</aside>
+</div>
+<section class="w-full mt-space-4xl pt-space-2xl bg-surface-container-lowest p-space-lg shadow-sm">
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-space-xl gap-space-xs">
+<h3 class="font-headline-md text-headline-md text-primary">Continúa explorando el archivo</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-col-gap"><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="fine-tuning-prompting-rag.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/portadas/fine-tuning-prompting-rag.svg" alt="" width="1600" height="520" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="fine-tuning-prompting-rag.html">Fine-tuning, prompting o RAG: cuál usar</a></h4></div></article><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="ia-local-ordenador.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/portadas/ia-local-ordenador.svg" alt="" width="1600" height="520" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="ia-local-ordenador.html">Cómo usar IA en tu ordenador sin internet</a></h4></div></article><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="cuanto-cuesta-usar-ia-api.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/portadas/cuanto-cuesta-usar-ia-api.svg" alt="" width="1600" height="520" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="cuanto-cuesta-usar-ia-api.html">Cuánto cuesta de verdad usar la IA por API</a></h4></div></article></div>
+</section>
+</div></main><footer class="w-full bg-surface-container-low border-t border-outline-variant mt-space-4xl"><div class="max-w-site-max-width mx-auto px-space-md py-space-3xl"><div class="grid grid-cols-1 md:grid-cols-3 gap-col-gap"><div class="space-y-space-sm"><span class="font-headline-md text-headline-md text-primary">El Telar</span><p class="font-body-sm text-body-sm text-on-surface-variant">Publicación independiente de tecnología y automatización con agentes. Contenidos verificados en producción, sin patrocinios opacos ni promesas vacías.</p></div><div><h3 class="font-kicker text-kicker uppercase tracking-wider text-on-surface mb-space-md">SECCIONES</h3><ul class="space-y-space-xs font-body-sm text-body-sm"><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html#guias">Archivo de Guías</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../empieza-aqui.html">Guía para Principiantes</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../sobre-nosotros.html">Manifiesto Editorial</a></li><li class="pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html#despacho">Boletín Semanal</a></li></ul></div><div><h3 class="font-kicker text-kicker uppercase tracking-wider text-on-surface mb-space-md">CONTACTO &amp; PRENSA</h3><div class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant"><p class="font-semibold text-on-surface">contacto@eltelar.es</p><p>Síguenos: <a class="hover:text-primary underline" href="https://www.instagram.com/eltelar_es/" rel="me noopener" target="_blank">Instagram</a> · <a class="hover:text-primary underline" href="https://www.threads.com/@eltelar_es" rel="me noopener" target="_blank">Threads</a> · <a class="hover:text-primary underline" href="https://x.com/eltelar_es" rel="me noopener" target="_blank">X</a></p></div></div></div></div><div class="border-t border-outline-variant py-space-md bg-surface-container-lowest"><div class="max-w-site-max-width mx-auto px-space-md flex flex-col md:flex-row items-center justify-between gap-space-sm text-caption font-caption text-on-surface-variant"><div>© 2026 El Telar. Todos los derechos reservados. Independencia editorial garantizada.</div><div class="flex flex-wrap items-center justify-center gap-space-md"><a class="hover:text-on-surface transition-colors" href="../privacidad.html">Privacidad</a><a class="hover:text-on-surface transition-colors" href="../terminos.html">Términos</a><a class="hover:text-on-surface transition-colors" href="../cookies.html">Cookies</a><a class="hover:text-on-surface transition-colors" href="../aviso-legal.html">Aviso legal</a><a class="hover:text-on-surface transition-colors" href="../sobre-nosotros.html">Sobre nosotros</a><a class="hover:text-on-surface transition-colors" href="../contacto.html">Contacto</a></div></div></div></footer><script defer src="../js/copy-guide.js"></script><script defer src="../js/guide-interactions.js"></script><script defer src="../js/reading-progress.js"></script><script defer src="../js/search.js?v=7"></script><script defer src="../js/entrance.js"></script><script defer src="../js/cookie-consent.js?v=4"></script></body></html>
