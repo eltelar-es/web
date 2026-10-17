@@ -24,6 +24,8 @@
       var button = form.querySelector('[type="submit"]');
       var data = new FormData(form);
       data.set('page', location.pathname);
+      var motivo = data.get('motivo');
+      if (motivo && data.get('message')) { data.set('message', '[' + motivo + '] ' + data.get('message')); data.delete('motivo'); }
       if (button) button.disabled = true;
 
       var ctrl = window.AbortController ? new AbortController() : null;

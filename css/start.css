@@ -64,3 +64,19 @@
 @media(prefers-reduced-motion:reduce){.st-goals a,.st-next a,.st-prog i{transition:none}}
 .st-quiz__out[hidden]{display:none}
 [id^="fase-"],#antes-de-nada{scroll-margin-top:72px}
+
+/* Contacto */
+.ct-motivo{border:0;margin:0 0 6px;padding:0}
+.ct-motivo legend{padding:0;margin-bottom:12px}
+.ct-motivo__grid{display:grid;gap:10px;grid-template-columns:1fr}
+@media(min-width:640px){.ct-motivo__grid{grid-template-columns:1fr 1fr}}
+.ct-motivo label{cursor:pointer;display:block}
+.ct-motivo input{position:absolute;opacity:0;pointer-events:none}
+.ct-motivo span{display:grid;grid-template-columns:34px 1fr;column-gap:12px;row-gap:2px;padding:14px;border:1px solid #c2c8c2;background:#fff;transition:border-color .15s,background .15s,box-shadow .15s}
+.ct-motivo i{grid-row:1/3;align-self:center;font-size:26px;color:#9b4500}
+.ct-motivo b{font:600 15px Inter,system-ui,sans-serif;color:#072417}
+.ct-motivo small{font:400 12.5px/1.35 Inter,system-ui,sans-serif;color:#5b645e}
+.ct-motivo small a{color:#9b4500;text-decoration:underline}
+.ct-motivo label:hover span{border-color:#072417}
+.ct-motivo input:checked+span{border-color:#072417;background:#f1f6f2;box-shadow:inset 0 0 0 1px #072417}
+.ct-motivo input:focus-visible+span{outline:2px solid #fd8a42;outline-offset:2px}
