@@ -61,6 +61,10 @@
           '<button id="cookie-accept" type="button" style="font-family:' + SANS + ';font-size:11.5px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:11px 22px;border:1px solid ' + COLOR.accent + ';background:' + COLOR.accent + ';color:' + COLOR.primary + ';cursor:pointer;transition:filter 0.2s;" onmouseover="this.style.filter=\'brightness(1.08)\'" onmouseout="this.style.filter=\'none\'">Aceptar</button>' +
         '</div>' +
       '</div>';
+    var st = document.createElement('style');
+    st.id = 'cookie-consent-compact';
+    st.textContent = '@media (max-width:640px){#cookie-consent-bar>div{padding:12px 16px!important;gap:10px!important}#cookie-consent-bar>div>div:first-child>div:first-child{display:none!important}#cookie-consent-bar span[style*="uppercase"]{display:none!important}#cookie-consent-bar p{font-size:13.5px!important;line-height:1.4!important}#cookie-consent-bar>div>div:last-child{width:100%}#cookie-consent-bar button{flex:1;padding:10px 14px!important}}';
+    document.head.appendChild(st);
     document.body.appendChild(bar);
 
     document.getElementById('cookie-accept').addEventListener('click', function () {
