@@ -23,7 +23,7 @@
   "author": {"@type": "Organization", "name": "El Telar", "url": "https://eltelar.es/sobre-nosotros.html"},
   "publisher": { "@type": "Organization", "name": "El Telar", "url": "https://eltelar.es/", "logo": { "@type": "ImageObject", "url": "https://eltelar.es/img/icon-512.png", "width": 512, "height": 512 } },
   "datePublished": "2026-09-08",
-  "dateModified": "2026-10-17",
+  "dateModified": "2026-10-18",
   "mainEntityOfPage": "https://eltelar.es/articulos/video-ia-herramientas.html",
   "inLanguage": "es"
 }
@@ -190,6 +190,15 @@
 <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
           El salto de calidad entre 2024 y 2026 ha sido más rápido en vídeo que en casi cualquier otra modalidad de IA generativa, precisamente porque partía de una base más débil: los primeros modelos públicos de vídeo generaban tres o cuatro segundos con artefactos visibles en cada fotograma. Los modelos actuales resuelven razonablemente bien la coherencia de un plano fijo o un movimiento de cámara simple; donde sigue notándose la diferencia con un rodaje real es en escenas largas, con varios personajes interactuando entre sí, o con física de fluidos y telas —el punto que desarrollamos con detalle más abajo.
         </p>
+</section>
+<section id="respuesta-rapida" class="border border-outline-variant border-l-4 border-secondary bg-surface-container-low p-space-lg space-y-space-sm" aria-label="Respuesta rápida">
+<h2 class="font-kicker text-kicker uppercase tracking-wider text-secondary font-bold">RESPUESTA RÁPIDA · COMPROBADA EL 18 DE OCTUBRE DE 2026</h2>
+<ul class="list-disc pl-space-lg space-y-space-sm font-body-md text-body-md text-on-surface-variant leading-relaxed">
+<li><strong class="text-primary">Para probar sin gastar mucho:</strong> Veo 3.1 Fast o Lite en la API de Google. Según su tarifa, 0,10 $ y 0,05 $ por segundo en 720p, es decir, unos 0,80 $ y 0,40 $ por un clip de 8 s. <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" href="#precios-oficiales">Ver todos los precios</a>.</li>
+<li><strong class="text-primary">Si quieres controlar la cámara o repetir un personaje:</strong> Runway, que además incluye modelos de terceros en su plataforma.</li>
+<li><strong class="text-primary">Para un vídeo largo:</strong> ninguno lo hace de una vez. Se encadenan clips y se montan en un editor, como explicamos más abajo.</li>
+<li><strong class="text-primary">Sora ya no existe:</strong> OpenAI desconectó su API el 24 de septiembre. Guarda tu guion y tus prompts de forma que no dependan de una sola herramienta.</li>
+</ul>
 </section>
 <section id="sec-1" class="space-y-space-md">
 <h2 class="font-headline-md text-headline-md text-primary tracking-tight">Qué son estos modelos y por qué generar movimiento es distinto</h2>
@@ -436,6 +445,18 @@
 <p class="font-body-md text-body-md text-on-surface leading-relaxed">Resumir un informe trimestral en un vídeo corto, dar vida a un gráfico de una presentación o preparar una explicación para clientes nuevos.</p>
 <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed"><strong class="text-on-surface">Lo honesto:</strong> está en beta y solo en planes Team y Enterprise, no en el plan gratuito ni en Pro. Consume el límite de uso de tu plan y Anthropic avisa de que las animaciones largas o complejas gastan más que un mensaje normal, sin publicar cifras concretas. Como no genera imágenes realistas, sirve para explicaciones con texto y gráficos, no para escenas con personas o paisajes. Al ser una beta, los detalles pueden cambiar: consulta la ayuda oficial.</p>
 <p class="font-body-sm text-body-sm mt-space-sm"><strong class="text-on-surface">Más información:</strong> <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://support.claude.com/en/articles/17454997-get-started-with-claude-motion">Ayuda oficial de Claude Motion</a> · <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://the-decoder.com/claude-can-now-generate-animated-explainer-videos-and-live-data-dashboards-from-text-prompts/">the-decoder.com</a></p>
+</section>
+<section id="boletin-video" class="border border-outline-variant bg-surface-container-low p-space-lg space-y-space-sm" aria-label="Suscripción">
+<h2 class="font-headline-sm text-headline-sm text-primary">Estos precios cambian cada pocas semanas</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Cuando una herramienta de vídeo cambia de precio, de límites o desaparece, actualizamos esta guía. Si quieres enterarte sin tener que volver a mirarla, déjanos tu correo. Te escribimos solo cuando hay algo que merece la pena y puedes darte de baja cuando quieras.</p>
+<form id="newsletter-form" name="newsletter" method="POST" action="https://forms.eltelar.es/api/form" data-telar-form data-ok="video-ok" style="display:flex;flex-wrap:wrap;gap:8px">
+<input type="hidden" name="form-name" value="newsletter"/>
+<p class="hidden"><label>No rellenar: <input name="bot-field"/></label></p>
+<label class="sr-only" for="video-email">Tu correo</label>
+<input id="video-email" name="email" type="email" required placeholder="tu@correo.com" autocomplete="email" style="flex:1 1 240px;padding:12px 14px;border:1px solid currentColor;background:transparent;font:inherit"/>
+<button type="submit" class="bg-primary text-on-primary font-label-md text-label-md uppercase tracking-widest font-semibold" style="padding:12px 22px">Avisadme</button>
+</form>
+<p id="video-ok" class="hidden font-body-md text-body-md text-primary" role="status">Gracias. Si no te llega un correo de confirmación, mira en spam.</p>
 </section>
 </article>
 <aside class="lg:col-span-4 space-y-space-xl">

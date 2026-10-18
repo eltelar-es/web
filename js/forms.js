@@ -45,6 +45,7 @@
           if (ok && body.confirm) ok.textContent = 'Casi listo: te hemos enviado un correo para confirmar la suscripción. Si no lo ves, mira en spam.';
           form.classList.add('hidden');
           if (ok) ok.classList.remove('hidden');
+          try { if (window.gtag) gtag('event', 'newsletter_signup', { page_path: location.pathname }); } catch (e) {}
         })
         .catch(function (err) {
           var text = err && err.message;
