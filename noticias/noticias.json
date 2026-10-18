@@ -1,5 +1,83 @@
 [
   {
+    "slug": "2026-10-18-ftc-requerimientos-openai-anthropic",
+    "date": "2026-10-14",
+    "published": "2026-10-18",
+    "category": "Regulación",
+    "title": "La FTC reclama a OpenAI y Anthropic sus registros de incidentes de seguridad",
+    "seo_title": "La FTC reclama registros a OpenAI y Anthropic",
+    "dek": "Cada requerimiento pasa de 50 páginas y pide informes de incidentes, políticas de privacidad y material de marketing. No es una sanción.",
+    "tldr": "La Comisión Federal de Comercio de Estados Unidos ha obligado a OpenAI y Anthropic a entregar documentación sobre los fallos de seguridad de sus modelos. Un requerimiento de este tipo sirve para reunir pruebas antes de decidir si se demanda: no declara que ninguna de las dos haya incumplido la ley.",
+    "key_facts": [
+      {
+        "value": "+50",
+        "label": "páginas tiene cada requerimiento, según Axios"
+      },
+      {
+        "value": "14 oct",
+        "label": "día en que la FTC los envió"
+      },
+      {
+        "value": "2",
+        "label": "empresas requeridas, con más previstas después"
+      }
+    ],
+    "quote": {
+      "text": "We will engage constructively with the FTC",
+      "source": "Portavoz de OpenAI a Axios (traducido: «Colaboraremos de forma constructiva con la FTC»)"
+    },
+    "body": [
+      "El miércoles 14 de octubre la Comisión Federal de Comercio de Estados Unidos (FTC, el organismo que vigila la competencia y la protección del consumidor) envió requerimientos civiles de investigación a OpenAI y a Anthropic. Lo adelantó Axios citando a una fuente conocedora del asunto, y un portavoz de la FTC confirmó después su existencia a CBS News, sin querer precisar hacia dónde apunta la investigación.",
+      "Cada documento pasa de 50 páginas y reclama lo mismo a las dos empresas: los registros de sus incidentes de seguridad, las medidas de protección que aplican, el material de marketing con el que venden sus productos y sus políticas de privacidad. El foco declarado son posibles infracciones de la normativa de protección del consumidor, y esa combinación —incidentes por un lado, marketing por otro— apunta a la pregunta clásica del regulador: si lo que se promete en el escaparate se corresponde con lo que pasa dentro.",
+      "Conviene entender qué es y qué no es un requerimiento civil de investigación. Es una herramienta previa a un pleito: obliga a entregar documentación para que el organismo decida después si hay motivo para demandar. No es una multa, no es una demanda y no declara que ninguna de las dos empresas haya incumplido nada. Quien lo cuente como «la FTC sanciona a OpenAI» se está inventando el final.",
+      "Según la misma información de Axios, esto no se queda aquí: la FTC quiere además que altos directivos de ambas compañías declaren sobre el efecto de sus productos en los consumidores, y enviará requerimientos parecidos a otras organizaciones de IA más adelante. OpenAI respondió que la seguridad sigue siendo una prioridad y que colaborará con el organismo. En la cobertura disponible no aparece ninguna declaración de Anthropic.",
+      "Una cautela de método, porque aquí importa: casi todo lo que se sabe descansa en una única fuente anónima trasladada por Axios y replicada después por el resto de medios. No hay copia pública de los requerimientos, ni demanda de la FTC, ni comunicado del organismo más allá de confirmar que existen. Lo verificable es que existen y qué piden; el resto —incluido qué buscan exactamente— es por ahora atribución, no hecho."
+    ],
+    "impact": [
+      "Si usas ChatGPT o Claude, hoy no cambia nada: no se suspende ningún producto ni hay nada que tocar en tu cuenta.",
+      "Si montas algo con IA para clientes, fíjate en qué está pidiendo el regulador: registros de incidentes y material de marketing. Guardar constancia de lo que hacen tus agentes, y no prometer en la web más de lo que hacen, deja de ser buena práctica y empieza a parecerse a papeleo exigible.",
+      "Desconfía de los titulares de estos días. Un requerimiento es el principio de una investigación, no su resultado, y puede acabar en nada."
+    ],
+    "sources": [
+      {
+        "name": "Gizmodo",
+        "url": "https://gizmodo.com/ftc-subpoenas-openai-and-anthropic-over-ai-safety-concerns-2000826413"
+      },
+      {
+        "name": "TechRepublic",
+        "url": "https://www.techrepublic.com/article/news-ftc-subpoenas-openai-anthropic-ai-safety/"
+      },
+      {
+        "name": "The Next Web",
+        "url": "https://thenextweb.com/news/ftc-subpoenas-openai-anthropic-ai-safety-incidents"
+      },
+      {
+        "name": "Tech Times",
+        "url": "https://www.techtimes.com/articles/329146/20261016/ftc-issues-subpoenas-openai-anthropic-following-ai-safety-issues.htm"
+      }
+    ],
+    "related": [
+      {
+        "title": "Prompt injection: cómo protegerte",
+        "url": "../articulos/prompt-injection-agentes-ia.html"
+      },
+      {
+        "title": "Qué guarda tu chat de IA y cómo limitarlo",
+        "url": "../articulos/privacidad-chats-ia.html"
+      },
+      {
+        "title": "Evaluar un agente de IA: cómo saber si funciona",
+        "url": "../articulos/evaluar-agente-ia.html"
+      }
+    ],
+    "photo": {
+      "alt": "Rótulo de la sede de la Federal Trade Commission en Washington (imagen de archivo)",
+      "author": "G. Edward Johnson",
+      "license": "CC BY 4.0",
+      "url": "https://commons.wikimedia.org/w/index.php?curid=181678429"
+    }
+  },
+  {
     "slug": "2026-10-18-openai-cuatro-incidentes-agentes",
     "date": "2026-10-15",
     "published": "2026-10-18",
