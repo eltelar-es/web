@@ -478,6 +478,17 @@ Documento:
 <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed"><strong class="text-on-surface">Lo honesto:</strong> no es para portátiles sencillos, y en Mac solo hay un soporte experimental hecho por la comunidad. Las cifras de velocidad son del propio proyecto y varían con tu tarjeta. Aunque es potente, no iguala necesariamente a los mejores modelos de pago en todas las tareas.</p>
 <p class="font-body-sm text-body-sm mt-space-sm"><strong class="text-on-surface">Repositorio:</strong> <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://github.com/Niko1221/Strata">github.com/Niko1221/Strata</a></p>
 </section>
+<section id="airllm" class="space-y-space-md scroll-mt-24 bg-surface-container-low p-space-lg border-l-4 border-secondary">
+<span class="font-kicker text-kicker uppercase tracking-widest text-secondary">Del reel de Instagram</span>
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">AirLLM: modelos enormes en una tarjeta gráfica de 4 GB</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Un modelo de 70.000 millones de parámetros no cabe entero en una tarjeta pequeña. <strong>AirLLM</strong> es una librería de código abierto (licencia Apache-2.0) que no lo carga entero: mantiene en la tarjeta una sola capa cada vez, así que la memoria que necesitas depende del tamaño de una capa y no del modelo completo. Su README dice que así se ejecutan modelos de 70B en una sola tarjeta de 4 GB, sin cuantizar, destilar ni recortar el modelo.</p>
+<h3 class="font-headline-sm text-headline-sm text-primary">Cómo empezar</h3>
+<ol class="list-decimal pl-space-lg space-y-space-xs font-body-md text-body-md text-on-surface"><li>Necesitas Python y una tarjeta gráfica compatible. Su README indica también soporte para macOS desde la versión 2.8.2.</li><li>Instálala con <code>pip install airllm</code>.</li><li>Sigue los ejemplos de su README para cargar un modelo y generar texto.</li></ol>
+<h3 class="font-headline-sm text-headline-sm text-primary">Qué esperar</h3>
+<ol class="list-decimal pl-space-lg space-y-space-xs font-body-md text-body-md text-on-surface"><li><strong>Corre en tu ordenador:</strong> no pagas por mensaje ni necesitas una API.</li><li><strong>Es más lento:</strong> lee las capas del disco en cada paso, así que tarda más que un modelo que cabe entero en la tarjeta.</li><li><strong>Necesitas mucho espacio libre en disco</strong> para guardar el modelo.</li></ol>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed"><strong class="text-on-surface">Lo honesto:</strong> no es magia: cambias memoria por velocidad. Para un uso diario, un modelo más pequeño que quepa entero suele ir mejor; lo tienes explicado en esta misma guía. Lo que cuenta su README no lo hemos probado en un equipo concreto.</p>
+<p class="font-body-sm text-body-sm mt-space-sm"><strong class="text-on-surface">Repositorio:</strong> <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://github.com/lyogavin/airllm">github.com/lyogavin/airllm</a> · Verificado el 19 de octubre de 2026 en el README del autor. Unas 39.000 estrellas en GitHub.</p>
+</section>
 <section class="space-y-space-md">
 <span class="font-kicker text-kicker text-on-surface-variant uppercase tracking-widest">Preguntas frecuentes</span>
 <h2 class="font-headline-md text-headline-md text-primary">
