@@ -1,5 +1,125 @@
 [
   {
+    "slug": "2026-10-19-anthropic-fondo-beneficio-publico",
+    "date": "2026-10-18",
+    "published": "2026-10-19",
+    "category": "Empresas",
+    "title": "Anthropic reservará el 5 % de sus acciones para un fondo de beneficio público",
+    "dek": "La empresa de Claude propone un fondo cuya parte crecerá con el valor de la compañía; necesita la aprobación de sus accionistas.",
+    "tldr": "Anthropic ha anunciado que quiere dedicar el 5 % de sus acciones al Anthropic Public Benefit Fund, una entidad creada para destinar parte de la empresa al bien común. La propuesta aún debe aprobarla la junta de accionistas.",
+    "key_facts": [
+      {
+        "value": "5 %",
+        "label": "de las acciones, aportación inicial al fondo"
+      },
+      {
+        "value": "+2 %",
+        "label": "más por cada 50 % que suba el valor de la empresa"
+      },
+      {
+        "value": "200 M$",
+        "label": "ya comprometidos para estudiar el impacto laboral de la IA"
+      },
+      {
+        "value": "~20 %",
+        "label": "del capital, sumando compromisos previos"
+      }
+    ],
+    "quote": {
+      "text": "the more Anthropic grows, the larger the share of the company that can be dedicated expressly to the public good",
+      "source": "Anthropic, anuncio oficial (traducido: «cuanto más crece Anthropic, mayor es la parte de la empresa que puede dedicarse expresamente al bien común»)"
+    },
+    "body": [
+      "Anthropic, la empresa que desarrolla el asistente Claude, ha anunciado que comprometerá una parte de sus acciones a un nuevo organismo, el Anthropic Public Benefit Fund (fondo de beneficio público). Según su comunicado, la aportación inicial será del 5 % de las acciones y el compromiso está sujeto a la aprobación de sus accionistas.",
+      "El mecanismo está pensado para crecer con la empresa: Anthropic indica que se añadirá un 2 % adicional, a criterio del consejo, por cada aumento del 50 % en el valor de la compañía por encima de una base de referencia que fija el propio anuncio. La idea que defiende la empresa es que, cuanto más crece, mayor es la parte que puede destinarse al bien común.",
+      "El anuncio recuerda otros compromisos anteriores: 200 millones de dólares ya comprometidos para estudiar y abordar el impacto de la IA en el mercado laboral, la promesa de los cofundadores de donar el 80 % de su capital y un programa de igualación de donaciones de acciones de los empleados, que según Anthropic usa en torno a la mitad de la plantilla. Sumando todo, la empresa calcula que alrededor del 20 % de sus acciones quedaría dedicado al bien público.",
+      "Lo que el comunicado no resuelve: la propuesta todavía no está aprobada, y la información publicada no detalla en qué se gastaría el dinero del fondo ni quién lo gestionaría en el día a día."
+    ],
+    "impact": [
+      "No cambia nada en tus planes ni en el precio de Claude: es una decisión sobre la propiedad de la empresa, no sobre el producto.",
+      "Es una señal de cómo las grandes empresas de IA intentan responder a la preocupación por el empleo y el reparto de la riqueza que genera esta tecnología.",
+      "Conviene esperar a ver si los accionistas la aprueban y cómo se concreta el destino del dinero antes de darle más alcance."
+    ],
+    "sources": [
+      {
+        "name": "Anthropic, anuncio oficial",
+        "url": "https://www.anthropic.com/news/public-benefit-fund"
+      }
+    ],
+    "related": [
+      {
+        "title": "¿Cambiará la IA tu trabajo?",
+        "url": "../articulos/trabajos-ia-cambiara.html"
+      }
+    ],
+    "photo": {
+      "alt": "Visita de un ministro británico a las oficinas de Anthropic en San Francisco (imagen de archivo)",
+      "author": "Department for Science, Innovation and Technology",
+      "license": "CC BY 2.0",
+      "url": "https://commons.wikimedia.org/w/index.php?curid=154472572"
+    }
+  },
+  {
+    "slug": "2026-10-19-deepseek-v41-flash-1017",
+    "date": "2026-10-17",
+    "published": "2026-10-19",
+    "category": "Modelos",
+    "title": "DeepSeek publica V4.1-Flash-1017, un modelo abierto de 763.000 millones de parámetros",
+    "dek": "Es una actualización menor con licencia MIT y 1 millón de tokens de contexto que mejora a su versión anterior en todas las pruebas publicadas.",
+    "tldr": "La china DeepSeek ha publicado los pesos de DeepSeek-V4.1-Flash-1017, que cualquiera puede descargar y usar con licencia MIT. Sus propios datos lo sitúan por delante de la versión anterior, pero son resultados de la empresa, no verificados por terceros.",
+    "key_facts": [
+      {
+        "value": "763 B",
+        "label": "parámetros totales (miles de millones)"
+      },
+      {
+        "value": "1 M",
+        "label": "tokens de ventana de contexto"
+      },
+      {
+        "value": "MIT",
+        "label": "licencia de uso libre, también comercial"
+      },
+      {
+        "value": "42,3",
+        "label": "puntos en Terminal-Bench 4.0 (31,2 la versión previa)"
+      }
+    ],
+    "body": [
+      "DeepSeek ha subido a Hugging Face, la plataforma donde se comparten modelos de IA, el modelo DeepSeek-V4.1-Flash-1017. La propia ficha lo describe como «una actualización menor» de DeepSeek-V4.1-Flash y señala como objetivos el razonamiento, la programación, las tareas con agentes (programas que encadenan pasos solos) y las pruebas con imágenes, además de acortar el tiempo de ejecución y la longitud de las respuestas.",
+      "Los pesos, es decir, los archivos que contienen el modelo ya entrenado, se publican con licencia MIT, una de las más permisivas: permite usarlo, modificarlo e incluso incorporarlo a productos comerciales. Tiene 763.000 millones de parámetros en total y admite un contexto de 1 millón de tokens, lo que equivale a manejar de una vez libros enteros o proyectos de código grandes.",
+      "En la tabla de resultados que acompaña al modelo, mejora a la versión anterior en las 11 pruebas listadas: por ejemplo, 42,3 frente a 31,2 en Terminal-Bench 4.0 y 77,0 frente a 74,2 en DeepSWE v1.1. Según esa misma tabla, supera a los modelos con los que se compara en esas dos pruebas, pero se queda por detrás de Opus 5 en la mayoría de las demás.",
+      "Precauciones: son cifras que publica la propia DeepSeek, sin evaluación independiente por ahora. La ficha no indica una fecha de publicación exacta (la fecha del 17 de octubre procede de agregadores de noticias), y ningún proveedor de Hugging Face lo aloja todavía: para usarlo hay que ejecutarlo uno mismo, algo que exige hardware muy potente."
+    ],
+    "impact": [
+      "Si no programas ni montas sistemas, no notarás nada directo: es un modelo para desarrolladores y empresas.",
+      "Si lo haces, tienes otra opción abierta y de uso comercial libre, aunque tendrás que alojarla tú o esperar a que algún proveedor la ofrezca.",
+      "Trata las comparativas como una referencia, no como una garantía, hasta que terceros las repitan."
+    ],
+    "sources": [
+      {
+        "name": "DeepSeek en Hugging Face, ficha oficial del modelo",
+        "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
+      }
+    ],
+    "related": [
+      {
+        "title": "Modelos abiertos o cerrados",
+        "url": "../articulos/modelos-abiertos-o-cerrados.html"
+      },
+      {
+        "title": "Cómo leer benchmarks de IA",
+        "url": "../articulos/leer-benchmarks-ia.html"
+      }
+    ],
+    "photo": {
+      "alt": "Vista del horizonte de Hangzhou junto al Lago del Oeste, ciudad donde tiene su sede DeepSeek (imagen de archivo)",
+      "author": "Y Chen",
+      "license": "CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/w/index.php?curid=79262788"
+    }
+  },
+  {
     "slug": "2026-10-18-ftc-requerimientos-openai-anthropic",
     "date": "2026-10-14",
     "published": "2026-10-18",

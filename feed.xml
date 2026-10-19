@@ -6,6 +6,8 @@
     <description>Guías prácticas de inteligencia artificial y agentes autónomos, sin humo ni relleno.</description>
     <language>es</language>
     <lastBuildDate>Fri, 16 Oct 2026 10:00:00 +0000</lastBuildDate>
+    <item><!--noticia--><title>Anthropic reservará el 5 % de sus acciones para un fondo de beneficio público</title><link>https://eltelar.es/noticias/2026-10-19-anthropic-fondo-beneficio-publico.html</link><guid>https://eltelar.es/noticias/2026-10-19-anthropic-fondo-beneficio-publico.html</guid><pubDate>Mon, 19 Oct 2026 00:00:00 +0000</pubDate><description>La empresa de Claude propone un fondo cuya parte crecerá con el valor de la compañía; necesita la aprobación de sus accionistas.</description></item>
+    <item><!--noticia--><title>DeepSeek publica V4.1-Flash-1017, un modelo abierto de 763.000 millones de parámetros</title><link>https://eltelar.es/noticias/2026-10-19-deepseek-v41-flash-1017.html</link><guid>https://eltelar.es/noticias/2026-10-19-deepseek-v41-flash-1017.html</guid><pubDate>Mon, 19 Oct 2026 00:00:00 +0000</pubDate><description>Es una actualización menor con licencia MIT y 1 millón de tokens de contexto que mejora a su versión anterior en todas las pruebas publicadas.</description></item>
     <item><!--guia--><title>De quién es lo que crea la IA: derechos de autor</title><link>https://eltelar.es/articulos/derechos-autor-contenido-ia.html</link><guid>https://eltelar.es/articulos/derechos-autor-contenido-ia.html</guid><pubDate>Sun, 18 Oct 2026 10:00:00 +0000</pubDate><description>Que la herramienta te ceda la imagen no significa que sea tuya: una empresa solo puede cederte lo que tiene. Qué dice la ley española, qué parte sí puedes proteger, por qué un logo generado es copiable y quién te defiende si te reclaman.</description></item>
     <item>
       <title>Lo último en IA: los lanzamientos y movimientos que marcan septiembre y octubre de 2026</title>
@@ -48,8 +50,6 @@
       <pubDate>Sun, 11 Oct 2026 10:00:00 +0000</pubDate>
       <description>Por qué el español cuesta un 55% más en tokens, los tramos de precio que rompen el titular del «90% más barato» y por qué una conversación de diez turnos te factura casi treinta veces lo que has escrito.</description>
     </item>
-    <item><!--noticia--><title>Claude ya puede escribir su propio flujo de trabajo y lanzar hasta 1.000 agentes</title><link>https://eltelar.es/noticias/2026-10-09-claude-flujos-dinamicos-1000-agentes.html</link><guid>https://eltelar.es/noticias/2026-10-09-claude-flujos-dinamicos-1000-agentes.html</guid><pubDate>Sun, 11 Oct 2026 00:00:00 +0000</pubDate><description>Anthropic añade los «flujos dinámicos» a Claude Managed Agents, en beta: un agente reparte el trabajo entre muchos otros y junta los resultados.</description></item>
-    <item><!--noticia--><title>Un estudio con 1.222 personas: 10 minutos con ChatGPT te hacen rendirte antes</title><link>https://eltelar.es/noticias/2026-10-09-berkeley-ia-persistencia.html</link><guid>https://eltelar.es/noticias/2026-10-09-berkeley-ia-persistencia.html</guid><pubDate>Sun, 11 Oct 2026 00:00:00 +0000</pubDate><description>Ensayos aleatorizados de Berkeley y otras universidades: tras usar IA y perderla, la gente resolvió menos problemas y los saltó más.</description></item>
     <item>
       <title>Cómo saber si tu agente de IA funciona de verdad</title>
       <link>https://eltelar.es/articulos/evaluar-agente-ia.html</link>
