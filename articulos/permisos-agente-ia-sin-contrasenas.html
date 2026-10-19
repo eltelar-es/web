@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Permisos de agentes de IA sin contraseñas | El Telar</title>
+<meta name="description" content="Contraseña, clave de API u OAuth con permisos: las tres formas de dar acceso a un agente no son equivalentes. Qué obliga el estándar MCP, qué acaban de hacer los bancos y qué revisar hoy.">
+<link rel="canonical" href="https://eltelar.es/articulos/permisos-agente-ia-sin-contrasenas.html"><link rel="icon" type="image/svg+xml" href="../img/favicon.svg?v=4"><link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32.png?v=4"><link rel="apple-touch-icon" href="../img/apple-touch-icon.png?v=4"><meta name="theme-color" content="#072417"><link rel="manifest" href="../manifest.json"><link rel="alternate" type="application/rss+xml" title="El Telar" href="../feed.xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cómo dar permisos a un agente de IA sin darle tus contraseñas | El Telar">
+<meta property="og:description" content="Las tres formas de dar acceso a un agente no son equivalentes. Qué es un permiso, qué obliga el estándar MCP, por qué los bancos han empezado a bloquear agentes y qué revisar hoy.">
+<meta property="og:url" content="https://eltelar.es/articulos/permisos-agente-ia-sin-contrasenas.html">
+<meta property="og:site_name" content="El Telar">
+<meta property="og:locale" content="es_ES"><meta property="og:image" content="https://eltelar.es/img/og/guia-permisos-agente-ia-sin-contrasenas.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Cómo dar permisos a un agente de IA sin darle tus contraseñas | El Telar">
+<meta name="twitter:description" content="Las tres formas de dar acceso a un agente no son equivalentes. Qué es un permiso, qué obliga el estándar MCP, por qué los bancos han empezado a bloquear agentes y qué revisar hoy."><meta name="twitter:image" content="https://eltelar.es/img/og/guia-permisos-agente-ia-sin-contrasenas.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Cómo dar permisos a un agente de IA sin darle tus contraseñas",
+  "description": "Las tres formas de dar acceso a un agente no son equivalentes. Qué es un permiso, qué obliga el estándar MCP, por qué los bancos han empezado a bloquear agentes y qué revisar hoy.",
+  "image": "https://eltelar.es/img/og/guia-permisos-agente-ia-sin-contrasenas.jpg",
+  "author": {"@type": "Person", "name": "Juan Becerril Castañón", "url": "https://eltelar.es/sobre-nosotros.html#autor"},
+  "publisher": {
+    "@type": "Organization",
+    "name": "El Telar"
+  },
+  "datePublished": "2026-10-19",
+  "dateModified": "2026-10-19",
+  "mainEntityOfPage": "https://eltelar.es/articulos/permisos-agente-ia-sin-contrasenas.html",
+  "inLanguage": "es"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Por qué es tan malo darle mi contraseña a un agente?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Porque una contraseña no sabe limitarse. Es la llave entera de la cuenta: con ella el agente puede leer, escribir, borrar, cambiar la dirección de correo de recuperación y, en muchos servicios, cerrar la sesión de todos tus demás dispositivos. No puedes darle «solo lectura» ni ponerle fecha de caducidad, y si algo sale mal no hay registro que distinga lo que hizo el agente de lo que hiciste tú. Además, en cuanto compartes la contraseña, el segundo factor deja de protegerte como creías: alguien tiene que aprobar ese aviso, y si la respuesta es «el agente», ya no es un segundo factor."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Entonces, ¿una clave de API es lo correcto?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Es mejor que la contraseña y peor que OAuth. Una clave de API sí se puede revocar sola, sin tocar tu cuenta, y normalmente se puede crear una por cada herramienta, lo que te deja apagar una sin romper las demás. Lo que casi nunca te da es granularidad: en muchos servicios la clave tiene todos los permisos de quien la creó. Si tu proveedor permite limitar el alcance de la clave (solo lectura, solo un proyecto, solo ciertos repositorios), úsalo; si no lo permite, asume que esa clave es la cuenta entera y trátala así."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué es exactamente un «scope» o permiso?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Es la lista concreta de cosas que el token puede hacer, decidida en el momento en que autorizas y escrita dentro del propio token. Un permiso del estilo «leer archivos» no es una promesa de buena conducta: el servidor comprueba el token en cada petición y rechaza con un error 403 lo que se salga de esa lista. Por eso un permiso de solo lectura resiste aunque alguien manipule al agente — el agente puede pedir lo que quiera, pero el servidor del otro lado no se lo va a dar."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Si el agente es de una empresa seria, ¿no basta con eso?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No, porque el problema no es la honestidad del agente sino lo que lee. Un agente que procesa un correo, una página o un documento puede recibir instrucciones escondidas en ese contenido y ejecutarlas creyendo que vienen de ti. Es lo que llamamos inyección de prompts, y no tiene arreglo definitivo. Cuando no puedes garantizar que el agente no será manipulado, lo único que sigue en pie es el permiso: si el token solo lee, la instrucción escondida que ordena borrar o pagar no llega a ninguna parte."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Tengo un servidor MCP instalado en mi ordenador. ¿Me cubre OAuth?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No, y conviene tenerlo claro. La especificación de MCP dice que las implementaciones que usan transporte STDIO — es decir, los servidores locales que se ejecutan en tu máquina — no deben seguir el flujo de autorización, sino obtener las credenciales del entorno. En la práctica eso significa que ese servidor tiene la clave que tú pusiste en su configuración, con los permisos que esa clave traiga. Todo el aparato de tokens, audiencias y permisos del que habla la especificación aplica al transporte HTTP, no al servidor que arrancas en tu portátil."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cada cuánto debería revisar lo que tengo conectado?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Una vez al trimestre es un ritmo razonable para una cuenta personal, y después de cada prueba que hagas con una herramienta nueva. Lo que se acumula no son los accesos que usas, son los que probaste una tarde y nunca volviste a abrir: siguen ahí, con los permisos que les diste el primer día. La revisión útil es corta — entra en la página de aplicaciones conectadas de cada cuenta importante, y quita todo lo que no reconozcas o no hayas usado en los últimos tres meses."
+      }
+    }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://eltelar.es/"},
+    {"@type": "ListItem", "position": 2, "name": "Guías", "item": "https://eltelar.es/index.html#guias"},
+    {"@type": "ListItem", "position": 3, "name": "Permisos de agentes de IA", "item": "https://eltelar.es/articulos/permisos-agente-ia-sin-contrasenas.html"}
+  ]
+}
+</script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link rel="preload" href="../fonts/newsreader-normal-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/inter-normal-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="../css/fonts.css?v=1"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,leaderboard,lightbulb,lock,lock_clock,lock_open,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,volunteer_activism,warning,work,workspace_premium&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,leaderboard,lightbulb,lock,lock_clock,lock_open,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,volunteer_activism,warning,work,workspace_premium&amp;display=swap" rel="stylesheet"/></noscript>
+<style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><link rel="stylesheet" href="../css/tailwind.css"><link rel="stylesheet" href="../css/entrance.css?v=19"><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}(function(){var c=null;try{c=localStorage.getItem('eltelar-cookie-consent')}catch(e){}var g=c==='accepted'?'granted':'denied';gtag('consent','default',{ad_storage:g,ad_user_data:g,ad_personalization:g,analytics_storage:g,wait_for_update:500});window.adsbygoogle=window.adsbygoogle||[];if(g!=='granted'){window.adsbygoogle.requestNonPersonalizedAds=1;}})();</script><script>window.addEventListener("load",function(){setTimeout(function(){var s=document.createElement("script");s.async=true;s.src="https://www.googletagmanager.com/gtag/js?id=G-4DPTKEG79N";document.head.appendChild(s);},800);});</script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4DPTKEG79N');</script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8239907995939753" crossorigin="anonymous"></script></head>
+<body class="bg-background font-body-md text-on-surface antialiased">
+<header class="w-full bg-surface-container-lowest border-b border-outline-variant"><div class="border-b border-outline-variant py-space-xxs px-space-md hidden md:block"><div class="max-w-site-max-width mx-auto flex items-center justify-between font-kicker text-kicker text-on-surface-variant uppercase tracking-wider"><span>EDICIÓN DIGITAL // ACTUALIZADO 2026 // EL TELAR &amp; AGENTES</span><span>MADRID · REMOTO</span><span>SIN HUMO · 100% PRODUCCIÓN</span></div></div><div class="max-w-site-max-width mx-auto px-space-md py-space-md sm:py-space-xl text-center"><p class="hidden sm:block font-kicker text-kicker uppercase tracking-widest text-on-surface-variant mb-space-xs">Publicación Independiente de Tecnología &amp; Agentes</p><a class="inline-block" href="../index.html"><div class="font-display text-display max-sm:text-[40px] max-sm:leading-none text-primary tracking-tight">El Telar</div></a><p class="hidden sm:block font-caption text-caption uppercase tracking-widest text-on-surface-variant mt-space-xs">EL BOLETÍN Y ARCHIVO PRÁCTICO DE INTELIGENCIA ARTIFICIAL Y AGENTES AUTÓNOMOS</p></div><div class="border-t border-b border-outline-variant"><div class="max-w-site-max-width mx-auto px-space-md flex items-center justify-between gap-space-sm h-14"><nav class="flex items-center gap-space-md sm:gap-space-lg h-full min-w-0 overflow-x-auto [scrollbar-width:none] whitespace-nowrap"><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../index.html#guias">GUÍAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../empieza-aqui.html">EMPIEZA AQUÍ</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../sobre-nosotros.html">SOBRE NOSOTROS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../noticias/index.html">NOTICIAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../herramientas/index.html">HERRAMIENTAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../prompts/index.html">PROMPTS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../contacto.html">CONTACTO</a></nav><div class="flex items-center gap-space-md"><button id="search-trigger" type="button" aria-label="Buscar en las guías" class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[20px]">search</span></button><a class="hidden sm:inline-block bg-primary-container text-surface px-space-md py-space-xs font-label-md text-label-md uppercase tracking-wider hover:bg-primary transition-colors" href="../index.html#despacho">SUSCRÍBETE GRATIS</a></div></div></div><div class="hidden md:block bg-surface-container-low border-b border-outline-variant py-space-xs px-space-md"><div class="max-w-site-max-width mx-auto text-center"><p class="font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">59 GUÍAS COMPLETAS EN EXPANSIÓN · ACTUALIZADO A MODELOS 2026 · PROBADO EN TERMINAL Y FLUJOS REALES · CERO HUMO NI TEORÍA VACÍA</p></div></div></header>
+<main class="w-full max-w-site-max-width mx-auto px-space-md py-space-xl"><div class="flex flex-col w-full">
+<nav aria-label="Ruta de navegación" class="w-full mb-space-lg">
+<ol class="flex flex-wrap items-center gap-space-xs font-kicker text-kicker text-on-surface-variant uppercase tracking-wider">
+<li><a class="hover:text-primary transition-colors" href="../index.html">Inicio</a></li>
+<li class="text-on-surface-variant">/</li>
+<li><a class="hover:text-primary transition-colors" href="../index.html#guias">Guías</a></li>
+<li class="text-on-surface-variant">/</li>
+<li class="text-primary font-bold truncate max-w-[280px] sm:max-w-md">Permisos de agentes</li>
+</ol>
+</nav>
+<header class="w-full pb-space-xl mb-space-2xl">
+<div class="flex flex-wrap items-center gap-space-xs mb-space-md">
+<span class="bg-surface-container-high text-secondary px-space-sm py-1 font-kicker text-kicker uppercase tracking-widest">SEGURIDAD // AGENTES</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight max-w-editorial-max mb-space-md">
+          Cómo dar permisos a un agente de IA sin darle tus contraseñas
+        </h1>
+<p class="font-lead-paragraph text-lead-paragraph text-on-surface-variant max-w-editorial-max leading-relaxed mb-space-lg">
+          Pegarle tu contraseña a una herramienta y autorizarla con un permiso de solo lectura parecen la misma operación, y no lo son. Qué protege cada método, qué obliga el estándar MCP y por qué cuatro bancos grandes acaban de trazar la raya en el mismo sitio.
+        </p>
+<div class="bg-surface-container-lowest p-space-md flex flex-wrap items-center justify-between gap-y-3 shadow-sm">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 bg-primary text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">verified_user</span>
+</div>
+<div>
+<div class="font-label-md text-label-md text-on-surface font-semibold">Por la Redacción de El Telar</div><div class="font-caption text-caption text-on-surface-variant">Guías prácticas de IA y agentes, probadas en flujos de trabajo reales antes de publicarlas.</div>
+<button class="inline-flex items-center gap-1 mt-2 px-3 py-1.5 bg-surface-container text-primary font-label-md text-[12px] font-semibold uppercase tracking-wider hover:bg-surface-container-high transition-colors" id="copy-guide-btn" type="button"><span class="material-symbols-outlined text-[16px]">content_copy</span>Copiar guía</button>
+</div>
+</div>
+<div class="flex items-center gap-space-lg text-on-surface-variant font-caption text-caption uppercase tracking-wider">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">schedule</span> 15 min de lectura</span>
+</div>
+</div>
+</header>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-col-gap">
+<article class="lg:col-span-8 flex flex-col space-y-space-xl">
+<div class="relative bg-surface-container-lowest p-space-lg shadow-sm">
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed text-justify">
+<span class="float-left font-display text-primary text-6xl leading-none pr-3 pt-1 font-normal">C</span>
+          uando una herramienta de IA te pide acceso a tu correo, a tu banco o a tus archivos, casi siempre hay más de una forma de dársela, y la que te ofrece por defecto no suele ser la mejor para ti. La diferencia entre pegarle una contraseña y autorizarla con un permiso de solo lectura no es un detalle técnico: es la diferencia entre que un fallo te cueste un susto o te cueste la cuenta.
+        </p>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Esta guía va de eso — de los mecanismos concretos con los que se le da acceso a un agente, qué protege cada uno y cuál elegir. No va de si debes usar agentes: eso ya lo decides tú. Va de que, si los usas, el permiso que les das es la única pieza que sigue funcionando cuando todo lo demás falla.
+        </p>
+<section id="sec-1" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight mb-space-md">1. La pregunta no es si te fías del agente</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          La forma habitual de pensar esto es: «¿me fío de esta herramienta?». Es una pregunta razonable y es la equivocada, porque supone que el riesgo viene de que la empresa sea deshonesta. El riesgo real viene de otro sitio: de que el agente haga caso a alguien que no eres tú.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Un agente útil lee cosas. Lee tu correo, abre páginas web, procesa documentos, repasa comentarios de un repositorio. Y un modelo de lenguaje no tiene una frontera sólida entre «esto es contenido que debo analizar» y «esto es una orden que debo cumplir». Si alguien escribe instrucciones dentro de ese contenido, hay una probabilidad nada despreciable de que el agente las obedezca creyendo que vienen de ti. Lo desarrollamos a fondo en <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="prompt-injection-agentes-ia.html">la guía sobre inyección de prompts</a>, con casos ya documentados en productos de Microsoft, GitHub y Google, y con una conclusión incómoda: las propias empresas que lo sufren admiten que no tiene arreglo definitivo.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Si aceptas eso, la consecuencia práctica es directa. No puedes apostar la seguridad a que el agente se porte bien, porque no controlas todo lo que va a leer. Lo que sí controlas es <strong>hasta dónde llega</strong> si se porta mal. Y eso se decide en el momento de dar el acceso, no después.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          De ahí que la pregunta útil sea otra: si esta herramienta hiciera exactamente lo peor que puede hacer con el acceso que le estoy dando, ¿qué pasaría? Si la respuesta es «lee cosas que ya son mías y no puede cambiarlas», estás en un sitio razonable. Si la respuesta es «puede mover dinero, borrar correo o cambiar mi contraseña», el problema no es el agente: es el permiso.
+        </p>
+</section>
+<section id="sec-2" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight mb-space-md">2. Tres formas de dar acceso, y no son equivalentes</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Casi todo lo que te vas a encontrar cae en una de estas tres. Merece la pena saber cuál te están pidiendo, porque las tres se presentan con el mismo botón de «Conectar».
+        </p>
+<h3 class="font-headline-sm text-headline-sm text-primary pt-space-xs">La contraseña: la peor, y la más fácil de dar</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Es el método que usa una herramienta cuando entra en el servicio haciéndose pasar por ti. Funciona siempre, porque no necesita que el servicio colabore, y por eso sigue siendo tan común. El problema es que una contraseña no sabe limitarse: no existe la versión «de solo lectura» de tu contraseña. Le estás dando la cuenta entera, con todo lo que eso incluye — leer, escribir, borrar, cambiar el correo de recuperación.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Hay dos efectos secundarios que se pasan por alto. El primero es que te quedas sin registro: lo que haga el agente aparece como hecho por ti, y si tienes que reclamar algo, no hay forma limpia de separar una cosa de la otra. El segundo es que el segundo factor deja de ser un segundo factor — alguien tiene que aprobar ese aviso que llega al móvil, y si la respuesta es «lo aprueba el agente», has convertido la verificación en un trámite.
+        </p>
+<h3 class="font-headline-sm text-headline-sm text-primary pt-space-xs">La clave de API: revocable, pero normalmente sin matices</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Una clave de API es una credencial creada aparte, para una herramienta concreta. Gana en dos cosas importantes: puedes anularla sin tocar tu contraseña ni cerrar tus sesiones, y puedes crear una por herramienta, de modo que apagar una no rompe las demás. Eso ya es mucho.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Lo que no suele dar es granularidad. En bastantes servicios la clave hereda todos los permisos de quien la creó, así que «clave de API» acaba significando «la cuenta entera, pero con interruptor». Algunos proveedores sí permiten acotarla — por proyecto, por repositorio, por solo lectura — y cuando existe esa opción hay que usarla. La regla sencilla: si no puedes ver y limitar qué permisos lleva la clave, trátala como si fuera la contraseña, porque en la práctica lo es.
+        </p>
+<h3 class="font-headline-sm text-headline-sm text-primary pt-space-xs">OAuth con permisos: la buena, cuando está disponible</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Aquí no le das ninguna credencial tuya al agente. Te manda al servicio, te autenticas tú en la página del servicio, y lo que recibe el agente es un <em>token</em>: un pase emitido para esa herramienta, con una lista concreta de permisos dentro y, normalmente, con caducidad. Tu contraseña nunca pasa por la herramienta.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Es el mismo mecanismo de «Iniciar sesión con Google» que llevas años usando, aplicado a agentes. Y la parte que de verdad importa no es el flujo sino lo que viene escrito en ese pase: los permisos.
+        </p>
+</section>
+<section id="sec-3" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight mb-space-md">3. Qué es un permiso y por qué «solo lectura» aguanta</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Un permiso — <em>scope</em>, en la documentación que te vas a encontrar — es la lista de operaciones que ese token autoriza. No es una etiqueta descriptiva ni una promesa: va dentro del token, y el servidor del otro lado la comprueba en cada petición.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Eso es lo que lo hace valioso. Si el token dice «leer archivos» y el agente pide borrar uno, el servidor responde con un error y no borra nada. Da igual por qué lo pidió: da igual si fue un fallo del modelo, una instrucción escondida en un documento o un error tuyo al redactar la tarea. La comprobación no ocurre en el agente, ocurre en el servicio, que es justo el sitio donde un atacante no está.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Por eso un permiso de solo lectura es la defensa más barata y más robusta que tienes a mano. No depende de que el modelo sea bueno, ni de que la empresa sea seria, ni de que tú hayas escrito bien la instrucción. Convierte el peor caso de «me han vaciado la cuenta» en «me han leído cosas que ya tenían que leer para hacer su trabajo» — que no es inocuo, pero es otro orden de magnitud.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          La especificación del Model Context Protocol, el estándar que usan cada vez más herramientas para conectar modelos con servicios, lo deja escrito como principio: los clientes <em>deberían</em> seguir el principio de mínimo privilegio y pedir solo los permisos necesarios para lo que van a hacer, y el conjunto que un servidor publica por defecto está pensado como «el mínimo necesario para funcionar», no como el máximo disponible (<a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" href="https://modelcontextprotocol.io/specification/draft/basic/authorization" target="_blank" rel="noopener">especificación de autorización de MCP</a>). Si necesita más, lo pide más adelante, cuando le haga falta.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          La traducción a tu pantalla es sencilla: cuando una herramienta te enseñe la lista de permisos que va a pedir, esa pantalla no es un trámite. Es el único momento del proceso en el que tú decides algo. Si pide escribir y tú solo querías que leyera, ahí es donde se para.
+        </p>
+</section>
+<section id="sec-4" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight mb-space-md">4. Lo que acaban de hacer los bancos</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          En octubre de 2026 varios bancos grandes de Estados Unidos han hecho pública la misma decisión, y es un caso práctico de todo lo anterior.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Charles Schwab explicó el 16 de octubre, por boca de su consejero delegado Rick Wurster en una entrevista en Bloomberg Television, que bloquea a los agentes externos que entran en las cuentas de sus clientes usando las credenciales de esos clientes — y citó por su nombre a Muse, el asistente de Meta. Wurster describió un informe semanal de bloqueos y situó a los grandes proveedores en el orden de «decenas y veintenas» por semana. El argumento que dio no fue técnico sino de responsabilidad: ni la firma ni el cliente controlan lo que hace ese agente, y si algo sale mal no está claro quién responde.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          JPMorgan dijo algo equivalente en su presentación de resultados del 13 de octubre, con Jamie Dimon resumiéndolo en una frase que se ha citado mucho: no quieres agentes descontrolados, y podría haber miles. Citigroup confirmó al <em>Financial Times</em> que no permite que un agente externo inicie sesión ni opere. Y Bank of America lo ha restringido mientras define de quién es la responsabilidad cuando un pago lo inicia una IA; su consejero delegado, Brian Moynihan, lo dejó en que debe haber una persona en el circuito para autorizar que el dinero salga de tu cuenta.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Lo interesante no es el bloqueo, es dónde ponen la raya. Ninguno está cerrando la puerta a la IA: los cuatro mantienen el acceso de <strong>solo lectura</strong> — consultar saldos, analizar movimientos — a través de canales previstos para eso. Schwab, de hecho, lo está abriendo mediante sus propios servidores MCP, que permiten consultar y analizar pero no mover dinero, y empuja a sus clientes hacia su asistente propio. Lo que bloquean es exactamente una cosa: que un tercero entre con tu contraseña y pueda ejecutar.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Conviene añadir el contexto que publicó el <em>Financial Times</em>, porque explica parte del entusiasmo: JPMorgan, Bank of America y Wells Fargo tienen en torno a 1,6 billones de dólares en depósitos que no pagan intereses, y un asistente que fuera moviendo ese dinero a cuentas mejor remuneradas les saldría caro. Que el motivo declarado sea la responsabilidad y exista además un incentivo económico no convierte el argumento en falso — la pregunta de quién responde sigue sin respuesta — pero sí recomienda leer estos anuncios sabiendo que hay dos cosas en juego.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Para ti, la lectura útil es la del diseño: cuatro organizaciones con mucho que perder han llegado por su cuenta a la misma conclusión que esta guía. Credenciales compartidas, no. Lectura con un canal acotado, sí. Ejecución, solo con una persona delante. Europa, por cierto, tuvo esta misma discusión hace años con la banca abierta y la normativa PSD2, y acabó en el mismo sitio: interfaces dedicadas en vez de que un tercero entre con tus claves.
+        </p>
+</section>
+<section id="sec-5" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight mb-space-md">5. Lo que el estándar MCP obliga de verdad</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Si conectas herramientas a un modelo, antes o después te cruzas con MCP. Si no lo tienes situado, <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="mcp-explicado.html">nuestra guía del protocolo</a> explica qué es y cómo se monta uno. Lo que interesa aquí es otra cosa: qué exige su especificación en materia de permisos, porque hay varias reglas que te protegen sin que tengas que hacer nada — y una que conviene conocer porque no te protege.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Lo primero, y suele sorprender: la autorización en MCP es <strong>opcional</strong>. La especificación dice que las implementaciones sobre HTTP <em>deberían</em> seguirla, no que deban. Así que «usa MCP» no significa «tiene OAuth». Es una pregunta que hay que hacer, no una garantía que venga de serie.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Cuando sí se implementa, el reparto de papeles es el de OAuth 2.1 de toda la vida: el servidor MCP es el recurso protegido, la herramienta es el cliente y hay un servidor de autorización aparte que emite los tokens. Sobre eso, la especificación impone unas cuantas cosas en términos de obligación (<a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" href="https://modelcontextprotocol.io/specification/draft/basic/authorization/security-considerations" target="_blank" rel="noopener">consideraciones de seguridad de MCP</a>):
+        </p>
+<ul class="space-y-space-xs font-body-md text-body-md text-on-surface-variant leading-relaxed list-disc pl-space-lg"><li><strong>El token vale para un destino y solo uno.</strong> El servidor debe comprobar que el token se emitió específicamente para él y rechazar los que no lo incluyan como destinatario. Un pase robado de otro servicio no sirve aquí.</li><li><strong>Nada de reenviar tu token.</strong> Si el servidor MCP necesita a su vez llamar a otra API, tiene que conseguir su propio token para esa API: la especificación le prohíbe expresamente pasar el que recibió de ti. Es lo que evita que un servidor intermedio acumule pases ajenos.</li><li><strong>PKCE obligatorio.</strong> El cliente debe implementarlo y, si el servidor de autorización no declara que lo soporta, debe negarse a continuar. Esto cierra la ventana en la que alguien intercepta el código de autorización a medio camino.</li><li><strong>El token no viaja en la URL.</strong> Va en la cabecera, nunca en la dirección — que es donde se queda registrado en historiales y registros de servidor.</li><li><strong>Tokens de vida corta.</strong> El servidor de autorización debería emitirlos con caducidad breve, para que uno filtrado deje de servir pronto.</li></ul>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Hay además una regla pensada para un ataque con nombre propio, el del <em>diputado confundido</em>: cuando un servidor MCP actúa de intermediario hacia APIs de terceros usando un identificador de cliente compartido, tiene que pedirte consentimiento por cada cliente registrado antes de reenviar nada. Sin eso, un atacante podría aprovechar que tú ya autorizaste al intermediario para colarse detrás.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          ¿Qué haces tú con esto? Dos cosas. Una, usarlo como lista de comprobación cuando elijas una herramienta que se conecta a tus cuentas: si su documentación no menciona ninguna de estas piezas, probablemente no esté implementando el flujo y esté pidiéndote una clave. Y dos, fijarte en el error que te devuelve cuando algo no funciona — un 401 significa que no hay token válido; un 403 significa que el token existe pero no tiene permiso para eso. El segundo no es un fallo: es el sistema funcionando.
+        </p>
+</section>
+<section id="sec-6" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight mb-space-md">6. El hueco del que casi nadie avisa: el servidor local</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Aquí está la parte que más veces he visto malinterpretada, y la especificación es explícita al respecto.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Todo lo anterior — tokens, permisos, audiencias, caducidad — aplica al transporte HTTP, es decir, a servidores MCP que viven en algún sitio de internet. Pero muchos de los servidores MCP que instala la gente se ejecutan en su propio ordenador y se comunican por STDIO. Para esos, la especificación dice algo distinto: que <em>no</em> deberían seguir el flujo de autorización y que obtengan las credenciales del entorno (<a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" href="https://modelcontextprotocol.io/specification/draft/basic/authorization" target="_blank" rel="noopener">especificación de autorización de MCP</a>).
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Traducido: ese servidor tiene la clave que tú pegaste en su configuración, tal cual, con todos los permisos que esa clave traiga. No hay pantalla de consentimiento, no hay lista de permisos que revisar, no hay caducidad. Si le diste una clave de administrador, el servidor es administrador.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          No es un defecto del diseño — un proceso que corre en tu máquina ya está dentro de tu máquina, y montarle un flujo de navegador no añadiría gran cosa. Pero sí cambia dónde tienes que poner el cuidado. Con un servidor local, tu control no está en la pantalla de permisos, está <strong>en qué clave le das</strong>. Si el servicio permite emitir una clave acotada, ese es el momento de hacerlo. Y conviene mirar con calma qué servidores MCP instalas: estás ejecutando código de terceros con acceso a tus credenciales, que es una decisión más parecida a instalar una aplicación que a conectar una cuenta.
+        </p>
+</section>
+<section id="sec-7" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight mb-space-md">7. Revocar, rotar y revisar</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Dar el acceso es el momento que todo el mundo atiende. Quitarlo es el que nadie atiende, y es donde se acumula el riesgo de verdad: no en la herramienta que usas a diario, sino en las cuatro que probaste una tarde de marzo y siguen conectadas con los permisos del primer día.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Revocar es, casi siempre, más fácil de lo que parece, y tiene una ventaja sobre cambiar la contraseña: no rompe nada más. En Google se hace desde tu cuenta, en el apartado de datos y privacidad, en la lista de aplicaciones y servicios de terceros — los nombres exactos de los menús han ido cambiando, pero la lista siempre está ahí y permite quitar el acceso de una aplicación concreta. Microsoft, GitHub, Dropbox, Notion y cualquier servicio que ofrezca «Iniciar sesión con…» tienen su equivalente. Las claves de API se anulan desde el panel del proveedor que las emitió.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Tres hábitos que valen más que cualquier configuración:
+        </p>
+<ul class="space-y-space-xs font-body-md text-body-md text-on-surface-variant leading-relaxed list-disc pl-space-lg"><li><strong>Una credencial por herramienta.</strong> Compartir una clave entre tres integraciones significa que el día que tengas que anularla, se te caen las tres y no sabrás cuál era la que falló.</li><li><strong>Revisión trimestral.</strong> Diez minutos, las tres o cuatro cuentas que importan, fuera todo lo que no reconozcas o no hayas usado en tres meses. Es aburrido y es lo que funciona.</li><li><strong>Leer los registros al principio.</strong> La primera semana de una integración nueva, mira qué está haciendo de verdad. Es cuando descubres que la herramienta que iba a «leer tu calendario» está también creando eventos.</li></ul>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Y si lo que has conectado puede gastar dinero —llamadas a una API de pago, compras, operaciones— los permisos no bastan, porque gastar de más no es una operación prohibida: es la operación normal repetida muchas veces. Para eso hacen falta topes reales, y es un problema distinto que tratamos en <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="limites-gasto-agentes-ia.html">la guía de límites de gasto para agentes</a>.
+        </p>
+</section>
+<section id="sec-8" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight mb-space-md">8. Qué hacer, en la práctica</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Resumido en lo que harías la próxima vez que una herramienta te pida acceso:
+        </p>
+<ol class="space-y-space-sm font-body-md text-body-md text-on-surface-variant leading-relaxed list-decimal pl-space-lg"><li><strong>Mira qué te está pidiendo.</strong> Si el formulario tiene una casilla para tu contraseña del otro servicio, ya sabes que es el método malo. Busca si existe la opción de conectar por OAuth; si no existe, decide sabiendo lo que estás dando.</li><li><strong>Lee la lista de permisos.</strong> Es la única pantalla donde decides algo. Si pide escribir y tú querías lectura, para ahí y busca si la herramienta tiene un modo de solo lectura.</li><li><strong>Empieza en solo lectura.</strong> Deja que la herramienta demuestre que es útil antes de darle capacidad de cambiar cosas. Ampliar permisos después cuesta dos minutos; deshacer un borrado, no.</li><li><strong>Si es una clave de API, acótala.</strong> Por proyecto, por repositorio, por solo lectura — lo que permita el proveedor. Y una por herramienta.</li><li><strong>Separa lo crítico.</strong> Para pruebas, una cuenta aparte o un espacio de trabajo aparte. Es la forma más simple de que el peor caso no toque lo que importa.</li><li><strong>Apunta dónde se revoca.</strong> Treinta segundos al conectar, y el día que lo necesites no estarás buscando el menú con prisa.</li><li><strong>Nada que mueva dinero sin una persona delante.</strong> Es lo que acaban de decidir cuatro bancos con departamentos de riesgo enteros dedicados a pensarlo. No hace falta llegar a una conclusión distinta.</li></ol>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Nada de esto exige saber programar ni cambiar de herramientas. Exige tratar la pantalla de permisos como lo que es: el sitio donde decides cuánto puede costarte el peor día. Si quieres la versión más amplia de qué revisar antes de conectar un asistente a tus cosas, está en <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="proteger-datos-ia.html">cómo proteger tus datos cuando usas IA</a>; y si lo que te preocupa es cómo pueden manipular al agente una vez conectado, en <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="prompt-injection-agentes-ia.html">la guía de inyección de prompts</a>.
+        </p>
+</section>
+<section id="faq" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight mb-space-md">Preguntas frecuentes</h2>
+<div class="space-y-space-sm">
+<div class="border border-outline-variant">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-label-md text-label-md text-primary font-semibold">¿Por qué es tan malo darle mi contraseña a un agente?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="hidden px-space-md pb-space-md">
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Porque una contraseña no sabe limitarse. Es la llave entera de la cuenta: con ella el agente puede leer, escribir, borrar, cambiar la dirección de correo de recuperación y, en muchos servicios, cerrar la sesión de todos tus demás dispositivos. No puedes darle «solo lectura» ni ponerle fecha de caducidad, y si algo sale mal no hay registro que distinga lo que hizo el agente de lo que hiciste tú. Además, en cuanto compartes la contraseña, el segundo factor deja de protegerte como creías: alguien tiene que aprobar ese aviso, y si la respuesta es «el agente», ya no es un segundo factor.</p>
+</div>
+</div>
+<div class="border border-outline-variant">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-label-md text-label-md text-primary font-semibold">Entonces, ¿una clave de API es lo correcto?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="hidden px-space-md pb-space-md">
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Es mejor que la contraseña y peor que OAuth. Una clave de API sí se puede revocar sola, sin tocar tu cuenta, y normalmente se puede crear una por cada herramienta, lo que te deja apagar una sin romper las demás. Lo que casi nunca te da es granularidad: en muchos servicios la clave tiene todos los permisos de quien la creó. Si tu proveedor permite limitar el alcance de la clave (solo lectura, solo un proyecto, solo ciertos repositorios), úsalo; si no lo permite, asume que esa clave es la cuenta entera y trátala así.</p>
+</div>
+</div>
+<div class="border border-outline-variant">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-label-md text-label-md text-primary font-semibold">¿Qué es exactamente un «scope» o permiso?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="hidden px-space-md pb-space-md">
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Es la lista concreta de cosas que el token puede hacer, decidida en el momento en que autorizas y escrita dentro del propio token. Un permiso del estilo «leer archivos» no es una promesa de buena conducta: el servidor comprueba el token en cada petición y rechaza con un error 403 lo que se salga de esa lista. Por eso un permiso de solo lectura resiste aunque alguien manipule al agente — el agente puede pedir lo que quiera, pero el servidor del otro lado no se lo va a dar.</p>
+</div>
+</div>
+<div class="border border-outline-variant">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-label-md text-label-md text-primary font-semibold">Si el agente es de una empresa seria, ¿no basta con eso?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="hidden px-space-md pb-space-md">
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">No, porque el problema no es la honestidad del agente sino lo que lee. Un agente que procesa un correo, una página o un documento puede recibir instrucciones escondidas en ese contenido y ejecutarlas creyendo que vienen de ti. Es lo que llamamos inyección de prompts, y no tiene arreglo definitivo. Cuando no puedes garantizar que el agente no será manipulado, lo único que sigue en pie es el permiso: si el token solo lee, la instrucción escondida que ordena borrar o pagar no llega a ninguna parte.</p>
+</div>
+</div>
+<div class="border border-outline-variant">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-label-md text-label-md text-primary font-semibold">Tengo un servidor MCP instalado en mi ordenador. ¿Me cubre OAuth?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="hidden px-space-md pb-space-md">
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">No, y conviene tenerlo claro. La especificación de MCP dice que las implementaciones que usan transporte STDIO — es decir, los servidores locales que se ejecutan en tu máquina — no deben seguir el flujo de autorización, sino obtener las credenciales del entorno. En la práctica eso significa que ese servidor tiene la clave que tú pusiste en su configuración, con los permisos que esa clave traiga. Todo el aparato de tokens, audiencias y permisos del que habla la especificación aplica al transporte HTTP, no al servidor que arrancas en tu portátil.</p>
+</div>
+</div>
+<div class="border border-outline-variant">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-label-md text-label-md text-primary font-semibold">¿Cada cuánto debería revisar lo que tengo conectado?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="hidden px-space-md pb-space-md">
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Una vez al trimestre es un ritmo razonable para una cuenta personal, y después de cada prueba que hagas con una herramienta nueva. Lo que se acumula no son los accesos que usas, son los que probaste una tarde y nunca volviste a abrir: siguen ahí, con los permisos que les diste el primer día. La revisión útil es corta — entra en la página de aplicaciones conectadas de cada cuenta importante, y quita todo lo que no reconozcas o no hayas usado en los últimos tres meses.</p>
+</div>
+</div>
+</div>
+</section>
+</article>
+<aside class="lg:col-span-4 flex flex-col space-y-space-xl">
+<div class="bg-surface-container-lowest p-space-lg shadow-sm sticky top-space-md">
+<div class="flex items-center justify-between mb-space-sm pb-space-xs">
+<span class="font-kicker text-kicker uppercase tracking-widest text-primary font-bold">ÍNDICE DE LA GUÍA</span>
+<span class="material-symbols-outlined text-on-surface-variant text-base">format_list_bulleted</span>
+</div>
+<nav class="space-y-space-xs font-body-sm text-body-sm">
+<a class="block text-primary hover:text-secondary font-medium transition-colors" href="#sec-1">No es si te fías del agente</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-2">Tres formas de dar acceso</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-3">Qué es un permiso</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-4">Lo que han hecho los bancos</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-5">Lo que obliga el estándar MCP</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-6">El hueco del servidor local</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-7">Revocar, rotar y revisar</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-8">Qué hacer en la práctica</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#faq">Preguntas frecuentes</a>
+</nav>
+</div>
+<div class="bg-surface-container-high p-space-md space-y-space-sm shadow-sm">
+<span class="font-kicker text-kicker uppercase tracking-widest text-primary font-bold">FICHA TÉCNICA</span>
+<dl class="space-y-space-xs font-caption text-caption">
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Categoría:</dt><dd class="font-semibold text-primary">Seguridad y privacidad</dd></div>
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Nivel técnico:</dt><dd class="font-semibold text-primary">Intermedio</dd></div>
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Fuentes citadas:</dt><dd class="font-semibold text-primary">Especificación de autorización del Model Context Protocol y su documento de consideraciones de seguridad (modelcontextprotocol.io); declaraciones de Rick Wurster (Charles Schwab) en Bloomberg Television el 16 de octubre de 2026 y de Jamie Dimon (JPMorgan) en la presentación de resultados del 13 de octubre; informaciones del Financial Times sobre Citigroup, Bank of America y los depósitos sin remunerar, y declaraciones de Brian Moynihan a CNBC.</dd></div>
+</dl>
+</div>
+<div class="bg-surface-container-low border-l-4 border-secondary p-space-md">
+<p class="font-body-sm text-body-sm text-on-surface leading-relaxed">Los menús y las pantallas de permisos de cada servicio cambian con frecuencia, y lo que una herramienta pide hoy puede no ser lo que pida dentro de seis meses. Comprueba siempre la lista de permisos concreta que tienes delante antes de aceptarla.</p>
+</div>
+</aside>
+</div>
+<section class="w-full mt-space-4xl pt-space-2xl bg-surface-container-lowest p-space-lg shadow-sm">
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-space-xl gap-space-xs">
+<h3 class="font-headline-md text-headline-md text-primary">Continúa explorando el archivo</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-col-gap"><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="mcp-explicado.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/portadas/mcp-explicado.svg" alt="" width="1600" height="520" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="mcp-explicado.html">MCP explicado: cómo conectar la IA con tus propias herramientas</a></h4></div></article><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="prompt-injection-agentes-ia.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/portadas/prompt-injection-agentes-ia.svg" alt="" width="1600" height="520" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="prompt-injection-agentes-ia.html">Prompt injection: cómo pueden manipular a tu agente de IA</a></h4></div></article><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="limites-gasto-agentes-ia.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/portadas/limites-gasto-agentes-ia.svg" alt="" width="1600" height="520" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="limites-gasto-agentes-ia.html">Límites de gasto para agentes de IA que funcionan</a></h4></div></article></div>
+</section>
+</div></main><footer class="w-full bg-surface-container-low border-t border-outline-variant mt-space-4xl"><div class="max-w-site-max-width mx-auto px-space-md py-space-3xl"><div class="grid grid-cols-1 md:grid-cols-3 gap-col-gap"><div class="space-y-space-sm"><span class="font-headline-md text-headline-md text-primary">El Telar</span><p class="font-body-sm text-body-sm text-on-surface-variant">Publicación independiente de tecnología y automatización con agentes. Contenidos verificados en producción, sin patrocinios opacos ni promesas vacías.</p></div><div><h3 class="font-kicker text-kicker uppercase tracking-wider text-on-surface mb-space-md">SECCIONES</h3><ul class="space-y-space-xs font-body-sm text-body-sm"><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html#guias">Archivo de Guías</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../empieza-aqui.html">Guía para Principiantes</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../guardadas.html">Mis guías guardadas</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../colaboraciones.html">Colaboraciones y prensa</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../sobre-nosotros.html">Manifiesto Editorial</a></li><li class="pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html#despacho">Boletín Semanal</a></li></ul></div><div><h3 class="font-kicker text-kicker uppercase tracking-wider text-on-surface mb-space-md">CONTACTO &amp; PRENSA</h3><div class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant"><p class="font-semibold text-on-surface">contacto@eltelar.es</p><p>Síguenos: <a class="hover:text-primary underline" href="https://www.instagram.com/eltelar_es/" rel="me noopener" target="_blank">Instagram</a> · <a class="hover:text-primary underline" href="https://www.threads.com/@eltelar_es" rel="me noopener" target="_blank">Threads</a> · <a class="hover:text-primary underline" href="https://x.com/eltelar_es" rel="me noopener" target="_blank">X</a></p></div></div></div></div><div class="border-t border-outline-variant py-space-md bg-surface-container-lowest"><div class="max-w-site-max-width mx-auto px-space-md flex flex-col md:flex-row items-center justify-between gap-space-sm text-caption font-caption text-on-surface-variant"><div>© 2026 El Telar. Todos los derechos reservados. Independencia editorial garantizada.</div><div class="flex flex-wrap items-center justify-center gap-space-md"><a class="hover:text-on-surface transition-colors" href="../privacidad.html">Privacidad</a><a class="hover:text-on-surface transition-colors" href="../terminos.html">Términos</a><a class="hover:text-on-surface transition-colors" href="../cookies.html">Cookies</a><a class="hover:text-on-surface transition-colors" href="../aviso-legal.html">Aviso legal</a><a class="hover:text-on-surface transition-colors" href="../sobre-nosotros.html">Sobre nosotros</a><a class="hover:text-on-surface transition-colors" href="../contacto.html">Contacto</a></div></div></div></footer><script defer src="../js/copy-guide.js"></script><script defer src="../js/guide-interactions.js"></script><script defer src="../js/reading-progress.js"></script><script defer src="../js/search.js?v=7"></script><script defer src="../js/entrance.js"></script><script defer src="../js/cookie-consent.js?v=4"></script></body></html>
