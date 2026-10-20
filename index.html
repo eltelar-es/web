@@ -44,7 +44,7 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link rel="preload" href="fonts/newsreader-normal-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="fonts/inter-normal-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="css/fonts.css?v=1">
 <link rel="stylesheet" href="css/tailwind.css">
-<link rel="stylesheet" href="css/entrance.css?v=19"><link rel="stylesheet" href="css/portada.css?v=1"><link rel="stylesheet" href="css/modern.css?v=1"><link rel="stylesheet" href="css/v2-lite.css?v=1"><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}(function(){var c=null;try{c=localStorage.getItem('eltelar-cookie-consent')}catch(e){}var g=c==='accepted'?'granted':'denied';gtag('consent','default',{ad_storage:g,ad_user_data:g,ad_personalization:g,analytics_storage:g,wait_for_update:500});window.adsbygoogle=window.adsbygoogle||[];if(g!=='granted'){window.adsbygoogle.requestNonPersonalizedAds=1;}})();</script><script>window.addEventListener("load",function(){setTimeout(function(){var s=document.createElement("script");s.async=true;s.src="https://www.googletagmanager.com/gtag/js?id=G-4DPTKEG79N";document.head.appendChild(s);},800);});</script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4DPTKEG79N');</script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8239907995939753" crossorigin="anonymous"></script><style id="telar-polish">
+<link rel="stylesheet" href="css/entrance.css?v=20"><link rel="stylesheet" href="css/portada.css?v=1"><link rel="stylesheet" href="css/modern.css?v=1"><link rel="stylesheet" href="css/v2-lite.css?v=1"><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}(function(){var c=null;try{c=localStorage.getItem('eltelar-cookie-consent')}catch(e){}var g=c==='accepted'?'granted':'denied';gtag('consent','default',{ad_storage:g,ad_user_data:g,ad_personalization:g,analytics_storage:g,wait_for_update:500});window.adsbygoogle=window.adsbygoogle||[];if(g!=='granted'){window.adsbygoogle.requestNonPersonalizedAds=1;}})();</script><script>window.addEventListener("load",function(){setTimeout(function(){var s=document.createElement("script");s.async=true;s.src="https://www.googletagmanager.com/gtag/js?id=G-4DPTKEG79N";document.head.appendChild(s);},800);});</script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4DPTKEG79N');</script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8239907995939753" crossorigin="anonymous"></script><style id="telar-polish">
 .guide-card{position:relative;background:#fff;border:1px solid rgba(7,36,23,.10);padding:0 1.5rem 1.5rem;overflow:hidden;transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s,border-color .25s}.guide-card .guide-thumb{margin:0 -1.5rem 1.5rem}.guide-card .guide-thumb img{height:7rem}main .guide-card:hover{border-color:rgba(7,36,23,.18);box-shadow:0 1px 2px rgba(7,36,23,.05),0 18px 36px -20px rgba(7,36,23,.35)}.guide-card::before{z-index:1}#guide-grid{column-gap:1.5rem;row-gap:1.5rem}
 .guide-card::before{content:"";position:absolute;left:0;top:-1px;height:3px;width:44px;background:var(--topic);transition:width .35s cubic-bezier(.2,.7,.2,1)}
 .guide-card:hover::before{width:100%}
@@ -58,6 +58,30 @@
 mark.pd-ph{background:#ffddbb;color:#682c00;padding:0 .2em;border-radius:2px;font-weight:600}
 .pd-fade{-webkit-mask-image:linear-gradient(#000 78%,transparent);mask-image:linear-gradient(#000 78%,transparent)}
 @media (prefers-reduced-motion:reduce){.guide-card,.guide-card::before,#prompts-teaser a.group{transition:none}.guide-card:hover,#prompts-teaser a.group:hover{transform:none}.pd-dot{animation:none}}
+
+/* --- Retoque móvil 2026-10-20: menú, «Última hora» y antetítulo --- */
+#masthead-nav{scroll-snap-type:x proximity;scroll-padding-left:4px}
+#masthead-nav a{scroll-snap-align:start;line-height:1;padding-top:2px}
+@media (max-width:1023px){#masthead-nav{-webkit-mask-image:linear-gradient(90deg,#000 0,#000 82%,transparent 100%);mask-image:linear-gradient(90deg,#000 0,#000 82%,transparent 100%);padding-right:28px}}
+.kick-short{display:none}
+@media (max-width:639px){.kick-long{display:none}.kick-short{display:inline}}
+.ultima{position:relative;display:grid;grid-template-columns:1fr auto;grid-template-areas:"tag go" "title go";column-gap:16px;row-gap:7px;align-items:center;padding:16px 20px 17px 22px;color:#f9f9ff;background:radial-gradient(120% 140% at 0% 0%,#1e3a2b 0%,#072417 62%);overflow:hidden;transition:background-color .25s}
+.ultima::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:#fd8a42}
+.ultima::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(253,138,66,.07),transparent);transform:translateX(-100%);transition:transform .7s ease}
+.ultima:hover::after{transform:translateX(100%)}
+.ultima-tag{grid-area:tag;display:inline-flex;align-items:center;gap:9px;font:700 10px/1 Inter,-apple-system,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#fd8a42}
+.ultima-tag time{color:rgba(249,249,255,.55);font-weight:600;letter-spacing:.14em}
+.ultima-tag time::before{content:"·";margin-right:9px;color:rgba(249,249,255,.35)}
+.ultima-dot{position:relative;width:7px;height:7px;border-radius:50%;background:#fd8a42;flex:none}
+.ultima-dot::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:1.5px solid #fd8a42;opacity:0;animation:ultima-ping 2s cubic-bezier(.2,.6,.3,1) infinite}
+@keyframes ultima-ping{0%{transform:scale(.5);opacity:.9}100%{transform:scale(1.6);opacity:0}}
+.ultima-title{grid-area:title;font-family:Newsreader,Georgia,serif;font-size:17px;line-height:1.32;font-weight:500;letter-spacing:-.005em;text-wrap:balance;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.ultima-go{grid-area:go;width:38px;height:38px;border-radius:999px;border:1px solid rgba(249,249,255,.28);display:grid;place-items:center;color:#f9f9ff;transition:background-color .2s,border-color .2s,color .2s,transform .2s}
+.ultima-go .material-symbols-outlined{font-size:18px}
+.ultima:hover .ultima-go,.ultima:focus-visible .ultima-go{background:#fd8a42;border-color:#fd8a42;color:#072417;transform:translateX(2px)}
+.ultima:focus-visible{outline:2px solid #fd8a42;outline-offset:-4px}
+@media (min-width:640px){.ultima{grid-template-columns:auto 1fr auto;grid-template-areas:"tag title go";column-gap:22px;padding:14px 32px}.ultima-title{font-size:18px;-webkit-line-clamp:1}}
+@media (prefers-reduced-motion:reduce){.ultima-dot::after{animation:none;opacity:0}.ultima::after{display:none}.ultima-go{transition:none}}
 </style></head>
 <body class="bg-[#f9f9ff] font-sans antialiased text-charcoal-body selection:bg-emerald-racing selection:text-parchment min-h-screen flex flex-col justify-between">
 <!-- TOP ISSUE & DATE TELEMETRY HEADER -->
@@ -95,12 +119,12 @@ mark.pd-ph{background:#ffddbb;color:#682c00;padding:0 .2em;border-radius:2px;fon
 <div class="max-w-[1240px] mx-auto px-4 sm:px-8 flex flex-nowrap items-center justify-between gap-x-4 h-12">
 <nav id="masthead-nav" class="min-w-0 flex-1 lg:flex-none flex flex-nowrap items-center overflow-x-auto [scrollbar-width:none] gap-x-5 xl:gap-x-8 text-[12px] sm:text-[13px] tracking-widest font-medium uppercase text-charcoal-main">
 <a class="nav-spy-link hover:text-emerald-racing transition-colors whitespace-nowrap pb-0.5 border-b-2 border-transparent" data-nav-target="guias" href="#guias">Guías</a>
-<a class="hover:text-emerald-racing transition-colors whitespace-nowrap" href="empieza-aqui.html">Empieza aquí</a>
+<a class="hover:text-emerald-racing transition-colors whitespace-nowrap pb-0.5 border-b-2 border-transparent" href="noticias/index.html">Noticias</a>
+<a class="hover:text-emerald-racing transition-colors whitespace-nowrap pb-0.5 border-b-2 border-transparent" href="prompts/index.html">Prompts</a>
+<a class="hover:text-emerald-racing transition-colors whitespace-nowrap pb-0.5 border-b-2 border-transparent" href="herramientas/index.html">Herramientas</a>
+<a class="hover:text-emerald-racing transition-colors whitespace-nowrap pb-0.5 border-b-2 border-transparent" href="empieza-aqui.html">Empieza aquí</a>
 <a class="nav-spy-link hover:text-emerald-racing transition-colors whitespace-nowrap pb-0.5 border-b-2 border-transparent" data-nav-target="sobre-nosotros" href="#sobre-nosotros">Sobre nosotros</a>
-<a class="hover:text-emerald-racing transition-colors whitespace-nowrap" href="noticias/index.html">Noticias</a>
-<a class="hover:text-emerald-racing transition-colors whitespace-nowrap" href="herramientas/index.html">Herramientas</a>
-<a class="hover:text-emerald-racing transition-colors whitespace-nowrap" href="prompts/index.html">Prompts</a>
-<a class="hover:text-emerald-racing transition-colors whitespace-nowrap" href="contacto.html">Contacto</a>
+<a class="hover:text-emerald-racing transition-colors whitespace-nowrap pb-0.5 border-b-2 border-transparent" href="contacto.html">Contacto</a>
 </nav>
 <div class="flex items-center gap-4 lg:pl-4 lg:border-l border-border-rule">
 <button id="search-trigger" type="button" aria-label="Buscar en las guías" class="p-1.5 text-charcoal-muted hover:text-emerald-racing transition-colors"><span class="material-symbols-outlined text-[20px]">search</span></button>
@@ -112,14 +136,14 @@ mark.pd-ph{background:#ffddbb;color:#682c00;padding:0 .2em;border-radius:2px;fon
 </div>
 <main class="w-full flex-1">
 <!-- HERO SECTION / EDITORIAL COVER STORY -->
-<div class="border-b border-border-rule bg-emerald-racing"><div class="max-w-[1240px] mx-auto"><!--ULTIMA:START--><a class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 px-5 py-3.5 bg-emerald-racing text-parchment hover:bg-emerald-accent transition-colors" href="noticias/2026-10-20-ue-primer-estandar-ley-ia.html"><span class="inline-flex items-center gap-1.5 text-[10px] font-bold tracking-[0.18em] uppercase text-gold-accent shrink-0"><span class="w-1.5 h-1.5 rounded-full bg-gold-accent animate-pulse"></span>Última hora</span><span class="font-serif italic text-sm sm:text-base flex-1">La UE publica la primera norma técnica que desarrolla la Ley de IA</span><span class="material-symbols-outlined text-[18px] shrink-0">arrow_forward</span></a><!--ULTIMA:END--></div></div>
+<div class="border-b border-border-rule bg-emerald-racing"><div class="max-w-[1240px] mx-auto"><!--ULTIMA:START--><a class="ultima" href="noticias/2026-10-20-ue-primer-estandar-ley-ia.html"><span class="ultima-tag"><span class="ultima-dot" aria-hidden="true"></span>Última hora<time datetime="2026-10-20">20 oct</time></span><span class="ultima-title">La UE publica la primera norma técnica que desarrolla la Ley de IA</span><span class="ultima-go" aria-hidden="true"><span class="material-symbols-outlined">arrow_forward</span></span></a><!--ULTIMA:END--></div></div>
 <section class="max-w-[1240px] mx-auto px-4 sm:px-8 pt-12 pb-14 sm:pt-16 sm:pb-16 border-b border-border-rule">
 <div class="max-w-4xl mx-auto text-center">
 <!-- Eyebrow -->
 <div class="appear appear--pop inline-flex items-center gap-2 mb-6" style="--d:0.05s">
 <span class="h-px w-6 bg-emerald-racing"></span>
 <span class="text-[11px] font-bold tracking-[0.22em] text-emerald-racing uppercase">
-            Guías de Inteligencia Artificial // Sin Humo
+            <span class="kick-long">Guías de Inteligencia Artificial // Sin Humo</span><span class="kick-short">Guías de IA · Sin humo</span>
           </span>
 <span class="h-px w-6 bg-emerald-racing"></span>
 </div>

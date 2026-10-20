@@ -267,3 +267,11 @@ main pre code{overflow-wrap:normal;word-break:normal}
 aside dl>div.flex.justify-between{flex-wrap:wrap;gap:2px 16px;align-items:baseline}
 aside dl>div.flex.justify-between>dd{flex:1 1 9em;min-width:0;text-align:right}
 aside dl>div.flex.justify-between>dd:where(:has(+ *),:last-child){overflow-wrap:anywhere}
+
+/* Menú superior en móvil (2026-10-20): el menú se desliza en horizontal; el borde derecho se
+   difumina para que se vea que hay más secciones en vez de cortar una palabra a medias. */
+.site-nav{scroll-snap-type:x proximity}
+.site-nav a{scroll-snap-align:start}
+@media (max-width:1023px){
+  .site-nav{-webkit-mask-image:linear-gradient(90deg,#000 0,#000 82%,transparent 100%);mask-image:linear-gradient(90deg,#000 0,#000 82%,transparent 100%);padding-right:28px}
+}
