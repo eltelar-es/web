@@ -30,7 +30,8 @@
       var r = visible[s.id] || 0;
       if (r > topRatio) { topRatio = r; topId = s.id; }
     });
-    if (topId) setActive(topId);
+    // Fuera de las secciones vigiladas no se marca ninguna: antes se quedaba subrayada la última.
+    setActive(topId);
   }, { rootMargin: '-30% 0px -55% 0px', threshold: [0, 0.25, 0.5, 0.75, 1] });
 
   sections.forEach(function (s) { observer.observe(s.el); });

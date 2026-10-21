@@ -12,7 +12,9 @@
     list = list.filter(function (n) { return n && n.slug && n.photo; })
       .sort(function (a, b) { return String(b.published || b.date).localeCompare(String(a.published || a.date)); });
     if (list.length < 3) throw 0;
-    var lead = list[0], next = list.slice(1, 3);
+    // En móvil la barra «Última hora» ya enseña la más reciente justo encima, así que la portada empieza por la siguiente.
+    var off = window.matchMedia('(max-width: 639px)').matches ? 1 : 0;
+    var lead = list[off], next = list.slice(off + 1, off + 3);
     var card = document.querySelector('#guide-grid .guide-card');
     var g = null;
     if (card) {
@@ -26,7 +28,7 @@
     function foto(n) { return 'img/noticias/fotos/' + n.slug + '.jpg'; }
     var alt = function (n) { return esc((n.photo && n.photo.alt) || ''); };
     var side = next.map(function (n) {
-      return '<a class="portada__item" href="noticias/' + esc(n.slug) + '.html"><div><span class="portada__topic">Noticia · ' + esc(n.category) + '</span><h3>' + esc(n.title) + '</h3><span class="portada__meta">' + esc(fecha(n.date)) + '</span></div>' +
+      return '<a class="portada__item" href="noticias/' + esc(n.slug) + '.html"><div><span class="portada__topic">Noticia · ' + esc(n.category) + '</span><h3>' + esc(n.title) + '</h3><span class="portada__meta">' + esc(fecha(n.published || n.date)) + '</span></div>' +
         '<img src="' + foto(n) + '" alt="' + alt(n) + '" width="104" height="78" loading="lazy" decoding="async"></a>';
     }).join('');
     if (false && g) side += '<a class="portada__item portada__item--guia" href="' + esc(g.href) + '"><div><span class="portada__topic">Guía nueva · ' + esc(g.topic) + '</span><h3>' + esc(g.title) + '</h3><span class="portada__meta">' + esc(g.mins) + '</span></div></a>';
@@ -35,7 +37,7 @@
       '<div class="portada__head"><span class="portada__kicker">En portada</span><span class="portada__date">' + esc(now) + '</span></div>' +
       '<div class="portada__grid">' +
         '<a class="portada__lead" href="noticias/' + esc(lead.slug) + '.html"><figure><img src="' + foto(lead) + '" alt="' + alt(lead) + '" width="1600" height="900" decoding="async"><figcaption>' + alt(lead) + '</figcaption></figure>' +
-          '<span class="portada__topic">Noticia · ' + esc(lead.category) + '</span><h2>' + esc(lead.title) + '</h2><p>' + esc(lead.dek) + '</p><span class="portada__meta">' + esc(fecha(lead.date)) + ' · Leer la noticia</span></a>' +
+          '<span class="portada__topic">Noticia · ' + esc(lead.category) + '</span><h2>' + esc(lead.title) + '</h2><p>' + esc(lead.dek) + '</p><span class="portada__meta">' + esc(fecha(lead.published || lead.date)) + ' · Leer la noticia</span></a>' +
         '<div class="portada__side">' + side + '</div>' +
       '</div>';
     sec.hidden = false;
