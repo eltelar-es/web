@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Modelos que razonan: cuándo pagar por pensar más | El Telar</title>
+<meta name="description" content="Los tokens que el modelo usa para «pensar» se facturan como salida y no los ves. Qué compras al subir el esfuerzo, en qué tareas se nota, y el fallo que te deja pagando una respuesta vacía.">
+<link rel="canonical" href="https://eltelar.es/articulos/modelos-razonamiento-cuando-pensar-mas.html"><link rel="icon" type="image/svg+xml" href="../img/favicon.svg?v=4"><link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32.png?v=4"><link rel="apple-touch-icon" href="../img/apple-touch-icon.png?v=4"><meta name="theme-color" content="#072417"><link rel="manifest" href="../manifest.json"><link rel="alternate" type="application/rss+xml" title="El Telar" href="../feed.xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Modelos que razonan: cuándo merece la pena pagar por que piense más | El Telar">
+<meta property="og:description" content="Los tokens que el modelo usa para «pensar» se facturan como salida y no los ves. Qué compras al subir el esfuerzo, en qué tareas se nota, y el fallo que te deja pagando una respuesta vacía.">
+<meta property="og:url" content="https://eltelar.es/articulos/modelos-razonamiento-cuando-pensar-mas.html">
+<meta property="og:site_name" content="El Telar">
+<meta property="og:locale" content="es_ES"><meta property="og:image" content="https://eltelar.es/img/og/guia-modelos-razonamiento-cuando-pensar-mas.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Modelos que razonan: cuándo merece la pena pagar por que piense más | El Telar">
+<meta name="twitter:description" content="Los tokens que el modelo usa para «pensar» se facturan como salida y no los ves. Qué compras al subir el esfuerzo, en qué tareas se nota, y el fallo que te deja pagando una respuesta vacía."><meta name="twitter:image" content="https://eltelar.es/img/og/guia-modelos-razonamiento-cuando-pensar-mas.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Modelos que razonan: cuándo merece la pena pagar por que la IA piense más",
+  "description": "Los tokens que el modelo usa para «pensar» se facturan como salida y no los ves. Qué compras al subir el esfuerzo, en qué tareas se nota, y el fallo que te deja pagando una respuesta vacía.",
+  "image": "https://eltelar.es/img/og/guia-modelos-razonamiento-cuando-pensar-mas.jpg",
+  "author": {"@type": "Person", "name": "Juan Becerril Castañón", "url": "https://eltelar.es/sobre-nosotros.html#autor"},
+  "publisher": {
+    "@type": "Organization",
+    "name": "El Telar"
+  },
+  "datePublished": "2026-10-21",
+  "dateModified": "2026-10-21",
+  "mainEntityOfPage": "https://eltelar.es/articulos/modelos-razonamiento-cuando-pensar-mas.html",
+  "inLanguage": "es"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Pensar más hace que la IA se equivoque menos?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "En tareas con varios pasos, a menudo sí: le da margen para revisar su propio camino antes de responder. En tareas de un solo paso, no — y a veces es peor, porque alarga la respuesta y la latencia sin mejorar nada. Lo que no hace en ningún caso es eliminar los errores de base: si le falta un dato o la fuente que le has dado es mala, razonar más no lo inventa mejor, lo justifica mejor. Para eso el arreglo es darle la información buena, no subirle el esfuerzo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuánto encarece activar el razonamiento?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Depende por completo de la tarea, y por eso la única respuesta honesta es que lo midas tú. Los tokens de pensamiento se facturan como tokens de salida, que suelen ser los más caros de la tarifa, y el proveedor te dice cuántos has gastado en cada respuesta: Anthropic en usage.output_tokens_details.thinking_tokens, OpenAI en output_tokens_details.reasoning_tokens y Google en total_thought_tokens. Pasa tus veinte peticiones más frecuentes con el razonamiento apagado y encendido, compara esos números y tendrás tu cifra, no una media de internet."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo ver lo que ha pensado el modelo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No del todo. Los tres proveedores devuelven un resumen del razonamiento, no el razonamiento literal: Anthropic entrega bloques de pensamiento resumidos, OpenAI dice que los tokens de razonamiento no son visibles por API y ofrece un resumen con reasoning.summary, y Google hace lo mismo con thinking_summaries, avisando además de que el resumen puede venir vacío. Lo importante es la consecuencia: ese texto no vale como registro de auditoría. Si necesitas justificar una decisión, la prueba tiene que estar en los datos y las herramientas que consultó."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "En la app de ChatGPT, Claude o Gemini, ¿dónde está este mando?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No está como tal. En las aplicaciones web no fijas un presupuesto de tokens ni un nivel: eliges un modelo, o un modo que piensa más antes de contestar. El criterio es el mismo que por API — conviene para problemas con pasos (cálculos encadenados, revisar un documento largo buscando incoherencias, planificar con restricciones) y no conviene para redactar, resumir, traducir o buscar un dato, donde solo vas a esperar más. En Gemini, además, el pensamiento es dinámico por defecto en la mayoría de modelos: ajusta el esfuerzo solo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Me ha devuelto una respuesta vacía y me la ha cobrado. ¿Por qué?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Es el fallo clásico: el límite de salida que fijaste incluye el razonamiento, no solo la respuesta. Si el modelo agota ese límite mientras piensa, la petición termina sin texto visible y los tokens de pensamiento se facturan igual. OpenAI lo devuelve como status incomplete con motivo max_output_tokens y Google describe el mismo comportamiento. El arreglo no es subir el límite a ciegas: reserva margen suficiente —OpenAI sugiere al menos 25.000 tokens para razonamiento y salida al empezar— y, si lo que quieres es gastar menos, baja el nivel de pensamiento en vez de apretar el límite de salida."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Conviene razonamiento en un agente que usa herramientas?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Suele ser el caso donde más se nota, porque un agente encadena pasos y tiene que interpretar lo que le devuelve cada herramienta antes de decidir el siguiente. Los proveedores lo citan expresamente entre los usos recomendados, y existe la variante de pensar entre llamadas a herramientas dentro del mismo turno. Dos advertencias: el coste se multiplica por el número de pasos, no por el número de preguntas que le haces tú, así que mide el gasto por tarea completa y no por petición; y si el agente va a actuar sobre cosas reales, el nivel de razonamiento no sustituye a los permisos ni a los topes de gasto."
+      }
+    }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://eltelar.es/"},
+    {"@type": "ListItem", "position": 2, "name": "Guías", "item": "https://eltelar.es/index.html#guias"},
+    {"@type": "ListItem", "position": 3, "name": "Modelos que razonan", "item": "https://eltelar.es/articulos/modelos-razonamiento-cuando-pensar-mas.html"}
+  ]
+}
+</script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link rel="preload" href="../fonts/newsreader-normal-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/inter-normal-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="../css/fonts.css?v=1"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,leaderboard,lightbulb,lock,lock_clock,lock_open,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,volunteer_activism,warning,work,workspace_premium&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,leaderboard,lightbulb,lock,lock_clock,lock_open,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,volunteer_activism,warning,work,workspace_premium&amp;display=swap" rel="stylesheet"/></noscript>
+<style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><link rel="stylesheet" href="../css/tailwind.css"><link rel="stylesheet" href="../css/entrance.css?v=20"><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}(function(){var c=null;try{c=localStorage.getItem('eltelar-cookie-consent')}catch(e){}var g=c==='accepted'?'granted':'denied';gtag('consent','default',{ad_storage:g,ad_user_data:g,ad_personalization:g,analytics_storage:g,wait_for_update:500});window.adsbygoogle=window.adsbygoogle||[];if(g!=='granted'){window.adsbygoogle.requestNonPersonalizedAds=1;}})();</script><script>window.addEventListener("load",function(){setTimeout(function(){var s=document.createElement("script");s.async=true;s.src="https://www.googletagmanager.com/gtag/js?id=G-4DPTKEG79N";document.head.appendChild(s);},800);});</script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4DPTKEG79N');</script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8239907995939753" crossorigin="anonymous"></script></head>
+<body class="bg-background font-body-md text-on-surface antialiased">
+<header class="w-full bg-surface-container-lowest border-b border-outline-variant"><div class="border-b border-outline-variant py-space-xxs px-space-md hidden md:block"><div class="max-w-site-max-width mx-auto flex items-center justify-between font-kicker text-kicker text-on-surface-variant uppercase tracking-wider"><span>EDICIÓN DIGITAL // ACTUALIZADO 2026 // EL TELAR &amp; AGENTES</span><span>MADRID · REMOTO</span><span>SIN HUMO · 100% PRODUCCIÓN</span></div></div><div class="max-w-site-max-width mx-auto px-space-md py-space-md sm:py-space-xl text-center"><p class="hidden sm:block font-kicker text-kicker uppercase tracking-widest text-on-surface-variant mb-space-xs">Publicación Independiente de Tecnología &amp; Agentes</p><a class="inline-block" href="../index.html"><div class="font-display text-display max-sm:text-[40px] max-sm:leading-none text-primary tracking-tight">El Telar</div></a><p class="hidden sm:block font-caption text-caption uppercase tracking-widest text-on-surface-variant mt-space-xs">EL BOLETÍN Y ARCHIVO PRÁCTICO DE INTELIGENCIA ARTIFICIAL Y AGENTES AUTÓNOMOS</p></div><div class="border-t border-b border-outline-variant"><div class="max-w-site-max-width mx-auto px-space-md flex items-center justify-between gap-space-sm h-14"><nav class="flex items-center gap-space-md sm:gap-space-lg h-full min-w-0 overflow-x-auto [scrollbar-width:none] whitespace-nowrap site-nav"><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../index.html#guias">GUÍAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../noticias/index.html">NOTICIAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../prompts/index.html">PROMPTS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../herramientas/index.html">HERRAMIENTAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../empieza-aqui.html">EMPIEZA AQUÍ</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../sobre-nosotros.html">SOBRE NOSOTROS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../contacto.html">CONTACTO</a></nav><div class="flex items-center gap-space-md"><button id="search-trigger" type="button" aria-label="Buscar en las guías" class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[20px]">search</span></button><a class="hidden sm:inline-block bg-primary-container text-surface px-space-md py-space-xs font-label-md text-label-md uppercase tracking-wider hover:bg-primary transition-colors" href="../index.html#despacho">SUSCRÍBETE GRATIS</a></div></div></div><div class="hidden md:block bg-surface-container-low border-b border-outline-variant py-space-xs px-space-md"><div class="max-w-site-max-width mx-auto text-center"><p class="font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">61 GUÍAS COMPLETAS EN EXPANSIÓN · ACTUALIZADO A MODELOS 2026 · PROBADO EN TERMINAL Y FLUJOS REALES · CERO HUMO NI TEORÍA VACÍA</p></div></div></header>
+<main class="w-full max-w-site-max-width mx-auto px-space-md py-space-xl"><div class="flex flex-col w-full">
+<nav aria-label="Ruta de navegación" class="w-full mb-space-lg">
+<ol class="flex flex-wrap items-center gap-space-xs font-kicker text-kicker text-on-surface-variant uppercase tracking-wider">
+<li><a class="hover:text-primary transition-colors" href="../index.html">Inicio</a></li>
+<li class="text-on-surface-variant">/</li>
+<li><a class="hover:text-primary transition-colors" href="../index.html#guias">Guías</a></li>
+<li class="text-on-surface-variant">/</li>
+<li class="text-primary font-bold truncate max-w-[280px] sm:max-w-md">Modelos que razonan</li>
+</ol>
+</nav>
+<header class="w-full pb-space-xl mb-space-2xl">
+<div class="flex flex-wrap items-center gap-space-xs mb-space-md">
+<span class="bg-surface-container-high text-secondary px-space-sm py-1 font-kicker text-kicker uppercase tracking-widest">MODELOS // COSTES</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight max-w-editorial-max mb-space-md">
+          Modelos que razonan: cuándo merece la pena pagar por que la IA piense más
+        </h1>
+<p class="font-lead-paragraph text-lead-paragraph text-on-surface-variant max-w-editorial-max leading-relaxed mb-space-lg">
+          Casi todos los modelos buenos de 2026 pueden «pensar» antes de contestar, y ese pensamiento se cobra como si fuera respuesta aunque no lo leas nunca. Qué compras exactamente al subir el esfuerzo, en qué tareas se nota, y el error que te deja pagando una respuesta en blanco.
+        </p>
+<div class="bg-surface-container-lowest p-space-md flex flex-wrap items-center justify-between gap-y-3 shadow-sm">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 bg-primary text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">psychology</span>
+</div>
+<div>
+<div class="font-label-md text-label-md text-on-surface font-semibold">Por la Redacción de El Telar</div><div class="font-caption text-caption text-on-surface-variant">Guías prácticas de IA y agentes, probadas en flujos de trabajo reales antes de publicarlas.</div>
+<button class="inline-flex items-center gap-1 mt-2 px-3 py-1.5 bg-surface-container text-primary font-label-md text-[12px] font-semibold uppercase tracking-wider hover:bg-surface-container-high transition-colors" id="copy-guide-btn" type="button"><span class="material-symbols-outlined text-[16px]">content_copy</span>Copiar guía</button>
+</div>
+</div>
+<div class="flex items-center gap-space-lg text-on-surface-variant font-caption text-caption uppercase tracking-wider">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">schedule</span> 13 min de lectura</span>
+</div>
+</div>
+</header>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-col-gap">
+<article class="lg:col-span-8 flex flex-col space-y-space-xl">
+<div class="relative bg-surface-container-lowest p-space-lg shadow-sm">
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed text-justify">
+<span class="float-left font-display text-primary text-6xl leading-none pr-3 pt-1 font-normal">H</span>
+          ace dos años la decisión era qué modelo usar. Hoy, con el mismo modelo, puedes pedirle que conteste al instante o que se tome su tiempo, y la diferencia en la factura llega a ser de varias veces. El problema es que el mando que controla eso está mal explicado en casi todas partes: se vende como «calidad» cuando lo que compras es una cantidad de texto invisible.
+        </p>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Esta guía va de ese mando. Qué es exactamente lo que pasa cuando un modelo «razona», cuánto cuesta, cómo se llama en cada proveedor, en qué tareas rinde y en cuáles estás pagando de más. Todo lo que sigue sobre parámetros y facturación está sacado de la documentación oficial de Anthropic, OpenAI y Google, que es la única fuente que se actualiza al mismo ritmo que los productos.
+        </p>
+<section id="sec-1" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight mb-space-md">1. Qué significa que un modelo «piense»</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Conviene quitarle el misterio de encima. Cuando un modelo «razona» no está haciendo algo distinto de lo que hace siempre: sigue generando texto, palabra a palabra. La única diferencia es que una parte de ese texto no te la muestra. Antes de escribir la respuesta que lees, escribe para sí mismo un borrador —plantea el problema, prueba un camino, lo descarta, recalcula— y solo después redacta lo que te llega.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Eso tiene una consecuencia que explica casi todo lo demás de esta guía: <strong>ese borrador invisible se factura</strong>. Los tres grandes proveedores lo documentan igual. Anthropic cuenta los <em>thinking tokens</em> como tokens de salida. OpenAI dice literalmente que los tokens de razonamiento «se facturan como tokens de salida» y que además «ocupan espacio en la ventana de contexto» del modelo. Google explica que el precio se calcula «sobre los tokens de pensamiento completos que el modelo necesita generar», aunque a ti solo te devuelva un resumen.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Los tokens de salida son, además, los caros: en casi todas las tarifas cuestan varias veces más que los de entrada. Así que activar el razonamiento no es apretar un botón de «hazlo mejor»: es aceptar pagar la tarifa más alta por un texto que nunca vas a leer. A veces compensa mucho. Otras veces es dinero tirado. La diferencia no es de opinión, y se puede medir.
+        </p>
+<div class="bg-surface-container-low border-l-4 border-secondary p-space-md">
+<p class="font-body-sm text-body-sm text-on-surface leading-relaxed">Si usas la IA desde la web de ChatGPT, Claude o Gemini y no por API, estos mandos no te aparecen como tales: los tienes escondidos detrás de la elección de modelo o de un modo de «pensar más». La lógica para decidir es la misma, y la última sección la traduce.</p>
+</div>
+</section>
+<section id="sec-2" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight mb-space-md">2. Lo primero es medir, no decidir</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          El error más común no es elegir mal el nivel de razonamiento: es no saber cuánto estás gastando en él. Casi nadie lo mira, y los tres proveedores te lo dan en la propia respuesta de la API, con un campo dedicado:
+        </p>
+<ul class="space-y-space-xs font-body-md text-body-md text-on-surface-variant leading-relaxed list-disc pl-space-lg">
+<li>Anthropic: <code>usage.output_tokens_details.thinking_tokens</code>, que te dice cuántos de los tokens de salida facturados fueron razonamiento interno. Si vas en <em>streaming</em>, ese desglose aparece solo en el evento final.</li>
+<li>OpenAI: <code>output_tokens_details.reasoning_tokens</code>, dentro del objeto <code>usage</code>.</li>
+<li>Google: <code>total_thought_tokens</code>.</li>
+</ul>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Antes de tocar ningún ajuste, pasa tus veinte peticiones más habituales y apunta ese número. Es la única forma de saber si el razonamiento te está costando un 5 % más o el triple. Lo verás en seguida: en una clasificación corta puede ser casi cero, y en una pregunta con varios pasos puede superar con holgura a la respuesta visible.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Si estás montando algo que llama a la IA muchas veces, ese número es el que tienes que vigilar, y conviene ponerle un techo antes de que te lo ponga la factura — lo tratamos en detalle en <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="limites-gasto-agentes-ia.html">la guía de límites de gasto para agentes</a> y en <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="cuanto-cuesta-usar-ia-api.html">cuánto cuesta usar la IA por API</a>.
+        </p>
+</section>
+<section id="sec-3" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight mb-space-md">3. Los mandos, proveedor por proveedor</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Cada uno lo llama de otra forma y los nombres han cambiado más de una vez durante 2026. Lo que sigue es lo que dice hoy la documentación de cada uno, que es lo único que conviene creerse.
+        </p>
+<h3 class="font-headline-sm text-headline-sm text-primary pt-space-xs">Anthropic: de un presupuesto fijo a un «esfuerzo»</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Durante un tiempo el mando fue un presupuesto de tokens: <code>thinking: {type: "enabled", budget_tokens: N}</code>, con un mínimo de 1.024 tokens y la obligación de que fuera menor que <code>max_tokens</code>. Un detalle que se malinterpreta a menudo: ese presupuesto es <strong>un objetivo, no un tope duro</strong> — el modelo puede parar bastante antes, y el tope real sigue siendo <code>max_tokens</code>.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Ese modo está en retirada. La documentación de Anthropic lo marca como obsoleto en los modelos 4.6 y avisa de que los 4.7 y posteriores —la generación de Claude Opus 5.5, Sonnet 5 y 5.5, Fable 5.1 y Haiku 5.5— directamente <strong>rechazan la petición con un error 400</strong> si usas <code>type: "enabled"</code>. El sustituto es el pensamiento adaptativo: <code>thinking: {type: "adaptive"}</code>, y la profundidad se controla con <code>output_config: {effort: ...}</code>.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          El cambio no es solo de sintaxis, y esto importa para el bolsillo: con un presupuesto fijo el modelo pensaba en <em>todas</em> las peticiones; en modo adaptativo decide por sí mismo si piensa y cuánto, y con esfuerzos bajos puede no pensar nada en las entradas fáciles. Los valores por defecto no son iguales en toda la familia: Claude Opus 5.5 y Haiku 5.5 arrancan en <code>medium</code>, y el resto de modelos con esfuerzo, en <code>high</code>.
+        </p>
+<h3 class="font-headline-sm text-headline-sm text-primary pt-space-xs">OpenAI: siete niveles y un modo aparte</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Aquí el mando es <code>reasoning.effort</code>, y admite <code>none</code>, <code>minimal</code>, <code>low</code>, <code>medium</code>, <code>high</code>, <code>xhigh</code> y <code>max</code>, según el modelo. No todos aceptan todo: GPT-6.1 Sol no admite <code>none</code> ni <code>minimal</code>, y GPT-6 Astra devuelve un error 400 si le pides <code>none</code>. Por defecto, gpt-5.5, GPT-5.6 y GPT-6.1 Sol se quedan en <code>medium</code>.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Hay un segundo mando que se confunde con el primero: <code>reasoning.mode</code>, con valores <code>standard</code> y <code>pro</code>. El modo <em>pro</em> no cambia la tarifa por token, pero la propia documentación advierte de que hace más trabajo y por tanto consume más tokens y cuesta más. Es decir: encarece por volumen, no por precio unitario.
+        </p>
+<h3 class="font-headline-sm text-headline-sm text-primary pt-space-xs">Google: un nivel, y dinámico por defecto</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          En Gemini el parámetro vive en <code>generation_config</code> y se llama <code>thinking_level</code>, con valores que van de <code>minimal</code> a <code>high</code> según el modelo. Por defecto el pensamiento es dinámico: el modelo ajusta el esfuerzo a la complejidad de lo que le pides. Hay excepciones que conviene conocer antes de elegir modelo: gemini-2.5-flash-lite viene con el pensamiento apagado de serie.
+        </p>
+<div class="bg-surface-container-low border-l-4 border-secondary p-space-md">
+<p class="font-body-sm text-body-sm text-on-surface leading-relaxed">Los nombres cambian cada pocos meses y las tablas de valores por modelo, también. Antes de fijar un ajuste en producción, compruébalo en la documentación del proveedor ese día: es el tipo de detalle que una guía no puede garantizarte al mes siguiente.</p>
+</div>
+</section>
+<section id="sec-4" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight mb-space-md">4. Dónde se nota de verdad y dónde no</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          En esto los tres proveedores dicen casi lo mismo, lo cual es inusual y por eso mismo útil. Donde el razonamiento rinde es en problemas <strong>con pasos</strong>: programación complicada, matemáticas, planificación, flujos de agente que encadenan varias herramientas. Donde no rinde es en tareas de un solo salto: recuperar un dato, clasificar un texto, dar formato a algo, extraer un campo.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          OpenAI lo recomienda para «resolución de problemas complejos, programación, razonamiento científico y flujos de trabajo agénticos de varios pasos», y recomienda explícitamente bajar el esfuerzo —o ponerlo en <code>none</code> donde se pueda— en trabajo sensible a la latencia como voz, recuperación rápida de información o clasificación. Google reparte igual: <code>minimal</code> o <code>low</code> para recuperar datos y clasificar, <code>high</code> para programación avanzada, matemáticas o planificación en varios pasos.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          La explicación de por qué es así ayuda a decidir mejor que cualquier tabla. Pensar más no hace al modelo más listo en abstracto: le da espacio para detectar sus propios errores a mitad de camino. Si la tarea no tiene camino —si es un salto único— no hay nada que detectar, y el borrador invisible se convierte en relleno que pagas. De ahí que Anthropic hable de <strong>rendimientos decrecientes</strong> que dependen de la tarea: su consejo es empezar cerca del mínimo de 1.024 tokens en tareas simples y subir poco a poco, y arrancar en 16.000 o más solo en las complejas.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Y una advertencia que encaja con lo que ya contamos en <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="leer-benchmarks-ia.html">cómo leer un benchmark de IA sin que te engañen</a>: las cifras que las empresas publican con el esfuerzo al máximo son el techo de laboratorio, no lo que vas a ver tú en una tarea normal con el ajuste por defecto. Si alguien te vende un salto enorme de precisión, pregunta primero con qué nivel de razonamiento se midió y cuánto costó esa ejecución.
+        </p>
+</section>
+<section id="sec-5" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight mb-space-md">5. El fallo que te deja pagando por nada</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Este merece sección propia porque es caro, silencioso y le pasa a casi todo el mundo una vez. El límite de salida que fijas —<code>max_tokens</code> en Anthropic, <code>max_output_tokens</code> en OpenAI y en Google— <strong>no se aplica solo a la respuesta: incluye el razonamiento</strong>. Son la misma bolsa.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Qué pasa si el modelo se queda sin sitio mientras piensa: la respuesta se corta antes de empezar a escribir lo visible. OpenAI documenta que en ese caso devuelve <code>status</code> igual a <code>incomplete</code> con motivo <code>max_output_tokens</code>, que puede no contener <strong>ninguna salida visible</strong> — y que los tokens se pagan igual. Google describe el mismo comportamiento: estado <code>incomplete</code> y los tokens de pensamiento facturados. Has pagado la tarifa más alta por un borrador que nadie va a leer y te has quedado sin respuesta.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Las dos recomendaciones oficiales para evitarlo van en direcciones complementarias:
+        </p>
+<ul class="space-y-space-xs font-body-md text-body-md text-on-surface-variant leading-relaxed list-disc pl-space-lg">
+<li><strong>Reserva sitio.</strong> OpenAI sugiere dejar al menos 25.000 tokens para razonamiento y salida cuando empiezas a experimentar, y ajustar después con los números reales que observes.</li>
+<li><strong>No aprietes el límite para ahorrar.</strong> Google lo dice con claridad: para recortar coste o latencia, baja el <code>thinking_level</code> en vez de poner un <code>max_output_tokens</code> pequeño. Bajar el nivel hace que piense menos; apretar el límite solo trunca la respuesta cuando ya has pagado el pensamiento.</li>
+</ul>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          En Anthropic el equivalente es la regla de que el presupuesto sea menor que <code>max_tokens</code>, y un aviso añadido: con presupuestos de pensamiento por encima de 32.000 tokens recomiendan usar procesamiento por lotes, porque las peticiones se alargan tanto que chocan con tiempos de espera y límites de conexión abierta. Si alguna vez te ha «caído» una petición larga sin error claro, ahí tienes un sospechoso.
+        </p>
+</section>
+<section id="sec-6" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight mb-space-md">6. No estás viendo lo que ha pensado</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Aquí hay un malentendido que conviene cortar, porque afecta a cómo usas lo que te devuelve. Lo que ves cuando activas la visualización del razonamiento <strong>no es el razonamiento</strong>: es un resumen.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Anthropic devuelve bloques de pensamiento resumidos. OpenAI dice directamente que los tokens de razonamiento no son visibles a través de la API y que puedes pedir un resumen con <code>reasoning.summary</code> en <code>auto</code>. Google lo llama <code>thinking_summaries</code>, también en <code>auto</code>, y añade un detalle revelador: el resumen <strong>puede venir vacío o no venir</strong>. Pagas el pensamiento completo y lees una versión abreviada que el propio modelo ha redactado.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          La consecuencia práctica es la que importa: <strong>ese resumen no es una pista de auditoría</strong>. No sirve para justificar ante nadie por qué el sistema decidió lo que decidió, porque no es el registro de lo que pasó, es un texto generado sobre lo que pasó. Si necesitas trazabilidad real —en una decisión médica, laboral, crediticia o legal— la trazabilidad tiene que venir de los datos y las herramientas que consultó, no de su narración. Es la misma distinción que explicamos en <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="grounding-evitar-alucinaciones.html">la guía de grounding</a>.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Y un recordatorio incómodo: un modelo que razona sigue pudiendo equivocarse, solo que con un argumentario más convincente detrás. Un razonamiento largo y bien escrito no es prueba de que la conclusión sea correcta — <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="alucinaciones-ia.html">las alucinaciones no desaparecen al pensar más</a>, y en algunos casos lo que mejora es la capacidad de justificar un error.
+        </p>
+</section>
+<section id="sec-7" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight mb-space-md">7. El detalle que te arruina la caché</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Si tienes una conversación larga o un sistema con instrucciones fijas, probablemente uses caché de prompt: el proveedor guarda la parte que no cambia y te la cobra mucho más barata en las siguientes peticiones. Hay una interacción entre esa caché y el razonamiento que casi nadie ve venir.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Anthropic lo documenta sin rodeos: cambiar <code>budget_tokens</code> entre peticiones <strong>invalida los puntos de caché</strong>, porque el valor del presupuesto se escribe dentro del propio prompt. Cambiar de modo de pensamiento hace lo mismo. En su ejemplo, una conversación que iba leyendo 1.370 tokens de caché vuelve a crearla entera en cuanto el presupuesto pasa de 4.000 a 8.000 tokens en la tercera petición.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          O sea que la idea aparentemente lista de «ajusto el esfuerzo en cada petición según lo difícil que parezca» puede salirte más cara que dejarlo fijo, porque cada cambio te tira la caché. La recomendación de la propia documentación es la sencilla: <strong>elige un nivel y mantenlo</strong> durante la vida de una conversación en caché. Si de verdad necesitas dos niveles, separa los dos tipos de petición en dos flujos distintos, cada uno con su nivel estable, en vez de alternarlos sobre la misma conversación.
+        </p>
+</section>
+<section id="sec-8" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight mb-space-md">8. Cómo decidirlo, en la práctica</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Resumido en un procedimiento que puedes seguir esta tarde:
+        </p>
+<ol class="space-y-space-sm font-body-md text-body-md text-on-surface-variant leading-relaxed list-decimal pl-space-lg">
+<li><strong>Empieza abajo.</strong> Pon el razonamiento en el nivel más bajo que admita tu modelo y mide la calidad con tus casos reales, no con ejemplos de demostración.</li>
+<li><strong>Mide lo que cuesta.</strong> Apunta los tokens de pensamiento de cada petición con el campo que te da tu proveedor. Sin ese número estás decidiendo a ciegas.</li>
+<li><strong>Sube solo donde falle por razonar mal.</strong> Si el fallo es que le falta un dato, el razonamiento no lo arregla: lo arregla darle la fuente. Si el fallo es que se salta un paso o se contradice, ahí sí sube el nivel.</li>
+<li><strong>Reserva sitio.</strong> Deja margen de salida suficiente para el pensamiento y la respuesta juntos, y comprueba que no te están llegando respuestas incompletas que pagas enteras.</li>
+<li><strong>Fija el nivel y no lo toques</strong> dentro de una misma conversación en caché. Si necesitas dos, dos flujos.</li>
+<li><strong>Revísalo cuando cambies de modelo.</strong> Los valores por defecto no se heredan: ya has visto que dentro de una misma familia unos arrancan en <code>medium</code> y otros en <code>high</code>, y que algunos rechazan niveles que otros aceptan.</li>
+</ol>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Y la traducción para quien no toca la API, que es la mayoría. En las aplicaciones web no eliges un número: eliges un modelo o un modo de «pensar más». La regla es equivalente y más simple de lo que parece — usa el modo de razonamiento cuando le pidas algo con pasos (un cálculo encadenado, revisar un documento largo buscando contradicciones, planificar algo con restricciones) y no lo uses para redactar, resumir, traducir o buscar un dato, donde vas a esperar más para lo mismo. Si dudas de qué herramienta usar para empezar, está desarrollado en <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="chatgpt-claude-gemini.html">la comparación de ChatGPT, Claude y Gemini</a>.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Por último, una cosa que el razonamiento no resuelve: si tu problema es que el modelo pierde el hilo de una conversación larga, el ajuste de pensamiento no es el mando correcto — ahí lo que te limita es <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="ventana-contexto-memoria-ia.html">la ventana de contexto y la memoria</a>, y el razonamiento lo que hace es consumirla más rápido, porque esos tokens también ocupan sitio.
+        </p>
+</section>
+<section id="faq" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight mb-space-md">Preguntas frecuentes</h2>
+<div class="space-y-space-sm">
+<div class="border border-outline-variant">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-label-md text-label-md text-primary font-semibold">¿Pensar más hace que la IA se equivoque menos?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="hidden px-space-md pb-space-md">
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">En tareas con varios pasos, a menudo sí: le da margen para revisar su propio camino antes de responder. En tareas de un solo paso, no — y a veces es peor, porque alarga la respuesta y la latencia sin mejorar nada. Lo que no hace en ningún caso es eliminar los errores de base: si le falta un dato o la fuente que le has dado es mala, razonar más no lo inventa mejor, lo justifica mejor. Para eso el arreglo es darle la información buena, no subirle el esfuerzo.</p>
+</div>
+</div>
+<div class="border border-outline-variant">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-label-md text-label-md text-primary font-semibold">¿Cuánto encarece activar el razonamiento?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="hidden px-space-md pb-space-md">
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Depende por completo de la tarea, y por eso la única respuesta honesta es que lo midas tú. Los tokens de pensamiento se facturan como tokens de salida, que suelen ser los más caros de la tarifa, y el proveedor te dice cuántos has gastado en cada respuesta: Anthropic en usage.output_tokens_details.thinking_tokens, OpenAI en output_tokens_details.reasoning_tokens y Google en total_thought_tokens. Pasa tus veinte peticiones más frecuentes con el razonamiento apagado y encendido, compara esos números y tendrás tu cifra, no una media de internet.</p>
+</div>
+</div>
+<div class="border border-outline-variant">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-label-md text-label-md text-primary font-semibold">¿Puedo ver lo que ha pensado el modelo?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="hidden px-space-md pb-space-md">
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">No del todo. Los tres proveedores devuelven un resumen del razonamiento, no el razonamiento literal: Anthropic entrega bloques de pensamiento resumidos, OpenAI dice que los tokens de razonamiento no son visibles por API y ofrece un resumen con reasoning.summary, y Google hace lo mismo con thinking_summaries, avisando además de que el resumen puede venir vacío. Lo importante es la consecuencia: ese texto no vale como registro de auditoría. Si necesitas justificar una decisión, la prueba tiene que estar en los datos y las herramientas que consultó.</p>
+</div>
+</div>
+<div class="border border-outline-variant">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-label-md text-label-md text-primary font-semibold">En la app de ChatGPT, Claude o Gemini, ¿dónde está este mando?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="hidden px-space-md pb-space-md">
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">No está como tal. En las aplicaciones web no fijas un presupuesto de tokens ni un nivel: eliges un modelo, o un modo que piensa más antes de contestar. El criterio es el mismo que por API — conviene para problemas con pasos (cálculos encadenados, revisar un documento largo buscando incoherencias, planificar con restricciones) y no conviene para redactar, resumir, traducir o buscar un dato, donde solo vas a esperar más. En Gemini, además, el pensamiento es dinámico por defecto en la mayoría de modelos: ajusta el esfuerzo solo.</p>
+</div>
+</div>
+<div class="border border-outline-variant">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-label-md text-label-md text-primary font-semibold">Me ha devuelto una respuesta vacía y me la ha cobrado. ¿Por qué?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="hidden px-space-md pb-space-md">
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Es el fallo clásico: el límite de salida que fijaste incluye el razonamiento, no solo la respuesta. Si el modelo agota ese límite mientras piensa, la petición termina sin texto visible y los tokens de pensamiento se facturan igual. OpenAI lo devuelve como status incomplete con motivo max_output_tokens y Google describe el mismo comportamiento. El arreglo no es subir el límite a ciegas: reserva margen suficiente —OpenAI sugiere al menos 25.000 tokens para razonamiento y salida al empezar— y, si lo que quieres es gastar menos, baja el nivel de pensamiento en vez de apretar el límite de salida.</p>
+</div>
+</div>
+<div class="border border-outline-variant">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-label-md text-label-md text-primary font-semibold">¿Conviene razonamiento en un agente que usa herramientas?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="hidden px-space-md pb-space-md">
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Suele ser el caso donde más se nota, porque un agente encadena pasos y tiene que interpretar lo que le devuelve cada herramienta antes de decidir el siguiente. Los proveedores lo citan expresamente entre los usos recomendados, y existe la variante de pensar entre llamadas a herramientas dentro del mismo turno. Dos advertencias: el coste se multiplica por el número de pasos, no por el número de preguntas que le haces tú, así que mide el gasto por tarea completa y no por petición; y si el agente va a actuar sobre cosas reales, el nivel de razonamiento no sustituye a los permisos ni a los topes de gasto.</p>
+</div>
+</div>
+</div>
+</section>
+</article>
+<aside class="lg:col-span-4 flex flex-col space-y-space-xl">
+<div class="bg-surface-container-lowest p-space-lg shadow-sm sticky top-space-md hidden lg:block">
+<div class="flex items-center justify-between mb-space-sm pb-space-xs">
+<span class="font-kicker text-kicker uppercase tracking-widest text-primary font-bold">En esta guía</span>
+<span class="material-symbols-outlined text-on-surface-variant text-base">format_list_bulleted</span>
+</div>
+<nav class="space-y-space-xs font-body-sm text-body-sm">
+<a class="block text-primary hover:text-secondary font-medium transition-colors" href="#sec-1">1. Qué significa que un modelo «piense»</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-2">2. Lo primero es medir, no decidir</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-3">3. Los mandos, proveedor por proveedor</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-4">4. Dónde se nota de verdad y dónde no</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-5">5. El fallo que te deja pagando por nada</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-6">6. No estás viendo lo que ha pensado</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-7">7. El detalle que te arruina la caché</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-8">8. Cómo decidirlo, en la práctica</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#faq">Preguntas frecuentes</a>
+</nav>
+</div>
+<div class="bg-surface-container-high p-space-md space-y-space-sm shadow-sm">
+<span class="font-kicker text-kicker uppercase tracking-widest text-primary font-bold">FICHA TÉCNICA</span>
+<dl class="space-y-space-xs font-caption text-caption">
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Categoría:</dt><dd class="font-semibold text-primary">Elegir herramienta</dd></div>
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Nivel técnico:</dt><dd class="font-semibold text-primary">Intermedio</dd></div>
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Fuentes citadas:</dt><dd class="font-semibold text-primary">Documentación oficial de Anthropic sobre pensamiento extendido y adaptativo, y sobre niveles de esfuerzo (platform.claude.com); guía de razonamiento de OpenAI, con los valores de reasoning.effort, la facturación como tokens de salida y la recomendación de reservar margen (developers.openai.com); documentación de pensamiento de Gemini, con thinking_level, total_thought_tokens y los resúmenes de pensamiento (ai.google.dev). Consultadas el 21 de octubre de 2026.</dd></div>
+</dl>
+</div>
+<div class="bg-surface-container-low border-l-4 border-secondary p-space-md">
+<p class="font-body-sm text-body-sm text-on-surface leading-relaxed">Los nombres de estos parámetros y los valores que acepta cada modelo han cambiado varias veces a lo largo de 2026. Antes de fijar un ajuste en algo que esté en producción, compruébalo en la documentación de tu proveedor ese mismo día.</p>
+</div>
+</aside>
+</div>
+<section class="w-full mt-space-4xl pt-space-2xl bg-surface-container-lowest p-space-lg shadow-sm">
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-space-xl gap-space-xs">
+<h3 class="font-headline-md text-headline-md text-primary">Continúa explorando el archivo</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-col-gap"><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="cuanto-cuesta-usar-ia-api.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/portadas/cuanto-cuesta-usar-ia-api.svg" alt="" width="1600" height="520" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="cuanto-cuesta-usar-ia-api.html">Cuánto cuesta usar la IA por API</a></h4></div></article><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="leer-benchmarks-ia.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/portadas/leer-benchmarks-ia.svg" alt="" width="1600" height="520" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="leer-benchmarks-ia.html">Leer un benchmark de IA sin que te engañen</a></h4></div></article><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="ventana-contexto-memoria-ia.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/portadas/ventana-contexto-memoria-ia.svg" alt="" width="1600" height="520" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="ventana-contexto-memoria-ia.html">Ventana de contexto: por qué la IA olvida lo que le dijiste</a></h4></div></article></div>
+</section>
+</div></main><footer class="w-full bg-surface-container-low border-t border-outline-variant mt-space-4xl"><div class="max-w-site-max-width mx-auto px-space-md py-space-3xl"><div class="grid grid-cols-1 md:grid-cols-3 gap-col-gap"><div class="space-y-space-sm"><span class="font-headline-md text-headline-md text-primary">El Telar</span><p class="font-body-sm text-body-sm text-on-surface-variant">Publicación independiente de tecnología y automatización con agentes. Contenidos verificados en producción, sin patrocinios opacos ni promesas vacías.</p></div><div><h3 class="font-kicker text-kicker uppercase tracking-wider text-on-surface mb-space-md">SECCIONES</h3><ul class="space-y-space-xs font-body-sm text-body-sm"><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html#guias">Archivo de Guías</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../empieza-aqui.html">Guía para Principiantes</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../guardadas.html">Mis guías guardadas</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../colaboraciones.html">Colaboraciones y prensa</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../sobre-nosotros.html">Manifiesto Editorial</a></li><li class="pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html#despacho">Boletín Semanal</a></li></ul></div><div><h3 class="font-kicker text-kicker uppercase tracking-wider text-on-surface mb-space-md">CONTACTO &amp; PRENSA</h3><div class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant"><p class="font-semibold text-on-surface">contacto@eltelar.es</p><p>Síguenos: <a class="hover:text-primary underline" href="https://www.instagram.com/eltelar_es/" rel="me noopener" target="_blank">Instagram</a> · <a class="hover:text-primary underline" href="https://www.threads.com/@eltelar_es" rel="me noopener" target="_blank">Threads</a> · <a class="hover:text-primary underline" href="https://x.com/eltelar_es" rel="me noopener" target="_blank">X</a></p></div></div></div></div><div class="border-t border-outline-variant py-space-md bg-surface-container-lowest"><div class="max-w-site-max-width mx-auto px-space-md flex flex-col md:flex-row items-center justify-between gap-space-sm text-caption font-caption text-on-surface-variant"><div>© 2026 El Telar. Todos los derechos reservados. Independencia editorial garantizada.</div><div class="flex flex-wrap items-center justify-center gap-space-md"><a class="hover:text-on-surface transition-colors" href="../privacidad.html">Privacidad</a><a class="hover:text-on-surface transition-colors" href="../terminos.html">Términos</a><a class="hover:text-on-surface transition-colors" href="../cookies.html">Cookies</a><a class="hover:text-on-surface transition-colors" href="../aviso-legal.html">Aviso legal</a><a class="hover:text-on-surface transition-colors" href="../sobre-nosotros.html">Sobre nosotros</a><a class="hover:text-on-surface transition-colors" href="../contacto.html">Contacto</a></div></div></div></footer><script defer src="../js/copy-guide.js"></script><script defer src="../js/guide-interactions.js"></script><script defer src="../js/reading-progress.js"></script><script defer src="../js/search.js?v=7"></script><script defer src="../js/entrance.js"></script><script defer src="../js/cookie-consent.js?v=4"></script></body></html>
