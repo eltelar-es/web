@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Migrar de modelo de IA sin romper nada | El Telar</title>
+<meta name="description" content="Los tres grandes avisan con plazos distintos, las fechas se mueven y a veces te cambian el modelo sin darte error. Cómo saber a qué estás expuesto, qué se rompe además del nombre del modelo y cómo cambiar sin sustos.">
+<link rel="canonical" href="https://eltelar.es/articulos/migrar-de-modelo-ia.html"><link rel="icon" type="image/svg+xml" href="../img/favicon.svg?v=4"><link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32.png?v=4"><link rel="apple-touch-icon" href="../img/apple-touch-icon.png?v=4"><meta name="theme-color" content="#072417"><link rel="manifest" href="../manifest.json"><link rel="alternate" type="application/rss+xml" title="El Telar" href="../feed.xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cuando tu modelo de IA desaparece: cómo migrar sin romper nada | El Telar">
+<meta property="og:description" content="Los tres grandes avisan con plazos distintos, las fechas se mueven y a veces te cambian el modelo sin darte error. Cómo saber a qué estás expuesto, qué se rompe además del nombre del modelo y cómo cambiar sin sustos.">
+<meta property="og:url" content="https://eltelar.es/articulos/migrar-de-modelo-ia.html">
+<meta property="og:site_name" content="El Telar">
+<meta property="og:locale" content="es_ES"><meta property="og:image" content="https://eltelar.es/img/og/guia-migrar-de-modelo-ia.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Cuando tu modelo de IA desaparece: cómo migrar sin romper nada | El Telar">
+<meta name="twitter:description" content="Los tres grandes avisan con plazos distintos, las fechas se mueven y a veces te cambian el modelo sin darte error. Cómo saber a qué estás expuesto, qué se rompe además del nombre del modelo y cómo cambiar sin sustos."><meta name="twitter:image" content="https://eltelar.es/img/og/guia-migrar-de-modelo-ia.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Cuando tu modelo de IA desaparece: cómo migrar sin romper lo que ya funciona",
+  "description": "Los tres grandes avisan con plazos distintos, las fechas se mueven y a veces te cambian el modelo sin darte error. Cómo saber a qué estás expuesto, qué se rompe además del nombre del modelo y cómo cambiar sin sustos.",
+  "image": "https://eltelar.es/img/og/guia-migrar-de-modelo-ia.jpg",
+  "author": {"@type": "Person", "name": "Juan Becerril Castañón", "url": "https://eltelar.es/sobre-nosotros.html#autor"},
+  "publisher": {
+    "@type": "Organization",
+    "name": "El Telar"
+  },
+  "datePublished": "2026-10-22",
+  "dateModified": "2026-10-22",
+  "mainEntityOfPage": "https://eltelar.es/articulos/migrar-de-modelo-ia.html",
+  "inLanguage": "es"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Cuánto tiempo me avisan antes de apagar un modelo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Depende del proveedor, y la diferencia es grande. OpenAI se compromete a al menos seis meses en sus modelos de disponibilidad general, al menos tres en las variantes especializadas y unas dos semanas en los modelos en vista previa, con la salvedad de que por seguridad o cumplimiento puede acortarlos. Anthropic da al menos 60 días para modelos publicados, y avisa por correo a los clientes con despliegues activos. Google publica fechas de retirada en sus tablas, pero varias figuran como «no antes de» una fecha, lo que es un suelo y no un compromiso; además bloquea el acceso nuevo a un modelo un mes antes de su retirada."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo quedarme en el modelo viejo si me funciona bien?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Hasta la fecha de retirada, sí; después, no. Anthropic lo dice literalmente: las peticiones a un modelo retirado fallan. No hay plan de pago ni opción de configuración que lo mantenga, y la propia documentación avisa de que un modelo deprecado es probablemente menos fiable que uno activo mientras dura. Lo único que alarga la vida de un modelo concreto es llamarlo desde una plataforma de socio: Amazon Bedrock y Google Cloud fijan sus propios calendarios, que pueden ir por detrás del del fabricante."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Si mi código sigue pidiendo el modelo de siempre, ¿cómo voy a usar otro sin saberlo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Porque el proveedor puede redirigir la petición. Google deprecó gemini-3.7-flash y gemini-3.5-flash el 8 de octubre de 2026 y documenta que las peticiones a esos modelos se redirigen automáticamente a un sucesor: tu llamada devuelve 200, el formato es el mismo y contesta otro modelo. No hay error que capturar. La única defensa práctica es guardar en tus registros qué modelo dice la respuesta que la ha atendido y comparar con el que pediste."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Pagué por ajustar un modelo con mis datos. ¿Se migra?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No se migra: se rehace. OpenAI especifica que los modelos ajustados sobre las versiones de GPT-4 que apaga en enero de 2027 siguen el mismo calendario que su modelo base, así que mueren con él. Y hay un plazo añadido que conviene mirar hoy: OpenAI está restringiendo el ajuste fino autoservicio por fases y el 6 de enero de 2027 los clientes activos dejan de poder crear trabajos nuevos, aunque la inferencia sobre los ya existentes siga hasta que caiga el modelo base."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Me vale fijar la versión con fecha para no tener sorpresas?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Te cambia el tipo de sorpresa, no la elimina. Un identificador con fecha te da un comportamiento estable y una muerte anunciada: sabrás cuándo migrar porque te lo dirán, y tendrás que hacerlo. Un alias que apunta siempre al último modelo te ahorra ese trabajo y te mete el otro problema, que el modelo cambie sin aviso. Para algo en producción suele compensar fijar la versión y migrar a propósito, con pruebas; para un script personal que no pasa nada si falla un día, el alias es más cómodo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Además del nombre del modelo, ¿qué más se me puede romper?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tres cosas, y las tres han pasado hace poco. Los parámetros: Anthropic eliminó temperature, top_p y top_k en la versión de API 2026-10-21, y pasarlos ahí devuelve un error 400. Los endpoints y productos: OpenAI tiene fijado el 30 de noviembre de 2026 para apagar v1/prompts, su plataforma de Evals y Agent Builder. Y los modelos ajustados, que caen con su base. De ahí el consejo que OpenAI da para lo primero y que vale para todo: mueve a tu propio código lo que tengas guardado en la consola de un proveedor."
+      }
+    }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://eltelar.es/"},
+    {"@type": "ListItem", "position": 2, "name": "Guías", "item": "https://eltelar.es/index.html#guias"},
+    {"@type": "ListItem", "position": 3, "name": "Migrar de modelo", "item": "https://eltelar.es/articulos/migrar-de-modelo-ia.html"}
+  ]
+}
+</script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link rel="preload" href="../fonts/newsreader-normal-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/inter-normal-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="../css/fonts.css?v=1"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,leaderboard,lightbulb,lock,lock_clock,lock_open,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,volunteer_activism,warning,work,workspace_premium&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,leaderboard,lightbulb,lock,lock_clock,lock_open,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,volunteer_activism,warning,work,workspace_premium&amp;display=swap" rel="stylesheet"/></noscript>
+<style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><link rel="stylesheet" href="../css/tailwind.css"><link rel="stylesheet" href="../css/entrance.css?v=20"><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}(function(){var c=null;try{c=localStorage.getItem('eltelar-cookie-consent')}catch(e){}var g=c==='accepted'?'granted':'denied';gtag('consent','default',{ad_storage:g,ad_user_data:g,ad_personalization:g,analytics_storage:g,wait_for_update:500});window.adsbygoogle=window.adsbygoogle||[];if(g!=='granted'){window.adsbygoogle.requestNonPersonalizedAds=1;}})();</script><script>window.addEventListener("load",function(){setTimeout(function(){var s=document.createElement("script");s.async=true;s.src="https://www.googletagmanager.com/gtag/js?id=G-4DPTKEG79N";document.head.appendChild(s);},800);});</script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4DPTKEG79N');</script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8239907995939753" crossorigin="anonymous"></script></head>
+<body class="bg-background font-body-md text-on-surface antialiased">
+<header class="w-full bg-surface-container-lowest border-b border-outline-variant"><div class="border-b border-outline-variant py-space-xxs px-space-md hidden md:block"><div class="max-w-site-max-width mx-auto flex items-center justify-between font-kicker text-kicker text-on-surface-variant uppercase tracking-wider"><span>EDICIÓN DIGITAL // ACTUALIZADO 2026 // EL TELAR &amp; AGENTES</span><span>MADRID · REMOTO</span><span>SIN HUMO · 100% PRODUCCIÓN</span></div></div><div class="max-w-site-max-width mx-auto px-space-md py-space-md sm:py-space-xl text-center"><p class="hidden sm:block font-kicker text-kicker uppercase tracking-widest text-on-surface-variant mb-space-xs">Publicación Independiente de Tecnología &amp; Agentes</p><a class="inline-block" href="../index.html"><div class="font-display text-display max-sm:text-[40px] max-sm:leading-none text-primary tracking-tight">El Telar</div></a><p class="hidden sm:block font-caption text-caption uppercase tracking-widest text-on-surface-variant mt-space-xs">EL BOLETÍN Y ARCHIVO PRÁCTICO DE INTELIGENCIA ARTIFICIAL Y AGENTES AUTÓNOMOS</p></div><div class="border-t border-b border-outline-variant"><div class="max-w-site-max-width mx-auto px-space-md flex items-center justify-between gap-space-sm h-14"><nav class="flex items-center gap-space-md sm:gap-space-lg h-full min-w-0 overflow-x-auto [scrollbar-width:none] whitespace-nowrap site-nav"><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../index.html#guias">GUÍAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../noticias/index.html">NOTICIAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../prompts/index.html">PROMPTS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../herramientas/index.html">HERRAMIENTAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../empieza-aqui.html">EMPIEZA AQUÍ</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../sobre-nosotros.html">SOBRE NOSOTROS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../contacto.html">CONTACTO</a></nav><div class="flex items-center gap-space-md"><button id="search-trigger" type="button" aria-label="Buscar en las guías" class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[20px]">search</span></button><a class="hidden sm:inline-block bg-primary-container text-surface px-space-md py-space-xs font-label-md text-label-md uppercase tracking-wider hover:bg-primary transition-colors" href="../index.html#despacho">SUSCRÍBETE GRATIS</a></div></div></div><div class="hidden md:block bg-surface-container-low border-b border-outline-variant py-space-xs px-space-md"><div class="max-w-site-max-width mx-auto text-center"><p class="font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">62 GUÍAS COMPLETAS EN EXPANSIÓN · ACTUALIZADO A MODELOS 2026 · PROBADO EN TERMINAL Y FLUJOS REALES · CERO HUMO NI TEORÍA VACÍA</p></div></div></header>
+<main class="w-full max-w-site-max-width mx-auto px-space-md py-space-xl"><div class="flex flex-col w-full">
+<nav aria-label="Ruta de navegación" class="w-full mb-space-lg">
+<ol class="flex flex-wrap items-center gap-space-xs font-kicker text-kicker text-on-surface-variant uppercase tracking-wider">
+<li><a class="hover:text-primary transition-colors" href="../index.html">Inicio</a></li>
+<li class="text-on-surface-variant">/</li>
+<li><a class="hover:text-primary transition-colors" href="../index.html#guias">Guías</a></li>
+<li class="text-on-surface-variant">/</li>
+<li class="text-primary font-bold truncate max-w-[280px] sm:max-w-md">Migrar de modelo</li>
+</ol>
+</nav>
+<header class="w-full pb-space-xl mb-space-2xl">
+<div class="flex flex-wrap items-center gap-space-xs mb-space-md">
+<span class="bg-surface-container-high text-secondary px-space-sm py-1 font-kicker text-kicker uppercase tracking-widest">MODELOS // MANTENIMIENTO</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight max-w-editorial-max mb-space-md">
+          Cuando tu modelo de IA desaparece: cómo migrar sin romper lo que ya funciona
+        </h1>
+<p class="font-lead-paragraph text-lead-paragraph text-on-surface-variant max-w-editorial-max leading-relaxed mb-space-lg">
+          Lo que montaste funcionando sobre un modelo concreto tiene fecha de caducidad, y el aviso llega con plazos muy distintos según el proveedor. Qué se rompe de verdad, cómo averiguar a qué estás expuesto y en qué orden hacer el cambio para que sea aburrido.
+        </p>
+<div class="bg-surface-container-lowest p-space-md flex flex-wrap items-center justify-between gap-y-3 shadow-sm">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 bg-primary text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">swap_horizontal_circle</span>
+</div>
+<div>
+<div class="font-label-md text-label-md text-on-surface font-semibold">Por la Redacción de El Telar</div><div class="font-caption text-caption text-on-surface-variant">Guías prácticas de IA y agentes, probadas en flujos de trabajo reales antes de publicarlas.</div>
+<button class="inline-flex items-center gap-1 mt-2 px-3 py-1.5 bg-surface-container text-primary font-label-md text-[12px] font-semibold uppercase tracking-wider hover:bg-surface-container-high transition-colors" id="copy-guide-btn" type="button"><span class="material-symbols-outlined text-[16px]">content_copy</span>Copiar guía</button>
+</div>
+</div>
+<div class="flex items-center gap-space-lg text-on-surface-variant font-caption text-caption uppercase tracking-wider">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">schedule</span> 15 min de lectura</span>
+</div>
+</div>
+</header>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-col-gap">
+<article class="lg:col-span-8 flex flex-col space-y-space-xl">
+<div class="relative bg-surface-container-lowest p-space-lg shadow-sm">
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed text-justify">
+<span class="float-left font-display text-primary text-6xl leading-none pr-3 pt-1 font-normal">E</span>
+          l 14 de octubre de 2026 OpenAI puso fecha de apagado a GPT-4o. El 30 de septiembre Anthropic la puso a Sonnet 4.5. El 8 de octubre Google deprecó dos modelos de Gemini y empezó a redirigir sus peticiones a otros sin que nadie tenga que cambiar una línea. En tres semanas, los tres proveedores grandes han retirado o van a retirar modelos sobre los que mucha gente tiene cosas funcionando.
+        </p>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Esto no es una mala racha: es el ritmo normal del sector desde hace dos años, y seguirá. La pregunta útil, entonces, no es si te va a tocar, sino cuánto te va a costar cada vez. Y eso depende de cosas que se preparan antes, no el día del aviso.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Todo lo que sigue sobre plazos, estados y fechas está sacado de las páginas de deprecaciones y los registros de cambios de Anthropic, OpenAI y Google, consultados el 22 de octubre de 2026. Son documentos que esas empresas editan sin avisar, así que las fechas concretas conviene comprobarlas el día que vayas a usarlas; lo que no cambia tan rápido es la mecánica, que es de lo que va esta guía.
+        </p>
+<section id="sec-1" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight mb-space-md">1. Lo que se rompe no es lo que crees</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Un modelo retirado no se degrada: deja de existir. Anthropic lo dice sin rodeos en su página de deprecaciones — «las peticiones a modelos pasada la fecha de retirada fallarán». No hay respuesta peor, hay error. Y si eso está detrás de un formulario, de un agente que corre de noche o de una automatización que nadie mira, lo que se cae es el proceso entero, no una respuesta.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Pero el apagón limpio es el caso fácil, porque avisa de golpe y se arregla cambiando una cadena de texto. Los tres casos que de verdad cuestan tiempo son otros, y ninguno de los tres se parece a «el modelo ya no está»:
+        </p>
+<ul class="space-y-space-xs font-body-md text-body-md text-on-surface-variant leading-relaxed list-disc pl-space-lg">
+<li><strong>El parámetro que desaparece.</strong> El modelo sigue ahí, pero deja de aceptar un ajuste que le llevabas pasando desde el primer día, y la llamada entera se cae con un error de validación.</li>
+<li><strong>El modelo que te cambian por debajo.</strong> Tu petición no falla: se atiende con otro modelo. Nadie te manda un error, y la calidad de lo que sale cambia sin que haya nada que mirar en los registros.</li>
+<li><strong>La fecha que se mueve.</strong> Te organizas la migración para una fecha que resulta no ser una fecha, sino un suelo — «no antes de» — y el plan se queda sin calendario.</li>
+</ul>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Esta guía va de los cuatro —el apagón limpio y estos tres—, con lo que cada proveedor dice en su propia documentación, que es la única fuente que se mueve al mismo ritmo que los productos. Y va, sobre todo, de cómo dejar de enterarte por un error en producción.
+        </p>
+<div class="bg-surface-container-low border-l-4 border-secondary p-space-md">
+<p class="font-body-sm text-body-sm text-on-surface leading-relaxed">Si usas la IA desde la web de ChatGPT, Claude o Gemini y no por API, casi nada de esto te afecta directamente: el proveedor cambia el modelo por debajo y te enteras porque las respuestas cambian de tono o de calidad. Lo que sigue va de lo que tienes montado tú — un agente, un script, una automatización, una herramienta de terceros que llama a la API con tu clave.</p>
+</div>
+</section>
+<section id="sec-2" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight mb-space-md">2. Los tres relojes: cuánto te avisa cada uno</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          La primera sorpresa al leer las tres políticas seguidas es cuánto se diferencian. No es un detalle de letra pequeña: marca cuánto margen tienes para reaccionar, y conviene saber en cuál de los tres estás.
+        </p>
+<h3 class="font-label-md text-label-md text-primary font-bold mt-space-md mb-1">OpenAI: seis meses, tres, o dos semanas</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          OpenAI publica plazos escalonados según el tipo de modelo: se compromete a avisar con <strong>al menos seis meses</strong> en los modelos de disponibilidad general, <strong>al menos tres</strong> en las variantes especializadas (chat, Codex, deep research) y <strong>unas dos semanas</strong> en los modelos en vista previa. Añade una salvedad que conviene leer: por motivos de seguridad o de cumplimiento normativo esos plazos pueden ser más cortos.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Distingue además dos momentos que es útil no confundir. La <em>deprecación</em> es el anuncio, y ocurre el día que se publica; siempre viene con una fecha de apagado. El <em>apagado</em> es cuando el modelo deja de responder. Y llama «legacy» a lo que ya no recibe mejoras y probablemente se deprecará más adelante — es la señal temprana, antes de que haya ninguna fecha.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          El ejemplo más reciente lo contamos cuando salió: el 14 de octubre de 2026 OpenAI anunció que apaga <code>gpt-4o</code> y <code>gpt-4.1</code> en sus distintas versiones el <strong>14 de enero de 2027</strong>, con <code>gpt-6-luna</code> como sustituto recomendado. Entre ese anuncio y el apagado hay tres meses, menos que los seis que promete su propia política para los modelos de disponibilidad general; la página no explica la diferencia. La lectura práctica es que el plazo general sirve para hacerse una idea, y la fecha que te obliga es la concreta publicada para tu modelo. Lo detallamos en <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="../noticias/2026-10-15-openai-retira-gpt-4o-api.html">la noticia de la retirada de GPT-4o</a>.
+        </p>
+<h3 class="font-label-md text-label-md text-primary font-bold mt-space-md mb-1">Anthropic: sesenta días, y un estado intermedio</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Anthropic se compromete a <strong>al menos 60 días</strong> de aviso antes de retirar un modelo publicado, y dice que avisa por correo electrónico a los clientes con despliegues activos y en la propia documentación. Es bastante menos que el plazo largo de OpenAI, y en la práctica se cumple casi al día: <code>claude-sonnet-4-5</code> se marcó como deprecado el 30 de septiembre de 2026 con retirada el 30 de noviembre. Sesenta y un días.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Maneja cuatro estados, y el que importa es el tercero. <em>Active</em> es soportado y recomendado. <em>Legacy</em> ya no recibe mejoras y puede deprecarse. <em>Deprecated</em> sigue funcionando pero ya tiene fecha de retirada asignada y un sustituto recomendado. <em>Retired</em> es que las peticiones fallan. Entre «deprecated» y «retired» tienes todo tu margen, y es el momento de hacer el trabajo.
+        </p>
+<h3 class="font-label-md text-label-md text-primary font-bold mt-space-md mb-1">Google: la fecha es un suelo, no una fecha</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Google documenta que sus modelos estables se publican con una fecha de retirada, pero el detalle operativo está en otro sitio: <strong>un mes antes de esa fecha se bloquea el acceso nuevo</strong> al modelo — inferencia en línea, inferencia por lotes y ajuste fino. Si pensabas migrar <em>hacia</em> un modelo que está a punto de retirarse, o levantar un proyecto nuevo sobre él, el plazo real que tienes es un mes menos del que pone en la tabla.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Y las fechas se mueven. Varios modelos de la familia Gemini 2.5 figuran con una retirada «no antes del 16 de octubre de 2026», después de haber tenido fechas fijas anteriores — es decir, un suelo que se puede desplazar hacia adelante, no un compromiso. Usuarios del propio foro de desarrolladores de Google han documentado además que dos páginas distintas de Google han llegado a dar fechas diferentes para el mismo modelo. Cuando las dos fuentes oficiales no coinciden, la lectura práctica es que la fecha no es material de planificación: lo es tu propia capacidad de cambiar de modelo rápido.
+        </p>
+</section>
+<section id="sec-3" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight mb-space-md">3. El fallo que no da error</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          De todo lo que hay en esta guía, esto es lo que más conviene saber, porque es lo único que no aparece en ningún registro de errores.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          El 8 de octubre de 2026 Google deprecó <code>gemini-3.7-flash</code> y <code>gemini-3.5-flash</code>, y en su registro de cambios indica que las peticiones a esos modelos se <strong>redirigen automáticamente</strong> a un sucesor. Léelo despacio: tu código sigue pidiendo el modelo de siempre, la llamada devuelve 200, el formato de la respuesta es el mismo, y lo que contesta es otro modelo. No hay excepción que capturar ni alerta que configurar. Lo que cambia es la calidad, el tono, la longitud, la forma de obedecer tus instrucciones — y lo descubres por una queja de un usuario tres semanas después, o no lo descubres.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Hay una variante más suave del mismo problema. El 18 de septiembre de 2026 Google anunció que limitaba el acceso a los modelos 2.5 «a los usuarios que los hayan usado activamente en el pasado», y aclaraba que <em>no</em> están deprecados y que se seguirán sirviendo «hasta nuevo aviso». Eso crea un tercer estado que no está en ninguna política: el modelo te sigue funcionando a ti, pero ya no se puede empezar a usar. Si montas un proyecto nuevo y copias la configuración del viejo, el nuevo no arranca y el viejo sigue, lo cual es un rato largo de depuración para algo que no es un fallo tuyo.
+        </p>
+<div class="bg-surface-container-low border-l-4 border-secondary p-space-md">
+<p class="font-body-sm text-body-sm text-on-surface leading-relaxed">La defensa contra esto no es técnica, es de registro: guarda en tus propios logs qué modelo dice la respuesta que la ha atendido, no el que tú pediste. Las tres APIs devuelven el modelo servido en la respuesta. Si lo que pides y lo que te contestan dejan de coincidir, quieres enterarte ese día y no por una queja.</p>
+</div>
+</section>
+<section id="sec-4" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight mb-space-md">4. No es solo el nombre del modelo</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          La migración mental es «busco y reemplazo la cadena del modelo». La migración real incluye tres cosas más que caducan por su cuenta, y las tres han pasado en las últimas semanas.
+        </p>
+<h3 class="font-label-md text-label-md text-primary font-bold mt-space-md mb-1">Los parámetros</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Anthropic eliminó <code>temperature</code>, <code>top_p</code> y <code>top_k</code> en la versión de API <code>2026-10-21</code>: pasarlos ahí devuelve un <strong>error 400</strong>. En versiones anteriores de la API el error salta solo si los fijas a un valor distinto del predeterminado en los modelos Claude 4.7 y posteriores. Su recomendación de sustitución no es otro parámetro, es escribir mejor el prompt.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Este caso es especialmente traicionero porque esos tres ajustes son de los primeros que aprende cualquiera y están copiados en miles de tutoriales y plantillas. Un fragmento que llevaba un año funcionando se cae, el mensaje de error habla de un parámetro y no de un modelo, y es fácil perder un rato buscando en el sitio equivocado. Si tienes <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="como-escribir-prompts.html">prompts guardados en archivos o en variables</a>, revisa qué les acompaña además del texto.
+        </p>
+<h3 class="font-label-md text-label-md text-primary font-bold mt-space-md mb-1">Los endpoints y los productos</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          No solo se retiran modelos. OpenAI tiene fijado el <strong>30 de noviembre de 2026</strong> para apagar <code>v1/prompts</code> —los prompts reutilizables alojados en su plataforma—, su plataforma de Evals y Agent Builder. Su propio consejo de migración para el primero es el que merece subrayarse porque vale para todo lo demás: <em>mueve el contenido de los prompts reutilizables al código de tu aplicación</em>. Todo lo que dejes guardado en la consola de un proveedor es superficie que no controlas; lo que vive en tu repositorio, sí.
+        </p>
+<h3 class="font-label-md text-label-md text-primary font-bold mt-space-md mb-1">Los modelos ajustados con tus datos</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Si pagaste por un <em>fine-tuning</em>, hereda la mortalidad de su base: OpenAI especifica que los modelos ajustados a partir de las versiones de GPT-4 que apaga en enero siguen <strong>el mismo calendario que su modelo base</strong>. No se migran, se rehacen — y rehacerlos cuesta lo que costó la primera vez.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Hay además un cierre en marcha. OpenAI viene restringiendo el ajuste fino autoservicio por fases, y el <strong>6 de enero de 2027</strong> los clientes activos dejan de poder crear trabajos nuevos de <em>fine-tuning</em>; la inferencia sobre los que ya tengas continúa hasta que se deprecie el modelo base. Si tu diferencial competitivo era un modelo ajustado, esa puerta se cierra con fecha, y conviene releer <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="fine-tuning-prompting-rag.html">cuándo compensa ajustar un modelo frente a prompting o RAG</a> con el calendario delante.
+        </p>
+</section>
+<section id="sec-5" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight mb-space-md">5. Averigua a qué estás expuesto</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Casi nadie sabe de memoria cuántos modelos distintos llama lo que tiene montado. Antes de planificar nada, el inventario — y las tres plataformas dan herramientas para hacerlo sin adivinar.
+        </p>
+<ol class="space-y-space-xs font-body-md text-body-md text-on-surface-variant leading-relaxed list-decimal pl-space-lg">
+<li><strong>Pregunta a la API, no a tu memoria.</strong> OpenAI expone un campo <code>shutdown_date</code> en sus endpoints de listar y recuperar modelos. Eso significa que puedes comprobar tu exposición con una llamada en vez de leyendo una página web: recorre los modelos que usas y mira si alguno tiene fecha.</li>
+<li><strong>Mira lo que facturaste.</strong> En la consola de Anthropic, la página de uso tiene un botón de exportar que devuelve un CSV con el gasto desglosado por clave de API y por modelo. Es la forma más rápida de encontrar el script olvidado que sigue llamando a un modelo viejo, porque lo que no aparece en el código aparece en la factura.</li>
+<li><strong>Busca en tu código las cadenas, no los nombres comerciales.</strong> Lo que hay que encontrar es <code>claude-sonnet-4-5-20250929</code>, no «Sonnet». Y hay que buscarlo en sitios donde no se suele mirar: variables de entorno, ficheros de configuración, flujos de n8n o Zapier, el panel de una herramienta de terceros y los scripts programados.</li>
+<li><strong>Decide qué quieres: versión fijada o alias móvil.</strong> Un identificador con fecha (<code>gpt-4.1-2025-04-14</code>) te da estabilidad y una muerte anunciada. Un alias que apunta siempre al último te da continuidad y cambios sin avisar. Ninguna de las dos es gratis: con la primera migras cuando el calendario te obliga; con la segunda, el modelo cambia cuando el proveedor quiere. Para algo en producción, fijar la versión y migrar a propósito suele salir más barato que descubrir el cambio en caliente.</li>
+<li><strong>Apunta dónde llamas, no solo a qué.</strong> Anthropic dice explícitamente que las fechas de su página valen para sus propias plataformas, y que Amazon Bedrock y Google Cloud fijan <strong>sus propios calendarios</strong>. El mismo modelo puede estar retirado en un sitio y servirse en otro, así que la fecha que te aplica depende de por dónde entras.</li>
+</ol>
+</section>
+<section id="sec-6" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight mb-space-md">6. El conjunto de pruebas que hace la migración aburrida</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Aquí está la diferencia entre una migración de media mañana y dos semanas de sustos. Si no tienes forma de comparar el modelo viejo con el nuevo, cambiar de modelo es un acto de fe, y lo que harás es dejarlo para el final y migrar con prisa el día del apagón.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          La recomendación la dan los propios proveedores, y es la misma en los tres: Anthropic dice que pruebes a fondo con el modelo nuevo «bastante antes de la fecha de retirada», y Google que el último estable de cada familia es el destino al que apuntar las migraciones. Lo que ninguno te da es el conjunto de pruebas: ese lo tienes que tener tú, y no hace falta que sea sofisticado.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Lo mínimo que sirve son entre veinte y cincuenta casos reales sacados de lo que ya te ha pasado: las peticiones más frecuentes, los tres casos raros que te rompieron algo alguna vez, y un par de ejemplos incómodos donde la respuesta correcta es negarse o decir que no sabe. Para cada uno, guarda la entrada y qué cuenta como respuesta aceptable — no la respuesta literal del modelo viejo, que no es el objetivo, sino la condición que debe cumplirse.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Con eso montado, la migración deja de ser una opinión. Pasas los mismos casos por los dos modelos, comparas, y las diferencias que salen son datos y no impresiones. Es exactamente el método que detallamos en <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="evaluar-agente-ia.html">cómo evaluar si un agente de IA funciona</a>, y la primera vez que lo montas cuesta una tarde; a partir de ahí es la pieza que convierte cada retirada futura en un trámite.
+        </p>
+<div class="bg-surface-container-low border-l-4 border-secondary p-space-md">
+<p class="font-body-sm text-body-sm text-on-surface leading-relaxed">Un atajo que no es atajo: usar los benchmarks publicados del modelo nuevo para decidir. Miden otra cosa que lo tuyo, y el proveedor los elige. Sirven para hacer una lista corta de candidatos, no para dar por buena una migración — el porqué, en <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="leer-benchmarks-ia.html">leer un benchmark sin que te engañen</a>.</p>
+</div>
+</section>
+<section id="sec-7" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight mb-space-md">7. El cambio, en el orden que duele menos</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Con el inventario hecho y los casos de prueba guardados, el cambio en sí tiene un orden que ahorra disgustos:
+        </p>
+<ol class="space-y-space-xs font-body-md text-body-md text-on-surface-variant leading-relaxed list-decimal pl-space-lg">
+<li><strong>Lee la guía de migración del proveedor antes de tocar nada.</strong> Los tres publican una, y ahí están los cambios de comportamiento que no deducirías leyendo la tarifa.</li>
+<li><strong>Cambia el modelo y nada más.</strong> La tentación de aprovechar para reescribir el prompt es fuerte y es un error: si cambias dos cosas y algo empeora, no sabrás cuál de las dos fue.</li>
+<li><strong>Pasa el conjunto de pruebas y mira las diferencias una a una.</strong> Algunas serán mejoras, otras ruido y una o dos regresiones de verdad. Solo esas últimas justifican tocar el prompt.</li>
+<li><strong>Recalcula el coste con tus propios números.</strong> Un modelo nuevo más barato por token puede salirte más caro si es más hablador o si razona por defecto, y lo que paga tu factura son tokens, no tarifas. El cálculo, en <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="cuanto-cuesta-usar-ia-api.html">cuánto cuesta usar la IA por API</a>.</li>
+<li><strong>Comprueba los límites que cambian de tamaño.</strong> La ventana de contexto y el máximo de salida no son iguales entre modelos, y un prompt que entraba justo puede dejar de entrar — o al contrario, lo que recortabas por falta de sitio ya no hace falta recortarlo. Qué se ocupa y con qué, en <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="ventana-contexto-memoria-ia.html">la ventana de contexto y por qué la IA olvida</a>.</li>
+<li><strong>Revisa si el modelo nuevo razona por defecto.</strong> Varios de los sustitutos recomendados piensan antes de contestar, y ese pensamiento se factura como salida aunque no lo leas. Si migras de un modelo que no razonaba a uno que sí, la factura puede subir sin que hayas cambiado de volumen: <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2 transition-colors" href="modelos-razonamiento-cuando-pensar-mas.html">qué compras al pagar por que piense más</a>.</li>
+<li><strong>Suelta el cambio por partes y con vuelta atrás.</strong> Un porcentaje pequeño del tráfico primero, con el modelo viejo todavía disponible y a un cambio de configuración de distancia. Mientras los dos existan, volver atrás es gratis; después del apagón, no hay atrás.</li>
+<li><strong>Deja el modelo servido en los registros.</strong> Es la línea de la sección 3, y es lo único que te avisa de un cambio silencioso la próxima vez.</li>
+</ol>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Y una decisión que conviene tomar en frío, no el día del apagón: si lo que tienes montado es importante, merece la pena que el modelo sea un ajuste y no una constante repartida por el código. No por elegancia — porque convierte la próxima retirada en cambiar un valor en un sitio, que es la diferencia entre un trámite y un proyecto.
+        </p>
+</section>
+<section id="sec-8" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight mb-space-md">8. Qué hacer esta semana</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Si esta guía te ha pillado sin nada de lo anterior montado, el orden por utilidad es este, y las dos primeras son de un rato:
+        </p>
+<ul class="space-y-space-xs font-body-md text-body-md text-on-surface-variant leading-relaxed list-disc pl-space-lg">
+<li>Haz la lista de los modelos que llamas de verdad, con la exportación de uso de tu proveedor en vez de con la memoria. Es lo que convierte «creo que estamos bien» en un dato.</li>
+<li>Mira la página de deprecaciones de cada proveedor que uses y apunta las fechas que te tocan en el mismo calendario donde apuntas todo lo demás. Nadie migra por un correo que leyó hace cuatro meses.</li>
+<li>Empieza a registrar el modelo que te contesta, no solo el que pides.</li>
+<li>Guarda veinte casos reales con su criterio de aceptación. Es la inversión que paga todas las migraciones siguientes, no solo la próxima.</li>
+<li>Si tienes un modelo ajustado con tus datos, mira hoy la fecha de su modelo base y el calendario de cierre del ajuste fino. Es lo que tiene el plazo más largo de rehacer y el aviso más corto en la práctica.</li>
+</ul>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Nada de esto es trabajo interesante, y es casi todo el trabajo. La parte que se lleva los titulares es elegir modelo; la que decide si lo que montaste sigue en pie dentro de un año es esta.
+        </p>
+</section>
+<section id="faq" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight mb-space-md">Preguntas frecuentes</h2>
+<div class="space-y-space-sm">
+<div class="border border-outline-variant">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-label-md text-label-md text-primary font-semibold">¿Cuánto tiempo me avisan antes de apagar un modelo?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="hidden px-space-md pb-space-md">
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Depende del proveedor, y la diferencia es grande. OpenAI se compromete a al menos seis meses en sus modelos de disponibilidad general, al menos tres en las variantes especializadas y unas dos semanas en los modelos en vista previa, con la salvedad de que por seguridad o cumplimiento puede acortarlos. Anthropic da al menos 60 días para modelos publicados, y avisa por correo a los clientes con despliegues activos. Google publica fechas de retirada en sus tablas, pero varias figuran como «no antes de» una fecha, lo que es un suelo y no un compromiso; además bloquea el acceso nuevo a un modelo un mes antes de su retirada.</p>
+</div>
+</div>
+<div class="border border-outline-variant">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-label-md text-label-md text-primary font-semibold">¿Puedo quedarme en el modelo viejo si me funciona bien?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="hidden px-space-md pb-space-md">
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Hasta la fecha de retirada, sí; después, no. Anthropic lo dice literalmente: las peticiones a un modelo retirado fallan. No hay plan de pago ni opción de configuración que lo mantenga, y la propia documentación avisa de que un modelo deprecado es probablemente menos fiable que uno activo mientras dura. Lo único que alarga la vida de un modelo concreto es llamarlo desde una plataforma de socio: Amazon Bedrock y Google Cloud fijan sus propios calendarios, que pueden ir por detrás del del fabricante.</p>
+</div>
+</div>
+<div class="border border-outline-variant">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-label-md text-label-md text-primary font-semibold">Si mi código sigue pidiendo el modelo de siempre, ¿cómo voy a usar otro sin saberlo?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="hidden px-space-md pb-space-md">
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Porque el proveedor puede redirigir la petición. Google deprecó gemini-3.7-flash y gemini-3.5-flash el 8 de octubre de 2026 y documenta que las peticiones a esos modelos se redirigen automáticamente a un sucesor: tu llamada devuelve 200, el formato es el mismo y contesta otro modelo. No hay error que capturar. La única defensa práctica es guardar en tus registros qué modelo dice la respuesta que la ha atendido y comparar con el que pediste.</p>
+</div>
+</div>
+<div class="border border-outline-variant">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-label-md text-label-md text-primary font-semibold">Pagué por ajustar un modelo con mis datos. ¿Se migra?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="hidden px-space-md pb-space-md">
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">No se migra: se rehace. OpenAI especifica que los modelos ajustados sobre las versiones de GPT-4 que apaga en enero de 2027 siguen el mismo calendario que su modelo base, así que mueren con él. Y hay un plazo añadido que conviene mirar hoy: OpenAI está restringiendo el ajuste fino autoservicio por fases y el 6 de enero de 2027 los clientes activos dejan de poder crear trabajos nuevos, aunque la inferencia sobre los ya existentes siga hasta que caiga el modelo base.</p>
+</div>
+</div>
+<div class="border border-outline-variant">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-label-md text-label-md text-primary font-semibold">¿Me vale fijar la versión con fecha para no tener sorpresas?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="hidden px-space-md pb-space-md">
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Te cambia el tipo de sorpresa, no la elimina. Un identificador con fecha te da un comportamiento estable y una muerte anunciada: sabrás cuándo migrar porque te lo dirán, y tendrás que hacerlo. Un alias que apunta siempre al último modelo te ahorra ese trabajo y te mete el otro problema, que el modelo cambie sin aviso. Para algo en producción suele compensar fijar la versión y migrar a propósito, con pruebas; para un script personal que no pasa nada si falla un día, el alias es más cómodo.</p>
+</div>
+</div>
+<div class="border border-outline-variant">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-label-md text-label-md text-primary font-semibold">Además del nombre del modelo, ¿qué más se me puede romper?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="hidden px-space-md pb-space-md">
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Tres cosas, y las tres han pasado hace poco. Los parámetros: Anthropic eliminó temperature, top_p y top_k en la versión de API 2026-10-21, y pasarlos ahí devuelve un error 400. Los endpoints y productos: OpenAI tiene fijado el 30 de noviembre de 2026 para apagar v1/prompts, su plataforma de Evals y Agent Builder. Y los modelos ajustados, que caen con su base. De ahí el consejo que OpenAI da para lo primero y que vale para todo: mueve a tu propio código lo que tengas guardado en la consola de un proveedor.</p>
+</div>
+</div>
+</div>
+</section>
+</article>
+<aside class="lg:col-span-4 flex flex-col space-y-space-xl">
+<div class="bg-surface-container-lowest p-space-lg shadow-sm sticky top-space-md hidden lg:block">
+<div class="flex items-center justify-between mb-space-sm pb-space-xs">
+<span class="font-kicker text-kicker uppercase tracking-widest text-primary font-bold">En esta guía</span>
+<span class="material-symbols-outlined text-on-surface-variant text-base">format_list_bulleted</span>
+</div>
+<nav class="space-y-space-xs font-body-sm text-body-sm">
+<a class="block text-primary hover:text-secondary font-medium transition-colors" href="#sec-1">1. Lo que se rompe no es lo que crees</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-2">2. Los tres relojes: cuánto te avisa cada uno</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-3">3. El fallo que no da error</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-4">4. No es solo el nombre del modelo</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-5">5. Averigua a qué estás expuesto</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-6">6. El conjunto de pruebas que hace la migración aburrida</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-7">7. El cambio, en el orden que duele menos</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-8">8. Qué hacer esta semana</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#faq">Preguntas frecuentes</a>
+</nav>
+</div>
+<div class="bg-surface-container-high p-space-md space-y-space-sm shadow-sm">
+<span class="font-kicker text-kicker uppercase tracking-widest text-primary font-bold">FICHA TÉCNICA</span>
+<dl class="space-y-space-xs font-caption text-caption">
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Categoría:</dt><dd class="font-semibold text-primary">Elegir herramienta</dd></div>
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Nivel técnico:</dt><dd class="font-semibold text-primary">Intermedio</dd></div>
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Fuentes citadas:</dt><dd class="font-semibold text-primary">Página de deprecaciones de la API de OpenAI, con los plazos de aviso, el campo shutdown_date y el calendario de GPT-4o, los endpoints y el ajuste fino (developers.openai.com); página de deprecaciones de modelos de Anthropic, con los 60 días de aviso, los cuatro estados del ciclo de vida y la retirada de temperature, top_p y top_k en la versión de API 2026-10-21 (platform.claude.com); registro de cambios de la API de Gemini, con la redirección automática de modelos deprecados y el acceso limitado a los 2.5 (ai.google.dev); documentación de versiones de modelo de Vertex AI, con el bloqueo de acceso nuevo un mes antes de la retirada (cloud.google.com). Consultadas el 22 de octubre de 2026.</dd></div>
+</dl>
+</div>
+<div class="bg-surface-container-low border-l-4 border-secondary p-space-md">
+<p class="font-body-sm text-body-sm text-on-surface leading-relaxed">Las fechas de retirada de esta guía son las publicadas el 22 de octubre de 2026 y las tres empresas editan esas páginas sin avisar — alguna figura además como «no antes de», que es un suelo y no un compromiso. Antes de planificar una migración por una fecha concreta, compruébala ese mismo día en la documentación de tu proveedor.</p>
+</div>
+</aside>
+</div>
+<section class="w-full mt-space-4xl pt-space-2xl bg-surface-container-lowest p-space-lg shadow-sm">
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-space-xl gap-space-xs">
+<h3 class="font-headline-md text-headline-md text-primary">Continúa explorando el archivo</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-col-gap"><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="evaluar-agente-ia.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/portadas/evaluar-agente-ia.svg" alt="" width="1600" height="520" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="evaluar-agente-ia.html">Evaluar un agente de IA: cómo saber si funciona</a></h4></div></article><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="cuanto-cuesta-usar-ia-api.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/portadas/cuanto-cuesta-usar-ia-api.svg" alt="" width="1600" height="520" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="cuanto-cuesta-usar-ia-api.html">Cuánto cuesta usar la IA por API</a></h4></div></article><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="fine-tuning-prompting-rag.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/portadas/fine-tuning-prompting-rag.svg" alt="" width="1600" height="520" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="fine-tuning-prompting-rag.html">Fine-tuning, prompting o RAG: cuál usar y cuándo</a></h4></div></article></div>
+</section>
+</div></main><footer class="w-full bg-surface-container-low border-t border-outline-variant mt-space-4xl"><div class="max-w-site-max-width mx-auto px-space-md py-space-3xl"><div class="grid grid-cols-1 md:grid-cols-3 gap-col-gap"><div class="space-y-space-sm"><span class="font-headline-md text-headline-md text-primary">El Telar</span><p class="font-body-sm text-body-sm text-on-surface-variant">Publicación independiente de tecnología y automatización con agentes. Contenidos verificados en producción, sin patrocinios opacos ni promesas vacías.</p></div><div><h3 class="font-kicker text-kicker uppercase tracking-wider text-on-surface mb-space-md">SECCIONES</h3><ul class="space-y-space-xs font-body-sm text-body-sm"><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html#guias">Archivo de Guías</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../empieza-aqui.html">Guía para Principiantes</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../guardadas.html">Mis guías guardadas</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../colaboraciones.html">Colaboraciones y prensa</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../sobre-nosotros.html">Manifiesto Editorial</a></li><li class="pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html#despacho">Boletín Semanal</a></li></ul></div><div><h3 class="font-kicker text-kicker uppercase tracking-wider text-on-surface mb-space-md">CONTACTO &amp; PRENSA</h3><div class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant"><p class="font-semibold text-on-surface">contacto@eltelar.es</p><p>Síguenos: <a class="hover:text-primary underline" href="https://www.instagram.com/eltelar_es/" rel="me noopener" target="_blank">Instagram</a> · <a class="hover:text-primary underline" href="https://www.threads.com/@eltelar_es" rel="me noopener" target="_blank">Threads</a> · <a class="hover:text-primary underline" href="https://x.com/eltelar_es" rel="me noopener" target="_blank">X</a></p></div></div></div></div><div class="border-t border-outline-variant py-space-md bg-surface-container-lowest"><div class="max-w-site-max-width mx-auto px-space-md flex flex-col md:flex-row items-center justify-between gap-space-sm text-caption font-caption text-on-surface-variant"><div>© 2026 El Telar. Todos los derechos reservados. Independencia editorial garantizada.</div><div class="flex flex-wrap items-center justify-center gap-space-md"><a class="hover:text-on-surface transition-colors" href="../privacidad.html">Privacidad</a><a class="hover:text-on-surface transition-colors" href="../terminos.html">Términos</a><a class="hover:text-on-surface transition-colors" href="../cookies.html">Cookies</a><a class="hover:text-on-surface transition-colors" href="../aviso-legal.html">Aviso legal</a><a class="hover:text-on-surface transition-colors" href="../sobre-nosotros.html">Sobre nosotros</a><a class="hover:text-on-surface transition-colors" href="../contacto.html">Contacto</a></div></div></div></footer><script defer src="../js/copy-guide.js"></script><script defer src="../js/guide-interactions.js"></script><script defer src="../js/reading-progress.js"></script><script defer src="../js/search.js?v=8"></script><script defer src="../js/entrance.js"></script><script defer src="../js/cookie-consent.js?v=4"></script></body></html>
