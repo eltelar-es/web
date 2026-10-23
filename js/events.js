@@ -1,6 +1,9 @@
 // Eventos de medición (Google Analytics 4): qué guías se leen hasta el final, qué comandos se copian,
 // cuándo se comparte y adónde salen los lectores. Solo se envían si hay gtag y el lector lo ha permitido.
 (function () {
+  // Inicio de sesión con Google (inactivo hasta que haya ID de cliente)
+  var base = (document.currentScript && document.currentScript.src || '').replace(/events\.js.*$/, '');
+  if (base) { var a = document.createElement('script'); a.src = base + 'auth.js?v=1'; a.defer = true; document.head.appendChild(a); }
   function ev(name, params) {
     try { if (typeof window.gtag === 'function') window.gtag('event', name, Object.assign({ page_path: location.pathname }, params || {})); } catch (e) {}
   }
