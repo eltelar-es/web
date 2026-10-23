@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cómo instalar Claude Code en Windows, Mac y Linux paso a paso | El Telar</title>
+<meta name="description" content="El comando exacto para instalar Claude Code en Mac, Linux y Windows, qué necesitas antes (plan y sistema), cómo comprobar que funciona y qué errores salen más.">
+<link rel="canonical" href="https://eltelar.es/articulos/instalar-claude-code.html"><link rel="icon" type="image/svg+xml" href="../img/favicon.svg?v=4"><link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32.png?v=4"><link rel="apple-touch-icon" href="../img/apple-touch-icon.png?v=4"><meta name="theme-color" content="#072417"><link rel="manifest" href="../manifest.json"><link rel="alternate" type="application/rss+xml" title="El Telar" href="../feed.xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cómo instalar Claude Code en Windows, Mac y Linux paso a paso | El Telar">
+<meta property="og:description" content="El comando exacto para instalar Claude Code en Mac, Linux y Windows, qué necesitas antes (plan y sistema), cómo comprobar que funciona y qué errores salen más.">
+<meta property="og:url" content="https://eltelar.es/articulos/instalar-claude-code.html">
+<meta property="og:site_name" content="El Telar">
+<meta property="og:locale" content="es_ES"><meta property="og:image" content="https://eltelar.es/img/og/guia-instalar-claude-code.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Cómo instalar Claude Code en Windows, Mac y Linux paso a paso | El Telar">
+<meta name="twitter:description" content="El comando exacto para instalar Claude Code en Mac, Linux y Windows, qué necesitas antes (plan y sistema), cómo comprobar que funciona y qué errores salen más."><meta name="twitter:image" content="https://eltelar.es/img/og/guia-instalar-claude-code.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Cómo instalar Claude Code en Windows, Mac y Linux paso a paso",
+  "description": "El comando exacto para instalar Claude Code en Mac, Linux y Windows, qué necesitas antes (plan y sistema), cómo comprobar que funciona y qué errores salen más.",
+  "image": "https://eltelar.es/img/og/guia-instalar-claude-code.jpg",
+  "author": {"@type": "Organization", "name": "El Telar", "url": "https://eltelar.es/sobre-nosotros.html"},
+  "publisher": {
+    "@type": "Organization",
+    "name": "El Telar"
+  },
+  "datePublished": "2026-10-23",
+  "dateModified": "2026-10-23",
+  "mainEntityOfPage": "https://eltelar.es/articulos/instalar-claude-code.html",
+  "inLanguage": "es"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://eltelar.es/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Guías",
+      "item": "https://eltelar.es/index.html#guias"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Cómo instalar Claude Code en Windows, Mac y Linux paso a paso",
+      "item": "https://eltelar.es/articulos/instalar-claude-code.html"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "¿Claude Code se puede instalar gratis?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "El programa se instala sin coste, pero para usarlo necesitas un plan de pago de Claude o créditos de API; el plan gratuito del chat no lo incluye."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Funciona en Windows?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Sí. Puedes instalarlo de forma nativa con PowerShell, CMD o WinGet, o dentro de WSL. En Windows nativo se recomienda tener Git para Windows instalado."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Cómo sé si se ha instalado bien?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Abre una terminal nueva y escribe claude --version. Si muestra un número de versión, la instalación es correcta."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Necesito saber programar?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "No para empezar, pero sí conviene perderle el miedo a la terminal. Anthropic tiene una guía para abrirla y pegar comandos, y existe una aplicación de escritorio como alternativa."
+   }
+  }
+ ]
+}
+</script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link rel="preload" href="../fonts/newsreader-normal-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/inter-normal-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="../css/fonts.css?v=1"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,leaderboard,lightbulb,lock,lock_clock,lock_open,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,volunteer_activism,warning,work,workspace_premium&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,leaderboard,lightbulb,lock,lock_clock,lock_open,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,volunteer_activism,warning,work,workspace_premium&amp;display=swap" rel="stylesheet"/></noscript>
+<style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><link rel="stylesheet" href="../css/tailwind.css"><link rel="stylesheet" href="../css/entrance.css?v=20"><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}(function(){var c=null;try{c=localStorage.getItem('eltelar-cookie-consent')}catch(e){}var g=c==='accepted'?'granted':'denied';gtag('consent','default',{ad_storage:g,ad_user_data:g,ad_personalization:g,analytics_storage:g,wait_for_update:500});window.adsbygoogle=window.adsbygoogle||[];if(g!=='granted'){window.adsbygoogle.requestNonPersonalizedAds=1;}})();</script><script>window.addEventListener("load",function(){setTimeout(function(){var s=document.createElement("script");s.async=true;s.src="https://www.googletagmanager.com/gtag/js?id=G-4DPTKEG79N";document.head.appendChild(s);},800);});</script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4DPTKEG79N');</script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8239907995939753" crossorigin="anonymous"></script></head><body class="bg-background font-body-md text-on-surface antialiased">
+<header class="w-full bg-surface-container-lowest border-b border-outline-variant"><div class="border-b border-outline-variant py-space-xxs px-space-md hidden md:block"><div class="max-w-site-max-width mx-auto flex items-center justify-between font-kicker text-kicker text-on-surface-variant uppercase tracking-wider"><span>EDICIÓN DIGITAL // ACTUALIZADO 2026 // EL TELAR &amp; AGENTES</span><span>MADRID · REMOTO</span><span>SIN HUMO · 100% PRODUCCIÓN</span></div></div><div class="max-w-site-max-width mx-auto px-space-md py-space-md sm:py-space-xl text-center"><p class="hidden sm:block font-kicker text-kicker uppercase tracking-widest text-on-surface-variant mb-space-xs">Publicación Independiente de Tecnología &amp; Agentes</p><a class="inline-block" href="../index.html"><div class="font-display text-display max-sm:text-[40px] max-sm:leading-none text-primary tracking-tight">El Telar</div></a><p class="hidden sm:block font-caption text-caption uppercase tracking-widest text-on-surface-variant mt-space-xs">EL BOLETÍN Y ARCHIVO PRÁCTICO DE INTELIGENCIA ARTIFICIAL Y AGENTES AUTÓNOMOS</p></div><div class="border-t border-b border-outline-variant"><div class="max-w-site-max-width mx-auto px-space-md flex items-center justify-between gap-space-sm h-14"><nav class="flex items-center gap-space-md sm:gap-space-lg h-full min-w-0 overflow-x-auto [scrollbar-width:none] whitespace-nowrap site-nav"><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../index.html#guias">GUÍAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../noticias/index.html">NOTICIAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../prompts/index.html">PROMPTS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../herramientas/index.html">HERRAMIENTAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../empieza-aqui.html">EMPIEZA AQUÍ</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../sobre-nosotros.html">SOBRE NOSOTROS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../contacto.html">CONTACTO</a></nav><div class="flex items-center gap-space-md"><button id="search-trigger" type="button" aria-label="Buscar en las guías" class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[20px]">search</span></button><a class="hidden sm:inline-block bg-primary-container text-surface px-space-md py-space-xs font-label-md text-label-md uppercase tracking-wider hover:bg-primary transition-colors" href="../index.html#despacho">SUSCRÍBETE GRATIS</a></div></div></div><div class="hidden md:block bg-surface-container-low border-b border-outline-variant py-space-xs px-space-md"><div class="max-w-site-max-width mx-auto text-center"><p class="font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">62 GUÍAS COMPLETAS EN EXPANSIÓN · ACTUALIZADO A MODELOS 2026 · PROBADO EN TERMINAL Y FLUJOS REALES · CERO HUMO NI TEORÍA VACÍA</p></div></div></header>
+<main class="w-full max-w-site-max-width mx-auto px-space-md py-space-xl"><div class="flex flex-col w-full">
+<nav class="w-full mb-space-lg">
+<ol class="flex flex-wrap items-center gap-space-xs font-kicker text-kicker text-on-surface-variant uppercase tracking-wider">
+<li><a class="hover:text-primary transition-colors" href="../index.html">Inicio</a></li>
+<li class="text-on-surface-variant">/</li>
+<li><a class="hover:text-primary transition-colors" href="../index.html#guias">Guías</a></li>
+<li class="text-on-surface-variant">/</li>
+<li class="text-primary font-bold truncate max-w-[280px] sm:max-w-md">Instalar Claude Code</li>
+</ol>
+</nav>
+<header class="w-full pb-space-xl mb-space-2xl">
+<div class="flex flex-wrap items-center gap-space-xs mb-space-md">
+<span class="bg-surface-container-high text-secondary px-space-sm py-1 font-kicker text-kicker uppercase tracking-widest">CLAUDE CODE // INSTALAR</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight max-w-editorial-max mb-space-md">
+          Cómo instalar Claude Code en Windows, Mac y Linux paso a paso
+        </h1>
+<p class="font-lead-paragraph text-lead-paragraph text-on-surface-variant max-w-editorial-max leading-relaxed mb-space-lg">
+          Claude Code se instala con una sola línea en la terminal, pero el comando cambia según tu sistema y hay errores que se repiten. Aquí tienes cada paso, comprobado con la documentación oficial de Anthropic.
+        </p>
+<div class="bg-surface-container-lowest p-space-md flex flex-wrap items-center justify-between gap-y-3 shadow-sm">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 bg-primary text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">download</span>
+</div>
+<div>
+<div class="font-label-md text-label-md text-on-surface font-semibold">Por la Redacción de El Telar</div><div class="font-caption text-caption text-on-surface-variant">Guías prácticas de IA y agentes, probadas en flujos de trabajo reales antes de publicarlas.</div>
+<button class="inline-flex items-center gap-1 mt-2 px-3 py-1.5 bg-surface-container text-primary font-label-md text-[12px] font-semibold uppercase tracking-wider hover:bg-surface-container-high transition-colors" id="copy-guide-btn" type="button"><span class="material-symbols-outlined text-[16px]">content_copy</span> Copiar guía para tu IA</button><span class="inline-flex items-center gap-1 ml-1"><button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" id="save-guide-btn" title="Guardar guía" type="button"><span class="material-symbols-outlined text-[16px]">bookmark_border</span></button><button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" id="copy-link-btn" title="Copiar enlace permanente" type="button"><span class="material-symbols-outlined text-[16px]">share</span></button></span>
+</div>
+</div>
+<div class="flex items-center gap-space-lg text-on-surface-variant font-caption text-caption uppercase tracking-wider">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">schedule</span> 5 min de lectura</span>
+</div>
+</div>
+</header>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-col-gap">
+<article class="lg:col-span-8 flex flex-col space-y-space-xl"><figure data-hero class="space-y-space-xs"><img class="w-full border border-outline-variant" src="../img/guias/hero-instalar-claude-code.jpg" alt="Documentación oficial de Claude Code con el comando de instalación" width="1280" height="720" fetchpriority="high" decoding="async"/><figcaption class="font-caption text-caption text-on-surface-variant">Captura de pantalla: <a class="underline" href="https://code.claude.com/docs/en/setup" rel="nofollow noopener" target="_blank">code.claude.com</a>.</figcaption></figure>
+<section id="antes" class="space-y-space-md scroll-mt-24"><h2 class="font-headline-md text-headline-md text-primary tracking-tight">Antes de empezar</h2>
+<ul class="list-disc pl-space-lg space-y-space-xs font-body-md text-body-md text-on-surface"><li><strong>Un plan de pago o créditos de API.</strong> El plan gratuito del chat de Claude no incluye Claude Code. Si quieres probarlo sin pagar, mira <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" href="claude-code-modelos-gratis-freellmapi.html">cómo conectarlo a modelos gratuitos</a>.</li><li><strong>Un ordenador compatible.</strong> Según la documentación oficial: macOS 13 o superior, Windows 10 (versión 1809) o superior, o Linux (Ubuntu 20.04+, Debian 10+, Alpine 3.19+), con al menos 4 GB de RAM y conexión a internet.</li><li><strong>Estar en un país admitido.</strong> Anthropic mantiene una lista de países donde funciona.</li></ul>
+</section>
+<section id="mac-linux" class="space-y-space-md scroll-mt-24"><h2 class="font-headline-md text-headline-md text-primary tracking-tight">Instalarlo en Mac o Linux</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Abre la aplicación Terminal, pega esta línea y pulsa Enter:</p>
+<div class="flex items-stretch gap-space-xs"><code class="block bg-surface-container-high text-on-surface font-mono text-[14px] leading-relaxed p-space-md overflow-x-auto whitespace-pre" style="flex:1;min-width:0">curl -fsSL https://claude.ai/install.sh | bash</code><button type="button" class="shrink-0 bg-primary hover:bg-primary-container text-surface px-space-sm py-space-xxs font-label-md text-label-md uppercase tracking-wider transition-colors" onclick="var c=this.previousElementSibling;navigator.clipboard.writeText(c.innerText);var o=this.textContent,b=this;this.textContent='Copiado';setTimeout(function(){b.textContent=o;},1800);">Copiar</button></div>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Es el método recomendado: no muestra progreso mientras descarga y se actualiza solo en segundo plano. Si prefieres Homebrew, el comando es <code>brew install --cask claude-code</code> (con Homebrew las actualizaciones no son automáticas).</p>
+</section>
+<section id="windows" class="space-y-space-md scroll-mt-24"><h2 class="font-headline-md text-headline-md text-primary tracking-tight">Instalarlo en Windows</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Abre <strong>PowerShell</strong> (el indicador empieza por <code>PS C:\</code>) y ejecuta:</p>
+<div class="flex items-stretch gap-space-xs"><code class="block bg-surface-container-high text-on-surface font-mono text-[14px] leading-relaxed p-space-md overflow-x-auto whitespace-pre" style="flex:1;min-width:0">irm https://claude.ai/install.ps1 | iex</code><button type="button" class="shrink-0 bg-primary hover:bg-primary-container text-surface px-space-sm py-space-xxs font-label-md text-label-md uppercase tracking-wider transition-colors" onclick="var c=this.previousElementSibling;navigator.clipboard.writeText(c.innerText);var o=this.textContent,b=this;this.textContent='Copiado';setTimeout(function(){b.textContent=o;},1800);">Copiar</button></div>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Si usas el símbolo del sistema (CMD) en lugar de PowerShell, el comando es otro y lo tienes en la <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://code.claude.com/docs/en/setup">documentación oficial</a>. También puedes usar WinGet: <code>winget install Anthropic.ClaudeCode</code>. En Windows nativo se recomienda tener instalado Git para Windows; con WSL no hace falta.</p>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Dos errores frecuentes: si te sale «The token '&amp;&amp;' is not a valid statement separator», estás en PowerShell con un comando de CMD; si te sale «'irm' is not recognized», estás en CMD con un comando de PowerShell.</p>
+</section>
+<section id="comprobar" class="space-y-space-md scroll-mt-24"><h2 class="font-headline-md text-headline-md text-primary tracking-tight">Comprobar que funciona</h2><figure class="my-space-lg"><div class="p-space-md bg-surface-container-lowest"><div class="font-kicker text-kicker uppercase text-on-surface-variant tracking-wider mb-space-sm text-center">DIAGRAMA // DE CERO A CLAUDE CODE</div><svg aria-label="Cuatro pasos: pegar el comando, abrir una terminal nueva, comprobar la versión y ejecutar claude" class="w-full h-auto" fill="none" role="img" viewBox="0 0 680 112" xmlns="http://www.w3.org/2000/svg"><rect fill="#ebeef8" height="92" width="140" x="10" y="10"></rect><text fill="#072417" font-family="Inter" font-size="13" font-weight="700" text-anchor="middle" x="80" y="40">1 · Pega</text><text fill="#424843" font-family="Inter" font-size="11" text-anchor="middle" x="80" y="60">el comando de</text><text fill="#424843" font-family="Inter" font-size="11" text-anchor="middle" x="80" y="75">tu sistema</text><path d="M152 56.0 H176" stroke="#727973" stroke-width="1.5"></path><polygon fill="#727973" points="176,52.0 184,56.0 176,60.0"></polygon><rect fill="#ebeef8" height="92" width="140" x="184" y="10"></rect><text fill="#072417" font-family="Inter" font-size="13" font-weight="700" text-anchor="middle" x="253" y="40">2 · Abre</text><text fill="#424843" font-family="Inter" font-size="11" text-anchor="middle" x="253" y="60">una terminal</text><text fill="#424843" font-family="Inter" font-size="11" text-anchor="middle" x="253" y="75">nueva</text><path d="M326 56.0 H350" stroke="#727973" stroke-width="1.5"></path><polygon fill="#727973" points="350,52.0 357,56.0 350,60.0"></polygon><rect fill="#caead4" height="92" width="140" x="357" y="10"></rect><text fill="#042013" font-family="Inter" font-size="13" font-weight="700" text-anchor="middle" x="427" y="40">3 · Comprueba</text><text fill="#042013" font-family="Inter" font-size="11" text-anchor="middle" x="427" y="60">claude --version</text><path d="M500 56.0 H524" stroke="#727973" stroke-width="1.5"></path><polygon fill="#727973" points="524,52.0 530,56.0 524,60.0"></polygon><rect fill="#072417" height="92" width="140" x="530" y="10"></rect><text fill="#f9f9ff" font-family="Inter" font-size="13" font-weight="700" text-anchor="middle" x="600" y="40">4 · Ejecuta</text><text fill="#caead4" font-family="Inter" font-size="11" text-anchor="middle" x="600" y="60">claude</text><text fill="#caead4" font-family="Inter" font-size="11" text-anchor="middle" x="600" y="75">e inicia sesión</text></svg></div><figcaption class="font-caption text-caption text-on-surface-variant mt-space-xs">Si algún paso falla, la documentación oficial tiene una sección de solución de errores.</figcaption></figure>
+<ol class="list-decimal pl-space-lg space-y-space-xs font-body-md text-body-md text-on-surface"><li>Cierra la terminal y abre una nueva (así carga la ruta nueva).</li><li>Escribe <code>claude --version</code>. Si imprime un número de versión, está instalado.</li><li>Entra en la carpeta de un proyecto y escribe <code>claude</code>. La primera vez te pedirá iniciar sesión con tu cuenta de Claude.</li></ol>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Si te dice que <code>claude</code> no se encuentra, la carpeta de instalación todavía no está en tu PATH: la documentación oficial tiene una sección para arreglarlo.</p>
+</section>
+<section id="sesion" class="space-y-space-md scroll-mt-24"><h2 class="font-headline-md text-headline-md text-primary tracking-tight">Cerrar sesión, salir y volver a entrar</h2><p class="font-body-md text-body-md text-on-surface leading-relaxed">Dentro de Claude Code, estos son los comandos que más buscarás:</p><div class="space-y-space-xs"><div class="flex flex-wrap items-center gap-space-xs bg-surface-container-low p-space-sm"><code class="font-mono text-[14px] bg-surface-container-high text-on-surface px-space-sm py-space-xxs">/logout</code><button type="button" class="shrink-0 bg-primary hover:bg-primary-container text-surface px-space-sm py-space-xxs font-label-md text-label-md uppercase tracking-wider transition-colors" onclick="var c=this.previousElementSibling;navigator.clipboard.writeText(c.innerText);var o=this.textContent,b=this;this.textContent='Copiado';setTimeout(function(){b.textContent=o;},1800);">Copiar</button><span class="font-body-sm text-body-sm text-on-surface-variant flex-1 min-w-[180px]">Cierra la sesión de tu cuenta de Anthropic.</span></div><div class="flex flex-wrap items-center gap-space-xs bg-surface-container-low p-space-sm"><code class="font-mono text-[14px] bg-surface-container-high text-on-surface px-space-sm py-space-xxs">/login</code><button type="button" class="shrink-0 bg-primary hover:bg-primary-container text-surface px-space-sm py-space-xxs font-label-md text-label-md uppercase tracking-wider transition-colors" onclick="var c=this.previousElementSibling;navigator.clipboard.writeText(c.innerText);var o=this.textContent,b=this;this.textContent='Copiado';setTimeout(function(){b.textContent=o;},1800);">Copiar</button><span class="font-body-sm text-body-sm text-on-surface-variant flex-1 min-w-[180px]">Vuelve a iniciar sesión (o entra con otra cuenta).</span></div><div class="flex flex-wrap items-center gap-space-xs bg-surface-container-low p-space-sm"><code class="font-mono text-[14px] bg-surface-container-high text-on-surface px-space-sm py-space-xxs">/exit</code><button type="button" class="shrink-0 bg-primary hover:bg-primary-container text-surface px-space-sm py-space-xxs font-label-md text-label-md uppercase tracking-wider transition-colors" onclick="var c=this.previousElementSibling;navigator.clipboard.writeText(c.innerText);var o=this.textContent,b=this;this.textContent='Copiado';setTimeout(function(){b.textContent=o;},1800);">Copiar</button><span class="font-body-sm text-body-sm text-on-surface-variant flex-1 min-w-[180px]">Sale de Claude Code (también vale <code>/quit</code>).</span></div></div><p class="font-body-md text-body-md text-on-surface leading-relaxed">Tienes la lista completa en <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" href="comandos-claude-code.html">comandos de Claude Code</a>.</p></section><section id="siguiente" class="space-y-space-md scroll-mt-24 bg-surface-container-low p-space-lg border-l-4 border-secondary"><span class="font-kicker text-kicker uppercase tracking-widest text-secondary">Y ahora, qué</span><h2 class="font-headline-md text-headline-md text-primary tracking-tight">Tu primer día con Claude Code</h2>
+<ul class="list-disc pl-space-lg space-y-space-xs font-body-md text-body-md text-on-surface"><li>Aprende lo básico en <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" href="que-es-claude-code.html">qué es Claude Code y cómo empezar sin saber programar</a>.</li><li>Entiende cuánto vas a poder usarlo: <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" href="limite-uso-claude-code.html">límite de uso de Claude Code</a>.</li><li>Si prefieres no usar la terminal, Anthropic ofrece también una aplicación de escritorio.</li></ul>
+</section><section id="preguntas" class="space-y-space-md scroll-mt-24"><h2 class="font-headline-md text-headline-md text-primary tracking-tight">Preguntas frecuentes</h2><h3 class="font-headline-sm text-headline-sm text-primary">¿Claude Code se puede instalar gratis?</h3><p class="font-body-md text-body-md text-on-surface leading-relaxed">El programa se instala sin coste, pero para usarlo necesitas un plan de pago de Claude o créditos de API; el plan gratuito del chat no lo incluye.</p><h3 class="font-headline-sm text-headline-sm text-primary">¿Funciona en Windows?</h3><p class="font-body-md text-body-md text-on-surface leading-relaxed">Sí. Puedes instalarlo de forma nativa con PowerShell, CMD o WinGet, o dentro de WSL. En Windows nativo se recomienda tener Git para Windows instalado.</p><h3 class="font-headline-sm text-headline-sm text-primary">¿Cómo sé si se ha instalado bien?</h3><p class="font-body-md text-body-md text-on-surface leading-relaxed">Abre una terminal nueva y escribe claude --version. Si muestra un número de versión, la instalación es correcta.</p><h3 class="font-headline-sm text-headline-sm text-primary">¿Necesito saber programar?</h3><p class="font-body-md text-body-md text-on-surface leading-relaxed">No para empezar, pero sí conviene perderle el miedo a la terminal. Anthropic tiene una guía para abrirla y pegar comandos, y existe una aplicación de escritorio como alternativa.</p></section></article>
+<aside class="lg:col-span-4 flex flex-col space-y-space-xl">
+<div class="bg-surface-container-lowest p-space-lg shadow-sm sticky top-space-md">
+<div class="flex items-center justify-between mb-space-sm pb-space-xs">
+<span class="font-kicker text-kicker uppercase tracking-widest text-primary font-bold">ÍNDICE DE LA GUÍA</span>
+<span class="material-symbols-outlined text-on-surface-variant text-base">format_list_bulleted</span>
+</div>
+<nav class="space-y-space-xs font-body-sm text-body-sm">
+<a class="block text-primary hover:text-secondary font-medium transition-colors" href="#antes">Antes de empezar</a>
+<a class="block text-primary hover:text-secondary font-medium transition-colors" href="#mac-linux">Mac y Linux</a>
+<a class="block text-primary hover:text-secondary font-medium transition-colors" href="#windows">Windows</a>
+<a class="block text-primary hover:text-secondary font-medium transition-colors" href="#comprobar">Comprobar</a>
+<a class="block text-primary hover:text-secondary font-medium transition-colors" href="#siguiente">Tu primer día</a>
+<a class="block text-primary hover:text-secondary font-medium transition-colors" href="#preguntas">Preguntas frecuentes</a>
+</nav>
+</div>
+
+<div class="bg-surface-container-high p-space-md space-y-space-sm shadow-sm">
+<span class="font-kicker text-kicker uppercase tracking-widest text-primary font-bold">FICHA TÉCNICA</span>
+<dl class="space-y-space-xs font-caption text-caption">
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Categoría:</dt><dd class="font-semibold text-primary">Claude Code</dd></div>
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Nivel técnico:</dt><dd class="font-semibold text-primary">Básico</dd></div>
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Fuentes citadas:</dt><dd class="font-semibold text-primary">Documentación de Anthropic</dd></div>
+</dl>
+</div>
+</aside>
+</div>
+<section class="w-full mt-space-4xl pt-space-2xl bg-surface-container-lowest p-space-lg shadow-sm">
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-space-xl gap-space-xs">
+<h3 class="font-headline-md text-headline-md text-primary">Continúa explorando el archivo</h3>
+<a class="font-label-md text-label-md text-primary hover:text-secondary uppercase tracking-wider transition-colors flex items-center gap-1" href="../index.html#guias">Ver todas las guías <span class="material-symbols-outlined text-[16px]">arrow_forward</span></a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-col-gap"><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="proteger-datos-ia.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-proteger-datos-ia.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="proteger-datos-ia.html">Cómo proteger tus datos cuando usas IA</a></h4></div></article><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="ia-local-ordenador.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-ia-local-ordenador.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="ia-local-ordenador.html">IA local: correr modelos en tu ordenador</a></h4></div></article><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="analizar-imagenes-pdf-ia.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-analizar-imagenes-pdf-ia.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="analizar-imagenes-pdf-ia.html">Cómo analizar imágenes y PDFs con IA</a></h4></div></article></div></main><footer class="w-full bg-surface-container-low border-t border-outline-variant mt-space-4xl"><div class="max-w-site-max-width mx-auto px-space-md py-space-3xl"><div class="grid grid-cols-1 md:grid-cols-3 gap-col-gap"><div class="space-y-space-sm"><span class="font-headline-md text-headline-md text-primary">El Telar</span><p class="font-body-sm text-body-sm text-on-surface-variant">Publicación independiente de tecnología y automatización con agentes. Contenidos verificados en producción, sin patrocinios opacos ni promesas vacías.</p></div><div><h3 class="font-kicker text-kicker uppercase tracking-wider text-on-surface mb-space-md">SECCIONES</h3><ul class="space-y-space-xs font-body-sm text-body-sm"><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html#guias">Archivo de Guías</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../empieza-aqui.html">Guía para Principiantes</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../guardadas.html">Mis guías guardadas</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../colaboraciones.html">Colaboraciones y prensa</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../sobre-nosotros.html">Manifiesto Editorial</a></li><li class="pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html#despacho">Boletín Semanal</a></li></ul></div><div><h3 class="font-kicker text-kicker uppercase tracking-wider text-on-surface mb-space-md">CONTACTO &amp; PRENSA</h3><div class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant"><p class="font-semibold text-on-surface">contacto@eltelar.es</p><p>Síguenos: <a class="hover:text-primary underline" href="https://www.instagram.com/eltelar_es/" rel="me noopener" target="_blank">Instagram</a> · <a class="hover:text-primary underline" href="https://www.threads.com/@eltelar_es" rel="me noopener" target="_blank">Threads</a> · <a class="hover:text-primary underline" href="https://x.com/eltelar_es" rel="me noopener" target="_blank">X</a></p></div></div></div></div><div class="border-t border-outline-variant py-space-md bg-surface-container-lowest"><div class="max-w-site-max-width mx-auto px-space-md flex flex-col md:flex-row items-center justify-between gap-space-sm text-caption font-caption text-on-surface-variant"><div>© 2026 El Telar. Todos los derechos reservados. Independencia editorial garantizada.</div><div class="flex flex-wrap items-center justify-center gap-space-md"><a class="hover:text-on-surface transition-colors" href="../privacidad.html">Privacidad</a><a class="hover:text-on-surface transition-colors" href="../terminos.html">Términos</a><a class="hover:text-on-surface transition-colors" href="../cookies.html">Cookies</a><a class="hover:text-on-surface transition-colors" href="../aviso-legal.html">Aviso legal</a><a class="hover:text-on-surface transition-colors" href="../sobre-nosotros.html">Sobre nosotros</a><a class="hover:text-on-surface transition-colors" href="../contacto.html">Contacto</a></div></div></div></footer><script defer src="../js/copy-guide.js"></script><script defer src="../js/guide-interactions.js"></script><script defer src="../js/reading-progress.js"></script><script defer src="../js/search.js?v=8"></script><script defer src="../js/entrance.js"></script><script defer src="../js/cookie-consent.js?v=4"></script></body></html>
