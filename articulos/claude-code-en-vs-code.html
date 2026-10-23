@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Claude Code en VS Code: cómo instalarlo y usarlo desde el editor | El Telar</title>
+<meta name="description" content="Cómo instalar la extensión de Claude Code en VS Code, qué necesitas, dónde está el icono Spark, cómo darle contexto con @-menciones y los atajos de teclado que más se usan.">
+<link rel="canonical" href="https://eltelar.es/articulos/claude-code-en-vs-code.html"><link rel="icon" type="image/svg+xml" href="../img/favicon.svg?v=4"><link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32.png?v=4"><link rel="apple-touch-icon" href="../img/apple-touch-icon.png?v=4"><meta name="theme-color" content="#072417"><link rel="manifest" href="../manifest.json"><link rel="alternate" type="application/rss+xml" title="El Telar" href="../feed.xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Claude Code en VS Code: cómo instalarlo y usarlo desde el editor | El Telar">
+<meta property="og:description" content="Cómo instalar la extensión de Claude Code en VS Code, qué necesitas, dónde está el icono Spark, cómo darle contexto con @-menciones y los atajos de teclado que más se usan.">
+<meta property="og:url" content="https://eltelar.es/articulos/claude-code-en-vs-code.html">
+<meta property="og:site_name" content="El Telar">
+<meta property="og:locale" content="es_ES"><meta property="og:image" content="https://eltelar.es/img/og/guia-claude-code-en-vs-code.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Claude Code en VS Code: cómo instalarlo y usarlo desde el editor | El Telar">
+<meta name="twitter:description" content="Cómo instalar la extensión de Claude Code en VS Code, qué necesitas, dónde está el icono Spark, cómo darle contexto con @-menciones y los atajos de teclado que más se usan."><meta name="twitter:image" content="https://eltelar.es/img/og/guia-claude-code-en-vs-code.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Claude Code en VS Code: cómo instalarlo y usarlo desde el editor",
+  "description": "Cómo instalar la extensión de Claude Code en VS Code, qué necesitas, dónde está el icono Spark, cómo darle contexto con @-menciones y los atajos de teclado que más se usan.",
+  "image": "https://eltelar.es/img/og/guia-claude-code-en-vs-code.jpg",
+  "author": {"@type": "Person", "name": "Juan Becerril Castañón", "url": "https://eltelar.es/sobre-nosotros.html#autor"},
+  "publisher": {
+    "@type": "Organization",
+    "name": "El Telar"
+  },
+  "datePublished": "2026-10-23",
+  "dateModified": "2026-10-23",
+  "mainEntityOfPage": "https://eltelar.es/articulos/claude-code-en-vs-code.html",
+  "inLanguage": "es"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://eltelar.es/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Guías",
+      "item": "https://eltelar.es/index.html#guias"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Claude Code en VS Code: cómo instalarlo y usarlo desde el editor",
+      "item": "https://eltelar.es/articulos/claude-code-en-vs-code.html"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "¿Cómo instalo Claude Code en VS Code?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Abre la vista de extensiones con Cmd+Shift+X (Mac) o Ctrl+Shift+X (Windows y Linux), busca Claude Code y pulsa Install."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Qué versión de VS Code necesito?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "VS Code 1.94.0 o posterior."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Necesito pagar para usar Claude Code en VS Code?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Necesitas una suscripción de pago de Claude (Pro, Max, Team o Enterprise) o una cuenta de Claude Console. El plan gratis del chat no incluye Claude Code."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Dónde está el botón de Claude Code?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "El icono Spark aparece arriba a la derecha en la barra del editor, si tienes un archivo abierto, y también en la barra lateral izquierda."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Funciona en Cursor?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Sí. La extensión también se instala en Cursor y en otros editores basados en VS Code."
+   }
+  }
+ ]
+}
+</script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link rel="preload" href="../fonts/newsreader-normal-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/inter-normal-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="../css/fonts.css?v=1"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,leaderboard,lightbulb,lock,lock_clock,lock_open,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,volunteer_activism,warning,work,workspace_premium&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,leaderboard,lightbulb,lock,lock_clock,lock_open,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,volunteer_activism,warning,work,workspace_premium&amp;display=swap" rel="stylesheet"/></noscript>
+<style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><link rel="stylesheet" href="../css/tailwind.css"><link rel="stylesheet" href="../css/entrance.css?v=20"><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}(function(){var c=null;try{c=localStorage.getItem('eltelar-cookie-consent')}catch(e){}var g=c==='accepted'?'granted':'denied';gtag('consent','default',{ad_storage:g,ad_user_data:g,ad_personalization:g,analytics_storage:g,wait_for_update:500});window.adsbygoogle=window.adsbygoogle||[];if(g!=='granted'){window.adsbygoogle.requestNonPersonalizedAds=1;}})();</script><script>window.addEventListener("load",function(){setTimeout(function(){var s=document.createElement("script");s.async=true;s.src="https://www.googletagmanager.com/gtag/js?id=G-4DPTKEG79N";document.head.appendChild(s);},800);});</script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4DPTKEG79N');</script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8239907995939753" crossorigin="anonymous"></script></head><body class="bg-background font-body-md text-on-surface antialiased">
+<header class="w-full bg-surface-container-lowest border-b border-outline-variant"><div class="border-b border-outline-variant py-space-xxs px-space-md hidden md:block"><div class="max-w-site-max-width mx-auto flex items-center justify-between font-kicker text-kicker text-on-surface-variant uppercase tracking-wider"><span>EDICIÓN DIGITAL // ACTUALIZADO 2026 // EL TELAR &amp; AGENTES</span><span>MADRID · REMOTO</span><span>SIN HUMO · 100% PRODUCCIÓN</span></div></div><div class="max-w-site-max-width mx-auto px-space-md py-space-md sm:py-space-xl text-center"><p class="hidden sm:block font-kicker text-kicker uppercase tracking-widest text-on-surface-variant mb-space-xs">Publicación Independiente de Tecnología &amp; Agentes</p><a class="inline-block" href="../index.html"><div class="font-display text-display max-sm:text-[40px] max-sm:leading-none text-primary tracking-tight">El Telar</div></a><p class="hidden sm:block font-caption text-caption uppercase tracking-widest text-on-surface-variant mt-space-xs">EL BOLETÍN Y ARCHIVO PRÁCTICO DE INTELIGENCIA ARTIFICIAL Y AGENTES AUTÓNOMOS</p></div><div class="border-t border-b border-outline-variant"><div class="max-w-site-max-width mx-auto px-space-md flex items-center justify-between gap-space-sm h-14"><nav class="flex items-center gap-space-md sm:gap-space-lg h-full min-w-0 overflow-x-auto [scrollbar-width:none] whitespace-nowrap site-nav"><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../index.html#guias">GUÍAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../noticias/index.html">NOTICIAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../prompts/index.html">PROMPTS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../herramientas/index.html">HERRAMIENTAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../empieza-aqui.html">EMPIEZA AQUÍ</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../sobre-nosotros.html">SOBRE NOSOTROS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../contacto.html">CONTACTO</a></nav><div class="flex items-center gap-space-md"><button id="search-trigger" type="button" aria-label="Buscar en las guías" class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[20px]">search</span></button><a class="hidden sm:inline-block bg-primary-container text-surface px-space-md py-space-xs font-label-md text-label-md uppercase tracking-wider hover:bg-primary transition-colors" href="../index.html#despacho">SUSCRÍBETE GRATIS</a></div></div></div><div class="hidden md:block bg-surface-container-low border-b border-outline-variant py-space-xs px-space-md"><div class="max-w-site-max-width mx-auto text-center"><p class="font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">71 GUÍAS COMPLETAS EN EXPANSIÓN · ACTUALIZADO A MODELOS 2026 · PROBADO EN TERMINAL Y FLUJOS REALES · CERO HUMO NI TEORÍA VACÍA</p></div></div></header>
+<main class="w-full max-w-site-max-width mx-auto px-space-md py-space-xl"><div class="flex flex-col w-full">
+<nav class="w-full mb-space-lg">
+<ol class="flex flex-wrap items-center gap-space-xs font-kicker text-kicker text-on-surface-variant uppercase tracking-wider">
+<li><a class="hover:text-primary transition-colors" href="../index.html">Inicio</a></li>
+<li class="text-on-surface-variant">/</li>
+<li><a class="hover:text-primary transition-colors" href="../index.html#guias">Guías</a></li>
+<li class="text-on-surface-variant">/</li>
+<li class="text-primary font-bold truncate max-w-[280px] sm:max-w-md">Claude Code en VS Code</li>
+</ol>
+</nav>
+<header class="w-full pb-space-xl mb-space-2xl">
+<div class="flex flex-wrap items-center gap-space-xs mb-space-md">
+<span class="bg-surface-container-high text-secondary px-space-sm py-1 font-kicker text-kicker uppercase tracking-widest">CLAUDE CODE // VS CODE</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight max-w-editorial-max mb-space-md">
+          Claude Code en VS Code: cómo instalarlo y usarlo desde el editor
+        </h1>
+<p class="font-lead-paragraph text-lead-paragraph text-on-surface-variant max-w-editorial-max leading-relaxed mb-space-lg">
+          La extensión oficial de Claude Code para VS Code: requisitos, instalación en un minuto, cómo abrirlo, cómo darle contexto sin copiar y pegar y los atajos clave.
+        </p>
+<div class="bg-surface-container-lowest p-space-md flex flex-wrap items-center justify-between gap-y-3 shadow-sm">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 bg-primary text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">code</span>
+</div>
+<div>
+<div class="font-label-md text-label-md text-on-surface font-semibold">Por la Redacción de El Telar</div><div class="font-caption text-caption text-on-surface-variant">Guías prácticas de IA y agentes, probadas en flujos de trabajo reales antes de publicarlas.</div>
+<button class="inline-flex items-center gap-1 mt-2 px-3 py-1.5 bg-surface-container text-primary font-label-md text-[12px] font-semibold uppercase tracking-wider hover:bg-surface-container-high transition-colors" id="copy-guide-btn" type="button"><span class="material-symbols-outlined text-[16px]">content_copy</span> Copiar guía para tu IA</button><span class="inline-flex items-center gap-1 ml-1"><button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" id="save-guide-btn" title="Guardar guía" type="button"><span class="material-symbols-outlined text-[16px]">bookmark_border</span></button><button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" id="copy-link-btn" title="Copiar enlace permanente" type="button"><span class="material-symbols-outlined text-[16px]">share</span></button></span>
+</div>
+</div>
+<div class="flex items-center gap-space-lg text-on-surface-variant font-caption text-caption uppercase tracking-wider">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">schedule</span> 5 min de lectura</span>
+</div>
+</div>
+</header>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-col-gap">
+<article class="lg:col-span-8 flex flex-col space-y-space-xl"><figure data-hero class="space-y-space-xs"><img class="w-full border border-outline-variant" src="../img/guias/hero-claude-code-en-vs-code.jpg" alt="Documentación oficial de Claude Code para usarlo en VS Code" width="1280" height="720" fetchpriority="high" decoding="async"/><figcaption class="font-caption text-caption text-on-surface-variant">Captura de pantalla: <a class="underline" href="https://code.claude.com/docs/en/vs-code" rel="nofollow noopener" target="_blank">code.claude.com</a>.</figcaption></figure>
+<section id="requisitos" class="space-y-space-md scroll-mt-24"><h2 class="font-headline-md text-headline-md text-primary tracking-tight">Qué necesitas</h2>
+<ul class="list-disc pl-space-lg space-y-space-xs font-body-md text-body-md text-on-surface"><li><strong>VS Code 1.94.0 o posterior.</strong></li><li><strong>Una cuenta de Anthropic:</strong> vale cualquier suscripción de pago de Claude (Pro, Max, Team o Enterprise) o una cuenta de Claude Console. No hace falta clave de API. El plan gratis del chat no incluye Claude Code.</li></ul>
+<figure class="my-space-lg"><div class="p-space-md bg-surface-container-lowest"><div class="font-kicker text-kicker uppercase text-on-surface-variant tracking-wider mb-space-sm text-center">DIAGRAMA // DEL CERO A TU PRIMER CAMBIO</div><svg aria-label="Cuatro pasos: instalar la extensión, abrir el panel con el icono Spark, iniciar sesión y pedir un cambio" class="w-full h-auto" fill="none" role="img" viewBox="0 0 680 112" xmlns="http://www.w3.org/2000/svg"><rect fill="#ebeef8" height="92" width="140" x="10" y="10"></rect><text fill="#072417" font-family="Inter" font-size="13" font-weight="700" text-anchor="middle" x="80" y="40">1 · Instala</text><text fill="#424843" font-family="Inter" font-size="11" text-anchor="middle" x="80" y="60">la extensión</text><text fill="#424843" font-family="Inter" font-size="11" text-anchor="middle" x="80" y="75">Claude Code</text><path d="M152 56.0 H176" stroke="#727973" stroke-width="1.5"></path><polygon fill="#727973" points="176,52.0 184,56.0 176,60.0"></polygon><rect fill="#072417" height="92" width="140" x="184" y="10"></rect><text fill="#f9f9ff" font-family="Inter" font-size="13" font-weight="700" text-anchor="middle" x="253" y="40">2 · Abre</text><text fill="#caead4" font-family="Inter" font-size="11" text-anchor="middle" x="253" y="60">el icono Spark</text><text fill="#caead4" font-family="Inter" font-size="11" text-anchor="middle" x="253" y="75">arriba a la derecha</text><path d="M326 56.0 H350" stroke="#727973" stroke-width="1.5"></path><polygon fill="#727973" points="350,52.0 357,56.0 350,60.0"></polygon><rect fill="#caead4" height="92" width="140" x="357" y="10"></rect><text fill="#042013" font-family="Inter" font-size="13" font-weight="700" text-anchor="middle" x="427" y="40">3 · Inicia</text><text fill="#042013" font-family="Inter" font-size="11" text-anchor="middle" x="427" y="60">sesión con tu</text><text fill="#042013" font-family="Inter" font-size="11" text-anchor="middle" x="427" y="75">cuenta</text><path d="M500 56.0 H524" stroke="#727973" stroke-width="1.5"></path><polygon fill="#727973" points="524,52.0 530,56.0 524,60.0"></polygon><rect fill="#fd8a42" height="92" width="140" x="530" y="10"></rect><text fill="#072417" font-family="Inter" font-size="13" font-weight="700" text-anchor="middle" x="600" y="40">4 · Pide</text><text fill="#072417" font-family="Inter" font-size="11" text-anchor="middle" x="600" y="60">un cambio y revisa</text><text fill="#072417" font-family="Inter" font-size="11" text-anchor="middle" x="600" y="75">las diferencias</text></svg></div><figcaption class="font-caption text-caption text-on-surface-variant mt-space-xs">Todo desde dentro de VS Code, sin tocar la terminal.</figcaption></figure></section>
+<section id="instalar" class="space-y-space-md scroll-mt-24 bg-surface-container-low p-space-lg border-l-4 border-secondary"><span class="font-kicker text-kicker uppercase tracking-widest text-secondary">Instalar</span><h2 class="font-headline-md text-headline-md text-primary tracking-tight">Instala la extensión</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">En VS Code abre la vista de extensiones con <code>Cmd+Shift+X</code> (Mac) o <code>Ctrl+Shift+X</code> (Windows y Linux), busca <strong>Claude Code</strong> y pulsa <strong>Install</strong>. También funciona en Cursor y en otros editores basados en VS Code, buscándola en su vista de extensiones o en el registro Open VSX. Si no aparece tras instalar, reinicia VS Code o ejecuta «Developer: Reload Window» desde la paleta de comandos.</p></section>
+<section id="abrir" class="space-y-space-md scroll-mt-24"><h2 class="font-headline-md text-headline-md text-primary tracking-tight">Ábrelo y empieza</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">La forma más rápida es pulsar el <strong>icono Spark</strong> en la barra de herramientas del editor, arriba a la derecha (solo aparece con un archivo abierto). También tienes el mismo icono en la barra lateral izquierda, que abre la lista de tus sesiones. La primera vez te pide iniciar sesión con tu cuenta de Anthropic y te muestra una lista «Learn Claude Code» con ejemplos.</p>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Escribe lo que quieres, por ejemplo «explícame este archivo» o «añade una prueba para esta función». Claude te muestra los cambios como diferencias dentro del editor para que los apruebes o los rechaces.</p></section>
+<section id="contexto" class="space-y-space-md scroll-mt-24"><h2 class="font-headline-md text-headline-md text-primary tracking-tight">Dale contexto sin copiar y pegar</h2>
+<ul class="list-disc pl-space-lg space-y-space-xs font-body-md text-body-md text-on-surface"><li><strong>@-menciones.</strong> Escribe <code>@</code> y el nombre de un archivo o carpeta; acepta nombres aproximados.</li><li><strong>Selección.</strong> Lo que subrayas en el editor lo ve Claude automáticamente.</li></ul>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Atajos que más se usan:</p><div class="space-y-space-xs"><div class="flex flex-wrap items-center gap-space-xs bg-surface-container-low p-space-sm"><code class="font-mono text-[14px] bg-surface-container-high text-on-surface px-space-sm py-space-xxs">Cmd+Esc / Ctrl+Esc</code><button type="button" class="shrink-0 bg-primary hover:bg-primary-container text-surface px-space-sm py-space-xxs font-label-md text-label-md uppercase tracking-wider transition-colors" onclick="var c=this.previousElementSibling;navigator.clipboard.writeText(c.innerText);var o=this.textContent,b=this;this.textContent='Copiado';setTimeout(function(){b.textContent=o;},1800);">Copiar</button><span class="font-body-sm text-body-sm text-on-surface-variant flex-1 min-w-[180px]">Pasa del editor a Claude y al revés.</span></div><div class="flex flex-wrap items-center gap-space-xs bg-surface-container-low p-space-sm"><code class="font-mono text-[14px] bg-surface-container-high text-on-surface px-space-sm py-space-xxs">Option+K / Alt+K</code><button type="button" class="shrink-0 bg-primary hover:bg-primary-container text-surface px-space-sm py-space-xxs font-label-md text-label-md uppercase tracking-wider transition-colors" onclick="var c=this.previousElementSibling;navigator.clipboard.writeText(c.innerText);var o=this.textContent,b=this;this.textContent='Copiado';setTimeout(function(){b.textContent=o;},1800);">Copiar</button><span class="font-body-sm text-body-sm text-on-surface-variant flex-1 min-w-[180px]">Inserta una referencia al archivo y a las líneas que tienes seleccionadas.</span></div><div class="flex flex-wrap items-center gap-space-xs bg-surface-container-low p-space-sm"><code class="font-mono text-[14px] bg-surface-container-high text-on-surface px-space-sm py-space-xxs">Cmd+Shift+Esc / Ctrl+Shift+Esc</code><button type="button" class="shrink-0 bg-primary hover:bg-primary-container text-surface px-space-sm py-space-xxs font-label-md text-label-md uppercase tracking-wider transition-colors" onclick="var c=this.previousElementSibling;navigator.clipboard.writeText(c.innerText);var o=this.textContent,b=this;this.textContent='Copiado';setTimeout(function(){b.textContent=o;},1800);">Copiar</button><span class="font-body-sm text-body-sm text-on-surface-variant flex-1 min-w-[180px]">Abre una conversación nueva en una pestaña del editor.</span></div></div></section>
+<section id="terminal" class="space-y-space-md scroll-mt-24"><h2 class="font-headline-md text-headline-md text-primary tracking-tight">Extensión o terminal</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">La extensión incluye su propia copia de Claude Code para el panel de chat. Si además quieres escribir <code>claude</code> en la terminal integrada de VS Code, necesitas instalar el programa aparte: <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" href="instalar-claude-code.html">cómo instalar Claude Code</a>. Los comandos con barra (<code>/usage</code>, <code>/clear</code>…) están en <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" href="comandos-claude-code.html">la chuleta de comandos</a>, y para que no se acabe el límite, <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" href="limite-uso-claude-code.html">límite de uso de Claude Code</a>.</p></section>
+<section id="honesto" class="space-y-space-md scroll-mt-24 bg-surface-container-low p-space-lg border-l-4 border-secondary"><span class="font-kicker text-kicker uppercase tracking-widest text-secondary">Lo honesto</span><h2 class="font-headline-md text-headline-md text-primary tracking-tight">Dos avisos</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Necesita un plan de pago de Claude o una cuenta de Console; sin eso no entra. Y si no quieres pagar, mira <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" href="claude-code-modelos-gratis-freellmapi.html">cómo seguir con modelos gratis</a> o <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" href="claude-code-con-ollama-modelos-locales.html">usarlo con Ollama</a>.</p></section><section id="preguntas" class="space-y-space-md scroll-mt-24"><h2 class="font-headline-md text-headline-md text-primary tracking-tight">Preguntas frecuentes</h2><h3 class="font-headline-sm text-headline-sm text-primary">¿Cómo instalo Claude Code en VS Code?</h3><p class="font-body-md text-body-md text-on-surface leading-relaxed">Abre la vista de extensiones con Cmd+Shift+X (Mac) o Ctrl+Shift+X (Windows y Linux), busca Claude Code y pulsa Install.</p><h3 class="font-headline-sm text-headline-sm text-primary">¿Qué versión de VS Code necesito?</h3><p class="font-body-md text-body-md text-on-surface leading-relaxed">VS Code 1.94.0 o posterior.</p><h3 class="font-headline-sm text-headline-sm text-primary">¿Necesito pagar para usar Claude Code en VS Code?</h3><p class="font-body-md text-body-md text-on-surface leading-relaxed">Necesitas una suscripción de pago de Claude (Pro, Max, Team o Enterprise) o una cuenta de Claude Console. El plan gratis del chat no incluye Claude Code.</p><h3 class="font-headline-sm text-headline-sm text-primary">¿Dónde está el botón de Claude Code?</h3><p class="font-body-md text-body-md text-on-surface leading-relaxed">El icono Spark aparece arriba a la derecha en la barra del editor, si tienes un archivo abierto, y también en la barra lateral izquierda.</p><h3 class="font-headline-sm text-headline-sm text-primary">¿Funciona en Cursor?</h3><p class="font-body-md text-body-md text-on-surface leading-relaxed">Sí. La extensión también se instala en Cursor y en otros editores basados en VS Code.</p></section></article>
+<aside class="lg:col-span-4 flex flex-col space-y-space-xl">
+<div class="bg-surface-container-lowest p-space-lg shadow-sm sticky top-space-md">
+<div class="flex items-center justify-between mb-space-sm pb-space-xs">
+<span class="font-kicker text-kicker uppercase tracking-widest text-primary font-bold">ÍNDICE DE LA GUÍA</span>
+<span class="material-symbols-outlined text-on-surface-variant text-base">format_list_bulleted</span>
+</div>
+<nav class="space-y-space-xs font-body-sm text-body-sm">
+<a class="block text-primary hover:text-secondary font-medium transition-colors" href="#requisitos">Requisitos</a>
+<a class="block text-primary hover:text-secondary font-medium transition-colors" href="#instalar">Instalar</a>
+<a class="block text-primary hover:text-secondary font-medium transition-colors" href="#abrir">Abrirlo</a>
+<a class="block text-primary hover:text-secondary font-medium transition-colors" href="#contexto">Dar contexto</a>
+<a class="block text-primary hover:text-secondary font-medium transition-colors" href="#terminal">Extensión o terminal</a>
+<a class="block text-primary hover:text-secondary font-medium transition-colors" href="#honesto">Lo honesto</a>
+<a class="block text-primary hover:text-secondary font-medium transition-colors" href="#preguntas">Preguntas frecuentes</a>
+</nav>
+</div>
+
+<div class="bg-surface-container-high p-space-md space-y-space-sm shadow-sm">
+<span class="font-kicker text-kicker uppercase tracking-widest text-primary font-bold">FICHA TÉCNICA</span>
+<dl class="space-y-space-xs font-caption text-caption">
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Categoría:</dt><dd class="font-semibold text-primary">Claude Code</dd></div>
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Nivel técnico:</dt><dd class="font-semibold text-primary">Básico</dd></div>
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Fuentes citadas:</dt><dd class="font-semibold text-primary">Documentación de Anthropic</dd></div>
+</dl>
+</div>
+</aside>
+</div>
+<section class="w-full mt-space-4xl pt-space-2xl bg-surface-container-lowest p-space-lg shadow-sm">
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-space-xl gap-space-xs">
+<h3 class="font-headline-md text-headline-md text-primary">Continúa explorando el archivo</h3>
+<a class="font-label-md text-label-md text-primary hover:text-secondary uppercase tracking-wider transition-colors flex items-center gap-1" href="../index.html#guias">Ver todas las guías <span class="material-symbols-outlined text-[16px]">arrow_forward</span></a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-col-gap"><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="proteger-datos-ia.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-proteger-datos-ia.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="proteger-datos-ia.html">Cómo proteger tus datos cuando usas IA</a></h4></div></article><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="ia-local-ordenador.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-ia-local-ordenador.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="ia-local-ordenador.html">IA local: correr modelos en tu ordenador</a></h4></div></article><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="analizar-imagenes-pdf-ia.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-analizar-imagenes-pdf-ia.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="analizar-imagenes-pdf-ia.html">Cómo analizar imágenes y PDFs con IA</a></h4></div></article></div></main><footer class="w-full bg-surface-container-low border-t border-outline-variant mt-space-4xl"><div class="max-w-site-max-width mx-auto px-space-md py-space-3xl"><div class="grid grid-cols-1 md:grid-cols-3 gap-col-gap"><div class="space-y-space-sm"><span class="font-headline-md text-headline-md text-primary">El Telar</span><p class="font-body-sm text-body-sm text-on-surface-variant">Publicación independiente de tecnología y automatización con agentes. Contenidos verificados en producción, sin patrocinios opacos ni promesas vacías.</p></div><div><h3 class="font-kicker text-kicker uppercase tracking-wider text-on-surface mb-space-md">SECCIONES</h3><ul class="space-y-space-xs font-body-sm text-body-sm"><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html#guias">Archivo de Guías</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../empieza-aqui.html">Guía para Principiantes</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../guardadas.html">Mis guías guardadas</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../colaboraciones.html">Colaboraciones y prensa</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../sobre-nosotros.html">Manifiesto Editorial</a></li><li class="pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html#despacho">Boletín Semanal</a></li></ul></div><div><h3 class="font-kicker text-kicker uppercase tracking-wider text-on-surface mb-space-md">CONTACTO &amp; PRENSA</h3><div class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant"><p class="font-semibold text-on-surface">contacto@eltelar.es</p><p>Síguenos: <a class="hover:text-primary underline" href="https://www.instagram.com/eltelar_es/" rel="me noopener" target="_blank">Instagram</a> · <a class="hover:text-primary underline" href="https://www.threads.com/@eltelar_es" rel="me noopener" target="_blank">Threads</a> · <a class="hover:text-primary underline" href="https://x.com/eltelar_es" rel="me noopener" target="_blank">X</a></p></div></div></div></div><div class="border-t border-outline-variant py-space-md bg-surface-container-lowest"><div class="max-w-site-max-width mx-auto px-space-md flex flex-col md:flex-row items-center justify-between gap-space-sm text-caption font-caption text-on-surface-variant"><div>© 2026 El Telar. Todos los derechos reservados. Independencia editorial garantizada.</div><div class="flex flex-wrap items-center justify-center gap-space-md"><a class="hover:text-on-surface transition-colors" href="../privacidad.html">Privacidad</a><a class="hover:text-on-surface transition-colors" href="../terminos.html">Términos</a><a class="hover:text-on-surface transition-colors" href="../cookies.html">Cookies</a><a class="hover:text-on-surface transition-colors" href="../aviso-legal.html">Aviso legal</a><a class="hover:text-on-surface transition-colors" href="../sobre-nosotros.html">Sobre nosotros</a><a class="hover:text-on-surface transition-colors" href="../contacto.html">Contacto</a></div></div></div></footer><script defer src="../js/copy-guide.js"></script><script defer src="../js/guide-interactions.js"></script><script defer src="../js/reading-progress.js"></script><script defer src="../js/search.js?v=8"></script><script defer src="../js/entrance.js"></script><script defer src="../js/cookie-consent.js?v=4"></script></body></html>
