@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Agentes que pagan por ti: cómo te autorizan | El Telar</title>
+<meta name="description" content="Cómo se autoriza a un agente de IA a pagar: el token que solo vale para un carrito, el mandato firmado, qué prueba cada uno y en qué punto el riesgo sigue siendo tuyo.">
+<link rel="canonical" href="https://eltelar.es/articulos/agentes-que-pagan-por-ti.html"><link rel="icon" type="image/svg+xml" href="../img/favicon.svg?v=4"><link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32.png?v=4"><link rel="apple-touch-icon" href="../img/apple-touch-icon.png?v=4"><meta name="theme-color" content="#072417"><link rel="manifest" href="../manifest.json"><link rel="alternate" type="application/rss+xml" title="El Telar" href="../feed.xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Agentes que pagan por ti: cómo funciona la autorización y dónde está el riesgo | El Telar">
+<meta property="og:description" content="Cómo se autoriza a un agente de IA a pagar: el token que solo vale para un carrito, el mandato firmado, qué prueba cada uno y en qué punto el riesgo sigue siendo tuyo.">
+<meta property="og:url" content="https://eltelar.es/articulos/agentes-que-pagan-por-ti.html">
+<meta property="og:site_name" content="El Telar">
+<meta property="og:locale" content="es_ES"><meta property="og:image" content="https://eltelar.es/img/og/guia-agentes-que-pagan-por-ti.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Agentes que pagan por ti: cómo funciona la autorización y dónde está el riesgo | El Telar">
+<meta name="twitter:description" content="Cómo se autoriza a un agente de IA a pagar: el token que solo vale para un carrito, el mandato firmado, qué prueba cada uno y en qué punto el riesgo sigue siendo tuyo."><meta name="twitter:image" content="https://eltelar.es/img/og/guia-agentes-que-pagan-por-ti.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Agentes que pagan por ti: cómo funciona la autorización y dónde está el riesgo",
+  "description": "Cómo se autoriza a un agente de IA a pagar: el token que solo vale para un carrito, el mandato firmado, qué prueba cada uno y en qué punto el riesgo sigue siendo tuyo.",
+  "image": "https://eltelar.es/img/og/guia-agentes-que-pagan-por-ti.jpg",
+  "author": {"@type": "Person", "name": "Juan Becerril Castañón", "url": "https://eltelar.es/sobre-nosotros.html#autor"},
+  "publisher": {
+    "@type": "Organization",
+    "name": "El Telar"
+  },
+  "datePublished": "2026-10-23",
+  "dateModified": "2026-10-23",
+  "mainEntityOfPage": "https://eltelar.es/articulos/agentes-que-pagan-por-ti.html",
+  "inLanguage": "es"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Puedo usar esto ya desde España?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A día de hoy, el pago dentro de ChatGPT que Stripe y OpenAI anunciaron el 29 de septiembre de 2025 arrancó limitado a usuarios de ChatGPT en Estados Unidos comprando a vendedores de Etsy radicados allí, con los comercios de Shopify anunciados como «próximamente». El propio comunicado dice que la intención es ampliarlo «a más negocios y consumidores en más territorios», sin dar fechas. Así que si estás en España, lo normal es que el botón no te aparezca todavía. Eso no significa que no te afecte: los estándares se están fijando ahora, y cuando llegue, llegará con las reglas que se escriban estos meses."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Si el agente paga, ¿ve el número de mi tarjeta?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "En el diseño de Stripe, no. La pieza que lo evita se llama Shared Payment Token: Stripe emite un token que permite a una aplicación como ChatGPT iniciar un pago «sin exponer las credenciales de pago del comprador», y ese token está «limitado a un comercio y a un importe de carrito concretos». La idea es que, aunque el token se filtre, no sirve para comprar otra cosa en otro sitio. Ojo con la lectura fácil: eso protege tu número de tarjeta, no tu decisión. Si al agente lo engañan para que arme el carrito equivocado, el token cubrirá exactamente ese carrito equivocado."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué diferencia hay entre un mandato y un permiso normal?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Un permiso corriente dice qué puede hacer una herramienta, en general y hasta que lo revoques. Un mandato, en el diseño de AP2, es un registro firmado criptográficamente de una instrucción concreta tuya: este carrito, estos artículos, este precio. Google lo describe como «contratos digitales a prueba de manipulación» que sirven de «prueba verificable de las instrucciones del usuario». La diferencia práctica está en lo que queda después: un permiso deja un acceso abierto; un mandato deja un rastro de quién autorizó exactamente qué, que es lo que hace falta cuando hay que discutir un cargo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Quién responde si mi agente compra algo que yo no quería?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Esa es la pregunta que todavía no tiene una respuesta limpia, y conviene saberlo antes de delegar. Google nombra la «responsabilidad» —determinar quién responde si una transacción sale fraudulenta o incorrecta— como uno de los tres problemas que su protocolo intenta abordar, y lo que aporta es un rastro de auditoría «no repudiable»: sirve para demostrar qué se autorizó. Demostrar no es lo mismo que resolver. Quién asume la pérdida sigue dependiendo del contrato con tu banco, con la plataforma y con el comercio, y de las reglas de las redes de tarjetas, que están cambiando mientras lees esto. Mientras no esté claro, el supuesto prudente es que el riesgo es tuyo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Hace falta que entienda estos protocolos para protegerme?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No, pero sí hace falta entender una cosa: el límite que pongas antes es tu única defensa real. Los dos diseños coinciden en que el momento que importa es cuando firmas las condiciones —precio máximo, plazo, en qué comercio— y no cuando llega el cargo. Si solo te quedas con una idea de esta guía, que sea esa: revisa el carrito antes de aprobarlo, y cuando delegues algo sin estar delante, pon el techo de gasto más bajo con el que la tarea aún tenga sentido."
+      }
+    }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://eltelar.es/"},
+    {"@type": "ListItem", "position": 2, "name": "Guías", "item": "https://eltelar.es/index.html#guias"},
+    {"@type": "ListItem", "position": 3, "name": "Agentes que pagan por ti", "item": "https://eltelar.es/articulos/agentes-que-pagan-por-ti.html"}
+  ]
+}
+</script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link rel="preload" href="../fonts/newsreader-normal-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/inter-normal-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="../css/fonts.css?v=1"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,leaderboard,lightbulb,lock,lock_clock,lock_open,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,volunteer_activism,warning,work,workspace_premium&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,leaderboard,lightbulb,lock,lock_clock,lock_open,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,volunteer_activism,warning,work,workspace_premium&amp;display=swap" rel="stylesheet"/></noscript>
+<style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><link rel="stylesheet" href="../css/tailwind.css"><link rel="stylesheet" href="../css/entrance.css?v=20"><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}(function(){var c=null;try{c=localStorage.getItem('eltelar-cookie-consent')}catch(e){}var g=c==='accepted'?'granted':'denied';gtag('consent','default',{ad_storage:g,ad_user_data:g,ad_personalization:g,analytics_storage:g,wait_for_update:500});window.adsbygoogle=window.adsbygoogle||[];if(g!=='granted'){window.adsbygoogle.requestNonPersonalizedAds=1;}})();</script><script>window.addEventListener("load",function(){setTimeout(function(){var s=document.createElement("script");s.async=true;s.src="https://www.googletagmanager.com/gtag/js?id=G-4DPTKEG79N";document.head.appendChild(s);},800);});</script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4DPTKEG79N');</script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8239907995939753" crossorigin="anonymous"></script></head>
+<body class="bg-background font-body-md text-on-surface antialiased">
+<header class="w-full bg-surface-container-lowest border-b border-outline-variant"><div class="border-b border-outline-variant py-space-xxs px-space-md hidden md:block"><div class="max-w-site-max-width mx-auto flex items-center justify-between font-kicker text-kicker text-on-surface-variant uppercase tracking-wider"><span>EDICIÓN DIGITAL // ACTUALIZADO 2026 // EL TELAR &amp; AGENTES</span><span>MADRID · REMOTO</span><span>SIN HUMO · 100% PRODUCCIÓN</span></div></div><div class="max-w-site-max-width mx-auto px-space-md py-space-md sm:py-space-xl text-center"><p class="hidden sm:block font-kicker text-kicker uppercase tracking-widest text-on-surface-variant mb-space-xs">Publicación Independiente de Tecnología &amp; Agentes</p><a class="inline-block" href="../index.html"><div class="font-display text-display max-sm:text-[40px] max-sm:leading-none text-primary tracking-tight">El Telar</div></a><p class="hidden sm:block font-caption text-caption uppercase tracking-widest text-on-surface-variant mt-space-xs">EL BOLETÍN Y ARCHIVO PRÁCTICO DE INTELIGENCIA ARTIFICIAL Y AGENTES AUTÓNOMOS</p></div><div class="border-t border-b border-outline-variant"><div class="max-w-site-max-width mx-auto px-space-md flex items-center justify-between gap-space-sm h-14"><nav class="flex items-center gap-space-md sm:gap-space-lg h-full min-w-0 overflow-x-auto [scrollbar-width:none] whitespace-nowrap site-nav"><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../index.html#guias">GUÍAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../noticias/index.html">NOTICIAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../prompts/index.html">PROMPTS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../herramientas/index.html">HERRAMIENTAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../empieza-aqui.html">EMPIEZA AQUÍ</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../sobre-nosotros.html">SOBRE NOSOTROS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../contacto.html">CONTACTO</a></nav><div class="flex items-center gap-space-md"><button id="search-trigger" type="button" aria-label="Buscar en las guías" class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[20px]">search</span></button><a class="hidden sm:inline-block bg-primary-container text-surface px-space-md py-space-xs font-label-md text-label-md uppercase tracking-wider hover:bg-primary transition-colors" href="../index.html#despacho">SUSCRÍBETE GRATIS</a></div></div></div><div class="hidden md:block bg-surface-container-low border-b border-outline-variant py-space-xs px-space-md"><div class="max-w-site-max-width mx-auto text-center"><p class="font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">71 GUÍAS COMPLETAS EN EXPANSIÓN · ACTUALIZADO A MODELOS 2026 · PROBADO EN TERMINAL Y FLUJOS REALES · CERO HUMO NI TEORÍA VACÍA</p></div></div></header>
+<main class="w-full max-w-site-max-width mx-auto px-space-md py-space-xl"><div class="flex flex-col w-full">
+<nav aria-label="Ruta de navegación" class="w-full mb-space-lg">
+<ol class="flex flex-wrap items-center gap-space-xs font-kicker text-kicker text-on-surface-variant uppercase tracking-wider">
+<li><a class="hover:text-primary transition-colors" href="../index.html">Inicio</a></li>
+<li class="text-on-surface-variant">/</li>
+<li><a class="hover:text-primary transition-colors" href="../index.html#guias">Guías</a></li>
+<li class="text-on-surface-variant">/</li>
+<li class="text-primary font-bold truncate max-w-[280px] sm:max-w-md">Agentes que pagan</li>
+</ol>
+</nav>
+<header class="w-full pb-space-xl mb-space-2xl">
+<div class="flex flex-wrap items-center gap-space-xs mb-space-md">
+<span class="bg-surface-container-high text-secondary px-space-sm py-1 font-kicker text-kicker uppercase tracking-widest">AGENTES // PAGOS</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight max-w-editorial-max mb-space-md">
+          Agentes que pagan por ti: cómo funciona la autorización y dónde está el riesgo
+        </h1>
+<p class="font-lead-paragraph text-lead-paragraph text-on-surface-variant max-w-editorial-max leading-relaxed mb-space-lg">
+          Que un agente te recomiende un producto y que un agente lo pague son dos cosas muy distintas, y la segunda rompe un supuesto en el que se apoyaba todo el sistema de pagos: que hay una persona pulsando «comprar». Qué mecanismos lo sustituyen, qué prueba cada uno y en qué punto el riesgo vuelve a ser tuyo.
+        </p>
+<div class="bg-surface-container-lowest p-space-md flex flex-wrap items-center justify-between gap-y-3 shadow-sm">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 bg-primary text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">credit_card</span>
+</div>
+<div>
+<div class="font-label-md text-label-md text-on-surface font-semibold">Por la Redacción de El Telar</div><div class="font-caption text-caption text-on-surface-variant">Guías prácticas de IA y agentes, probadas en flujos de trabajo reales antes de publicarlas.</div>
+<button class="inline-flex items-center gap-1 mt-2 px-3 py-1.5 bg-surface-container text-primary font-label-md text-[12px] font-semibold uppercase tracking-wider hover:bg-surface-container-high transition-colors" id="copy-guide-btn" type="button"><span class="material-symbols-outlined text-[16px]">content_copy</span>Copiar guía</button>
+</div>
+</div>
+<div class="flex items-center gap-space-lg text-on-surface-variant font-caption text-caption uppercase tracking-wider">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">schedule</span> 13 min de lectura</span>
+</div>
+</div>
+</header>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-col-gap">
+<article class="lg:col-span-8 flex flex-col space-y-space-xl">
+<figure data-hero class="space-y-space-xs"><img class="w-full border border-outline-variant" src="../img/guias/hero-agentes-que-pagan-por-ti.jpg" alt="Anuncio del Agent Payments Protocol en el blog de Google Cloud" width="1280" height="720" fetchpriority="high" decoding="async"/><figcaption class="font-caption text-caption text-on-surface-variant">Captura de pantalla del anuncio original: <a class="underline" href="https://cloud.google.com/blog/products/ai-machine-learning/announcing-agents-to-payments-ap2-protocol" rel="nofollow noopener" target="_blank">cloud.google.com</a>, 16 de septiembre de 2025.</figcaption></figure>
+<div class="relative bg-surface-container-lowest p-space-lg shadow-sm">
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed text-justify">
+<span class="float-left font-display text-primary text-6xl leading-none pr-3 pt-1 font-normal">D</span>
+          urante treinta años, todo el sistema de pagos por internet se ha apoyado en un supuesto que nadie escribía porque parecía obvio: que al final del proceso hay una persona mirando una pantalla y decidiendo pulsar «comprar». Los agentes rompen ese supuesto, y no es un detalle de implementación — es el cimiento. Google lo dice con esas palabras en el anuncio de su protocolo de pagos: los sistemas actuales «generalmente asumen que un humano está pulsando directamente “comprar” en una superficie de confianza».
+        </p>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Esta guía va de qué se ha puesto en el sitio que ocupaba esa persona. No va de si conviene dejar que una IA te compre cosas: eso lo decides tú, y de momento en España casi no puedes. Va de entender el mecanismo antes de que llegue, porque las reglas que van a gobernar esos pagos se están escribiendo ahora mismo, y la pieza que te protege no es la tecnología — es el límite que pones antes de delegar.
+        </p>
+<section id="sec-1" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight mb-space-md">1. Las tres preguntas que no sabe responder un pago normal</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Cuando compras tú, tu banco y el comercio dan por buenas tres cosas a la vez sin tener que comprobarlas por separado: que querías comprar, que querías comprar <em>eso</em>, y que si algo sale mal hay alguien identificable a quien reclamar. Un agente separa las tres, y cada una se convierte en un problema distinto. El anuncio de Google las nombra sin rodeos.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          La primera es la <strong>autorización</strong>: «demostrar que un usuario dio a un agente la autoridad específica para hacer una compra concreta». No basta con que le hayas dado acceso a tu cuenta en general; hace falta probar que autorizaste <em>esta</em> compra. La segunda es la <strong>autenticidad</strong>: «permitir que un comercio tenga la seguridad de que la petición de un agente refleja fielmente la verdadera intención del usuario». El comercio recibe una orden de un programa y necesita saber si de verdad sale de ti. Y la tercera es la <strong>responsabilidad</strong>: «determinar quién responde si ocurre una transacción fraudulenta o incorrecta».
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Merece la pena quedarse con que son tres y no una, porque los mecanismos que han aparecido resuelven bien las dos primeras y bastante mal la tercera. Volveremos a eso, porque es donde está tu dinero.
+        </p>
+</section>
+<section id="sec-2" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight mb-space-md">2. Dos piezas distintas que se confunden todo el rato</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          En los últimos meses han aparecido varios estándares y se mezclan en las noticias como si compitieran por lo mismo. En su mayoría no compiten: resuelven capas distintas. La forma más útil de separarlos es preguntar qué responde cada uno.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Por un lado está el <strong>qué se compra y quién cobra</strong>: cómo viaja el pedido del agente al comercio, cómo se cobra sin que el agente toque tu tarjeta, quién calcula los impuestos y quién envía el paquete. Ahí está el Agentic Commerce Protocol (ACP), que Stripe y OpenAI publicaron juntos el 29 de septiembre de 2025 y que es lo que mueve el pago dentro de ChatGPT.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Por otro lado está el <strong>quién lo autorizó y cómo se prueba</strong>: qué queda registrado de tu decisión, firmado de forma que ni el agente ni el comercio puedan cambiarlo después. Ahí está el Agent Payments Protocol (AP2), que Google anunció el 16 de septiembre de 2025 con más de sesenta organizaciones — entre ellas Mastercard, PayPal, American Express, Adyen, Coinbase, Revolut, Worldpay, Etsy, Intuit, JCB y UnionPay International.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          La documentación de Google para desarrolladores lo resume mejor que cualquier titular: una capa se ocupa de qué pides y a quién, y la otra de quién aprobó la compra y del rastro que queda. No son alternativas; están pensadas para encajar. AP2 además no se ata a un medio de pago: cubre «desde tarjetas de crédito y débito hasta stablecoins y transferencias bancarias inmediatas», y puede usarse como extensión de A2A y del propio <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="mcp-explicado.html">MCP</a>, el estándar con el que los asistentes se conectan a herramientas externas.
+        </p>
+</section>
+<section id="sec-3" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight mb-space-md">3. El token que solo sirve para un carrito</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          El mecanismo de ACP es fácil de contar y es el que más probablemente te toque primero. Pides algo en el chat, el asistente te propone productos y, cuando decides comprar, aparece un formulario de pago dentro de la propia conversación. Pagas con tu método habitual. Hasta aquí, nada nuevo.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Lo interesante pasa justo después. Stripe emite entonces un <strong>Shared Payment Token</strong>, una pieza nueva cuya única función es permitir que una aplicación como ChatGPT inicie un pago «sin exponer las credenciales de pago del comprador». Es decir: el asistente nunca ve tu tarjeta. Y el token no es una llave general — según el comunicado de Stripe, está «limitado a un comercio y a un importe de carrito concretos». Si se filtrara, no sirve para comprar otra cosa en otro sitio.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          El pedido viaja después al sistema del comercio, y ahí está la otra decisión de diseño que conviene entender: el comercio sigue mandando. Es él quien «puede aceptar o rechazar el pedido, cobrar el método de pago, calcular y remitir el impuesto sobre ventas», y quien se ocupa del envío y las devoluciones. Stripe insiste en que los comercios conservan el control de qué productos se pueden vender, cómo se presentan y cómo se procesan las transacciones. No es un intermediario que se queda con la relación: es un canal más.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Y es un estándar abierto de verdad, no un carril propietario: el propio comunicado dice que los negocios que no procesan con Stripe también pueden adoptarlo con sus proveedores de pago actuales. Salesforce anunció soporte poco después. Para un comercio, eso significa una integración que sirve para varios agentes en vez de una por cada asistente que aparezca.
+        </p>
+</section>
+<section id="sec-4" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight mb-space-md">4. El mandato firmado y la cadena de pruebas</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          AP2 ataca el otro lado del problema. Su pieza central son los <strong>mandatos</strong>: Google los describe como «contratos digitales a prueba de manipulación, firmados criptográficamente, que sirven de prueba verificable de las instrucciones del usuario», firmados mediante credenciales verificables. Dicho en claro: en vez de un permiso abierto, cada decisión tuya deja un documento firmado que nadie puede alterar después.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Hay dos que importan. El <strong>mandato de intención</strong> recoge lo que pediste y, en palabras de Google, «aporta el contexto auditable de toda la interacción». El <strong>mandato de carrito</strong> se firma cuando apruebas un carrito concreto y «crea un registro seguro e inalterable de los artículos y el precio exactos, garantizando que lo que ves es lo que pagas». Esa última frase es el resumen de para qué sirve todo el invento: que el carrito que aprobaste y el que se cobra sean el mismo.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Encadenados —de la intención, al carrito, al pago— producen lo que Google llama un rastro de auditoría «no repudiable»: el método de pago queda vinculado al contenido verificado del carrito. Si mañana discutes un cargo, no estás discutiendo tu palabra contra la de un programa; hay una firma que dice qué autorizaste exactamente.
+        </p>
+<div class="bg-surface-container-low border-l-4 border-secondary p-space-md">
+<p class="font-body-sm text-body-sm text-on-surface leading-relaxed">Conviene no confundir dos cosas que suenan igual. Que exista un rastro firmado de lo que autorizaste no significa que el dinero se te devuelva si sale mal: significa que se puede demostrar qué pasó. Quién paga el destrozo es otra discusión, y sigue abierta.</p>
+</div>
+</section>
+<section id="sec-5" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight mb-space-md">5. Cuando no estás delante</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Todo lo anterior describe una compra en la que estás mirando. El caso que de verdad cambia las cosas es el otro, y los dos diseños lo contemplan: el encargo que dejas hecho para que se ejecute cuando se cumplan unas condiciones. «Cómprame las zapatillas cuando bajen de ochenta euros» es el ejemplo de manual.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          En AP2, ahí firmas el mandato de intención por adelantado, y es ese documento el que «especifica las reglas del juego: límites de precio, plazos y otras condiciones». Después el agente puede generar el mandato de carrito por su cuenta «una vez se cumplan tus condiciones precisas». Fíjate en lo que acaba de pasar: has movido tu decisión de un momento en el que estabas mirando a un documento que escribiste antes. Las condiciones que pusiste en ese documento <em>son</em> tu control. No hay una segunda oportunidad de revisar el carrito, porque el sentido del encargo era precisamente que no tuvieras que estar.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          De ahí sale la única regla práctica que yo defendería sin matices en toda esta guía: cuando delegues una compra sin estar delante, escribe el límite más bajo con el que la tarea siga teniendo sentido, no el más alto que te puedas permitir. Es exactamente el mismo razonamiento que aplicamos a los <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="limites-gasto-agentes-ia.html">límites de gasto de un agente</a>, y por el mismo motivo: el techo no está para el caso normal, está para el día que algo se comporta de forma rara.
+        </p>
+</section>
+<section id="sec-6" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight mb-space-md">6. Dónde está el riesgo de verdad</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Los dos protocolos resuelven bien un problema concreto: que el agente no toque tu tarjeta y que quede constancia firmada de lo que aprobaste. Ninguno resuelve los que vienen ahora, y conviene tenerlos presentes porque son los que te van a costar dinero.
+        </p>
+<div class="space-y-space-sm">
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h3 class="font-label-md text-label-md text-primary font-bold mb-1">La página que tu agente lee puede darle órdenes</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Un agente que compra tiene que leer páginas de productos, descripciones y reseñas — contenido que no controlas ni tú ni él. Ese es el terreno natural de la <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="prompt-injection-agentes-ia.html">inyección de prompts</a>: instrucciones escondidas en el contenido que el agente procesa como si fueran tuyas. Y aquí el token acotado no te salva, porque el ataque no va contra el pago: va contra la decisión. Si consiguen que el agente arme otro carrito, el sistema firmará y cobrará ese otro carrito con toda la corrección del mundo.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h3 class="font-label-md text-label-md text-primary font-bold mb-1">El carrito que no es el que pediste</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">No hace falta un ataque para que la compra salga mal. Basta un modelo que confunda una referencia, una talla o una unidad de medida, y los modelos siguen haciendo eso — es el mismo fallo que describimos en las <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="alucinaciones-ia.html">alucinaciones</a>, solo que aquí termina en un cargo. El mandato de carrito garantiza que lo que ves es lo que pagas; no garantiza que lo que ves sea lo que pediste. Esa comprobación sigue siendo tuya, y es la razón por la que vale la pena leer el carrito aunque dé pereza.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h3 class="font-label-md text-label-md text-primary font-bold mb-1">La tentación de dar la contraseña</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Mientras los carriles oficiales no lleguen a tu país o a tu banco, aparecerán herramientas que ofrezcan el mismo resultado por la vía rápida: entrar en tu cuenta con tus credenciales. Es el atajo que conviene no tomar, y no lo decimos solo nosotros — varios bancos grandes han empezado a bloquear a los agentes que entran con la contraseña del cliente. Si te interesa el detalle de por qué una contraseña es la peor forma de dar acceso y qué usar en su lugar, está en <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="permisos-agente-ia-sin-contrasenas.html">cómo dar permisos a un agente sin darle tus contraseñas</a>.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md shadow-sm">
+<h3 class="font-label-md text-label-md text-primary font-bold mb-1">Quién responde sigue sin estar claro</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">De las tres preguntas del principio, esta es la que sigue sin respuesta operativa. Los protocolos aportan pruebas; no reparten pérdidas. Quién asume un cargo indebido depende de tu contrato con el banco, de las condiciones de la plataforma, de las del comercio y de las reglas de las redes de tarjetas, que están en plena revisión. Hasta que eso se asiente, el supuesto prudente para ti es el pesimista: si lo autorizaste —aunque fuera con un mandato firmado tres semanas antes—, la discusión la empiezas cuesta arriba.</p>
+</div>
+</div>
+</section>
+<section id="sec-7" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight mb-space-md">7. Qué puedes hacer hoy, en concreto</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Aunque el botón todavía no te aparezca, hay decisiones que ya puedes tomar y que te van a servir el día que llegue.
+        </p>
+<ul class="list-disc pl-space-lg space-y-space-xs font-body-md text-body-md text-on-surface-variant leading-relaxed">
+<li><strong>Trata el carrito como el momento de la verdad.</strong> Es el único punto en el que tu revisión es barata. Después, lo que discutes es un cargo.</li>
+<li><strong>Separa el dinero.</strong> Si vas a dejar que un agente compre, que lo haga contra una tarjeta virtual o una cuenta con saldo limitado, no contra la que te paga la hipoteca. Es la medida más tonta y la que más daño evita.</li>
+<li><strong>Pon el techo bajo al delegar.</strong> El límite del mandato no es una formalidad: es la única frontera que sigue en pie cuando el agente se equivoca o lo engañan.</li>
+<li><strong>Desconfía de quien te pida la contraseña del banco.</strong> Ningún diseño oficial de los que hemos descrito la necesita. Si una herramienta te la pide, lo que te ofrece no es esto.</li>
+<li><strong>Guarda los comprobantes.</strong> El valor del rastro firmado lo notas solo si sabes dónde está. Localiza, en la herramienta que uses, dónde quedan los pedidos y las autorizaciones antes de necesitarlo.</li>
+<li><strong>No des por bueno un precio porque lo diga el agente.</strong> Un asistente que compara precios también puede equivocarse al leerlos, y el ahorro que te promete es justo el tipo de afirmación que nadie verifica.</li>
+</ul>
+</section>
+<section id="sec-8" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight mb-space-md">8. Lo que todavía no está resuelto</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Hay tres huecos que conviene vigilar, y los señalamos porque cualquiera que te cuente esto como un asunto cerrado te está vendiendo algo.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          El primero es <strong>geográfico</strong>. El pago dentro de ChatGPT nació limitado a Estados Unidos y a vendedores de Etsy radicados allí, con Shopify «próximamente» y una promesa de ampliación «a más territorios» sin calendario. Mientras eso no cambie, lo que llegue a España llegará con las reglas ya escritas.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          El segundo es el <strong>coste</strong>. Ni el comunicado de Stripe ni la documentación pública detallan qué paga un comercio por vender a través de un agente. Circulan cifras concretas en artículos de terceros que no aparecen en ninguna fuente primaria, así que no las vas a leer aquí. Si eres comercio, es la pregunta que hay que hacer antes de integrarse, no después.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          El tercero es la <strong>capa de identidad de las redes de tarjetas</strong>. Visa y Mastercard llevan meses anunciando mecanismos para que un comercio pueda verificar que un agente es quien dice ser y que actúa por encargo de un cliente concreto. Es la pieza que falta para que esto funcione fuera de los jardines de OpenAI o Google, pero las fechas y los detalles que circulan en explicadores de terceros se contradicen entre sí, y no hemos podido contrastarlos en fuentes primarias. Si te afecta profesionalmente, el sitio donde mirar son las salas de prensa de Visa y Mastercard, no los resúmenes.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Y una cuarta cosa, que no es un hueco sino una advertencia de fondo: ninguno de estos protocolos ha ganado todavía. Conviven ACP, AP2, el camino de las criptomonedas por la extensión x402 que Google lanzó con Coinbase, y los carriles propios de cada red. Si estás decidiendo dónde invertir trabajo, la pregunta útil no es cuál es mejor, sino cuál usan los sitios donde tus clientes compran — y esa respuesta cambia cada trimestre, igual que pasa cuando hay que <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="migrar-de-modelo-ia.html">migrar de modelo sin romper nada</a>.
+        </p>
+</section>
+<section id="sec-9" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight mb-space-md">9. La idea que merece la pena llevarse</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          El trabajo técnico de estos protocolos es serio y resuelve cosas reales: tu tarjeta deja de pasar por manos del agente, y tu decisión deja de ser una afirmación que nadie puede comprobar. Eso es un avance, no marketing.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Pero los dos diseños comparten una consecuencia que casi nunca se cuenta: trasladan el momento decisivo <em>hacia atrás</em>. Antes decidías al pulsar «comprar»; ahora decides al firmar las condiciones, que puede ser semanas antes y con mucha menos atención. Toda la seguridad criptográfica del mundo protege fielmente la instrucción que diste — incluida la instrucción imprudente. Si vas a delegar compras, el trabajo no está en entender las firmas: está en escribir límites que aguanten el día que algo salga raro. Y si quieres la versión más general de ese razonamiento aplicada a cualquier agente, no solo a los que pagan, está en <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="limites-gasto-agentes-ia.html">límites de gasto para agentes</a> y en <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="que-es-un-agente-ia.html">qué es exactamente un agente de IA</a>.
+        </p>
+</section>
+<section id="faq" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight mb-space-md">Preguntas frecuentes</h2>
+<div class="space-y-space-sm">
+<div class="border border-outline-variant">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-label-md text-label-md text-primary font-semibold">¿Puedo usar esto ya desde España?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="hidden px-space-md pb-space-md">
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">A día de hoy, el pago dentro de ChatGPT que Stripe y OpenAI anunciaron el 29 de septiembre de 2025 arrancó limitado a usuarios de ChatGPT en Estados Unidos comprando a vendedores de Etsy radicados allí, con los comercios de Shopify anunciados como «próximamente». El propio comunicado dice que la intención es ampliarlo «a más negocios y consumidores en más territorios», sin dar fechas. Así que si estás en España, lo normal es que el botón no te aparezca todavía. Eso no significa que no te afecte: los estándares se están fijando ahora, y cuando llegue, llegará con las reglas que se escriban estos meses.</p>
+</div>
+</div>
+<div class="border border-outline-variant">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-label-md text-label-md text-primary font-semibold">Si el agente paga, ¿ve el número de mi tarjeta?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="hidden px-space-md pb-space-md">
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">En el diseño de Stripe, no. La pieza que lo evita se llama Shared Payment Token: Stripe emite un token que permite a una aplicación como ChatGPT iniciar un pago «sin exponer las credenciales de pago del comprador», y ese token está «limitado a un comercio y a un importe de carrito concretos». La idea es que, aunque el token se filtre, no sirve para comprar otra cosa en otro sitio. Ojo con la lectura fácil: eso protege tu número de tarjeta, no tu decisión. Si al agente lo engañan para que arme el carrito equivocado, el token cubrirá exactamente ese carrito equivocado.</p>
+</div>
+</div>
+<div class="border border-outline-variant">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-label-md text-label-md text-primary font-semibold">¿Qué diferencia hay entre un mandato y un permiso normal?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="hidden px-space-md pb-space-md">
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Un permiso corriente dice qué puede hacer una herramienta, en general y hasta que lo revoques. Un mandato, en el diseño de AP2, es un registro firmado criptográficamente de una instrucción concreta tuya: este carrito, estos artículos, este precio. Google lo describe como «contratos digitales a prueba de manipulación» que sirven de «prueba verificable de las instrucciones del usuario». La diferencia práctica está en lo que queda después: un permiso deja un acceso abierto; un mandato deja un rastro de quién autorizó exactamente qué, que es lo que hace falta cuando hay que discutir un cargo.</p>
+</div>
+</div>
+<div class="border border-outline-variant">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-label-md text-label-md text-primary font-semibold">¿Quién responde si mi agente compra algo que yo no quería?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="hidden px-space-md pb-space-md">
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Esa es la pregunta que todavía no tiene una respuesta limpia, y conviene saberlo antes de delegar. Google nombra la «responsabilidad» —determinar quién responde si una transacción sale fraudulenta o incorrecta— como uno de los tres problemas que su protocolo intenta abordar, y lo que aporta es un rastro de auditoría «no repudiable»: sirve para demostrar qué se autorizó. Demostrar no es lo mismo que resolver. Quién asume la pérdida sigue dependiendo del contrato con tu banco, con la plataforma y con el comercio, y de las reglas de las redes de tarjetas, que están cambiando mientras lees esto. Mientras no esté claro, el supuesto prudente es que el riesgo es tuyo.</p>
+</div>
+</div>
+<div class="border border-outline-variant">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-label-md text-label-md text-primary font-semibold">¿Hace falta que entienda estos protocolos para protegerme?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="hidden px-space-md pb-space-md">
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">No, pero sí hace falta entender una cosa: el límite que pongas antes es tu única defensa real. Los dos diseños coinciden en que el momento que importa es cuando firmas las condiciones —precio máximo, plazo, en qué comercio— y no cuando llega el cargo. Si solo te quedas con una idea de esta guía, que sea esa: revisa el carrito antes de aprobarlo, y cuando delegues algo sin estar delante, pon el techo de gasto más bajo con el que la tarea aún tenga sentido.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="fuentes" class="space-y-space-md">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight mb-space-md">Fuentes</h2>
+<ul class="list-disc pl-space-lg space-y-space-xxs font-body-sm text-body-sm text-on-surface-variant">
+<li><a class="text-primary underline" href="https://stripe.com/newsroom/news/stripe-openai-instant-checkout" rel="nofollow noopener" target="_blank">Stripe, anuncio de Instant Checkout en ChatGPT y publicación del Agentic Commerce Protocol</a> (29 de septiembre de 2025, fuente primaria).</li>
+<li><a class="text-primary underline" href="https://stripe.com/blog/developing-an-open-standard-for-agentic-commerce" rel="nofollow noopener" target="_blank">Stripe, sobre el desarrollo de un estándar abierto para el comercio con agentes</a>.</li>
+<li><a class="text-primary underline" href="https://cloud.google.com/blog/products/ai-machine-learning/announcing-agents-to-payments-ap2-protocol" rel="nofollow noopener" target="_blank">Google Cloud, anuncio del Agent Payments Protocol (AP2)</a> (16 de septiembre de 2025, fuente primaria).</li>
+<li><a class="text-primary underline" href="https://developers.googleblog.com/developers-guide-to-ai-agent-protocols/" rel="nofollow noopener" target="_blank">Google Developers Blog, guía de protocolos de agentes</a>, sobre el reparto de papeles entre capas.</li>
+<li><a class="text-primary underline" href="https://www.salesforce.com/news/press-releases/2025/10/14/stripe-openai-agentic-commerce-protocol-announcement/" rel="nofollow noopener" target="_blank">Salesforce, soporte del Agentic Commerce Protocol en colaboración con Stripe</a> (14 de octubre de 2025).</li>
+</ul>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Las citas entre comillas son traducción nuestra de los comunicados originales en inglés. No incluimos cifras de comisiones ni fechas de los programas de Visa y Mastercard porque no hemos podido contrastarlas en fuentes primarias: los explicadores de terceros que las publican se contradicen entre sí.</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">¿Ves un error? <a class="underline text-primary" href="../contacto.html">Avísanos</a> y lo corregimos en la <a class="underline text-primary" href="../fe-de-erratas.html">fe de erratas</a>.</p>
+</section>
+</article>
+<aside class="lg:col-span-4 flex flex-col space-y-space-xl">
+<div class="bg-surface-container-lowest p-space-lg shadow-sm sticky top-space-md">
+<div class="flex items-center justify-between mb-space-sm pb-space-xs">
+<span class="font-kicker text-kicker uppercase tracking-widest text-primary font-bold">ÍNDICE DE LA GUÍA</span>
+<span class="material-symbols-outlined text-on-surface-variant text-base">format_list_bulleted</span>
+</div>
+<nav class="space-y-space-xs font-body-sm text-body-sm">
+<a class="block text-primary hover:text-secondary font-medium transition-colors" href="#sec-1">Las tres preguntas</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-2">Dos piezas que se confunden</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-3">El token de un solo carrito</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-4">El mandato firmado</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-5">Cuando no estás delante</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-6">Dónde está el riesgo</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-7">Qué hacer hoy</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-8">Lo que no está resuelto</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#faq">Preguntas frecuentes</a>
+</nav>
+</div>
+<div class="bg-surface-container-high p-space-md space-y-space-sm shadow-sm">
+<span class="font-kicker text-kicker uppercase tracking-widest text-primary font-bold">FICHA TÉCNICA</span>
+<dl class="space-y-space-xs font-caption text-caption">
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Categoría:</dt><dd class="font-semibold text-primary">Agentes y automatización</dd></div>
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Nivel técnico:</dt><dd class="font-semibold text-primary">Intermedio</dd></div>
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Fuentes citadas:</dt><dd class="font-semibold text-primary">Comunicado de Stripe sobre Instant Checkout y el Agentic Commerce Protocol (29 de septiembre de 2025) y su blog sobre el estándar abierto; anuncio del Agent Payments Protocol de Google Cloud (16 de septiembre de 2025) y la guía de protocolos de agentes del Google Developers Blog; nota de prensa de Salesforce sobre el soporte de ACP (14 de octubre de 2025).</dd></div>
+</dl>
+</div>
+<div class="bg-surface-container-low border-l-4 border-secondary p-space-md">
+<p class="font-body-sm text-body-sm text-on-surface leading-relaxed">Esta área se mueve muy rápido y buena parte de lo anunciado todavía no está disponible en España. Comprueba siempre en la fuente primaria qué funciona hoy en tu país y con tu banco antes de dar por hecho que algo de lo descrito aquí ya te aplica.</p>
+</div>
+</aside>
+</div>
+<section class="w-full mt-space-4xl pt-space-2xl bg-surface-container-lowest p-space-lg shadow-sm">
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-space-xl gap-space-xs">
+<h3 class="font-headline-md text-headline-md text-primary">Continúa explorando el archivo</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-col-gap"><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="limites-gasto-agentes-ia.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/portadas/limites-gasto-agentes-ia.svg" alt="" width="1600" height="520" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="limites-gasto-agentes-ia.html">Límites de gasto para agentes de IA que funcionan</a></h4></div></article><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="permisos-agente-ia-sin-contrasenas.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/portadas/permisos-agente-ia-sin-contrasenas.svg" alt="" width="1600" height="520" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="permisos-agente-ia-sin-contrasenas.html">Cómo dar permisos a un agente de IA sin darle tus contraseñas</a></h4></div></article><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="prompt-injection-agentes-ia.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/portadas/prompt-injection-agentes-ia.svg" alt="" width="1600" height="520" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="prompt-injection-agentes-ia.html">Prompt injection: cómo pueden manipular a tu agente de IA</a></h4></div></article></div>
+</section>
+</div></main><footer class="w-full bg-surface-container-low border-t border-outline-variant mt-space-4xl"><div class="max-w-site-max-width mx-auto px-space-md py-space-3xl"><div class="grid grid-cols-1 md:grid-cols-3 gap-col-gap"><div class="space-y-space-sm"><span class="font-headline-md text-headline-md text-primary">El Telar</span><p class="font-body-sm text-body-sm text-on-surface-variant">Publicación independiente de tecnología y automatización con agentes. Contenidos verificados en producción, sin patrocinios opacos ni promesas vacías.</p></div><div><h3 class="font-kicker text-kicker uppercase tracking-wider text-on-surface mb-space-md">SECCIONES</h3><ul class="space-y-space-xs font-body-sm text-body-sm"><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html#guias">Archivo de Guías</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../empieza-aqui.html">Guía para Principiantes</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../guardadas.html">Mis guías guardadas</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../colaboraciones.html">Colaboraciones y prensa</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../sobre-nosotros.html">Manifiesto Editorial</a></li><li class="pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html#despacho">Boletín Semanal</a></li></ul></div><div><h3 class="font-kicker text-kicker uppercase tracking-wider text-on-surface mb-space-md">CONTACTO &amp; PRENSA</h3><div class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant"><p class="font-semibold text-on-surface">contacto@eltelar.es</p><p>Síguenos: <a class="hover:text-primary underline" href="https://www.instagram.com/eltelar_es/" rel="me noopener" target="_blank">Instagram</a> · <a class="hover:text-primary underline" href="https://www.threads.com/@eltelar_es" rel="me noopener" target="_blank">Threads</a> · <a class="hover:text-primary underline" href="https://x.com/eltelar_es" rel="me noopener" target="_blank">X</a></p></div></div></div></div><div class="border-t border-outline-variant py-space-md bg-surface-container-lowest"><div class="max-w-site-max-width mx-auto px-space-md flex flex-col md:flex-row items-center justify-between gap-space-sm text-caption font-caption text-on-surface-variant"><div>© 2026 El Telar. Todos los derechos reservados. Independencia editorial garantizada.</div><div class="flex flex-wrap items-center justify-center gap-space-md"><a class="hover:text-on-surface transition-colors" href="../privacidad.html">Privacidad</a><a class="hover:text-on-surface transition-colors" href="../terminos.html">Términos</a><a class="hover:text-on-surface transition-colors" href="../cookies.html">Cookies</a><a class="hover:text-on-surface transition-colors" href="../aviso-legal.html">Aviso legal</a><a class="hover:text-on-surface transition-colors" href="../sobre-nosotros.html">Sobre nosotros</a><a class="hover:text-on-surface transition-colors" href="../contacto.html">Contacto</a></div></div></div></footer><script defer src="../js/copy-guide.js"></script><script defer src="../js/guide-interactions.js"></script><script defer src="../js/reading-progress.js"></script><script defer src="../js/search.js?v=8"></script><script defer src="../js/entrance.js"></script><script defer src="../js/cookie-consent.js?v=4"></script></body></html>

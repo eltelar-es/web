@@ -53,8 +53,12 @@
     ],
     "related": [
       {
-        "title": "Casa, salud y familia con IA",
-        "url": "../articulos/casa-salud-familia.html"
+        "title": "Alucinaciones de la IA: cómo detectarlas",
+        "url": "../articulos/alucinaciones-ia.html"
+      },
+      {
+        "title": "Grounding: conectar la IA a la realidad",
+        "url": "../articulos/grounding-evitar-alucinaciones.html"
       }
     ],
     "photo": {
@@ -108,8 +112,12 @@
     ],
     "related": [
       {
-        "title": "Seguridad y privacidad con IA",
-        "url": "../articulos/seguridad-privacidad.html"
+        "title": "Claude Code, Cursor o Copilot: cuál elegir",
+        "url": "../articulos/elegir-ia-para-programar.html"
+      },
+      {
+        "title": "Alucinaciones de la IA: cómo detectarlas",
+        "url": "../articulos/alucinaciones-ia.html"
       }
     ],
     "photo": {
@@ -172,8 +180,12 @@
     ],
     "related": [
       {
-        "title": "Seguridad y privacidad con IA",
-        "url": "../articulos/seguridad-privacidad.html"
+        "title": "Prompt injection: cómo protegerte",
+        "url": "../articulos/prompt-injection-agentes-ia.html"
+      },
+      {
+        "title": "Cómo proteger tus datos al conectar la IA",
+        "url": "../articulos/proteger-datos-ia.html"
       }
     ],
     "photo": {
