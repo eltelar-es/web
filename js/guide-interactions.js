@@ -113,3 +113,32 @@
     }
   }
 })();
+
+// Barra "Compártela" al final de cada guía: WhatsApp, Telegram, X, LinkedIn, correo y, en móvil, el menú nativo.
+(function () {
+  var art = document.querySelector('article.lg\\:col-span-8') || document.querySelector('article');
+  if (!art || !document.querySelector('[data-hero]') || art.querySelector('[data-share-bar]')) return;
+  var u = encodeURIComponent(location.origin + location.pathname);
+  var h1 = document.querySelector('h1');
+  var t = encodeURIComponent(h1 ? h1.textContent.trim() : document.title);
+  var links = [
+    ['WhatsApp', 'https://wa.me/?text=' + t + '%20' + u],
+    ['Telegram', 'https://t.me/share/url?url=' + u + '&text=' + t],
+    ['X', 'https://twitter.com/intent/tweet?text=' + t + '&url=' + u],
+    ['LinkedIn', 'https://www.linkedin.com/sharing/share-offsite/?url=' + u],
+    ['Correo', 'mailto:?subject=' + t + '&body=' + u]
+  ];
+  var box = document.createElement('section');
+  box.setAttribute('data-share-bar', '');
+  box.className = 'space-y-space-sm bg-surface-container-low p-space-lg border-l-4 border-secondary';
+  var btn = 'class="bg-primary hover:bg-primary-container text-surface px-space-sm py-space-xs font-label-md text-label-md uppercase tracking-wider transition-colors"';
+  var html = '<span class="font-kicker text-kicker uppercase tracking-widest text-secondary">¿Te ha servido?</span>' +
+    '<p class="font-body-md text-body-md text-on-surface">Mándasela a alguien que la necesite.</p><div class="flex flex-wrap gap-space-xs">';
+  links.forEach(function (l) { html += '<a ' + btn + ' href="' + l[1] + '" target="_blank" rel="noopener">' + l[0] + '</a>'; });
+  if (navigator.share) html += '<button type="button" data-native ' + btn + '>Más…</button>';
+  box.innerHTML = html + '</div>';
+  var faq = document.getElementById('preguntas');
+  if (faq) art.insertBefore(box, faq); else art.appendChild(box);
+  var n = box.querySelector('[data-native]');
+  if (n) n.addEventListener('click', function () { navigator.share({ title: document.title, url: location.origin + location.pathname }).catch(function () {}); });
+})();
