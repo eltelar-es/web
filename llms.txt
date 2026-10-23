@@ -82,6 +82,7 @@
 - [Subagentes de Claude Code](https://eltelar.es/articulos/subagentes-claude-code-como-crear.html): Qué son los subagentes de Claude Code, dónde se guardan, el formato del archivo, un ejemplo de revisor de código para copiar y cómo llamarlos con @ o claude --agent.
 - [Skills de Claude Code](https://eltelar.es/articulos/skills-claude-code-como-crear-una.html): Qué es una skill de Claude Code, dónde se guarda, la estructura del archivo SKILL.md, un ejemplo oficial para copiar y en qué se diferencia de CLAUDE.md y de un subagente.
 - [Modos de permisos de Claude Code](https://eltelar.es/articulos/modos-permisos-claude-code-modo-plan.html): Los modos de permisos de Claude Code (default, acceptEdits, plan, auto, bypassPermissions), cómo cambiarlos con Shift+Tab y cómo usar el modo plan para revisar antes de que toque nada.
+- [Claude Code en español](https://eltelar.es/articulos/claude-code-guias-en-espanol.html): Todas las guías de Claude Code en español, en el orden para aprender: instalar, comandos, permisos, CLAUDE.md, VS Code, límite de uso, MCP, hooks, skills y subagentes.
 
 ## Secciones
 
