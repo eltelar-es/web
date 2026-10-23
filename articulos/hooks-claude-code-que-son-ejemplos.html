@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Hooks de Claude Code: qué son y 3 ejemplos para copiar | El Telar</title>
+<meta name="description" content="Qué son los hooks de Claude Code, dónde se configuran y 3 ejemplos para copiar: notificación cuando Claude te espera, formatear con Prettier y bloquear archivos como .env.">
+<link rel="canonical" href="https://eltelar.es/articulos/hooks-claude-code-que-son-ejemplos.html"><link rel="icon" type="image/svg+xml" href="../img/favicon.svg?v=4"><link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32.png?v=4"><link rel="apple-touch-icon" href="../img/apple-touch-icon.png?v=4"><meta name="theme-color" content="#072417"><link rel="manifest" href="../manifest.json"><link rel="alternate" type="application/rss+xml" title="El Telar" href="../feed.xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hooks de Claude Code: qué son y 3 ejemplos para copiar | El Telar">
+<meta property="og:description" content="Qué son los hooks de Claude Code, dónde se configuran y 3 ejemplos para copiar: notificación cuando Claude te espera, formatear con Prettier y bloquear archivos como .env.">
+<meta property="og:url" content="https://eltelar.es/articulos/hooks-claude-code-que-son-ejemplos.html">
+<meta property="og:site_name" content="El Telar">
+<meta property="og:locale" content="es_ES"><meta property="og:image" content="https://eltelar.es/img/og/guia-hooks-claude-code-que-son-ejemplos.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Hooks de Claude Code: qué son y 3 ejemplos para copiar | El Telar">
+<meta name="twitter:description" content="Qué son los hooks de Claude Code, dónde se configuran y 3 ejemplos para copiar: notificación cuando Claude te espera, formatear con Prettier y bloquear archivos como .env."><meta name="twitter:image" content="https://eltelar.es/img/og/guia-hooks-claude-code-que-son-ejemplos.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Hooks de Claude Code: qué son y 3 ejemplos para copiar",
+  "description": "Qué son los hooks de Claude Code, dónde se configuran y 3 ejemplos para copiar: notificación cuando Claude te espera, formatear con Prettier y bloquear archivos como .env.",
+  "image": "https://eltelar.es/img/og/guia-hooks-claude-code-que-son-ejemplos.jpg",
+  "author": {"@type": "Organization", "name": "El Telar", "url": "https://eltelar.es/sobre-nosotros.html"},
+  "publisher": {
+    "@type": "Organization",
+    "name": "El Telar"
+  },
+  "datePublished": "2026-10-23",
+  "dateModified": "2026-10-23",
+  "mainEntityOfPage": "https://eltelar.es/articulos/hooks-claude-code-que-son-ejemplos.html",
+  "inLanguage": "es"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://eltelar.es/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Guías",
+      "item": "https://eltelar.es/index.html#guias"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Hooks de Claude Code: qué son y 3 ejemplos para copiar",
+      "item": "https://eltelar.es/articulos/hooks-claude-code-que-son-ejemplos.html"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "¿Qué es un hook de Claude Code?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Un comando que Claude Code ejecuta automáticamente en un momento fijo, como antes o después de usar una herramienta o cuando necesita tu atención. Se configura en un archivo de ajustes."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Dónde se configuran los hooks?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "En ~/.claude/settings.json para todos tus proyectos, en .claude/settings.json para un proyecto compartido o en .claude/settings.local.json para uno solo tuyo. Con /hooks ves los que tienes."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Cómo bloqueo una acción con un hook?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Con un hook PreToolUse cuyo script termine con código de salida 2. Claude recibe el mensaje que escribas y ajusta su plan."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Un hook es mejor que CLAUDE.md?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Para reglas que deben cumplirse siempre, sí: el hook es determinista. CLAUDE.md es contexto que Claude suele seguir pero no obliga."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Cómo desactivo los hooks?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Poniendo \"disableAllHooks\": true en tu archivo de ajustes."
+   }
+  }
+ ]
+}
+</script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link rel="preload" href="../fonts/newsreader-normal-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/inter-normal-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="../css/fonts.css?v=1"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,leaderboard,lightbulb,lock,lock_clock,lock_open,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,volunteer_activism,warning,work,workspace_premium&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,leaderboard,lightbulb,lock,lock_clock,lock_open,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,volunteer_activism,warning,work,workspace_premium&amp;display=swap" rel="stylesheet"/></noscript>
+<style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><link rel="stylesheet" href="../css/tailwind.css"><link rel="stylesheet" href="../css/entrance.css?v=20"><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}(function(){var c=null;try{c=localStorage.getItem('eltelar-cookie-consent')}catch(e){}var g=c==='accepted'?'granted':'denied';gtag('consent','default',{ad_storage:g,ad_user_data:g,ad_personalization:g,analytics_storage:g,wait_for_update:500});window.adsbygoogle=window.adsbygoogle||[];if(g!=='granted'){window.adsbygoogle.requestNonPersonalizedAds=1;}})();</script><script>window.addEventListener("load",function(){setTimeout(function(){var s=document.createElement("script");s.async=true;s.src="https://www.googletagmanager.com/gtag/js?id=G-4DPTKEG79N";document.head.appendChild(s);},800);});</script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4DPTKEG79N');</script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8239907995939753" crossorigin="anonymous"></script></head><body class="bg-background font-body-md text-on-surface antialiased">
+<header class="w-full bg-surface-container-lowest border-b border-outline-variant"><div class="border-b border-outline-variant py-space-xxs px-space-md hidden md:block"><div class="max-w-site-max-width mx-auto flex items-center justify-between font-kicker text-kicker text-on-surface-variant uppercase tracking-wider"><span>EDICIÓN DIGITAL // ACTUALIZADO 2026 // EL TELAR &amp; AGENTES</span><span>MADRID · REMOTO</span><span>SIN HUMO · 100% PRODUCCIÓN</span></div></div><div class="max-w-site-max-width mx-auto px-space-md py-space-md sm:py-space-xl text-center"><p class="hidden sm:block font-kicker text-kicker uppercase tracking-widest text-on-surface-variant mb-space-xs">Publicación Independiente de Tecnología &amp; Agentes</p><a class="inline-block" href="../index.html"><div class="font-display text-display max-sm:text-[40px] max-sm:leading-none text-primary tracking-tight">El Telar</div></a><p class="hidden sm:block font-caption text-caption uppercase tracking-widest text-on-surface-variant mt-space-xs">EL BOLETÍN Y ARCHIVO PRÁCTICO DE INTELIGENCIA ARTIFICIAL Y AGENTES AUTÓNOMOS</p></div><div class="border-t border-b border-outline-variant"><div class="max-w-site-max-width mx-auto px-space-md flex items-center justify-between gap-space-sm h-14"><nav class="flex items-center gap-space-md sm:gap-space-lg h-full min-w-0 overflow-x-auto [scrollbar-width:none] whitespace-nowrap site-nav"><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../index.html#guias">GUÍAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../noticias/index.html">NOTICIAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../prompts/index.html">PROMPTS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../herramientas/index.html">HERRAMIENTAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../empieza-aqui.html">EMPIEZA AQUÍ</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../sobre-nosotros.html">SOBRE NOSOTROS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../contacto.html">CONTACTO</a></nav><div class="flex items-center gap-space-md"><button id="search-trigger" type="button" aria-label="Buscar en las guías" class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[20px]">search</span></button><a class="hidden sm:inline-block bg-primary-container text-surface px-space-md py-space-xs font-label-md text-label-md uppercase tracking-wider hover:bg-primary transition-colors" href="../index.html#despacho">SUSCRÍBETE GRATIS</a></div></div></div><div class="hidden md:block bg-surface-container-low border-b border-outline-variant py-space-xs px-space-md"><div class="max-w-site-max-width mx-auto text-center"><p class="font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">71 GUÍAS COMPLETAS EN EXPANSIÓN · ACTUALIZADO A MODELOS 2026 · PROBADO EN TERMINAL Y FLUJOS REALES · CERO HUMO NI TEORÍA VACÍA</p></div></div></header>
+<main class="w-full max-w-site-max-width mx-auto px-space-md py-space-xl"><div class="flex flex-col w-full">
+<nav class="w-full mb-space-lg">
+<ol class="flex flex-wrap items-center gap-space-xs font-kicker text-kicker text-on-surface-variant uppercase tracking-wider">
+<li><a class="hover:text-primary transition-colors" href="../index.html">Inicio</a></li>
+<li class="text-on-surface-variant">/</li>
+<li><a class="hover:text-primary transition-colors" href="../index.html#guias">Guías</a></li>
+<li class="text-on-surface-variant">/</li>
+<li class="text-primary font-bold truncate max-w-[280px] sm:max-w-md">Hooks de Claude Code</li>
+</ol>
+</nav>
+<header class="w-full pb-space-xl mb-space-2xl">
+<div class="flex flex-wrap items-center gap-space-xs mb-space-md">
+<span class="bg-surface-container-high text-secondary px-space-sm py-1 font-kicker text-kicker uppercase tracking-widest">CLAUDE CODE // HOOKS</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight max-w-editorial-max mb-space-md">
+          Hooks de Claude Code: qué son y 3 ejemplos para copiar
+        </h1>
+<p class="font-lead-paragraph text-lead-paragraph text-on-surface-variant max-w-editorial-max leading-relaxed mb-space-lg">
+          Comandos que Claude Code ejecuta solo en el momento que tú eliges. Tres ejemplos listos para copiar y cómo bloquear acciones de verdad, sin depender de que el modelo se acuerde.
+        </p>
+<div class="bg-surface-container-lowest p-space-md flex flex-wrap items-center justify-between gap-y-3 shadow-sm">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 bg-primary text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">webhook</span>
+</div>
+<div>
+<div class="font-label-md text-label-md text-on-surface font-semibold">Por la Redacción de El Telar</div><div class="font-caption text-caption text-on-surface-variant">Guías prácticas de IA y agentes, probadas en flujos de trabajo reales antes de publicarlas.</div>
+<button class="inline-flex items-center gap-1 mt-2 px-3 py-1.5 bg-surface-container text-primary font-label-md text-[12px] font-semibold uppercase tracking-wider hover:bg-surface-container-high transition-colors" id="copy-guide-btn" type="button"><span class="material-symbols-outlined text-[16px]">content_copy</span> Copiar guía para tu IA</button><span class="inline-flex items-center gap-1 ml-1"><button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" id="save-guide-btn" title="Guardar guía" type="button"><span class="material-symbols-outlined text-[16px]">bookmark_border</span></button><button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" id="copy-link-btn" title="Copiar enlace permanente" type="button"><span class="material-symbols-outlined text-[16px]">share</span></button></span>
+</div>
+</div>
+<div class="flex items-center gap-space-lg text-on-surface-variant font-caption text-caption uppercase tracking-wider">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">schedule</span> 6 min de lectura</span>
+</div>
+</div>
+</header>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-col-gap">
+<article class="lg:col-span-8 flex flex-col space-y-space-xl"><figure data-hero class="space-y-space-xs"><img class="w-full border border-outline-variant" src="../img/guias/hero-hooks-claude-code-que-son-ejemplos.jpg" alt="Documentación oficial de Claude Code sobre automatizar acciones con hooks" width="1280" height="720" fetchpriority="high" decoding="async"/><figcaption class="font-caption text-caption text-on-surface-variant">Captura de pantalla: <a class="underline" href="https://code.claude.com/docs/en/hooks-guide" rel="nofollow noopener" target="_blank">code.claude.com</a>.</figcaption></figure>
+<section id="que-es" class="space-y-space-md scroll-mt-24"><h2 class="font-headline-md text-headline-md text-primary tracking-tight">Qué es un hook</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Un hook es <strong>un comando que Claude Code ejecuta automáticamente en un momento concreto</strong>: después de editar un archivo, antes de ejecutar una orden, cuando termina y te espera. Según la documentación oficial, los hooks dan un control determinista: la acción ocurre siempre, en lugar de depender de que el modelo decida hacerla.</p>
+<figure class="my-space-lg"><div class="p-space-md bg-surface-container-lowest"><div class="font-kicker text-kicker uppercase text-on-surface-variant tracking-wider mb-space-sm text-center">DIAGRAMA // CÓMO FUNCIONA UN HOOK</div><svg aria-label="Un hook es un comando que Claude Code ejecuta solo en un momento fijo: antes o después de usar una herramienta, o cuando necesita tu atención" class="w-full h-auto" fill="none" role="img" viewBox="0 0 680 112" xmlns="http://www.w3.org/2000/svg"><rect fill="#ebeef8" height="92" width="140" x="10" y="10"></rect><text fill="#072417" font-family="Inter" font-size="13" font-weight="700" text-anchor="middle" x="80" y="40">Evento</text><text fill="#424843" font-family="Inter" font-size="11" text-anchor="middle" x="80" y="60">PreToolUse,</text><text fill="#424843" font-family="Inter" font-size="11" text-anchor="middle" x="80" y="75">PostToolUse,</text><text fill="#424843" font-family="Inter" font-size="11" text-anchor="middle" x="80" y="90">Notification…</text><path d="M152 56.0 H176" stroke="#727973" stroke-width="1.5"></path><polygon fill="#727973" points="176,52.0 184,56.0 176,60.0"></polygon><rect fill="#ebeef8" height="92" width="140" x="184" y="10"></rect><text fill="#072417" font-family="Inter" font-size="13" font-weight="700" text-anchor="middle" x="253" y="40">Filtro (matcher)</text><text fill="#424843" font-family="Inter" font-size="11" text-anchor="middle" x="253" y="60">por ejemplo</text><text fill="#424843" font-family="Inter" font-size="11" text-anchor="middle" x="253" y="75">Edit|Write</text><path d="M326 56.0 H350" stroke="#727973" stroke-width="1.5"></path><polygon fill="#727973" points="350,52.0 357,56.0 350,60.0"></polygon><rect fill="#caead4" height="92" width="140" x="357" y="10"></rect><text fill="#042013" font-family="Inter" font-size="13" font-weight="700" text-anchor="middle" x="427" y="40">Tu comando</text><text fill="#042013" font-family="Inter" font-size="11" text-anchor="middle" x="427" y="60">script o</text><text fill="#042013" font-family="Inter" font-size="11" text-anchor="middle" x="427" y="75">línea de shell</text><path d="M500 56.0 H524" stroke="#727973" stroke-width="1.5"></path><polygon fill="#727973" points="524,52.0 530,56.0 524,60.0"></polygon><rect fill="#fd8a42" height="92" width="140" x="530" y="10"></rect><text fill="#072417" font-family="Inter" font-size="13" font-weight="700" text-anchor="middle" x="600" y="40">Resultado</text><text fill="#072417" font-family="Inter" font-size="11" text-anchor="middle" x="600" y="60">sigue, o código 2</text><text fill="#072417" font-family="Inter" font-size="11" text-anchor="middle" x="600" y="75">= bloquea</text></svg></div><figcaption class="font-caption text-caption text-on-surface-variant mt-space-xs">Tú decides el momento (evento) y el comando. Claude Code lo ejecuta siempre, sin depender de que el modelo se acuerde.</figcaption></figure>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Sirven para formatear el código tras cada edición, bloquear cambios en archivos sensibles, avisarte con una notificación o volver a inyectar contexto importante al empezar una sesión.</p></section>
+<section id="primero" class="space-y-space-md scroll-mt-24 bg-surface-container-low p-space-lg border-l-4 border-secondary"><span class="font-kicker text-kicker uppercase tracking-widest text-secondary">Tu primer hook</span><h2 class="font-headline-md text-headline-md text-primary tracking-tight">Una notificación cuando Claude te espera</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Abre <code>~/.claude/settings.json</code> (créalo si no existe) y añade esto. Este ejemplo es para macOS; la documentación oficial incluye también las versiones de Linux y Windows.</p>
+<div class="flex items-stretch gap-space-xs"><code class="block bg-surface-container-high text-on-surface font-mono text-[14px] leading-relaxed p-space-md overflow-x-auto whitespace-pre" style="flex:1;min-width:0">{
+  &quot;hooks&quot;: {
+    &quot;Notification&quot;: [
+      {
+        &quot;matcher&quot;: &quot;&quot;,
+        &quot;hooks&quot;: [
+          {
+            &quot;type&quot;: &quot;command&quot;,
+            &quot;command&quot;: &quot;osascript -e &#x27;display notification \&quot;Claude Code needs your attention\&quot; with title \&quot;Claude Code\&quot;&#x27;&quot;
+          }
+        ]
+      }
+    ]
+  }
+}</code><button type="button" class="shrink-0 bg-primary hover:bg-primary-container text-surface px-space-sm py-space-xxs font-label-md text-label-md uppercase tracking-wider transition-colors" onclick="var c=this.previousElementSibling;navigator.clipboard.writeText(c.innerText);var o=this.textContent,b=this;this.textContent='Copiado';setTimeout(function(){b.textContent=o;},1800);">Copiar</button></div>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Después escribe <code>/hooks</code> en Claude Code: verás tu hook en la lista, bajo <code>Notification</code>. Si no te sale ninguna notificación en macOS, abre Ajustes del Sistema &gt; Notificaciones y activa las de <strong>Script Editor</strong>, porque <code>osascript</code> las envía a través de esa app.</p></section>
+<section id="formatear" class="space-y-space-md scroll-mt-24"><h2 class="font-headline-md text-headline-md text-primary tracking-tight">Formatear con Prettier tras cada edición</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Este hook usa el evento <code>PostToolUse</code> con el filtro <code>Edit|Write</code>, así que solo se ejecuta tras editar archivos. Pasa el archivo editado a Prettier. Necesita <code>jq</code> instalado (<code>brew install jq</code> en macOS). Ponlo en <code>.claude/settings.json</code>.</p>
+<div class="flex items-stretch gap-space-xs"><code class="block bg-surface-container-high text-on-surface font-mono text-[14px] leading-relaxed p-space-md overflow-x-auto whitespace-pre" style="flex:1;min-width:0">{
+  &quot;hooks&quot;: {
+    &quot;PostToolUse&quot;: [
+      {
+        &quot;matcher&quot;: &quot;Edit|Write&quot;,
+        &quot;hooks&quot;: [{ &quot;type&quot;: &quot;command&quot;, &quot;command&quot;: &quot;jq -r &#x27;.tool_input.file_path&#x27; | xargs npx prettier --write&quot; }]
+      }
+    ]
+  }
+}</code><button type="button" class="shrink-0 bg-primary hover:bg-primary-container text-surface px-space-sm py-space-xxs font-label-md text-label-md uppercase tracking-wider transition-colors" onclick="var c=this.previousElementSibling;navigator.clipboard.writeText(c.innerText);var o=this.textContent,b=this;this.textContent='Copiado';setTimeout(function(){b.textContent=o;},1800);">Copiar</button></div></section>
+<section id="bloquear" class="space-y-space-md scroll-mt-24"><h2 class="font-headline-md text-headline-md text-primary tracking-tight">Bloquear cambios en archivos protegidos</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Para impedir que Claude toque <code>.env</code>, <code>package-lock.json</code> o la carpeta <code>.git/</code>, guarda este script en <code>.claude/hooks/protect-files.sh</code>. Con <strong>código de salida 2</strong> el hook bloquea la acción, y Claude recibe el mensaje para ajustar lo que hace.</p>
+<div class="flex items-stretch gap-space-xs"><code class="block bg-surface-container-high text-on-surface font-mono text-[14px] leading-relaxed p-space-md overflow-x-auto whitespace-pre" style="flex:1;min-width:0">#!/bin/bash
+# protect-files.sh
+INPUT=$(cat)
+FILE_PATH=$(echo &quot;$INPUT&quot; | jq -r &#x27;.tool_input.file_path // empty&#x27;)
+PROTECTED_PATTERNS=(&quot;.env&quot; &quot;package-lock.json&quot; &quot;.git/&quot;)
+for pattern in &quot;${PROTECTED_PATTERNS[@]}&quot;; do
+  if [[ &quot;$FILE_PATH&quot; == *&quot;$pattern&quot;* ]]; then
+    echo &quot;Blocked: $FILE_PATH matches protected pattern &#x27;$pattern&#x27;&quot; &gt;&amp;2
+    exit 2
+  fi
+done
+exit 0</code><button type="button" class="shrink-0 bg-primary hover:bg-primary-container text-surface px-space-sm py-space-xxs font-label-md text-label-md uppercase tracking-wider transition-colors" onclick="var c=this.previousElementSibling;navigator.clipboard.writeText(c.innerText);var o=this.textContent,b=this;this.textContent='Copiado';setTimeout(function(){b.textContent=o;},1800);">Copiar</button></div>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Dale permiso de ejecución y regístralo en <code>.claude/settings.json</code>:</p>
+<div class="flex items-stretch gap-space-xs"><code class="block bg-surface-container-high text-on-surface font-mono text-[14px] leading-relaxed p-space-md overflow-x-auto whitespace-pre" style="flex:1;min-width:0">chmod +x .claude/hooks/protect-files.sh</code><button type="button" class="shrink-0 bg-primary hover:bg-primary-container text-surface px-space-sm py-space-xxs font-label-md text-label-md uppercase tracking-wider transition-colors" onclick="var c=this.previousElementSibling;navigator.clipboard.writeText(c.innerText);var o=this.textContent,b=this;this.textContent='Copiado';setTimeout(function(){b.textContent=o;},1800);">Copiar</button></div>
+<div class="flex items-stretch gap-space-xs"><code class="block bg-surface-container-high text-on-surface font-mono text-[14px] leading-relaxed p-space-md overflow-x-auto whitespace-pre" style="flex:1;min-width:0">{
+  &quot;hooks&quot;: {
+    &quot;PreToolUse&quot;: [
+      {
+        &quot;matcher&quot;: &quot;Edit|Write&quot;,
+        &quot;hooks&quot;: [
+          { &quot;type&quot;: &quot;command&quot;, &quot;command&quot;: &quot;\&quot;$CLAUDE_PROJECT_DIR\&quot;/.claude/hooks/protect-files.sh&quot; }
+        ]
+      }
+    ]
+  }
+}</code><button type="button" class="shrink-0 bg-primary hover:bg-primary-container text-surface px-space-sm py-space-xxs font-label-md text-label-md uppercase tracking-wider transition-colors" onclick="var c=this.previousElementSibling;navigator.clipboard.writeText(c.innerText);var o=this.textContent,b=this;this.textContent='Copiado';setTimeout(function(){b.textContent=o;},1800);">Copiar</button></div></section>
+<section id="donde" class="space-y-space-md scroll-mt-24"><h2 class="font-headline-md text-headline-md text-primary tracking-tight">Dónde se guardan</h2><div class="space-y-space-xs"><div class="flex flex-wrap items-center gap-space-xs bg-surface-container-low p-space-sm"><code class="font-mono text-[14px] bg-surface-container-high text-on-surface px-space-sm py-space-xxs">~/.claude/settings.json</code><button type="button" class="shrink-0 bg-primary hover:bg-primary-container text-surface px-space-sm py-space-xxs font-label-md text-label-md uppercase tracking-wider transition-colors" onclick="var c=this.previousElementSibling;navigator.clipboard.writeText(c.innerText);var o=this.textContent,b=this;this.textContent='Copiado';setTimeout(function(){b.textContent=o;},1800);">Copiar</button><span class="font-body-sm text-body-sm text-on-surface-variant flex-1 min-w-[180px]">Todos tus proyectos. Solo en tu equipo.</span></div><div class="flex flex-wrap items-center gap-space-xs bg-surface-container-low p-space-sm"><code class="font-mono text-[14px] bg-surface-container-high text-on-surface px-space-sm py-space-xxs">.claude/settings.json</code><button type="button" class="shrink-0 bg-primary hover:bg-primary-container text-surface px-space-sm py-space-xxs font-label-md text-label-md uppercase tracking-wider transition-colors" onclick="var c=this.previousElementSibling;navigator.clipboard.writeText(c.innerText);var o=this.textContent,b=this;this.textContent='Copiado';setTimeout(function(){b.textContent=o;},1800);">Copiar</button><span class="font-body-sm text-body-sm text-on-surface-variant flex-1 min-w-[180px]">Un proyecto. Se puede subir al repositorio y compartir.</span></div><div class="flex flex-wrap items-center gap-space-xs bg-surface-container-low p-space-sm"><code class="font-mono text-[14px] bg-surface-container-high text-on-surface px-space-sm py-space-xxs">.claude/settings.local.json</code><button type="button" class="shrink-0 bg-primary hover:bg-primary-container text-surface px-space-sm py-space-xxs font-label-md text-label-md uppercase tracking-wider transition-colors" onclick="var c=this.previousElementSibling;navigator.clipboard.writeText(c.innerText);var o=this.textContent,b=this;this.textContent='Copiado';setTimeout(function(){b.textContent=o;},1800);">Copiar</button><span class="font-body-sm text-body-sm text-on-surface-variant flex-1 min-w-[180px]">Un proyecto, solo para ti. No se sube a git.</span></div></div>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">También pueden vivir dentro de un plugin, de una skill o de un subagente. Para ver todos los que tienes, escribe <code>/hooks</code>. Para desactivarlos, pon <code>"disableAllHooks": true</code> en tus ajustes. Si no conoces los ajustes, empieza por <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" href="claude-md-que-es-como-escribirlo.html">CLAUDE.md</a>.</p></section>
+<section id="honesto" class="space-y-space-md scroll-mt-24 bg-surface-container-low p-space-lg border-l-4 border-secondary"><span class="font-kicker text-kicker uppercase tracking-widest text-secondary">Lo honesto</span><h2 class="font-headline-md text-headline-md text-primary tracking-tight">Cuidado con lo que ejecutas</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Un hook corre comandos de tu sistema con tus permisos. Antes de copiar uno de internet, léelo entero. Y si algo debe cumplirse sí o sí (por ejemplo, que nunca se toque un archivo), un hook es la herramienta correcta; una instrucción en CLAUDE.md es solo una guía que Claude suele seguir.</p></section><section id="preguntas" class="space-y-space-md scroll-mt-24"><h2 class="font-headline-md text-headline-md text-primary tracking-tight">Preguntas frecuentes</h2><h3 class="font-headline-sm text-headline-sm text-primary">¿Qué es un hook de Claude Code?</h3><p class="font-body-md text-body-md text-on-surface leading-relaxed">Un comando que Claude Code ejecuta automáticamente en un momento fijo, como antes o después de usar una herramienta o cuando necesita tu atención. Se configura en un archivo de ajustes.</p><h3 class="font-headline-sm text-headline-sm text-primary">¿Dónde se configuran los hooks?</h3><p class="font-body-md text-body-md text-on-surface leading-relaxed">En ~/.claude/settings.json para todos tus proyectos, en .claude/settings.json para un proyecto compartido o en .claude/settings.local.json para uno solo tuyo. Con /hooks ves los que tienes.</p><h3 class="font-headline-sm text-headline-sm text-primary">¿Cómo bloqueo una acción con un hook?</h3><p class="font-body-md text-body-md text-on-surface leading-relaxed">Con un hook PreToolUse cuyo script termine con código de salida 2. Claude recibe el mensaje que escribas y ajusta su plan.</p><h3 class="font-headline-sm text-headline-sm text-primary">¿Un hook es mejor que CLAUDE.md?</h3><p class="font-body-md text-body-md text-on-surface leading-relaxed">Para reglas que deben cumplirse siempre, sí: el hook es determinista. CLAUDE.md es contexto que Claude suele seguir pero no obliga.</p><h3 class="font-headline-sm text-headline-sm text-primary">¿Cómo desactivo los hooks?</h3><p class="font-body-md text-body-md text-on-surface leading-relaxed">Poniendo "disableAllHooks": true en tu archivo de ajustes.</p></section></article>
+<aside class="lg:col-span-4 flex flex-col space-y-space-xl">
+<div class="bg-surface-container-lowest p-space-lg shadow-sm sticky top-space-md">
+<div class="flex items-center justify-between mb-space-sm pb-space-xs">
+<span class="font-kicker text-kicker uppercase tracking-widest text-primary font-bold">ÍNDICE DE LA GUÍA</span>
+<span class="material-symbols-outlined text-on-surface-variant text-base">format_list_bulleted</span>
+</div>
+<nav class="space-y-space-xs font-body-sm text-body-sm">
+<a class="block text-primary hover:text-secondary font-medium transition-colors" href="#que-es">Qué es</a>
+<a class="block text-primary hover:text-secondary font-medium transition-colors" href="#primero">Tu primer hook</a>
+<a class="block text-primary hover:text-secondary font-medium transition-colors" href="#formatear">Prettier</a>
+<a class="block text-primary hover:text-secondary font-medium transition-colors" href="#bloquear">Bloquear archivos</a>
+<a class="block text-primary hover:text-secondary font-medium transition-colors" href="#donde">Dónde se guardan</a>
+<a class="block text-primary hover:text-secondary font-medium transition-colors" href="#honesto">Lo honesto</a>
+<a class="block text-primary hover:text-secondary font-medium transition-colors" href="#preguntas">Preguntas frecuentes</a>
+</nav>
+</div>
+
+<div class="bg-surface-container-high p-space-md space-y-space-sm shadow-sm">
+<span class="font-kicker text-kicker uppercase tracking-widest text-primary font-bold">FICHA TÉCNICA</span>
+<dl class="space-y-space-xs font-caption text-caption">
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Categoría:</dt><dd class="font-semibold text-primary">Claude Code</dd></div>
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Nivel técnico:</dt><dd class="font-semibold text-primary">Intermedio</dd></div>
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Fuentes citadas:</dt><dd class="font-semibold text-primary">Documentación de Anthropic</dd></div>
+</dl>
+</div>
+</aside>
+</div>
+<section class="w-full mt-space-4xl pt-space-2xl bg-surface-container-lowest p-space-lg shadow-sm">
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-space-xl gap-space-xs">
+<h3 class="font-headline-md text-headline-md text-primary">Continúa explorando el archivo</h3>
+<a class="font-label-md text-label-md text-primary hover:text-secondary uppercase tracking-wider transition-colors flex items-center gap-1" href="../index.html#guias">Ver todas las guías <span class="material-symbols-outlined text-[16px]">arrow_forward</span></a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-col-gap"><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="proteger-datos-ia.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-proteger-datos-ia.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="proteger-datos-ia.html">Cómo proteger tus datos cuando usas IA</a></h4></div></article><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="ia-local-ordenador.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-ia-local-ordenador.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="ia-local-ordenador.html">IA local: correr modelos en tu ordenador</a></h4></div></article><article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="analizar-imagenes-pdf-ia.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-analizar-imagenes-pdf-ia.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="analizar-imagenes-pdf-ia.html">Cómo analizar imágenes y PDFs con IA</a></h4></div></article></div></main><footer class="w-full bg-surface-container-low border-t border-outline-variant mt-space-4xl"><div class="max-w-site-max-width mx-auto px-space-md py-space-3xl"><div class="grid grid-cols-1 md:grid-cols-3 gap-col-gap"><div class="space-y-space-sm"><span class="font-headline-md text-headline-md text-primary">El Telar</span><p class="font-body-sm text-body-sm text-on-surface-variant">Publicación independiente de tecnología y automatización con agentes. Contenidos verificados en producción, sin patrocinios opacos ni promesas vacías.</p></div><div><h3 class="font-kicker text-kicker uppercase tracking-wider text-on-surface mb-space-md">SECCIONES</h3><ul class="space-y-space-xs font-body-sm text-body-sm"><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html#guias">Archivo de Guías</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../empieza-aqui.html">Guía para Principiantes</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../guardadas.html">Mis guías guardadas</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../colaboraciones.html">Colaboraciones y prensa</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../sobre-nosotros.html">Manifiesto Editorial</a></li><li class="pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html#despacho">Boletín Semanal</a></li></ul></div><div><h3 class="font-kicker text-kicker uppercase tracking-wider text-on-surface mb-space-md">CONTACTO &amp; PRENSA</h3><div class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant"><p class="font-semibold text-on-surface">contacto@eltelar.es</p><p>Síguenos: <a class="hover:text-primary underline" href="https://www.instagram.com/eltelar_es/" rel="me noopener" target="_blank">Instagram</a> · <a class="hover:text-primary underline" href="https://www.threads.com/@eltelar_es" rel="me noopener" target="_blank">Threads</a> · <a class="hover:text-primary underline" href="https://x.com/eltelar_es" rel="me noopener" target="_blank">X</a></p></div></div></div></div><div class="border-t border-outline-variant py-space-md bg-surface-container-lowest"><div class="max-w-site-max-width mx-auto px-space-md flex flex-col md:flex-row items-center justify-between gap-space-sm text-caption font-caption text-on-surface-variant"><div>© 2026 El Telar. Todos los derechos reservados. Independencia editorial garantizada.</div><div class="flex flex-wrap items-center justify-center gap-space-md"><a class="hover:text-on-surface transition-colors" href="../privacidad.html">Privacidad</a><a class="hover:text-on-surface transition-colors" href="../terminos.html">Términos</a><a class="hover:text-on-surface transition-colors" href="../cookies.html">Cookies</a><a class="hover:text-on-surface transition-colors" href="../aviso-legal.html">Aviso legal</a><a class="hover:text-on-surface transition-colors" href="../sobre-nosotros.html">Sobre nosotros</a><a class="hover:text-on-surface transition-colors" href="../contacto.html">Contacto</a></div></div></div></footer><script defer src="../js/copy-guide.js"></script><script defer src="../js/guide-interactions.js"></script><script defer src="../js/reading-progress.js"></script><script defer src="../js/search.js?v=8"></script><script defer src="../js/entrance.js"></script><script defer src="../js/cookie-consent.js?v=4"></script></body></html>

@@ -78,6 +78,8 @@
 - [CLAUDE.md](https://eltelar.es/articulos/claude-md-que-es-como-escribirlo.html): Qué es el archivo CLAUDE.md de Claude Code, dónde se guarda, cómo crearlo con /init y cómo escribirlo para que Claude lo cumpla. Con ejemplo para copiar.
 - [MCP en Claude Code](https://eltelar.es/articulos/mcp-claude-code-que-es-como-instalar.html): Qué es MCP y cómo conectar Claude Code a herramientas externas: comando para añadir servidores remotos y locales, cómo ver y quitar los que tienes y qué riesgos tiene.
 - [Claude Code en VS Code](https://eltelar.es/articulos/claude-code-en-vs-code.html): Cómo instalar la extensión de Claude Code en VS Code, qué necesitas, dónde está el icono Spark, cómo darle contexto con @-menciones y los atajos de teclado que más se usan.
+- [Hooks de Claude Code](https://eltelar.es/articulos/hooks-claude-code-que-son-ejemplos.html): Qué son los hooks de Claude Code, dónde se configuran y 3 ejemplos para copiar: notificación cuando Claude te espera, formatear con Prettier y bloquear archivos como .env.
+- [Subagentes de Claude Code](https://eltelar.es/articulos/subagentes-claude-code-como-crear.html): Qué son los subagentes de Claude Code, dónde se guardan, el formato del archivo, un ejemplo de revisor de código para copiar y cómo llamarlos con @ o claude --agent.
 
 ## Secciones
 
