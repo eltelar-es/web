@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="es"><head><meta charset="utf-8"/>
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Alucinaciones de la IA: cómo detectarlas | El Telar</title>
-<meta name="description" content="Por qué los modelos inventan URLs, citas y librerías inexistentes con total convicción, dónde ocurre más y cómo forzar la honestidad epistémica.">
+<title>Alucinaciones de la IA: qué son y cómo detectarlas | El Telar</title>
+<meta name="description" content="Las alucinaciones de la IA son respuestas inventadas que suenan convincentes: datos, citas o enlaces falsos. Cómo detectarlas y evitarlas, con checklist.">
 <link rel="canonical" href="https://eltelar.es/articulos/alucinaciones-ia.html"><link rel="icon" type="image/svg+xml" href="../img/favicon.svg?v=4">
 <link rel="icon" type="image/png" sizes="48x48" href="/img/favicon-48.png?v=5">
 <link rel="icon" type="image/png" sizes="192x192" href="/img/favicon-192.png?v=5">
 <link rel="shortcut icon" href="/favicon.ico?v=5">
 <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32.png?v=4"><link rel="apple-touch-icon" href="../img/apple-touch-icon.png?v=4"><meta name="theme-color" content="#072417"><link rel="manifest" href="../manifest.json"><link rel="alternate" type="application/rss+xml" title="El Telar" href="../feed.xml">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Alucinaciones de la IA: cómo detectar cuando se inventa algo | El Telar">
-<meta property="og:description" content="Por qué los modelos inventan URLs, citas y librerías inexistentes con total convicción, dónde ocurre más y cómo forzar la honestidad epistémica.">
+<meta property="og:title" content="Alucinaciones de la IA: qué son y cómo detectarlas">
+<meta property="og:description" content="Las alucinaciones de la IA son respuestas inventadas que suenan convincentes: datos, citas o enlaces falsos. Cómo detectarlas y evitarlas, con checklist.">
 <meta property="og:url" content="https://eltelar.es/articulos/alucinaciones-ia.html">
 <meta property="og:site_name" content="El Telar">
 <meta property="og:locale" content="es_ES"><meta property="og:image" content="https://eltelar.es/img/og/guia-alucinaciones-ia.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
@@ -36,52 +36,82 @@
 
 <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "¿Las alucinaciones van a desaparecer con la siguiente generación de modelos?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Es poco probable que desaparezcan del todo, porque son consecuencia directa de cómo funciona un modelo de lenguaje (predicción estadística de texto plausible), no un simple defecto de entrenamiento que se corrige con más datos. Lo que sí ha mejorado de forma medible es la tasa en tareas ancladas a un texto concreto, según el propio leaderboard público de Vectara citado antes en esta guía. Para hechos sin ancla externa (fechas exactas, cifras específicas, nombres poco comunes), el riesgo se mantiene."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "¿Aumentar la \"temperatura\" o cambiar la configuración del modelo reduce las alucinaciones?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Una temperatura más baja hace que el modelo elija de forma más conservadora entre las opciones más probables, lo que en la práctica reduce ligeramente la varianza de la respuesta, pero no resuelve el problema de fondo: si el dato más \"probable\" según el entrenamiento es incorrecto, una temperatura baja hará que el modelo lo repita con más consistencia, no que dé con el dato correcto."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "¿Hay alguna señal en el propio texto que delate cuándo el modelo está alucinando?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "No de forma fiable. Es tentador pensar que un tono más vago o dubitativo indica menor certeza real, pero en la práctica los modelos pueden expresar la misma confianza aparente tanto si el dato es correcto como si es inventado, precisamente porque no tienen una medida interna de certeza que se traduzca directamente en el estilo de la respuesta. La única señal fiable sigue siendo externa: verificar el dato contra una fuente independiente, no interpretar el tono del texto generado."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "¿Es lo mismo una alucinación que un modelo \"desactualizado\" que no conoce un hecho reciente?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "No exactamente, aunque a menudo se confunden. Un modelo sin acceso a información reciente que dice honestamente \"mi conocimiento tiene una fecha de corte y no puedo confirmar eventos posteriores\" no está alucinando, está siendo transparente sobre su límite. La alucinación ocurre cuando, en vez de admitir ese límite, el modelo rellena el hueco con una respuesta inventada que suena igual de segura que una respuesta bien fundamentada. La diferencia práctica es justo la que se pide en el primer protocolo de esta guía: darle al modelo permiso explícito para decir \"no lo sé\" en vez de premiar implícitamente cualquier respuesta con apariencia completa."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "¿Todos los modelos y todas las tareas necesitan el mismo nivel de precaución?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "No. La precaución debe escalar con dos factores: cuánto se aleja la tarea de un texto de referencia concreto (más lejos, más riesgo) y cuánto cuesta que el dato final esté mal (más caro, más verificación). Una consulta rápida sobre un tema general con bajo coste de error no necesita el mismo protocolo que redactar una cláusula contractual o calcular una cifra que va a un informe financiero. Aplicar el mismo nivel máximo de escepticismo a todo lo que genera un modelo no es más seguro, solo más lento — la habilidad real está en calibrar cuánto verificar según lo que de verdad está en juego en cada caso concreto."
-      }
-    },
-    {"@type": "Question", "name": "¿Qué modelo alucina menos ahora mismo?", "acceptedAnswer": {"@type": "Answer", "text": "No hay una respuesta única. En el ranking de Vectara (resumir documentos, septiembre de 2026) las tasas más bajas las tienen modelos pequeños o especializados, y los más potentes no siempre lideran. Depende de tu tarea: pruébalo con ejemplos tuyos y verifica los datos críticos con una fuente original."}},
-    {"@type": "Question", "name": "¿Hay casos reales de abogados sancionados por citas inventadas con IA?", "acceptedAnswer": {"@type": "Answer", "text": "Sí. La base de Damien Charlotin recopila más de dos mil resoluciones en las que se detectó contenido inventado por IA en escritos judiciales, incluidos casos en España. Es un recuento de casos públicos, no una estadística de todos los escritos."}}
-  ]
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "¿Las alucinaciones van a desaparecer con la siguiente generación de modelos?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Es poco probable que desaparezcan del todo, porque son consecuencia directa de cómo funciona un modelo de lenguaje (predicción estadística de texto plausible), no un simple defecto de entrenamiento que se corrige con más datos. Lo que sí ha mejorado de forma medible es la tasa en tareas ancladas a un texto concreto, según el propio leaderboard público de Vectara citado antes en esta guía. Para hechos sin ancla externa (fechas exactas, cifras específicas, nombres poco comunes), el riesgo se mantiene."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Aumentar la \"temperatura\" o cambiar la configuración del modelo reduce las alucinaciones?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Una temperatura más baja hace que el modelo elija de forma más conservadora entre las opciones más probables, lo que en la práctica reduce ligeramente la varianza de la respuesta, pero no resuelve el problema de fondo: si el dato más \"probable\" según el entrenamiento es incorrecto, una temperatura baja hará que el modelo lo repita con más consistencia, no que dé con el dato correcto."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Hay alguna señal en el propio texto que delate cuándo el modelo está alucinando?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "No de forma fiable. Es tentador pensar que un tono más vago o dubitativo indica menor certeza real, pero en la práctica los modelos pueden expresar la misma confianza aparente tanto si el dato es correcto como si es inventado, precisamente porque no tienen una medida interna de certeza que se traduzca directamente en el estilo de la respuesta. La única señal fiable sigue siendo externa: verificar el dato contra una fuente independiente, no interpretar el tono del texto generado."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Es lo mismo una alucinación que un modelo \"desactualizado\" que no conoce un hecho reciente?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "No exactamente, aunque a menudo se confunden. Un modelo sin acceso a información reciente que dice honestamente \"mi conocimiento tiene una fecha de corte y no puedo confirmar eventos posteriores\" no está alucinando, está siendo transparente sobre su límite. La alucinación ocurre cuando, en vez de admitir ese límite, el modelo rellena el hueco con una respuesta inventada que suena igual de segura que una respuesta bien fundamentada. La diferencia práctica es justo la que se pide en el primer protocolo de esta guía: darle al modelo permiso explícito para decir \"no lo sé\" en vez de premiar implícitamente cualquier respuesta con apariencia completa."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Todos los modelos y todas las tareas necesitan el mismo nivel de precaución?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "No. La precaución debe escalar con dos factores: cuánto se aleja la tarea de un texto de referencia concreto (más lejos, más riesgo) y cuánto cuesta que el dato final esté mal (más caro, más verificación). Una consulta rápida sobre un tema general con bajo coste de error no necesita el mismo protocolo que redactar una cláusula contractual o calcular una cifra que va a un informe financiero. Aplicar el mismo nivel máximo de escepticismo a todo lo que genera un modelo no es más seguro, solo más lento — la habilidad real está en calibrar cuánto verificar según lo que de verdad está en juego en cada caso concreto."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Qué modelo alucina menos ahora mismo?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "No hay una respuesta única. En el ranking de Vectara (resumir documentos, septiembre de 2026) las tasas más bajas las tienen modelos pequeños o especializados, y los más potentes no siempre lideran. Depende de tu tarea: pruébalo con ejemplos tuyos y verifica los datos críticos con una fuente original."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Hay casos reales de abogados sancionados por citas inventadas con IA?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Sí. La base de Damien Charlotin recopila más de dos mil resoluciones en las que se detectó contenido inventado por IA en escritos judiciales, incluidos casos en España. Es un recuento de casos públicos, no una estadística de todos los escritos."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Cómo se llama la información inventada o incorrecta que producen los modelos generativos?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Alucinaciones. Es el término que se usa cuando un modelo de IA genera datos, citas o hechos falsos con apariencia de verdad."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Se pueden evitar las alucinaciones por completo?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "No. Se pueden reducir dándole fuentes verificables al modelo, pidiéndole que cite y comprobando siempre los datos importantes antes de usarlos."
+   }
+  }
+ ]
 }
 </script>
 <script type="application/ld+json">
@@ -112,7 +142,7 @@
 </script>
 <link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link rel="preload" href="../fonts/newsreader-normal-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/inter-normal-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="../css/fonts.css?v=1"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,leaderboard,lightbulb,lock,lock_clock,lock_open,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,volunteer_activism,warning,work,workspace_premium&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,leaderboard,lightbulb,lock,lock_clock,lock_open,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,volunteer_activism,warning,work,workspace_premium&amp;display=swap" rel="stylesheet"/></noscript>
 <style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><link rel="stylesheet" href="../css/tailwind.css"><link rel="stylesheet" href="../css/entrance.css?v=20"><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}(function(){var c=null;try{c=localStorage.getItem('eltelar-cookie-consent')}catch(e){}var g=c==='accepted'?'granted':'denied';gtag('consent','default',{ad_storage:g,ad_user_data:g,ad_personalization:g,analytics_storage:g,wait_for_update:500});window.adsbygoogle=window.adsbygoogle||[];if(g!=='granted'){window.adsbygoogle.requestNonPersonalizedAds=1;}})();</script><script>window.addEventListener("load",function(){setTimeout(function(){var s=document.createElement("script");s.async=true;s.src="https://www.googletagmanager.com/gtag/js?id=G-4DPTKEG79N";document.head.appendChild(s);},800);});</script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4DPTKEG79N');</script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8239907995939753" crossorigin="anonymous"></script></head><body class="bg-background font-body-md text-on-surface antialiased">
-<header class="w-full bg-surface-container-lowest border-b border-outline-variant"><div class="border-b border-outline-variant py-space-xxs px-space-md hidden md:block"><div class="max-w-site-max-width mx-auto flex items-center justify-between font-kicker text-kicker text-on-surface-variant uppercase tracking-wider"><span>EDICIÓN DIGITAL // ACTUALIZADO 2026 // EL TELAR &amp; AGENTES</span><span>MADRID · REMOTO</span><span>SIN HUMO · 100% PRODUCCIÓN</span></div></div><div class="max-w-site-max-width mx-auto px-space-md py-space-md sm:py-space-xl text-center"><p class="hidden sm:block font-kicker text-kicker uppercase tracking-widest text-on-surface-variant mb-space-xs">Publicación Independiente de Tecnología &amp; Agentes</p><a class="inline-block" href="../index.html"><div class="font-display text-display max-sm:text-[40px] max-sm:leading-none text-primary tracking-tight">El Telar</div></a><p class="hidden sm:block font-caption text-caption uppercase tracking-widest text-on-surface-variant mt-space-xs">EL BOLETÍN Y ARCHIVO PRÁCTICO DE INTELIGENCIA ARTIFICIAL Y AGENTES AUTÓNOMOS</p></div><div class="border-t border-b border-outline-variant"><div class="max-w-site-max-width mx-auto px-space-md flex items-center justify-between gap-space-sm h-14"><nav class="flex items-center gap-space-md sm:gap-space-lg h-full min-w-0 overflow-x-auto [scrollbar-width:none] whitespace-nowrap site-nav"><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../index.html#guias">GUÍAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../noticias/index.html">NOTICIAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../prompts/index.html">PROMPTS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../herramientas/index.html">HERRAMIENTAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../empieza-aqui.html">EMPIEZA AQUÍ</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../sobre-nosotros.html">SOBRE NOSOTROS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../contacto.html">CONTACTO</a></nav><div class="flex items-center gap-space-md"><button id="search-trigger" type="button" aria-label="Buscar en las guías" class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[20px]">search</span></button><a class="hidden sm:inline-block bg-primary-container text-surface px-space-md py-space-xs font-label-md text-label-md uppercase tracking-wider hover:bg-primary transition-colors" href="../index.html#despacho">SUSCRÍBETE GRATIS</a></div></div></div><div class="hidden md:block bg-surface-container-low border-b border-outline-variant py-space-xs px-space-md"><div class="max-w-site-max-width mx-auto text-center"><p class="font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">71 GUÍAS COMPLETAS EN EXPANSIÓN · ACTUALIZADO A MODELOS 2026 · PROBADO EN TERMINAL Y FLUJOS REALES · CERO HUMO NI TEORÍA VACÍA</p></div></div></header>
+<header class="w-full bg-surface-container-lowest border-b border-outline-variant"><div class="border-b border-outline-variant py-space-xxs px-space-md hidden md:block"><div class="max-w-site-max-width mx-auto flex items-center justify-between font-kicker text-kicker text-on-surface-variant uppercase tracking-wider"><span>EDICIÓN DIGITAL // ACTUALIZADO 2026 // EL TELAR &amp; AGENTES</span><span>MADRID · REMOTO</span><span>SIN HUMO · 100% PRODUCCIÓN</span></div></div><div class="max-w-site-max-width mx-auto px-space-md py-space-md sm:py-space-xl text-center"><p class="hidden sm:block font-kicker text-kicker uppercase tracking-widest text-on-surface-variant mb-space-xs">Publicación Independiente de Tecnología &amp; Agentes</p><a class="inline-block" href="../index.html"><div class="font-display text-display max-sm:text-[40px] max-sm:leading-none text-primary tracking-tight">El Telar</div></a><p class="hidden sm:block font-caption text-caption uppercase tracking-widest text-on-surface-variant mt-space-xs">EL BOLETÍN Y ARCHIVO PRÁCTICO DE INTELIGENCIA ARTIFICIAL Y AGENTES AUTÓNOMOS</p></div><div class="border-t border-b border-outline-variant"><div class="max-w-site-max-width mx-auto px-space-md flex items-center justify-between gap-space-sm h-14"><nav class="flex items-center gap-space-md sm:gap-space-lg h-full min-w-0 overflow-x-auto [scrollbar-width:none] whitespace-nowrap site-nav"><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../index.html#guias">GUÍAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../noticias/index.html">NOTICIAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../prompts/index.html">PROMPTS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../herramientas/index.html">HERRAMIENTAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../empieza-aqui.html">EMPIEZA AQUÍ</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../sobre-nosotros.html">SOBRE NOSOTROS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../contacto.html">CONTACTO</a></nav><div class="flex items-center gap-space-md"><button id="search-trigger" type="button" aria-label="Buscar en las guías" class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[20px]">search</span></button><a class="hidden sm:inline-block bg-primary-container text-surface px-space-md py-space-xs font-label-md text-label-md uppercase tracking-wider hover:bg-primary transition-colors" href="../index.html#despacho">SUSCRÍBETE GRATIS</a></div></div></div><div class="hidden md:block bg-surface-container-low border-b border-outline-variant py-space-xs px-space-md"><div class="max-w-site-max-width mx-auto text-center"><p class="font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">76 GUÍAS COMPLETAS EN EXPANSIÓN · ACTUALIZADO A MODELOS 2026 · PROBADO EN TERMINAL Y FLUJOS REALES · CERO HUMO NI TEORÍA VACÍA</p></div></div></header>
 <main class="w-full max-w-site-max-width mx-auto px-space-md py-space-xl"><div class="flex flex-col w-full">
 <div class="border-b border-outline-variant pb-space-xs mb-space-lg">
 <nav class="flex items-center flex-wrap gap-space-xs font-caption text-caption text-on-surface-variant">
@@ -153,7 +183,7 @@
 <div class="bg-surface-container-low border border-outline-variant p-space-lg space-y-space-md shadow-sm">
 <div class="flex items-center gap-space-xs border-b border-outline-variant pb-space-xs">
 <span class="material-symbols-outlined text-secondary text-[20px]">warning</span>
-<h2 class="font-kicker text-kicker uppercase tracking-widest text-primary">MAPA RÁPIDO DE RIESGO</h2>
+<section id="respuesta" class="space-y-space-md scroll-mt-24 bg-surface-container-low p-space-lg border-l-4 border-secondary"><span class="font-kicker text-kicker uppercase tracking-widest text-secondary">RESPUESTA RÁPIDA</span><h2 class="font-headline-md text-headline-md text-primary tracking-tight">¿Cómo se llama la información inventada que produce una IA?</h2><p class="font-body-md text-body-md text-on-surface leading-relaxed">Se llama <strong>alucinación</strong>. Ocurre cuando un modelo generativo responde con datos, citas, enlaces o librerías que no existen, pero con total seguridad. No es sesgo, ni sobrecarga, ni entrenamiento: es que el modelo predice lo que suena bien, no lo que ha comprobado.</p></section><h2 class="font-kicker text-kicker uppercase tracking-widest text-primary">MAPA RÁPIDO DE RIESGO</h2>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-space-md pt-space-xxs">
 <div class="bg-surface-container-lowest border-l-4 border-error p-space-sm space-y-space-xs">
@@ -546,6 +576,24 @@ No hay una respuesta única. En el ranking de Vectara (resumir documentos, septi
 </button>
 <div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
 Sí. La base de Damien Charlotin recopila más de dos mil resoluciones en las que se detectó contenido inventado por IA en escritos judiciales, incluidos casos en España. Es un recuento de casos públicos, no una estadística de todos los escritos.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Cómo se llama la información inventada o incorrecta que producen los modelos generativos?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Alucinaciones. Es el término que se usa cuando un modelo de IA genera datos, citas o hechos falsos con apariencia de verdad.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Se pueden evitar las alucinaciones por completo?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+No. Se pueden reducir dándole fuentes verificables al modelo, pidiéndole que cite y comprobando siempre los datos importantes antes de usarlos.
 </div>
 </div>
 

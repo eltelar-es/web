@@ -2,15 +2,15 @@
 <html lang="es"><head><meta charset="utf-8"/>
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Qué es un prompt y cómo escribir uno bueno | El Telar</title>
-<meta name="description" content="La diferencia entre una instrucción vaga y una especificación precisa: rol, contexto, delimitadores y formato de salida, con ejemplos de antes/después.">
+<meta name="description" content="Un prompt es la instrucción que le das a una IA. Cómo escribir uno bueno: rol, contexto, formato y ejemplos de antes y después, con plantilla para copiar.">
 <link rel="canonical" href="https://eltelar.es/articulos/como-escribir-prompts.html"><link rel="icon" type="image/svg+xml" href="../img/favicon.svg?v=4">
 <link rel="icon" type="image/png" sizes="48x48" href="/img/favicon-48.png?v=5">
 <link rel="icon" type="image/png" sizes="192x192" href="/img/favicon-192.png?v=5">
 <link rel="shortcut icon" href="/favicon.ico?v=5">
 <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32.png?v=4"><link rel="apple-touch-icon" href="../img/apple-touch-icon.png?v=4"><meta name="theme-color" content="#072417"><link rel="manifest" href="../manifest.json"><link rel="alternate" type="application/rss+xml" title="El Telar" href="../feed.xml">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Qué es un prompt y cómo escribir instrucciones que la IA entienda bien | El Telar">
-<meta property="og:description" content="La diferencia entre una instrucción vaga y una especificación precisa: rol, contexto, delimitadores y formato de salida, con ejemplos de antes/después.">
+<meta property="og:title" content="Qué es un prompt y cómo escribir uno bueno">
+<meta property="og:description" content="Un prompt es la instrucción que le das a una IA. Cómo escribir uno bueno: rol, contexto, formato y ejemplos de antes y después, con plantilla para copiar.">
 <meta property="og:url" content="https://eltelar.es/articulos/como-escribir-prompts.html">
 <meta property="og:site_name" content="El Telar">
 <meta property="og:locale" content="es_ES"><meta property="og:image" content="https://eltelar.es/img/og/guia-como-escribir-prompts.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
@@ -46,66 +46,82 @@
 
 <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "¿Hace falta usar etiquetas XML para todo, incluso prompts sencillos?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "No. Para una pregunta corta y sin datos externos que pegar, una instrucción directa en lenguaje normal es suficiente. Las etiquetas aportan valor cuando mezclas instrucciones con un bloque de texto o datos que el modelo debe procesar como material, no como orden."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "¿Los mismos principios de esta guía sirven para generar imágenes, no solo texto?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Los principios de especificidad y contexto sí se trasladan (cuanto más concreta la descripción, más predecible el resultado), pero los modelos de generación de imágenes tienen sus propias convenciones de formato (orden de palabras clave, términos de estilo) que no siempre coinciden con lo que funciona bien en texto."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "¿Por qué a veces el mismo prompt exacto da resultados distintos en días diferentes?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Los modelos tienen un componente de variación intencionada (relacionado con la temperatura) que hace que la misma instrucción no produzca siempre exactamente la misma respuesta, incluso sin cambiar nada. Para tareas donde necesitas total consistencia, busca si la herramienta que usas permite fijar ese parámetro a un valor bajo. Ojo en la API de Claude: según la documentación de Anthropic, desde Claude Opus 4.7 los parámetros temperature, top_p y top_k devuelven un error 400 si los pones con un valor distinto del predeterminado; en esos modelos se guía el comportamiento con el propio prompt."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "¿Merece la pena aprender técnicas avanzadas como chain-of-thought o few-shot con muchos ejemplos, o basta con lo básico de esta guía?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Para el 80% de las tareas del día a día (redactar, resumir, clasificar, extraer datos), los cuatro pilares de esta guía son suficientes y añadir más técnica no mejora el resultado de forma perceptible. Las técnicas avanzadas empiezan a justificarse en tareas de razonamiento complejo con varios pasos lógicos encadenados, o en tareas de clasificación con matices muy finos donde uno o dos ejemplos no bastan para que el modelo capte el patrón — ahí sí merece la pena invertir tiempo en pedir explícitamente que el modelo razone paso a paso antes de dar la respuesta final, o en ampliar de dos a cinco o seis ejemplos representativos."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "¿Cómo sé si el problema es mi prompt o una limitación real del modelo?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Una forma rápida de diferenciarlo es simplificar el prompt al máximo y probar con un ejemplo muy sencillo del mismo tipo de tarea: si el modelo falla incluso en la versión simplificada, es más probable que sea una limitación real (por ejemplo, cálculos matemáticos complejos o conteo exacto de caracteres, tareas donde los modelos de lenguaje tienden a fallar por cómo procesan el texto internamente). Si en cambio la versión simplificada funciona bien y solo falla al añadir la complejidad real de tu caso, casi siempre el margen de mejora está en el prompt: más contexto, un ejemplo más parecido a tu caso real, o dividir la tarea en pasos más pequeños."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "¿Cuánto tiempo hay que invertir en pulir un prompt antes de que deje de merecer la pena?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Depende de cuántas veces vayas a reutilizarlo. Para una consulta puntual que solo vas a hacer una vez, no tiene sentido invertir más de un minuto en aplicar los pilares básicos. Para un prompt que vas a ejecutar decenas o cientos de veces (una plantilla de equipo, un paso dentro de una automatización), sí merece la pena invertir media hora probando variaciones, porque cada mejora se multiplica por todas las veces que se va a usar. La regla práctica es simple: el tiempo invertido en el prompt debe ser proporcional al número de veces que ese prompt se va a repetir."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "¿Por qué mi prompt de hace un año ya no funciona igual?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Los modelos cambian cada pocos meses (los actuales son de septiembre de 2026) y algunas técnicas se han retirado, como el «prefill» o fijar la temperatura en ciertos modelos. Revisa el prompt con la lista de esta guía y consulta la guía oficial del modelo que uses."
-      }
-    }
-  ]
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "¿Hace falta usar etiquetas XML para todo, incluso prompts sencillos?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "No. Para una pregunta corta y sin datos externos que pegar, una instrucción directa en lenguaje normal es suficiente. Las etiquetas aportan valor cuando mezclas instrucciones con un bloque de texto o datos que el modelo debe procesar como material, no como orden."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Los mismos principios de esta guía sirven para generar imágenes, no solo texto?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Los principios de especificidad y contexto sí se trasladan (cuanto más concreta la descripción, más predecible el resultado), pero los modelos de generación de imágenes tienen sus propias convenciones de formato (orden de palabras clave, términos de estilo) que no siempre coinciden con lo que funciona bien en texto."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Por qué a veces el mismo prompt exacto da resultados distintos en días diferentes?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Los modelos tienen un componente de variación intencionada (relacionado con la temperatura) que hace que la misma instrucción no produzca siempre exactamente la misma respuesta, incluso sin cambiar nada. Para tareas donde necesitas total consistencia, busca si la herramienta que usas permite fijar ese parámetro a un valor bajo. Ojo en la API de Claude: según la documentación de Anthropic, desde Claude Opus 4.7 los parámetros temperature, top_p y top_k devuelven un error 400 si los pones con un valor distinto del predeterminado; en esos modelos se guía el comportamiento con el propio prompt."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Merece la pena aprender técnicas avanzadas como chain-of-thought o few-shot con muchos ejemplos, o basta con lo básico de esta guía?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Para el 80% de las tareas del día a día (redactar, resumir, clasificar, extraer datos), los cuatro pilares de esta guía son suficientes y añadir más técnica no mejora el resultado de forma perceptible. Las técnicas avanzadas empiezan a justificarse en tareas de razonamiento complejo con varios pasos lógicos encadenados, o en tareas de clasificación con matices muy finos donde uno o dos ejemplos no bastan para que el modelo capte el patrón — ahí sí merece la pena invertir tiempo en pedir explícitamente que el modelo razone paso a paso antes de dar la respuesta final, o en ampliar de dos a cinco o seis ejemplos representativos."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Cómo sé si el problema es mi prompt o una limitación real del modelo?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Una forma rápida de diferenciarlo es simplificar el prompt al máximo y probar con un ejemplo muy sencillo del mismo tipo de tarea: si el modelo falla incluso en la versión simplificada, es más probable que sea una limitación real (por ejemplo, cálculos matemáticos complejos o conteo exacto de caracteres, tareas donde los modelos de lenguaje tienden a fallar por cómo procesan el texto internamente). Si en cambio la versión simplificada funciona bien y solo falla al añadir la complejidad real de tu caso, casi siempre el margen de mejora está en el prompt: más contexto, un ejemplo más parecido a tu caso real, o dividir la tarea en pasos más pequeños."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Cuánto tiempo hay que invertir en pulir un prompt antes de que deje de merecer la pena?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Depende de cuántas veces vayas a reutilizarlo. Para una consulta puntual que solo vas a hacer una vez, no tiene sentido invertir más de un minuto en aplicar los pilares básicos. Para un prompt que vas a ejecutar decenas o cientos de veces (una plantilla de equipo, un paso dentro de una automatización), sí merece la pena invertir media hora probando variaciones, porque cada mejora se multiplica por todas las veces que se va a usar. La regla práctica es simple: el tiempo invertido en el prompt debe ser proporcional al número de veces que ese prompt se va a repetir."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Por qué mi prompt de hace un año ya no funciona igual?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Los modelos cambian cada pocos meses (los actuales son de septiembre de 2026) y algunas técnicas se han retirado, como el «prefill» o fijar la temperatura en ciertos modelos. Revisa el prompt con la lista de esta guía y consulta la guía oficial del modelo que uses."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Qué es un prompt?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Es la instrucción, pregunta o contexto que le das a una IA para que genere una respuesta. Cuanto más concreto, mejor resultado."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Qué es el prompting?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Es la práctica de escribir y ajustar prompts para obtener mejores respuestas de un modelo de IA: definir el rol, dar contexto, pedir un formato y probar variaciones."
+   }
+  }
+ ]
 }
 </script>
 <script type="application/ld+json">
@@ -136,7 +152,7 @@
 </script>
 <link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link rel="preload" href="../fonts/newsreader-normal-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/inter-normal-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="../css/fonts.css?v=1"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,leaderboard,lightbulb,lock,lock_clock,lock_open,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,volunteer_activism,warning,work,workspace_premium&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,leaderboard,lightbulb,lock,lock_clock,lock_open,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,volunteer_activism,warning,work,workspace_premium&amp;display=swap" rel="stylesheet"/></noscript>
 <style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><link rel="stylesheet" href="../css/tailwind.css"><link rel="stylesheet" href="../css/entrance.css?v=20"><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}(function(){var c=null;try{c=localStorage.getItem('eltelar-cookie-consent')}catch(e){}var g=c==='accepted'?'granted':'denied';gtag('consent','default',{ad_storage:g,ad_user_data:g,ad_personalization:g,analytics_storage:g,wait_for_update:500});window.adsbygoogle=window.adsbygoogle||[];if(g!=='granted'){window.adsbygoogle.requestNonPersonalizedAds=1;}})();</script><script>window.addEventListener("load",function(){setTimeout(function(){var s=document.createElement("script");s.async=true;s.src="https://www.googletagmanager.com/gtag/js?id=G-4DPTKEG79N";document.head.appendChild(s);},800);});</script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4DPTKEG79N');</script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8239907995939753" crossorigin="anonymous"></script></head><body class="bg-background font-body-md text-on-surface antialiased">
-<header class="w-full bg-surface-container-lowest border-b border-outline-variant"><div class="border-b border-outline-variant py-space-xxs px-space-md hidden md:block"><div class="max-w-site-max-width mx-auto flex items-center justify-between font-kicker text-kicker text-on-surface-variant uppercase tracking-wider"><span>EDICIÓN DIGITAL // ACTUALIZADO 2026 // EL TELAR &amp; AGENTES</span><span>MADRID · REMOTO</span><span>SIN HUMO · 100% PRODUCCIÓN</span></div></div><div class="max-w-site-max-width mx-auto px-space-md py-space-md sm:py-space-xl text-center"><p class="hidden sm:block font-kicker text-kicker uppercase tracking-widest text-on-surface-variant mb-space-xs">Publicación Independiente de Tecnología &amp; Agentes</p><a class="inline-block" href="../index.html"><div class="font-display text-display max-sm:text-[40px] max-sm:leading-none text-primary tracking-tight">El Telar</div></a><p class="hidden sm:block font-caption text-caption uppercase tracking-widest text-on-surface-variant mt-space-xs">EL BOLETÍN Y ARCHIVO PRÁCTICO DE INTELIGENCIA ARTIFICIAL Y AGENTES AUTÓNOMOS</p></div><div class="border-t border-b border-outline-variant"><div class="max-w-site-max-width mx-auto px-space-md flex items-center justify-between gap-space-sm h-14"><nav class="flex items-center gap-space-md sm:gap-space-lg h-full min-w-0 overflow-x-auto [scrollbar-width:none] whitespace-nowrap site-nav"><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../index.html#guias">GUÍAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../noticias/index.html">NOTICIAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../prompts/index.html">PROMPTS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../herramientas/index.html">HERRAMIENTAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../empieza-aqui.html">EMPIEZA AQUÍ</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../sobre-nosotros.html">SOBRE NOSOTROS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../contacto.html">CONTACTO</a></nav><div class="flex items-center gap-space-md"><button id="search-trigger" type="button" aria-label="Buscar en las guías" class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[20px]">search</span></button><a class="hidden sm:inline-block bg-primary-container text-surface px-space-md py-space-xs font-label-md text-label-md uppercase tracking-wider hover:bg-primary transition-colors" href="../index.html#despacho">SUSCRÍBETE GRATIS</a></div></div></div><div class="hidden md:block bg-surface-container-low border-b border-outline-variant py-space-xs px-space-md"><div class="max-w-site-max-width mx-auto text-center"><p class="font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">71 GUÍAS COMPLETAS EN EXPANSIÓN · ACTUALIZADO A MODELOS 2026 · PROBADO EN TERMINAL Y FLUJOS REALES · CERO HUMO NI TEORÍA VACÍA</p></div></div></header>
+<header class="w-full bg-surface-container-lowest border-b border-outline-variant"><div class="border-b border-outline-variant py-space-xxs px-space-md hidden md:block"><div class="max-w-site-max-width mx-auto flex items-center justify-between font-kicker text-kicker text-on-surface-variant uppercase tracking-wider"><span>EDICIÓN DIGITAL // ACTUALIZADO 2026 // EL TELAR &amp; AGENTES</span><span>MADRID · REMOTO</span><span>SIN HUMO · 100% PRODUCCIÓN</span></div></div><div class="max-w-site-max-width mx-auto px-space-md py-space-md sm:py-space-xl text-center"><p class="hidden sm:block font-kicker text-kicker uppercase tracking-widest text-on-surface-variant mb-space-xs">Publicación Independiente de Tecnología &amp; Agentes</p><a class="inline-block" href="../index.html"><div class="font-display text-display max-sm:text-[40px] max-sm:leading-none text-primary tracking-tight">El Telar</div></a><p class="hidden sm:block font-caption text-caption uppercase tracking-widest text-on-surface-variant mt-space-xs">EL BOLETÍN Y ARCHIVO PRÁCTICO DE INTELIGENCIA ARTIFICIAL Y AGENTES AUTÓNOMOS</p></div><div class="border-t border-b border-outline-variant"><div class="max-w-site-max-width mx-auto px-space-md flex items-center justify-between gap-space-sm h-14"><nav class="flex items-center gap-space-md sm:gap-space-lg h-full min-w-0 overflow-x-auto [scrollbar-width:none] whitespace-nowrap site-nav"><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../index.html#guias">GUÍAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../noticias/index.html">NOTICIAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../prompts/index.html">PROMPTS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../herramientas/index.html">HERRAMIENTAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../empieza-aqui.html">EMPIEZA AQUÍ</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../sobre-nosotros.html">SOBRE NOSOTROS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../contacto.html">CONTACTO</a></nav><div class="flex items-center gap-space-md"><button id="search-trigger" type="button" aria-label="Buscar en las guías" class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[20px]">search</span></button><a class="hidden sm:inline-block bg-primary-container text-surface px-space-md py-space-xs font-label-md text-label-md uppercase tracking-wider hover:bg-primary transition-colors" href="../index.html#despacho">SUSCRÍBETE GRATIS</a></div></div></div><div class="hidden md:block bg-surface-container-low border-b border-outline-variant py-space-xs px-space-md"><div class="max-w-site-max-width mx-auto text-center"><p class="font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">76 GUÍAS COMPLETAS EN EXPANSIÓN · ACTUALIZADO A MODELOS 2026 · PROBADO EN TERMINAL Y FLUJOS REALES · CERO HUMO NI TEORÍA VACÍA</p></div></div></header>
 <main class="w-full max-w-site-max-width mx-auto px-space-md py-space-xl"><div class="flex flex-col w-full">
 <nav class="w-full pb-space-md mb-space-md text-caption font-caption text-on-surface-variant flex items-center gap-space-xs tracking-wide">
 <a class="hover:text-primary transition-colors" href="../index.html">Inicio</a>
@@ -205,7 +221,7 @@
 </div>
 <figcaption class="font-caption text-caption text-on-surface-variant mt-space-xs">Los cuatro pilares que separan una petición vaga de una instrucción precisa.</figcaption>
 </figure>
-<section class="bg-surface-container-low p-space-lg">
+<section id="respuesta" class="space-y-space-md scroll-mt-24 bg-surface-container-low p-space-lg border-l-4 border-secondary"><span class="font-kicker text-kicker uppercase tracking-widest text-secondary">RESPUESTA RÁPIDA</span><h2 class="font-headline-md text-headline-md text-primary tracking-tight">¿Qué es un prompt?</h2><p class="font-body-md text-body-md text-on-surface leading-relaxed">Un prompt es el texto que le das a una inteligencia artificial para que haga algo: una pregunta, una instrucción o un contexto. El <strong>prompting</strong> es el oficio de escribirlos bien. Un buen prompt dice quién debe ser la IA (rol), qué sabe de tu situación (contexto), qué tiene que hacer (tarea) y cómo quieres la respuesta (formato).</p></section><section class="bg-surface-container-low p-space-lg">
 <h2 id="sec-1" class="font-headline-sm text-headline-sm text-primary mb-space-md">
           Los cuatro pilares de una instrucción sólida
         </h2>
@@ -575,6 +591,24 @@ Depende de cuántas veces vayas a reutilizarlo. Para una consulta puntual que so
 </button>
 <div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
 Los modelos cambian cada pocos meses (los actuales son de septiembre de 2026) y algunas técnicas se han retirado, como el «prefill» o fijar la temperatura en ciertos modelos. Revisa el prompt con la lista de esta guía y consulta la guía oficial del modelo que uses.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Qué es un prompt?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Es la instrucción, pregunta o contexto que le das a una IA para que genere una respuesta. Cuanto más concreto, mejor resultado.
+</div>
+</div>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Qué es el prompting?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Es la práctica de escribir y ajustar prompts para obtener mejores respuestas de un modelo de IA: definir el rol, dar contexto, pedir un formato y probar variaciones.
 </div>
 </div>
 
