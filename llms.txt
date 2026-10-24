@@ -4,6 +4,7 @@
 
 ## Guías
 
+- [Reuniones con IA: transcribir, resumir y repartir tareas](https://eltelar.es/articulos/reuniones-ia-transcribir-resumir-tareas.html): Qué se inventa una transcripción automática, qué te obliga a contar la ley antes de grabar una reunión en España y cómo convertir el audio en un acta que aguante.
 - [De quién es lo que crea la IA: derechos de autor](https://eltelar.es/articulos/derechos-autor-contenido-ia.html): Que la herramienta te ceda la imagen no significa que sea tuya: una empresa solo puede cederte lo que tiene. Qué dice la ley española, qué parte sí puedes proteger, por qué un logo generado es copiable y quién te defiende si te reclaman.
 - [Modelos abiertos o cerrados: cuándo te conviene cada uno](https://eltelar.es/articulos/modelos-abiertos-o-cerrados.html): Pesos abiertos no es código abierto, y la licencia decide más que el benchmark. Qué permite cada una, por qué un modelo descargado no lo puede retirar nadie y de qué exime el artículo 53 del AI Act.
 - [Cómo leer un benchmark de IA sin que te engañen](https://eltelar.es/articulos/leer-benchmarks-ia.html): Un 90 % en un examen no es un 90 % en tu trabajo. Cómo se construyen los benchmarks de IA, por qué OpenAI jubiló el suyo y qué mirar antes de creerte una tabla.
@@ -83,6 +84,7 @@
 - [Skills de Claude Code](https://eltelar.es/articulos/skills-claude-code-como-crear-una.html): Qué es una skill de Claude Code, dónde se guarda, la estructura del archivo SKILL.md, un ejemplo oficial para copiar y en qué se diferencia de CLAUDE.md y de un subagente.
 - [Modos de permisos de Claude Code](https://eltelar.es/articulos/modos-permisos-claude-code-modo-plan.html): Los modos de permisos de Claude Code (default, acceptEdits, plan, auto, bypassPermissions), cómo cambiarlos con Shift+Tab y cómo usar el modo plan para revisar antes de que toque nada.
 - [Claude Code en español](https://eltelar.es/articulos/claude-code-guias-en-espanol.html): Todas las guías de Claude Code en español, en el orden para aprender: instalar, comandos, permisos, CLAUDE.md, VS Code, límite de uso, MCP, hooks, skills y subagentes.
+- [Skills de Claude para YouTube](https://eltelar.es/articulos/skills-claude-youtube-canal.html): Qué hace cada una de las 11 skills gratis de Claude para YouTube: guion con ganchos puntuados, título y miniatura, cortes, retención, Shorts y SEO. Cómo instalarlas y qué no hacen.
 
 ## Secciones
 
