@@ -4,6 +4,7 @@
 
 ## Guías
 
+- [Agentes de IA que trabajan solos: tareas programadas](https://eltelar.es/articulos/agentes-tareas-programadas.html): Qué cambia cuando programas un agente para que se ejecute sin ti: por qué la hora que pones no se cumple, qué permisos y topes necesita, y cómo enterarte de que ha dejado de funcionar.
 - [Reuniones con IA: transcribir, resumir y repartir tareas](https://eltelar.es/articulos/reuniones-ia-transcribir-resumir-tareas.html): Qué se inventa una transcripción automática, qué te obliga a contar la ley antes de grabar una reunión en España y cómo convertir el audio en un acta que aguante.
 - [De quién es lo que crea la IA: derechos de autor](https://eltelar.es/articulos/derechos-autor-contenido-ia.html): Que la herramienta te ceda la imagen no significa que sea tuya: una empresa solo puede cederte lo que tiene. Qué dice la ley española, qué parte sí puedes proteger, por qué un logo generado es copiable y quién te defiende si te reclaman.
 - [Modelos abiertos o cerrados: cuándo te conviene cada uno](https://eltelar.es/articulos/modelos-abiertos-o-cerrados.html): Pesos abiertos no es código abierto, y la licencia decide más que el benchmark. Qué permite cada una, por qué un modelo descargado no lo puede retirar nadie y de qué exime el artículo 53 del AI Act.

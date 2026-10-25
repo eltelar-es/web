@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"/>
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Agentes de IA que trabajan solos: qué vigilar | El Telar</title>
+<meta name="description" content="Qué cambia cuando programas un agente para que se ejecute sin ti: por qué la hora que pones no se cumple, qué permisos y topes necesita, y cómo enterarte de que ha dejado de funcionar.">
+<link rel="canonical" href="https://eltelar.es/articulos/agentes-tareas-programadas.html"><link rel="icon" type="image/svg+xml" href="../img/favicon.svg?v=4">
+<link rel="icon" type="image/png" sizes="48x48" href="/img/favicon-48.png?v=5">
+<link rel="icon" type="image/png" sizes="192x192" href="/img/favicon-192.png?v=5">
+<link rel="shortcut icon" href="/favicon.ico?v=5">
+<link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32.png?v=4"><link rel="apple-touch-icon" href="../img/apple-touch-icon.png?v=4"><meta name="theme-color" content="#072417"><link rel="manifest" href="../manifest.json"><link rel="alternate" type="application/rss+xml" title="El Telar" href="../feed.xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Agentes de IA que trabajan solos: tareas programadas | El Telar">
+<meta property="og:description" content="Qué cambia cuando programas un agente para que se ejecute sin ti: por qué la hora que pones no se cumple, qué permisos y topes necesita, y cómo enterarte de que ha dejado de funcionar.">
+<meta property="og:url" content="https://eltelar.es/articulos/agentes-tareas-programadas.html">
+<meta property="og:site_name" content="El Telar">
+<meta property="og:locale" content="es_ES"><meta property="og:image" content="https://eltelar.es/img/og/guia-agentes-tareas-programadas.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Agentes de IA que trabajan solos: tareas programadas | El Telar">
+<meta name="twitter:description" content="La hora que programas no es una garantía y el informe diario deja de leerse. Cómo dejar un agente trabajando solo sin sustos."><meta name="twitter:image" content="https://eltelar.es/img/og/guia-agentes-tareas-programadas.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Agentes de IA que trabajan solos: tareas programadas",
+  "description": "Qué cambia cuando programas un agente para que se ejecute sin ti: por qué la hora que pones no se cumple, qué permisos y topes necesita, y cómo enterarte de que ha dejado de funcionar.",
+  "image": "https://eltelar.es/img/og/guia-agentes-tareas-programadas.jpg",
+  "author": {"@type": "Organization", "name": "El Telar", "url": "https://eltelar.es/sobre-nosotros.html"},
+  "publisher": {
+    "@type": "Organization",
+    "name": "El Telar"
+  },
+  "datePublished": "2026-10-25",
+  "dateModified": "2026-10-25",
+  "mainEntityOfPage": "https://eltelar.es/articulos/agentes-tareas-programadas.html",
+  "inLanguage": "es"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Necesito dejar el ordenador encendido?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Depende de dónde se ejecute. Las tareas programadas de un asistente, n8n en la nube y GitHub Actions corren en servidores ajenos: no necesitas tener nada encendido. Si usas cron en tu propio ordenador o n8n instalado en casa, sí — y ahí el fallo más común no es el agente, es el portátil dormido."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Por qué mi tarea no se ejecuta a la hora exacta?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Porque en la mayoría de estos sistemas la hora es una intención. La documentación de GitHub Actions dice que el evento programado puede retrasarse cuando hay mucha carga, que el inicio de cada hora es uno de esos momentos y que algunos trabajos en cola pueden llegar a descartarse. Si te afecta, programa a una hora rara —a las 8:17 y no a las 8:00— y no asumas nunca que cada ejecución ocurrió."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cada cuánto conviene que se ejecute?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tan poco como puedas. La frecuencia correcta sale de cuándo vas a poder hacer algo con el resultado, no de cada cuánto cambian los datos. Si lo lees por la mañana, una vez por la mañana. Pasar de diario a cada hora multiplica por veinticuatro el gasto y las oportunidades de fallo, y casi nunca te da la información antes de que puedas usarla."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cómo me entero de que ha dejado de funcionar?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No por el propio sistema: si no se ejecuta, tampoco te avisa. Necesitas algo que compruebe que hubo ejecución y se queje cuando falta — desde un servicio de vigilancia hasta una segunda tarea, en otro sitio distinto, que mire la fecha de la última. Es el único fallo que se puede pasar meses sin que nadie lo note, y es más frecuente que los errores ruidosos."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Es seguro dejar a un agente leyendo mi correo sin supervisión?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Leer y resumir, con permiso de solo lectura, es un riesgo asumible. Leer y además poder responder, reenviar o borrar sin que nadie mire es la combinación que conviene evitar: el correo es contenido que escriben otros, y ahí es donde entra la inyección de instrucciones. Si necesitas las dos cosas, deja la parte que sale al exterior detrás de una confirmación tuya."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Hace falta saber programar?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Para las tareas programadas de un asistente, no. Para n8n, tampoco en el caso normal: se monta arrastrando nodos. Saber programar te hace falta cuando quieres controlar los reintentos, dejar registros propios o conectarte a algo que no tiene integración. Lo que sí hace falta siempre, y no es programar, es decidir permisos y topes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Y si la tarea se ejecuta dos veces?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Pasa más de lo que parece, por reintentos o por solapes. La tarea tiene que poder repetirse sin consecuencias: que deje constancia de lo que ya procesó —una fecha, un identificador— y lo compruebe antes de actuar. Si eso no es posible y la acción tiene consecuencias fuera, no la dejes automática."
+      }
+    }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://eltelar.es/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Guías",
+      "item": "https://eltelar.es/index.html#guias"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Agentes de IA que trabajan solos: tareas programadas",
+      "item": "https://eltelar.es/articulos/agentes-tareas-programadas.html"
+    }
+  ]
+}
+</script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link rel="preload" href="../fonts/newsreader-normal-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/inter-normal-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="../css/fonts.css?v=1"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,leaderboard,lightbulb,lock,lock_clock,lock_open,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,volunteer_activism,warning,work,workspace_premium&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,account_tree,add,alternate_email,api,arrow_forward,assignment_turned_in,auto_awesome,auto_stories,balance,bolt,bookmark,bookmark_border,build,business_center,calculate,campaign,cancel,chat_bubble_outline,check,check_box_outline_blank,check_circle,checklist,close,cloud,cloud_sync,code,compare_arrows,content_copy,credit_card,currency_bitcoin,description,design_services,directions_bus,dns,document_scanner,domain,door_open,edit_note,fact_check,filter_alt,flag,flash_on,folder,folder_data,format_list_bulleted,gavel,gpp_maybe,graphic_eq,home,hourglass_top,image,insights,leaderboard,lightbulb,lock,lock_clock,lock_open,mark_email_read,memory,menu_book,movie,neurology,newspaper,open_in_new,pan_tool,payments,prompt_suggestion,psychology,psychology_alt,public,quiz,recommend,refresh,rule,savings,schedule,school,search,share,shield,shield_person,shuffle,smart_display,smart_toy,speed,storefront,summarize,swap_horizontal_circle,sync,sync_alt,terminal,timeline,toc,travel_explore,tune,verified,verified_user,volunteer_activism,warning,work,workspace_premium&amp;display=swap" rel="stylesheet"/></noscript>
+<style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><link rel="stylesheet" href="../css/tailwind.css"><link rel="stylesheet" href="../css/entrance.css?v=20"><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}(function(){var c=null;try{c=localStorage.getItem('eltelar-cookie-consent')}catch(e){}var g=c==='accepted'?'granted':'denied';gtag('consent','default',{ad_storage:g,ad_user_data:g,ad_personalization:g,analytics_storage:g,wait_for_update:500});window.adsbygoogle=window.adsbygoogle||[];if(g!=='granted'){window.adsbygoogle.requestNonPersonalizedAds=1;}})();</script><script>window.addEventListener("load",function(){setTimeout(function(){var s=document.createElement("script");s.async=true;s.src="https://www.googletagmanager.com/gtag/js?id=G-4DPTKEG79N";document.head.appendChild(s);},800);});</script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4DPTKEG79N');</script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8239907995939753" crossorigin="anonymous"></script></head><body class="bg-background font-body-md text-on-surface antialiased">
+<header class="w-full bg-surface-container-lowest border-b border-outline-variant"><div class="border-b border-outline-variant py-space-xxs px-space-md hidden md:block"><div class="max-w-site-max-width mx-auto flex items-center justify-between font-kicker text-kicker text-on-surface-variant uppercase tracking-wider"><span>EDICIÓN DIGITAL // ACTUALIZADO 2026 // EL TELAR &amp; AGENTES</span><span>MADRID · REMOTO</span><span>SIN HUMO · 100% PRODUCCIÓN</span></div></div><div class="max-w-site-max-width mx-auto px-space-md py-space-md sm:py-space-xl text-center"><p class="hidden sm:block font-kicker text-kicker uppercase tracking-widest text-on-surface-variant mb-space-xs">Publicación Independiente de Tecnología &amp; Agentes</p><a class="inline-block" href="../index.html"><div class="font-display text-display max-sm:text-[40px] max-sm:leading-none text-primary tracking-tight">El Telar</div></a><p class="hidden sm:block font-caption text-caption uppercase tracking-widest text-on-surface-variant mt-space-xs">EL BOLETÍN Y ARCHIVO PRÁCTICO DE INTELIGENCIA ARTIFICIAL Y AGENTES AUTÓNOMOS</p></div><div class="border-t border-b border-outline-variant"><div class="max-w-site-max-width mx-auto px-space-md flex items-center justify-between gap-space-sm h-14"><nav class="flex items-center gap-space-md sm:gap-space-lg h-full min-w-0 overflow-x-auto [scrollbar-width:none] whitespace-nowrap site-nav"><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../index.html#guias">GUÍAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../noticias/index.html">NOTICIAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../prompts/index.html">PROMPTS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../herramientas/index.html">HERRAMIENTAS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../empieza-aqui.html">EMPIEZA AQUÍ</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../sobre-nosotros.html">SOBRE NOSOTROS</a><a class="h-full flex items-center font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="../contacto.html">CONTACTO</a></nav><div class="flex items-center gap-space-md"><button id="search-trigger" type="button" aria-label="Buscar en las guías" class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[20px]">search</span></button><a class="hidden sm:inline-block bg-primary-container text-surface px-space-md py-space-xs font-label-md text-label-md uppercase tracking-wider hover:bg-primary transition-colors" href="../index.html#despacho">SUSCRÍBETE GRATIS</a></div></div></div><div class="hidden md:block bg-surface-container-low border-b border-outline-variant py-space-xs px-space-md"><div class="max-w-site-max-width mx-auto text-center"><p class="font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">82 GUÍAS COMPLETAS EN EXPANSIÓN · ACTUALIZADO A MODELOS 2026 · PROBADO EN TERMINAL Y FLUJOS REALES · CERO HUMO NI TEORÍA VACÍA</p></div></div></header>
+<main class="w-full max-w-site-max-width mx-auto px-space-md py-space-xl"><div class="flex flex-col w-full">
+<nav class="w-full mb-space-lg">
+<ol class="flex flex-wrap items-center gap-space-xs font-kicker text-kicker text-on-surface-variant uppercase tracking-wider">
+<li><a class="hover:text-primary transition-colors" href="../index.html">Inicio</a></li>
+<li class="text-on-surface-variant">/</li>
+<li><a class="hover:text-primary transition-colors" href="../index.html#guias">Guías</a></li>
+<li class="text-on-surface-variant">/</li>
+<li class="text-primary font-bold truncate max-w-[280px] sm:max-w-md">Agentes que trabajan solos</li>
+</ol>
+</nav>
+<header class="w-full pb-space-xl mb-space-2xl">
+<div class="flex flex-wrap items-center gap-space-xs mb-space-md">
+<span class="bg-surface-container-high text-secondary px-space-sm py-1 font-kicker text-kicker uppercase tracking-widest">AGENTES // TAREAS PROGRAMADAS</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight max-w-editorial-max mb-space-md">
+          Agentes de IA que trabajan solos: tareas programadas
+        </h1>
+<p class="font-lead-paragraph text-lead-paragraph text-on-surface-variant max-w-editorial-max leading-relaxed mb-space-lg">
+          Programar un agente para que se ejecute solo parece el mismo agente con un reloj delante. En realidad es el cambio más grande de tu automatización, porque quita la pieza que sostenía todo lo demás sin que te dieras cuenta: tú, mirando.
+        </p>
+<div class="bg-surface-container-lowest p-space-md flex flex-wrap items-center justify-between gap-y-3 shadow-sm">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 bg-primary text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">smart_toy</span>
+</div>
+<div>
+<div class="font-label-md text-label-md text-on-surface font-semibold">Por la Redacción de El Telar</div><div class="font-caption text-caption text-on-surface-variant">Guías prácticas de IA y agentes, probadas en flujos de trabajo reales antes de publicarlas.</div>
+<button class="inline-flex items-center gap-1 mt-2 px-3 py-1.5 bg-surface-container text-primary font-label-md text-[12px] font-semibold uppercase tracking-wider hover:bg-surface-container-high transition-colors" id="copy-guide-btn" type="button"><span class="material-symbols-outlined text-[16px]">content_copy</span> Copiar guía para tu IA</button><span class="inline-flex items-center gap-1 ml-1"><button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" id="save-guide-btn" title="Guardar guía" type="button"><span class="material-symbols-outlined text-[16px]">bookmark_border</span></button><button class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" id="copy-link-btn" title="Copiar enlace permanente" type="button"><span class="material-symbols-outlined text-[16px]">share</span></button></span>
+</div>
+</div>
+<div class="flex items-center gap-space-lg text-on-surface-variant font-caption text-caption uppercase tracking-wider">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">schedule</span> 14 min de lectura</span>
+</div>
+</div>
+</header>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-col-gap">
+<article class="lg:col-span-8 flex flex-col space-y-space-xl">
+<figure data-hero class="space-y-space-xs"><img class="w-full border border-outline-variant" src="../img/guias/hero-agentes-tareas-programadas.jpg" alt="Nota de la documentación oficial de GitHub Actions advirtiendo de que el evento schedule puede retrasarse y de que algunos trabajos en cola pueden descartarse" width="1280" height="720" fetchpriority="high" decoding="async"/><figcaption class="font-caption text-caption text-on-surface-variant">Captura de pantalla: <a class="underline" href="https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#schedule" rel="nofollow noopener" target="_blank">docs.github.com</a>. La propia documentación avisa de que la hora que programas es una intención, no una garantía.</figcaption></figure>
+<div class="relative bg-surface-container-lowest p-space-lg shadow-sm">
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed text-justify">
+<span class="float-left font-display text-primary text-6xl leading-none pr-3 pt-1 font-normal">H</span>
+          ay un momento concreto en el que un agente de IA deja de ser una herramienta y pasa a ser una pieza de infraestructura: cuando lo programas para que se ejecute solo. Hasta entonces tú abrías el chat, le pedías algo, leías la respuesta y decidías qué hacer con ella. A partir de ahí, se ejecuta a las 7:00, haga lo que haga, lo leas o no.
+        </p>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          El salto parece pequeño —es el mismo agente, el mismo prompt, solo que con un reloj delante— y es el cambio más grande que vas a hacer en tu automatización. No porque el modelo empeore, sino porque desaparece la pieza que sostenía todo lo demás sin que te dieras cuenta: tú, mirando.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Esta guía va de eso: qué cambia exactamente cuando nadie mira, por qué el disparador que programas no es tan puntual como crees (con lo que dice la documentación oficial, no lo que se supone), las cuatro preguntas que conviene contestar antes de programar nada, y el error que casi todo el mundo comete al final — montar un informe automático que nadie llega a leer. Si todavía estás en la fase anterior, la de automatizar tareas repetitivas con un humano delante, empieza por <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="automatizar-tareas-agentes-ia.html">automatizar tareas repetitivas con agentes de IA</a>.
+        </p>
+<figure class="my-space-lg"><div class="p-space-md bg-surface-container-lowest"><div class="font-kicker text-kicker uppercase text-on-surface-variant tracking-wider mb-space-sm text-center">DIAGRAMA // DÓNDE ESTABAS TÚ</div><svg aria-label="En un flujo vigilado el humano revisa entre el agente y la acción; en uno programado ese paso desaparece y la acción se ejecuta sola" class="w-full h-auto" fill="none" role="img" viewBox="0 0 680 190" xmlns="http://www.w3.org/2000/svg"><text fill="#424843" font-family="Inter" font-size="11" font-weight="700" x="10" y="16">VIGILADO</text><rect fill="#ebeef8" height="52" width="120" x="10" y="26"></rect><text fill="#072417" font-family="Inter" font-size="12" font-weight="700" text-anchor="middle" x="70" y="48">Tú lo pides</text><text fill="#424843" font-family="Inter" font-size="10" text-anchor="middle" x="70" y="64">cuando hace falta</text><path d="M132 52 H156" stroke="#727973" stroke-width="1.5"></path><polygon fill="#727973" points="156,48 164,52 156,56"></polygon><rect fill="#ebeef8" height="52" width="120" x="164" y="26"></rect><text fill="#072417" font-family="Inter" font-size="12" font-weight="700" text-anchor="middle" x="224" y="48">El agente</text><text fill="#424843" font-family="Inter" font-size="10" text-anchor="middle" x="224" y="64">propone</text><path d="M286 52 H310" stroke="#727973" stroke-width="1.5"></path><polygon fill="#727973" points="310,48 318,52 310,56"></polygon><rect fill="#caead4" height="52" width="120" x="318" y="26"></rect><text fill="#042013" font-family="Inter" font-size="12" font-weight="700" text-anchor="middle" x="378" y="48">TÚ MIRAS</text><text fill="#042013" font-family="Inter" font-size="10" text-anchor="middle" x="378" y="64">y puedes parar</text><path d="M440 52 H464" stroke="#727973" stroke-width="1.5"></path><polygon fill="#727973" points="464,48 472,52 464,56"></polygon><rect fill="#ebeef8" height="52" width="120" x="472" y="26"></rect><text fill="#072417" font-family="Inter" font-size="12" font-weight="700" text-anchor="middle" x="532" y="48">La acción</text><text fill="#424843" font-family="Inter" font-size="10" text-anchor="middle" x="532" y="64">ocurre</text><text fill="#424843" font-family="Inter" font-size="11" font-weight="700" x="10" y="122">PROGRAMADO</text><rect fill="#ffddbb" height="52" width="120" x="10" y="132"></rect><text fill="#072417" font-family="Inter" font-size="12" font-weight="700" text-anchor="middle" x="70" y="154">El reloj</text><text fill="#424843" font-family="Inter" font-size="10" text-anchor="middle" x="70" y="170">lo dispara</text><path d="M132 158 H156" stroke="#727973" stroke-width="1.5"></path><polygon fill="#727973" points="156,154 164,158 156,162"></polygon><rect fill="#ebeef8" height="52" width="120" x="164" y="132"></rect><text fill="#072417" font-family="Inter" font-size="12" font-weight="700" text-anchor="middle" x="224" y="154">El agente</text><text fill="#424843" font-family="Inter" font-size="10" text-anchor="middle" x="224" y="170">decide</text><path d="M286 158 H464" stroke="#ba1a1a" stroke-dasharray="5 4" stroke-width="1.5"></path><polygon fill="#ba1a1a" points="464,154 472,158 464,162"></polygon><text fill="#ba1a1a" font-family="Inter" font-size="10" font-style="italic" text-anchor="middle" x="378" y="152">nadie mira</text><rect fill="#ebeef8" height="52" width="120" x="472" y="132"></rect><text fill="#072417" font-family="Inter" font-size="12" font-weight="700" text-anchor="middle" x="532" y="154">La acción</text><text fill="#424843" font-family="Inter" font-size="10" text-anchor="middle" x="532" y="170">ocurre igual</text></svg></div><figcaption class="font-caption text-caption text-on-surface-variant mt-space-xs">Programar un agente no añade un paso: quita uno. Y el que quita es el único que podía frenar un error antes de que saliera.</figcaption></figure>
+<section id="sec-1" class="space-y-space-lg">
+<h2 class="font-headline-lg text-headline-lg text-primary">Los tres trabajos que hacías sin saberlo</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          Cuando usas un agente con el chat abierto crees que haces una sola cosa: leer la respuesta. En realidad haces tres, y las tres desaparecen de golpe el día que lo programas.
+        </p>
+<ul class="list-disc pl-space-lg space-y-space-xs font-body-md text-body-md text-on-surface"><li><strong>El filtro de sensatez.</strong> Cuando el agente propone algo raro, lo notas en medio segundo y no sigues. No es una revisión formal: es que te chirría. Esa señal no está escrita en ningún sitio y no se puede delegar en el propio modelo, porque es justo el modelo el que se ha equivocado.</li><li><strong>El botón de parar.</strong> Si va por mal camino, lo cortas. Un agente programado que entra en bucle a las 3:00 no tiene a nadie que lo corte hasta que alguien se despierta — o hasta que se acaba el saldo.</li><li><strong>La lectura del resultado.</strong> Cuando lo pides tú, lees lo que sale, siempre, porque estabas esperándolo. Cuando llega solo todos los días, dejas de leerlo en dos semanas. Esto es lo más previsible de todo y es lo que casi nadie tiene en cuenta al montarlo.</li></ul>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          La consecuencia práctica es que automatizar bien no consiste en escribir un prompt mejor. Consiste en reponer esos tres trabajos con mecanismos: límites que sustituyan al filtro, topes que sustituyan al botón de parar, y un diseño de avisos que sustituya a tu atención. El prompt es la parte fácil.
+        </p>
+</section>
+<section id="sec-1b" class="space-y-space-lg">
+<h2 class="font-headline-lg text-headline-lg text-primary">Qué merece programarse y qué no</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          La pregunta no es si la tarea se puede automatizar, porque casi todas se pueden. Es si merece la pena que ocurra sin ti. Hay tres rasgos que, cuando se dan los tres a la vez, hacen que programar algo salga bien; cuando falta alguno, lo normal es que acabes desactivándolo a las pocas semanas.
+        </p>
+<ul class="list-disc pl-space-lg space-y-space-sm font-body-md text-body-md text-on-surface"><li><strong>Llega sola, en un momento que no eliges.</strong> Revisar si han entrado facturas nuevas, vigilar si una página ha cambiado, mirar si un servicio sigue respondiendo. Si la tarea aparece cuando tú decides sentarte, programarla no te ahorra nada: el disparador ya eras tú.</li><li><strong>Es aburrida y siempre igual.</strong> El valor de automatizar está en la repetición idéntica, no en la dificultad. Una tarea difícil que haces una vez al trimestre no se programa: se hace bien una vez. Una tarea trivial que haces cada día a las ocho es exactamente la candidata.</li><li><strong>El fallo es barato.</strong> Si equivocarse significa que te llega un resumen con un dato de más, adelante. Si significa mandar un correo a un cliente, cobrar algo o publicar en tu nombre, lo que se programa es la preparación, y la acción final se queda con un botón que pulsas tú.</li></ul>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Esa última distinción es la que más rendimiento da y la que menos se usa. Casi cualquier tarea se puede partir en dos: una parte larga, aburrida y sin riesgo —reunir, filtrar, ordenar, redactar un borrador— y un paso final corto que sí tiene consecuencias. Programar la primera y dejarte la segunda te da casi todo el ahorro de tiempo con casi ninguno de los riesgos de esta guía. Cuando alguien dice que su automatización «no le ahorra trabajo porque tiene que revisarlo todo», casi siempre es que automatizó la mitad equivocada.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Y un aviso sobre la frecuencia, que es donde más se exagera: cada hora casi nunca es la respuesta correcta. La frecuencia debería salir de cuánto tardas en poder <em>hacer</em> algo con el resultado. Si de todas formas vas a mirarlo por la mañana, que se ejecute una vez por la mañana. Programar cada hora algo que lees una vez al día multiplica por veinticuatro el coste y el número de cosas que pueden salir mal, a cambio de una información que no vas a usar antes.
+        </p>
+</section>
+
+<section id="sec-2" class="space-y-space-lg">
+<h2 class="font-headline-lg text-headline-lg text-primary">La hora que programas es una intención, no una garantía</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          Esta es la parte que más sorprende a quien viene de pensar en un reloj. Pones «todos los días a las 7:00» y asumes que a las 7:00 pasa algo. En los sistemas que de verdad se usan para esto, no es así, y no es un fallo: está documentado.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          GitHub Actions es el caso más fácil de comprobar porque su documentación lo dice sin rodeos. El evento <code class="px-1 bg-surface-container text-on-surface">schedule</code>, escribe GitHub, «puede retrasarse durante periodos de mucha carga de ejecuciones de GitHub Actions», y añade que «los momentos de más carga incluyen el principio de cada hora» y que «si la carga es suficientemente alta, algunos trabajos en cola pueden descartarse». Su propia recomendación es programar el flujo «a una hora distinta del inicio de la hora». El intervalo mínimo, además, es de cinco minutos. Está en la <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#schedule" rel="nofollow noopener" target="_blank">página oficial de eventos que disparan flujos</a>, en la nota que ves en la foto de arriba.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Léelo otra vez, porque hay dos avisos distintos ahí. Uno es que tu tarea puede llegar tarde. El otro, mucho peor, es que puede no llegar: un trabajo descartado no se ejecuta más tarde, simplemente no se ejecuta. Si tu automatización asume que cada ejecución recoge lo que dejó la anterior, un hueco silencioso te deja un agujero en los datos que no vas a ver.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Y hay una trampa más, específica de ahí: GitHub desactiva automáticamente los flujos programados de un repositorio público cuando pasan 60 días sin actividad en el repositorio. No te lo quita porque falle; te lo quita porque nadie ha tocado nada. Si montaste un vigilante que precisamente no genera actividad cuando todo va bien, el vigilante se apaga solo a los dos meses, justo por hacer bien su trabajo.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          En n8n el detalle que más cuesta caro es otro: la zona horaria. Su documentación del nodo <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.scheduletrigger/" rel="nofollow noopener" target="_blank">Schedule Trigger</a> explica que el nodo usa la zona horaria del flujo si la has puesto y, si no, la de la instancia — cuyo valor por defecto en instalaciones propias es <code class="px-1 bg-surface-container text-on-surface">America/New_York</code>. Es decir: si no tocas nada, tu «todas las mañanas a las 8:00» puede estar corriendo a las dos de la tarde hora peninsular. Y una segunda, más tonta y más frecuente: un flujo con disparador programado no se ejecuta por existir; hay que guardarlo <em>y</em> activarlo.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          En los asistentes con tareas programadas integradas (ChatGPT las llama tareas; otros las llaman rutinas) la ejecución ocurre en los servidores del proveedor, tengas la aplicación abierta o no, y te avisa al terminar. El número de tareas activas que puedes tener depende del plan y ha cambiado más de una vez, así que no te fíes de ninguna cifra que leas por ahí —esta incluida—: míralo en la pantalla de tareas de tu propia cuenta, que es la única fuente que está al día.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          La conclusión práctica no es «no uses estos sistemas». Es que un agente programado tiene que tolerar llegar tarde, ejecutarse dos veces o no ejecutarse. Si tu diseño depende de que el reloj sea exacto, el diseño está mal antes de empezar.
+        </p>
+</section>
+<section id="sec-3" class="space-y-space-lg">
+<h2 class="font-headline-lg text-headline-lg text-primary">Las cuatro preguntas de antes</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          Antes de poner un horario, contesta estas cuatro por escrito. No es burocracia: cada una corresponde a un fallo que vas a tener si no la contestas.
+        </p>
+<h3 class="font-headline-sm text-headline-sm text-primary">1. ¿Qué pasa si se ejecuta dos veces?</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Un reintento, un despliegue duplicado o un solape entre una ejecución lenta y la siguiente hacen que tu tarea corra dos veces sobre lo mismo. Si la tarea es «resume las novedades y mándamelas», ejecutarla dos veces es molesto. Si es «envía el correo a los clientes nuevos» o «publica el artículo», ejecutarla dos veces es un problema delante de otras personas. La solución no es rezar: es que la tarea deje una marca de lo que ya hizo —una fecha, un identificador, un fichero— y lo compruebe antes de actuar. En la jerga se llama idempotencia; en la práctica es «mira si ya lo hiciste antes de hacerlo».
+        </p>
+<h3 class="font-headline-sm text-headline-sm text-primary">2. ¿Hasta dónde llega si se equivoca?</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Esta es la pregunta del alcance, y se contesta con permisos, no con instrucciones. Un agente que solo puede leer un calendario y escribirte un resumen tiene un alcance diminuto por mucho que se equivoque. Un agente con la contraseña de tu correo y permiso para enviar tiene un alcance que no controla ninguna frase del prompt. La regla es dar el permiso más estrecho que haga el trabajo, y darlo con credenciales propias de la tarea, no con las tuyas. Lo desarrollamos en <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="permisos-agente-ia-sin-contrasenas.html">qué permisos darle a un agente sin entregarle tus contraseñas</a>.
+        </p>
+<h3 class="font-headline-sm text-headline-sm text-primary">3. ¿Cuánto puede gastar antes de que alguien lo note?</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Una tarea programada convierte un coste puntual en un coste recurrente, y la multiplicación es poco intuitiva. Algo que vale unos céntimos por ejecución y te parece gratis, cada hora, son 720 ejecuciones al mes. Si además el agente reintenta cuando falla, el mes malo no cuesta el doble: cuesta lo que dure el bucle. Pon un tope de gasto en el proveedor, no solo en tu cabeza — es lo primero que cubrimos en <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="limites-gasto-agentes-ia.html">límites de gasto para agentes de IA</a>, y el cálculo por token está en <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="cuanto-cuesta-usar-ia-api.html">cuánto cuesta usar la IA por API</a>.
+        </p>
+<h3 class="font-headline-sm text-headline-sm text-primary">4. ¿Cómo te enteras de que ha dejado de funcionar?</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          El fallo que más tarda en descubrirse no es el que da error: es el que deja de ejecutarse. Un error te llega por correo; un silencio no te llega por ningún sitio. Si la tarea importa, necesitas lo contrario de lo que todo el mundo monta: en vez de un aviso cuando algo va mal, una comprobación de que ha habido ejecución. Es el mismo principio que el flujo desactivado a los 60 días del que hablábamos antes — lo que no hace ruido no se nota.
+        </p>
+</section>
+<section id="sec-4" class="space-y-space-lg">
+<h2 class="font-headline-lg text-headline-lg text-primary">Sin nadie delante, la inyección de instrucciones es peor</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          Si tu agente programado lee algo que viene de fuera —correos, páginas web, mensajes, comentarios, facturas en PDF— hereda entero el problema de la inyección de instrucciones: texto escondido en ese contenido que el modelo interpreta como órdenes tuyas. Lo explicamos a fondo en <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="prompt-injection-agentes-ia.html">prompt injection: cómo pueden manipular a tu agente</a>.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Lo que cambia al programarlo es que desaparece la defensa que de verdad estaba funcionando. Con el chat abierto, cuando un agente anuncia que va a reenviar una conversación a una dirección que no conoces, lo ves y lo paras. Sin nadie delante, ese mismo paso se ejecuta y queda registrado en un historial que nadie va a abrir. No hace falta que el ataque sea sofisticado: le basta con llegar a una hora en la que no hay nadie.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          De ahí sale una regla sencilla y bastante estricta: si una tarea automática procesa contenido que no controlas, no debería tener a la vez permiso para actuar hacia fuera. Que lea y te resuma, o que actúe sobre cosas que tú le has dado; las dos a la vez, sin supervisión, es la combinación que de verdad hace daño. Y si necesitas las dos, mete una confirmación humana en el paso que sale al exterior — aunque eso signifique que la tarea no sea completamente automática. Esa es exactamente la decisión que estás tomando.
+        </p>
+</section>
+<section id="sec-5" class="space-y-space-lg">
+<h2 class="font-headline-lg text-headline-lg text-primary">El informe diario que nadie lee</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          Supongamos que lo has hecho todo bien: la tarea se ejecuta, respeta sus límites y te manda su informe cada mañana. Lo leerás la primera semana. La segunda lo mirarás por encima. La tercera será un correo que archivas sin abrir, y a partir de ahí tu automatización ha dejado de existir aunque siga ejecutándose.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Esto no es falta de disciplina, es cómo funciona la atención: un aviso que casi siempre dice lo mismo deja de ser información. Y el coste real no es el correo de más. Es que el día que el informe traiga algo importante, estará dentro del mismo correo que llevas tres semanas sin abrir.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          El arreglo es incómodo porque va contra el instinto de quien acaba de montar algo: haz que tu tarea se calle. Que no avise cuando todo está normal, y que avise solo cuando hay algo que decidir o algo que se ha roto. Un aviso que llega poco se lee entero; uno que llega siempre no se lee nunca. Si te cuesta renunciar al informe, sepáralos: un aviso que interrumpe, reservado a lo que requiere acción, y un registro al que vas tú cuando quieres mirar.
+        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Y cuando avise, que el aviso diga lo que pasa, no que ha terminado. «Tarea completada» te obliga a abrir algo para saber si te importa. «3 facturas sin referencia de pedido, la más antigua del 12 de octubre» ya te deja decidir sin abrir nada. La diferencia entre las dos cosas es el 90&nbsp;% del valor de una automatización desatendida.
+        </p>
+</section>
+<section id="sec-6" class="space-y-space-lg">
+<h2 class="font-headline-lg text-headline-lg text-primary">Cómo soltarlo sin que se note</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          No pases de la idea al horario de un salto. Este orden cuesta unos días y se ahorra los sustos:
+        </p>
+<ol class="list-decimal pl-space-lg space-y-space-sm font-body-md text-body-md text-on-surface"><li><strong>A mano, varias veces.</strong> Ejecuta la tarea tú mismo cinco o diez veces, en días distintos y con datos distintos. La mayoría de los fallos que vas a tener aparecen aquí, y aquí todavía los ves.</li><li><strong>En seco.</strong> Prográmala, pero que no actúe: que escriba lo que <em>habría</em> hecho. Una semana así te enseña más que cualquier prueba, porque ya corre a su hora, con los datos reales de cada día, y todavía no puede hacer daño.</li><li><strong>Con la acción puesta y el alcance pequeño.</strong> Déjala actuar, pero sobre un subconjunto: una carpeta, un cliente, una etiqueta. Si algo sale mal, sale mal en pequeño.</li><li><strong>Entera, con tope y con aviso.</strong> Solo entonces le quitas la restricción, y con el tope de gasto y la comprobación de que ha habido ejecución ya puestos.</li></ol>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          El paso 2 es el que más se salta y el que más devuelve. Una ejecución en seco no prueba que el agente acierte: prueba algo más básico y más útil, que es que se dispara cuando dices, que encuentra los datos que espera y que no se queda a medias. Para medir si además acierta, que es otra cosa, está <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="evaluar-agente-ia.html">evaluar un agente de IA</a>. Y los fallos clásicos de automatizar con IA, programada o no, los tienes reunidos en <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="errores-automatizar-ia.html">errores comunes al automatizar tareas con IA</a>.
+        </p>
+</section>
+<section id="sec-7" class="space-y-space-lg">
+<h2 class="font-headline-lg text-headline-lg text-primary">Dónde ejecutarlo, con sus pegas</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          Ninguna de estas opciones es la buena en general; cada una lo es para un tipo de tarea.
+        </p>
+<ul class="list-disc pl-space-lg space-y-space-sm font-body-md text-body-md text-on-surface"><li><strong>Las tareas del propio asistente.</strong> Lo más rápido de montar y lo que menos puede hacer: va bien para que te prepare, te resuma o te recuerde algo. Se ejecuta en el proveedor sin que tengas nada encendido. La pega es que vives dentro de lo que ese asistente permite tocar, y el número de tareas depende de tu plan.</li><li><strong>n8n u otra herramienta de flujos.</strong> El punto dulce para la mayoría de las automatizaciones de un negocio pequeño: ves el flujo, conectas servicios sin programar y puedes meter un paso de confirmación humana donde haga falta. La pega son los detalles que no se ven — la zona horaria, el flujo guardado pero sin activar. Tienes la guía entera en <a class="text-primary underline decoration-primary/30 hover:decoration-primary transition-colors" href="automatizar-n8n-ia.html">n8n y IA: automatización visual sin código</a>.</li><li><strong>GitHub Actions.</strong> Gratis dentro de unos límites, cómodo si lo que automatizas ya vive en un repositorio y deja un registro de cada ejecución. Las pegas son las de arriba, y son serias para una tarea crítica: puede retrasarse, puede descartarse y se desactiva sola a los 60 días de inactividad en repositorios públicos.</li><li><strong>Cron en una máquina tuya.</strong> El más predecible de todos y el que nadie te va a cambiar. A cambio, te toca a ti todo lo demás: que la máquina esté encendida, los reintentos, los registros y enterarte de que ha dejado de funcionar.</li></ul>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Un criterio que funciona bien para elegir: mira qué pasa si la tarea <em>no</em> se ejecuta un día. Si la respuesta es «nada grave», cualquiera de las cuatro sirve y gana la más cómoda. Si la respuesta es «se nos cae algo» o «alguien se queda sin su aviso», descarta lo que pueda descartar ejecuciones y monta la comprobación de que ha habido ejecución antes de depender de ella.
+        </p>
+</section>
+<section id="sec-8" class="space-y-space-lg">
+<h2 class="font-headline-lg text-headline-lg text-primary">La lista de antes de programarlo</h2>
+<div class="bg-surface-container-lowest p-space-lg shadow-sm">
+<ul class="list-disc pl-space-lg space-y-space-xs font-body-md text-body-md text-on-surface"><li>Sé qué pasa si se ejecuta dos veces, y la tarea lo comprueba sola.</li><li>Sé qué pasa si no se ejecuta, y me entero de que no se ha ejecutado.</li><li>Tiene los permisos mínimos, con credenciales de la tarea y no las mías.</li><li>Hay un tope de gasto puesto en el proveedor, no solo en mi cabeza.</li><li>Si lee contenido de fuera, no puede actuar hacia fuera sin que yo confirme.</li><li>La he ejecutado a mano varias veces y una semana en seco.</li><li>Avisa solo cuando hay algo que decidir, y el aviso dice qué pasa.</li><li>Sé a quién le llega el aviso cuando yo esté de vacaciones.</li></ul>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Si no puedes marcar las ocho, no significa que no lo montes. Significa que sabes por dónde te va a fallar, que es una posición bastante mejor que la de enterarte en noviembre de que lleva desde septiembre sin ejecutarse.
+        </p>
+</section>
+
+<section class="space-y-space-md">
+<h2 class="font-headline-lg text-headline-lg text-primary">
+          Preguntas frecuentes
+        </h2>
+<div class="border border-outline-variant bg-surface-container-lowest">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Necesito dejar el ordenador encendido?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Depende de dónde se ejecute. Las tareas programadas de un asistente, n8n en la nube y GitHub Actions corren en servidores ajenos: no necesitas tener nada encendido. Si usas cron en tu propio ordenador o n8n instalado en casa, sí — y ahí el fallo más común no es el agente, es el portátil dormido.
+</div>
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Por qué mi tarea no se ejecuta a la hora exacta?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Porque en la mayoría de estos sistemas la hora es una intención. La documentación de GitHub Actions dice que el evento programado puede retrasarse cuando hay mucha carga, que el inicio de cada hora es uno de esos momentos y que algunos trabajos en cola pueden llegar a descartarse. Si te afecta, programa a una hora rara —a las 8:17 y no a las 8:00— y no asumas nunca que cada ejecución ocurrió.
+</div>
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Cada cuánto conviene que se ejecute?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Tan poco como puedas. La frecuencia correcta sale de cuándo vas a poder hacer algo con el resultado, no de cada cuánto cambian los datos. Si lo lees por la mañana, una vez por la mañana. Pasar de diario a cada hora multiplica por veinticuatro el gasto y las oportunidades de fallo, y casi nunca te da la información antes de que puedas usarla.
+</div>
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Cómo me entero de que ha dejado de funcionar?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+No por el propio sistema: si no se ejecuta, tampoco te avisa. Necesitas algo que compruebe que hubo ejecución y se queje cuando falta — desde un servicio de vigilancia hasta una segunda tarea, en otro sitio distinto, que mire la fecha de la última. Es el único fallo que se puede pasar meses sin que nadie lo note, y es más frecuente que los errores ruidosos.
+</div>
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Es seguro dejar a un agente leyendo mi correo sin supervisión?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Leer y resumir, con permiso de solo lectura, es un riesgo asumible. Leer y además poder responder, reenviar o borrar sin que nadie mire es la combinación que conviene evitar: el correo es contenido que escriben otros, y ahí es donde entra la inyección de instrucciones. Si necesitas las dos cosas, deja la parte que sale al exterior detrás de una confirmación tuya.
+</div>
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Hace falta saber programar?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Para las tareas programadas de un asistente, no. Para n8n, tampoco en el caso normal: se monta arrastrando nodos. Saber programar te hace falta cuando quieres controlar los reintentos, dejar registros propios o conectarte a algo que no tiene integración. Lo que sí hace falta siempre, y no es programar, es decidir permisos y topes.
+</div>
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors" onclick="const c=this.nextElementSibling; const i=this.querySelector('.faq-icon'); c.classList.toggle('hidden'); i.textContent = c.classList.contains('hidden') ? 'add' : 'remove';">
+<span class="font-headline-sm text-[18px] text-primary font-medium">¿Y si la tarea se ejecuta dos veces?</span>
+<span class="material-symbols-outlined text-on-surface-variant faq-icon">add</span>
+</button>
+<div class="p-space-md pt-0 text-body-sm font-body-sm text-on-surface-variant border-t border-outline-variant/40 hidden">
+Pasa más de lo que parece, por reintentos o por solapes. La tarea tiene que poder repetirse sin consecuencias: que deje constancia de lo que ya procesó —una fecha, un identificador— y lo compruebe antes de actuar. Si eso no es posible y la acción tiene consecuencias fuera, no la dejes automática.
+</div>
+</div>
+</section>
+
+</article>
+<aside class="lg:col-span-4 flex flex-col space-y-space-xl">
+<div class="bg-surface-container-lowest p-space-lg shadow-sm sticky top-space-md">
+<div class="flex items-center justify-between mb-space-sm pb-space-xs">
+<span class="font-kicker text-kicker uppercase tracking-widest text-primary font-bold">ÍNDICE DE LA GUÍA</span>
+<span class="material-symbols-outlined text-on-surface-variant text-base">format_list_bulleted</span>
+</div>
+<nav class="space-y-space-xs font-body-sm text-body-sm">
+<a class="block text-primary hover:text-secondary font-medium transition-colors" href="#sec-1">Los tres trabajos que hacías</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-1b">Qué merece programarse</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-2">La hora no es una garantía</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-3">Las cuatro preguntas de antes</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-4">Inyección de instrucciones</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-5">El informe que nadie lee</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-6">Cómo soltarlo sin que se note</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-7">Dónde ejecutarlo</a>
+<a class="block text-on-surface-variant hover:text-secondary transition-colors" href="#sec-8">La lista de antes</a>
+</nav>
+</div>
+
+<div class="bg-surface-container-high p-space-md space-y-space-sm shadow-sm">
+<span class="font-kicker text-kicker uppercase tracking-widest text-primary font-bold">FICHA TÉCNICA</span>
+<dl class="space-y-space-xs font-caption text-caption">
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Categoría:</dt><dd class="font-semibold text-primary">Agentes</dd></div>
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Nivel técnico:</dt><dd class="font-semibold text-primary">Intermedio</dd></div>
+<div class="flex justify-between py-1"><dt class="text-on-surface-variant">Fuentes citadas:</dt><dd class="font-semibold text-primary">Documentación de GitHub Actions y de n8n</dd></div>
+</dl>
+</div>
+</aside>
+</div>
+<section class="w-full mt-space-4xl pt-space-2xl bg-surface-container-lowest p-space-lg shadow-sm">
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-space-xl gap-space-xs">
+<h3 class="font-headline-md text-headline-md text-primary">Continúa explorando el archivo</h3>
+<a class="font-label-md text-label-md text-primary hover:text-secondary uppercase tracking-wider transition-colors flex items-center gap-1" href="../index.html#guias">Ver todas las guías <span class="material-symbols-outlined text-[16px]">arrow_forward</span></a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-col-gap">
+<article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="automatizar-tareas-agentes-ia.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-automatizar-tareas-agentes-ia.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="automatizar-tareas-agentes-ia.html">Automatiza tareas repetitivas con agentes de IA</a></h4></div></article>
+<article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="limites-gasto-agentes-ia.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-limites-gasto-agentes-ia.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="limites-gasto-agentes-ia.html">Límites de gasto para agentes de IA</a></h4></div></article>
+<article class="group bg-surface-container-low shadow-sm overflow-hidden flex flex-col"><a href="prompt-injection-agentes-ia.html" class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img class="w-full" src="../img/guias/hero-prompt-injection-agentes-ia.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"/></a><div class="p-space-lg"><h4 class="font-headline-sm text-headline-sm text-primary"><a class="hover:text-secondary transition-colors" href="prompt-injection-agentes-ia.html">Prompt injection: cómo pueden manipular a tu agente</a></h4></div></article></div>
+</section>
+</div></main><footer class="w-full bg-surface-container-low border-t border-outline-variant mt-space-4xl"><div class="max-w-site-max-width mx-auto px-space-md py-space-3xl"><div class="grid grid-cols-1 md:grid-cols-3 gap-col-gap"><div class="space-y-space-sm"><span class="font-headline-md text-headline-md text-primary">El Telar</span><p class="font-body-sm text-body-sm text-on-surface-variant">Publicación independiente de tecnología y automatización con agentes. Contenidos verificados en producción, sin patrocinios opacos ni promesas vacías.</p></div><div><h3 class="font-kicker text-kicker uppercase tracking-wider text-on-surface mb-space-md">SECCIONES</h3><ul class="space-y-space-xs font-body-sm text-body-sm"><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html#guias">Archivo de Guías</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../empieza-aqui.html">Guía para Principiantes</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../guardadas.html">Mis guías guardadas</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../colaboraciones.html">Colaboraciones y prensa</a></li><li class="border-b border-outline-variant pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../sobre-nosotros.html">Manifiesto Editorial</a></li><li class="pb-space-xxs"><a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html#despacho">Boletín Semanal</a></li></ul></div><div><h3 class="font-kicker text-kicker uppercase tracking-wider text-on-surface mb-space-md">CONTACTO &amp; PRENSA</h3><div class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant"><p class="font-semibold text-on-surface">contacto@eltelar.es</p><p>Síguenos: <a class="hover:text-primary underline" href="https://www.instagram.com/eltelar_es/" rel="me noopener" target="_blank">Instagram</a> · <a class="hover:text-primary underline" href="https://www.threads.com/@eltelar_es" rel="me noopener" target="_blank">Threads</a> · <a class="hover:text-primary underline" href="https://x.com/eltelar_es" rel="me noopener" target="_blank">X</a></p></div></div></div></div><div class="border-t border-outline-variant py-space-md bg-surface-container-lowest"><div class="max-w-site-max-width mx-auto px-space-md flex flex-col md:flex-row items-center justify-between gap-space-sm text-caption font-caption text-on-surface-variant"><div>© 2026 El Telar. Todos los derechos reservados. Independencia editorial garantizada.</div><div class="flex flex-wrap items-center justify-center gap-space-md"><a class="hover:text-on-surface transition-colors" href="../privacidad.html">Privacidad</a><a class="hover:text-on-surface transition-colors" href="../terminos.html">Términos</a><a class="hover:text-on-surface transition-colors" href="../cookies.html">Cookies</a><a class="hover:text-on-surface transition-colors" href="../aviso-legal.html">Aviso legal</a><a class="hover:text-on-surface transition-colors" href="../sobre-nosotros.html">Sobre nosotros</a><a class="hover:text-on-surface transition-colors" href="../contacto.html">Contacto</a></div></div></div></footer><script defer src="../js/copy-guide.js"></script><script defer src="../js/guide-interactions.js"></script><script defer src="../js/reading-progress.js"></script><script defer src="../js/search.js?v=8"></script><script defer src="../js/entrance.js"></script><script defer src="../js/cookie-consent.js?v=4"></script><script defer src="../js/events.js?v=1"></script></body></html>
