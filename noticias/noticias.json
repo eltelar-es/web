@@ -3219,5 +3219,70 @@
     "published": "2026-09-29",
     "seo_title": "Florida pide a un juez que frene a OpenAI",
     "seo_desc": "El fiscal general del estado pide una orden temporal mientras sigue su demanda contra la empresa. De momento ningún juez la ha aprobado."
+  },
+  {
+    "slug": "2026-10-25-agent-skills-aaif",
+    "date": "2026-10-22",
+    "published": "2026-10-25",
+    "category": "Herramientas",
+    "title": "Anthropic dona las Agent Skills a la Agentic AI Foundation",
+    "seo_title": "Anthropic dona las Agent Skills a la AAIF",
+    "dek": "El estándar abierto de skills pasa a una fundación neutral de la Linux Foundation, con más de 70 plataformas que ya lo usan.",
+    "tldr": "Anthropic ha cedido el estándar Agent Skills, con su nombre, su logo, su organización de GitHub y su dominio, a la Agentic AI Foundation (AAIF), que depende de la Linux Foundation. Según Anthropic, más de 70 plataformas de agentes lo han integrado y se han publicado un millón de skills.",
+    "key_facts": [
+      {
+        "value": "1 millón",
+        "label": "skills publicadas, según Anthropic"
+      },
+      {
+        "value": "+70",
+        "label": "plataformas de agentes que lo integran"
+      },
+      {
+        "value": "≈280 millones",
+        "label": "instalaciones, según el anuncio"
+      }
+    ],
+    "quote": {
+      "text": "Nos comprometemos a mantener Agent Skills abierto, impulsado por la comunidad y neutral respecto a los proveedores.",
+      "source": "Anthropic, anuncio del 22 de octubre de 2026 (traducido)"
+    },
+    "body": [
+      "Anthropic anunció el 22 de octubre de 2026 que dona el estándar abierto Agent Skills a la Agentic AI Foundation (AAIF), una fundación que forma parte de la Linux Foundation. La cesión incluye el nombre y el logo de Agent Skills, su organización en GitHub y el dominio agentskills.io.",
+      "Una skill es, en esencia, una carpeta con un archivo SKILL.md y, si hace falta, scripts y material de referencia que enseñan a un agente de IA a hacer una tarea concreta. Anthropic cuenta que las desarrolló trabajando en Claude Code, cuando comprobó que el agente dominaba el conocimiento general pero le faltaba el conocimiento de procedimiento que exigen las tareas reales de una empresa. El estándar se publicó como abierto en diciembre de 2025.",
+      "Según la compañía, desde entonces más de 70 plataformas de agentes lo han integrado, entre ellas ChatGPT, Cursor, GitHub Copilot y VS Code, y se han publicado un millón de skills, con cerca de 280 millones de instalaciones. Son cifras de Anthropic, y el anuncio no detalla cómo se han contado.",
+      "La AAIF la fundaron Anthropic, Block y OpenAI el año anterior, y Anthropic ya había donado allí el Model Context Protocol (MCP). Del estándar se encargarán, a título individual, ingenieros de Anthropic, Google, OpenAI y otras empresas, con David Soria Parra y Mahesh Murag como responsables principales. La hoja de ruta propuesta incluye versiones numeradas, un proceso formal de propuestas y una guía de seguridad para quienes escriben e instalan skills. El anuncio no indica la licencia del estándar."
+    ],
+    "impact": [
+      "Si usas skills en Claude Code, hoy no cambia nada: puedes seguir usándolas igual, y no hace falta unirse a la fundación para usar el estándar ni para contribuir.",
+      "Una skill escrita para un agente tiene más posibilidades de funcionar en otros, porque más de 70 plataformas leen el mismo formato.",
+      "La guía de seguridad que falta importa: una skill instalada puede ejecutar scripts, así que conviene leer lo que instalas."
+    ],
+    "sources": [
+      {
+        "name": "Anthropic, «Donating Agent Skills to the Agentic AI Foundation»",
+        "url": "https://www.anthropic.com/news/donating-agent-skills-to-the-agentic-ai-foundation"
+      },
+      {
+        "name": "Agent Skills, especificación",
+        "url": "https://agentskills.io"
+      }
+    ],
+    "related": [
+      {
+        "title": "Skills de Claude Code: qué son y cómo crear una",
+        "url": "../articulos/skills-claude-code-como-crear-una.html"
+      },
+      {
+        "title": "Las mejores Claude Skills de 2026",
+        "url": "../articulos/mejores-claude-skills.html"
+      }
+    ],
+    "photo": {
+      "alt": "Programador ante un terminal de ordenador (imagen de archivo)",
+      "author": "Jonathan Schilling",
+      "license": "CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/w/index.php?curid=59714790"
+    }
   }
 ]
