@@ -1,5 +1,123 @@
 [
   {
+    "slug": "2026-10-26-suecia-bloquea-chatgpt-claude",
+    "date": "2026-10-23",
+    "category": "Regulación",
+    "title": "El Gobierno sueco bloquea ChatGPT y Claude en los ordenadores de sus funcionarios",
+    "dek": "Desde este lunes, los empleados de Regeringskansliet solo podrán usar Copilot, la IA de Microsoft, que el departamento ha revisado y reforzado.",
+    "tldr": "La sede del Gobierno de Suecia deja de dar acceso web a ChatGPT y Claude desde sus equipos desde el 26 de octubre y dirige a su personal a Copilot, aprobado tras una revisión de seguridad.",
+    "key_facts": [
+      {
+        "value": "26 oct",
+        "label": "día en que empieza el bloqueo"
+      },
+      {
+        "value": "2",
+        "label": "agencias más ya bloquean IA: Hacienda y Sis"
+      }
+    ],
+    "quote": {
+      "text": "Webbläsargränssnittet för AI-tjänsterna ChatGPT och Claude kommer inte längre att nås.",
+      "source": "Regeringskansliet, correo a SVT (traducido: «Ya no se podrá acceder a las interfaces web de ChatGPT y Claude»)"
+    },
+    "body": [
+      "La Oficina del Gobierno de Suecia (Regeringskansliet) bloquea desde el lunes 26 de octubre el acceso a ChatGPT y Claude desde los ordenadores de trabajo, según informó primero Ekot, de Sveriges Radio, y recoge la televisión pública SVT el 23 de octubre.",
+      "El bloqueo afecta a las páginas web de ambos servicios. Según SVT, el personal sigue pudiendo usar los modelos de lenguaje de ChatGPT y Claude a través de Intric, aunque la información disponible no detalla cómo funciona.",
+      "En su lugar, se dirige a los empleados a Copilot, el asistente de Microsoft, que el Gobierno ha aprobado después de revisarlo y de aumentar su nivel de seguridad.",
+      "Otros organismos suecos van en la misma línea: la Agencia Tributaria (Skatteverket) y el Servicio Nacional de Instituciones de Cuidado (Sis) ya han introducido bloqueos similares, y la Agencia de Ejecución (Kronofogden) estudia hacerlo.",
+      "Lo que no se sabe: SVT indica que el texto oficial no explica el motivo concreto del bloqueo más allá de la revisión de seguridad de Copilot."
+    ],
+    "impact": [
+      "Si trabajas en una administración o empresa con datos sensibles, es probable que cada vez haya más herramientas de IA aprobadas y otras prohibidas: consulta cuáles puedes usar.",
+      "No pegues datos personales ni documentos internos en un chat de IA sin saber si tu organización lo permite.",
+      "Para el uso personal no cambia nada: es una decisión sobre equipos de trabajo del Gobierno sueco."
+    ],
+    "sources": [
+      {
+        "name": "SVT Nyheter (cita a Ekot, Sveriges Radio)",
+        "url": "https://www.svt.se/nyheter/inrikes/ai-tjanster-sparras-pa-regeringskansliet"
+      },
+      {
+        "name": "Daily Northern",
+        "url": "https://www.dailynorthern.com/36084/swedish-government-offices-block-chatgpt-and-claude/"
+      }
+    ],
+    "related": [
+      {
+        "title": "Privacidad de tus chats con IA",
+        "url": "../articulos/privacidad-chats-ia.html"
+      }
+    ],
+    "photo": {
+      "alt": "Edificio Rosenbad, sede del Gobierno de Suecia en Estocolmo (imagen de archivo)",
+      "author": "Tage Olsin",
+      "license": "CC BY-SA 2.0",
+      "url": "https://commons.wikimedia.org/w/index.php?curid=167094"
+    },
+    "published": "2026-10-26"
+  },
+  {
+    "slug": "2026-10-26-kimi-k3-1-pro",
+    "date": "2026-10-24",
+    "category": "Modelos",
+    "title": "Moonshot lanza Kimi K3.1 Pro: modelo de 1 millón de tokens y pesos abiertos antes del 4 de noviembre",
+    "dek": "El laboratorio chino afirma que su nuevo modelo rinde casi como Claude Opus 5.5 programando y reduce las alucinaciones, aunque son pruebas propias.",
+    "tldr": "Moonshot AI ha lanzado Kimi K3.1 Pro, ya disponible en su web, apps y API. Publicará los pesos abiertos del modelo como tarde el 4 de noviembre. Las cifras de rendimiento son de la propia empresa.",
+    "key_facts": [
+      {
+        "value": "65,7 %",
+        "label": "en Terminal-Bench 4.0 (Opus 5.5: 66,4 %)"
+      },
+      {
+        "value": "8,3 %",
+        "label": "alucinaciones, frente al 23,4 % de K3"
+      },
+      {
+        "value": "1 M",
+        "label": "tokens de contexto"
+      },
+      {
+        "value": "4 nov",
+        "label": "límite para publicar los pesos"
+      }
+    ],
+    "quote": {
+      "text": "The full model weights will be released by Nov 4.",
+      "source": "Kimi, anuncio oficial (traducido: «Los pesos completos del modelo se publicarán como tarde el 4 de nov.»)"
+    },
+    "body": [
+      "Moonshot AI, el laboratorio detrás de Kimi, ha presentado Kimi K3.1 Pro, que describe como su modelo de pesos abiertos más capaz hasta la fecha. «Pesos abiertos» significa que cualquiera podrá descargar el modelo y ejecutarlo por su cuenta. Admite un contexto de un millón de tokens, es decir, puede manejar documentos muy largos.",
+      "Según la empresa, saca un 65,7 % en Terminal-Bench 4.0, una prueba de tareas de programación en terminal: por delante de GPT-6 Astra (58,2 %) y muy cerca de Claude Opus 5.5 (66,4 %). Su tasa de alucinaciones en una prueba interna baja al 8,3 % desde el 23,4 % de K3. Kimi aclara que son evaluaciones propias y que parte de las comparaciones usan pruebas internas.",
+      "Ya se puede usar en kimi.ai, en sus apps para iOS, Android y HarmonyOS, en Kimi Code y en la API (kimi-k3.1-pro y una variante más rápida, kimi-k3.1-pro-highspeed, que la empresa dice que va de 2 a 3 veces más veloz). En Kimi Business, los administradores tienen que activarlo.",
+      "Para la versión abierta, Moonshot dice que ha retirado datos relacionados con ciberseguridad del entrenamiento para no ampliar la frontera de capacidad ofensiva. En su prueba de ciberseguridad, el mismo modelo baja del 90,5 % al 81,0 %.",
+      "Lo que falta: la página no indica precios (remite a su web de tarifas) ni hay aún verificaciones independientes de los resultados."
+    ],
+    "impact": [
+      "Si programas o analizas textos largos, es una alternativa más a probar, pero espera a pruebas independientes antes de fiarte de las cifras.",
+      "Cuando se publiquen los pesos, será posible ejecutarlo en infraestructura propia, útil para empresas con datos sensibles, aunque un modelo de este tamaño exige hardware muy potente.",
+      "Recuerda que la API de una empresa china implica enviar tus datos a sus servidores: revisa su política de privacidad."
+    ],
+    "sources": [
+      {
+        "name": "Kimi, anuncio oficial de K3.1 Pro",
+        "url": "https://www.kimi.ai/blog/kimi-k3-1-pro"
+      }
+    ],
+    "related": [
+      {
+        "title": "Cómo leer benchmarks de IA",
+        "url": "../articulos/leer-benchmarks-ia.html"
+      }
+    ],
+    "photo": {
+      "alt": "Horizonte de Pekín (imagen de archivo)",
+      "author": "Picrazy2",
+      "license": "CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/w/index.php?curid=103137357"
+    },
+    "published": "2026-10-26"
+  },
+  {
     "slug": "2026-10-24-mythos-5-aisi-ataques",
     "date": "2026-10-23",
     "published": "2026-10-24",
