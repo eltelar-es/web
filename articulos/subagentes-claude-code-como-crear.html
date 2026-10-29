@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="es"><head><meta charset="utf-8"/>
-<meta name="robots" content="noindex, follow"><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Subagentes de Claude Code: qué son y cómo crear uno | El Telar</title>
 <meta name="description" content="Qué son los subagentes de Claude Code, dónde se guardan, el formato del archivo, un ejemplo de revisor de código para copiar y cómo llamarlos con @ o claude --agent.">
 <link rel="canonical" href="https://eltelar.es/articulos/subagentes-claude-code-como-crear.html"><link rel="icon" type="image/svg+xml" href="../img/favicon.svg?v=4">
@@ -31,7 +31,7 @@
     "name": "El Telar"
   },
   "datePublished": "2026-10-23",
-  "dateModified": "2026-10-23",
+  "dateModified": "2026-10-29",
   "mainEntityOfPage": "https://eltelar.es/articulos/subagentes-claude-code-como-crear.html",
   "inLanguage": "es"
 }
@@ -145,7 +145,7 @@
 </div>
 </div>
 <div class="flex items-center gap-space-lg text-on-surface-variant font-caption text-caption uppercase tracking-wider">
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">schedule</span> 5 min de lectura</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">schedule</span> 8 min de lectura</span>
 </div>
 </div>
 </header>
@@ -177,7 +177,100 @@ y buenas prácticas.</code><button type="button" class="shrink-0 bg-primary hove
 <div class="flex items-stretch gap-space-xs"><code class="block bg-surface-container-high text-on-surface font-mono text-[14px] leading-relaxed p-space-md overflow-x-auto whitespace-pre" style="flex:1;min-width:0">claude --agent code-reviewer</code><button type="button" class="shrink-0 bg-primary hover:bg-primary-container text-surface px-space-sm py-space-xxs font-label-md text-label-md uppercase tracking-wider transition-colors" onclick="var c=this.previousElementSibling;navigator.clipboard.writeText(c.innerText);var o=this.textContent,b=this;this.textContent='Copiado';setTimeout(function(){b.textContent=o;},1800);">Copiar</button></div>
 <p class="font-body-md text-body-md text-on-surface leading-relaxed">El comando <code>/agents</code> también existe. En las versiones recientes te recuerda que puedes pedirle a Claude que cree el subagente o editar la carpeta a mano; en la 2.1.197 y anteriores abre un asistente interactivo.</p></section>
 <section id="honesto" class="space-y-space-md scroll-mt-24 bg-surface-container-low p-space-lg border-l-4 border-secondary"><span class="font-kicker text-kicker uppercase tracking-widest text-secondary">Lo honesto</span><h2 class="font-headline-md text-headline-md text-primary tracking-tight">Cuándo no merece la pena</h2>
-<p class="font-body-md text-body-md text-on-surface leading-relaxed">Un subagente compensa para tareas largas que ensucian el contexto. Para una pregunta rápida no hace falta. Dale solo las herramientas que necesita (<code>tools</code>): un revisor, por ejemplo, no tiene por qué poder editar. Para instrucciones que se cargan solo cuando hacen falta, mira <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" href="skills-claude-code-como-crear-una.html">las skills</a>. Si aún no usas Claude Code, empieza por <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" href="instalar-claude-code.html">instalarlo</a> y por <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" href="claude-md-que-es-como-escribirlo.html">CLAUDE.md</a>.</p></section><p class="font-body-md text-body-md text-on-surface-variant border-t border-outline-variant pt-space-md">Esta guía forma parte de <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" href="claude-code-guias-en-espanol.html">Claude Code en español: todas las guías, en orden</a>.</p><section id="preguntas" class="space-y-space-md scroll-mt-24"><h2 class="font-headline-md text-headline-md text-primary tracking-tight">Preguntas frecuentes</h2><h3 class="font-headline-sm text-headline-sm text-primary">¿Qué es un subagente en Claude Code?</h3><p class="font-body-md text-body-md text-on-surface leading-relaxed">Un asistente especializado que trabaja en su propia ventana de contexto, con su prompt y permisos propios, y devuelve a tu conversación solo un resumen.</p><h3 class="font-headline-sm text-headline-sm text-primary">¿Dónde se guardan los subagentes?</h3><p class="font-body-md text-body-md text-on-surface leading-relaxed">En .claude/agents/ para el proyecto actual o en ~/.claude/agents/ para todos tus proyectos. Son archivos Markdown con cabecera YAML.</p><h3 class="font-headline-sm text-headline-sm text-primary">¿Qué campos son obligatorios?</h3><p class="font-body-md text-body-md text-on-surface leading-relaxed">Solo name y description. Los demás (tools, model, permissionMode…) son opcionales.</p><h3 class="font-headline-sm text-headline-sm text-primary">¿Cómo llamo a un subagente?</h3><p class="font-body-md text-body-md text-on-surface leading-relaxed">Pidiéndolo en lenguaje natural, con @ y su nombre, o abriendo la sesión con claude --agent nombre.</p><h3 class="font-headline-sm text-headline-sm text-primary">¿Para qué sirve el comando /agents?</h3><p class="font-body-md text-body-md text-on-surface leading-relaxed">En versiones recientes recuerda cómo crear o editar subagentes; en la 2.1.197 y anteriores abre un asistente interactivo con las pestañas Running y Library.</p></section></article>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Un subagente compensa para tareas largas que ensucian el contexto. Para una pregunta rápida no hace falta. Dale solo las herramientas que necesita (<code>tools</code>): un revisor, por ejemplo, no tiene por qué poder editar. Para instrucciones que se cargan solo cuando hacen falta, mira <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" href="skills-claude-code-como-crear-una.html">las skills</a>. Si aún no usas Claude Code, empieza por <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" href="instalar-claude-code.html">instalarlo</a> y por <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" href="claude-md-que-es-como-escribirlo.html">CLAUDE.md</a>.</p></section><p class="font-body-md text-body-md text-on-surface-variant border-t border-outline-variant pt-space-md">Esta guía forma parte de <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" href="claude-code-guias-en-espanol.html">Claude Code en español: todas las guías, en orden</a>.</p><section id="integrados" class="space-y-space-md scroll-mt-24"><h2 class="font-headline-md text-headline-md text-primary tracking-tight">Los subagentes que ya trae Claude Code</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">No hace falta crear nada para empezar: Claude Code ya trae varios y los usa solo cuando le conviene.</p>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b-2 border-outline"><th class="py-space-sm pr-space-md font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">Subagente</th><th class="py-space-sm pr-space-md font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">Qué puede hacer</th><th class="py-space-sm pr-space-md font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">Cuándo lo usa Claude</th></tr>
+</thead>
+<tbody class="font-body-sm text-body-sm text-on-surface-variant">
+<tr class="border-b border-outline-variant"><td class="py-space-sm pr-space-md font-semibold text-on-surface">Explore</td><td class="py-space-sm pr-space-md">Solo leer: no puede escribir ni editar</td><td class="py-space-sm pr-space-md">Para buscar en tu código y entenderlo sin cambiar nada. Elige entre una búsqueda rápida, media o muy a fondo</td></tr>
+<tr class="border-b border-outline-variant"><td class="py-space-sm pr-space-md font-semibold text-on-surface">Plan</td><td class="py-space-sm pr-space-md">Solo leer</td><td class="py-space-sm pr-space-md">En el modo plan, para investigar el proyecto antes de presentarte un plan</td></tr>
+<tr class="border-b border-outline-variant"><td class="py-space-sm pr-space-md font-semibold text-on-surface">General-purpose</td><td class="py-space-sm pr-space-md">Todas las herramientas</td><td class="py-space-sm pr-space-md">Para tareas de varios pasos que necesitan investigar y también cambiar cosas</td></tr>
+<tr class=""><td class="py-space-sm pr-space-md font-semibold text-on-surface">claude-code-guide</td><td class="py-space-sm pr-space-md">Responder dudas</td><td class="py-space-sm pr-space-md">Cuando le preguntas por funciones de Claude Code</td></tr>
+</tbody>
+</table>
+</div>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Explore y Plan arrancan sin tu CLAUDE.md para ser más rápidos y baratos. Si quieres que Explore use un modelo más barato, crea tu propio subagente con el nombre <code>Explore</code> y <code>model: haiku</code>: el tuyo sustituye al que viene de serie.</p>
+</section>
+<section id="campos" class="space-y-space-md scroll-mt-24"><h2 class="font-headline-md text-headline-md text-primary tracking-tight">Todos los campos de la cabecera</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Solo <code>name</code> y <code>description</code> son obligatorios. El resto sirve para ajustar el subagente a una tarea concreta:</p>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b-2 border-outline"><th class="py-space-sm pr-space-md font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">Campo</th><th class="py-space-sm pr-space-md font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">Qué hace</th></tr>
+</thead>
+<tbody class="font-body-sm text-body-sm text-on-surface-variant">
+<tr class="border-b border-outline-variant"><td class="py-space-sm pr-space-md font-semibold text-on-surface"><code>tools</code></td><td class="py-space-sm pr-space-md">Lista de herramientas que puede usar, por ejemplo <code>Read, Grep, Glob</code>. Si no lo pones, hereda todas</td></tr>
+<tr class="border-b border-outline-variant"><td class="py-space-sm pr-space-md font-semibold text-on-surface"><code>disallowedTools</code></td><td class="py-space-sm pr-space-md">Herramientas que le quitas; útil para «todo menos editar»: <code>Write, Edit</code></td></tr>
+<tr class="border-b border-outline-variant"><td class="py-space-sm pr-space-md font-semibold text-on-surface"><code>model</code></td><td class="py-space-sm pr-space-md">Modelo: <code>sonnet</code>, <code>opus</code>, <code>haiku</code>, <code>fable</code>, un ID completo o <code>inherit</code> para usar el de tu conversación</td></tr>
+<tr class="border-b border-outline-variant"><td class="py-space-sm pr-space-md font-semibold text-on-surface"><code>permissionMode</code></td><td class="py-space-sm pr-space-md">Su modo de permisos, por ejemplo <code>plan</code> o <code>acceptEdits</code></td></tr>
+<tr class="border-b border-outline-variant"><td class="py-space-sm pr-space-md font-semibold text-on-surface"><code>maxTurns</code></td><td class="py-space-sm pr-space-md">Máximo de pasos antes de parar; si llega al límite, devuelve lo que tenga marcado como parcial</td></tr>
+<tr class="border-b border-outline-variant"><td class="py-space-sm pr-space-md font-semibold text-on-surface"><code>skills</code></td><td class="py-space-sm pr-space-md">Skills que se cargan enteras al arrancar</td></tr>
+<tr class="border-b border-outline-variant"><td class="py-space-sm pr-space-md font-semibold text-on-surface"><code>mcpServers</code></td><td class="py-space-sm pr-space-md">Servidores MCP que puede usar</td></tr>
+<tr class="border-b border-outline-variant"><td class="py-space-sm pr-space-md font-semibold text-on-surface"><code>memory</code></td><td class="py-space-sm pr-space-md">Memoria propia que dura entre conversaciones: <code>user</code>, <code>project</code> o <code>local</code></td></tr>
+<tr class="border-b border-outline-variant"><td class="py-space-sm pr-space-md font-semibold text-on-surface"><code>effort</code></td><td class="py-space-sm pr-space-md">Nivel de esfuerzo cuando está activo: <code>low</code>, <code>medium</code>, <code>high</code>…</td></tr>
+<tr class="border-b border-outline-variant"><td class="py-space-sm pr-space-md font-semibold text-on-surface"><code>isolation</code></td><td class="py-space-sm pr-space-md">Con <code>worktree</code>, trabaja en una copia aparte del repositorio y no toca tus archivos</td></tr>
+<tr class=""><td class="py-space-sm pr-space-md font-semibold text-on-surface"><code>color</code></td><td class="py-space-sm pr-space-md">Color con el que aparece en la lista de tareas</td></tr>
+</tbody>
+</table>
+</div>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Recuerda que los nombres de varias palabras van en camelCase (<code>maxTurns</code>, <code>disallowedTools</code>) y que un campo mal escrito se ignora sin avisar. Si sospechas de uno, arranca con <code>claude --debug</code> y busca «does not rec» en el registro.</p>
+</section>
+<section id="herramientas" class="space-y-space-md scroll-mt-24"><h2 class="font-headline-md text-headline-md text-primary tracking-tight">Limitar lo que puede hacer</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Darle a un subagente solo lo que necesita es la mejor protección. Hay dos formas:</p>
+<div class="flex items-stretch gap-space-xs"><code class="block bg-surface-container-high text-on-surface font-mono text-[14px] leading-relaxed p-space-md overflow-x-auto whitespace-pre" style="flex:1;min-width:0">---
+name: investigador
+description: Investiga el código sin cambiar nada
+tools: Read, Grep, Glob, Bash
+---</code><button type="button" class="shrink-0 bg-primary hover:bg-primary-container text-surface px-space-sm py-space-xxs font-label-md text-label-md uppercase tracking-wider transition-colors" onclick="var c=this.previousElementSibling;navigator.clipboard.writeText(c.innerText);var o=this.textContent,b=this;this.textContent='Copiado';setTimeout(function(){b.textContent=o;},1800);">Copiar</button></div>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Con <code>tools</code> haces una lista de lo que sí puede usar. Este no puede editar ni escribir archivos, ni usar servidores MCP. La otra forma es quitar solo lo que no quieres:</p>
+<div class="flex items-stretch gap-space-xs"><code class="block bg-surface-container-high text-on-surface font-mono text-[14px] leading-relaxed p-space-md overflow-x-auto whitespace-pre" style="flex:1;min-width:0">---
+name: sin-escritura
+description: Todo lo de la conversación menos escribir archivos
+disallowedTools: Write, Edit
+---</code><button type="button" class="shrink-0 bg-primary hover:bg-primary-container text-surface px-space-sm py-space-xxs font-label-md text-label-md uppercase tracking-wider transition-colors" onclick="var c=this.previousElementSibling;navigator.clipboard.writeText(c.innerText);var o=this.textContent,b=this;this.textContent='Copiado';setTimeout(function(){b.textContent=o;},1800);">Copiar</button></div>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Este conserva la terminal y las herramientas MCP. Ojo: la terminal también puede cambiar archivos, así que si quieres un subagente de solo lectura de verdad, usa la primera forma o quítale también <code>Bash</code>.</p>
+</section>
+<section id="modelo" class="space-y-space-md scroll-mt-24"><h2 class="font-headline-md text-headline-md text-primary tracking-tight">Qué modelo usa cada subagente</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Si no le pones modelo, un subagente usa el mismo que tu conversación. Cambiarlo es la forma más fácil de gastar menos: una revisión sencilla o una búsqueda funcionan bien con <code>haiku</code> o <code>sonnet</code>, y dejas el modelo más caro para la conversación principal.</p>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Cuando hay varias indicaciones, Claude Code las aplica en este orden: primero el modelo que Claude pide al lanzar ese subagente concreto, luego el campo <code>model</code> de su archivo, luego la variable de entorno <code>CLAUDE_CODE_SUBAGENT_MODEL</code> y, si no hay nada, el modelo de tu conversación. Para saber qué modelo está usando cada uno, escribe <code>/tasks</code>.</p>
+</section>
+<section id="memoria" class="space-y-space-md scroll-mt-24"><h2 class="font-headline-md text-headline-md text-primary tracking-tight">Un subagente que aprende entre sesiones</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Con el campo <code>memory</code>, el subagente tiene su propia carpeta de notas que se conserva entre conversaciones. Un revisor de código, por ejemplo, puede ir apuntando los errores que se repiten en tu proyecto:</p>
+<div class="flex items-stretch gap-space-xs"><code class="block bg-surface-container-high text-on-surface font-mono text-[14px] leading-relaxed p-space-md overflow-x-auto whitespace-pre" style="flex:1;min-width:0">---
+name: revisor
+description: Revisa código buscando calidad y buenas prácticas
+memory: project
+---
+Eres un revisor de código. Mientras revisas, apunta en tu memoria
+los patrones, convenciones y errores repetidos que encuentres.</code><button type="button" class="shrink-0 bg-primary hover:bg-primary-container text-surface px-space-sm py-space-xxs font-label-md text-label-md uppercase tracking-wider transition-colors" onclick="var c=this.previousElementSibling;navigator.clipboard.writeText(c.innerText);var o=this.textContent,b=this;this.textContent='Copiado';setTimeout(function(){b.textContent=o;},1800);">Copiar</button></div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b-2 border-outline"><th class="py-space-sm pr-space-md font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">Alcance</th><th class="py-space-sm pr-space-md font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">Dónde se guarda</th><th class="py-space-sm pr-space-md font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">Para qué</th></tr>
+</thead>
+<tbody class="font-body-sm text-body-sm text-on-surface-variant">
+<tr class="border-b border-outline-variant"><td class="py-space-sm pr-space-md font-semibold text-on-surface"><code>user</code></td><td class="py-space-sm pr-space-md"><code>~/.claude/agent-memory/&lt;nombre&gt;/</code></td><td class="py-space-sm pr-space-md">Lo que aprende sirve en todos tus proyectos</td></tr>
+<tr class="border-b border-outline-variant"><td class="py-space-sm pr-space-md font-semibold text-on-surface"><code>project</code></td><td class="py-space-sm pr-space-md"><code>.claude/agent-memory/&lt;nombre&gt;/</code></td><td class="py-space-sm pr-space-md">Solo para este proyecto y se puede compartir con git</td></tr>
+<tr class=""><td class="py-space-sm pr-space-md font-semibold text-on-surface"><code>local</code></td><td class="py-space-sm pr-space-md"><code>.claude/agent-memory-local/&lt;nombre&gt;/</code></td><td class="py-space-sm pr-space-md">Solo para este proyecto y no se sube a git</td></tr>
+</tbody>
+</table>
+</div>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Si desactivas la memoria automática de Claude Code, este campo deja de funcionar.</p>
+</section>
+<section id="patrones" class="space-y-space-md scroll-mt-24"><h2 class="font-headline-md text-headline-md text-primary tracking-tight">Tres formas de usarlos que funcionan</h2>
+<h3 class="font-headline-sm text-headline-sm text-primary">Aislar lo que genera mucho texto</h3><p class="font-body-md text-body-md text-on-surface leading-relaxed">Ejecutar los tests, leer registros o descargar documentación llena tu conversación de texto que no necesitas. Pídeselo así: «usa un subagente para ejecutar los tests y dime solo los que fallan, con su error».</p>
+<h3 class="font-headline-sm text-headline-sm text-primary">Investigar en paralelo</h3><p class="font-body-md text-body-md text-on-surface leading-relaxed">Si tienes partes del proyecto que no dependen entre sí: «investiga en paralelo los módulos de autenticación, base de datos y API, cada uno con un subagente». Cada uno mira su parte y Claude junta los resultados. Funciona mejor cuando las investigaciones no dependen unas de otras.</p>
+<h3 class="font-headline-sm text-headline-sm text-primary">Encadenarlos</h3><p class="font-body-md text-body-md text-on-surface leading-relaxed">Para tareas en pasos: «usa el subagente revisor para encontrar problemas de rendimiento y luego el optimizador para arreglarlos». Claude le pasa al segundo lo que encontró el primero.</p>
+</section>
+<section id="cuando-no" class="space-y-space-md scroll-mt-24"><h2 class="font-headline-md text-headline-md text-primary tracking-tight">Cuándo es mejor no usar un subagente</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">La documentación oficial recomienda quedarte en la conversación principal cuando:</p>
+<ul class="list-disc pl-space-lg space-y-space-xs font-body-md text-body-md text-on-surface"><li>La tarea necesita mucho ir y venir contigo para ajustarla.</li><li>Las fases comparten mucho contexto, como planificar, programar y probar lo mismo.</li><li>Es un cambio rápido y concreto.</li><li>Tienes prisa: un subagente empieza de cero y tarda en ponerse al día.</li></ul>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Y dos avisos sobre el gasto. Cada subagente consume tokens propios mientras trabaja, y sus resultados vuelven a tu conversación, así que lanzar muchos que devuelvan informes largos también llena el contexto. Por defecto, Claude Code no deja tener más de 20 subagentes funcionando a la vez en una sesión. Para una pregunta sobre algo que ya está en la conversación, usa <code>/btw</code>: ve todo tu contexto y no gasta un subagente.</p>
+</section>
+<section id="preguntas" class="space-y-space-md scroll-mt-24"><h2 class="font-headline-md text-headline-md text-primary tracking-tight">Preguntas frecuentes</h2><h3 class="font-headline-sm text-headline-sm text-primary">¿Qué es un subagente en Claude Code?</h3><p class="font-body-md text-body-md text-on-surface leading-relaxed">Un asistente especializado que trabaja en su propia ventana de contexto, con su prompt y permisos propios, y devuelve a tu conversación solo un resumen.</p><h3 class="font-headline-sm text-headline-sm text-primary">¿Dónde se guardan los subagentes?</h3><p class="font-body-md text-body-md text-on-surface leading-relaxed">En .claude/agents/ para el proyecto actual o en ~/.claude/agents/ para todos tus proyectos. Son archivos Markdown con cabecera YAML.</p><h3 class="font-headline-sm text-headline-sm text-primary">¿Qué campos son obligatorios?</h3><p class="font-body-md text-body-md text-on-surface leading-relaxed">Solo name y description. Los demás (tools, model, permissionMode…) son opcionales.</p><h3 class="font-headline-sm text-headline-sm text-primary">¿Cómo llamo a un subagente?</h3><p class="font-body-md text-body-md text-on-surface leading-relaxed">Pidiéndolo en lenguaje natural, con @ y su nombre, o abriendo la sesión con claude --agent nombre.</p><h3 class="font-headline-sm text-headline-sm text-primary">¿Para qué sirve el comando /agents?</h3><p class="font-body-md text-body-md text-on-surface leading-relaxed">En versiones recientes recuerda cómo crear o editar subagentes; en la 2.1.197 y anteriores abre un asistente interactivo con las pestañas Running y Library.</p></section></article>
 <aside class="lg:col-span-4 flex flex-col space-y-space-xl">
 <div class="bg-surface-container-lowest p-space-lg shadow-sm sticky top-space-md">
 <div class="flex items-center justify-between mb-space-sm pb-space-xs">
@@ -190,7 +283,7 @@ y buenas prácticas.</code><button type="button" class="shrink-0 bg-primary hove
 <a class="block text-primary hover:text-secondary font-medium transition-colors" href="#donde">Dónde se guardan</a>
 <a class="block text-primary hover:text-secondary font-medium transition-colors" href="#usar">Cómo usarlo</a>
 <a class="block text-primary hover:text-secondary font-medium transition-colors" href="#honesto">Lo honesto</a>
-<a class="block text-primary hover:text-secondary font-medium transition-colors" href="#preguntas">Preguntas frecuentes</a>
+<a class="block text-primary hover:text-secondary font-medium transition-colors" href="#integrados">Los que ya trae</a><a class="block text-primary hover:text-secondary font-medium transition-colors" href="#campos">Campos de la cabecera</a><a class="block text-primary hover:text-secondary font-medium transition-colors" href="#herramientas">Limitar herramientas</a><a class="block text-primary hover:text-secondary font-medium transition-colors" href="#modelo">Elegir modelo</a><a class="block text-primary hover:text-secondary font-medium transition-colors" href="#memoria">Memoria propia</a><a class="block text-primary hover:text-secondary font-medium transition-colors" href="#patrones">Usos que funcionan</a><a class="block text-primary hover:text-secondary font-medium transition-colors" href="#cuando-no">Cuándo no</a><a class="block text-primary hover:text-secondary font-medium transition-colors" href="#preguntas">Preguntas frecuentes</a>
 </nav>
 </div>
 

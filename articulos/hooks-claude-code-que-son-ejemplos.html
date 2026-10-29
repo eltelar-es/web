@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="es"><head><meta charset="utf-8"/>
-<meta name="robots" content="noindex, follow"><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Hooks de Claude Code: qué son y 3 ejemplos para copiar | El Telar</title>
 <meta name="description" content="Qué son los hooks de Claude Code, dónde se configuran y 3 ejemplos para copiar: notificación cuando Claude te espera, formatear con Prettier y bloquear archivos como .env.">
 <link rel="canonical" href="https://eltelar.es/articulos/hooks-claude-code-que-son-ejemplos.html"><link rel="icon" type="image/svg+xml" href="../img/favicon.svg?v=4">
@@ -31,7 +31,7 @@
     "name": "El Telar"
   },
   "datePublished": "2026-10-23",
-  "dateModified": "2026-10-23",
+  "dateModified": "2026-10-29",
   "mainEntityOfPage": "https://eltelar.es/articulos/hooks-claude-code-que-son-ejemplos.html",
   "inLanguage": "es"
 }
@@ -145,7 +145,7 @@
 </div>
 </div>
 <div class="flex items-center gap-space-lg text-on-surface-variant font-caption text-caption uppercase tracking-wider">
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">schedule</span> 6 min de lectura</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">schedule</span> 9 min de lectura</span>
 </div>
 </div>
 </header>
@@ -216,7 +216,116 @@ exit 0</code><button type="button" class="shrink-0 bg-primary hover:bg-primary-c
 <section id="donde" class="space-y-space-md scroll-mt-24"><h2 class="font-headline-md text-headline-md text-primary tracking-tight">Dónde se guardan</h2><div class="space-y-space-xs"><div class="flex flex-wrap items-center gap-space-xs bg-surface-container-low p-space-sm"><code class="font-mono text-[14px] bg-surface-container-high text-on-surface px-space-sm py-space-xxs">~/.claude/settings.json</code><button type="button" class="shrink-0 bg-primary hover:bg-primary-container text-surface px-space-sm py-space-xxs font-label-md text-label-md uppercase tracking-wider transition-colors" onclick="var c=this.previousElementSibling;navigator.clipboard.writeText(c.innerText);var o=this.textContent,b=this;this.textContent='Copiado';setTimeout(function(){b.textContent=o;},1800);">Copiar</button><span class="font-body-sm text-body-sm text-on-surface-variant flex-1 min-w-[180px]">Todos tus proyectos. Solo en tu equipo.</span></div><div class="flex flex-wrap items-center gap-space-xs bg-surface-container-low p-space-sm"><code class="font-mono text-[14px] bg-surface-container-high text-on-surface px-space-sm py-space-xxs">.claude/settings.json</code><button type="button" class="shrink-0 bg-primary hover:bg-primary-container text-surface px-space-sm py-space-xxs font-label-md text-label-md uppercase tracking-wider transition-colors" onclick="var c=this.previousElementSibling;navigator.clipboard.writeText(c.innerText);var o=this.textContent,b=this;this.textContent='Copiado';setTimeout(function(){b.textContent=o;},1800);">Copiar</button><span class="font-body-sm text-body-sm text-on-surface-variant flex-1 min-w-[180px]">Un proyecto. Se puede subir al repositorio y compartir.</span></div><div class="flex flex-wrap items-center gap-space-xs bg-surface-container-low p-space-sm"><code class="font-mono text-[14px] bg-surface-container-high text-on-surface px-space-sm py-space-xxs">.claude/settings.local.json</code><button type="button" class="shrink-0 bg-primary hover:bg-primary-container text-surface px-space-sm py-space-xxs font-label-md text-label-md uppercase tracking-wider transition-colors" onclick="var c=this.previousElementSibling;navigator.clipboard.writeText(c.innerText);var o=this.textContent,b=this;this.textContent='Copiado';setTimeout(function(){b.textContent=o;},1800);">Copiar</button><span class="font-body-sm text-body-sm text-on-surface-variant flex-1 min-w-[180px]">Un proyecto, solo para ti. No se sube a git.</span></div></div>
 <p class="font-body-md text-body-md text-on-surface leading-relaxed">También pueden vivir dentro de un plugin, de una skill o de un subagente. Para ver todos los que tienes, escribe <code>/hooks</code>. Para desactivarlos, pon <code>"disableAllHooks": true</code> en tus ajustes. Si no conoces los ajustes, empieza por <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" href="claude-md-que-es-como-escribirlo.html">CLAUDE.md</a>.</p></section>
 <section id="honesto" class="space-y-space-md scroll-mt-24 bg-surface-container-low p-space-lg border-l-4 border-secondary"><span class="font-kicker text-kicker uppercase tracking-widest text-secondary">Lo honesto</span><h2 class="font-headline-md text-headline-md text-primary tracking-tight">Cuidado con lo que ejecutas</h2>
-<p class="font-body-md text-body-md text-on-surface leading-relaxed">Un hook corre comandos de tu sistema con tus permisos. Antes de copiar uno de internet, léelo entero. Y si algo debe cumplirse sí o sí (por ejemplo, que nunca se toque un archivo), un hook es la herramienta correcta; una instrucción en CLAUDE.md es solo una guía que Claude suele seguir.</p></section><p class="font-body-md text-body-md text-on-surface-variant border-t border-outline-variant pt-space-md">Esta guía forma parte de <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" href="claude-code-guias-en-espanol.html">Claude Code en español: todas las guías, en orden</a>.</p><section id="preguntas" class="space-y-space-md scroll-mt-24"><h2 class="font-headline-md text-headline-md text-primary tracking-tight">Preguntas frecuentes</h2><h3 class="font-headline-sm text-headline-sm text-primary">¿Qué es un hook de Claude Code?</h3><p class="font-body-md text-body-md text-on-surface leading-relaxed">Un comando que Claude Code ejecuta automáticamente en un momento fijo, como antes o después de usar una herramienta o cuando necesita tu atención. Se configura en un archivo de ajustes.</p><h3 class="font-headline-sm text-headline-sm text-primary">¿Dónde se configuran los hooks?</h3><p class="font-body-md text-body-md text-on-surface leading-relaxed">En ~/.claude/settings.json para todos tus proyectos, en .claude/settings.json para un proyecto compartido o en .claude/settings.local.json para uno solo tuyo. Con /hooks ves los que tienes.</p><h3 class="font-headline-sm text-headline-sm text-primary">¿Cómo bloqueo una acción con un hook?</h3><p class="font-body-md text-body-md text-on-surface leading-relaxed">Con un hook PreToolUse cuyo script termine con código de salida 2. Claude recibe el mensaje que escribas y ajusta su plan.</p><h3 class="font-headline-sm text-headline-sm text-primary">¿Un hook es mejor que CLAUDE.md?</h3><p class="font-body-md text-body-md text-on-surface leading-relaxed">Para reglas que deben cumplirse siempre, sí: el hook es determinista. CLAUDE.md es contexto que Claude suele seguir pero no obliga.</p><h3 class="font-headline-sm text-headline-sm text-primary">¿Cómo desactivo los hooks?</h3><p class="font-body-md text-body-md text-on-surface leading-relaxed">Poniendo "disableAllHooks": true en tu archivo de ajustes.</p></section></article>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Un hook corre comandos de tu sistema con tus permisos. Antes de copiar uno de internet, léelo entero. Y si algo debe cumplirse sí o sí (por ejemplo, que nunca se toque un archivo), un hook es la herramienta correcta; una instrucción en CLAUDE.md es solo una guía que Claude suele seguir.</p></section><p class="font-body-md text-body-md text-on-surface-variant border-t border-outline-variant pt-space-md">Esta guía forma parte de <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" href="claude-code-guias-en-espanol.html">Claude Code en español: todas las guías, en orden</a>.</p><section id="eventos" class="space-y-space-md scroll-mt-24"><h2 class="font-headline-md text-headline-md text-primary tracking-tight">Los eventos más útiles</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Un hook siempre va unido a un evento, que es el momento en que se ejecuta. Claude Code tiene más de treinta, pero estos son los que usarás casi siempre:</p>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b-2 border-outline"><th class="py-space-sm pr-space-md font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">Evento</th><th class="py-space-sm pr-space-md font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">Cuándo salta</th><th class="py-space-sm pr-space-md font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">Para qué sirve</th></tr>
+</thead>
+<tbody class="font-body-sm text-body-sm text-on-surface-variant">
+<tr class="border-b border-outline-variant"><td class="py-space-sm pr-space-md font-semibold text-on-surface"><code>SessionStart</code></td><td class="py-space-sm pr-space-md">Al empezar o retomar una sesión</td><td class="py-space-sm pr-space-md">Darle contexto: rama actual, últimos commits, tareas</td></tr>
+<tr class="border-b border-outline-variant"><td class="py-space-sm pr-space-md font-semibold text-on-surface"><code>UserPromptSubmit</code></td><td class="py-space-sm pr-space-md">Cuando envías un mensaje, antes de que Claude lo lea</td><td class="py-space-sm pr-space-md">Añadir información o bloquear mensajes con datos sensibles</td></tr>
+<tr class="border-b border-outline-variant"><td class="py-space-sm pr-space-md font-semibold text-on-surface"><code>PreToolUse</code></td><td class="py-space-sm pr-space-md">Antes de usar una herramienta</td><td class="py-space-sm pr-space-md">Bloquear comandos o archivos; es el único que puede frenar una acción</td></tr>
+<tr class="border-b border-outline-variant"><td class="py-space-sm pr-space-md font-semibold text-on-surface"><code>PermissionRequest</code></td><td class="py-space-sm pr-space-md">Cuando Claude te va a pedir permiso</td><td class="py-space-sm pr-space-md">Aprobar solo ciertas peticiones que siempre aceptas</td></tr>
+<tr class="border-b border-outline-variant"><td class="py-space-sm pr-space-md font-semibold text-on-surface"><code>PostToolUse</code></td><td class="py-space-sm pr-space-md">Después de usar una herramienta</td><td class="py-space-sm pr-space-md">Formatear, pasar el linter, guardar un registro</td></tr>
+<tr class="border-b border-outline-variant"><td class="py-space-sm pr-space-md font-semibold text-on-surface"><code>Notification</code></td><td class="py-space-sm pr-space-md">Cuando Claude te manda un aviso</td><td class="py-space-sm pr-space-md">Notificación en el escritorio o en el móvil</td></tr>
+<tr class="border-b border-outline-variant"><td class="py-space-sm pr-space-md font-semibold text-on-surface"><code>Stop</code></td><td class="py-space-sm pr-space-md">Cuando Claude termina de responder</td><td class="py-space-sm pr-space-md">Comprobar que los tests pasan antes de dar algo por hecho</td></tr>
+<tr class="border-b border-outline-variant"><td class="py-space-sm pr-space-md font-semibold text-on-surface"><code>PreCompact</code> / <code>PostCompact</code></td><td class="py-space-sm pr-space-md">Antes y después de resumir la conversación</td><td class="py-space-sm pr-space-md">Guardar notas o volver a meter contexto</td></tr>
+<tr class=""><td class="py-space-sm pr-space-md font-semibold text-on-surface"><code>SessionEnd</code></td><td class="py-space-sm pr-space-md">Al cerrar la sesión</td><td class="py-space-sm pr-space-md">Limpiar archivos temporales</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="matcher" class="space-y-space-md scroll-mt-24"><h2 class="font-headline-md text-headline-md text-primary tracking-tight">Filtrar con el matcher</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Sin filtro, un hook salta cada vez que ocurre su evento. El campo <code>matcher</code> lo limita. En los eventos de herramientas, filtra por el nombre de la herramienta: <code>Edit|Write</code> (o <code>Edit, Write</code>) salta solo al editar o escribir archivos, <code>Bash</code> solo con comandos de terminal y <code>mcp__.*</code> con cualquier herramienta de un servidor MCP.</p>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">En otros eventos filtra otras cosas. En <code>SessionStart</code> puedes elegir cómo empezó la sesión (<code>startup</code>, <code>resume</code>, <code>clear</code>, <code>compact</code>) y en <code>Notification</code>, el tipo de aviso (<code>permission_prompt</code> cuando te pide permiso, <code>idle_prompt</code> cuando te espera).</p>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Dos cosas que conviene saber: el matcher distingue mayúsculas de minúsculas (<code>edit</code> no es lo mismo que <code>Edit</code>), y Claude también puede cambiar archivos con comandos de terminal. Si necesitas ver todos los cambios sin excepción, un hook <code>Edit|Write</code> no basta: la documentación recomienda añadir un hook <code>Stop</code> que revise la carpeta entera al terminar.</p>
+</section>
+<section id="entrada-salida" class="space-y-space-md scroll-mt-24"><h2 class="font-headline-md text-headline-md text-primary tracking-tight">Qué recibe y qué devuelve un hook</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Cuando salta, Claude Code le pasa al hook un JSON por la entrada estándar. Si Claude va a ejecutar <code>npm test</code>, un hook <code>PreToolUse</code> recibe algo así:</p>
+<div class="flex items-stretch gap-space-xs"><code class="block bg-surface-container-high text-on-surface font-mono text-[14px] leading-relaxed p-space-md overflow-x-auto whitespace-pre" style="flex:1;min-width:0">{
+  "session_id": "abc123",
+  "cwd": "/Users/tu-usuario/proyecto",
+  "hook_event_name": "PreToolUse",
+  "tool_name": "Bash",
+  "tool_input": { "command": "npm test" }
+}</code><button type="button" class="shrink-0 bg-primary hover:bg-primary-container text-surface px-space-sm py-space-xxs font-label-md text-label-md uppercase tracking-wider transition-colors" onclick="var c=this.previousElementSibling;navigator.clipboard.writeText(c.innerText);var o=this.textContent,b=this;this.textContent='Copiado';setTimeout(function(){b.textContent=o;},1800);">Copiar</button></div>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">El hook responde con su <strong>código de salida</strong>:</p>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b-2 border-outline"><th class="py-space-sm pr-space-md font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">Código</th><th class="py-space-sm pr-space-md font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">Qué pasa</th></tr>
+</thead>
+<tbody class="font-body-sm text-body-sm text-on-surface-variant">
+<tr class="border-b border-outline-variant"><td class="py-space-sm pr-space-md font-semibold text-on-surface"><code>0</code></td><td class="py-space-sm pr-space-md">Sin decisión: todo sigue normal. Ojo, no aprueba nada: si la acción pedía permiso, te lo seguirá pidiendo</td></tr>
+<tr class="border-b border-outline-variant"><td class="py-space-sm pr-space-md font-semibold text-on-surface"><code>2</code></td><td class="py-space-sm pr-space-md">Bloquea. Lo que escribas en la salida de error (stderr) le llega a Claude para que cambie de plan</td></tr>
+<tr class=""><td class="py-space-sm pr-space-md font-semibold text-on-surface">Otro</td><td class="py-space-sm pr-space-md">Error que no bloquea: la acción sigue y verás un aviso de «hook error»</td></tr>
+</tbody>
+</table>
+</div>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Este ejemplo bloquea cualquier comando que intente borrar una tabla de la base de datos:</p>
+<div class="flex items-stretch gap-space-xs"><code class="block bg-surface-container-high text-on-surface font-mono text-[14px] leading-relaxed p-space-md overflow-x-auto whitespace-pre" style="flex:1;min-width:0">#!/bin/bash
+INPUT=$(cat)
+COMMAND=$(echo "$INPUT" | jq -r '.tool_input.command')
+if echo "$COMMAND" | grep -qi "drop table"; then
+  echo "Bloqueado: no se pueden borrar tablas" &gt;&amp;2
+  exit 2
+fi
+exit 0</code><button type="button" class="shrink-0 bg-primary hover:bg-primary-container text-surface px-space-sm py-space-xxs font-label-md text-label-md uppercase tracking-wider transition-colors" onclick="var c=this.previousElementSibling;navigator.clipboard.writeText(c.innerText);var o=this.textContent,b=this;this.textContent='Copiado';setTimeout(function(){b.textContent=o;},1800);">Copiar</button></div>
+</section>
+<section id="contexto-compact" class="space-y-space-md scroll-mt-24"><h2 class="font-headline-md text-headline-md text-primary tracking-tight">Recordarle lo importante después de resumir</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Cuando la conversación se llena, Claude Code la resume para hacer sitio, y en ese resumen se pueden perder detalles. Un hook <code>SessionStart</code> con el matcher <code>compact</code> vuelve a meter lo esencial justo después. Todo lo que el comando escriba en pantalla se añade al contexto de Claude:</p>
+<div class="flex items-stretch gap-space-xs"><code class="block bg-surface-container-high text-on-surface font-mono text-[14px] leading-relaxed p-space-md overflow-x-auto whitespace-pre" style="flex:1;min-width:0">{
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "compact",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo 'Recuerda: usamos Bun, no npm. Ejecuta bun test antes de cada commit.'"
+          }
+        ]
+      }
+    ]
+  }
+}</code><button type="button" class="shrink-0 bg-primary hover:bg-primary-container text-surface px-space-sm py-space-xxs font-label-md text-label-md uppercase tracking-wider transition-colors" onclick="var c=this.previousElementSibling;navigator.clipboard.writeText(c.innerText);var o=this.textContent,b=this;this.textContent='Copiado';setTimeout(function(){b.textContent=o;},1800);">Copiar</button></div>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Puedes cambiar el <code>echo</code> por cualquier comando que dé información al momento, como <code>git log --oneline -5</code> para enseñarle los últimos commits. Si lo que quieres es que lo sepa en todas las sesiones, no solo tras resumir, ponlo en <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" href="claude-md-que-es-como-escribirlo.html">CLAUDE.md</a>.</p>
+</section>
+<section id="aprobar" class="space-y-space-md scroll-mt-24"><h2 class="font-headline-md text-headline-md text-primary tracking-tight">Aprobar solo lo que siempre aceptas</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Si siempre dices que sí a la misma pregunta, un hook <code>PermissionRequest</code> puede contestar por ti. El ejemplo oficial aprueba la salida del modo plan, para que no te pregunte cada vez que termina un plan. Va en <code>~/.claude/settings.json</code>:</p>
+<div class="flex items-stretch gap-space-xs"><code class="block bg-surface-container-high text-on-surface font-mono text-[14px] leading-relaxed p-space-md overflow-x-auto whitespace-pre" style="flex:1;min-width:0">{
+  "hooks": {
+    "PermissionRequest": [
+      {
+        "matcher": "ExitPlanMode",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '{\"hookSpecificOutput\": {\"hookEventName\": \"PermissionRequest\", \"decision\": {\"behavior\": \"allow\"}}}'"
+          }
+        ]
+      }
+    ]
+  }
+}</code><button type="button" class="shrink-0 bg-primary hover:bg-primary-container text-surface px-space-sm py-space-xxs font-label-md text-label-md uppercase tracking-wider transition-colors" onclick="var c=this.previousElementSibling;navigator.clipboard.writeText(c.innerText);var o=this.textContent,b=this;this.textContent='Copiado';setTimeout(function(){b.textContent=o;},1800);">Copiar</button></div>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Deja el matcher lo más concreto posible. Si lo dejas vacío o pones <code>.*</code>, aprobarías todas las peticiones de permiso, incluidas las de escribir archivos y ejecutar comandos.</p>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Hay un límite que te protege: un hook que dice «allow» no se salta las reglas de bloqueo (deny) de tus ajustes. Y al revés, un hook que bloquea funciona en todos los modos, incluso si arrancaste con <code>--dangerously-skip-permissions</code>.</p>
+</section>
+<section id="otros-tipos" class="space-y-space-md scroll-mt-24"><h2 class="font-headline-md text-headline-md text-primary tracking-tight">Hooks que preguntan a un modelo</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">La mayoría de hooks son <code>"type": "command"</code>, un comando de terminal. Hay otros tipos:</p>
+<ul class="list-disc pl-space-lg space-y-space-xs font-body-md text-body-md text-on-surface"><li><code>"type": "http"</code>: envía los datos del evento a una dirección web, por ejemplo a tu propio servidor.</li><li><code>"type": "mcp_tool"</code>: llama a una herramienta de un servidor MCP que ya tengas configurado.</li><li><code>"type": "prompt"</code>: le pasa la situación a un modelo de Claude para que decida. Sirve para decisiones con criterio, como «¿este cambio toca algo de seguridad?».</li><li><code>"type": "agent"</code>: como el anterior, pero el modelo puede usar herramientas para comprobar cosas. La documentación lo marca como experimental.</li></ul>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Cada tipo tiene un tiempo máximo: 10 minutos los comandos, 30 segundos los de tipo prompt y 60 los de tipo agent. Puedes cambiarlo con el campo <code>timeout</code>, en segundos.</p>
+</section>
+<section id="problemas" class="space-y-space-md scroll-mt-24"><h2 class="font-headline-md text-headline-md text-primary tracking-tight">Cuando un hook no funciona</h2>
+<ol class="list-decimal pl-space-lg space-y-space-xs font-body-md text-body-md text-on-surface"><li>Escribe <code>/hooks</code> y comprueba que aparece bajo el evento correcto. Si no sale, revisa que el JSON sea válido: no admite comas al final ni comentarios.</li><li>Revisa el matcher letra por letra: distingue mayúsculas.</li><li>Prueba el script a mano pasándole un JSON de ejemplo y mira el código de salida:</li></ol>
+<div class="flex items-stretch gap-space-xs"><code class="block bg-surface-container-high text-on-surface font-mono text-[14px] leading-relaxed p-space-md overflow-x-auto whitespace-pre" style="flex:1;min-width:0">echo '{"tool_name":"Bash","tool_input":{"command":"ls"}}' | ./mi-hook.sh
+echo $?</code><button type="button" class="shrink-0 bg-primary hover:bg-primary-container text-surface px-space-sm py-space-xxs font-label-md text-label-md uppercase tracking-wider transition-colors" onclick="var c=this.previousElementSibling;navigator.clipboard.writeText(c.innerText);var o=this.textContent,b=this;this.textContent='Copiado';setTimeout(function(){b.textContent=o;},1800);">Copiar</button></div>
+<ol start="4" class="list-decimal pl-space-lg space-y-space-xs font-body-md text-body-md text-on-surface"><li>Si sale «command not found», usa rutas completas o <code>${CLAUDE_PROJECT_DIR}</code> para apuntar al script.</li><li>Si sale «jq: command not found», instala jq o lee el JSON con Python o Node.js.</li><li>Si el script no se ejecuta, dale permiso: <code>chmod +x ./mi-hook.sh</code>.</li></ol>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Recuerda también que un hook <code>PostToolUse</code> no puede deshacer nada: la acción ya ha ocurrido. Si quieres impedir algo, tiene que ser <code>PreToolUse</code>.</p>
+</section>
+<section id="preguntas" class="space-y-space-md scroll-mt-24"><h2 class="font-headline-md text-headline-md text-primary tracking-tight">Preguntas frecuentes</h2><h3 class="font-headline-sm text-headline-sm text-primary">¿Qué es un hook de Claude Code?</h3><p class="font-body-md text-body-md text-on-surface leading-relaxed">Un comando que Claude Code ejecuta automáticamente en un momento fijo, como antes o después de usar una herramienta o cuando necesita tu atención. Se configura en un archivo de ajustes.</p><h3 class="font-headline-sm text-headline-sm text-primary">¿Dónde se configuran los hooks?</h3><p class="font-body-md text-body-md text-on-surface leading-relaxed">En ~/.claude/settings.json para todos tus proyectos, en .claude/settings.json para un proyecto compartido o en .claude/settings.local.json para uno solo tuyo. Con /hooks ves los que tienes.</p><h3 class="font-headline-sm text-headline-sm text-primary">¿Cómo bloqueo una acción con un hook?</h3><p class="font-body-md text-body-md text-on-surface leading-relaxed">Con un hook PreToolUse cuyo script termine con código de salida 2. Claude recibe el mensaje que escribas y ajusta su plan.</p><h3 class="font-headline-sm text-headline-sm text-primary">¿Un hook es mejor que CLAUDE.md?</h3><p class="font-body-md text-body-md text-on-surface leading-relaxed">Para reglas que deben cumplirse siempre, sí: el hook es determinista. CLAUDE.md es contexto que Claude suele seguir pero no obliga.</p><h3 class="font-headline-sm text-headline-sm text-primary">¿Cómo desactivo los hooks?</h3><p class="font-body-md text-body-md text-on-surface leading-relaxed">Poniendo "disableAllHooks": true en tu archivo de ajustes.</p></section></article>
 <aside class="lg:col-span-4 flex flex-col space-y-space-xl">
 <div class="bg-surface-container-lowest p-space-lg shadow-sm sticky top-space-md">
 <div class="flex items-center justify-between mb-space-sm pb-space-xs">
@@ -230,7 +339,7 @@ exit 0</code><button type="button" class="shrink-0 bg-primary hover:bg-primary-c
 <a class="block text-primary hover:text-secondary font-medium transition-colors" href="#bloquear">Bloquear archivos</a>
 <a class="block text-primary hover:text-secondary font-medium transition-colors" href="#donde">Dónde se guardan</a>
 <a class="block text-primary hover:text-secondary font-medium transition-colors" href="#honesto">Lo honesto</a>
-<a class="block text-primary hover:text-secondary font-medium transition-colors" href="#preguntas">Preguntas frecuentes</a>
+<a class="block text-primary hover:text-secondary font-medium transition-colors" href="#eventos">Eventos</a><a class="block text-primary hover:text-secondary font-medium transition-colors" href="#matcher">Matcher</a><a class="block text-primary hover:text-secondary font-medium transition-colors" href="#entrada-salida">Entrada y salida</a><a class="block text-primary hover:text-secondary font-medium transition-colors" href="#contexto-compact">Tras resumir</a><a class="block text-primary hover:text-secondary font-medium transition-colors" href="#aprobar">Aprobar automáticamente</a><a class="block text-primary hover:text-secondary font-medium transition-colors" href="#otros-tipos">Otros tipos</a><a class="block text-primary hover:text-secondary font-medium transition-colors" href="#problemas">Si no funciona</a><a class="block text-primary hover:text-secondary font-medium transition-colors" href="#preguntas">Preguntas frecuentes</a>
 </nav>
 </div>
 
