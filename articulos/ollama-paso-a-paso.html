@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="es"><head><meta charset="utf-8"/>
-<meta name="robots" content="noindex, follow"><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Ollama paso a paso: IA gratis en tu ordenador | El Telar</title>
 <meta name="description" content="Cómo instalar Ollama en Mac, Windows y Linux, ejecutar tu primer modelo con ollama run, qué ordenador necesitas y qué esperar de la IA en local.">
 <link rel="canonical" href="https://eltelar.es/articulos/ollama-paso-a-paso.html"><link rel="icon" type="image/svg+xml" href="../img/favicon.svg?v=4">
@@ -31,7 +31,7 @@
     "name": "El Telar"
   },
   "datePublished": "2026-10-23",
-  "dateModified": "2026-10-23",
+  "dateModified": "2026-10-29",
   "mainEntityOfPage": "https://eltelar.es/articulos/ollama-paso-a-paso.html",
   "inLanguage": "es"
 }
@@ -137,7 +137,7 @@
 </div>
 </div>
 <div class="flex items-center gap-space-lg text-on-surface-variant font-caption text-caption uppercase tracking-wider">
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">schedule</span> 4 min de lectura</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">schedule</span> 7 min de lectura</span>
 </div>
 </div>
 </header>
@@ -159,7 +159,100 @@
 </section>
 <section id="honesto" class="space-y-space-md scroll-mt-24 bg-surface-container-low p-space-lg border-l-4 border-secondary"><span class="font-kicker text-kicker uppercase tracking-widest text-secondary">Lo honesto</span><h2 class="font-headline-md text-headline-md text-primary tracking-tight">Qué no esperar</h2>
 <p class="font-body-md text-body-md text-on-surface leading-relaxed">Un modelo pequeño en tu ordenador no es ChatGPT ni Claude: responde más despacio, escribe peor en español y se inventa más cosas. Su gran ventaja es la privacidad y el coste cero por uso. Si quieres ver más programas de este tipo, mira <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" href="ia-local-ordenador.html">IA local: cómo correr modelos en tu ordenador</a>.</p>
-</section><section id="preguntas" class="space-y-space-md scroll-mt-24"><h2 class="font-headline-md text-headline-md text-primary tracking-tight">Preguntas frecuentes</h2><h3 class="font-headline-sm text-headline-sm text-primary">¿Ollama es gratis?</h3><p class="font-body-md text-body-md text-on-surface leading-relaxed">Sí, el programa es gratuito. Los modelos locales no cuestan por uso; solo gastas electricidad y espacio en disco. Ollama también ofrece modelos en la nube con sus propios planes.</p><h3 class="font-headline-sm text-headline-sm text-primary">¿Funciona sin internet?</h3><p class="font-body-md text-body-md text-on-surface leading-relaxed">Sí, una vez descargado el modelo. Para descargarlo sí necesitas conexión.</p><h3 class="font-headline-sm text-headline-sm text-primary">¿Qué ordenador necesito?</h3><p class="font-body-md text-body-md text-on-surface leading-relaxed">Con 8 GB de RAM puedes probar modelos pequeños; con 16 GB o más, la experiencia es mejor. Cada modelo indica su tamaño en ollama.com.</p><h3 class="font-headline-sm text-headline-sm text-primary">¿Es tan bueno como ChatGPT?</h3><p class="font-body-md text-body-md text-on-surface leading-relaxed">No. Los modelos locales pequeños son más lentos y menos capaces; su ventaja es la privacidad y no pagar por uso.</p></section></article>
+</section><section id="comandos-ollama" class="space-y-space-md scroll-mt-24"><h2 class="font-headline-md text-headline-md text-primary tracking-tight">Los comandos de Ollama que vas a usar</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Ollama se maneja desde la terminal con muy pocos comandos. Estos son los que necesitas para el día a día:</p>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b-2 border-outline"><th class="py-space-sm pr-space-md font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">Comando</th><th class="py-space-sm pr-space-md font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">Qué hace</th></tr>
+</thead>
+<tbody class="font-body-sm text-body-sm text-on-surface-variant">
+<tr class="border-b border-outline-variant"><td class="py-space-sm pr-space-md font-semibold text-on-surface"><code>ollama run NOMBRE</code></td><td class="py-space-sm pr-space-md">Descarga el modelo si no lo tienes y abre un chat con él</td></tr>
+<tr class="border-b border-outline-variant"><td class="py-space-sm pr-space-md font-semibold text-on-surface"><code>ollama pull NOMBRE</code></td><td class="py-space-sm pr-space-md">Solo descarga el modelo (o lo actualiza), sin abrir el chat</td></tr>
+<tr class="border-b border-outline-variant"><td class="py-space-sm pr-space-md font-semibold text-on-surface"><code>ollama ls</code></td><td class="py-space-sm pr-space-md">Lista los modelos que tienes descargados y cuánto ocupan</td></tr>
+<tr class="border-b border-outline-variant"><td class="py-space-sm pr-space-md font-semibold text-on-surface"><code>ollama ps</code></td><td class="py-space-sm pr-space-md">Enseña los modelos que están cargados en memoria ahora mismo</td></tr>
+<tr class="border-b border-outline-variant"><td class="py-space-sm pr-space-md font-semibold text-on-surface"><code>ollama stop NOMBRE</code></td><td class="py-space-sm pr-space-md">Descarga el modelo de la memoria</td></tr>
+<tr class="border-b border-outline-variant"><td class="py-space-sm pr-space-md font-semibold text-on-surface"><code>ollama rm NOMBRE</code></td><td class="py-space-sm pr-space-md">Borra el modelo del disco</td></tr>
+<tr class="border-b border-outline-variant"><td class="py-space-sm pr-space-md font-semibold text-on-surface"><code>ollama serve</code></td><td class="py-space-sm pr-space-md">Arranca el servidor de Ollama a mano (la aplicación lo hace sola)</td></tr>
+<tr class=""><td class="py-space-sm pr-space-md font-semibold text-on-surface"><code>ollama launch</code></td><td class="py-space-sm pr-space-md">Abre un menú para conectar Ollama con otras herramientas, como Claude Code</td></tr>
+</tbody>
+</table>
+</div>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Dentro del chat, si quieres escribir varias líneas, empieza y termina el mensaje con tres comillas: <code>"""</code>. Para salir, <code>/bye</code>.</p>
+</section>
+<section id="espacio" class="space-y-space-md scroll-mt-24"><h2 class="font-headline-md text-headline-md text-primary tracking-tight">Dónde se guardan los modelos y cuánto ocupan</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Cada modelo ocupa desde menos de un giga hasta decenas de gigas. Se guardan aquí:</p>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b-2 border-outline"><th class="py-space-sm pr-space-md font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">Sistema</th><th class="py-space-sm pr-space-md font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">Carpeta</th></tr>
+</thead>
+<tbody class="font-body-sm text-body-sm text-on-surface-variant">
+<tr class="border-b border-outline-variant"><td class="py-space-sm pr-space-md font-semibold text-on-surface">macOS</td><td class="py-space-sm pr-space-md"><code>~/.ollama/models</code></td></tr>
+<tr class="border-b border-outline-variant"><td class="py-space-sm pr-space-md font-semibold text-on-surface">Linux</td><td class="py-space-sm pr-space-md"><code>/usr/share/ollama/.ollama/models</code></td></tr>
+<tr class=""><td class="py-space-sm pr-space-md font-semibold text-on-surface">Windows</td><td class="py-space-sm pr-space-md"><code>C:\Users\tu-usuario\.ollama\models</code></td></tr>
+</tbody>
+</table>
+</div>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Si te quedas sin espacio, borra con <code>ollama rm</code> los que no uses (mira antes la lista con <code>ollama ls</code>). Si prefieres guardarlos en un disco externo, define la variable <code>OLLAMA_MODELS</code> con la carpeta nueva y reinicia Ollama.</p>
+</section>
+<section id="elegir" class="space-y-space-md scroll-mt-24"><h2 class="font-headline-md text-headline-md text-primary tracking-tight">Cómo elegir tu primer modelo</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">El catálogo de <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" target="_blank" rel="noopener" href="https://ollama.com/search">ollama.com/search</a> tiene cientos de modelos. Para no perderte:</p>
+<ol class="list-decimal pl-space-lg space-y-space-xs font-body-md text-body-md text-on-surface"><li><strong>Mira tu memoria.</strong> En Mac, menú Apple &gt; Acerca de este Mac. En Windows, Administrador de tareas &gt; Rendimiento. El modelo tiene que caber con margen: si tienes 8 GB, busca modelos que ocupen menos de 5.</li><li><strong>Elige el tamaño, no el nombre.</strong> Muchos modelos vienen en varias versiones (por ejemplo, de 1.000, 4.000 o 12.000 millones de parámetros). Empieza por la más pequeña y sube si va bien.</li><li><strong>Filtra por lo que quieres hacer.</strong> Si lo vas a usar para programar con Claude Code, elige uno con la etiqueta <strong>tools</strong>. Si quieres pasarle imágenes, busca <strong>vision</strong>.</li><li><strong>Pruébalo con tus tareas reales.</strong> Hazle tres preguntas de las que le harías de verdad. Si responde mal en español o se inventa datos, prueba otro.</li></ol>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Un modelo que no cabe en la memoria de la gráfica pasa a usar el procesador y se vuelve muy lento. <code>ollama ps</code> te lo dice: en la columna PROCESSOR tiene que poner 100% GPU.</p>
+</section>
+<section id="imagenes" class="space-y-space-md scroll-mt-24"><h2 class="font-headline-md text-headline-md text-primary tracking-tight">Hablarle de imágenes</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Los modelos con la etiqueta vision entienden imágenes. Basta con poner la ruta del archivo en la pregunta:</p>
+<div class="flex items-stretch gap-space-xs"><code class="block bg-surface-container-high text-on-surface font-mono text-[14px] leading-relaxed p-space-md overflow-x-auto whitespace-pre" style="flex:1;min-width:0">ollama run NOMBRE-DEL-MODELO "¿Qué hay en esta imagen? /Users/tu-usuario/Desktop/foto.png"</code><button type="button" class="shrink-0 bg-primary hover:bg-primary-container text-surface px-space-sm py-space-xxs font-label-md text-label-md uppercase tracking-wider transition-colors" onclick="var c=this.previousElementSibling;navigator.clipboard.writeText(c.innerText);var o=this.textContent,b=this;this.textContent='Copiado';setTimeout(function(){b.textContent=o;},1800);">Copiar</button></div>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Es útil para describir capturas de pantalla, leer el texto de una foto o revisar un gráfico, todo sin subir la imagen a ninguna web.</p>
+</section>
+<section id="privacidad-ollama" class="space-y-space-md scroll-mt-24"><h2 class="font-headline-md text-headline-md text-primary tracking-tight">Privacidad: lo que sale y lo que no</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Con modelos locales, según la propia documentación de Ollama, tus mensajes y tus datos no salen de tu ordenador: ellos no los ven. Con los modelos en la nube (los que llevan «cloud» en el nombre) sí salen: Ollama los procesa para darte el servicio, aunque dice que no los guarda ni entrena con ellos.</p>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Si quieres asegurarte de que todo se queda en tu equipo, puedes desactivar las funciones en la nube. Crea o edita el archivo <code>~/.ollama/server.json</code> con este contenido y reinicia Ollama:</p>
+<div class="flex items-stretch gap-space-xs"><code class="block bg-surface-container-high text-on-surface font-mono text-[14px] leading-relaxed p-space-md overflow-x-auto whitespace-pre" style="flex:1;min-width:0">{
+  "disable_ollama_cloud": true
+}</code><button type="button" class="shrink-0 bg-primary hover:bg-primary-container text-surface px-space-sm py-space-xxs font-label-md text-label-md uppercase tracking-wider transition-colors" onclick="var c=this.previousElementSibling;navigator.clipboard.writeText(c.innerText);var o=this.textContent,b=this;this.textContent='Copiado';setTimeout(function(){b.textContent=o;},1800);">Copiar</button></div>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Perderás los modelos en la nube y la búsqueda web, pero tendrás la garantía de que solo usas modelos locales.</p>
+</section>
+<section id="mantener" class="space-y-space-md scroll-mt-24"><h2 class="font-headline-md text-headline-md text-primary tracking-tight">Actualizarlo y que no arranque solo</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">En Mac y Windows, Ollama descarga las actualizaciones solo. Para aplicarlas, pulsa su icono en la barra de menús (o en la barra de tareas) y elige «Restart to update». En Linux, vuelve a ejecutar el comando de instalación.</p>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Por defecto, Ollama se abre al encender el ordenador y se queda en segundo plano. Si no lo quieres:</p>
+<ul class="list-disc pl-space-lg space-y-space-xs font-body-md text-body-md text-on-surface"><li><strong>Mac:</strong> Ajustes del Sistema, busca «Ítems de inicio» y desactiva Ollama en la lista de apps que pueden funcionar en segundo plano.</li><li><strong>Windows:</strong> Administrador de tareas, pestaña de aplicaciones de arranque, busca Ollama y pulsa Deshabilitar.</li></ul>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Un modelo se queda en memoria 5 minutos después de tu último mensaje, para responder más rápido si sigues. Si necesitas la memoria ya, usa <code>ollama stop NOMBRE</code>.</p>
+</section>
+<section id="modelfile" class="space-y-space-md scroll-mt-24"><h2 class="font-headline-md text-headline-md text-primary tracking-tight">Crear tu propio asistente con un Modelfile</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Si siempre le pides lo mismo (que responda en español, que sea breve, que actúe como profesor de inglés), no hace falta repetirlo en cada chat. Ollama te deja crear una versión del modelo con esas instrucciones guardadas, usando un archivo de texto llamado <code>Modelfile</code>:</p>
+<div class="flex items-stretch gap-space-xs"><code class="block bg-surface-container-high text-on-surface font-mono text-[14px] leading-relaxed p-space-md overflow-x-auto whitespace-pre" style="flex:1;min-width:0">FROM NOMBRE-DEL-MODELO
+PARAMETER temperature 0.7
+PARAMETER num_ctx 8192
+SYSTEM """Eres un profesor de inglés paciente. Respondes siempre en español,
+corriges mis frases en inglés y explicas el error en una línea."""</code><button type="button" class="shrink-0 bg-primary hover:bg-primary-container text-surface px-space-sm py-space-xxs font-label-md text-label-md uppercase tracking-wider transition-colors" onclick="var c=this.previousElementSibling;navigator.clipboard.writeText(c.innerText);var o=this.textContent,b=this;this.textContent='Copiado';setTimeout(function(){b.textContent=o;},1800);">Copiar</button></div>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Cada línea hace una cosa:</p>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b-2 border-outline"><th class="py-space-sm pr-space-md font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">Instrucción</th><th class="py-space-sm pr-space-md font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">Qué hace</th></tr>
+</thead>
+<tbody class="font-body-sm text-body-sm text-on-surface-variant">
+<tr class="border-b border-outline-variant"><td class="py-space-sm pr-space-md font-semibold text-on-surface"><code>FROM</code></td><td class="py-space-sm pr-space-md">El modelo del que partes. Es la única obligatoria</td></tr>
+<tr class="border-b border-outline-variant"><td class="py-space-sm pr-space-md font-semibold text-on-surface"><code>SYSTEM</code></td><td class="py-space-sm pr-space-md">Las instrucciones fijas: cómo quieres que se comporte siempre</td></tr>
+<tr class="border-b border-outline-variant"><td class="py-space-sm pr-space-md font-semibold text-on-surface"><code>PARAMETER temperature</code></td><td class="py-space-sm pr-space-md">Lo creativo que es: más alto, más variado; más bajo, más previsible (por defecto, 0.8)</td></tr>
+<tr class=""><td class="py-space-sm pr-space-md font-semibold text-on-surface"><code>PARAMETER num_ctx</code></td><td class="py-space-sm pr-space-md">Cuánto texto recuerda de la conversación, en tokens</td></tr>
+</tbody>
+</table>
+</div>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Guarda el archivo, crea tu modelo con un nombre y úsalo como cualquier otro:</p>
+<div class="flex items-stretch gap-space-xs"><code class="block bg-surface-container-high text-on-surface font-mono text-[14px] leading-relaxed p-space-md overflow-x-auto whitespace-pre" style="flex:1;min-width:0">ollama create profesor-ingles -f Modelfile
+ollama run profesor-ingles</code><button type="button" class="shrink-0 bg-primary hover:bg-primary-container text-surface px-space-sm py-space-xxs font-label-md text-label-md uppercase tracking-wider transition-colors" onclick="var c=this.previousElementSibling;navigator.clipboard.writeText(c.innerText);var o=this.textContent,b=this;this.textContent='Copiado';setTimeout(function(){b.textContent=o;},1800);">Copiar</button></div>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">No se descarga nada nuevo: tu asistente usa el mismo modelo de base, así que casi no ocupa espacio.</p>
+</section>
+<section id="api-local" class="space-y-space-md scroll-mt-24"><h2 class="font-headline-md text-headline-md text-primary tracking-tight">Usarlo desde otros programas</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Mientras Ollama está abierto, funciona como un pequeño servidor en tu ordenador, en la dirección <code>http://localhost:11434</code>. Cualquier programa que sepa hablar con él puede usar tus modelos locales: editores de código, apps de notas, extensiones del navegador o tus propios scripts. Por ejemplo, esto le hace una pregunta desde la terminal:</p>
+<div class="flex items-stretch gap-space-xs"><code class="block bg-surface-container-high text-on-surface font-mono text-[14px] leading-relaxed p-space-md overflow-x-auto whitespace-pre" style="flex:1;min-width:0">curl http://localhost:11434/api/generate -d '{"model": "NOMBRE-DEL-MODELO", "prompt": "Resume en una frase qué es Ollama", "stream": false}'</code><button type="button" class="shrink-0 bg-primary hover:bg-primary-container text-surface px-space-sm py-space-xxs font-label-md text-label-md uppercase tracking-wider transition-colors" onclick="var c=this.previousElementSibling;navigator.clipboard.writeText(c.innerText);var o=this.textContent,b=this;this.textContent='Copiado';setTimeout(function(){b.textContent=o;},1800);">Copiar</button></div>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Muchas aplicaciones ya traen la opción de «usar Ollama» en sus ajustes: solo tienes que elegir el modelo. Y con <code>ollama launch</code> puedes conectarlo con herramientas de programación como Claude Code, Codex, OpenCode o VS Code, eligiéndolas de un menú.</p>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Por seguridad, ese servidor solo acepta conexiones de tu propio ordenador. No lo abras a tu red ni a internet salvo que sepas lo que haces: cualquiera que llegue a él podría usar tus modelos.</p>
+</section>
+<section id="preguntas" class="space-y-space-md scroll-mt-24"><h2 class="font-headline-md text-headline-md text-primary tracking-tight">Preguntas frecuentes</h2><h3 class="font-headline-sm text-headline-sm text-primary">¿Ollama es gratis?</h3><p class="font-body-md text-body-md text-on-surface leading-relaxed">Sí, el programa es gratuito. Los modelos locales no cuestan por uso; solo gastas electricidad y espacio en disco. Ollama también ofrece modelos en la nube con sus propios planes.</p><h3 class="font-headline-sm text-headline-sm text-primary">¿Funciona sin internet?</h3><p class="font-body-md text-body-md text-on-surface leading-relaxed">Sí, una vez descargado el modelo. Para descargarlo sí necesitas conexión.</p><h3 class="font-headline-sm text-headline-sm text-primary">¿Qué ordenador necesito?</h3><p class="font-body-md text-body-md text-on-surface leading-relaxed">Con 8 GB de RAM puedes probar modelos pequeños; con 16 GB o más, la experiencia es mejor. Cada modelo indica su tamaño en ollama.com.</p><h3 class="font-headline-sm text-headline-sm text-primary">¿Es tan bueno como ChatGPT?</h3><p class="font-body-md text-body-md text-on-surface leading-relaxed">No. Los modelos locales pequeños son más lentos y menos capaces; su ventaja es la privacidad y no pagar por uso.</p></section></article>
 <aside class="lg:col-span-4 flex flex-col space-y-space-xl">
 <div class="bg-surface-container-lowest p-space-lg shadow-sm sticky top-space-md">
 <div class="flex items-center justify-between mb-space-sm pb-space-xs">
@@ -172,7 +265,7 @@
 <a class="block text-primary hover:text-secondary font-medium transition-colors" href="#modelo">Elegir un modelo</a>
 <a class="block text-primary hover:text-secondary font-medium transition-colors" href="#usos">Para qué usarlo</a>
 <a class="block text-primary hover:text-secondary font-medium transition-colors" href="#honesto">Lo honesto</a>
-<a class="block text-primary hover:text-secondary font-medium transition-colors" href="#preguntas">Preguntas frecuentes</a>
+<a class="block text-primary hover:text-secondary font-medium transition-colors" href="#comandos-ollama">Comandos básicos</a><a class="block text-primary hover:text-secondary font-medium transition-colors" href="#espacio">Espacio en disco</a><a class="block text-primary hover:text-secondary font-medium transition-colors" href="#elegir">Elegir modelo</a><a class="block text-primary hover:text-secondary font-medium transition-colors" href="#imagenes">Imágenes</a><a class="block text-primary hover:text-secondary font-medium transition-colors" href="#privacidad-ollama">Privacidad</a><a class="block text-primary hover:text-secondary font-medium transition-colors" href="#mantener">Mantenimiento</a><a class="block text-primary hover:text-secondary font-medium transition-colors" href="#modelfile">Tu propio asistente</a><a class="block text-primary hover:text-secondary font-medium transition-colors" href="#api-local">Desde otros programas</a><a class="block text-primary hover:text-secondary font-medium transition-colors" href="#preguntas">Preguntas frecuentes</a>
 </nav>
 </div>
 

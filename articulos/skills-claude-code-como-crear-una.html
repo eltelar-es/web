@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="es"><head><meta charset="utf-8"/>
-<meta name="robots" content="noindex, follow"><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Skills de Claude Code: qué son y cómo crear una | El Telar</title>
 <meta name="description" content="Qué es una skill de Claude Code, dónde se guarda, la estructura del archivo SKILL.md, un ejemplo oficial para copiar y en qué se diferencia de CLAUDE.md y de un subagente.">
 <link rel="canonical" href="https://eltelar.es/articulos/skills-claude-code-como-crear-una.html"><link rel="icon" type="image/svg+xml" href="../img/favicon.svg?v=4">
@@ -31,7 +31,7 @@
     "name": "El Telar"
   },
   "datePublished": "2026-10-23",
-  "dateModified": "2026-10-23",
+  "dateModified": "2026-10-29",
   "mainEntityOfPage": "https://eltelar.es/articulos/skills-claude-code-como-crear-una.html",
   "inLanguage": "es"
 }
@@ -145,7 +145,7 @@
 </div>
 </div>
 <div class="flex items-center gap-space-lg text-on-surface-variant font-caption text-caption uppercase tracking-wider">
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">schedule</span> 5 min de lectura</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">schedule</span> 8 min de lectura</span>
 </div>
 </div>
 </header>
@@ -181,7 +181,88 @@ Summarize the changes above in two or three bullet points, then list any risks, 
 <li><strong>Skill</strong>: procedimientos y material de consulta que se cargan cuando hacen falta.</li>
 <li><strong>Subagente</strong>: un asistente con su propio contexto. Mira <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" href="subagentes-claude-code-como-crear.html">subagentes</a>. Una skill con <code>context: fork</code> se ejecuta dentro de uno.</li></ul></section>
 <section id="honesto" class="space-y-space-md scroll-mt-24 bg-surface-container-low p-space-lg border-l-4 border-secondary"><span class="font-kicker text-kicker uppercase tracking-widest text-secondary">Lo honesto</span><h2 class="font-headline-md text-headline-md text-primary tracking-tight">Ojo con las que instalas</h2>
-<p class="font-body-md text-body-md text-on-surface leading-relaxed">Una skill son instrucciones que Claude seguirá, y puede ejecutar comandos. Antes de copiar una de internet, léela entera, sobre todo las líneas con <code>!</code> y el campo <code>allowed-tools</code>. Para fijar reglas que se cumplan siempre, un <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" href="hooks-claude-code-que-son-ejemplos.html">hook</a> es más fiable que una skill.</p></section><p class="font-body-md text-body-md text-on-surface-variant border-t border-outline-variant pt-space-md">Esta guía forma parte de <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" href="claude-code-guias-en-espanol.html">Claude Code en español: todas las guías, en orden</a>.</p><section id="preguntas" class="space-y-space-md scroll-mt-24"><h2 class="font-headline-md text-headline-md text-primary tracking-tight">Preguntas frecuentes</h2><h3 class="font-headline-sm text-headline-sm text-primary">¿Qué es una skill de Claude Code?</h3><p class="font-body-md text-body-md text-on-surface leading-relaxed">Un archivo SKILL.md con instrucciones que Claude carga cuando encajan con tu petición, o que tú llamas escribiendo /nombre. Su contenido solo entra en el contexto cuando se usa.</p><h3 class="font-headline-sm text-headline-sm text-primary">¿Dónde se guardan las skills?</h3><p class="font-body-md text-body-md text-on-surface leading-relaxed">En ~/.claude/skills/nombre/SKILL.md para todos tus proyectos o en .claude/skills/nombre/SKILL.md para un proyecto concreto, que se puede compartir con git.</p><h3 class="font-headline-sm text-headline-sm text-primary">¿Qué campos son obligatorios?</h3><p class="font-body-md text-body-md text-on-surface leading-relaxed">Ninguno es obligatorio, pero la documentación recomienda description, porque Claude la usa para decidir cuándo cargar la skill.</p><h3 class="font-headline-sm text-headline-sm text-primary">¿Cuál es la diferencia entre una skill y CLAUDE.md?</h3><p class="font-body-md text-body-md text-on-surface leading-relaxed">CLAUDE.md carga siempre en cada sesión. Una skill solo carga cuando se usa, así que sirve para procedimientos largos o material de consulta.</p><h3 class="font-headline-sm text-headline-sm text-primary">¿Cómo evito que Claude use una skill por su cuenta?</h3><p class="font-body-md text-body-md text-on-surface leading-relaxed">Poniendo disable-model-invocation: true en la cabecera. Entonces solo se ejecuta cuando la llamas tú con /nombre.</p></section></article>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Una skill son instrucciones que Claude seguirá, y puede ejecutar comandos. Antes de copiar una de internet, léela entera, sobre todo las líneas con <code>!</code> y el campo <code>allowed-tools</code>. Para fijar reglas que se cumplan siempre, un <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" href="hooks-claude-code-que-son-ejemplos.html">hook</a> es más fiable que una skill.</p></section><p class="font-body-md text-body-md text-on-surface-variant border-t border-outline-variant pt-space-md">Esta guía forma parte de <a class="text-primary underline decoration-primary/30 hover:decoration-primary underline-offset-2" href="claude-code-guias-en-espanol.html">Claude Code en español: todas las guías, en orden</a>.</p><section id="incluidas" class="space-y-space-md scroll-mt-24"><h2 class="font-headline-md text-headline-md text-primary tracking-tight">Las skills que ya vienen con Claude Code</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Antes de crear la tuya, mira las que trae Claude Code de serie. Se usan igual, con <code>/</code> y el nombre:</p>
+<ul class="list-disc pl-space-lg space-y-space-xs font-body-md text-body-md text-on-surface"><li><code>/doctor</code>: revisa tu instalación, tus ajustes y tus archivos CLAUDE.md.</li><li><code>/code-review</code>: revisa tus cambios en busca de errores.</li><li><code>/simplify</code>: revisa el código que has cambiado y lo limpia.</li><li><code>/debug</code>: activa el registro de depuración y lo lee para encontrar el fallo.</li><li><code>/loop</code>: repite una tarea cada cierto tiempo mientras la sesión esté abierta.</li><li><code>/batch</code>: reparte un cambio grande en muchos archivos entre varios agentes en paralelo.</li></ul>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Las skills incluidas se marcan como <strong>Skill</strong> en la lista de comandos. Si no quieres ninguna, se desactivan todas con el ajuste <code>disableBundledSkills</code>.</p>
+</section>
+<section id="tipos" class="space-y-space-md scroll-mt-24"><h2 class="font-headline-md text-headline-md text-primary tracking-tight">Dos tipos de skill: consulta y tarea</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Ayuda pensar en cómo la vas a usar antes de escribirla.</p>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Una skill <strong>de consulta</strong> le da a Claude conocimientos que aplica mientras trabaja: convenciones, guías de estilo, cómo funciona tu sistema. Claude la carga sola cuando el tema sale:</p>
+<div class="flex items-stretch gap-space-xs"><code class="block bg-surface-container-high text-on-surface font-mono text-[14px] leading-relaxed p-space-md overflow-x-auto whitespace-pre" style="flex:1;min-width:0">---
+name: convenciones-api
+description: Normas de diseño de la API de este proyecto. Úsala al crear o cambiar rutas de la API.
+---
+Al escribir rutas de la API:
+- Usa nombres REST en plural (/usuarios, /pedidos).
+- Devuelve siempre los errores con el formato { error, code }.
+- Valida la entrada antes de tocar la base de datos.</code><button type="button" class="shrink-0 bg-primary hover:bg-primary-container text-surface px-space-sm py-space-xxs font-label-md text-label-md uppercase tracking-wider transition-colors" onclick="var c=this.previousElementSibling;navigator.clipboard.writeText(c.innerText);var o=this.textContent,b=this;this.textContent='Copiado';setTimeout(function(){b.textContent=o;},1800);">Copiar</button></div>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Una skill <strong>de tarea</strong> son pasos para una acción concreta, como publicar o hacer un commit. Lo normal es que solo la lances tú, para que Claude no decida publicar por su cuenta:</p>
+<div class="flex items-stretch gap-space-xs"><code class="block bg-surface-container-high text-on-surface font-mono text-[14px] leading-relaxed p-space-md overflow-x-auto whitespace-pre" style="flex:1;min-width:0">---
+name: publicar
+description: Publica la aplicación en producción
+disable-model-invocation: true
+---
+Publica $ARGUMENTS en producción:
+1. Ejecuta los tests.
+2. Construye la aplicación.
+3. Súbela al servidor.
+4. Comprueba que la web responde.</code><button type="button" class="shrink-0 bg-primary hover:bg-primary-container text-surface px-space-sm py-space-xxs font-label-md text-label-md uppercase tracking-wider transition-colors" onclick="var c=this.previousElementSibling;navigator.clipboard.writeText(c.innerText);var o=this.textContent,b=this;this.textContent='Copiado';setTimeout(function(){b.textContent=o;},1800);">Copiar</button></div>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Si Claude intenta usar una skill que tiene <code>disable-model-invocation: true</code>, Claude Code se lo impide y le dice que no repita esos pasos de otra forma. Te propondrá que escribas tú <code>/publicar</code>.</p>
+</section>
+<section id="quien" class="space-y-space-md scroll-mt-24"><h2 class="font-headline-md text-headline-md text-primary tracking-tight">Quién puede usarla y cuándo se carga</h2>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b-2 border-outline"><th class="py-space-sm pr-space-md font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">Cabecera</th><th class="py-space-sm pr-space-md font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">La lanzas tú</th><th class="py-space-sm pr-space-md font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">La lanza Claude</th><th class="py-space-sm pr-space-md font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">Qué ocupa en el contexto</th></tr>
+</thead>
+<tbody class="font-body-sm text-body-sm text-on-surface-variant">
+<tr class="border-b border-outline-variant"><td class="py-space-sm pr-space-md font-semibold text-on-surface">(nada)</td><td class="py-space-sm pr-space-md">Sí</td><td class="py-space-sm pr-space-md">Sí</td><td class="py-space-sm pr-space-md">La descripción siempre; el contenido, al usarla</td></tr>
+<tr class="border-b border-outline-variant"><td class="py-space-sm pr-space-md font-semibold text-on-surface"><code>disable-model-invocation: true</code></td><td class="py-space-sm pr-space-md">Sí</td><td class="py-space-sm pr-space-md">No</td><td class="py-space-sm pr-space-md">Nada hasta que la usas</td></tr>
+<tr class=""><td class="py-space-sm pr-space-md font-semibold text-on-surface"><code>user-invocable: false</code></td><td class="py-space-sm pr-space-md">No</td><td class="py-space-sm pr-space-md">Sí</td><td class="py-space-sm pr-space-md">La descripción siempre; el contenido, al usarla</td></tr>
+</tbody>
+</table>
+</div>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Esto importa para el gasto: cada skill normal tiene su descripción cargada en todas las conversaciones para que Claude sepa que existe. Si tienes muchas, <code>/skills</code> y luego la tecla <code>t</code> te las ordena por lo que ocupan, y <code>/skill-doctor</code> te dice cuánto cuesta cada una y cuánto la usas.</p>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Una vez que una skill se carga, se queda en la conversación hasta el final. Por eso conviene que el texto sea corto: cada línea se paga en cada mensaje que sigue.</p>
+</section>
+<section id="argumentos" class="space-y-space-md scroll-mt-24"><h2 class="font-headline-md text-headline-md text-primary tracking-tight">Pasarle datos: $ARGUMENTS</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Todo lo que escribas detrás del nombre de la skill le llega como argumentos. En el texto de la skill los recoges así:</p>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b-2 border-outline"><th class="py-space-sm pr-space-md font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">Variable</th><th class="py-space-sm pr-space-md font-kicker text-kicker uppercase tracking-widest text-on-surface-variant">Qué contiene</th></tr>
+</thead>
+<tbody class="font-body-sm text-body-sm text-on-surface-variant">
+<tr class="border-b border-outline-variant"><td class="py-space-sm pr-space-md font-semibold text-on-surface"><code>$ARGUMENTS</code></td><td class="py-space-sm pr-space-md">Todo lo que escribiste detrás del nombre</td></tr>
+<tr class="border-b border-outline-variant"><td class="py-space-sm pr-space-md font-semibold text-on-surface"><code>$0</code>, <code>$1</code>…</td><td class="py-space-sm pr-space-md">El primer argumento, el segundo… (empiezan en cero)</td></tr>
+<tr class="border-b border-outline-variant"><td class="py-space-sm pr-space-md font-semibold text-on-surface"><code>$nombre</code></td><td class="py-space-sm pr-space-md">Un argumento con nombre, si los declaras en el campo <code>arguments</code></td></tr>
+<tr class="border-b border-outline-variant"><td class="py-space-sm pr-space-md font-semibold text-on-surface"><code>${CLAUDE_SKILL_DIR}</code></td><td class="py-space-sm pr-space-md">La carpeta de la skill, para llamar a scripts que guardes dentro</td></tr>
+<tr class=""><td class="py-space-sm pr-space-md font-semibold text-on-surface"><code>${CLAUDE_PROJECT_DIR}</code></td><td class="py-space-sm pr-space-md">La carpeta raíz del proyecto</td></tr>
+</tbody>
+</table>
+</div>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Si un argumento tiene espacios, ponlo entre comillas: con <code>/mi-skill "hola mundo" segundo</code>, <code>$0</code> vale «hola mundo» y <code>$1</code> vale «segundo». Si necesitas escribir un precio como <code>$1.00</code> sin que se sustituya, ponle una barra delante: <code>\$1.00</code>.</p>
+</section>
+<section id="mas-campos" class="space-y-space-md scroll-mt-24"><h2 class="font-headline-md text-headline-md text-primary tracking-tight">Más campos útiles de la cabecera</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Además de los cinco básicos, hay otros que se usan mucho:</p>
+<ul class="list-disc pl-space-lg space-y-space-xs font-body-md text-body-md text-on-surface"><li><code>when_to_use</code>: frases o ejemplos de cuándo usarla. Se suma a la descripción; entre las dos tienen un máximo de 1.536 caracteres.</li><li><code>argument-hint</code>: la pista que ves al escribir el comando, por ejemplo <code>[número-de-incidencia]</code>.</li><li><code>model</code> y <code>effort</code>: el modelo y el nivel de esfuerzo mientras dura esa petición. Al siguiente mensaje vuelve el de tu sesión.</li><li><code>context: fork</code>: la ejecuta en un subagente, con su propio contexto, para que no ensucie tu conversación.</li><li><code>paths</code>: solo se activa sola cuando trabajas con ciertos archivos, por ejemplo <code>src/api/**</code>.</li><li><code>disallowed-tools</code>: herramientas que no puede usar mientras está activa.</li></ul>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Los nombres de los campos tienen que ser exactos, guiones incluidos: uno mal escrito se ignora sin avisar. Y la cabecera solo se lee si el primer <code>---</code> está en la primera línea del archivo.</p>
+</section>
+<section id="archivos" class="space-y-space-md scroll-mt-24"><h2 class="font-headline-md text-headline-md text-primary tracking-tight">Una skill con varios archivos</h2>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">Una skill es una carpeta, no solo un archivo. Puedes guardar al lado material de consulta y scripts:</p>
+<div class="flex items-stretch gap-space-xs"><code class="block bg-surface-container-high text-on-surface font-mono text-[14px] leading-relaxed p-space-md overflow-x-auto whitespace-pre" style="flex:1;min-width:0">mi-skill/
+├── SKILL.md        (obligatorio: lo esencial y qué hay en cada archivo)
+├── referencia.md   (documentación larga: se lee cuando hace falta)
+├── ejemplos.md     (ejemplos de uso: se lee cuando hace falta)
+└── scripts/
+    └── ayuda.py    (se ejecuta, no se lee)</code><button type="button" class="shrink-0 bg-primary hover:bg-primary-container text-surface px-space-sm py-space-xxs font-label-md text-label-md uppercase tracking-wider transition-colors" onclick="var c=this.previousElementSibling;navigator.clipboard.writeText(c.innerText);var o=this.textContent,b=this;this.textContent='Copiado';setTimeout(function(){b.textContent=o;},1800);">Copiar</button></div>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">En SKILL.md, menciona cada archivo y di cuándo leerlo («para los detalles de la API, lee referencia.md»). Así Claude solo carga lo que necesita y SKILL.md se queda corto.</p>
+</section>
+<section id="buena-skill" class="space-y-space-md scroll-mt-24"><h2 class="font-headline-md text-headline-md text-primary tracking-tight">Cómo escribir una skill que funcione</h2>
+<ol class="list-decimal pl-space-lg space-y-space-xs font-body-md text-body-md text-on-surface"><li><strong>Pon el caso de uso al principio de la descripción.</strong> Es lo que Claude lee para decidir si la carga. «Resume los cambios sin confirmar. Úsala cuando pregunten qué ha cambiado» funciona mejor que «Skill útil para git».</li><li><strong>Di qué hacer, no por qué.</strong> La documentación oficial lo recomienda: el texto se queda en el contexto, así que cuanto más directo, mejor.</li><li><strong>Una skill, una tarea.</strong> Si hace tres cosas, mejor tres skills.</li><li><strong>Prueba los dos caminos.</strong> Escribe <code>/nombre</code> para lanzarla tú, y luego pídele algo con tus palabras para ver si Claude la encuentra solo.</li><li><strong>Si la editas con Claude Code abierto</strong>, los cambios se cargan solos. Si creas una carpeta de skills nueva y no aparece, usa <code>/reload-skills</code>.</li></ol>
+</section>
+<section id="preguntas" class="space-y-space-md scroll-mt-24"><h2 class="font-headline-md text-headline-md text-primary tracking-tight">Preguntas frecuentes</h2><h3 class="font-headline-sm text-headline-sm text-primary">¿Qué es una skill de Claude Code?</h3><p class="font-body-md text-body-md text-on-surface leading-relaxed">Un archivo SKILL.md con instrucciones que Claude carga cuando encajan con tu petición, o que tú llamas escribiendo /nombre. Su contenido solo entra en el contexto cuando se usa.</p><h3 class="font-headline-sm text-headline-sm text-primary">¿Dónde se guardan las skills?</h3><p class="font-body-md text-body-md text-on-surface leading-relaxed">En ~/.claude/skills/nombre/SKILL.md para todos tus proyectos o en .claude/skills/nombre/SKILL.md para un proyecto concreto, que se puede compartir con git.</p><h3 class="font-headline-sm text-headline-sm text-primary">¿Qué campos son obligatorios?</h3><p class="font-body-md text-body-md text-on-surface leading-relaxed">Ninguno es obligatorio, pero la documentación recomienda description, porque Claude la usa para decidir cuándo cargar la skill.</p><h3 class="font-headline-sm text-headline-sm text-primary">¿Cuál es la diferencia entre una skill y CLAUDE.md?</h3><p class="font-body-md text-body-md text-on-surface leading-relaxed">CLAUDE.md carga siempre en cada sesión. Una skill solo carga cuando se usa, así que sirve para procedimientos largos o material de consulta.</p><h3 class="font-headline-sm text-headline-sm text-primary">¿Cómo evito que Claude use una skill por su cuenta?</h3><p class="font-body-md text-body-md text-on-surface leading-relaxed">Poniendo disable-model-invocation: true en la cabecera. Entonces solo se ejecuta cuando la llamas tú con /nombre.</p></section></article>
 <aside class="lg:col-span-4 flex flex-col space-y-space-xl">
 <div class="bg-surface-container-lowest p-space-lg shadow-sm sticky top-space-md">
 <div class="flex items-center justify-between mb-space-sm pb-space-xs">
@@ -195,7 +276,7 @@ Summarize the changes above in two or three bullet points, then list any risks, 
 <a class="block text-primary hover:text-secondary font-medium transition-colors" href="#campos">Campos</a>
 <a class="block text-primary hover:text-secondary font-medium transition-colors" href="#diferencias">Skill, CLAUDE.md o subagente</a>
 <a class="block text-primary hover:text-secondary font-medium transition-colors" href="#honesto">Lo honesto</a>
-<a class="block text-primary hover:text-secondary font-medium transition-colors" href="#preguntas">Preguntas frecuentes</a>
+<a class="block text-primary hover:text-secondary font-medium transition-colors" href="#incluidas">Las que ya trae</a><a class="block text-primary hover:text-secondary font-medium transition-colors" href="#tipos">Consulta o tarea</a><a class="block text-primary hover:text-secondary font-medium transition-colors" href="#quien">Quién la usa</a><a class="block text-primary hover:text-secondary font-medium transition-colors" href="#argumentos">Argumentos</a><a class="block text-primary hover:text-secondary font-medium transition-colors" href="#mas-campos">Más campos</a><a class="block text-primary hover:text-secondary font-medium transition-colors" href="#archivos">Varios archivos</a><a class="block text-primary hover:text-secondary font-medium transition-colors" href="#buena-skill">Escribir una buena</a><a class="block text-primary hover:text-secondary font-medium transition-colors" href="#preguntas">Preguntas frecuentes</a>
 </nav>
 </div>
 
