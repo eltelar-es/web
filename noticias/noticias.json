@@ -1,4 +1,146 @@
 [
+    {
+      "slug": "2026-10-30-claude-code-extension-cursor-puerta-trasera",
+      "date": "2026-10-29",
+      "category": "Seguridad",
+      "title": "Una versión falsa de la extensión de Claude Code en Cursor instalaba una puerta trasera: cómo comprobar si te afecta",
+      "dek": "Cursor avisa de que dos versiones manipuladas de «Claude Code» circularon unas once horas en su tienda de extensiones. Te explicamos cómo saber si las instalaste.",
+      "tldr": "Cursor ha confirmado que las versiones 2.1.312 y 2.1.313 de la extensión Claude Code, distribuidas en su tienda el 29 de octubre, no las creó Anthropic e intentaban abrir acceso remoto al ordenador. Si usas Cursor en Windows o macOS, busca la etiqueta «svc-telemetry» en tu archivo de claves SSH.",
+      "key_facts": [
+        {
+          "value": "5.000",
+          "label": "usuarios afectados como máximo, según Cursor"
+        },
+        {
+          "value": "~11 h",
+          "label": "de 2:27 a 13:35 (hora del Pacífico) del 29 de octubre"
+        },
+        {
+          "value": "2.1.314",
+          "label": "versión limpia publicada por Anthropic el 30 de octubre"
+        }
+      ],
+      "quote": {
+        "text": "Follow the remediation steps below regardless.",
+        "source": "Cursor, aviso de seguridad (traducido: «Sigue los pasos de remediación que figuran abajo en cualquier caso»)"
+      },
+      "body": [
+        "Cursor, el editor de código con inteligencia artificial, ha publicado un aviso de seguridad sobre la extensión «Claude Code» de su tienda de extensiones. Según la empresa, las versiones 2.1.312 y 2.1.313 de la extensión anthropic.claude-code estuvieron disponibles el 29 de octubre, desde las 2:27 hasta las 13:35 aproximadamente (hora del Pacífico, es decir, de las 10:27 a las 21:35 en la España peninsular), y afectaban a Windows y macOS. Cursor subraya que esas versiones no las desarrolló Anthropic y que instalaban una puerta trasera persistente por SSH. SSH es el protocolo con el que se controla un ordenador a distancia mediante una conexión cifrada y unas claves: quien tiene una clave autorizada puede entrar sin contraseña.",
+        "El código añadido era un cargador de 66 líneas colocado al principio del archivo principal de la extensión, según el análisis de la firma OpenSourceMalware que cita The Hacker News. Se ejecutaba al arrancar el editor, sin que el usuario hiciera nada con Claude, y trataba de que la extensión siguiera funcionando con normalidad para no levantar sospechas. Lo primero que hacía era recopilar datos del equipo: nombre del ordenador y del usuario, sistema operativo, carpetas de trabajo, el correo configurado en Git y los nombres, no los valores, de hasta 40 variables de entorno cuyo nombre contuviera palabras como KEY, TOKEN, SECRET, PASS, AWS o GCP.",
+        "Después intentaba tres cosas: añadir una clave SSH del atacante, con la etiqueta «svc-telemetry», al archivo de claves autorizadas del usuario; activar el acceso remoto del sistema; y abrir un túnel inverso hacia un servidor externo, que es una conexión que parte de tu ordenador hacia fuera para que desde allí se pueda entrar en él aunque tu router bloquee las conexiones entrantes. Cursor precisa que activar el servicio SSH probablemente fallara en la mayoría de equipos, porque requiere permisos de administrador que la extensión normalmente no tiene, pero la clave y los mecanismos de persistencia se instalaban igualmente. En macOS creaba un agente de arranque llamado com.apple.sysmond, que imita un nombre de Apple, y en Windows una tarea programada llamada SysMon, y reintentaba la conexión cada 60 segundos.",
+        "La cifra de afectados es una cota máxima: Cursor habla de «como mucho 5.000 usuarios» en declaraciones recogidas por The Hacker News, y dice que contactará directamente con ellos. Lo que sí se sabe es quién no está afectado: según el análisis de OpenSourceMalware, ni el paquete oficial de npm de Claude Code ni la extensión publicada en Open VSX ni la de Microsoft VS Code Marketplace contenían el código malicioso. Cursor añade que no tiene indicios de que otras extensiones de su tienda hayan sido manipuladas, y que el servidor del atacante ya no responde. Retiró la versión y cerró temporalmente su tienda como precaución, y el 30 de octubre Anthropic publicó la versión 2.1.314, limpia, en Open VSX y en la tienda de Microsoft.",
+        "Quedan preguntas importantes sin respuesta. The Hacker News señala que aún no está claro cómo consiguieron los atacantes subir una actualización bajo la identidad legítima de Anthropic en la tienda de Cursor, y OpenSourceMalware advierte de que no se ha establecido quién está detrás ni qué infraestructura usaban. Tampoco se habían observado cargas adicionales: el código solo abría la puerta, de modo que lo que ocurriera después de entrar por SSH no quedaría reflejado en el análisis de la extensión.",
+        "Para comprobar si te afecta, Cursor da una prueba sencilla. En macOS, busca la etiqueta «svc-telemetry» dentro del archivo ~/.ssh/authorized_keys, por ejemplo con el comando grep -n svc-telemetry ~/.ssh/authorized_keys en la Terminal. En Windows, busca esa misma etiqueta en %USERPROFILE%\\.ssh\\authorized_keys y en C:\\ProgramData\\ssh\\administrators_authorized_keys. Si aparece, trata el equipo como comprometido. Si no aparece, es mucho menos probable que te haya afectado, aunque Cursor recomienda seguir sus pasos de todos modos si instalaste o actualizaste la extensión en esa franja horaria. También conviene mirar si existen los archivos ~/.config/.smt y ~/.config/.smtk, el agente com.apple.sysmond en macOS o la tarea SysMon en Windows.",
+        "Si encuentras algo, Cursor recomienda aislar el equipo de la red, eliminar la clave no autorizada y los mecanismos de persistencia, y cambiar desde otro dispositivo de confianza las credenciales y sesiones a las que tuviera acceso ese ordenador. Avisa además de que desinstalar la extensión no basta, porque los scripts de persistencia siguen ejecutándose por su cuenta, y de que hay que valorar reinstalar el sistema. La empresa ofrece scripts de limpieza para macOS y Windows en su propio aviso; conviene descargarlos solo desde ahí y leerlos antes de ejecutarlos."
+      ],
+      "impact": [
+        "Si usas Cursor en Windows o macOS y la extensión Claude Code se actualizó sola el 29 de octubre, busca la etiqueta «svc-telemetry» en tu archivo de claves SSH antes de nada.",
+        "Si usas Claude Code desde el paquete de npm, Open VSX o la tienda de Microsoft, esos canales no contenían el código malicioso según el análisis de OpenSourceMalware. Aun así, actualiza a la 2.1.314.",
+        "Desinstalar la extensión no elimina la puerta trasera: si la encuentras, aísla el equipo, cambia tus contraseñas y claves desde otro dispositivo y valora reinstalar el sistema.",
+        "Las extensiones de editor se actualizan solas y tienen acceso a tus archivos y variables: revisa cuáles tienes instaladas y desactiva la actualización automática de las que no necesites."
+      ],
+      "sources": [
+        {
+          "name": "Cursor, aviso de seguridad sobre la extensión Claude Code",
+          "url": "https://cursor.com/blog/claude-code-extension-security-notice"
+        },
+        {
+          "name": "OpenSourceMalware, análisis técnico de la extensión manipulada",
+          "url": "https://opensourcemalware.com/blog/trojanized-claude-code-extension-plants-persistent-ssh-backdoor"
+        },
+        {
+          "name": "The Hacker News, cobertura del incidente",
+          "url": "https://thehackernews.com/2026/10/official-claude-code-vs-code-extension.html"
+        }
+      ],
+      "related": [
+        {
+          "title": "Permisos para un agente de IA sin darle tus contraseñas",
+          "url": "../articulos/permisos-agente-ia-sin-contrasenas.html"
+        },
+        {
+          "title": "Prompt injection en agentes de IA",
+          "url": "../articulos/prompt-injection-agentes-ia.html"
+        },
+        {
+          "title": "Qué IA elegir para programar",
+          "url": "../articulos/elegir-ia-para-programar.html"
+        }
+      ],
+      "photo": {
+        "alt": "Candado cerrado con cadena y llave puesta (imagen de archivo)",
+        "author": "Lacz02",
+        "license": "CC BY-SA 4.0",
+        "url": "https://commons.wikimedia.org/wiki/File:Padlock_with_chain.jpg"
+      },
+      "published": "2026-10-31"
+    },
+    {
+      "slug": "2026-10-30-artex-agentes-ia-ataques-crowdstrike",
+      "date": "2026-10-29",
+      "category": "Seguridad",
+      "title": "Un grupo vinculado a China usó agentes de IA para atacar a más de 200 organizaciones en 11 días",
+      "dek": "CrowdStrike describe ARTEX, un sistema de agentes de IA que un solo operador usó contra ministerios, defensa o telecomunicaciones, apoyado sobre todo en el modelo DeepSeek.",
+      "tldr": "CrowdStrike ha documentado una campaña en la que un grupo al que llama VAPOR PANDA usó un conjunto de agentes de IA llamado ARTEX para atacar a más de 200 organizaciones en al menos 14 países durante 11 días. Confirmó intrusiones en nueve; el ataque se dirigía a organizaciones, no a usuarios domésticos.",
+      "key_facts": [
+        {
+          "value": "200+",
+          "label": "organizaciones atacadas en al menos 14 países"
+        },
+        {
+          "value": "11 días",
+          "label": "duración de la ventana de actividad analizada"
+        },
+        {
+          "value": "9",
+          "label": "organizaciones con intrusión confirmada"
+        },
+        {
+          "value": "1,4 mil M",
+          "label": "tokens de entrada gastados por los agentes en una intrusión"
+        }
+      ],
+      "quote": {
+        "text": "ARTEX coordinates a main agent with subordinate planner and worker agents over a shared graph of facts, findings, and goals.",
+        "source": "CrowdStrike (traducido: «ARTEX coordina un agente principal con agentes subordinados de planificación y ejecución sobre un grafo compartido de hechos, hallazgos y objetivos»)"
+      },
+      "body": [
+        "La empresa de ciberseguridad CrowdStrike publicó el 29 de octubre un informe sobre una campaña de ataques en la que la inteligencia artificial hacía buena parte del trabajo. Según su equipo OverWatch, el grupo, al que bautizan VAPOR PANDA y vinculan con China, empezó el 17 de octubre y utilizó un sistema llamado ARTEX contra más de 200 organizaciones distintas de al menos 14 países a lo largo de 11 días. Entre los objetivos figuran ministerios de Exteriores e Interior y otras entidades públicas, además de empresas de semiconductores, defensa, energía nuclear, farmacia, finanzas y telecomunicaciones, y centros de estudios.",
+        "ARTEX es lo que se conoce como un framework de agentes, es decir, una estructura de programas de IA que se reparten el trabajo. Según CrowdStrike, un agente principal coordina a otros subordinados, unos que planifican y otros que ejecutan, y todos comparten un grafo, una especie de pizarra común, con hechos, hallazgos y objetivos. Con ella el sistema avanza solo desde el primer acceso hasta el reconocimiento de los equipos y el salto de uno a otro dentro de la red. La firma añade que el mismo framework lo usan también grupos con motivación económica y otros sin identificar, así que no es una herramienta exclusiva de este grupo.",
+        "El dato más llamativo es la escala. Según CrowdStrike, un único operador humano llevaba varias intrusiones a la vez e intervenía sobre todo en los puntos de decisión. Los agentes probaban varias vías de ataque en paralelo y cambiaban de método cuando una fallaba. En una de las intrusiones, los agentes de planificación consumieron unos 1.400 millones de tokens de entrada; un token es el trozo de texto, más o menos una sílaba, en que el modelo divide lo que lee. CrowdStrike dice que el grupo usó principalmente el modelo chino DeepSeek, complementado con un segundo modelo comercial de pago que no pudo confirmar.",
+        "Conviene no exagerar lo que ocurrió. La actividad posterior a la intrusión se confirmó en nueve organizaciones, y el sondeo de contraseñas y credenciales alcanzó al menos a otras doce. Las técnicas descritas son conocidas, como el uso de shells web (programas que permiten dirigir un servidor a distancia), abusos de autenticación SAML y XXE para llegar a los metadatos de servicios en la nube, o tokens de administrador falsificados, no inventos nuevos de la IA. Lo nuevo es la velocidad y la capacidad de repetirlas contra cientos de objetivos con poca intervención humana. CrowdStrike detalla también que el operador ordenó a los agentes buscar equipos que no tuvieran instalado su sensor Falcon, para concentrar el siguiente paso en las máquinas sin protección.",
+        "El informe no explica cuántos datos se robaron ni qué organizaciones concretas fueron comprometidas, y la atribución a China es una valoración de CrowdStrike, no un hecho confirmado por un gobierno. Tampoco prueba que DeepSeek, como empresa, supiera de este uso: lo que dice es que el grupo empleó su modelo, algo que cualquiera puede hacer con un modelo accesible por internet. Por eso importa menos la nacionalidad del modelo que el hecho de que la barrera para atacar a muchas organizaciones a la vez ha bajado.",
+        "Las recomendaciones de CrowdStrike van dirigidas a equipos de seguridad: rotar claves de firma y credenciales de servicio tras cualquier sospecha de exposición, incluidas las que queden en copias de seguridad; exigir la validación de firmas SAML; usar IMDSv2, la versión más segura del servicio de metadatos de Amazon; limitar qué funciones en la nube pueden ejecutar comandos; parchear los equipos expuestos a internet, sobre todo los servidores Linux antiguos; y desplegar un agente de detección en tiempo real en todos los equipos, incluidos los que no son accesibles desde internet. También publica marcas para buscar rastros de ARTEX, como las cadenas «artx» o «artex» en líneas de comandos o el directorio C:\\ProgramData\\artx5v\\."
+      ],
+      "impact": [
+        "Si eres usuario particular, no hay una acción concreta que tomar por este informe: los objetivos fueron organizaciones. Mantener actualizados tus dispositivos y usar verificación en dos pasos sigue siendo la mejor defensa.",
+        "Si trabajas en una pequeña empresa o gestionas sistemas, revisa que los equipos expuestos a internet estén parcheados y que todos tengan algún tipo de protección activa: los agentes buscaron deliberadamente máquinas sin ella.",
+        "Los ataques con IA no usan técnicas mágicas, sino las de siempre a mayor velocidad y escala; las medidas básicas de higiene siguen siendo lo que más reduce el riesgo."
+      ],
+      "sources": [
+        {
+          "name": "CrowdStrike, VAPOR PANDA y ARTEX",
+          "url": "https://www.crowdstrike.com/en-us/blog/vapor-panda-uses-artex-to-scale-global-campaign/"
+        }
+      ],
+      "related": [
+        {
+          "title": "Estafas con IA: cómo reconocerlas",
+          "url": "../articulos/estafas-con-ia.html"
+        },
+        {
+          "title": "Prompt injection en agentes de IA",
+          "url": "../articulos/prompt-injection-agentes-ia.html"
+        }
+      ],
+      "photo": {
+        "alt": "Pasillo de un centro de datos con armarios de servidores blancos (imagen de archivo)",
+        "author": "PiDatacenters",
+        "license": "CC BY-SA 4.0",
+        "url": "https://commons.wikimedia.org/wiki/File:Racks_Amravati_Data_Center.jpg"
+      },
+      "published": "2026-10-31"
+    },
   {
     "slug": "2026-10-29-mistral-large-4-pesos-abiertos",
     "date": "2026-10-29",
