@@ -1,5 +1,80 @@
 [
     {
+      "slug": "2026-11-01-chatgpt-enlace-compartido-fallo",
+      "date": "2026-10-28",
+      "category": "Seguridad",
+      "title": "Un enlace compartido de ChatGPT podía ejecutar código y leer tus chats privados",
+      "dek": "Investigadores de Parameter encadenaron tres fallos en ChatGPT. OpenAI los corrigió el 26 de octubre y no tienes que hacer nada, pero conviene entender qué pasó.",
+      "tldr": "Parameter descubrió que abrir un enlace público de ChatGPT podía ejecutar código del atacante dentro de tu sesión y acceder a conversaciones privadas. OpenAI lo arregló el 26 de octubre en sus servidores; no hay constancia de que se explotara.",
+      "key_facts": [
+        {
+          "value": "18 oct",
+          "label": "día en que Parameter avisó a OpenAI"
+        },
+        {
+          "value": "26 oct",
+          "label": "día en que ambas versiones de la web rechazaban el ataque"
+        },
+        {
+          "value": "3",
+          "label": "fallos de diseño encadenados"
+        },
+        {
+          "value": "5.000 $",
+          "label": "recompensa total pagada por OpenAI"
+        }
+      ],
+      "quote": {
+        "text": "Opening the shared link was the only required action.",
+        "source": "Parameter, informe técnico (traducido: «Abrir el enlace compartido era la única acción necesaria»)"
+      },
+      "body": [
+        "La empresa de seguridad Parameter publicó el 28 de octubre los detalles de una vulnerabilidad en ChatGPT que permitía, a partir de un enlace de conversación compartida, ejecutar código del atacante dentro de la sesión de otra persona. Según su informe, lo comunicaron a OpenAI el 18 de octubre a través del programa de recompensas por errores de la compañía, y OpenAI confirmó el 26 de octubre que las dos versiones de la interfaz web rechazaban ya los mensajes del ataque. The Hacker News añade que OpenAI acabó clasificando el fallo como P1, su categoría más grave, aunque en un principio lo había calificado como P2, y que pagó 5.000 dólares en total.",
+        "El ataque partía de algo cotidiano: un enlace público de ChatGPT, de los que se generan con la opción de compartir una conversación. Un atacante podía enviarlo por correo, mensaje, un ticket de soporte o una red social. Según Parameter, abrir el enlace era la única acción obligatoria; en la versión más estable de la prueba la víctima además pulsaba una vez el botón de vista previa, y en una versión posterior el ataque se disparaba al navegar a la página sin más. No hacía falta instalar nada ni iniciar sesión a través del atacante, pero sí que la víctima tuviera ChatGPT abierto con su cuenta.",
+        "El fallo no era uno solo, sino tres encadenados. Primero, una conversación compartida con un gráfico interactivo carga MathLive, una librería para escribir fórmulas matemáticas, que escucha mensajes enviados entre partes de la página sin comprobar quién los manda. Segundo, esos mensajes podían llevar código HTML disfrazado de datos de distribución de teclado, y la librería lo insertaba tal cual en la página. Tercero, ese HTML creaba un marco (un recuadro incrustado en la web) sin las restricciones de seguridad habituales, que heredaba la identidad de chatgpt.com. Dentro de ese marco el atacante necesitaba ejecutar un script: la política de seguridad de ChatGPT bloqueaba los scripts escritos directamente en la página, pero permitía cargar contenido de YouTube, y Parameter usó un servicio de YouTube para colar el código. Según el informe, bloquear solo ese último paso no habría solucionado el problema de fondo.",
+        "Con ese código funcionando como si fuera la propia web de ChatGPT, los investigadores pudieron leer el token de la sesión, listar las conversaciones recientes de la víctima, abrir una conversación privada que nunca se había compartido y enviar una pequeña parte de su contenido a un servidor que ellos controlaban. Parameter sostiene que, como el código llamaba a las mismas funciones internas que usa la web, el alcance no se limitaba a los chats visibles. Esa última afirmación es una deducción de los investigadores; en el informe solo demuestran la lectura de conversaciones y el envío de un valor pequeño.",
+        "Conviene ponerlo en proporción. Parameter no informa de ninguna explotación real: la prueba con un chat privado se hizo entre cuentas de prueba, no contra usuarios reales. El ataque dependía además de una coincidencia de tiempos que se resolvía con reintentos y del comportamiento concreto de MathLive, del servicio de YouTube y de la política de seguridad vigente entonces. Y el informe no aclara si la corrección en dos fases, con una solución parcial el 22 de octubre y cambios en la política de seguridad el 23, cubre cualquier variante posible. Lo que sí está claro es que la solución está en los servidores de OpenAI.",
+        "Según The Hacker News, los usuarios de ChatGPT no tienen que hacer nada: no hay nada que instalar ni contraseña que cambiar. Aun así, el caso ilustra un riesgo real de las funciones que mezclan contenido de otras personas con tu cuenta. Un enlace compartido no es una simple foto del chat: puede incluir elementos interactivos que se ejecutan en tu navegador. Si recibes enlaces de conversaciones de desconocidos, trátalos con la misma prudencia que cualquier otro enlace que llega por correo o por mensaje."
+      ],
+      "impact": [
+        "No tienes que cambiar contraseñas ni actualizar nada: la corrección se aplicó en los servidores de OpenAI el 26 de octubre.",
+        "Desconfía de los enlaces de conversaciones compartidas que te lleguen de desconocidos o sin contexto, igual que harías con cualquier enlace sospechoso.",
+        "Antes de compartir una conversación tuya, revisa que no contenga datos personales: un enlace público lo puede abrir cualquiera que lo tenga.",
+        "Si quieres reducir lo que queda guardado de tus chats, revisa los ajustes de privacidad de tu asistente; tienes una guía abajo."
+      ],
+      "sources": [
+        {
+          "name": "Parameter, informe técnico «We found a gap at OpenAI»",
+          "url": "https://www.parameter.ai/labs/we-found-a-gap-at-openai"
+        },
+        {
+          "name": "The Hacker News, «A shared ChatGPT link could run attacker code»",
+          "url": "https://www.thehackernews.com/2026/10/a-shared-chatgpt-link-could-run.html"
+        }
+      ],
+      "related": [
+        {
+          "title": "Qué guarda tu chat de IA y cómo limitarlo",
+          "url": "../articulos/privacidad-chats-ia.html"
+        },
+        {
+          "title": "Seguridad y privacidad con la IA",
+          "url": "../articulos/seguridad-privacidad.html"
+        },
+        {
+          "title": "Estafas con IA: cómo reconocerlas",
+          "url": "../articulos/estafas-con-ia.html"
+        }
+      ],
+      "photo": {
+        "alt": "Un teléfono con la aplicación de ChatGPT junto a un portátil (imagen de archivo)",
+        "author": "Jernej Furman",
+        "license": "CC BY 2.0",
+        "url": "https://commons.wikimedia.org/wiki/File:Smartphone_with_ChatGPT_app_and_laptop_(52917381683).jpg"
+      },
+      "published": "2026-11-01"
+    },
+    {
       "slug": "2026-10-30-claude-code-extension-cursor-puerta-trasera",
       "date": "2026-10-29",
       "category": "Seguridad",
