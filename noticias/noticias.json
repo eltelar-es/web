@@ -1,5 +1,73 @@
 [
     {
+      "slug": "2026-11-02-apple-intelligence-china-qwen",
+      "date": "2026-10-31",
+      "category": "Empresas",
+      "title": "Apple Intelligence llega a China en diciembre con Qwen, de Alibaba, dentro de Siri",
+      "dek": "Apple abre pruebas el 4 de noviembre y lanzará en diciembre con iOS 27.3 sus funciones de IA en China, sin la nueva Siri y con el modelo de Alibaba.",
+      "tldr": "Apple ha anunciado que las primeras funciones de Apple Intelligence llegarán a China con iOS 27.3 en diciembre, tras una beta para desarrolladores el 4 de noviembre. Usarán Qwen, el modelo de Alibaba, en Siri, las herramientas de escritura y Visual Intelligence.",
+      "key_facts": [
+        {
+          "value": "4 nov",
+          "label": "empieza la prueba en la beta para desarrolladores"
+        },
+        {
+          "value": "dic",
+          "label": "lanzamiento público con iOS 27.3"
+        },
+        {
+          "value": "7",
+          "label": "servicios de IA en móvil registrados en China en julio"
+        }
+      ],
+      "quote": {
+        "text": "work with Apple to deliver new AI-powered service experiences to Chinese users",
+        "source": "Eddie Wu, CEO de Alibaba, según CGTN/Xinhua (traducido: «trabajar con Apple para ofrecer nuevas experiencias de servicios con IA a los usuarios chinos»)"
+      },
+      "body": [
+        "El 31 de octubre de 2026, Apple publicó en su sala de prensa de China un comunicado en el que anuncia que las primeras funciones de Apple Intelligence, su conjunto de herramientas de inteligencia artificial para iPhone, llegarán a los usuarios del país. Las funciones se podrán probar a partir del 4 de noviembre en la última beta para desarrolladores de iOS, una versión de prueba que Apple distribuye antes del lanzamiento general. El estreno para el público llegará en diciembre de 2026 con la versión oficial de iOS 27.3.",
+        "La novedad más llamativa es quién pone parte del motor. Apple dice que ha alcanzado un acuerdo con Alibaba para añadir Qwen, el modelo de IA de esa empresa, a algunas experiencias de Apple Intelligence. Según el comunicado, Qwen estará disponible en Siri, en las herramientas de escritura (Writing Tools) y en Visual Intelligence, y servirá para entender texto e imágenes: por ejemplo, para hacer preguntas sobre fotos, documentos PDF y presentaciones, o para generar contenido original desde cero dentro de las herramientas de escritura. Para usarlo hay que iniciar sesión con una cuenta de Qwen o con Iniciar sesión con Apple.",
+        "Además de Qwen, el paquete incluye funciones que Apple ya ofrece en otros mercados. El comunicado cita la traducción en directo en Mensajes, FaceTime y Teléfono (y cara a cara con AirPods compatibles), reescribir, corregir y resumir textos, respuestas inteligentes en Mail y Mensajes, resúmenes de correos y de notificaciones, mensajes y notificaciones prioritarios, un modo de concentración que reduce interrupciones, la herramienta Limpiar para quitar objetos de las fotos, Genmoji (emojis creados a partir de una descripción), búsqueda de fotos y vídeos con lenguaje natural, vídeos de recuerdos creados a partir de una descripción, y transcripción y resumen de notas de voz y grabaciones de llamadas. También se podrá escribir a Siri, que entenderá mejor las peticiones con interrupciones o con contexto de la conversación.",
+        "Hay límites claros. El propio comunicado indica que esta actualización no incluye Siri AI ni otras funciones de nueva generación que Apple presentó en la WWDC 2026. Es decir, los usuarios chinos recibirán la primera oleada de Apple Intelligence, no la más reciente. Apple añade que el resto de plataformas llegará después de obtener las aprobaciones necesarias, por lo que en diciembre el foco está en el iPhone.",
+        "En cuanto a los dispositivos, las funciones principales requieren un iPhone 16 o posterior, un iPhone 15 Pro o 15 Pro Max, o un iPhone Air, con Siri y el idioma del dispositivo configurados en inglés o chino simplificado. Visual Intelligence funcionará en todos los iPhone compatibles con Apple Intelligence. La traducción en directo con auriculares exige AirPods 5, AirPods 4 con cancelación activa de ruido, AirPods Pro 2 o posteriores, o AirPods Max 2, con el firmware más reciente y un iPhone compatible. Según CGTN, la función se limita a quienes compren un iPhone compatible en China o tengan tanto la ubicación del dispositivo como el país de su cuenta de Apple configurados en China.",
+        "El contexto regulatorio explica el calendario. Según CGTN, que cita a la agencia Xinhua, el regulador chino de internet completó en julio los registros de siete servicios de IA generativa en el propio dispositivo para móviles, entre ellos Apple Intelligence. Alibaba también ha dado su versión: CGTN recoge que la empresa asegura que no usará las peticiones de los usuarios ni las respuestas generadas para entrenar su modelo, y que el usuario podrá decidir si activa la integración y qué información comparte. Ese compromiso procede de Alibaba; el comunicado de Apple no contiene afirmaciones específicas sobre privacidad, así que conviene esperar a la documentación definitiva antes de dar por hecho cómo se tratarán los datos.",
+        "Lo que aún no se sabe: Apple no ha detallado en su comunicado qué peticiones concretas se envían a Qwen y cuáles se resuelven en el propio teléfono, ni qué ocurrirá con otras funciones de la lista si algún regulador pide cambios antes de diciembre. Tampoco hay declaraciones de ejecutivos de Apple en el texto. Los plazos son los que da la compañía y pueden ajustarse durante la beta."
+      ],
+      "impact": [
+        "Si vives en España, no cambia nada en tu iPhone: es un lanzamiento solo para China, vinculado a un iPhone comprado allí o a una cuenta y una ubicación configuradas en China.",
+        "Es una señal de cómo funcionan hoy los asistentes de IA: el mismo móvil puede usar modelos distintos según el país, con normas de datos y privacidad diferentes. Conviene mirar siempre qué modelo está detrás de una función y quién lo opera.",
+        "Si compras un iPhone en China, ten en cuenta que las funciones dependen de los idiomas (inglés o chino simplificado) y de la región configurada en la cuenta.",
+        "Para usar Qwen dentro de Siri tendrás que iniciar sesión con una cuenta de Qwen o con Apple, y revisar qué datos compartes."
+      ],
+      "sources": [
+        {
+          "name": "Apple China, comunicado oficial (31 de octubre de 2026)",
+          "url": "https://www.apple.com.cn/newsroom/2026/10/apple-intelligence-features-are-coming-to-users-in-china/"
+        },
+        {
+          "name": "CGTN / Xinhua: Qwen se integrará en Apple Intelligence",
+          "url": "https://news.cgtn.com/news/2026-10-31/Alibaba-s-Qwen-to-integrate-into-Apple-Intelligence-in-landmark-deal-1RHilSeJsbK/p.html"
+        }
+      ],
+      "related": [
+        {
+          "title": "Privacidad en los chats con IA",
+          "url": "../articulos/privacidad-chats-ia.html"
+        },
+        {
+          "title": "ChatGPT, Claude y Gemini: cuál elegir",
+          "url": "../articulos/chatgpt-claude-gemini.html"
+        }
+      ],
+      "photo": {
+        "alt": "Varios iPhone 16 Pro en distintos colores (imagen de archivo)",
+        "author": "Jakub C",
+        "license": "CC BY 4.0",
+        "url": "https://commons.wikimedia.org/wiki/File:IPhone_16_Pro_series.jpg"
+      },
+      "published": "2026-11-02"
+    },
+    {
       "slug": "2026-11-01-chatgpt-enlace-compartido-fallo",
       "date": "2026-10-28",
       "category": "Seguridad",
