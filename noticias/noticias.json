@@ -1,4 +1,128 @@
 [
+  {
+    "slug": "2026-11-03-ncsc-ia-ransomware-2028",
+    "date": "2026-11-03",
+    "published": "2026-11-03",
+    "category": "Seguridad",
+    "title": "El ciberjefe británico avisa: el ransomware con IA llegará a infraestructuras críticas antes de 2028",
+    "dek": "El NCSC, la agencia de ciberseguridad del Reino Unido, dice que es \"muy probable\" un ataque de ransomware con malware de IA contra servicios esenciales en dos años.",
+    "tldr": "El NCSC británico ha publicado su informe anual y advierte de que en dos años los atacantes usarán IA para hacer más grandes y rápidos el ransomware, la ingeniería social y la explotación de fallos. Su mensaje: la IA no inventa ataques nuevos, acelera aprovechar debilidades viejas.",
+    "key_facts": [
+      {
+        "value": "2028",
+        "label": "año límite del aviso: ataque con malware de IA \"muy probable\""
+      },
+      {
+        "value": "£60 M",
+        "label": "primera fase del Cyber Shield nacional"
+      },
+      {
+        "value": "£70 M",
+        "label": "para el centro NERV de detección de vulnerabilidades"
+      }
+    ],
+    "quote": {
+      "text": "For decades, we have collectively got away with doing tech on the cheap.",
+      "source": "Richard Horne, CEO del NCSC, discurso de presentación del informe (traducido: «Durante décadas hemos salido adelante haciendo tecnología barata»)"
+    },
+    "body": [
+      "El 3 de noviembre de 2026, el Centro Nacional de Ciberseguridad del Reino Unido (NCSC, parte del servicio de inteligencia GCHQ) presentó su informe State of the Cyber Nation, que repasa el periodo entre el 1 de septiembre de 2025 y el 31 de agosto de 2026. Su director ejecutivo, Richard Horne, lo acompañó con un discurso y con un titular claro: es \"muy probable\" (highly likely, en la escala de probabilidad que usan los analistas británicos) que se utilice malware potenciado con inteligencia artificial en un ataque de ransomware contra la infraestructura crítica nacional del país antes de 2028.",
+      "Conviene aclarar los términos. El ransomware es un programa malicioso que cifra los archivos de una organización y exige un pago para devolverlos. La infraestructura crítica son los servicios sin los que un país se paraliza: energía, agua, transporte, sanidad o alimentación. Y \"malware potenciado con IA\" significa software dañino que usa modelos de inteligencia artificial para tomar decisiones por su cuenta, por ejemplo qué fallo probar a continuación, en lugar de seguir un guion fijo escrito por una persona.",
+      "Según el NCSC, en los próximos dos años el uso de la IA por parte de actores hostiles probablemente aumentará la escala y la eficacia de tres cosas: el ransomware, la ingeniería social (engañar a personas para que entreguen accesos o datos) y la explotación de vulnerabilidades (fallos de seguridad en programas y sistemas). Horne insiste en un matiz importante: la IA no ofrece a los atacantes métodos nuevos, sino que permite encontrar y explotar mucho más rápido y a mayor escala debilidades que llevaban años siendo toleradas.",
+      "De ahí la frase que resume su discurso: \"durante décadas hemos salido adelante haciendo tecnología barata\". Horne describió al Reino Unido en un \"momento de elegir\" y pidió a las organizaciones que asuman ya la responsabilidad de tomar decisiones distintas, tratando la seguridad y la resiliencia como algo central y no como un añadido de última hora. También advirtió de las consecuencias de no hacerlo: tener que explicar a las partes interesadas qué ocurrió \"cuando no hay comida en las estanterías, no hay luz y hay empresas que han quebrado\".",
+      "El informe no se queda en la advertencia y recoge inversión pública. El Gobierno británico destina 60 millones de libras a la primera fase de un Cyber Shield nacional y 70 millones a un centro llamado NERV (National Exposure and Real-Time Vulnerability Centre), pensado para identificar vulnerabilidades en infraestructuras críticas y en el resto de la economía. El NCSC también ha anunciado un Centro de Excelencia en Ciberseguridad de IA, que gestionará la propia agencia en Manchester. Además, el Ejecutivo sigue tramitando la Cyber Security and Resilience Bill (ley de ciberseguridad y resiliencia) y prepara un Plan Nacional de Acción en Ciberseguridad.",
+      "La IA aparece también como oportunidad: el NCSC señala que puede ayudar a mejorar la resiliencia nacional, pero solo si las organizaciones corrigen antes sus debilidades de fondo. Esa es la lógica de las recomendaciones concretas del aviso: corregir la falta de inversión en tecnología, no conectar a internet lo que no hace falta, tratar Cyber Essentials (el esquema básico de certificación británico) como punto de partida y no como meta, y adaptar la resiliencia al tamaño, la complejidad y el riesgo de cada organización, apoyándose en herramientas, estándares y marcos ya probados, que sirven igual contra ataques convencionales y contra los que usan IA.",
+      "Lo que el aviso no dice también importa. Es una evaluación de probabilidad, no un ataque confirmado: no describe un incidente concreto con malware de IA contra infraestructuras críticas ni da una fecha exacta. Tampoco detalla qué herramientas ni qué grupos lo harían. Es una previsión de una agencia con acceso a inteligencia, con el valor y los límites de toda previsión, y habla del Reino Unido; no es una evaluación sobre España ni sobre la Unión Europea."
+    ],
+    "impact": [
+      "Si usas IA a diario, no cambia lo que tienes que hacer, pero sí el motivo: los ataques automatizados prueban miles de puertas, así que las contraseñas repetidas, el doble factor sin activar y los programas sin actualizar son justo lo que explotan.",
+      "Desconfía de mensajes muy bien redactados que te piden datos, pagos o accesos: la IA permite personalizar el engaño con detalles reales, y la mejor defensa sigue siendo verificar por otro canal.",
+      "Si gestionas una pequeña empresa o una asociación, haz copias de seguridad que no estén conectadas a la red y prueba a restaurarlas: es la defensa básica frente al ransomware, con IA o sin ella.",
+      "Revisa qué cosas están conectadas a internet sin necesidad (paneles de administración, cámaras, impresoras, servidores antiguos), que es uno de los consejos del NCSC."
+    ],
+    "sources": [
+      {
+        "name": "NCSC (Reino Unido), comunicado oficial",
+        "url": "https://www.ncsc.gov.uk/news/cyber-chief-uk-facing-ai-powered-attacks-on-critical-infrastructure-in-two-years"
+      }
+    ],
+    "related": [
+      {
+        "title": "Estafas con IA: cómo reconocerlas",
+        "url": "../articulos/estafas-con-ia.html"
+      },
+      {
+        "title": "Seguridad y privacidad con IA",
+        "url": "../articulos/seguridad-privacidad.html"
+      }
+    ],
+    "photo": {
+      "alt": "Portátil con código en pantalla y un cuaderno sobre una mesa (imagen de archivo)",
+      "author": "rawpixel",
+      "license": "CC0",
+      "url": "https://www.rawpixel.com/image/5916445/image-background-public-domain-technology"
+    }
+  },
+  {
+    "slug": "2026-11-03-workos-ataque-agente-ia",
+    "date": "2026-10-30",
+    "published": "2026-11-03",
+    "category": "Seguridad",
+    "title": "WorkOS sufre un acceso no autorizado a su herramienta de ventas con un framework de ataque asistido por IA",
+    "dek": "La empresa dice que los atacantes automatizaron el reconocimiento y la explotación; el acceso fue a datos de CRM y soporte, no a sus servicios en producción.",
+    "tldr": "WorkOS, que ofrece sistemas de inicio de sesión a otras empresas, ha confirmado que alguien accedió a una herramienta interna de ventas el 30 de octubre usando un framework de seguridad ofensiva asistido por IA. Afecta a datos de contacto y comunicaciones de clientes, no a sus servicios en producción.",
+    "key_facts": [
+      {
+        "value": "30 oct",
+        "label": "día en que WorkOS detectó el acceso no autorizado"
+      },
+      {
+        "value": "2 nov",
+        "label": "fecha del boletín público de seguridad"
+      },
+      {
+        "value": "0",
+        "label": "pruebas de acceso a datos de aplicación o producción"
+      }
+    ],
+    "body": [
+      "WorkOS, una empresa que vende a otras compañías servicios de autenticación (los sistemas con los que sus clientes inician sesión en sus propias aplicaciones), publicó el 2 de noviembre de 2026 un boletín de seguridad sobre un incidente que detectó el 30 de octubre. La compañía investiga un acceso no autorizado a una herramienta interna que utilizan sus equipos de ventas y atención al cliente.",
+      "Lo que hace noticia es cómo se hizo. Según WorkOS, su investigación encontró que los atacantes usaron un \"framework de seguridad ofensiva asistido por IA\" para automatizar el reconocimiento (explorar el objetivo para buscar puntos débiles) y los intentos de explotación (aprovechar esos puntos débiles para entrar). Es decir, parte del trabajo que antes hacía una persona paso a paso lo hizo un sistema automático que decide qué probar a continuación.",
+      "El boletín enumera qué datos estaban en esa aplicación: datos de contacto de empresas (nombres, correos, teléfonos, cargos y empresa de cada persona) procedentes de los sistemas de CRM, que son las bases de datos de clientes de un equipo comercial; historiales de cuentas e información comercial y de relación con clientes; resúmenes y fragmentos de llamadas de ventas, conversaciones de soporte y charlas con clientes en Slack; y metadatos operativos, como el uso que hacen los clientes del producto y el estado de sus conexiones o directorios.",
+      "WorkOS afirma que no hay evidencia de que se accediera a los datos de la aplicación de WorkOS ni a los servicios en producción, y que su análisis actual indica que solo se vieron afectados datos de CRM y de atención al cliente. Como respuesta, ha desactivado el acceso externo a la aplicación afectada, ha empezado a revisar los controles de acceso de otras herramientas internas y ha contratado a una empresa independiente de análisis forense y respuesta a incidentes para determinar el alcance completo.",
+      "Aún no se sabe casi nada de lo esencial. El boletín no indica cuántos clientes están afectados, cómo entraron los atacantes, cuándo empezó y terminó el acceso ni qué framework concreto se usó. WorkOS dice que está revisando los registros afectados para saber el impacto en cada organización y que contactará directamente con los clientes afectados.",
+      "La recomendación principal del boletín es práctica y sirve para cualquiera: estar alerta ante el phishing y la ingeniería social. Con datos de contacto y contexto de conversaciones reales, un mensaje fraudulento puede parecer legítimo incluso si menciona a un compañero o una consulta de soporte que sí existieron. Antes de compartir información sensible o actuar ante una petición inesperada, conviene verificarla por otro canal.",
+      "El boletín sitúa el caso dentro de una tendencia que cita con informes de Wiz, Google y CrowdStrike sobre agentes de IA usados en intrusiones reales. Según la empresa, estas herramientas pueden elegir las acciones siguientes según cómo responda el objetivo, lo que acelera los ataques que aprovechan aplicaciones expuestas y credenciales robadas, y por eso insiste en corregir rápido los fallos y en vigilar de forma que se conecte la actividad sospechosa entre sistemas."
+    ],
+    "impact": [
+      "Si tu empresa usa WorkOS, espera una comunicación directa de la compañía y no hagas clic en enlaces de correos que digan ser de ella sin comprobarlos en su web oficial.",
+      "Si eres cliente de un proveedor que ha sufrido un incidente, desconfía de mensajes que citen conversaciones reales con tu nombre y cargo: es justo el material que permite engaños creíbles.",
+      "Verifica por otro canal (una llamada a un número conocido, un mensaje interno) cualquier petición inesperada de datos, pagos o accesos, aunque venga de alguien que parece conocer tu caso.",
+      "Revisa qué herramientas internas de tu organización están accesibles desde internet y quién puede entrar: según el boletín, el punto de entrada fue una aplicación interna de ventas."
+    ],
+    "sources": [
+      {
+        "name": "WorkOS, boletín de seguridad (2 de noviembre de 2026)",
+        "url": "https://workos.com/security/bulletins/october-30th-2026-data-security-incident"
+      }
+    ],
+    "related": [
+      {
+        "title": "Estafas con IA: cómo reconocerlas",
+        "url": "../articulos/estafas-con-ia.html"
+      },
+      {
+        "title": "Permisos para agentes de IA sin contraseñas",
+        "url": "../articulos/permisos-agente-ia-sin-contrasenas.html"
+      }
+    ],
+    "photo": {
+      "alt": "Persona programando en un portátil con código en pantalla (imagen de archivo)",
+      "author": "rawpixel",
+      "license": "CC0",
+      "url": "https://www.rawpixel.com/image/6113542/photo-image-public-domain-logo-laptop"
+    }
+  },
     {
       "slug": "2026-11-02-apple-intelligence-china-qwen",
       "date": "2026-10-31",
