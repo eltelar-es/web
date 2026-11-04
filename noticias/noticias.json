@@ -1,5 +1,156 @@
 [
   {
+    "slug": "2026-11-04-google-colegios-ia-desactivada-por-defecto",
+    "date": "2026-11-03",
+    "published": "2026-11-04",
+    "category": "Herramientas",
+    "title": "Google apaga por defecto Gemini y la IA de Search para alumnos de colegio hasta que el centro los active",
+    "dek": "Tras la polémica, Google dice que Gemini, Gemini Notebook, Gemini en Classroom y Search estarán desactivados para cuentas escolares K-12 hasta que el administrador los encienda.",
+    "tldr": "Google ha anunciado que Gemini, Gemini Notebook, Gemini en Classroom y Google Search quedarán desactivados por defecto en las cuentas de alumnos de primaria y secundaria (K-12) hasta que el administrador del centro los active. Además lanza Guided Learning, una IA que guía en vez de dar la respuesta, en Classroom y, en piloto, en Search.",
+    "key_facts": [
+      {
+        "value": "8,1 pp",
+        "label": "mejora con Guided Learning en el ensayo de Tokio"
+      },
+      {
+        "value": "5,3 pp",
+        "label": "mejora del grupo sin Guided Learning"
+      },
+      {
+        "value": "300+",
+        "label": "estudiantes en el ensayo de la Universidad de Tokio"
+      },
+      {
+        "value": "3",
+        "label": "institutos británicos en el piloto de cuatro semanas"
+      }
+    ],
+    "quote": {
+      "text": "entirely off for K-12 student accounts until school administrators explicitly turn them on",
+      "source": "Chris Phillips, Google, entrada «Designing responsible AI for learning» (traducido: «totalmente desactivados para las cuentas de alumnos K-12 hasta que los administradores del centro los activen expresamente»)"
+    },
+    "body": [
+      "El 3 de noviembre de 2026, Google publicó en su blog la entrada «Designing responsible AI for learning» («Diseñar una IA responsable para el aprendizaje»), firmada por Chris Phillips, vicepresidente y director general de Educación. En ella anuncia que está actualizando los controles de Gemini, Gemini Notebook, Gemini en Classroom y Google Search para las cuentas de alumnos de K-12, es decir, de educación primaria y secundaria. El cambio es que esos productos quedarán desactivados por defecto y solo se encenderán cuando el administrador del centro lo decida de forma expresa. Google añade que dará más detalles a los colegios «en los próximos meses», antes de que el cambio entre en vigor.",
+      "El anuncio llega en medio de una polémica. Según la información de CNBC, el New York Times había publicado ese mismo día que Google apagaría Search en los colegios que rechazan la IA por completo, porque, en palabras de Phillips recogidas por el diario, «Search y la IA están profundamente integradas». Políticos como el senador Bernie Sanders, que lo llamó «extorsión», o el alcalde de Nueva York, Zohran Mamdani, criticaron la medida. Pocas horas después, Google rectificó: Gemini, Gemini Notebook y Search quedan apagados por defecto y cada centro puede encender el que quiera. Conviene separar lo que dice Google en su blog, que es la fuente primaria, de lo que cuenta la prensa sobre la reacción.",
+      "Para entender el problema hay que mirar un informe anterior. En julio, Common Sense Media, una organización estadounidense que valora productos digitales para menores, concluyó que la búsqueda con IA de Google supone un «riesgo inaceptable» para los jóvenes. Según The Next Web, que resumió el informe, no existía un interruptor para desactivar las funciones de IA y mantener a la vez el buscador: los colegios solo podían bloquear Google entero. Google respondió entonces que las pruebas de la organización eran «limitadas y ambiguas» y que se hicieron con cuentas de consumo, no con cuentas educativas. Ese hueco, el de no poder separar buscador e IA, es lo que ahora intenta cerrar el cambio de controles.",
+      "La otra parte del anuncio es Guided Learning, que podría traducirse como «aprendizaje guiado». Es un modo de Gemini pensado para estudiar: en lugar de darte la solución, te hace preguntas abiertas y te va llevando paso a paso. Google lo lleva ahora a Google Classroom, la plataforma de aulas virtuales, a nivel mundial desde el día del anuncio. El profesor puede asignar una actividad de Guided Learning a los alumnos como herramienta de estudio individual basada en el material de la clase, y recibe información en tiempo real para ver en qué temas el grupo necesita más ayuda.",
+      "También lo lleva a Search, pero en piloto. Según la entrada, cuando el buscador detecta ciertas peticiones de ayuda con los deberes en una cuenta de alumno, como un problema de física complejo o escribir un comentario de libro, guiará al estudiante paso a paso en lugar de darle la respuesta directa. El piloto empieza «a finales de este mes» en centros seleccionados de Estados Unidos y se ampliará a otros distritos «en los próximos meses». Fuera de EE. UU. no se ha anunciado fecha.",
+      "Google sostiene que la herramienta funciona y publicó dos estudios. El primero es un ensayo aleatorizado de la Universidad de Tokio con más de 300 estudiantes: todos tuvieron media jornada para estudiar una lección de estadística con recursos online habituales, y la mitad dispuso además de Guided Learning en la app de Gemini. El grupo con las herramientas habituales mejoró 5,3 puntos porcentuales entre la prueba inicial y la final, y el grupo con Guided Learning, 8,1 puntos, lo que Google presenta como 1,5 veces más ganancia de aprendizaje. El segundo es un piloto de cuatro semanas con la red Ark en tres institutos británicos y cuatro asignaturas. Los profesores dijeron que la herramienta resolvió bien las primeras dudas durante el trabajo autónomo y les liberó tiempo para atender uno a uno, y más de la mitad de los alumnos encuestados afirmó que les ayudó a resolver problemas por sí mismos. Son datos de la propia empresa y el artículo no da el número de encuestados del piloto británico.",
+      "Lo que aún no se sabe es bastante. Google no ha publicado los pasos para administradores, ni la fecha exacta en la que el apagado por defecto afectará a las cuentas existentes, ni cómo quedará la situación de los centros que ya tienen estas funciones activas. Tampoco aclara si el cambio se aplicará fuera de Estados Unidos, y la entrada habla de cuentas K-12 sin precisar el tratamiento de las cuentas de universidad. Hasta que Google publique la documentación para administradores, lo prudente es no dar por hecho ningún calendario."
+    ],
+    "impact": [
+      "Si tienes hijos en un colegio que usa Google Workspace for Education, pregunta al centro si Gemini y Search con IA están activos para los alumnos y quién ha decidido activarlos.",
+      "Si eres docente, Guided Learning en Classroom ya está disponible a nivel mundial: puedes asignarlo sobre tu material y ver en qué falla el grupo, pero valora los resultados de Google como datos de la empresa, no como evidencia independiente.",
+      "Si eres administrador de un centro, espera la documentación que Google enviará en los próximos meses y no asumas que lo que hoy está activado seguirá igual.",
+      "Para estudiar con IA en casa, el enfoque de pedir a la IA que te pregunte y te guíe, en vez de que te dé la solución, es una buena práctica que puedes aplicar con cualquier asistente."
+    ],
+    "sources": [
+      {
+        "name": "Google, «Designing responsible AI for learning» (fuente primaria)",
+        "url": "https://blog.google/products-and-platforms/products/education/ai-learning-era-updates-2026/"
+      },
+      {
+        "name": "Google, «New research shows how Guided Learning supports students»",
+        "url": "https://blog.google/products-and-platforms/products/education/guided-learning-uk-japan/"
+      },
+      {
+        "name": "CNBC, Google responde a la polémica por retirar Search en colegios",
+        "url": "https://www.cnbc.com/2026/11/03/google-responds-to-outrage-over-removing-search-in-schools-that-ban-ai.html"
+      },
+      {
+        "name": "The Next Web, informe de Common Sense Media sobre la IA de Google Search",
+        "url": "https://thenextweb.com/news/google-ai-search-unsafe-schools-common-sense-media"
+      }
+    ],
+    "related": [
+      {
+        "title": "Usar la IA para estudiar",
+        "url": "../articulos/ia-para-estudiar.html"
+      },
+      {
+        "title": "IA y menores: controles parentales",
+        "url": "../articulos/ia-menores-controles-parentales.html"
+      },
+      {
+        "title": "Prompts para estudiar y aprender",
+        "url": "../prompts/estudiar-aprender.html"
+      }
+    ],
+    "photo": {
+      "alt": "Mesa y silla roja de un aula (imagen de archivo)",
+      "author": "rawpixel",
+      "license": "CC0",
+      "url": "https://www.rawpixel.com/image/5903645/photo-image-public-domain-children-red"
+    }
+  },
+  {
+    "slug": "2026-11-04-anthropic-flashprove-inferencia-verificable",
+    "date": "2026-11-02",
+    "published": "2026-11-04",
+    "category": "Modelos",
+    "title": "Anthropic publica FlashProve: una forma de comprobar con matemáticas qué modelo de IA te ha respondido",
+    "dek": "El prototipo de código abierto usa pruebas criptográficas para demostrar que una respuesta salió del modelo comprometido, aunque hoy es lento y limitado.",
+    "tldr": "Anthropic ha publicado FlashProve, un prototipo de código abierto de «inferencia demostrable»: una prueba criptográfica de que una respuesta la generó un modelo concreto y no otro más barato. Es investigación: solo cubre 1.024 tokens y cuesta de 70 a 95 veces más cómputo.",
+    "key_facts": [
+      {
+        "value": "110",
+        "label": "tokens por segundo al generar pruebas en una H100"
+      },
+      {
+        "value": "19 MB",
+        "label": "tamaño de la prueba por petición de 1.024 tokens"
+      },
+      {
+        "value": "17 s",
+        "label": "para verificar una prueba en una CPU de 24 hilos"
+      },
+      {
+        "value": "70-95x",
+        "label": "más tiempo de GPU que ejecutar el modelo sin prueba"
+      }
+    ],
+    "quote": {
+      "text": "We are sharing this explicitly with the goal that others look at what we have done, take it, and improve it.",
+      "source": "Anthropic, Frontier Red Team (traducido: «Lo compartimos con el objetivo de que otros vean lo que hemos hecho, lo tomen y lo mejoren»)"
+    },
+    "body": [
+      "El 2 de noviembre de 2026, el equipo Frontier Red Team de Anthropic, con coautores académicos y de la industria, publicó FlashProve, un sistema de código abierto para lo que llaman «inferencia demostrable». «Inferencia» es el momento en que un modelo de IA genera una respuesta a tu pregunta. La idea es que quien la recibe pueda comprobar, con una prueba matemática, que esa respuesta salió realmente del modelo que se anunció y no de otro. Para ello usa zkSNARK, siglas en inglés de un tipo de prueba criptográfica de conocimiento cero: permite demostrar que un cálculo se hizo correctamente sin revelar los datos internos, en este caso los pesos del modelo, que son los números que forman el modelo y que las empresas guardan en secreto.",
+      "El problema que intenta resolver es cotidiano aunque casi invisible. Cuando usas un servicio de IA por internet, no tienes forma de saber si detrás está el modelo que te prometen o una versión más barata o recortada, ni si alguien ha manipulado el texto que recibes por el camino. Según Anthropic, una prueba así serviría a los usuarios para verificar el modelo servido, a los evaluadores independientes para confirmar que prueban el modelo real, y a reguladores y auditores para comprobar qué modelos se ejecutan sin acceder a información propietaria. Los proveedores, a su vez, podrían demostrar que cumplen compromisos o obligaciones legales sin enseñar sus pesos.",
+      "La publicación incluye un probador, un verificador rápido en C++, un verificador comprobado formalmente en Lean (un lenguaje para demostraciones matemáticas), las pruebas en Lean de las garantías de seguridad principales, un informe técnico y la especificación del protocolo, todo con licencia Apache 2.0. Las cifras se midieron con Llama 4 Maverick, un modelo de 400.000 millones de parámetros con arquitectura de mezcla de expertos y pesos de 4 bits. Generar la prueba va a unos 110 tokens por segundo en una sola GPU H100. Cada petición de 1.024 tokens produce una prueba de unos 19 MB, y verificarla lleva unos 17 segundos en una CPU de 24 hilos, además de descargar un compromiso de unos 6,5 MB.",
+      "Hay una fase previa: un paso de compromiso fuera de línea de unos 39 minutos que sirve para unos 16 millones de peticiones. El precio es alto: el coste equivale a entre 70 y 95 veces el tiempo de GPU de ejecutar el mismo modelo con vLLM, un motor habitual de servicio de modelos. Aun así, Anthropic afirma que los sistemas de código abierto anteriores son varios órdenes de magnitud más lentos; por ejemplo, VerInf alcanzaba unos 0,02 tokens por segundo con el mismo modelo. Otro sistema, Attestable, informa de entre 53 y 77 tokens por segundo con un modelo denso de 31.000 millones de parámetros, pero no ha publicado su biblioteca.",
+      "Los propios autores enumeran los límites. Las pruebas cubren una versión del modelo con números enteros y decodificación voraz, es decir, que elige siempre la palabra más probable, y no la generación con aleatoriedad que suelen usar los chats. El contexto está limitado a 1.024 tokens, muy por debajo de los de un chat actual. El sistema supone una arquitectura de mezcla de expertos, no oculta la arquitectura del modelo y deja fuera ataques de canal lateral, como analizar tiempos de respuesta. El código rápido y el artículo no están garantizados formalmente para coincidir con el protocolo en Lean, y como no se entrega el probador en Lean, la propiedad de conocimiento cero depende de las auditorías de seguridad del propio proveedor. Anthropic lo describe como un prototipo de investigación y un avance intermedio, no una agenda cerrada.",
+      "Lo que aún no se sabe es si algún servicio comercial lo adoptará, ni cuándo. Anthropic no anuncia en la página que vaya a ofrecer esta verificación en Claude, y con un sobrecoste de dos órdenes de magnitud no es viable para el uso diario. Su valor inmediato está en la comunidad investigadora, que ahora tiene código abierto para mejorar la velocidad y ampliar los límites."
+    ],
+    "impact": [
+      "No cambia nada en tu uso diario de Claude ni de otros chats: es investigación en fase de prototipo y no hay función nueva que activar.",
+      "A medio plazo, si estas pruebas se abaratan, podrías exigir a un proveedor de IA que demuestre que te sirve el modelo que cobra, algo hoy imposible de comprobar desde fuera.",
+      "Si trabajas con IA en una empresa o la evalúas, es una referencia útil de cómo podría auditarse un modelo sin ver sus pesos.",
+      "Desconfía de titulares que hablen de «IA verificada»: aquí la prueba solo cubre pocos tokens y condiciones muy concretas."
+    ],
+    "sources": [
+      {
+        "name": "Anthropic, «Provable inference» (fuente primaria)",
+        "url": "https://www.anthropic.com/research/provable-inference"
+      }
+    ],
+    "related": [
+      {
+        "title": "Cómo leer benchmarks de IA",
+        "url": "../articulos/leer-benchmarks-ia.html"
+      },
+      {
+        "title": "Alucinaciones de la IA",
+        "url": "../articulos/alucinaciones-ia.html"
+      }
+    ],
+    "photo": {
+      "alt": "Placa base de un ordenador con chips y circuitos (imagen de archivo)",
+      "author": "Lenharth Systems",
+      "license": "CC0",
+      "url": "https://stocksnap.io/photo/technology-motherboard-PUWNNLCU1C"
+    }
+  },
+  {
     "slug": "2026-11-03-ncsc-ia-ransomware-2028",
     "date": "2026-11-03",
     "published": "2026-11-03",
