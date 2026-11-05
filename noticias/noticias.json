@@ -1,5 +1,145 @@
 [
   {
+    "slug": "2026-11-05-tjue-abogado-general-gemini-prensa",
+    "date": "2026-11-03",
+    "published": "2026-11-05",
+    "category": "Regulación",
+    "title": "Un abogado general del TJUE avisa: un chatbot puede infringir los derechos de la prensa al responder",
+    "dek": "El dictamen sobre Gemini no vincula al tribunal, pero apunta dos vías de infracción: saltarse muros de pago y copiar la forma de expresión de un artículo.",
+    "tldr": "El abogado general Maciej Szpunar ha propuesto al Tribunal de Justicia de la UE que un chatbot que recupera y reutiliza prensa en tiempo real puede, en ciertos casos, vulnerar los derechos de los editores. El dictamen no es vinculante y la sentencia llegará más adelante.",
+    "key_facts": [
+      {
+        "value": "C-250/25",
+        "label": "asunto Like Company contra Google Ireland"
+      },
+      {
+        "value": "3 nov.",
+        "label": "fecha del dictamen (nota de prensa 155/2026)"
+      },
+      {
+        "value": "2",
+        "label": "vías por las que Gemini podría infringir"
+      },
+      {
+        "value": "Sin fecha",
+        "label": "para la sentencia definitiva"
+      }
+    ],
+    "quote": {
+      "text": "the Court should find",
+      "source": "Tribunal de Justicia de la UE, nota de prensa 155/2026 (fragmento del titular, traducido: «el Tribunal debería declarar»)"
+    },
+    "body": [
+      "El 3 de noviembre de 2026, el abogado general del Tribunal de Justicia de la Unión Europea (TJUE) Maciej Szpunar presentó su dictamen en el asunto C-250/25, conocido como Like Company contra Google Ireland. Es el primer caso que llega a este tribunal sobre inteligencia artificial generativa y derechos de autor. Según la nota de prensa 155/2026 del propio tribunal, Szpunar propone que se declare que recuperar y reutilizar publicaciones de prensa en línea en tiempo real, para responder a las consultas de los usuarios, puede en determinadas circunstancias infringir los derechos de los editores de prensa.",
+      "Conviene aclarar qué es un abogado general. Es un miembro del tribunal que, antes de que los jueces deliberen, estudia el caso de forma independiente y propone una solución jurídica. Su dictamen no obliga a los jueces, aunque suelen tenerlo muy en cuenta. Ahora los magistrados empiezan a deliberar y la sentencia se dictará en una fecha que todavía no se ha fijado. Además, el tribunal no resuelve la disputa húngara: responde a las preguntas que le envió el tribunal de Budapest, que será quien aplique después la respuesta, y esa respuesta servirá de guía para otros tribunales nacionales de la Unión.",
+      "El origen es una demanda de Like Company, un operador húngaro de portales financiados con publicidad. Sostiene que los chatbots Bard y Gemini de Google vulneraron su derecho como editor de prensa entre junio de 2023 y mayo de 2024. El detonante fue una respuesta de Gemini sobre un artículo de un portal húngaro acerca de los planes de un cantante de llevar delfines al lago Balatón. Según la información que recoge el medio especializado PPC Land, la vista se celebró el 10 de marzo de 2026.",
+      "Según esa misma cobertura, el dictamen distingue dos vías por las que un chatbot podría infringir. La primera es el acceso ilícito: si el sistema llega a un artículo esquivando un muro de pago o una medida diseñada para bloquear robots, la copia temporal que hace al recuperarlo podría no estar amparada por la excepción que normalmente cubre ese tipo de copias, y saltarse esas barreras puede generar además una responsabilidad propia. La segunda es la expresión reconocible: si la respuesta reproduce la forma del artículo, es decir, su estructura, su organización o su redacción, de manera tan cercana que el lector ya no necesita leer el original, podría haber infracción.",
+      "El dictamen también deja límites claros para el otro lado. Los hechos por sí solos no están protegidos, parafrasear no es automáticamente seguro, pero un resumen factual breve no infringe, en general. Szpunar rechazó además el argumento de Google de que publicar un artículo en abierto equivale a una licencia implícita para usarlo en chatbots. Sobre el entrenamiento de modelos, recomendó declarar inadmisibles esas preguntas porque el artículo es anterior a Gemini 1.0 y el derecho de los editores cubre solo el «uso en línea», pero aun así opinó que, en general, el entrenamiento queda cubierto por la excepción de minería de textos y datos, con acceso lícito y respetando las exclusiones que pongan los titulares, y que un modelo entrenado no es una base de datos.",
+      "Sobre quién responde, el abogado general indica que los usuarios que dirigen al chatbot son, por regla general, los principales responsables, y que el proveedor puede serlo cuando los actos son inherentes a su modelo de negocio o cuando carece de salvaguardas razonables. Para facilitar las pruebas, un titular de derechos podría beneficiarse de una presunción de uso si aporta una muestra razonable de respuestas parecidas o enlazadas a sus textos; un solo ejemplo rara vez bastará.",
+      "Y aquí viene un detalle importante: según PPC Land, el propio dictamen sugiere que el ejemplo de Like Company probablemente no infringe, porque parece una crónica meramente informativa, la respuesta muestra los mismos hechos con otras palabras y Google parece aplicar medidas de mitigación. Corresponde al tribunal húngaro decidir si el portal cuenta como publicación de prensa. Tampoco se aplica el Reglamento de IA de la UE a este litigio, porque los hechos son anteriores a mediados de 2024, aunque el dictamen lo menciona."
+    ],
+    "impact": [
+      "Si usas un chatbot para resumir noticias, un resumen con tus palabras y con los hechos es el terreno más seguro; pedirle que reescriba un artículo casi entero para no leerlo es el que más se acerca a lo que cuestiona el dictamen.",
+      "Si publicas contenido propio (blog, newsletter, medio local), el dictamen refuerza que un muro de pago o un bloqueo a robots no es un mero adorno: saltárselo puede tener consecuencias legales para quien lo haga.",
+      "No cambia nada hoy para tu uso diario: no es una sentencia ni una norma. Es una señal de por dónde puede ir la jurisprudencia europea, y habrá que esperar a la decisión de los jueces.",
+      "Si usas IA en tu trabajo con textos ajenos, conviene guardar la fuente y citarla en lugar de copiar la redacción."
+    ],
+    "sources": [
+      {
+        "name": "Tribunal de Justicia de la UE, nota de prensa 155/2026 (3 de noviembre de 2026)",
+        "url": "https://curia.europa.eu/jcms/jcms/Jo2_7052/en/"
+      },
+      {
+        "name": "PPC Land: Google's Gemini can infringe press rights in 2 ways, EU court adviser says",
+        "url": "https://ppc.land/googles-gemini-can-infringe-press-rights-in-2-ways-eu-court-adviser-says/"
+      }
+    ],
+    "related": [
+      {
+        "title": "Derechos de autor y contenido generado con IA",
+        "url": "../articulos/derechos-autor-contenido-ia.html"
+      },
+      {
+        "title": "El Reglamento de IA de la UE, explicado",
+        "url": "../articulos/ai-act-explicado.html"
+      }
+    ],
+    "photo": {
+      "alt": "Sede del Tribunal de Justicia de la Unión Europea en Luxemburgo, con las banderas de los países miembros (imagen de archivo)",
+      "author": "Cédric Puisney from Brussels, Belgium",
+      "license": "CC BY 2.0",
+      "url": "https://commons.wikimedia.org/w/index.php?curid=34942312"
+    }
+  },
+  {
+    "slug": "2026-11-05-claude-marca-de-agua-texto",
+    "date": "2026-11-03",
+    "published": "2026-11-05",
+    "category": "Seguridad",
+    "title": "Claude marca con una huella invisible el texto que escribe: qué significa y qué no demuestra",
+    "dek": "Anthropic explica que sus modelos añaden una marca imperceptible al texto y credenciales a los archivos. La detección, por ahora, solo está disponible para organizaciones elegibles.",
+    "tldr": "Según el Centro de Ayuda de Anthropic, los modelos Claude compatibles incorporan una marca de agua imperceptible en el texto que generan, y adjuntan credenciales C2PA a los archivos. La marca no demuestra por sí sola que un texto lo escribiera la IA, y su ausencia tampoco prueba lo contrario.",
+    "key_facts": [
+      {
+        "value": "2 ago.",
+        "label": "los modelos lanzados desde esta fecha en la UE llevan marca de serie"
+      },
+      {
+        "value": "10 nov.",
+        "label": "fin del despliegue en Amazon Bedrock para algunos modelos"
+      },
+      {
+        "value": "2",
+        "label": "métodos: marca en texto y credenciales C2PA"
+      }
+    ],
+    "quote": {
+      "text": "imperceptible",
+      "source": "Anthropic, Centro de Ayuda, «How Claude marks AI-generated content» (traducido: «imperceptible»)"
+    },
+    "body": [
+      "Anthropic ha detallado en su Centro de Ayuda cómo marca el contenido que genera Claude. La empresa afirma haber firmado el Código de buenas prácticas sobre transparencia del contenido generado por IA ligado al artículo 50(2) del Reglamento de IA de la UE, y usa dos métodos distintos según el tipo de contenido. Para el texto, los modelos compatibles incorporan una marca de agua que describe como «imperceptible» y que no cambia el significado ni la legibilidad de la respuesta. Para los archivos generados, como imágenes PNG y JPEG, adjunta credenciales de contenido C2PA, que son metadatos firmados sobre su procedencia.",
+      "Una marca de agua en texto no es algo que se vea: está tejida en la propia elección de palabras. Anthropic indica que viaja con el texto cuando lo copias y lo pegas y que puede sobrevivir a ciertas ediciones. Medios y blogs especializados que han cubierto el cambio explican que funciona eligiendo entre palabras casi equivalentes, y que por eso es más débil en código, donde a menudo solo hay una forma correcta de escribir algo. Ese mecanismo concreto procede de esas coberturas y no de la página de Anthropic, así que tómalo como explicación orientativa.",
+      "En cuanto al calendario, la página señala que los modelos Claude lanzados en la UE a partir del 2 de agosto de 2026 admiten el marcado desde su lanzamiento, que los anteriores se van incorporando y que la ley prevé un periodo transitorio para sistemas lanzados antes de esa fecha. Con marcado completo aparecen Fable 5.1 y 5, Mythos 5.1 y 5, Opus 5.5, 5 y 4.8, Opus 4.7, Sonnet 5.5, 5 y 4.6 y Haiku 5.5. Opus 4.6, Opus 4.5, Sonnet 4.5 y Haiku 4.5 figuran solo con marca de texto en las plataformas propias de Anthropic. La salida que llega por los socios en la nube (AWS, Google Cloud y Microsoft Foundry) lleva marca de texto, y el despliegue en Amazon Bedrock de algunos modelos termina el 10 de noviembre.",
+      "Hay una advertencia técnica: Anthropic dice que Sonnet 4.6 puede no conservar de forma fiable la marca de texto cuando se usan valores no predeterminados de parámetros como temperature, top_p o top_k, que son ajustes que controlan cuánta aleatoriedad usa el modelo al elegir palabras.",
+      "La detección es la parte que más conviene entender. Según Anthropic, la detección de la marca de texto está en vista previa privada para organizaciones elegibles, como reguladores, investigadores y medios, y para empresas que quieran comprobar sus propios resultados. No hay, por tanto, un verificador de texto abierto para cualquiera. Lo que sí existe es el Claude Content Checker, gratuito, que verifica las credenciales de contenido que Claude ha emitido en archivos. Anthropic dice que ampliará el acceso a la detección con el tiempo y que quien tenga interés puede registrarse mediante un formulario.",
+      "Y sobre lo que la marca no demuestra, la página es explícita. Detectar una marca sugiere que Claude procesó el contenido, pero no es concluyente: Claude puede haber corregido, traducido o resumido algo escrito por una persona, y el contenido marcado puede haberse modificado después. La ausencia de marca tampoco prueba que el texto sea humano: puede faltar porque el modelo es anterior al marcado, porque el texto se editó mucho o se tradujo, porque el fragmento es muy corto, porque se borraron los metadatos de un archivo o porque la plataforma no admite ese tipo de marca.",
+      "Para quienes desarrollan productos con Claude, Anthropic recomienda evaluar por su cuenta qué obligaciones de transparencia les corresponden según el artículo 50. Una cobertura citada por varios medios de terceros sostiene que la fecha del 3 de noviembre para algunos modelos antiguos fue la elegida por la empresa; esa fecha concreta no figura en la página que hemos podido abrir, por lo que no la damos como confirmada."
+    ],
+    "impact": [
+      "Si usas Claude para redactar, la marca va en el texto sin que tengas que hacer nada, y la página de ayuda no describe ningún ajuste para cambiarlo en las aplicaciones de Claude.",
+      "Si alguien te acusa de haber usado IA por una marca, recuerda que Anthropic misma dice que la marca no identifica al autor ni es concluyente.",
+      "Si estudias o trabajas con textos ajenos, no te fíes de la ausencia de marca para dar por humano un texto: hay muchas razones por las que puede faltar.",
+      "Si tienes un negocio que integra Claude, revisa tus propias obligaciones de transparencia con el artículo 50 del Reglamento de IA."
+    ],
+    "sources": [
+      {
+        "name": "Anthropic, Centro de Ayuda: How Claude marks AI-generated content",
+        "url": "https://support.claude.com/en/articles/16266773-how-claude-marks-ai-generated-content"
+      },
+      {
+        "name": "SmartScope: Can text written with Claude be detected?",
+        "url": "https://smartscope.blog/en/blog/claude-invisible-watermarks-older-models-november-3-detection-2026/"
+      }
+    ],
+    "related": [
+      {
+        "title": "Cómo detectar contenido generado por IA",
+        "url": "../articulos/detectar-contenido-ia.html"
+      },
+      {
+        "title": "El Reglamento de IA de la UE, explicado",
+        "url": "../articulos/ai-act-explicado.html"
+      }
+    ],
+    "photo": {
+      "alt": "Manos escribiendo en un teclado de ordenador (imagen de archivo)",
+      "author": "rawpixel",
+      "license": "CC0",
+      "url": "https://www.rawpixel.com/image/5921524/photo-image-background-public-domain-hand"
+    }
+  },
+  {
     "slug": "2026-11-04-google-colegios-ia-desactivada-por-defecto",
     "date": "2026-11-03",
     "published": "2026-11-04",
@@ -274,291 +414,291 @@
       "url": "https://www.rawpixel.com/image/6113542/photo-image-public-domain-logo-laptop"
     }
   },
-    {
-      "slug": "2026-11-02-apple-intelligence-china-qwen",
-      "date": "2026-10-31",
-      "category": "Empresas",
-      "title": "Apple Intelligence llega a China en diciembre con Qwen, de Alibaba, dentro de Siri",
-      "dek": "Apple abre pruebas el 4 de noviembre y lanzará en diciembre con iOS 27.3 sus funciones de IA en China, sin la nueva Siri y con el modelo de Alibaba.",
-      "tldr": "Apple ha anunciado que las primeras funciones de Apple Intelligence llegarán a China con iOS 27.3 en diciembre, tras una beta para desarrolladores el 4 de noviembre. Usarán Qwen, el modelo de Alibaba, en Siri, las herramientas de escritura y Visual Intelligence.",
-      "key_facts": [
-        {
-          "value": "4 nov",
-          "label": "empieza la prueba en la beta para desarrolladores"
-        },
-        {
-          "value": "dic",
-          "label": "lanzamiento público con iOS 27.3"
-        },
-        {
-          "value": "7",
-          "label": "servicios de IA en móvil registrados en China en julio"
-        }
-      ],
-      "quote": {
-        "text": "work with Apple to deliver new AI-powered service experiences to Chinese users",
-        "source": "Eddie Wu, CEO de Alibaba, según CGTN/Xinhua (traducido: «trabajar con Apple para ofrecer nuevas experiencias de servicios con IA a los usuarios chinos»)"
+  {
+    "slug": "2026-11-02-apple-intelligence-china-qwen",
+    "date": "2026-10-31",
+    "category": "Empresas",
+    "title": "Apple Intelligence llega a China en diciembre con Qwen, de Alibaba, dentro de Siri",
+    "dek": "Apple abre pruebas el 4 de noviembre y lanzará en diciembre con iOS 27.3 sus funciones de IA en China, sin la nueva Siri y con el modelo de Alibaba.",
+    "tldr": "Apple ha anunciado que las primeras funciones de Apple Intelligence llegarán a China con iOS 27.3 en diciembre, tras una beta para desarrolladores el 4 de noviembre. Usarán Qwen, el modelo de Alibaba, en Siri, las herramientas de escritura y Visual Intelligence.",
+    "key_facts": [
+      {
+        "value": "4 nov",
+        "label": "empieza la prueba en la beta para desarrolladores"
       },
-      "body": [
-        "El 31 de octubre de 2026, Apple publicó en su sala de prensa de China un comunicado en el que anuncia que las primeras funciones de Apple Intelligence, su conjunto de herramientas de inteligencia artificial para iPhone, llegarán a los usuarios del país. Las funciones se podrán probar a partir del 4 de noviembre en la última beta para desarrolladores de iOS, una versión de prueba que Apple distribuye antes del lanzamiento general. El estreno para el público llegará en diciembre de 2026 con la versión oficial de iOS 27.3.",
-        "La novedad más llamativa es quién pone parte del motor. Apple dice que ha alcanzado un acuerdo con Alibaba para añadir Qwen, el modelo de IA de esa empresa, a algunas experiencias de Apple Intelligence. Según el comunicado, Qwen estará disponible en Siri, en las herramientas de escritura (Writing Tools) y en Visual Intelligence, y servirá para entender texto e imágenes: por ejemplo, para hacer preguntas sobre fotos, documentos PDF y presentaciones, o para generar contenido original desde cero dentro de las herramientas de escritura. Para usarlo hay que iniciar sesión con una cuenta de Qwen o con Iniciar sesión con Apple.",
-        "Además de Qwen, el paquete incluye funciones que Apple ya ofrece en otros mercados. El comunicado cita la traducción en directo en Mensajes, FaceTime y Teléfono (y cara a cara con AirPods compatibles), reescribir, corregir y resumir textos, respuestas inteligentes en Mail y Mensajes, resúmenes de correos y de notificaciones, mensajes y notificaciones prioritarios, un modo de concentración que reduce interrupciones, la herramienta Limpiar para quitar objetos de las fotos, Genmoji (emojis creados a partir de una descripción), búsqueda de fotos y vídeos con lenguaje natural, vídeos de recuerdos creados a partir de una descripción, y transcripción y resumen de notas de voz y grabaciones de llamadas. También se podrá escribir a Siri, que entenderá mejor las peticiones con interrupciones o con contexto de la conversación.",
-        "Hay límites claros. El propio comunicado indica que esta actualización no incluye Siri AI ni otras funciones de nueva generación que Apple presentó en la WWDC 2026. Es decir, los usuarios chinos recibirán la primera oleada de Apple Intelligence, no la más reciente. Apple añade que el resto de plataformas llegará después de obtener las aprobaciones necesarias, por lo que en diciembre el foco está en el iPhone.",
-        "En cuanto a los dispositivos, las funciones principales requieren un iPhone 16 o posterior, un iPhone 15 Pro o 15 Pro Max, o un iPhone Air, con Siri y el idioma del dispositivo configurados en inglés o chino simplificado. Visual Intelligence funcionará en todos los iPhone compatibles con Apple Intelligence. La traducción en directo con auriculares exige AirPods 5, AirPods 4 con cancelación activa de ruido, AirPods Pro 2 o posteriores, o AirPods Max 2, con el firmware más reciente y un iPhone compatible. Según CGTN, la función se limita a quienes compren un iPhone compatible en China o tengan tanto la ubicación del dispositivo como el país de su cuenta de Apple configurados en China.",
-        "El contexto regulatorio explica el calendario. Según CGTN, que cita a la agencia Xinhua, el regulador chino de internet completó en julio los registros de siete servicios de IA generativa en el propio dispositivo para móviles, entre ellos Apple Intelligence. Alibaba también ha dado su versión: CGTN recoge que la empresa asegura que no usará las peticiones de los usuarios ni las respuestas generadas para entrenar su modelo, y que el usuario podrá decidir si activa la integración y qué información comparte. Ese compromiso procede de Alibaba; el comunicado de Apple no contiene afirmaciones específicas sobre privacidad, así que conviene esperar a la documentación definitiva antes de dar por hecho cómo se tratarán los datos.",
-        "Lo que aún no se sabe: Apple no ha detallado en su comunicado qué peticiones concretas se envían a Qwen y cuáles se resuelven en el propio teléfono, ni qué ocurrirá con otras funciones de la lista si algún regulador pide cambios antes de diciembre. Tampoco hay declaraciones de ejecutivos de Apple en el texto. Los plazos son los que da la compañía y pueden ajustarse durante la beta."
-      ],
-      "impact": [
-        "Si vives en España, no cambia nada en tu iPhone: es un lanzamiento solo para China, vinculado a un iPhone comprado allí o a una cuenta y una ubicación configuradas en China.",
-        "Es una señal de cómo funcionan hoy los asistentes de IA: el mismo móvil puede usar modelos distintos según el país, con normas de datos y privacidad diferentes. Conviene mirar siempre qué modelo está detrás de una función y quién lo opera.",
-        "Si compras un iPhone en China, ten en cuenta que las funciones dependen de los idiomas (inglés o chino simplificado) y de la región configurada en la cuenta.",
-        "Para usar Qwen dentro de Siri tendrás que iniciar sesión con una cuenta de Qwen o con Apple, y revisar qué datos compartes."
-      ],
-      "sources": [
-        {
-          "name": "Apple China, comunicado oficial (31 de octubre de 2026)",
-          "url": "https://www.apple.com.cn/newsroom/2026/10/apple-intelligence-features-are-coming-to-users-in-china/"
-        },
-        {
-          "name": "CGTN / Xinhua: Qwen se integrará en Apple Intelligence",
-          "url": "https://news.cgtn.com/news/2026-10-31/Alibaba-s-Qwen-to-integrate-into-Apple-Intelligence-in-landmark-deal-1RHilSeJsbK/p.html"
-        }
-      ],
-      "related": [
-        {
-          "title": "Privacidad en los chats con IA",
-          "url": "../articulos/privacidad-chats-ia.html"
-        },
-        {
-          "title": "ChatGPT, Claude y Gemini: cuál elegir",
-          "url": "../articulos/chatgpt-claude-gemini.html"
-        }
-      ],
-      "photo": {
-        "alt": "Varios iPhone 16 Pro en distintos colores (imagen de archivo)",
-        "author": "Jakub C",
-        "license": "CC BY 4.0",
-        "url": "https://commons.wikimedia.org/wiki/File:IPhone_16_Pro_series.jpg"
+      {
+        "value": "dic",
+        "label": "lanzamiento público con iOS 27.3"
       },
-      "published": "2026-11-02"
+      {
+        "value": "7",
+        "label": "servicios de IA en móvil registrados en China en julio"
+      }
+    ],
+    "quote": {
+      "text": "work with Apple to deliver new AI-powered service experiences to Chinese users",
+      "source": "Eddie Wu, CEO de Alibaba, según CGTN/Xinhua (traducido: «trabajar con Apple para ofrecer nuevas experiencias de servicios con IA a los usuarios chinos»)"
     },
-    {
-      "slug": "2026-11-01-chatgpt-enlace-compartido-fallo",
-      "date": "2026-10-28",
-      "category": "Seguridad",
-      "title": "Un enlace compartido de ChatGPT podía ejecutar código y leer tus chats privados",
-      "dek": "Investigadores de Parameter encadenaron tres fallos en ChatGPT. OpenAI los corrigió el 26 de octubre y no tienes que hacer nada, pero conviene entender qué pasó.",
-      "tldr": "Parameter descubrió que abrir un enlace público de ChatGPT podía ejecutar código del atacante dentro de tu sesión y acceder a conversaciones privadas. OpenAI lo arregló el 26 de octubre en sus servidores; no hay constancia de que se explotara.",
-      "key_facts": [
-        {
-          "value": "18 oct",
-          "label": "día en que Parameter avisó a OpenAI"
-        },
-        {
-          "value": "26 oct",
-          "label": "día en que ambas versiones de la web rechazaban el ataque"
-        },
-        {
-          "value": "3",
-          "label": "fallos de diseño encadenados"
-        },
-        {
-          "value": "5.000 $",
-          "label": "recompensa total pagada por OpenAI"
-        }
-      ],
-      "quote": {
-        "text": "Opening the shared link was the only required action.",
-        "source": "Parameter, informe técnico (traducido: «Abrir el enlace compartido era la única acción necesaria»)"
+    "body": [
+      "El 31 de octubre de 2026, Apple publicó en su sala de prensa de China un comunicado en el que anuncia que las primeras funciones de Apple Intelligence, su conjunto de herramientas de inteligencia artificial para iPhone, llegarán a los usuarios del país. Las funciones se podrán probar a partir del 4 de noviembre en la última beta para desarrolladores de iOS, una versión de prueba que Apple distribuye antes del lanzamiento general. El estreno para el público llegará en diciembre de 2026 con la versión oficial de iOS 27.3.",
+      "La novedad más llamativa es quién pone parte del motor. Apple dice que ha alcanzado un acuerdo con Alibaba para añadir Qwen, el modelo de IA de esa empresa, a algunas experiencias de Apple Intelligence. Según el comunicado, Qwen estará disponible en Siri, en las herramientas de escritura (Writing Tools) y en Visual Intelligence, y servirá para entender texto e imágenes: por ejemplo, para hacer preguntas sobre fotos, documentos PDF y presentaciones, o para generar contenido original desde cero dentro de las herramientas de escritura. Para usarlo hay que iniciar sesión con una cuenta de Qwen o con Iniciar sesión con Apple.",
+      "Además de Qwen, el paquete incluye funciones que Apple ya ofrece en otros mercados. El comunicado cita la traducción en directo en Mensajes, FaceTime y Teléfono (y cara a cara con AirPods compatibles), reescribir, corregir y resumir textos, respuestas inteligentes en Mail y Mensajes, resúmenes de correos y de notificaciones, mensajes y notificaciones prioritarios, un modo de concentración que reduce interrupciones, la herramienta Limpiar para quitar objetos de las fotos, Genmoji (emojis creados a partir de una descripción), búsqueda de fotos y vídeos con lenguaje natural, vídeos de recuerdos creados a partir de una descripción, y transcripción y resumen de notas de voz y grabaciones de llamadas. También se podrá escribir a Siri, que entenderá mejor las peticiones con interrupciones o con contexto de la conversación.",
+      "Hay límites claros. El propio comunicado indica que esta actualización no incluye Siri AI ni otras funciones de nueva generación que Apple presentó en la WWDC 2026. Es decir, los usuarios chinos recibirán la primera oleada de Apple Intelligence, no la más reciente. Apple añade que el resto de plataformas llegará después de obtener las aprobaciones necesarias, por lo que en diciembre el foco está en el iPhone.",
+      "En cuanto a los dispositivos, las funciones principales requieren un iPhone 16 o posterior, un iPhone 15 Pro o 15 Pro Max, o un iPhone Air, con Siri y el idioma del dispositivo configurados en inglés o chino simplificado. Visual Intelligence funcionará en todos los iPhone compatibles con Apple Intelligence. La traducción en directo con auriculares exige AirPods 5, AirPods 4 con cancelación activa de ruido, AirPods Pro 2 o posteriores, o AirPods Max 2, con el firmware más reciente y un iPhone compatible. Según CGTN, la función se limita a quienes compren un iPhone compatible en China o tengan tanto la ubicación del dispositivo como el país de su cuenta de Apple configurados en China.",
+      "El contexto regulatorio explica el calendario. Según CGTN, que cita a la agencia Xinhua, el regulador chino de internet completó en julio los registros de siete servicios de IA generativa en el propio dispositivo para móviles, entre ellos Apple Intelligence. Alibaba también ha dado su versión: CGTN recoge que la empresa asegura que no usará las peticiones de los usuarios ni las respuestas generadas para entrenar su modelo, y que el usuario podrá decidir si activa la integración y qué información comparte. Ese compromiso procede de Alibaba; el comunicado de Apple no contiene afirmaciones específicas sobre privacidad, así que conviene esperar a la documentación definitiva antes de dar por hecho cómo se tratarán los datos.",
+      "Lo que aún no se sabe: Apple no ha detallado en su comunicado qué peticiones concretas se envían a Qwen y cuáles se resuelven en el propio teléfono, ni qué ocurrirá con otras funciones de la lista si algún regulador pide cambios antes de diciembre. Tampoco hay declaraciones de ejecutivos de Apple en el texto. Los plazos son los que da la compañía y pueden ajustarse durante la beta."
+    ],
+    "impact": [
+      "Si vives en España, no cambia nada en tu iPhone: es un lanzamiento solo para China, vinculado a un iPhone comprado allí o a una cuenta y una ubicación configuradas en China.",
+      "Es una señal de cómo funcionan hoy los asistentes de IA: el mismo móvil puede usar modelos distintos según el país, con normas de datos y privacidad diferentes. Conviene mirar siempre qué modelo está detrás de una función y quién lo opera.",
+      "Si compras un iPhone en China, ten en cuenta que las funciones dependen de los idiomas (inglés o chino simplificado) y de la región configurada en la cuenta.",
+      "Para usar Qwen dentro de Siri tendrás que iniciar sesión con una cuenta de Qwen o con Apple, y revisar qué datos compartes."
+    ],
+    "sources": [
+      {
+        "name": "Apple China, comunicado oficial (31 de octubre de 2026)",
+        "url": "https://www.apple.com.cn/newsroom/2026/10/apple-intelligence-features-are-coming-to-users-in-china/"
       },
-      "body": [
-        "La empresa de seguridad Parameter publicó el 28 de octubre los detalles de una vulnerabilidad en ChatGPT que permitía, a partir de un enlace de conversación compartida, ejecutar código del atacante dentro de la sesión de otra persona. Según su informe, lo comunicaron a OpenAI el 18 de octubre a través del programa de recompensas por errores de la compañía, y OpenAI confirmó el 26 de octubre que las dos versiones de la interfaz web rechazaban ya los mensajes del ataque. The Hacker News añade que OpenAI acabó clasificando el fallo como P1, su categoría más grave, aunque en un principio lo había calificado como P2, y que pagó 5.000 dólares en total.",
-        "El ataque partía de algo cotidiano: un enlace público de ChatGPT, de los que se generan con la opción de compartir una conversación. Un atacante podía enviarlo por correo, mensaje, un ticket de soporte o una red social. Según Parameter, abrir el enlace era la única acción obligatoria; en la versión más estable de la prueba la víctima además pulsaba una vez el botón de vista previa, y en una versión posterior el ataque se disparaba al navegar a la página sin más. No hacía falta instalar nada ni iniciar sesión a través del atacante, pero sí que la víctima tuviera ChatGPT abierto con su cuenta.",
-        "El fallo no era uno solo, sino tres encadenados. Primero, una conversación compartida con un gráfico interactivo carga MathLive, una librería para escribir fórmulas matemáticas, que escucha mensajes enviados entre partes de la página sin comprobar quién los manda. Segundo, esos mensajes podían llevar código HTML disfrazado de datos de distribución de teclado, y la librería lo insertaba tal cual en la página. Tercero, ese HTML creaba un marco (un recuadro incrustado en la web) sin las restricciones de seguridad habituales, que heredaba la identidad de chatgpt.com. Dentro de ese marco el atacante necesitaba ejecutar un script: la política de seguridad de ChatGPT bloqueaba los scripts escritos directamente en la página, pero permitía cargar contenido de YouTube, y Parameter usó un servicio de YouTube para colar el código. Según el informe, bloquear solo ese último paso no habría solucionado el problema de fondo.",
-        "Con ese código funcionando como si fuera la propia web de ChatGPT, los investigadores pudieron leer el token de la sesión, listar las conversaciones recientes de la víctima, abrir una conversación privada que nunca se había compartido y enviar una pequeña parte de su contenido a un servidor que ellos controlaban. Parameter sostiene que, como el código llamaba a las mismas funciones internas que usa la web, el alcance no se limitaba a los chats visibles. Esa última afirmación es una deducción de los investigadores; en el informe solo demuestran la lectura de conversaciones y el envío de un valor pequeño.",
-        "Conviene ponerlo en proporción. Parameter no informa de ninguna explotación real: la prueba con un chat privado se hizo entre cuentas de prueba, no contra usuarios reales. El ataque dependía además de una coincidencia de tiempos que se resolvía con reintentos y del comportamiento concreto de MathLive, del servicio de YouTube y de la política de seguridad vigente entonces. Y el informe no aclara si la corrección en dos fases, con una solución parcial el 22 de octubre y cambios en la política de seguridad el 23, cubre cualquier variante posible. Lo que sí está claro es que la solución está en los servidores de OpenAI.",
-        "Según The Hacker News, los usuarios de ChatGPT no tienen que hacer nada: no hay nada que instalar ni contraseña que cambiar. Aun así, el caso ilustra un riesgo real de las funciones que mezclan contenido de otras personas con tu cuenta. Un enlace compartido no es una simple foto del chat: puede incluir elementos interactivos que se ejecutan en tu navegador. Si recibes enlaces de conversaciones de desconocidos, trátalos con la misma prudencia que cualquier otro enlace que llega por correo o por mensaje."
-      ],
-      "impact": [
-        "No tienes que cambiar contraseñas ni actualizar nada: la corrección se aplicó en los servidores de OpenAI el 26 de octubre.",
-        "Desconfía de los enlaces de conversaciones compartidas que te lleguen de desconocidos o sin contexto, igual que harías con cualquier enlace sospechoso.",
-        "Antes de compartir una conversación tuya, revisa que no contenga datos personales: un enlace público lo puede abrir cualquiera que lo tenga.",
-        "Si quieres reducir lo que queda guardado de tus chats, revisa los ajustes de privacidad de tu asistente; tienes una guía abajo."
-      ],
-      "sources": [
-        {
-          "name": "Parameter, informe técnico «We found a gap at OpenAI»",
-          "url": "https://www.parameter.ai/labs/we-found-a-gap-at-openai"
-        },
-        {
-          "name": "The Hacker News, «A shared ChatGPT link could run attacker code»",
-          "url": "https://www.thehackernews.com/2026/10/a-shared-chatgpt-link-could-run.html"
-        }
-      ],
-      "related": [
-        {
-          "title": "Qué guarda tu chat de IA y cómo limitarlo",
-          "url": "../articulos/privacidad-chats-ia.html"
-        },
-        {
-          "title": "Seguridad y privacidad con la IA",
-          "url": "../articulos/seguridad-privacidad.html"
-        },
-        {
-          "title": "Estafas con IA: cómo reconocerlas",
-          "url": "../articulos/estafas-con-ia.html"
-        }
-      ],
-      "photo": {
-        "alt": "Un teléfono con la aplicación de ChatGPT junto a un portátil (imagen de archivo)",
-        "author": "Jernej Furman",
-        "license": "CC BY 2.0",
-        "url": "https://commons.wikimedia.org/wiki/File:Smartphone_with_ChatGPT_app_and_laptop_(52917381683).jpg"
+      {
+        "name": "CGTN / Xinhua: Qwen se integrará en Apple Intelligence",
+        "url": "https://news.cgtn.com/news/2026-10-31/Alibaba-s-Qwen-to-integrate-into-Apple-Intelligence-in-landmark-deal-1RHilSeJsbK/p.html"
+      }
+    ],
+    "related": [
+      {
+        "title": "Privacidad en los chats con IA",
+        "url": "../articulos/privacidad-chats-ia.html"
       },
-      "published": "2026-11-01"
+      {
+        "title": "ChatGPT, Claude y Gemini: cuál elegir",
+        "url": "../articulos/chatgpt-claude-gemini.html"
+      }
+    ],
+    "photo": {
+      "alt": "Varios iPhone 16 Pro en distintos colores (imagen de archivo)",
+      "author": "Jakub C",
+      "license": "CC BY 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:IPhone_16_Pro_series.jpg"
     },
-    {
-      "slug": "2026-10-30-claude-code-extension-cursor-puerta-trasera",
-      "date": "2026-10-29",
-      "category": "Seguridad",
-      "title": "Una versión falsa de la extensión de Claude Code en Cursor instalaba una puerta trasera: cómo comprobar si te afecta",
-      "dek": "Cursor avisa de que dos versiones manipuladas de «Claude Code» circularon unas once horas en su tienda de extensiones. Te explicamos cómo saber si las instalaste.",
-      "tldr": "Cursor ha confirmado que las versiones 2.1.312 y 2.1.313 de la extensión Claude Code, distribuidas en su tienda el 29 de octubre, no las creó Anthropic e intentaban abrir acceso remoto al ordenador. Si usas Cursor en Windows o macOS, busca la etiqueta «svc-telemetry» en tu archivo de claves SSH.",
-      "key_facts": [
-        {
-          "value": "5.000",
-          "label": "usuarios afectados como máximo, según Cursor"
-        },
-        {
-          "value": "~11 h",
-          "label": "de 2:27 a 13:35 (hora del Pacífico) del 29 de octubre"
-        },
-        {
-          "value": "2.1.314",
-          "label": "versión limpia publicada por Anthropic el 30 de octubre"
-        }
-      ],
-      "quote": {
-        "text": "Follow the remediation steps below regardless.",
-        "source": "Cursor, aviso de seguridad (traducido: «Sigue los pasos de remediación que figuran abajo en cualquier caso»)"
+    "published": "2026-11-02"
+  },
+  {
+    "slug": "2026-11-01-chatgpt-enlace-compartido-fallo",
+    "date": "2026-10-28",
+    "category": "Seguridad",
+    "title": "Un enlace compartido de ChatGPT podía ejecutar código y leer tus chats privados",
+    "dek": "Investigadores de Parameter encadenaron tres fallos en ChatGPT. OpenAI los corrigió el 26 de octubre y no tienes que hacer nada, pero conviene entender qué pasó.",
+    "tldr": "Parameter descubrió que abrir un enlace público de ChatGPT podía ejecutar código del atacante dentro de tu sesión y acceder a conversaciones privadas. OpenAI lo arregló el 26 de octubre en sus servidores; no hay constancia de que se explotara.",
+    "key_facts": [
+      {
+        "value": "18 oct",
+        "label": "día en que Parameter avisó a OpenAI"
       },
-      "body": [
-        "Cursor, el editor de código con inteligencia artificial, ha publicado un aviso de seguridad sobre la extensión «Claude Code» de su tienda de extensiones. Según la empresa, las versiones 2.1.312 y 2.1.313 de la extensión anthropic.claude-code estuvieron disponibles el 29 de octubre, desde las 2:27 hasta las 13:35 aproximadamente (hora del Pacífico, es decir, de las 10:27 a las 21:35 en la España peninsular), y afectaban a Windows y macOS. Cursor subraya que esas versiones no las desarrolló Anthropic y que instalaban una puerta trasera persistente por SSH. SSH es el protocolo con el que se controla un ordenador a distancia mediante una conexión cifrada y unas claves: quien tiene una clave autorizada puede entrar sin contraseña.",
-        "El código añadido era un cargador de 66 líneas colocado al principio del archivo principal de la extensión, según el análisis de la firma OpenSourceMalware que cita The Hacker News. Se ejecutaba al arrancar el editor, sin que el usuario hiciera nada con Claude, y trataba de que la extensión siguiera funcionando con normalidad para no levantar sospechas. Lo primero que hacía era recopilar datos del equipo: nombre del ordenador y del usuario, sistema operativo, carpetas de trabajo, el correo configurado en Git y los nombres, no los valores, de hasta 40 variables de entorno cuyo nombre contuviera palabras como KEY, TOKEN, SECRET, PASS, AWS o GCP.",
-        "Después intentaba tres cosas: añadir una clave SSH del atacante, con la etiqueta «svc-telemetry», al archivo de claves autorizadas del usuario; activar el acceso remoto del sistema; y abrir un túnel inverso hacia un servidor externo, que es una conexión que parte de tu ordenador hacia fuera para que desde allí se pueda entrar en él aunque tu router bloquee las conexiones entrantes. Cursor precisa que activar el servicio SSH probablemente fallara en la mayoría de equipos, porque requiere permisos de administrador que la extensión normalmente no tiene, pero la clave y los mecanismos de persistencia se instalaban igualmente. En macOS creaba un agente de arranque llamado com.apple.sysmond, que imita un nombre de Apple, y en Windows una tarea programada llamada SysMon, y reintentaba la conexión cada 60 segundos.",
-        "La cifra de afectados es una cota máxima: Cursor habla de «como mucho 5.000 usuarios» en declaraciones recogidas por The Hacker News, y dice que contactará directamente con ellos. Lo que sí se sabe es quién no está afectado: según el análisis de OpenSourceMalware, ni el paquete oficial de npm de Claude Code ni la extensión publicada en Open VSX ni la de Microsoft VS Code Marketplace contenían el código malicioso. Cursor añade que no tiene indicios de que otras extensiones de su tienda hayan sido manipuladas, y que el servidor del atacante ya no responde. Retiró la versión y cerró temporalmente su tienda como precaución, y el 30 de octubre Anthropic publicó la versión 2.1.314, limpia, en Open VSX y en la tienda de Microsoft.",
-        "Quedan preguntas importantes sin respuesta. The Hacker News señala que aún no está claro cómo consiguieron los atacantes subir una actualización bajo la identidad legítima de Anthropic en la tienda de Cursor, y OpenSourceMalware advierte de que no se ha establecido quién está detrás ni qué infraestructura usaban. Tampoco se habían observado cargas adicionales: el código solo abría la puerta, de modo que lo que ocurriera después de entrar por SSH no quedaría reflejado en el análisis de la extensión.",
-        "Para comprobar si te afecta, Cursor da una prueba sencilla. En macOS, busca la etiqueta «svc-telemetry» dentro del archivo ~/.ssh/authorized_keys, por ejemplo con el comando grep -n svc-telemetry ~/.ssh/authorized_keys en la Terminal. En Windows, busca esa misma etiqueta en %USERPROFILE%\\.ssh\\authorized_keys y en C:\\ProgramData\\ssh\\administrators_authorized_keys. Si aparece, trata el equipo como comprometido. Si no aparece, es mucho menos probable que te haya afectado, aunque Cursor recomienda seguir sus pasos de todos modos si instalaste o actualizaste la extensión en esa franja horaria. También conviene mirar si existen los archivos ~/.config/.smt y ~/.config/.smtk, el agente com.apple.sysmond en macOS o la tarea SysMon en Windows.",
-        "Si encuentras algo, Cursor recomienda aislar el equipo de la red, eliminar la clave no autorizada y los mecanismos de persistencia, y cambiar desde otro dispositivo de confianza las credenciales y sesiones a las que tuviera acceso ese ordenador. Avisa además de que desinstalar la extensión no basta, porque los scripts de persistencia siguen ejecutándose por su cuenta, y de que hay que valorar reinstalar el sistema. La empresa ofrece scripts de limpieza para macOS y Windows en su propio aviso; conviene descargarlos solo desde ahí y leerlos antes de ejecutarlos."
-      ],
-      "impact": [
-        "Si usas Cursor en Windows o macOS y la extensión Claude Code se actualizó sola el 29 de octubre, busca la etiqueta «svc-telemetry» en tu archivo de claves SSH antes de nada.",
-        "Si usas Claude Code desde el paquete de npm, Open VSX o la tienda de Microsoft, esos canales no contenían el código malicioso según el análisis de OpenSourceMalware. Aun así, actualiza a la 2.1.314.",
-        "Desinstalar la extensión no elimina la puerta trasera: si la encuentras, aísla el equipo, cambia tus contraseñas y claves desde otro dispositivo y valora reinstalar el sistema.",
-        "Las extensiones de editor se actualizan solas y tienen acceso a tus archivos y variables: revisa cuáles tienes instaladas y desactiva la actualización automática de las que no necesites."
-      ],
-      "sources": [
-        {
-          "name": "Cursor, aviso de seguridad sobre la extensión Claude Code",
-          "url": "https://cursor.com/blog/claude-code-extension-security-notice"
-        },
-        {
-          "name": "OpenSourceMalware, análisis técnico de la extensión manipulada",
-          "url": "https://opensourcemalware.com/blog/trojanized-claude-code-extension-plants-persistent-ssh-backdoor"
-        },
-        {
-          "name": "The Hacker News, cobertura del incidente",
-          "url": "https://thehackernews.com/2026/10/official-claude-code-vs-code-extension.html"
-        }
-      ],
-      "related": [
-        {
-          "title": "Permisos para un agente de IA sin darle tus contraseñas",
-          "url": "../articulos/permisos-agente-ia-sin-contrasenas.html"
-        },
-        {
-          "title": "Prompt injection en agentes de IA",
-          "url": "../articulos/prompt-injection-agentes-ia.html"
-        },
-        {
-          "title": "Qué IA elegir para programar",
-          "url": "../articulos/elegir-ia-para-programar.html"
-        }
-      ],
-      "photo": {
-        "alt": "Candado cerrado con cadena y llave puesta (imagen de archivo)",
-        "author": "Lacz02",
-        "license": "CC BY-SA 4.0",
-        "url": "https://commons.wikimedia.org/wiki/File:Padlock_with_chain.jpg"
+      {
+        "value": "26 oct",
+        "label": "día en que ambas versiones de la web rechazaban el ataque"
       },
-      "published": "2026-10-31"
+      {
+        "value": "3",
+        "label": "fallos de diseño encadenados"
+      },
+      {
+        "value": "5.000 $",
+        "label": "recompensa total pagada por OpenAI"
+      }
+    ],
+    "quote": {
+      "text": "Opening the shared link was the only required action.",
+      "source": "Parameter, informe técnico (traducido: «Abrir el enlace compartido era la única acción necesaria»)"
     },
-    {
-      "slug": "2026-10-30-artex-agentes-ia-ataques-crowdstrike",
-      "date": "2026-10-29",
-      "category": "Seguridad",
-      "title": "Un grupo vinculado a China usó agentes de IA para atacar a más de 200 organizaciones en 11 días",
-      "dek": "CrowdStrike describe ARTEX, un sistema de agentes de IA que un solo operador usó contra ministerios, defensa o telecomunicaciones, apoyado sobre todo en el modelo DeepSeek.",
-      "tldr": "CrowdStrike ha documentado una campaña en la que un grupo al que llama VAPOR PANDA usó un conjunto de agentes de IA llamado ARTEX para atacar a más de 200 organizaciones en al menos 14 países durante 11 días. Confirmó intrusiones en nueve; el ataque se dirigía a organizaciones, no a usuarios domésticos.",
-      "key_facts": [
-        {
-          "value": "200+",
-          "label": "organizaciones atacadas en al menos 14 países"
-        },
-        {
-          "value": "11 días",
-          "label": "duración de la ventana de actividad analizada"
-        },
-        {
-          "value": "9",
-          "label": "organizaciones con intrusión confirmada"
-        },
-        {
-          "value": "1,4 mil M",
-          "label": "tokens de entrada gastados por los agentes en una intrusión"
-        }
-      ],
-      "quote": {
-        "text": "ARTEX coordinates a main agent with subordinate planner and worker agents over a shared graph of facts, findings, and goals.",
-        "source": "CrowdStrike (traducido: «ARTEX coordina un agente principal con agentes subordinados de planificación y ejecución sobre un grafo compartido de hechos, hallazgos y objetivos»)"
+    "body": [
+      "La empresa de seguridad Parameter publicó el 28 de octubre los detalles de una vulnerabilidad en ChatGPT que permitía, a partir de un enlace de conversación compartida, ejecutar código del atacante dentro de la sesión de otra persona. Según su informe, lo comunicaron a OpenAI el 18 de octubre a través del programa de recompensas por errores de la compañía, y OpenAI confirmó el 26 de octubre que las dos versiones de la interfaz web rechazaban ya los mensajes del ataque. The Hacker News añade que OpenAI acabó clasificando el fallo como P1, su categoría más grave, aunque en un principio lo había calificado como P2, y que pagó 5.000 dólares en total.",
+      "El ataque partía de algo cotidiano: un enlace público de ChatGPT, de los que se generan con la opción de compartir una conversación. Un atacante podía enviarlo por correo, mensaje, un ticket de soporte o una red social. Según Parameter, abrir el enlace era la única acción obligatoria; en la versión más estable de la prueba la víctima además pulsaba una vez el botón de vista previa, y en una versión posterior el ataque se disparaba al navegar a la página sin más. No hacía falta instalar nada ni iniciar sesión a través del atacante, pero sí que la víctima tuviera ChatGPT abierto con su cuenta.",
+      "El fallo no era uno solo, sino tres encadenados. Primero, una conversación compartida con un gráfico interactivo carga MathLive, una librería para escribir fórmulas matemáticas, que escucha mensajes enviados entre partes de la página sin comprobar quién los manda. Segundo, esos mensajes podían llevar código HTML disfrazado de datos de distribución de teclado, y la librería lo insertaba tal cual en la página. Tercero, ese HTML creaba un marco (un recuadro incrustado en la web) sin las restricciones de seguridad habituales, que heredaba la identidad de chatgpt.com. Dentro de ese marco el atacante necesitaba ejecutar un script: la política de seguridad de ChatGPT bloqueaba los scripts escritos directamente en la página, pero permitía cargar contenido de YouTube, y Parameter usó un servicio de YouTube para colar el código. Según el informe, bloquear solo ese último paso no habría solucionado el problema de fondo.",
+      "Con ese código funcionando como si fuera la propia web de ChatGPT, los investigadores pudieron leer el token de la sesión, listar las conversaciones recientes de la víctima, abrir una conversación privada que nunca se había compartido y enviar una pequeña parte de su contenido a un servidor que ellos controlaban. Parameter sostiene que, como el código llamaba a las mismas funciones internas que usa la web, el alcance no se limitaba a los chats visibles. Esa última afirmación es una deducción de los investigadores; en el informe solo demuestran la lectura de conversaciones y el envío de un valor pequeño.",
+      "Conviene ponerlo en proporción. Parameter no informa de ninguna explotación real: la prueba con un chat privado se hizo entre cuentas de prueba, no contra usuarios reales. El ataque dependía además de una coincidencia de tiempos que se resolvía con reintentos y del comportamiento concreto de MathLive, del servicio de YouTube y de la política de seguridad vigente entonces. Y el informe no aclara si la corrección en dos fases, con una solución parcial el 22 de octubre y cambios en la política de seguridad el 23, cubre cualquier variante posible. Lo que sí está claro es que la solución está en los servidores de OpenAI.",
+      "Según The Hacker News, los usuarios de ChatGPT no tienen que hacer nada: no hay nada que instalar ni contraseña que cambiar. Aun así, el caso ilustra un riesgo real de las funciones que mezclan contenido de otras personas con tu cuenta. Un enlace compartido no es una simple foto del chat: puede incluir elementos interactivos que se ejecutan en tu navegador. Si recibes enlaces de conversaciones de desconocidos, trátalos con la misma prudencia que cualquier otro enlace que llega por correo o por mensaje."
+    ],
+    "impact": [
+      "No tienes que cambiar contraseñas ni actualizar nada: la corrección se aplicó en los servidores de OpenAI el 26 de octubre.",
+      "Desconfía de los enlaces de conversaciones compartidas que te lleguen de desconocidos o sin contexto, igual que harías con cualquier enlace sospechoso.",
+      "Antes de compartir una conversación tuya, revisa que no contenga datos personales: un enlace público lo puede abrir cualquiera que lo tenga.",
+      "Si quieres reducir lo que queda guardado de tus chats, revisa los ajustes de privacidad de tu asistente; tienes una guía abajo."
+    ],
+    "sources": [
+      {
+        "name": "Parameter, informe técnico «We found a gap at OpenAI»",
+        "url": "https://www.parameter.ai/labs/we-found-a-gap-at-openai"
       },
-      "body": [
-        "La empresa de ciberseguridad CrowdStrike publicó el 29 de octubre un informe sobre una campaña de ataques en la que la inteligencia artificial hacía buena parte del trabajo. Según su equipo OverWatch, el grupo, al que bautizan VAPOR PANDA y vinculan con China, empezó el 17 de octubre y utilizó un sistema llamado ARTEX contra más de 200 organizaciones distintas de al menos 14 países a lo largo de 11 días. Entre los objetivos figuran ministerios de Exteriores e Interior y otras entidades públicas, además de empresas de semiconductores, defensa, energía nuclear, farmacia, finanzas y telecomunicaciones, y centros de estudios.",
-        "ARTEX es lo que se conoce como un framework de agentes, es decir, una estructura de programas de IA que se reparten el trabajo. Según CrowdStrike, un agente principal coordina a otros subordinados, unos que planifican y otros que ejecutan, y todos comparten un grafo, una especie de pizarra común, con hechos, hallazgos y objetivos. Con ella el sistema avanza solo desde el primer acceso hasta el reconocimiento de los equipos y el salto de uno a otro dentro de la red. La firma añade que el mismo framework lo usan también grupos con motivación económica y otros sin identificar, así que no es una herramienta exclusiva de este grupo.",
-        "El dato más llamativo es la escala. Según CrowdStrike, un único operador humano llevaba varias intrusiones a la vez e intervenía sobre todo en los puntos de decisión. Los agentes probaban varias vías de ataque en paralelo y cambiaban de método cuando una fallaba. En una de las intrusiones, los agentes de planificación consumieron unos 1.400 millones de tokens de entrada; un token es el trozo de texto, más o menos una sílaba, en que el modelo divide lo que lee. CrowdStrike dice que el grupo usó principalmente el modelo chino DeepSeek, complementado con un segundo modelo comercial de pago que no pudo confirmar.",
-        "Conviene no exagerar lo que ocurrió. La actividad posterior a la intrusión se confirmó en nueve organizaciones, y el sondeo de contraseñas y credenciales alcanzó al menos a otras doce. Las técnicas descritas son conocidas, como el uso de shells web (programas que permiten dirigir un servidor a distancia), abusos de autenticación SAML y XXE para llegar a los metadatos de servicios en la nube, o tokens de administrador falsificados, no inventos nuevos de la IA. Lo nuevo es la velocidad y la capacidad de repetirlas contra cientos de objetivos con poca intervención humana. CrowdStrike detalla también que el operador ordenó a los agentes buscar equipos que no tuvieran instalado su sensor Falcon, para concentrar el siguiente paso en las máquinas sin protección.",
-        "El informe no explica cuántos datos se robaron ni qué organizaciones concretas fueron comprometidas, y la atribución a China es una valoración de CrowdStrike, no un hecho confirmado por un gobierno. Tampoco prueba que DeepSeek, como empresa, supiera de este uso: lo que dice es que el grupo empleó su modelo, algo que cualquiera puede hacer con un modelo accesible por internet. Por eso importa menos la nacionalidad del modelo que el hecho de que la barrera para atacar a muchas organizaciones a la vez ha bajado.",
-        "Las recomendaciones de CrowdStrike van dirigidas a equipos de seguridad: rotar claves de firma y credenciales de servicio tras cualquier sospecha de exposición, incluidas las que queden en copias de seguridad; exigir la validación de firmas SAML; usar IMDSv2, la versión más segura del servicio de metadatos de Amazon; limitar qué funciones en la nube pueden ejecutar comandos; parchear los equipos expuestos a internet, sobre todo los servidores Linux antiguos; y desplegar un agente de detección en tiempo real en todos los equipos, incluidos los que no son accesibles desde internet. También publica marcas para buscar rastros de ARTEX, como las cadenas «artx» o «artex» en líneas de comandos o el directorio C:\\ProgramData\\artx5v\\."
-      ],
-      "impact": [
-        "Si eres usuario particular, no hay una acción concreta que tomar por este informe: los objetivos fueron organizaciones. Mantener actualizados tus dispositivos y usar verificación en dos pasos sigue siendo la mejor defensa.",
-        "Si trabajas en una pequeña empresa o gestionas sistemas, revisa que los equipos expuestos a internet estén parcheados y que todos tengan algún tipo de protección activa: los agentes buscaron deliberadamente máquinas sin ella.",
-        "Los ataques con IA no usan técnicas mágicas, sino las de siempre a mayor velocidad y escala; las medidas básicas de higiene siguen siendo lo que más reduce el riesgo."
-      ],
-      "sources": [
-        {
-          "name": "CrowdStrike, VAPOR PANDA y ARTEX",
-          "url": "https://www.crowdstrike.com/en-us/blog/vapor-panda-uses-artex-to-scale-global-campaign/"
-        }
-      ],
-      "related": [
-        {
-          "title": "Estafas con IA: cómo reconocerlas",
-          "url": "../articulos/estafas-con-ia.html"
-        },
-        {
-          "title": "Prompt injection en agentes de IA",
-          "url": "../articulos/prompt-injection-agentes-ia.html"
-        }
-      ],
-      "photo": {
-        "alt": "Pasillo de un centro de datos con armarios de servidores blancos (imagen de archivo)",
-        "author": "PiDatacenters",
-        "license": "CC BY-SA 4.0",
-        "url": "https://commons.wikimedia.org/wiki/File:Racks_Amravati_Data_Center.jpg"
+      {
+        "name": "The Hacker News, «A shared ChatGPT link could run attacker code»",
+        "url": "https://www.thehackernews.com/2026/10/a-shared-chatgpt-link-could-run.html"
+      }
+    ],
+    "related": [
+      {
+        "title": "Qué guarda tu chat de IA y cómo limitarlo",
+        "url": "../articulos/privacidad-chats-ia.html"
       },
-      "published": "2026-10-31"
+      {
+        "title": "Seguridad y privacidad con la IA",
+        "url": "../articulos/seguridad-privacidad.html"
+      },
+      {
+        "title": "Estafas con IA: cómo reconocerlas",
+        "url": "../articulos/estafas-con-ia.html"
+      }
+    ],
+    "photo": {
+      "alt": "Un teléfono con la aplicación de ChatGPT junto a un portátil (imagen de archivo)",
+      "author": "Jernej Furman",
+      "license": "CC BY 2.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Smartphone_with_ChatGPT_app_and_laptop_(52917381683).jpg"
     },
+    "published": "2026-11-01"
+  },
+  {
+    "slug": "2026-10-30-claude-code-extension-cursor-puerta-trasera",
+    "date": "2026-10-29",
+    "category": "Seguridad",
+    "title": "Una versión falsa de la extensión de Claude Code en Cursor instalaba una puerta trasera: cómo comprobar si te afecta",
+    "dek": "Cursor avisa de que dos versiones manipuladas de «Claude Code» circularon unas once horas en su tienda de extensiones. Te explicamos cómo saber si las instalaste.",
+    "tldr": "Cursor ha confirmado que las versiones 2.1.312 y 2.1.313 de la extensión Claude Code, distribuidas en su tienda el 29 de octubre, no las creó Anthropic e intentaban abrir acceso remoto al ordenador. Si usas Cursor en Windows o macOS, busca la etiqueta «svc-telemetry» en tu archivo de claves SSH.",
+    "key_facts": [
+      {
+        "value": "5.000",
+        "label": "usuarios afectados como máximo, según Cursor"
+      },
+      {
+        "value": "~11 h",
+        "label": "de 2:27 a 13:35 (hora del Pacífico) del 29 de octubre"
+      },
+      {
+        "value": "2.1.314",
+        "label": "versión limpia publicada por Anthropic el 30 de octubre"
+      }
+    ],
+    "quote": {
+      "text": "Follow the remediation steps below regardless.",
+      "source": "Cursor, aviso de seguridad (traducido: «Sigue los pasos de remediación que figuran abajo en cualquier caso»)"
+    },
+    "body": [
+      "Cursor, el editor de código con inteligencia artificial, ha publicado un aviso de seguridad sobre la extensión «Claude Code» de su tienda de extensiones. Según la empresa, las versiones 2.1.312 y 2.1.313 de la extensión anthropic.claude-code estuvieron disponibles el 29 de octubre, desde las 2:27 hasta las 13:35 aproximadamente (hora del Pacífico, es decir, de las 10:27 a las 21:35 en la España peninsular), y afectaban a Windows y macOS. Cursor subraya que esas versiones no las desarrolló Anthropic y que instalaban una puerta trasera persistente por SSH. SSH es el protocolo con el que se controla un ordenador a distancia mediante una conexión cifrada y unas claves: quien tiene una clave autorizada puede entrar sin contraseña.",
+      "El código añadido era un cargador de 66 líneas colocado al principio del archivo principal de la extensión, según el análisis de la firma OpenSourceMalware que cita The Hacker News. Se ejecutaba al arrancar el editor, sin que el usuario hiciera nada con Claude, y trataba de que la extensión siguiera funcionando con normalidad para no levantar sospechas. Lo primero que hacía era recopilar datos del equipo: nombre del ordenador y del usuario, sistema operativo, carpetas de trabajo, el correo configurado en Git y los nombres, no los valores, de hasta 40 variables de entorno cuyo nombre contuviera palabras como KEY, TOKEN, SECRET, PASS, AWS o GCP.",
+      "Después intentaba tres cosas: añadir una clave SSH del atacante, con la etiqueta «svc-telemetry», al archivo de claves autorizadas del usuario; activar el acceso remoto del sistema; y abrir un túnel inverso hacia un servidor externo, que es una conexión que parte de tu ordenador hacia fuera para que desde allí se pueda entrar en él aunque tu router bloquee las conexiones entrantes. Cursor precisa que activar el servicio SSH probablemente fallara en la mayoría de equipos, porque requiere permisos de administrador que la extensión normalmente no tiene, pero la clave y los mecanismos de persistencia se instalaban igualmente. En macOS creaba un agente de arranque llamado com.apple.sysmond, que imita un nombre de Apple, y en Windows una tarea programada llamada SysMon, y reintentaba la conexión cada 60 segundos.",
+      "La cifra de afectados es una cota máxima: Cursor habla de «como mucho 5.000 usuarios» en declaraciones recogidas por The Hacker News, y dice que contactará directamente con ellos. Lo que sí se sabe es quién no está afectado: según el análisis de OpenSourceMalware, ni el paquete oficial de npm de Claude Code ni la extensión publicada en Open VSX ni la de Microsoft VS Code Marketplace contenían el código malicioso. Cursor añade que no tiene indicios de que otras extensiones de su tienda hayan sido manipuladas, y que el servidor del atacante ya no responde. Retiró la versión y cerró temporalmente su tienda como precaución, y el 30 de octubre Anthropic publicó la versión 2.1.314, limpia, en Open VSX y en la tienda de Microsoft.",
+      "Quedan preguntas importantes sin respuesta. The Hacker News señala que aún no está claro cómo consiguieron los atacantes subir una actualización bajo la identidad legítima de Anthropic en la tienda de Cursor, y OpenSourceMalware advierte de que no se ha establecido quién está detrás ni qué infraestructura usaban. Tampoco se habían observado cargas adicionales: el código solo abría la puerta, de modo que lo que ocurriera después de entrar por SSH no quedaría reflejado en el análisis de la extensión.",
+      "Para comprobar si te afecta, Cursor da una prueba sencilla. En macOS, busca la etiqueta «svc-telemetry» dentro del archivo ~/.ssh/authorized_keys, por ejemplo con el comando grep -n svc-telemetry ~/.ssh/authorized_keys en la Terminal. En Windows, busca esa misma etiqueta en %USERPROFILE%\\.ssh\\authorized_keys y en C:\\ProgramData\\ssh\\administrators_authorized_keys. Si aparece, trata el equipo como comprometido. Si no aparece, es mucho menos probable que te haya afectado, aunque Cursor recomienda seguir sus pasos de todos modos si instalaste o actualizaste la extensión en esa franja horaria. También conviene mirar si existen los archivos ~/.config/.smt y ~/.config/.smtk, el agente com.apple.sysmond en macOS o la tarea SysMon en Windows.",
+      "Si encuentras algo, Cursor recomienda aislar el equipo de la red, eliminar la clave no autorizada y los mecanismos de persistencia, y cambiar desde otro dispositivo de confianza las credenciales y sesiones a las que tuviera acceso ese ordenador. Avisa además de que desinstalar la extensión no basta, porque los scripts de persistencia siguen ejecutándose por su cuenta, y de que hay que valorar reinstalar el sistema. La empresa ofrece scripts de limpieza para macOS y Windows en su propio aviso; conviene descargarlos solo desde ahí y leerlos antes de ejecutarlos."
+    ],
+    "impact": [
+      "Si usas Cursor en Windows o macOS y la extensión Claude Code se actualizó sola el 29 de octubre, busca la etiqueta «svc-telemetry» en tu archivo de claves SSH antes de nada.",
+      "Si usas Claude Code desde el paquete de npm, Open VSX o la tienda de Microsoft, esos canales no contenían el código malicioso según el análisis de OpenSourceMalware. Aun así, actualiza a la 2.1.314.",
+      "Desinstalar la extensión no elimina la puerta trasera: si la encuentras, aísla el equipo, cambia tus contraseñas y claves desde otro dispositivo y valora reinstalar el sistema.",
+      "Las extensiones de editor se actualizan solas y tienen acceso a tus archivos y variables: revisa cuáles tienes instaladas y desactiva la actualización automática de las que no necesites."
+    ],
+    "sources": [
+      {
+        "name": "Cursor, aviso de seguridad sobre la extensión Claude Code",
+        "url": "https://cursor.com/blog/claude-code-extension-security-notice"
+      },
+      {
+        "name": "OpenSourceMalware, análisis técnico de la extensión manipulada",
+        "url": "https://opensourcemalware.com/blog/trojanized-claude-code-extension-plants-persistent-ssh-backdoor"
+      },
+      {
+        "name": "The Hacker News, cobertura del incidente",
+        "url": "https://thehackernews.com/2026/10/official-claude-code-vs-code-extension.html"
+      }
+    ],
+    "related": [
+      {
+        "title": "Permisos para un agente de IA sin darle tus contraseñas",
+        "url": "../articulos/permisos-agente-ia-sin-contrasenas.html"
+      },
+      {
+        "title": "Prompt injection en agentes de IA",
+        "url": "../articulos/prompt-injection-agentes-ia.html"
+      },
+      {
+        "title": "Qué IA elegir para programar",
+        "url": "../articulos/elegir-ia-para-programar.html"
+      }
+    ],
+    "photo": {
+      "alt": "Candado cerrado con cadena y llave puesta (imagen de archivo)",
+      "author": "Lacz02",
+      "license": "CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Padlock_with_chain.jpg"
+    },
+    "published": "2026-10-31"
+  },
+  {
+    "slug": "2026-10-30-artex-agentes-ia-ataques-crowdstrike",
+    "date": "2026-10-29",
+    "category": "Seguridad",
+    "title": "Un grupo vinculado a China usó agentes de IA para atacar a más de 200 organizaciones en 11 días",
+    "dek": "CrowdStrike describe ARTEX, un sistema de agentes de IA que un solo operador usó contra ministerios, defensa o telecomunicaciones, apoyado sobre todo en el modelo DeepSeek.",
+    "tldr": "CrowdStrike ha documentado una campaña en la que un grupo al que llama VAPOR PANDA usó un conjunto de agentes de IA llamado ARTEX para atacar a más de 200 organizaciones en al menos 14 países durante 11 días. Confirmó intrusiones en nueve; el ataque se dirigía a organizaciones, no a usuarios domésticos.",
+    "key_facts": [
+      {
+        "value": "200+",
+        "label": "organizaciones atacadas en al menos 14 países"
+      },
+      {
+        "value": "11 días",
+        "label": "duración de la ventana de actividad analizada"
+      },
+      {
+        "value": "9",
+        "label": "organizaciones con intrusión confirmada"
+      },
+      {
+        "value": "1,4 mil M",
+        "label": "tokens de entrada gastados por los agentes en una intrusión"
+      }
+    ],
+    "quote": {
+      "text": "ARTEX coordinates a main agent with subordinate planner and worker agents over a shared graph of facts, findings, and goals.",
+      "source": "CrowdStrike (traducido: «ARTEX coordina un agente principal con agentes subordinados de planificación y ejecución sobre un grafo compartido de hechos, hallazgos y objetivos»)"
+    },
+    "body": [
+      "La empresa de ciberseguridad CrowdStrike publicó el 29 de octubre un informe sobre una campaña de ataques en la que la inteligencia artificial hacía buena parte del trabajo. Según su equipo OverWatch, el grupo, al que bautizan VAPOR PANDA y vinculan con China, empezó el 17 de octubre y utilizó un sistema llamado ARTEX contra más de 200 organizaciones distintas de al menos 14 países a lo largo de 11 días. Entre los objetivos figuran ministerios de Exteriores e Interior y otras entidades públicas, además de empresas de semiconductores, defensa, energía nuclear, farmacia, finanzas y telecomunicaciones, y centros de estudios.",
+      "ARTEX es lo que se conoce como un framework de agentes, es decir, una estructura de programas de IA que se reparten el trabajo. Según CrowdStrike, un agente principal coordina a otros subordinados, unos que planifican y otros que ejecutan, y todos comparten un grafo, una especie de pizarra común, con hechos, hallazgos y objetivos. Con ella el sistema avanza solo desde el primer acceso hasta el reconocimiento de los equipos y el salto de uno a otro dentro de la red. La firma añade que el mismo framework lo usan también grupos con motivación económica y otros sin identificar, así que no es una herramienta exclusiva de este grupo.",
+      "El dato más llamativo es la escala. Según CrowdStrike, un único operador humano llevaba varias intrusiones a la vez e intervenía sobre todo en los puntos de decisión. Los agentes probaban varias vías de ataque en paralelo y cambiaban de método cuando una fallaba. En una de las intrusiones, los agentes de planificación consumieron unos 1.400 millones de tokens de entrada; un token es el trozo de texto, más o menos una sílaba, en que el modelo divide lo que lee. CrowdStrike dice que el grupo usó principalmente el modelo chino DeepSeek, complementado con un segundo modelo comercial de pago que no pudo confirmar.",
+      "Conviene no exagerar lo que ocurrió. La actividad posterior a la intrusión se confirmó en nueve organizaciones, y el sondeo de contraseñas y credenciales alcanzó al menos a otras doce. Las técnicas descritas son conocidas, como el uso de shells web (programas que permiten dirigir un servidor a distancia), abusos de autenticación SAML y XXE para llegar a los metadatos de servicios en la nube, o tokens de administrador falsificados, no inventos nuevos de la IA. Lo nuevo es la velocidad y la capacidad de repetirlas contra cientos de objetivos con poca intervención humana. CrowdStrike detalla también que el operador ordenó a los agentes buscar equipos que no tuvieran instalado su sensor Falcon, para concentrar el siguiente paso en las máquinas sin protección.",
+      "El informe no explica cuántos datos se robaron ni qué organizaciones concretas fueron comprometidas, y la atribución a China es una valoración de CrowdStrike, no un hecho confirmado por un gobierno. Tampoco prueba que DeepSeek, como empresa, supiera de este uso: lo que dice es que el grupo empleó su modelo, algo que cualquiera puede hacer con un modelo accesible por internet. Por eso importa menos la nacionalidad del modelo que el hecho de que la barrera para atacar a muchas organizaciones a la vez ha bajado.",
+      "Las recomendaciones de CrowdStrike van dirigidas a equipos de seguridad: rotar claves de firma y credenciales de servicio tras cualquier sospecha de exposición, incluidas las que queden en copias de seguridad; exigir la validación de firmas SAML; usar IMDSv2, la versión más segura del servicio de metadatos de Amazon; limitar qué funciones en la nube pueden ejecutar comandos; parchear los equipos expuestos a internet, sobre todo los servidores Linux antiguos; y desplegar un agente de detección en tiempo real en todos los equipos, incluidos los que no son accesibles desde internet. También publica marcas para buscar rastros de ARTEX, como las cadenas «artx» o «artex» en líneas de comandos o el directorio C:\\ProgramData\\artx5v\\."
+    ],
+    "impact": [
+      "Si eres usuario particular, no hay una acción concreta que tomar por este informe: los objetivos fueron organizaciones. Mantener actualizados tus dispositivos y usar verificación en dos pasos sigue siendo la mejor defensa.",
+      "Si trabajas en una pequeña empresa o gestionas sistemas, revisa que los equipos expuestos a internet estén parcheados y que todos tengan algún tipo de protección activa: los agentes buscaron deliberadamente máquinas sin ella.",
+      "Los ataques con IA no usan técnicas mágicas, sino las de siempre a mayor velocidad y escala; las medidas básicas de higiene siguen siendo lo que más reduce el riesgo."
+    ],
+    "sources": [
+      {
+        "name": "CrowdStrike, VAPOR PANDA y ARTEX",
+        "url": "https://www.crowdstrike.com/en-us/blog/vapor-panda-uses-artex-to-scale-global-campaign/"
+      }
+    ],
+    "related": [
+      {
+        "title": "Estafas con IA: cómo reconocerlas",
+        "url": "../articulos/estafas-con-ia.html"
+      },
+      {
+        "title": "Prompt injection en agentes de IA",
+        "url": "../articulos/prompt-injection-agentes-ia.html"
+      }
+    ],
+    "photo": {
+      "alt": "Pasillo de un centro de datos con armarios de servidores blancos (imagen de archivo)",
+      "author": "PiDatacenters",
+      "license": "CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Racks_Amravati_Data_Center.jpg"
+    },
+    "published": "2026-10-31"
+  },
   {
     "slug": "2026-10-29-mistral-large-4-pesos-abiertos",
     "date": "2026-10-29",
