@@ -1,5 +1,220 @@
 [
   {
+    "slug": "2026-11-06-gemini-omni-1-2-flash-video-15-segundos",
+    "date": "2026-11-05",
+    "published": "2026-11-06",
+    "category": "Modelos",
+    "title": "Google lanza Gemini Omni 1.2 Flash: vídeo con audio de hasta 15 segundos y un 30 % más barato",
+    "dek": "El modelo de vídeo de Google ya está disponible para todos los desarrolladores, con clips más largos, edición por conversación y llegada a Vids, Flow y Gemini.",
+    "tldr": "Google ha declarado generalmente disponible Gemini Omni 1.2 Flash, su modelo que crea vídeo con audio sincronizado. Los clips pasan de 10 a 15 segundos y el precio baja un 30 % hasta unos 0,07 dólares por segundo en 720p.",
+    "key_facts": [
+      {
+        "value": "15 s",
+        "label": "duración máxima de clip (antes, 10 s)"
+      },
+      {
+        "value": "-30 %",
+        "label": "de precio frente a Omni 1.1"
+      },
+      {
+        "value": "0,07 $",
+        "label": "por segundo de vídeo en 720p"
+      },
+      {
+        "value": "4K",
+        "label": "resolución máxima al escalar un clip final"
+      }
+    ],
+    "body": [
+      "El 5 de noviembre de 2026, Google anunció que Gemini Omni 1.2 Flash, su modelo de generación de vídeo, pasa a estar disponible de forma general. «Generalmente disponible» significa que deja de ser una vista previa: tiene garantías de servicio para empresas y se puede usar en producción. Omni genera vídeo con audio nativo, es decir, voces y sonidos creados a la vez que las imágenes, a partir de texto, imágenes o clips de vídeo.",
+      "Las novedades principales, según el blog oficial de Google, son tres. Primero, la duración: los clips se pueden configurar entre 3 y 15 segundos, en pasos de un segundo, cuando la versión 1.1 se quedaba en 10. Segundo, el precio: Google lo describe como alrededor de un 30 % más barato que Omni 1.1, con una tarifa de 0,07 dólares por segundo de vídeo en 720p. Con esa cifra, un clip de 10 segundos ronda los 0,70 dólares y uno de 15 segundos algo más de un dólar, según los cálculos del medio Unite.AI a partir de la tabla de precios. Tercero, la edición: se pueden hacer cambios conversacionales sobre clips completos de 15 segundos, como sustituir un fondo o cambiar la iluminación, sin regenerarlo todo desde cero.",
+      "El flujo de trabajo propuesto es de borrador a versión final. Puedes generar pruebas en 360p o 720p, que son más baratas y rápidas, y escalar solo los clips que te convencen a 1080p o a 4K. Además, el modelo acepta imágenes de referencia de personajes, productos o estilos, clips de movimiento de hasta tres segundos y pistas de audio. Google afirma que mejora la coherencia entre el primer y el último fotograma, que el habla suena más natural con sincronización labial y varios interlocutores, y que los movimientos de cámara son más suaves y con menos saltos de corte.",
+      "Hay una parte pensada para quien no programa. Google Vids, su herramienta de vídeo para presentaciones y trabajo, ofrece clips de 15 segundos sin coste adicional con una cuenta de Google o una suscripción de Workspace. En la aplicación de Gemini, los vídeos de 15 segundos se están desplegando para los suscriptores de Google AI Ultra, el plan más alto. El modelo también está en Flow, el estudio de creación de Google, en Google Ads para crear campañas y en Google AI Studio. Para desarrolladores, está en la API de Gemini y en Google Cloud con capacidad reservada, lo que importa a empresas que no pueden depender de una cola compartida.",
+      "Según el resumen de Unite.AI, que enlaza los documentos de desarrolladores, el modelo no está disponible en el nivel gratuito de la API y requiere una cuenta de pago. Los clips generados con la API pueden ampliarse añadiendo entre 3 y 10 segundos por turno hasta un máximo de 30 segundos en total, aunque no se puede añadir metraje al principio ni insertarlo a mitad del clip. Los modelos anteriores seguirán disponibles durante un periodo de transición de cuatro semanas, tras el cual las peticiones a la versión 1.1 se redirigirán automáticamente a la 1.2 con sus tarifas.",
+      "Google reconoce límites. Dice que sigue trabajando en las acciones deportivas rápidas, los cambios de guion veloces y la física compleja, tres terrenos donde los modelos de vídeo suelen fallar: una pelota que rebota mal o unas manos con comportamientos extraños. Según la documentación citada por Unite.AI, la API soporta plenamente el inglés y no se han evaluado otros idiomas, y aún no admite editar la voz ni subir audio propio como entrada. Todas las salidas llevan SynthID, una marca de agua invisible que se puede detectar por programa y sirve para identificar que el vídeo lo generó una IA.",
+      "Lo que aún no está claro es cómo se comportará en español y en trabajo real. Google publica comparativas internas, y según Unite.AI, citando las pruebas lado a lado de Google DeepMind, la versión 1.2 gana a la 1.1 por un 62 % frente a un 38 % en consistencia visual, y por un 63 % frente a un 37 % en coherencia de identidad con varias referencias. Son datos del propio fabricante, no de una evaluación independiente, así que conviene probarlo con tus propios casos antes de contratar nada."
+    ],
+    "impact": [
+      "Si usas Google Vids o una cuenta de Workspace, puedes probar clips de 15 segundos sin pagar nada extra; para crear vídeo con IA a coste cero no hace falta la API.",
+      "Si haces anuncios o vídeos de producto, el flujo de borrador barato y versión final en 1080p o 4K te permite iterar sin gastar apenas: tira varias pruebas a 360p antes de escalar la buena.",
+      "Si publicas vídeos creados con IA, ten en cuenta que llevan una marca invisible SynthID: no es un truco, es la forma en que Google permite detectar su origen.",
+      "Antes de apostar por la API para un proyecto, calcula el coste de tus clips con la tabla oficial y recuerda que el nivel gratuito no incluye este modelo."
+    ],
+    "sources": [
+      {
+        "name": "Google, anuncio oficial de Gemini Omni 1.2 Flash",
+        "url": "https://blog.google/innovation-and-ai/technology/developers-tools/introducing-gemini-omni-1-2-flash/"
+      },
+      {
+        "name": "Unite.AI, Gemini Omni 1.2 Flash reaches general availability",
+        "url": "https://www.unite.ai/googles-gemini-omni-1-2-flash-reaches-general-availability/"
+      }
+    ],
+    "related": [
+      {
+        "title": "Herramientas de vídeo con IA",
+        "url": "../articulos/video-ia-herramientas.html"
+      },
+      {
+        "title": "Cuánto cuesta usar IA por API",
+        "url": "../articulos/cuanto-cuesta-usar-ia-api.html"
+      },
+      {
+        "title": "Cómo detectar contenido hecho con IA",
+        "url": "../articulos/detectar-contenido-ia.html"
+      }
+    ],
+    "photo": {
+      "alt": "Cámara de cine profesional Sony Cinealta (imagen de archivo)",
+      "author": "Ricky Norris",
+      "license": "CC BY 2.0",
+      "url": "https://commons.wikimedia.org/w/index.php?curid=5048167"
+    }
+  },
+  {
+    "slug": "2026-11-06-perplexity-teammates-agentes-persistentes",
+    "date": "2026-11-04",
+    "published": "2026-11-06",
+    "category": "Herramientas",
+    "title": "Perplexity lanza Teammates: agentes de IA que siguen trabajando entre una tarea y otra",
+    "dek": "Los nuevos agentes de Perplexity recuerdan tus proyectos, se añaden a Slack y devuelven el trabajo para que lo revises; llegan primero al plan Max.",
+    "tldr": "Perplexity ha presentado Teammates, agentes personales que mantienen memoria y siguen proyectos sin esperar a que les escribas un nuevo prompt. Se lanzan en la web, y según Digital Trends exigen el plan Max de 200 dólares al mes.",
+    "key_facts": [
+      {
+        "value": "200 $",
+        "label": "al mes, plan Max (según Digital Trends)"
+      },
+      {
+        "value": "Web",
+        "label": "disponible ya; iOS, próximamente"
+      },
+      {
+        "value": "Slack",
+        "label": "un Teammate se puede añadir a un canal"
+      }
+    ],
+    "quote": {
+      "text": "Personal agents need to be purpose-built for work.",
+      "source": "Perplexity, anuncio oficial (traducido: «Los agentes personales deben estar diseñados a propósito para el trabajo»)"
+    },
+    "body": [
+      "Perplexity presentó Teammates, una función que define como agentes para trabajo complejo y continuado. Su blog oficial está fechado el 4 de noviembre de 2026 y el medio Digital Trends lo cubrió el día 5. La diferencia respecto a un chatbot es que un Teammate no vive solo dentro de una conversación: es un agente que se queda a cargo de un proyecto, planifica el trabajo, comprueba los resultados y te devuelve lo hecho para que lo revises.",
+      "Según Perplexity, el agente vigila lo que ocurre y hace seguimiento de los cambios sin esperar a que le des una orden nueva. Conserva memoria de los objetivos del proyecto, del historial de tareas y de los archivos compartidos entre ejecuciones, y se apoya en lo que ya existe en Computer, el agente multimodelo que Perplexity lanzó en febrero: Proyectos, habilidades (skills), memoria y automatizaciones. También puede pasar trabajo a otros Teammates. Las áreas que cita son marketing, ventas, atención al cliente y operaciones.",
+      "Digital Trends describe una demostración: un Teammate de publicidad detectó que unos anuncios de creadores batían el objetivo de coste de captación, preparó una campaña mayor y envió una ampliación de contrato al equipo legal. Es el tipo de tarea que antes pedía varios mensajes y supervisión constante, y que ahora se delega a un agente que mantiene el hilo.",
+      "El control es la parte que más debe interesarte. Perplexity indica que puedes revisar el trabajo terminado, tomar el control del escritorio del agente o redirigirlo en mitad de una tarea. Cada Teammate funciona en un entorno separado, con sus propias sesiones de navegador; las credenciales guardadas se cifran y se introducen de forma segura, y hereda los permisos de herramientas y proyectos de Computer. Tú eliges a qué repositorios de GitHub puede acceder. Puedes añadirlo a un canal de Slack, donde tus compañeros le asignan tareas o le piden novedades.",
+      "Para empezar, según el blog, eliges Teammates en la navegación de la izquierda, le pones nombre, conectas herramientas como Slack, GitHub o Gmail, describes el trabajo y lo asignas a un proyecto con una primera tarea. Conviene empezar con algo acotado y de poco riesgo, como clasificar errores o resumir un canal, y ampliar permisos solo cuando veas que hace bien el trabajo.",
+      "En precio y disponibilidad, el blog de Perplexity no pone cifra a Teammates, pero nombra el plan Max para el lanzamiento en iOS y dice que los usuarios Free y Pro pueden mejorar su plan. Digital Trends concreta que hace falta el Max, que cuesta 200 dólares al mes, y que se despliega primero para esos usuarios en la web, con las aplicaciones móvil y de escritorio como «próximamente». Perplexity promete más acceso y funciones «en las próximas semanas».",
+      "Lo que no se sabe todavía es cuánto trabajo real aguantan sin supervisión ni cuánto cuestan en uso, porque son datos que solo darán las pruebas independientes. Digital Trends recuerda que hay competencia: los agentes de espacio de trabajo de OpenAI, Copilot Cowork de Microsoft, Grok Bot y Claude Cowork de Anthropic apuntan a ideas parecidas, aunque los dos primeros se dirigen a organizaciones y no a suscriptores individuales."
+    ],
+    "impact": [
+      "Si pagas el plan Max, puedes delegar tareas de seguimiento largas, pero empieza con tareas pequeñas y revisa siempre el resultado antes de dejarle enviar nada a terceros.",
+      "Si usas Free o Pro, de momento no tienes acceso: no hace falta actualizar a 200 dólares al mes por probarlo sin tener claro el caso de uso.",
+      "Antes de conectar Gmail, Slack o GitHub, da solo los permisos imprescindibles; un agente que actúa por ti puede equivocarse con tus cuentas reales.",
+      "Compara con otras opciones del mercado, porque OpenAI, Microsoft y Anthropic ofrecen agentes similares con otros precios."
+    ],
+    "sources": [
+      {
+        "name": "Perplexity, anuncio oficial de Teammates",
+        "url": "https://www.perplexity.ai/hub/blog/teammates-are-agents-for-complex-ongoing-work"
+      },
+      {
+        "name": "Digital Trends, Perplexity's new AI coworkers",
+        "url": "https://www.digitaltrends.com/cool-tech/perplexitys-new-ai-coworkers-can-take-over-your-workload-but-they-dont-come-cheap/"
+      }
+    ],
+    "related": [
+      {
+        "title": "Qué es un agente de IA",
+        "url": "../articulos/que-es-un-agente-ia.html"
+      },
+      {
+        "title": "Perplexity: buscar con IA",
+        "url": "../articulos/perplexity-buscar-ia.html"
+      },
+      {
+        "title": "Permisos de un agente de IA sin darle tus contraseñas",
+        "url": "../articulos/permisos-agente-ia-sin-contrasenas.html"
+      }
+    ],
+    "photo": {
+      "alt": "Aravind Srinivas, consejero delegado de Perplexity, en un evento de TechCrunch",
+      "author": "TechCrunch",
+      "license": "CC BY 2.0",
+      "url": "https://commons.wikimedia.org/w/index.php?curid=155213912"
+    }
+  },
+  {
+    "slug": "2026-11-06-meta-pausa-terminos-scraping-ia",
+    "date": "2026-11-05",
+    "published": "2026-11-06",
+    "category": "Regulación",
+    "title": "Meta pausa sus nuevos términos que permitían usar contenido de webs para sus productos de IA",
+    "dek": "Tras las quejas de editores, la apertura de una investigación en el Reino Unido y bloqueos judiciales, Meta frena los cambios que iban a entrar en vigor el 20 de noviembre.",
+    "tldr": "Meta ha pausado los cambios en sus términos comerciales que habrían permitido rastrear las webs de quienes usan sus cuentas de empresa, incluidos medios. Sigue vigente la versión actual y no hay nueva fecha.",
+    "key_facts": [
+      {
+        "value": "20 nov",
+        "label": "fecha prevista que ahora queda en pausa"
+      },
+      {
+        "value": "4",
+        "label": "conjuntos de términos de Meta afectados"
+      },
+      {
+        "value": "2",
+        "label": "países con medidas cautelares: Noruega y Brasil"
+      }
+    ],
+    "quote": {
+      "text": "We're pausing the changes as we continue to engage with stakeholders and take our time to get this right.",
+      "source": "Portavoz de Meta a Nieman Lab (traducido: «Pausamos los cambios mientras seguimos hablando con las partes interesadas y nos tomamos el tiempo para hacerlo bien»)"
+    },
+    "body": [
+      "El 5 de noviembre de 2026, Meta retiró el enlace de vista previa de unos términos comerciales que iba a imponer y publicó en su Centro de Ayuda para Empresas que los cambios quedan en pausa. Según Nieman Lab, que reveló el asunto el 15 de octubre, esos términos habrían permitido a Meta rastrear (scraping, descargar automáticamente el contenido de) las webs de quienes tienen cuentas de Meta Business, incluidos sitios de noticias. Un portavoz de Meta declaró al medio que la empresa pausa los cambios mientras sigue hablando con las partes interesadas. Meta indica que sus términos actuales siguen en vigor.",
+      "La cronología que recoge Nieman Lab explica por qué ha costado tanto. El 16 de octubre, Meta quitó la palabra «entrenar» del texto y limitó el uso del contenido rastreado a «publicidad y productos de empresa», aunque expertos legales dijeron que los permisos seguían siendo amplios. El 23 de octubre, la fecha de entrada en vigor se movió del 30 de octubre al 20 de noviembre. El 28 de octubre, Meta prometió consultar con editores y asociaciones del sector. Ese mismo día, su vicepresidente de comunicación, Andy Stone, escribió en X que no planeaban cambiar la política. Una semana después, Meta pausó.",
+      "Los textos afectados son los Términos Comerciales de Meta, los de Catálogo de Producto, los de Anuncios de Autoservicio y los de IA Generativa para Creatividades Publicitarias. Es decir, afectan sobre todo a empresas que anuncian o venden en Facebook e Instagram, no al uso normal de las aplicaciones por una persona.",
+      "Las objeciones llegaron desde varios frentes. Editores de prensa y organizaciones del sector de todo el mundo, incluidos editores alemanes, protestaron. Políticos británicos pidieron a los reguladores frenar los términos antes del 30 de octubre. Según Nieman Lab, tribunales de Noruega y Brasil dictaron medidas cautelares contra ellos tras demandas de organizaciones de medios. Los senadores estadounidenses Adam Schiff y Marsha Blackburn escribieron a Mark Zuckerberg pidiéndole que los retirara.",
+      "El organismo británico de competencia, la CMA, anunció el 30 de octubre una investigación. Evalúa si Meta abusa de una posición dominante, según la Ley de Competencia de 1998, al imponer términos injustos a editores y anunciantes. Primero analizará si Meta es dominante en un mercado relevante del Reino Unido y después si los términos suponen un abuso. La preocupación es que permitieran usar contenido de las webs de los negocios para crear productos propios, incluidas funciones de IA, sin darles opción. La CMA subraya que no se ha decidido si Meta ha infringido la ley. Su directora ejecutiva, Sarah Cardell, dijo: «Donde una empresa tiene una posición dominante, no debe usar esa posición para imponer términos injustos».",
+      "Lo que no se sabe es si Meta volverá con una versión modificada, cuándo ni con qué cambios, ni si la investigación de la CMA continuará ahora que los términos están en pausa; una pausa no es una retirada. El caso importa más allá de Meta porque muestra una disputa de fondo: si las empresas de IA pueden usar el contenido publicado en la web para sus productos y bajo qué condiciones se concede ese permiso."
+    ],
+    "impact": [
+      "Si tienes una cuenta de Meta Business, tus condiciones actuales no cambian el 20 de noviembre; revisa de todos modos el Centro de Ayuda por si Meta anuncia una versión nueva.",
+      "Si gestionas una web o un blog propio, es buen momento para revisar tu archivo robots.txt y tus condiciones de uso respecto al rastreo automático.",
+      "Si solo usas Facebook o Instagram como persona, esto no cambia tu uso diario: los términos afectados son comerciales.",
+      "Sigue el resultado de la CMA y de los tribunales: pueden marcar qué permisos pueden exigir las plataformas a quienes publican contenido."
+    ],
+    "sources": [
+      {
+        "name": "Nieman Lab, Meta pulls down controversial terms of service",
+        "url": "https://www.niemanlab.org/2026/11/meta-pulls-down-controversial-terms-of-service/"
+      },
+      {
+        "name": "Meta, Centro de Ayuda para Empresas",
+        "url": "https://www.facebook.com/business/help/2481113349080785"
+      },
+      {
+        "name": "CMA, apertura de investigación sobre los términos comerciales de Meta",
+        "url": "https://www.gov.uk/government/news/cma-opens-investigation-into-metas-commercial-terms--2"
+      }
+    ],
+    "related": [
+      {
+        "title": "Derechos de autor y contenido hecho con IA",
+        "url": "../articulos/derechos-autor-contenido-ia.html"
+      },
+      {
+        "title": "Privacidad en los chats con IA",
+        "url": "../articulos/privacidad-chats-ia.html"
+      }
+    ],
+    "photo": {
+      "alt": "Sede de Meta Platforms en Menlo Park, California (imagen de archivo)",
+      "author": "LPS.1",
+      "license": "CC0",
+      "url": "https://commons.wikimedia.org/w/index.php?curid=116589359"
+    }
+  },
+  {
     "slug": "2026-11-05-tjue-abogado-general-gemini-prensa",
     "date": "2026-11-03",
     "published": "2026-11-05",
