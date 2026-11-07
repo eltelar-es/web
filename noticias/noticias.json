@@ -1,5 +1,135 @@
 [
   {
+    "slug": "2026-11-07-doj-grupo-superinteligencia",
+    "date": "2026-11-05",
+    "published": "2026-11-07",
+    "category": "Regulación",
+    "title": "EE. UU. crea un grupo del Departamento de Justicia para perseguir el uso ilegal de la IA avanzada",
+    "dek": "El DOJ lanza la «Super Intelligence Task Force» para investigar y procesar a quien use IA de forma ilícita: fraude, crimen organizado y actores extranjeros.",
+    "tldr": "El Departamento de Justicia de EE. UU. anunció el 5 de noviembre un grupo de trabajo contra el mal uso de la «superinteligencia». Perseguirá fraudes, ataques a infraestructuras críticas y actividad de actores extranjeros, y animará a las empresas a reforzar sus controles internos.",
+    "key_facts": [
+      {
+        "value": "5 nov",
+        "label": "fecha del anuncio oficial del Departamento de Justicia"
+      },
+      {
+        "value": "3",
+        "label": "tipos de actores señalados: Estados, crimen organizado y fraudes"
+      }
+    ],
+    "quote": {
+      "text": "Nuestro esfuerzo integral promoverá la innovación y evitará el mal uso de la superinteligencia.",
+      "source": "Stanley Woodward, fiscal general asociado de EE. UU. (traducido)"
+    },
+    "body": [
+      "El 5 de noviembre de 2026, la Oficina de Asuntos Públicos del Departamento de Justicia de EE. UU. (DOJ) publicó la nota de prensa 26-1319 anunciando la Super Intelligence Task Force (DOJ-SITF), un grupo de trabajo interno. El departamento usa el término «superinteligencia» (SI) en el comunicado; no lo define en el texto de la nota, que remite a un memorando aparte que no hemos podido consultar.",
+      "Según la nota, el objetivo es evitar que el liderazgo estadounidense en esta tecnología se vea socavado por su mal uso. El departamento afirma que se protegerá frente a lo que llama «actores maliciosos de SI» y, al mismo tiempo, que promoverá la innovación. El fiscal general, Todd Blanche, declaró que el desarrollo de la SI «seguirá impulsado por innovadores estadounidenses».",
+      "El grupo está dirigido por el fiscal general asociado Stanley Woodward y por el fiscal general adjunto asociado Stephen Weiss. La nota menciona además al presidente de la «SI Force», Jay Clayton, como socio. No se citan otros miembros del grupo ni se da un presupuesto o una plantilla.",
+      "El comunicado señala tres grandes categorías de mal uso: el de actores extranjeros o patrocinados por Estados, el de organizaciones criminales transnacionales y el de personas o empresas que cometan fraude u otras conductas ilegales. El departamento dice que identificará y perseguirá judicialmente a quienes usen la SI violando la ley, en especial cuando la conducta afecte a los contribuyentes estadounidenses, a infraestructuras críticas o a la seguridad nacional.",
+      "Weiss añadió que el departamento buscará disuadir el uso indebido, mejorar la comunicación sobre los riesgos de la SI y la respuesta ante ellos, y animar a las empresas a mantener controles internos sólidos. Esa última parte es la que más puede afectar a compañías que desarrollan o usan modelos avanzados: el departamento les pide, de forma expresa, que vigilen internamente cómo se utilizan sus herramientas.",
+      "Conviene separar lo que dice la nota de lo que no dice. No crea una ley nueva ni delitos nuevos: habla de aplicar las leyes existentes a conductas ilegales cometidas con IA. No establece sanciones concretas, plazos ni una lista de empresas obligadas a nada. Tampoco precisa qué capacidad técnica convierte a un sistema en «superinteligencia», por lo que no está claro a qué herramientas del día a día, como los asistentes de chat comerciales, alcanzará en la práctica."
+    ],
+    "impact": [
+      "No cambia nada directamente en tu uso diario de ChatGPT, Gemini o Claude: el grupo se dirige a fraudes, ataques y actividad de Estados extranjeros, no a usuarios corrientes.",
+      "Si eres ciudadano o empresa de la UE o España, el anuncio no te obliga a nada; tu marco sigue siendo el Reglamento europeo de IA. Sirve como señal de que EE. UU. apuesta por perseguir delitos concretos con la ley existente.",
+      "Si tu empresa ofrece herramientas de IA a clientes de EE. UU., es buen momento para revisar los registros de uso, los controles de acceso y los procedimientos de abuso, ya que el DOJ dice que lo valorará.",
+      "Mantente atento al memorando completo y a las primeras actuaciones: serán las que definan hasta dónde llega el grupo en la práctica."
+    ],
+    "sources": [
+      {
+        "name": "Departamento de Justicia de EE. UU., nota de prensa (5 nov 2026)",
+        "url": "https://www.justice.gov/opa/pr/department-justice-launches-super-intelligence-task-force"
+      }
+    ],
+    "related": [
+      {
+        "title": "El Reglamento europeo de IA, explicado",
+        "url": "../articulos/ai-act-explicado.html"
+      },
+      {
+        "title": "Estafas con IA: cómo reconocerlas",
+        "url": "../articulos/estafas-con-ia.html"
+      }
+    ],
+    "photo": {
+      "alt": "Edificio Robert F. Kennedy del Departamento de Justicia de EE. UU., en Washington",
+      "author": "APK",
+      "license": "CC BY 4.0",
+      "url": "https://commons.wikimedia.org/w/index.php?curid=187913370"
+    }
+  },
+  {
+    "slug": "2026-11-07-botpress-brecha-claves-ia",
+    "date": "2026-11-06",
+    "published": "2026-11-07",
+    "category": "Seguridad",
+    "title": "Botpress admite una brecha que expuso claves de IA de 16 espacios de clientes",
+    "dek": "La plataforma de chatbots reconoce que un intruso leyó configuraciones de bots con credenciales de terceros y pide rotarlas todas.",
+    "tldr": "Botpress, plataforma para crear chatbots con IA, ha revelado que entre el 12 y el 21 de octubre un atacante accedió a sus herramientas internas y leyó las configuraciones de 16 espacios de clientes. Si usas Botpress y te han avisado, trata todas las claves guardadas en esos bots como robadas y cámbialas.",
+    "key_facts": [
+      {
+        "value": "16",
+        "label": "espacios de clientes con configuraciones leídas"
+      },
+      {
+        "value": "2",
+        "label": "espacios más con ajustes de integración modificados"
+      },
+      {
+        "value": "9 días",
+        "label": "de acceso interno, del 13 al 21 de octubre"
+      }
+    ],
+    "quote": {
+      "text": "Trata todas las credenciales guardadas en los bots afectados como expuestas.",
+      "source": "Botpress, comunicado de seguridad (traducido)"
+    },
+    "body": [
+      "El 6 de noviembre de 2026, Botpress publicó un comunicado sobre un incidente de seguridad ocurrido el mes anterior. Botpress es una plataforma con la que empresas y particulares montan asistentes conversacionales (chatbots) con inteligencia artificial, por ejemplo para atender clientes por web, WhatsApp u otros canales. Según la propia empresa, alguien empezó a sondear el 12 de octubre un servidor intermedio de autenticación (un «proxy») que protege varias herramientas internas.",
+      "Entre el 13 y el 21 de octubre, el atacante aprovechó un fallo en la validación del inicio de sesión de ese proxy y entró con sesiones que parecían de empleados. El 21 de octubre, entre las 07:44 y las 08:23 (hora UTC), utilizó la credencial de programación de un empleado, que tenía permisos de administrador, para leer las configuraciones de bots de 16 espacios de trabajo de clientes. Botpress corrigió el fallo y revocó esa credencial ese mismo día, hacia las 16:25 UTC. Según el comunicado, los intentos posteriores de volver a entrar, observados hasta el 3 de noviembre, fueron rechazados.",
+      "Lo importante para los clientes es qué contiene una configuración de bot. Puede incluir credenciales de servicios conectados: claves de proveedores de IA (las que permiten usar modelos de terceros y que se facturan a tu cuenta), tokens de canales de mensajería y credenciales de sistemas de gestión de clientes (CRM). Además, Botpress indica que en otros dos espacios de trabajo se modificó la configuración de una integración en cada uno, aprovechando debilidades en los pasos de configuración de algunas integraciones. Durante la ventana de acceso, el atacante también pudo ver información de cuentas de clientes y datos internos sobre credenciales de empleados.",
+      "La empresa detalla también lo que no ha encontrado: ninguna prueba de acceso a las conversaciones de los usuarios finales con los bots, ni de que se comprometieran las cuentas de identidad de empleados, ni de cambios en el código fuente, en los procesos de compilación o en los paquetes publicados. Tampoco guarda números completos de tarjeta de pago. De momento no hay petición de rescate ni señales de que los datos se hayan publicado o puesto a la venta.",
+      "Un medio especializado, Unite.AI, que recoge el comunicado, atribuye a Botpress la tesis de que el objetivo era conseguir uso de IA para revenderlo en mercados ilegales, mediante una gran red de cuentas de Botpress que consumían créditos de IA. Es la explicación de la empresa, no una conclusión verificada de forma independiente. Botpress añade que sus registros no permiten confirmar qué bots tenían credenciales válidas en el momento de la lectura, y por eso pide a los clientes afectados rotar todo lo que hubiera guardado, es decir, generar claves nuevas e invalidar las antiguas.",
+      "Aún quedan cosas por saber. Botpress dice que sigue rotando sus propias credenciales internas, que revisa los permisos de acceso a herramientas internas (incluido el acceso de administrador a espacios de clientes) y que cambiará la API de bots para que las credenciales almacenadas no se puedan alcanzar de la misma forma. También se ha comprometido a actualizar el comunicado si cambian los hallazgos. No se ha publicado un identificador de vulnerabilidad ni una atribución a un grupo concreto de atacantes."
+    ],
+    "impact": [
+      "Si usas Botpress y has recibido un aviso, cambia ya todas las claves guardadas en los bots afectados: proveedores de IA, canales de mensajería y CRM. Revoca las antiguas, no solo añadas nuevas.",
+      "Si no te han contactado, la empresa dice no tener pruebas de que tus bots se leyeran o cambiaran. Aun así, revisa el consumo de tu cuenta de IA y pon límites de gasto por si hubiera uso que no reconoces.",
+      "Es una lección general: no pegues claves de IA con permisos amplios y sin tope de gasto en plataformas de terceros. Usa claves distintas por proyecto, con el mínimo de permisos y límites de gasto.",
+      "Mira en tu panel de facturación de cada proveedor si hay picos de uso en octubre y noviembre; un consumo anómalo es la señal más rápida de que una clave se usa sin tu permiso."
+    ],
+    "sources": [
+      {
+        "name": "Botpress, comunicado de incidente de seguridad (6 nov 2026)",
+        "url": "https://botpress.com/blog/security-incident-disclosure-november-2026"
+      },
+      {
+        "name": "Unite.AI, Botpress discloses internal breach and customer credential risk",
+        "url": "https://www.unite.ai/botpress-discloses-internal-breach-and-customer-credential-risk/"
+      }
+    ],
+    "related": [
+      {
+        "title": "Límites de gasto para agentes de IA",
+        "url": "../articulos/limites-gasto-agentes-ia.html"
+      },
+      {
+        "title": "Permisos de agentes de IA sin darles tus contraseñas",
+        "url": "../articulos/permisos-agente-ia-sin-contrasenas.html"
+      },
+      {
+        "title": "Cómo proteger tus datos al usar IA",
+        "url": "../articulos/proteger-datos-ia.html"
+      }
+    ],
+    "photo": {
+      "alt": "Código de programación en la pantalla de un ordenador (imagen de archivo)",
+      "author": "Markus Spiske",
+      "license": "CC0",
+      "url": "https://www.rawpixel.com/image/432171/green-coding-screen"
+    }
+  },
+  {
     "slug": "2026-11-06-gemini-omni-1-2-flash-video-15-segundos",
     "date": "2026-11-05",
     "published": "2026-11-06",
