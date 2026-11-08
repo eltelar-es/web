@@ -1,5 +1,80 @@
 [
   {
+    "slug": "2026-11-08-claude-code-claves-texto-plano",
+    "date": "2026-11-07",
+    "category": "Seguridad",
+    "title": "Claude Code guarda contraseñas en texto plano y miles de ellas acaban en GitHub",
+    "dek": "Un estudio de Apiiro halla 1.379 claves distintas en repositorios públicos, copiadas por la opción «No volver a preguntar» de la herramienta de programación de Anthropic.",
+    "tldr": "Cuando aceptas un comando con «Sí, y no volver a preguntar», Claude Code lo guarda tal cual, contraseña incluida, en un archivo del proyecto. Apiiro ha encontrado 1.379 secretos distintos en repositorios públicos de GitHub; Anthropic no ha respondido a los avisos previos, según The Hacker News.",
+    "key_facts": [
+      {
+        "value": "104.185",
+        "label": "copias del archivo en 103.617 repositorios públicos"
+      },
+      {
+        "value": "1.379",
+        "label": "secretos distintos en 1.122 de esas copias"
+      },
+      {
+        "value": "379",
+        "label": "contraseñas de bases de datos entre ellos"
+      },
+      {
+        "value": "2.539",
+        "label": "secretos en total contando versiones antiguas y registros"
+      }
+    ],
+    "quote": {
+      "text": "When approved bash commands contain credentials, they are stored in plaintext in settings.local.json.",
+      "source": "Informe de error #5544 en GitHub, resumen (traducido)"
+    },
+    "body": [
+      "La empresa de seguridad Apiiro publicó el 6 de noviembre un estudio sobre un comportamiento de Claude Code, la herramienta de Anthropic que programa por ti desde la terminal. El medio The Hacker News lo recogió el 7 de noviembre. El problema es sencillo de explicar: cuando la herramienta te pide permiso para ejecutar un comando y eliges la opción «Sí, y no volver a preguntar», Claude Code crea una regla de permiso y la guarda en un archivo del propio proyecto, .claude/settings.local.json. Si el comando aprobado llevaba una contraseña o una clave, esa regla la guarda palabra por palabra, en texto plano, es decir, sin cifrar ni ocultar.",
+      "Eso no sería grave si el archivo se quedara en tu ordenador. Según el informe, Claude Code añade el archivo a la lista de exclusión global de git la primera vez que lo escribe, pero no al .gitignore del proyecto, de modo que esa protección no viaja con el repositorio. Git es el sistema que usan los programadores para guardar y compartir el código, y un .gitignore es la lista de archivos que no deben subirse. Apiiro rastreó 1.105 repositorios y en 539 de ellos un cambio firmado como coautoría de Claude modificó ese archivo, lo que sugiere que la propia herramienta lo sube a menudo sin que la persona se dé cuenta.",
+      "Las cifras del estudio son grandes. Apiiro encontró 104.185 copias del archivo en 103.617 repositorios públicos de GitHub. De ellas, 1.122 (alrededor del 1,1 %) contenían al menos un secreto, con un total de 1.379 secretos distintos. Más de un tercio abre bases de datos directamente, con 379 contraseñas de bases de datos, además de 43 accesos por SSH (una forma de entrar en un servidor a distancia), 42 tokens de GitHub, GitLab o npm y 23 claves de AWS. Hay 63 organizaciones afectadas, sobre todo empresas de software, con casos como una clave de administrador de la nube de un proveedor de bases de datos y una contraseña de propietario de una base de datos de historiales médicos.",
+      "Contando versiones antiguas del archivo y registros guardados de conversaciones con el agente, Apiiro eleva el total a 2.539 secretos en 1.994 repositorios. También halló 211 copias derivadas (forks) de 74 repositorios con los mismos secretos. Y el problema dura: el lunes, todos los archivos con secretos seguían en las ramas principales, y en la mitad de esos repositorios llevaban allí al menos 217 días. Apiiro aclara que no comprobó si las claves seguían funcionando, aunque una de las empresas avisadas confirmó que la suya sí estaba activa.",
+      "Otro dato relevante es que los escáneres habituales no lo detectan bien. De los 1.122 archivos con secretos, la herramienta gitleaks marcó 564 y TruffleHog (sin verificación) marcó 643; ninguna de las dos señaló 215. Según el informe, la mayoría de los fallos son contraseñas escritas dentro de un comando, por ejemplo tras «PGPASSWORD=», «sshpass -p» o «mysql -p». De los 16 agentes de programación que Apiiro revisó, Claude Code es el único confirmado que guarda por defecto el comando aprobado completo en un archivo del proyecto.",
+      "No es un problema nuevo. Un informe de error en el repositorio de Claude Code, el número 5544, se abrió el 11 de agosto de 2025 y describía exactamente esto: claves de API y tokens guardados en texto plano en settings.local.json. Un bot lo cerró como «no planificado» el 3 de enero de 2026 por falta de actividad, tras 60 días, y lo bloqueó el 10 de enero; ningún responsable del proyecto llegó a contestar. Según The Hacker News, otros cuatro informes relacionados corrieron la misma suerte, el último el día antes de su artículo. El artículo no menciona ninguna corrección ni declaración oficial de Anthropic, y en esta redacción no hemos podido abrir el estudio original de Apiiro, por lo que las cifras proceden de esa cobertura. Tampoco se indican versiones concretas de Claude Code afectadas; los investigadores dicen haber reproducido el comportamiento con los modelos más recientes."
+    ],
+    "impact": [
+      "Si usas Claude Code, abre .claude/settings.local.json en tus proyectos y borra cualquier regla que contenga una contraseña, clave o token. Revisa también .claude/settings.json.",
+      "Si alguna vez subiste ese archivo a GitHub, da por comprometidas las claves que contenga: cámbialas antes de limpiar el historial, porque borrar el archivo no borra las copias antiguas.",
+      "Añade .claude/settings.local.json al .gitignore de cada proyecto y, si ya se subió, quítalo del seguimiento con «git rm --cached».",
+      "Evita escribir secretos dentro de los comandos que apruebas: usa variables de entorno o un gestor de secretos, y aprueba patrones de comando en vez de comandos exactos."
+    ],
+    "sources": [
+      {
+        "name": "The Hacker News, resumen del estudio de Apiiro",
+        "url": "https://thehackernews.com/2026/11/claude-codes-dont-ask-again-file.html"
+      },
+      {
+        "name": "GitHub, informe de error #5544 de Claude Code",
+        "url": "https://github.com/anthropics/claude-code/issues/5544"
+      }
+    ],
+    "related": [
+      {
+        "title": "Qué es Claude Code",
+        "url": "../articulos/que-es-claude-code.html"
+      },
+      {
+        "title": "Modos de permisos de Claude Code",
+        "url": "../articulos/modos-permisos-claude-code-modo-plan.html"
+      },
+      {
+        "title": "Seguridad y privacidad con IA",
+        "url": "../articulos/seguridad-privacidad.html"
+      }
+    ],
+    "photo": {
+      "alt": "Persona escribiendo código en un portátil (imagen de archivo)",
+      "author": "rawpixel",
+      "license": "CC0",
+      "url": "https://www.rawpixel.com/image/6113542/photo-image-public-domain-logo-laptop"
+    },
+    "published": "2026-11-08"
+  },
+  {
     "slug": "2026-11-07-doj-grupo-superinteligencia",
     "date": "2026-11-05",
     "published": "2026-11-07",
