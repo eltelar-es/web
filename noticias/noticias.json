@@ -1,5 +1,81 @@
 [
   {
+    "slug": "2026-11-09-claude-finanzas-personales",
+    "date": "2026-11-05",
+    "category": "Herramientas",
+    "title": "Claude ya puede leer tus cuentas bancarias, pero no mover tu dinero",
+    "dek": "Anthropic lanza en beta «Personal Finance» para suscriptores de pago en EE. UU.: conecta tus bancos mediante Plaid y pregunta por tus gastos en lenguaje normal.",
+    "tldr": "Anthropic ha empezado a desplegar en EE. UU. una función que permite conectar tus cuentas bancarias y tarjetas a Claude para analizar gastos, detectar cargos duplicados y crear gráficos. Es de solo lectura: Claude no puede transferir ni invertir dinero.",
+    "key_facts": [
+      {
+        "value": "2 años",
+        "label": "de movimientos que Claude puede consultar"
+      },
+      {
+        "value": "Solo lectura",
+        "label": "no puede mover, gestionar ni invertir dinero"
+      },
+      {
+        "value": "EE. UU.",
+        "label": "beta para planes Pro, Max y Ultra"
+      }
+    ],
+    "quote": {
+      "text": "Claude no puede mover, gestionar ni invertir tu dinero.",
+      "source": "Anthropic, anuncio oficial (traducido y resumido)"
+    },
+    "body": [
+      "Anthropic publicó el 5 de noviembre de 2026 «Personal Finance» (finanzas personales), una sección nueva dentro de Claude pensada para hablar de tu dinero con datos reales. La idea es sencilla: conectas tus cuentas bancarias y tarjetas, y luego haces preguntas en lenguaje normal, como cuánto has gastado este mes en restaurantes o por qué ha subido tu factura de la luz. Claude responde a partir de tus saldos y movimientos, en lugar de que tengas que copiar y pegar datos a mano.",
+      "De momento es una beta, es decir, una versión de prueba que se va activando poco a poco. Según Anthropic, el despliegue empieza la semana de la publicación y solo está disponible en Estados Unidos, para los planes de pago Pro, Max y Ultra. Quienes usan Claude desde España no la tienen, y la empresa no ha anunciado fechas para otros países.",
+      "Para conectar una cuenta, abres Personal Finance en la barra lateral, enlazas una cuenta y haces una pregunta. El enlace se hace a través de Plaid, un intermediario financiero que ya usan muchas aplicaciones: inicias sesión directamente en tu banco y Claude nunca recibe tu contraseña bancaria. De cada cuenta conectada, Claude ve el nombre del banco, el nombre y el tipo de cuenta, los cuatro últimos dígitos, los saldos, los límites de crédito y hasta dos años de movimientos. Puedes desvincular una cuenta cuando quieras y, a partir de ese momento, Claude deja de ver sus datos.",
+      "Entre las tareas que Anthropic describe están sumar el gasto por categorías, compararlo con meses anteriores, avisar de posibles problemas como cargos duplicados o recibos que suben, calcular cuánto has pagado en intereses y explicar términos financieros que no entiendas. También puede construir gráficos, calendarios o paneles que puedes ir ajustando con nuevas instrucciones.",
+      "El límite más importante es que el acceso es de solo lectura. Anthropic insiste en que Claude no puede mover, gestionar ni invertir tu dinero, y aclara que la herramienta no está diseñada para dar consejos de inversión. Tampoco hay anuncios ni recomendaciones patrocinadas dentro de esta sección, y la empresa no ofrece tarjetas de crédito, préstamos ni cuentas de ahorro a través de ella. La propia página avisa de que Claude puede equivocarse, así que recomienda comprobar con tu banco las cifras importantes.",
+      "En cuanto a la privacidad, Anthropic afirma que las conversaciones dentro de Personal Finance no se usan para entrenar sus modelos; las conversaciones fuera de esa sección siguen lo que hayas elegido en tus ajustes de privacidad. Conviene leerlo con matiz: dejar de ver tus cuentas no borra lo que ya hayas compartido. Según la cobertura de The Next Web, que cita las páginas de ayuda de la empresa, las cifras ya mostradas permanecen en los chats, los artefactos y los enlaces compartidos hasta que los elimines, aunque desvincules el banco.",
+      "Lo que aún no está claro es cuándo llegará a Europa. Los servicios que acceden a datos bancarios están sujetos a normas estrictas en la Unión Europea, y Anthropic no ha dicho nada sobre una versión para España. Tampoco ha detallado cuántos bancos admite fuera de EE. UU. Anthropic describe esto como «un primer paso» y dice que quiere que Claude pueda trabajar junto a profesionales con licencia y entidades reguladas, para lo que busca la opinión de bancos, gestores de patrimonio y empresas de servicios financieros."
+    ],
+    "impact": [
+      "Si vives en España no puedes usarlo todavía; no hay fecha para Europa, así que no conectes tus cuentas a servicios no oficiales que prometan lo mismo.",
+      "Si algún día lo tienes disponible, empieza conectando una sola cuenta y revisa si las cifras coinciden con tu banco antes de fiarte de un resumen.",
+      "Antes de compartir un chat o un panel generado con tus datos, recuerda que la información sigue en el enlace aunque desvincules el banco: bórralo si ya no lo necesitas.",
+      "Para gastos cotidianos puedes seguir usando hoy la IA con datos que tú pegues y anonimices, evitando números completos de cuenta."
+    ],
+    "sources": [
+      {
+        "name": "Anthropic: Introducing Personal Finance in Claude",
+        "url": "https://claude.com/resources/articles/introducing-personal-finance-in-claude"
+      },
+      {
+        "name": "The Next Web: Anthropic lets Claude read your bank accounts, but not move money",
+        "url": "https://thenextweb.com/news/anthropic-claude-personal-finance-plaid-read-only-beta"
+      }
+    ],
+    "related": [
+      {
+        "title": "Privacidad de tus chats con IA",
+        "url": "../articulos/privacidad-chats-ia.html"
+      },
+      {
+        "title": "Cómo proteger tus datos con IA",
+        "url": "../articulos/proteger-datos-ia.html"
+      },
+      {
+        "title": "Alucinaciones: por qué la IA se equivoca",
+        "url": "../articulos/alucinaciones-ia.html"
+      },
+      {
+        "title": "Prompts para dinero y consumo",
+        "url": "../prompts/dinero-consumo.html"
+      }
+    ],
+    "photo": {
+      "alt": "Dos personas se saludan en el vestíbulo de la sede de Anthropic en San Francisco (imagen de archivo)",
+      "author": "Department for Science, Innovation and Technology",
+      "license": "CC BY 2.0",
+      "url": "https://commons.wikimedia.org/w/index.php?curid=154472572"
+    },
+    "published": "2026-11-09"
+  },
+  {
     "slug": "2026-11-08-claude-code-claves-texto-plano",
     "date": "2026-11-07",
     "category": "Seguridad",
